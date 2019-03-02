@@ -1,0 +1,6 @@
+{
+  "extends": ["@ark120202/tslint-config", "@ark120202/tslint-config/react"],
+  "rules": {
+    "no-implicit-dependencies": [true, "dev", ["dota-data", "~components", "~utils"]]
+  }
+}

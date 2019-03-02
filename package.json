@@ -1,0 +1,76 @@
+{
+  "name": "dota-data",
+  "version": "0.1.0",
+  "description": "Auto-generated Dota 2 resource dumps",
+  "repository": "https://github.com/ark120202/dota-data",
+  "license": "MIT",
+  "author": "ark120202",
+  "files": [
+    "lib",
+    "install.js"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "run-s build:static build:lib",
+    "build:lib": "rimraf lib/**/* && tsc",
+    "build:static": "rimraf files/**/* && ts-node build",
+    "dev": "run-p dev:tsc dev:static",
+    "dev:run": "cross-env DOTA_DATA_FORCE=1 nodemon -w lib install.js",
+    "dev:static": "nodemon -w build -w dumper/dump -e ts,json -x ts-node build",
+    "dev:tsc": "tsc --watch",
+    "postinstall": "node install.js",
+    "lint": "tslint --project . & tslint --project build & tslint --project web & tslint --project __tests__",
+    "prepublishOnly": "yarn build",
+    "test": "jest"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "proseWrap": "always",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "__tests__/tsconfig.json"
+      }
+    },
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "!**/_*"
+    ]
+  },
+  "dependencies": {
+    "dedent": "^0.7.0",
+    "got": "^9.6.0",
+    "lodash": "^4.17.10",
+    "tslib": "^1.9.3",
+    "vdf-extra": "^2.1.2"
+  },
+  "devDependencies": {
+    "@ark120202/tslint-config": "^3.0.0",
+    "@ark120202/typescript-config": "^1.4.1",
+    "@types/dedent": "^0.7.0",
+    "@types/fs-extra": "^5.0.3",
+    "@types/got": "^9.4.0",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.120",
+    "@types/prettier": "^1.16.0",
+    "cross-env": "^5.2.0",
+    "fs-extra": "^7.0.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.16.4",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.4.0-dev.20190202",
+    "typescript-styled-plugin": "^0.13.0",
+    "typescript-tslint-plugin": "^0.3.1"
+  }
+}

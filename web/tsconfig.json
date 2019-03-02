@@ -1,0 +1,19 @@
+{
+  "extends": "@ark120202/typescript-config/es2017.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "noEmit": true,
+    "isolatedModules": true,
+    "plugins": [
+      { "name": "typescript-tslint-plugin", "ignoreDefinitionFiles": true },
+      { "name": "typescript-styled-plugin" }
+    ],
+
+    "baseUrl": "src",
+    "paths": {
+      "dota-data/*": ["../../*"],
+      "~components/*": ["components/*"],
+      "~utils/*": ["utils/*"]
+    }
+  }
+}

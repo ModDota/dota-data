@@ -1,0 +1,38 @@
+import _ from 'lodash';
+import { formatArgumentName, readDump } from '../util';
+import { additions, override } from './events-data';
+import { PanoramaEvent, PanoramaEventArgument } from './types';
+
+function parseDefinition(definition: string) {
+  const [, name, parameters] = definition.match(/^(.+)\((.*)\)$/)!;
+  if (parameters === '') return { name, args: [] };
+
+  const args = parameters
+    .split(', ')
+    .map(x => x.replace(/^class /, '').split(' '))
+    .map(
+      ([type, n], i): PanoramaEventArgument => ({
+        name: formatArgumentName(n, i),
+        type,
+      }),
+    );
+
+  return { name, args };
+}
+
+export async function generatePanoramaEvents() {
+  const dump = await readDump('dump_panorama_events');
+  const result = _.chunk(
+    (dump.trim().slice(57, -1) + '-')
+      .split('\n')
+      .filter(x => x !== '|-')
+      .map(v => v.slice(2)),
+    3,
+  ).reduce<Record<string, PanoramaEvent>>((acc, [definition, panelEvent, description]) => {
+    const { name, args } = parseDefinition(definition.slice(6, -7));
+    return { ...acc, [name]: { description, panelEvent: panelEvent === 'Yes', args } };
+  }, {});
+
+  override(result);
+  return { ...result, ...additions };
+}

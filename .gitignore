@@ -1,0 +1,8 @@
+node_modules
+yarn-error.log
+.vscode
+/lib
+/files
+/web/.next
+/web/out
+/integration-results.txt

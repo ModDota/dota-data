@@ -1,0 +1,8 @@
+{
+  "extends": "@ark120202/typescript-config/node10.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib"
+  }
+}
