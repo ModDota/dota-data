@@ -22,28 +22,28 @@ const LINKS = [
   {
     name: 'npc_units',
     path: 'scripts/npc/npc_units.txt',
-    types: schemas.npc_units.toTypeScriptRoot().content,
+    types: schemas.npc_units.toTypeScriptRoot('file').content,
   },
   {
     name: 'npc_heroes',
     path: 'scripts/npc/npc_heroes.txt',
-    types: schemas.npc_heroes.toTypeScriptRoot().content,
+    types: schemas.npc_heroes.toTypeScriptRoot('file').content,
   },
   {
     name: 'portraits',
     path: 'pak01_dir/scripts/npc/portraits.txt',
-    types: schemas.portraits.toTypeScriptRoot().content,
+    types: schemas.portraits.toTypeScriptRoot('file').content,
   },
   {
     name: 'items',
     path: 'pak01_dir/scripts/npc/items.txt',
-    types: schemas.items.toTypeScriptRoot().content,
+    types: schemas.items.toTypeScriptRoot('file').content,
     transform: transformAbilities,
   },
   {
     name: 'npc_abilities',
     path: 'scripts/npc/npc_abilities.txt',
-    types: schemas.npc_abilities.toTypeScriptRoot().content,
+    types: schemas.npc_abilities.toTypeScriptRoot('file').content,
     transform: transformAbilities,
   },
   {
@@ -96,9 +96,7 @@ export const getScripts = () =>
       return {
         name,
         content,
-        types:
-          types.replace(/type Root/g, 'export $0') +
-          '\ndeclare const file: Root;\nexport = file;\n',
+        types: types + '\ndeclare const file: file.Root;\nexport = file;\n',
       };
     }),
   );
