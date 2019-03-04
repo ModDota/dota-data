@@ -42,7 +42,7 @@ export async function generateLocalization({ languages }: { languages?: string[]
       const result = _.omitBy(
         Object.assign({}, ...values.map(x => x.Tokens)),
         // EXTRA_VALUES appears because there are some repeated tokens in valve files
-        (_, key: string | typeof vdf.EXTRA_VALUES) =>
+        (_value, key: string | typeof vdf.EXTRA_VALUES) =>
           typeof key !== 'string' || key.startsWith('[english]'),
       );
 
