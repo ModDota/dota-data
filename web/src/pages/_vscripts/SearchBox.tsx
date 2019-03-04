@@ -2,8 +2,8 @@ import { darken } from 'polished';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '~utils/constants';
-import { Router, useRouter } from '~utils/hooks';
-import { setSearchQuery } from './search';
+import { Router } from '~utils/hooks';
+import { setSearchQuery, useRouterSearch } from './search';
 import SearchIcon from './search.svg';
 
 export function useCtrlFHook<T extends HTMLElement>() {
@@ -61,7 +61,7 @@ const SearchButton = styled.button<{ isUpdated: boolean }>`
 export const SearchBox: React.FC<{ className?: string }> = React.memo(({ className }) => {
   const ref = useCtrlFHook<HTMLInputElement>();
 
-  const { query: { search: routerSearch = '' } = {} } = useRouter();
+  const routerSearch = useRouterSearch();
   const [search, setSearch] = useState(routerSearch);
   useEffect(() => {
     const listener = () => setSearch((Router.query || {}).search || '');

@@ -2,7 +2,7 @@ import api from 'dota-data/files/vscripts/api';
 import enums from 'dota-data/files/vscripts/enums';
 import _ from 'lodash';
 import { useRouter } from '~utils/hooks';
-import { doSearch } from './search';
+import { doSearch, useRouterSearch } from './search';
 
 const allData = [...api, ...enums];
 export type TopLevelElement = (typeof topLevelData)[number];
@@ -11,8 +11,8 @@ export const topLevelData = allData.filter(
 );
 
 export const useFilteredData = () => {
-  const { query = {} } = useRouter();
-  const { scope, search } = query;
+  const search = useRouterSearch();
+  const { query: { scope = '' } = {} } = useRouter();
 
   let data = [...topLevelData];
   if (search) {

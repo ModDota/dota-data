@@ -2,7 +2,8 @@ import { Member } from 'dota-data/files/vscripts/api';
 import { EnumMember } from 'dota-data/files/vscripts/enums';
 import { getFuncDeepTypes } from 'dota-data/lib/helpers/vscripts';
 import qs from 'querystring';
-import { Router } from '~utils/hooks';
+import { IS_CLIENT } from '~utils/constants';
+import { Router, useRouter } from '~utils/hooks';
 import { isNotNil } from '~utils/types';
 import { TopLevelElement } from './data';
 
@@ -23,6 +24,15 @@ export const setSearchQuery = (query: string) => {
         (history.state.options && history.state.options.beforeSearchAs) || Router.asPath || '',
     });
   }
+};
+
+export const useRouterSearch = () => {
+  let { query: { search = '' } = {} } = useRouter();
+  if (IS_CLIENT && search === '') {
+    search = String(qs.parse(location.search.slice(1)).search || '');
+  }
+
+  return search;
 };
 
 export const doSearch = (data: TopLevelElement[], words: string[]) => {
