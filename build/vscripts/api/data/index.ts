@@ -237,6 +237,23 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC_Hero.ModifyGold': { description: 'Gives this hero some gold.' },
   'CDOTA_BaseNPC_Hero.SpendGold': { description: '', args: { '1': [null, 'ModifyGoldReason'] } },
   'CDOTA_Buff.HasFunction': { args: { 0: [null, ['ModifierProperty', 'ModifierEvent']] } },
+
+  'CDOTA_Item_DataDriven.ApplyDataDrivenModifier': {
+    returns: 'CDOTA_Buff',
+    args: {
+      '0': [null, 'CDOTA_BaseNPC'],
+      '1': [null, 'CDOTA_BaseNPC'],
+      '3': [null, ['table', 'nil']],
+    },
+  },
+  'CDOTA_Ability_DataDriven.ApplyDataDrivenModifier': {
+    returns: 'CDOTA_Buff',
+    args: {
+      '0': [null, 'CDOTA_BaseNPC'],
+      '1': [null, 'CDOTA_BaseNPC'],
+      '3': [null, ['table', 'nil']],
+    },
+  },
 };
 
 export const attachedTypes = (() => {
@@ -315,7 +332,7 @@ export const attachedTypes = (() => {
       { kind: 'field', name: 'attacker', types: ['CDOTA_BaseNPC'] },
       { kind: 'field', name: 'damage', types: ['float'] },
       { kind: 'field', name: 'damage_type', types: ['DamageTypes'] },
-      { kind: 'field', name: 'damage_flags', types: ['DamageFlag'] },
+      { kind: 'field', name: 'damage_flags', types: ['DamageFlag', 'nil'] },
       { kind: 'field', name: 'ability', types: ['CDOTABaseAbility', 'nil'] },
     ],
   });

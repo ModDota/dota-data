@@ -111,10 +111,6 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTATutorial.SetTimeFrozen': { args: { '0': ['timeFrozen'] } },
   'CDOTATutorial.SetWhiteListEnabled': { args: { '0': ['whitelistEnabled'] } },
   'CDOTATutorial.UpgradePlayerAbility': { args: { '0': ['abilityName'] } },
-  'CDOTA_Ability_DataDriven.ApplyDataDrivenModifier': {
-    returns: 'CDOTA_Buff',
-    args: { '0': [null, 'CDOTA_BaseNPC'], '1': [null, 'CDOTA_BaseNPC'], '3': [null, 'table'] },
-  },
   'CDOTA_Ability_Lua.CastFilterResult': { returns: 'UnitFilterResult' },
   'CDOTA_Ability_Lua.CastFilterResultLocation': { returns: 'UnitFilterResult' },
   'CDOTA_Ability_Lua.CastFilterResultTarget': {
@@ -149,7 +145,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
       '0': [null, ['CDOTA_BaseNPC', 'nil']],
       '1': [null, ['CDOTABaseAbility', 'nil']],
       '2': ['modifierName'],
-      '3': [null, 'table'],
+      '3': [null, ['table', 'nil']],
     },
   },
   'CDOTA_BaseNPC.AlertNearbyUnits': {
@@ -396,7 +392,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CEntities.GetLocalPlayer': { returns: 'CDOTAPlayer' },
   'CEntities.Next': { returns: 'CBaseEntity', args: { '0': ['previous', 'CBaseEntity'] } },
   'CScriptHeroList.GetAllHeroes': { returns: array('CDOTA_BaseNPC_Hero') },
-  'CScriptHeroList.GetHero': { returns: 'CDOTA_BaseNPC_Hero', args: { '0': ['nth'] } },
+  'CScriptHeroList.GetHero': { returns: ['CDOTA_BaseNPC_Hero', 'nil'], args: { '0': ['nth'] } },
   'CScriptParticleManager.CreateParticle': {
     returns: 'ParticleID',
     args: {
