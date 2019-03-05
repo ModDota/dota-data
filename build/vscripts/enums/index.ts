@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { modifierPropertyData } from '../modifier-properties/data';
 import { DumpConstant } from '../types';
 import { readVScriptsDump } from '../util';
 import {
@@ -119,7 +120,19 @@ export async function generateEnums() {
         name,
         available: getEnumAvailability(allConstants.filter(x => x.name.startsWith(prefix))),
         members: [
-          ...transformMembers(allConstants.filter(x => x.name.startsWith(prefix)), prefix),
+          ...transformMembers(allConstants.filter(x => x.name.startsWith(prefix)), prefix).map(
+            (x): typeof x => ({
+              ...x,
+              description:
+                x.description && x.description !== 'Unused'
+                  ? modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
+                    ? `${modifierPropertyData[x.description][2]}\n\nMethod Name: \`${
+                        x.description
+                      }\``
+                    : `Method Name: \`${x.description}\``
+                  : undefined,
+            }),
+          ),
           ...transformMembers(
             allConstants.filter(x => x.name === 'MODIFIER_FUNCTION_INVALID'),
             'MODIFIER_FUNCTION_',
