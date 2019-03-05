@@ -1,6 +1,6 @@
 {
   "name": "dota-data",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Auto-generated Dota 2 resource dumps",
   "repository": "https://github.com/ark120202/dota-data",
   "license": "MIT",
