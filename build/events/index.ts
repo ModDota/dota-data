@@ -1,11 +1,5 @@
 import _ from 'lodash';
-import {
-  formatDescription,
-  getDotaDirectoryContents,
-  getDotaFile,
-  outputFile,
-  outputJson,
-} from '../util';
+import { formatDescription, getDotaFile, outputFile, outputJson } from '../util';
 import { Event, types } from './types';
 
 function parseFile(content: string) {
@@ -48,9 +42,13 @@ function parseFile(content: string) {
 }
 
 export async function generateEvents() {
-  const names = (await getDotaDirectoryContents('pak01_dir/resource'))
-    .filter(x => x.type === 'file' && x.name.endsWith('events.res'))
-    .map(x => x.name);
+  const names = [
+    'gameevents.res',
+    'hltvevents.res',
+    'modevents.res',
+    'port_gameevents.res',
+    'serverevents.res',
+  ];
 
   const files = await Promise.all(
     names.map(async name => ({
