@@ -5,7 +5,7 @@
   "homepage": "https://github.com/ark120202/dota-data#readme",
   "bugs": "https://github.com/ark120202/dota-data/issues",
   "repository": "https://github.com/ark120202/dota-data/tree/master/packages/dota-data",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "ark120202",
   "files": [
     "lib/**/*.{js,ts}",
