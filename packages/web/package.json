@@ -13,7 +13,7 @@
     "@types/react-dom": "^16.8.0",
     "@types/react-virtualized": "^9.18.12",
     "@types/styled-components": "^4.1.9",
-    "dota-data": "^0.2.1",
+    "dota-data": "^0.3.0",
     "lodash": "^4.17.11",
     "polished": "^2.3.3",
     "react": "^16.8.1",

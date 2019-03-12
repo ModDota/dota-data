@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "dedent": "^0.7.0",
-    "dota-data": "^0.2.1",
+    "dota-data": "^0.3.0",
     "fs-extra": "^7.0.0",
     "got": "^9.6.0",
     "lodash": "^4.17.10",
