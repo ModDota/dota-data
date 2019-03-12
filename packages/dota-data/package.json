@@ -1,0 +1,34 @@
+{
+  "name": "dota-data",
+  "version": "0.2.1",
+  "description": "Auto-generated Dota 2 resource dumps",
+  "homepage": "https://github.com/ark120202/dota-data#readme",
+  "bugs": "https://github.com/ark120202/dota-data/issues",
+  "repository": "https://github.com/ark120202/dota-data/tree/master/packages/dota-data",
+  "license": "MIT",
+  "author": "ark120202",
+  "files": [
+    "lib/**/*.{js,ts}",
+    "files/**/*.{json,ts}"
+  ],
+  "scripts": {
+    "build": "rimraf files/**/* && ts-node build",
+    "dev": "nodemon -w build -w ../dumper/dump -e ts,json -x ts-node build",
+    "lint": "run-p lint:build lint:src",
+    "lint:build": "tslint --project build",
+    "lint:src": "tslint --project ."
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@types/dedent": "^0.7.0",
+    "@types/fs-extra": "^5.0.5",
+    "@types/got": "^9.4.1",
+    "@types/lodash": "^4.14.122",
+    "dedent": "^0.7.0",
+    "fs-extra": "^7.0.0",
+    "got": "^9.6.0",
+    "vdf-extra": "^2.2.2"
+  }
+}

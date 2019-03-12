@@ -2,18 +2,10 @@
 
 > Auto-generated Dota 2 resource dumps
 
-## Installation
+Data from these packages is avaliable on [dota-data web page](https://dota-data.netlify.com).
 
-```shell
-yarn add dota-data
-# or
-npm i dota-data
-```
+## Packages
 
-Some data in this package is downloaded on installation.
-
-You can update it with
-
-```shell
-npm rebuild dota-data
-```
+- [dota-data](packages/dota-data/README.md)
+- [@dota-data/localization](packages/localization/README.md)
+- [@dota-data/scripts](packages/scripts/README.md)

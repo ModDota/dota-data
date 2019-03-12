@@ -1,1 +1,6 @@
-{ "extends": ["@ark120202/tslint-config"] }
+{
+  "extends": ["@ark120202/tslint-config"],
+  "rules": {
+    "no-implicit-dependencies": [true, "dev", ["@dota-data/scripts"]]
+  }
+}

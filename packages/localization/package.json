@@ -1,0 +1,33 @@
+{
+  "name": "@dota-data/localization",
+  "version": "0.1.0",
+  "description": "Auto-generated Dota 2 localization files",
+  "homepage": "https://github.com/ark120202/dota-data#readme",
+  "bugs": "https://github.com/ark120202/dota-data/issues",
+  "repository": "https://github.com/ark120202/dota-data/tree/master/packages/localization",
+  "license": "MIT",
+  "author": "ark120202",
+  "files": [
+    "lib/**/*.{js,ts}"
+  ],
+  "scripts": {
+    "dev-install": "node lib/install.js",
+    "postinstall": "node -e \"process.env.npm_package_name !== '@dota-data/localization' && require('lib/install.js')\"",
+    "lint": "tslint --project ."
+  },
+  "dependencies": {
+    "got": "^9.6.0",
+    "lodash": "^4.17.10",
+    "tslib": "^1.9.3",
+    "vdf-extra": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/got": "^9.4.1",
+    "fs-extra": "^7.0.0",
+    "rimraf": "^2.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,8 +1,6 @@
 {
   "extends": "@ark120202/typescript-config/node10-maps.json",
-  "include": ["**/__tests__"],
   "compilerOptions": {
-    "types": ["node", "jest"],
-    "noEmit": true
+    "composite": true
   }
 }

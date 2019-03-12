@@ -3,8 +3,7 @@ node_js: "10"
 cache: yarn
 
 script:
-  - (cd web && yarn)
   - yarn build
   - yarn lint
   - yarn test
-  - (cd web && yarn build)
+  - yarn web:build
