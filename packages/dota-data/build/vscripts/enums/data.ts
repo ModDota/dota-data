@@ -10,6 +10,7 @@ export const droppedConstants = [
   'ScriptDebugTextLines',
   'ScriptDebugTextIndent',
   'ScriptDebugWatchFistLine',
+  'radiant_melee_mars_shieldbash',
 ];
 
 export const extractedConstants = [

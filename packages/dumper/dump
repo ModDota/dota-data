@@ -1713,6 +1713,14 @@ Initializing script VM...
     "name":"GetDedicatedServerKey",
     "description":"( version )"
   },{
+    "returns":"string",
+    "args":[{
+        "type":"string"
+      }],
+    "kind":"function",
+    "name":"GetDedicatedServerKeyV2",
+    "description":"( version )"
+  },{
     "returns":"<unknown>",
     "args":[{
         "type":"unsigned"
@@ -3475,6 +3483,16 @@ Initializing script VM...
     "value":1612,
     "kind":"constant",
     "name":"ACT_DOTA_BELLYACHE_START"
+  },{
+    "enum":"GameActivity_t",
+    "value":1732,
+    "kind":"constant",
+    "name":"ACT_DOTA_BLINK_DAGGER"
+  },{
+    "enum":"GameActivity_t",
+    "value":1733,
+    "kind":"constant",
+    "name":"ACT_DOTA_BLINK_DAGGER_END"
   },{
     "enum":"GameActivity_t",
     "value":1640,
@@ -11713,6 +11731,12 @@ Initializing script VM...
     "description":"OnAttackAllied"
   },{
     "enum":"modifierfunction",
+    "value":202,
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_ATTACK_CANCELLED",
+    "description":"OnAttackCancelled"
+  },{
+    "enum":"modifierfunction",
     "value":143,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FAIL",
@@ -11922,7 +11946,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":202,
+    "value":204,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -12831,6 +12855,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
     "description":"GetModifierSuperIllusionWithUltimate"
+  },{
+    "enum":"modifierfunction",
+    "value":203,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
+    "description":"GetSuppressCleave"
   },{
     "enum":"modifierfunction",
     "value":201,
@@ -26023,7 +26053,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1750,
+    "value":1752,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -26415,7 +26445,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1743,
+    "value":1734,
     "kind":"constant",
     "name":"ACT_DOTA_ARCANA_VOTE"
   },{
@@ -26443,7 +26473,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1734,
+    "value":1738,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -26462,6 +26492,14 @@ Initializing script VM...
     "value":1612,
     "kind":"constant",
     "name":"ACT_DOTA_BELLYACHE_START"
+  },{
+    "value":1732,
+    "kind":"constant",
+    "name":"ACT_DOTA_BLINK_DAGGER"
+  },{
+    "value":1733,
+    "kind":"constant",
+    "name":"ACT_DOTA_BLINK_DAGGER_END"
   },{
     "value":1640,
     "kind":"constant",
@@ -26507,19 +26545,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1739,
+    "value":1740,
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE"
   },{
-    "value":1740,
+    "value":1751,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1747,
+    "value":1739,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1736,
+    "value":1748,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -26611,7 +26649,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP"
   },{
-    "value":1757,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -26643,7 +26681,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
-    "value":1746,
+    "value":1737,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_STATUE"
   },{
@@ -26727,7 +26765,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CONSTANT_LAYER"
   },{
-    "value":1752,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -26759,7 +26797,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1751,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -26791,7 +26829,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1738,
+    "value":1750,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -26887,11 +26925,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1735,
+    "value":1747,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
-    "value":1753,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -27095,11 +27133,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1744,
+    "value":1735,
     "kind":"constant",
     "name":"ACT_DOTA_PUNCH"
   },{
-    "value":1758,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -27139,7 +27177,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1755,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -27151,7 +27189,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1756,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -27171,7 +27209,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1733,
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_ALT"
+  },{
+    "value":1746,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -27235,7 +27277,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1745,
+    "value":1736,
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
   },{
@@ -27247,15 +27289,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1749,
+    "value":1744,
     "kind":"constant",
     "name":"ACT_DOTA_STATUE_SEQUENCE"
   },{
-    "value":1732,
+    "value":1745,
     "kind":"constant",
     "name":"ACT_DOTA_STORM_ABILITY_4"
   },{
-    "value":1737,
+    "value":1749,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -27275,7 +27317,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SNIPER"
   },{
-    "value":1742,
+    "value":1743,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -27335,10 +27377,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
   },{
-    "value":1754,
-    "kind":"constant",
-    "name":"ACT_DOTA_TORRENT"
-  },{
     "value":1731,
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION"
@@ -27375,7 +27413,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1748,
+    "value":1742,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_STATUE"
   },{
@@ -33222,6 +33260,12 @@ Initializing script VM...
     "description":"OnAttackAllied"
   },{
     "enum":"modifierfunction",
+    "value":202,
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_ATTACK_CANCELLED",
+    "description":"OnAttackCancelled"
+  },{
+    "enum":"modifierfunction",
     "value":143,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FAIL",
@@ -33431,7 +33475,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":202,
+    "value":204,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -34342,6 +34386,12 @@ Initializing script VM...
     "description":"GetModifierSuperIllusionWithUltimate"
   },{
     "enum":"modifierfunction",
+    "value":203,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
+    "description":"GetSuppressCleave"
+  },{
+    "enum":"modifierfunction",
     "value":201,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
@@ -34917,6 +34967,10 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"UF_SUCCESS"
+  },{
+    "value":1758,
+    "kind":"constant",
+    "name":"radiant_melee_mars_shieldbash"
   },{
     "members":[{
         "args":[{
