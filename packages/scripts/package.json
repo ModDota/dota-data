@@ -8,6 +8,7 @@
   "license": "Apache-2.0",
   "author": "ark120202",
   "files": [
+    "install.js",
     "lib/**/*.{js,ts}"
   ],
   "main": "lib/index.js",
