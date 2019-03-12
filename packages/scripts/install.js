@@ -1,2 +1,6 @@
-const installPath = require.resolve('./lib/install.js');
-if (fs.existsSync(installPath)) require(installPath);
+try {
+  require.resolve('./lib/install.js');
+} catch {
+  return;
+}
+require('./lib/install.js');
