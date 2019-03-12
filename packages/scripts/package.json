@@ -14,7 +14,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "dev-install": "node lib/install.js",
-    "postinstall": "node -e \"process.env.npm_package_name !== '@dota-data/scripts' && require('lib/install.js')\"",
+    "postinstall": "node install.js",
     "lint": "tslint --project ."
   },
   "dependencies": {
