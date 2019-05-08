@@ -17,6 +17,7 @@
     "lint": "tslint --project ."
   },
   "dependencies": {
+    "fs-extra": "^7.0.1",
     "got": "^9.6.0",
     "lodash": "^4.17.10",
     "tslib": "^1.9.3",
@@ -24,9 +25,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^5.1.0",
-    "@types/got": "^9.4.4",
-    "fs-extra": "^7.0.0",
-    "rimraf": "^2.6.3"
+    "@types/got": "^9.4.4"
   },
   "publishConfig": {
     "access": "public"
