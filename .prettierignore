@@ -1,0 +1,4 @@
+/packages/*/lib
+/packages/*/files
+/packages/web/.next
+/packages/web/out

@@ -1,8 +1,10 @@
 node_modules
-yarn-error.log
-.vscode
-/integration-results.txt
 /packages/*/lib
 /packages/*/files
 /packages/web/.next
 /packages/web/out
+/integration-results.txt
+*.tsbuildinfo
+
+.vscode
+lerna-debug.log

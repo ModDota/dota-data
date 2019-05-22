@@ -1,5 +1,5 @@
 {
-  "extends": "@ark120202/typescript-config/es2017.json",
+  "extends": "@ark120202/typescript-config/web/es2017.json",
   "compilerOptions": {
     "jsx": "react",
     "noEmit": true,
