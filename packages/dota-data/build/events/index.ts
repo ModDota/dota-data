@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { formatDescription, getDotaFile, outputFile, outputJson } from '../util';
+import { formatDescription, getFile, outputFile, outputJson } from '../util';
 import { Event, types } from './types';
 
 function parseFile(content: string) {
@@ -29,10 +29,11 @@ function parseFile(content: string) {
 
         if (name === 'local') {
           events[parsingName].local = type === '1';
-        } else if (['unreliable', 'suppress', 'time', 'eventid'].includes(name)) {
-          console.warn(`Event "${parsingName}" uses a reversed key name "${name}"`);
         } else {
-          if ((type === 'byte' || type === 'short') && /player_?id/i.test(name)) type = 'PlayerID';
+          if ((type === 'byte' || type === 'short') && /player_?id/i.test(name)) {
+            type = 'PlayerID';
+          }
+
           events[parsingName].fields.push({ name, description, type });
         }
       }
@@ -42,18 +43,16 @@ function parseFile(content: string) {
 }
 
 export async function generateEvents() {
-  const names = [
-    'gameevents.res',
-    'hltvevents.res',
-    'modevents.res',
-    'port_gameevents.res',
-    'serverevents.res',
+  const fileNames = [
+    'game/core/pak01_dir/resource/core.gameevents',
+    'game/dota/pak01_dir/resource/game.gameevents',
+    'game/dota/pak01_dir/resource/port.gameevents',
   ];
 
   const files = await Promise.all(
-    names.map(async name => ({
-      name: name.replace(/events\.res$/, ''),
-      content: parseFile(await getDotaFile(`pak01_dir/resource/${name}`)),
+    fileNames.map(async fileName => ({
+      name: fileName.match(/resource\/(.+)\.gameevents$/)![1],
+      content: parseFile(await getFile(fileName)),
     })),
   );
 
