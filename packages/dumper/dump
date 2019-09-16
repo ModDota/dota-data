@@ -8636,10 +8636,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_DEFIBRILLATOR_SHOCK"
   },{
-    "value":194,
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
-  },{
     "value":193,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
@@ -14061,14 +14057,6 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"UF_SUCCESS"
-  },{
-    "value":1748,
-    "kind":"constant",
-    "name":"debut_end"
-  },{
-    "value":1749,
-    "kind":"constant",
-    "name":"debut_start"
   },{
     "members":[{
         "args":[],
@@ -26743,7 +26731,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1769,
+    "value":1767,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -27295,7 +27283,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1751,
+    "value":1748,
     "kind":"constant",
     "name":"ACT_DOTA_ARCANA_VOTE"
   },{
@@ -27323,7 +27311,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1755,
+    "value":1752,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -27395,19 +27383,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1757,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE"
   },{
-    "value":1768,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1756,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1765,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -27519,7 +27507,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1772,
+    "value":1770,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -27563,7 +27551,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
-    "value":1754,
+    "value":1751,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_STATUE"
   },{
@@ -27667,7 +27655,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1777,
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -27699,7 +27687,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1750,
+    "value":1766,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -27731,7 +27719,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1767,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -27827,11 +27815,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1764,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
-    "value":1778,
+    "value":1776,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -28039,11 +28027,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1752,
+    "value":1749,
     "kind":"constant",
     "name":"ACT_DOTA_PUNCH"
   },{
-    "value":1775,
+    "value":1772,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -28083,7 +28071,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1770,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -28095,7 +28083,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1771,
+    "value":1769,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -28115,11 +28103,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1776,
+    "value":1774,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
-    "value":1763,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -28183,7 +28171,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1753,
+    "value":1750,
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
   },{
@@ -28199,15 +28187,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1761,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_STATUE_SEQUENCE"
   },{
-    "value":1762,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_STORM_ABILITY_4"
   },{
-    "value":1766,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -28227,7 +28215,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SNIPER"
   },{
-    "value":1760,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -28263,7 +28251,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
-    "value":1758,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
@@ -28323,7 +28311,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1759,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_STATUE"
   },{
@@ -35925,15 +35913,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1748,
-    "kind":"constant",
-    "name":"debut_end"
-  },{
-    "value":1749,
-    "kind":"constant",
-    "name":"debut_start"
-  },{
-    "value":1774,
+    "value":1771,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
