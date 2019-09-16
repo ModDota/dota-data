@@ -18,12 +18,19 @@ const defaultReplacements: Record<string, string> = {
 export async function generateApi(replacements: Record<string, string>) {
   const dump = await readVScriptsDump();
 
+  interface JoinedMethod {
+    server?: DumpMethod;
+    client?: DumpMethod;
+  }
+
   const transformType = (type: string) => replacements[type] || defaultReplacements[type] || type;
   function transformFunction(
     scopeName: string,
-    func: DumpMethod,
-    client: boolean,
+    { server, client }: JoinedMethod,
   ): FunctionDeclaration {
+    // Prefer server dump as it usually has more information
+    const func = (server || client)!;
+
     const extension = functionExtensions[`${scopeName}.${func.name}`] || {};
     let argNames: (string | undefined)[];
     if (func.args.every(x => x.name != null)) {
@@ -44,6 +51,7 @@ export async function generateApi(replacements: Record<string, string>) {
           ? extension.description
           : undefined
         : clearDescription(func.name, func.description);
+
     if (clearDescription(func.name, description) !== description) {
       throw new Error(`Description of ${scopeName}.${func.name} is invalid:\n${description}`);
     }
@@ -51,14 +59,14 @@ export async function generateApi(replacements: Record<string, string>) {
     return {
       kind: 'function',
       name: func.name,
-      available: client ? 'both' : 'server',
+      available: server && client ? 'both' : server ? 'server' : 'client',
       deprecated: extension.deprecated,
       description,
       returns: _.castArray(extension.returns || transformType(func.returns)),
       args: func.args.map(
-        ({ type }, i): Parameter => {
-          const argExtension = (extension.args || {})[i] || [];
-          const name = argExtension[0] || formatArgumentName(argNames[i], i);
+        ({ type }, index): Parameter => {
+          const argExtension = (extension.args || {})[index] || [];
+          const name = argExtension[0] || formatArgumentName(argNames[index], index);
           const argDescription = _.defaultTo(argExtension[2], undefined);
 
           let types = _.castArray(argExtension[1] || transformType(type));
@@ -76,11 +84,20 @@ export async function generateApi(replacements: Record<string, string>) {
     };
   }
 
-  const clientFunctions = dump.client.filter((x): x is DumpFunction => x.kind === 'function');
+  function joinMethods(onServer: DumpMethod[], onClient: DumpMethod[]): JoinedMethod[] {
+    const names = _.union(onClient.map(x => x.name), onServer.map(x => x.name));
+    return names.map(name => ({
+      server: onServer.find(x => x.name === name),
+      client: onClient.find(x => x.name === name),
+    }));
+  }
+
   return [
-    ...dump.server
-      .filter((x): x is DumpFunction => x.kind === 'function')
-      .map(func => transformFunction('_G', func, clientFunctions.some(x => x.name === func.name))),
+    ...joinMethods(
+      dump.server.filter((x): x is DumpFunction => x.kind === 'function'),
+      dump.client.filter((x): x is DumpFunction => x.kind === 'function'),
+    ).map(result => transformFunction('_G', result)),
+
     ...dump.server
       .filter((x): x is DumpClass => x.kind === 'class')
       .map(
@@ -97,18 +114,13 @@ export async function generateApi(replacements: Record<string, string>) {
             description: extension.description,
             extend: serverClass.extend,
             instance: serverClass.instance,
-            members: serverClass.members
-              .map(func =>
-                transformFunction(
-                  serverClass.name,
-                  func,
-                  clientClass != null && clientClass.members.some(x => x.name === func.name),
-                ),
-              )
+            members: joinMethods(serverClass.members, clientClass ? clientClass.members : [])
+              .map(result => transformFunction(serverClass.name, result))
               .sort((a, b) => a.name.localeCompare(b.name, 'en')),
           };
         },
       ),
+
     ...attachedTypes,
   ].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
 }

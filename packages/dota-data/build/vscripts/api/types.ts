@@ -4,7 +4,7 @@ export const types = exportNamespacedRoot(__filename, 'api', 'api.TopLevelElemen
 
 // EXPORT START
 export type TopLevelElement = FunctionDeclaration | Class | Interface;
-export type Availability = 'server' | 'both';
+export type Availability = 'server' | 'client' | 'both';
 
 export type Member = FunctionDeclaration | Field;
 export interface Interface {
