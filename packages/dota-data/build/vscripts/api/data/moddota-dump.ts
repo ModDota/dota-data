@@ -15,7 +15,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseTrigger.IsTouching': { args: { '0': [null, 'CBaseEntity'] } },
   'CCustomGameEventManager.RegisterListener': {
     returns: 'CustomGameEventListenerID',
-    args: { '1': ['listener', func([['event', 'table']], 'nil')] },
+    args: { '1': ['listener', func([['userId', 'number'], ['event', 'table']], 'nil')] },
   },
   'CCustomGameEventManager.Send_ServerToAllClients': { args: { '1': [null, 'table'] } },
   'CCustomGameEventManager.Send_ServerToPlayer': {
@@ -234,7 +234,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC_Creature.AddItemDrop': { args: { '0': [null, 'table'] } },
   'CDOTA_BaseNPC_Hero.GetAdditionalOwnedUnits': { returns: array('CDOTA_BaseNPC') },
   'CDOTA_BaseNPC_Hero.GetPlayerID': { returns: 'PlayerID' },
-  'CDOTA_BaseNPC_Hero.GetPrimaryAttribute': { returns: 'Attribute' },
+  'CDOTA_BaseNPC_Hero.GetPrimaryAttribute': { returns: 'Attribute', description: '' },
   'CDOTA_BaseNPC_Hero.GetTogglableWearable': { returns: 'CBaseEntity' },
   'CDOTA_BaseNPC_Hero.SetPrimaryAttribute': { args: { '0': [null, 'Attribute'] } },
   'CDOTA_BaseNPC_Hero.UpgradeAbility': { args: { '0': [null, 'CDOTABaseAbility'] } },
@@ -538,8 +538,8 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   '_G.FireGameEvent': { args: { '0': ['eventName'], '1': ['eventData', 'table'] } },
   '_G.FireGameEventLocal': { args: { '0': ['eventName'], '1': ['eventData', 'table'] } },
   '_G.GetEntityIndexForTreeId': { returns: 'number' },
-  '_G.GetGroundHeight': { args: { '0': ['location'], '1': ['unitHull', 'CDOTA_BaseNPC'] } },
-  '_G.GetGroundPosition': { args: { '0': ['location'], '1': ['unitHull', 'CDOTA_BaseNPC'] } },
+  '_G.GetGroundHeight': { args: { 0: ['location'], 1: ['unitHull', ['CDOTA_BaseNPC', 'nil']] } },
+  '_G.GetGroundPosition': { args: { 0: ['location'], 1: ['unitHull', ['CDOTA_BaseNPC', 'nil']] } },
   '_G.GetTeamHeroKills': { args: { '0': ['team', 'DotaTeam'] } },
   '_G.GetTeamName': { args: { '0': ['team', 'DotaTeam'] } },
   '_G.IsLocationVisible': { args: { '0': ['team', 'DotaTeam'] } },

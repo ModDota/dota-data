@@ -142,8 +142,7 @@ export async function generateEnums() {
     ),
   ];
 
-  enums = [
-    ...enums,
+  enums.push(
     ...Object.entries(
       allConstants
         .filter(c => !constants.some(x => x.name === c.name))
@@ -167,7 +166,7 @@ export async function generateEnums() {
         };
       },
     ),
-  ];
+  );
 
   enums.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 

@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 import { Class, FunctionDeclaration, FunctionType, Interface, Type } from '../types';
 import { moddotaDump } from './moddota-dump';
-import { ExtensionClass, ExtensionFunction, func } from './utils';
+import { array, ExtensionClass, ExtensionFunction, func } from './utils';
 
 export const classExtensions: Record<string, ExtensionClass> = {
   CScriptHTTPRequest: {
@@ -13,7 +13,6 @@ export const classExtensions: Record<string, ExtensionClass> = {
 export const functionExtensions: Record<string, ExtensionFunction> = {
   ...moddotaDump,
   '_G.SetRenderingEnabled': { deprecated: 'Instantly crashes the game.' },
-  'CEntityInstance.entindex': { deprecated: 'Use GetEntityIndex instead.' },
   'CDOTA_PlayerResource.GetPlayer': {
     description:
       'Returns player entity for a player with specified id.' +
@@ -21,6 +20,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       ' When player is disconnected nil would be returned.',
     returns: ['CDOTAPlayer', 'nil'],
   },
+  'CDOTAPlayer.GetPlayerID': { returns: 'PlayerID' },
 
   // Invalid parameter strings
   '_G.UnitFilter': {
@@ -230,6 +230,20 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   // May return nil?
   '_G.HasRoomForItem': { description: '' },
+  '_G.CreateIllusions': {
+    description:
+      'Create illusions of the passed hero that belong to passed unit using passed modifier data.',
+    returns: array('CDOTA_BaseNPC_Hero'),
+    args: {
+      0: ['owner', 'CBaseEntity'],
+      1: ['heroToCopy', 'CDOTA_BaseNPC_Hero'],
+      2: ['modifierKeys', 'CreateIllusionsModifierKeys'],
+      3: ['numIllusions', 'int'],
+      4: ['padding', 'int'],
+      5: ['scramblePosition', 'boolean'],
+      6: ['findClearSpace', 'boolean'],
+    },
+  },
   'CDOTA_BaseNPC_Hero.KilledHero': {
     description: '',
     args: { '0': [null, 'CDOTA_BaseNPC_Hero'], '1': [null, 'CDOTA_BaseNPC'] },
@@ -339,6 +353,19 @@ export const attachedTypes = (() => {
 
   context.push({
     kind: 'interface',
+    name: 'CreateIllusionsModifierKeys',
+    members: [
+      { kind: 'field', name: 'outgoing_damage', types: ['float', 'nil'] },
+      { kind: 'field', name: 'incoming_damage', types: ['float', 'nil'] },
+      { kind: 'field', name: 'bounty_base', types: ['float', 'nil'] },
+      { kind: 'field', name: 'bounty_growth', types: ['float', 'nil'] },
+      { kind: 'field', name: 'outgoing_damage_structure', types: ['float', 'nil'] },
+      { kind: 'field', name: 'outgoing_damage_roshan', types: ['float', 'nil'] },
+    ],
+  });
+
+  context.push({
+    kind: 'interface',
     name: 'AbilityTuningValueFilterEvent',
     members: [
       { kind: 'field', name: 'entindex_caster_const', types: ['int'] },
@@ -429,6 +456,7 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'ModifyExperienceFilterEvent',
     members: [
+      { kind: 'field', name: 'hero_entindex_const', types: ['int'] },
       { kind: 'field', name: 'player_id_const', types: ['PlayerID'] },
       { kind: 'field', name: 'reason_const', types: ['ModifyXpReason'] },
       { kind: 'field', name: 'experience', types: ['int'] },

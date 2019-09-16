@@ -19,6 +19,7 @@ export const extracted: ExtractionRule[] = [
   { prefix: 'DOTA_COMBAT_CLASS_DEFEND_' },
   { prefix: 'DOTA_NPC_UNIT_RELATIONSHIP_TYPE_' },
   { prefix: 'DOTA_HULL_SIZE_' },
+  { prefix: 'DOTA_ITEM_QUALITY_' },
   {
     name: 'UnitAttackCapability',
     prefix: 'DOTA_UNIT_CAP_',
