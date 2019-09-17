@@ -1,6 +1,6 @@
 {
   "name": "@dota-data/scripts",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Auto-generated Dota 2 script files",
   "homepage": "https://github.com/ark120202/dota-data#readme",
   "bugs": "https://github.com/ark120202/dota-data/issues",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "dedent": "^0.7.0",
-    "dota-data": "^0.3.0",
+    "dota-data": "^0.4.0",
     "fs-extra": "^8.0.1",
     "got": "^9.6.0",
     "lodash": "^4.17.10",
