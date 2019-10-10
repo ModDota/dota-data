@@ -76,6 +76,30 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
 
   'CScriptPrecacheContext.AddResource': { args: { 0: ['resource'] } },
   'CScriptPrecacheContext.GetValue': { args: { 0: ['key'] } },
+  '_G.PrecacheEntityFromTable': { args: { 2: ['context', 'CScriptPrecacheContext'] } },
+  '_G.PrecacheEntityListFromTable': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
+  '_G.PrecacheItemByNameAsync': { args: { '0': ['itemName'], '1': ['callback', 'function'] } },
+  '_G.PrecacheItemByNameSync': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
+  '_G.PrecacheModel': { args: { 1: [null, 'CScriptPrecacheContext'] } },
+  '_G.PrecacheResource': { args: { 2: ['context', 'CScriptPrecacheContext'] } },
+  '_G.PrecacheUnitByNameAsync': {
+    args: {
+      0: ['unitName'],
+      1: ['callback', 'function'],
+      // TODO: Optional?
+      2: ['playerId', ['PlayerID', 'nil']],
+    },
+  },
+  '_G.PrecacheUnitByNameSync': {
+    args: {
+      0: ['unitName'],
+      1: ['context', 'CScriptPrecacheContext'],
+      // TODO: Optional?
+      2: ['playerId', ['PlayerID', 'nil']],
+    },
+  },
+  '_G.PrecacheUnitFromTableAsync': { args: { 1: ['callback', 'function'] } },
+  '_G.PrecacheUnitFromTableSync': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
 
   '_G.PrintLinkedConsoleMessage': { args: { 0: ['message'], 1: ['tooltip'] } },
   '_G.ShowCustomHeaderMessage': { args: { 0: ['message'] } },
@@ -220,7 +244,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       '2': ['frequency'],
       '3': ['duration'],
       '4': ['radius'],
-      '5': ['eCommand', ['0', '1'], 'SHAKE_START = 0, SHAKE_STOP = 1'],
+      '5': ['command', ['0', '1'], 'SHAKE_START = 0, SHAKE_STOP = 1'],
       '6': ['airShake'],
     },
   },
@@ -246,7 +270,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   'CDOTA_BaseNPC_Hero.KilledHero': {
     description: '',
-    args: { '0': [null, 'CDOTA_BaseNPC_Hero'], '1': [null, 'CDOTA_BaseNPC'] },
+    args: { '0': [null, 'CDOTA_BaseNPC_Hero'], '1': [null, ['CDOTABaseAbility', 'nil']] },
   },
   'CDOTA_BaseNPC_Hero.ModifyGold': { description: 'Gives this hero some gold.' },
   'CDOTA_BaseNPC_Hero.SpendGold': { description: '', args: { '1': [null, 'ModifyGoldReason'] } },
@@ -268,6 +292,53 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       '3': [null, ['table', 'nil']],
     },
   },
+  'CDOTA_Item_DataDriven.ApplyDataDrivenThinker': {
+    returns: 'CDOTA_Buff',
+    args: {
+      '0': [null, 'CDOTA_BaseNPC'],
+      '3': [null, ['table', 'nil']],
+    },
+  },
+  'CDOTA_Ability_DataDriven.ApplyDataDrivenThinker': {
+    returns: 'CDOTA_Buff',
+    args: {
+      '0': [null, 'CDOTA_BaseNPC'],
+      '3': [null, ['table', 'nil']],
+    },
+  },
+
+  'CBaseEntity.GetBounds': { returns: 'EntityBounds' },
+  '_G.CreateTempTree': { returns: 'CBaseAnimating' },
+  '_G.CreateTempTreeWithModel': { returns: 'CBaseAnimating' },
+  '_G.CreateSceneEntity': { returns: 'CSceneEntity' },
+  '_G.PlayerInstanceFromIndex': {
+    returns: ['CDOTAPlayer', 'nil'],
+    args: { 0: ['entityIndex', 'EntityIndex'] },
+  },
+  'CEntityInstance.entindex': { returns: 'EntityIndex' },
+  'CEntityInstance.GetEntityIndex': { returns: 'EntityIndex' },
+  '_G.GetEntityIndexForTreeId': { returns: 'EntityIndex', args: { 0: ['treeId'] } },
+  '_G.GetTreeIdForEntityIndex': { args: { 0: ['entityIndex', 'EntityIndex'] } },
+  'CDOTABaseAbility.GetSpecialValueFor': { returns: 'float' },
+  'CDOTABaseAbility.GetLevelSpecialValueFor': { returns: 'float' },
+  'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
+  'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
+  'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
+  'CDOTA_Item.GetItemSlot': { returns: ['-1', 'InventorySlot'] },
+  '_G.CreateTrigger': { returns: 'CBaseTrigger' },
+  '_G.CreateTriggerRadiusApproximate': { returns: 'CBaseTrigger' },
+  'CDOTA_ShopTrigger.GetShopType': { returns: 'ShopType' },
+  'CDOTA_ShopTrigger.SetShopType': { args: { 0: [null, 'ShopType'] } },
+  'CDOTA_BaseNPC_Shop.GetShopType': { returns: 'ShopType' },
+  'CDOTA_BaseNPC_Shop.SetShopType': { args: { 0: [null, 'ShopType'] } },
+  'CDOTA_BaseNPC.IsInRangeOfShop': {
+    description: 'Ask whether this unit is in range of the specified shop.',
+    args: { 0: [null, 'ShopType'] },
+  },
+  'CBaseEntity.GetChildren': { returns: array('CBaseEntity') },
+  // TODO:
+  'CBaseEntity.SetParent': { args: { 0: [null, 'CBaseEntity'] } },
+  'CDOTA_BaseNPC.RemoveAbilityByHandle': { args: { 0: [null, 'CDOTABaseAbility'] } },
 };
 
 export const attachedTypes = (() => {
@@ -366,10 +437,19 @@ export const attachedTypes = (() => {
 
   context.push({
     kind: 'interface',
+    name: 'EntityBounds',
+    members: [
+      { kind: 'field', name: 'Mins', types: ['Vector'] },
+      { kind: 'field', name: 'Maxs', types: ['Vector'] },
+    ],
+  });
+
+  context.push({
+    kind: 'interface',
     name: 'AbilityTuningValueFilterEvent',
     members: [
-      { kind: 'field', name: 'entindex_caster_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_ability_const', types: ['int'] },
+      { kind: 'field', name: 'entindex_caster_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_ability_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'value_name_const', types: ['string'] },
       { kind: 'field', name: 'value', types: ['int'] },
     ],
@@ -389,8 +469,8 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'DamageFilterEvent',
     members: [
-      { kind: 'field', name: 'entindex_attacker_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_victim_const', types: ['int'] },
+      { kind: 'field', name: 'entindex_attacker_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_victim_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'damagetype_const', types: ['DamageTypes'] },
       { kind: 'field', name: 'damage', types: ['float'] },
     ],
@@ -401,9 +481,9 @@ export const attachedTypes = (() => {
     name: 'ExecuteOrderFilterEvent',
     members: [
       // TODO: Add a type for string map
-      { kind: 'field', name: 'units', types: ['Record<string, number>'] },
-      { kind: 'field', name: 'entindex_target', types: ['int'] },
-      { kind: 'field', name: 'entindex_ability', types: ['int'] },
+      { kind: 'field', name: 'units', types: ['Record<string, EntityIndex>'] },
+      { kind: 'field', name: 'entindex_target', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_ability', types: ['EntityIndex'] },
       { kind: 'field', name: 'issuer_player_id_const', types: ['PlayerID'] },
       { kind: 'field', name: 'sequence_number_const', types: ['uint'] },
       { kind: 'field', name: 'queue', types: ['0', '1'] },
@@ -418,7 +498,7 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'HealingFilterEvent',
     members: [
-      { kind: 'field', name: 'entindex_target_const', types: ['uint'] },
+      { kind: 'field', name: 'entindex_target_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'heal', types: ['int'] },
     ],
   });
@@ -427,9 +507,9 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'ItemAddedToInventoryFilterEvent',
     members: [
-      { kind: 'field', name: 'inventory_parent_entindex_const', types: ['int'] },
-      { kind: 'field', name: 'item_parent_entindex_const', types: ['int'] },
-      { kind: 'field', name: 'item_entindex_const', types: ['int'] },
+      { kind: 'field', name: 'inventory_parent_entindex_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'item_parent_entindex_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'item_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'suggested_slot', types: ['-1', 'InventorySlot'] },
     ],
   });
@@ -438,9 +518,9 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'ModifierGainedFilterEvent',
     members: [
-      { kind: 'field', name: 'entindex_caster_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_parent_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_ability_const', types: ['int'] },
+      { kind: 'field', name: 'entindex_caster_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_parent_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_ability_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'name_const', types: ['string'] },
       {
         kind: 'field',
@@ -456,7 +536,7 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'ModifyExperienceFilterEvent',
     members: [
-      { kind: 'field', name: 'hero_entindex_const', types: ['int'] },
+      { kind: 'field', name: 'hero_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'player_id_const', types: ['PlayerID'] },
       { kind: 'field', name: 'reason_const', types: ['ModifyXpReason'] },
       { kind: 'field', name: 'experience', types: ['int'] },
@@ -478,7 +558,7 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'RuneSpawnFilterEvent',
     members: [
-      { kind: 'field', name: 'spawner_entindex_const', types: ['int'] },
+      { kind: 'field', name: 'spawner_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'rune_type', types: ['RuneType'] },
     ],
   });
@@ -487,9 +567,9 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'TrackingProjectileFilterEvent',
     members: [
-      { kind: 'field', name: 'entindex_source_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_target_const', types: ['int'] },
-      { kind: 'field', name: 'entindex_ability_const', types: ['int'] },
+      { kind: 'field', name: 'entindex_source_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_target_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_ability_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'is_attack', types: ['0', '1'] },
       { kind: 'field', name: 'dodgeable', types: ['0', '1'] },
       // FIXME: Always was 0 on tests

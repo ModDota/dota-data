@@ -34,6 +34,10 @@ function parseFile(content: string) {
             type = 'PlayerID';
           }
 
+          if (/ent(ity)?_?index/i.test(name)) {
+            type = 'EntityIndex';
+          }
+
           events[parsingName].fields.push({ name, description, type });
         }
       }

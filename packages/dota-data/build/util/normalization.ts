@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const typePrefixes = ['b', 'h', 'v', 'n', 'p', 'i', 'f', 'fl', 'sz', 'psz'];
+const typePrefixes = ['b', 'e', 'h', 'v', 'n', 'p', 'i', 'f', 'fl', 'sz', 'psz'];
 const typePrefixesRegexp = new RegExp(`^(${typePrefixes.join('|')})(?=[A-Z])`);
 export function formatArgumentName(name: string | null | undefined, index: number) {
   if (name == null || name === '') return `arg${index + 1}`;
