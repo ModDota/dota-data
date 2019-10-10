@@ -1,6 +1,6 @@
 {
   "name": "@dota-data/web",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "build": "next build src && next export src -o out",
@@ -13,7 +13,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-virtualized": "^9.21.1",
     "@types/styled-components": "^4.1.15",
-    "dota-data": "^0.4.0",
+    "dota-data": "^0.4.1",
     "lodash": "^4.17.11",
     "polished": "^3.3.2",
     "react": "^16.8.6",
