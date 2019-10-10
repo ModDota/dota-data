@@ -559,9 +559,17 @@ $> dump_panorama_events
 | Yes
 | Add a CSS class to a panel.
 |-
+| <code>AddStyleAfterDelay(string class, float pre-delay)</code>
+| Yes
+| Add a CSS class to a panel after a specified delay.
+|-
 | <code>AddStyleToEachChild(string class)</code>
 | Yes
 | Add a CSS class to all children of this panel.
+|-
+| <code>AddTimedStyle(string class, float duration, float pre-delay)</code>
+| Yes
+| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.
 |-
 | <code>AsyncEvent(float delay, event eventToFire)</code>
 | No
@@ -758,6 +766,10 @@ $> dump_panorama_events
 | <code>RemoveStyle(string class)</code>
 | Yes
 | Remove a CSS class from a panel.
+|-
+| <code>RemoveStyleAfterDelay(string class, float pre-delay)</code>
+| Yes
+| Remove a CSS class from a panel after a specified delay.
 |-
 | <code>RemoveStyleFromEachChild(string class)</code>
 | Yes
@@ -3443,6 +3455,10 @@ Initializing script VM...
     "value":1009,
     "kind":"constant",
     "name":"ACT_CSGO_SILENCER_DETACH"
+  },{
+    "value":1028,
+    "kind":"constant",
+    "name":"ACT_CSGO_TAUNT"
   },{
     "value":1011,
     "kind":"constant",
@@ -8540,6 +8556,14 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
+    "value":189,
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_GROUND_OFFSET"
+  },{
+    "value":190,
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_STIFFEN"
+  },{
     "value":181,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
@@ -8564,17 +8588,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":189,
-    "kind":"constant",
-    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
-  },{
     "value":192,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
-  },{
-    "value":190,
-    "kind":"constant",
-    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
     "value":38,
     "kind":"constant",
@@ -12416,7 +12432,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":206,
+    "value":207,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -12588,6 +12604,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
     "description":"GetBonusVisionPercentage"
+  },{
+    "enum":"modifierfunction",
+    "value":206,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
+    "description":"BotAttackScoreBonus"
   },{
     "enum":"modifierfunction",
     "value":135,
@@ -14077,6 +14099,14 @@ Initializing script VM...
             "type":"int"
           }],
         "returns":"Vector",
+        "name":"GetAttachmentForward",
+        "description":"Get the attachment id's forward vector."
+      },{
+        "args":[{
+            "name":"iAttachment",
+            "type":"int"
+          }],
+        "returns":"Vector",
         "name":"GetAttachmentOrigin",
         "description":"Get the attachment id's origin vector."
       },{
@@ -14877,6 +14907,22 @@ Initializing script VM...
         "returns":"int",
         "name":"TakeDamage",
         "description":"Apply damage to this entity. Use CreateDamageInfo() to create a damageinfo object."
+      },{
+        "args":[{
+            "name":"vPoint",
+            "type":"Vector"
+          }],
+        "returns":"Vector",
+        "name":"TransformPointEntityToWorld",
+        "description":"Returns the input Vector transformed from entity to world space"
+      },{
+        "args":[{
+            "name":"vPoint",
+            "type":"Vector"
+          }],
+        "returns":"Vector",
+        "name":"TransformPointWorldToEntity",
+        "description":"Returns the input Vector transformed from world to entity space"
       },{
         "args":[],
         "returns":"void",
@@ -27119,6 +27165,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_CSGO_SILENCER_DETACH"
   },{
+    "value":1028,
+    "kind":"constant",
+    "name":"ACT_CSGO_TAUNT"
+  },{
     "value":1011,
     "kind":"constant",
     "name":"ACT_CSGO_TWITCH"
@@ -27283,7 +27333,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1748,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_ARCANA_VOTE"
   },{
@@ -27311,7 +27361,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1752,
+    "value":1750,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -27383,19 +27433,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1754,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE"
   },{
-    "value":1765,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1753,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1762,
+    "value":1752,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -27507,7 +27557,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1770,
+    "value":1773,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -27551,7 +27601,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
-    "value":1751,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_STATUE"
   },{
@@ -27655,7 +27705,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1775,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -27719,7 +27769,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1764,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -27815,11 +27865,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1761,
+    "value":1751,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
-    "value":1776,
+    "value":1769,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -28027,11 +28077,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1749,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_PUNCH"
   },{
-    "value":1772,
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -28071,7 +28121,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1768,
+    "value":1771,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -28083,7 +28133,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1769,
+    "value":1772,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -28103,11 +28153,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1774,
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN_ALT"
-  },{
-    "value":1760,
+    "value":1749,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -28171,11 +28217,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1750,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
   },{
-    "value":1773,
+    "value":1776,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -28187,15 +28233,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1758,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_STATUE_SEQUENCE"
   },{
-    "value":1759,
+    "value":1748,
     "kind":"constant",
     "name":"ACT_DOTA_STORM_ABILITY_4"
   },{
-    "value":1763,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -28215,7 +28261,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SNIPER"
   },{
-    "value":1757,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -28251,7 +28297,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
-    "value":1755,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
@@ -28274,6 +28320,10 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
+  },{
+    "value":1770,
+    "kind":"constant",
+    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -28311,7 +28361,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1756,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_STATUE"
   },{
@@ -32075,6 +32125,14 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
+    "value":189,
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_GROUND_OFFSET"
+  },{
+    "value":190,
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_STIFFEN"
+  },{
     "value":181,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
@@ -32099,17 +32157,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":189,
-    "kind":"constant",
-    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
-  },{
     "value":192,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
-  },{
-    "value":190,
-    "kind":"constant",
-    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
     "value":38,
     "kind":"constant",
@@ -34403,7 +34453,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":206,
+    "value":207,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -34575,6 +34625,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
     "description":"GetBonusVisionPercentage"
+  },{
+    "enum":"modifierfunction",
+    "value":206,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
+    "description":"BotAttackScoreBonus"
   },{
     "enum":"modifierfunction",
     "value":135,
@@ -35913,7 +35969,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1771,
+    "value":1774,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
