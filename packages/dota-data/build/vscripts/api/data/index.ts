@@ -128,7 +128,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       0: ['eventName'],
       1: ['listener', func([['event', 'table']], 'nil')],
-      2: ['context', '*this'],
+      2: ['context', ['table', 'nil']],
     },
   },
   '_G.ApplyDamage': {
@@ -160,67 +160,67 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTABaseGameMode.SetAbilityTuningValueFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'AbilityTuningValueFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetBountyRunePickupFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'BountyRunePickupFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetDamageFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'DamageFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetExecuteOrderFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'ExecuteOrderFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetHealingFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'HealingFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetItemAddedToInventoryFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'ItemAddedToInventoryFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetModifierGainedFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'ModifierGainedFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetModifyExperienceFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'ModifyExperienceFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetModifyGoldFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'ModifyGoldFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetRuneSpawnFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'RuneSpawnFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
   'CDOTABaseGameMode.SetTrackingProjectileFilter': {
     args: {
       '0': ['filterFunc', func([['event', 'TrackingProjectileFilterEvent']], 'bool')],
-      '1': [null, '*this'],
+      '1': [null, 'table'],
     },
   },
 
