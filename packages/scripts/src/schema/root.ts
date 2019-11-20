@@ -25,7 +25,7 @@ export class RootSchema extends ObjectSchema {
     const declarations = context.getDeclarations();
     const declarationsContent = declarations.join('\n\n') + '\n';
     const content = namespace
-      ? `declare namespace ${namespace} {\n${declarationsContent}}\n`
+      ? `declare namespace ${namespace} {\n${declarationsContent.replace(/^(?!$)/gm, '    ')}}\n`
       : declarationsContent;
     return { content, declarations, globals: context.getGlobals() };
   }

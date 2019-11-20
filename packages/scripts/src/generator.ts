@@ -51,14 +51,14 @@ const LINKS = [
     path: 'pak01_dir/scripts/emoticons.txt',
     types: dedent`
       declare namespace emoticons {
-        interface Emoticon {
-          id: number;
-          aliases: string[];
-          image: string;
-          frameDuration: number;
-          team?: number;
-          quality?: number;
-        }
+          type Emoticon = {
+              id: number;
+              aliases: string[];
+              image: string;
+              frameDuration: number;
+              team?: number;
+              quality?: number;
+          };
       }
 
       declare const emoticons: emoticons.Emoticon[];

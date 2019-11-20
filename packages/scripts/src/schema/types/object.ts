@@ -112,13 +112,12 @@ export class ObjectSchema extends Schema {
         : null;
 
     const fields = this._fields.map(({ name, value, require, description }) => {
-      let result = `${name}${require ? '' : '?'}: ${value.toTypeScript(context)}`;
-      if (description) {
-        result = `/**\n * ${description}\n */\n${result}`;
-      }
-      return result;
+      const property = `${name}${require ? '' : '?'}: ${value.toTypeScript(context)};`;
+      const fullDeclaration = description ? `/**\n * ${description}\n */\n${property}` : property;
+
+      return fullDeclaration.replace(/^/gm, '    ');
     });
-    const fieldsType = fields.length !== 0 ? `{\n${fields.join(';\n')};\n}` : null;
+    const fieldsType = fields.length > 0 ? `{\n${fields.join('\n')}\n}` : null;
 
     const type = [fieldsType, restType].filter(x => x != null).join(' & ');
     if (this._name == null) return type;
