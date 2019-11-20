@@ -27,7 +27,8 @@ export class RootSchema extends ObjectSchema {
     const content = namespace
       ? `declare namespace ${namespace} {\n${declarationsContent.replace(/^(?!$)/gm, '    ')}}\n`
       : declarationsContent;
-    return { content, declarations, globals: context.getGlobals() };
+
+    return { content, globals: context.getGlobals() };
   }
 
   public validateRoot(value: unknown, options: ValidationOptions = {}) {
