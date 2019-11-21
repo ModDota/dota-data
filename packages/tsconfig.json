@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "dota-data" }, { "path": "localization" }, { "path": "scripts" }]
+  "references": [{ "path": "dota-data" }, { "path": "scripts" }]
 }

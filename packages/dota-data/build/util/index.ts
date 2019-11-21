@@ -1,10 +1,9 @@
 import fs from 'fs-extra';
-import _ from 'lodash';
 import path from 'path';
 
-export * from './normalization';
+export * from '../../src/utils/github';
 export * from './export-types';
-export * from './github';
+export * from './normalization';
 
 const dumpPath = path.join(__dirname, '../../../dumper/dump');
 const fullDump = fs.readFile(dumpPath, 'utf8');
