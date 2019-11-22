@@ -24,13 +24,16 @@ export {
   StringSchema,
 };
 
-const wrapConstructor = <C extends new (...args: any[]) => any>(constructor: C) => (
-  ...args: ConstructorParameters<C>
-): InstanceType<C> => new constructor(...args);
+const wrapConstructor = <T extends new (...args: any[]) => any>(constructor: T) => (
+  ...args: ConstructorParameters<T>
+): InstanceType<T> => new constructor(...args);
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export const obj = wrapConstructor(ObjectSchema);
 export const root = wrapConstructor(RootSchema);
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export const str = wrapConstructor(StringSchema);
+// eslint-disable-next-line unicorn/prevent-abbreviations
 export const num = wrapConstructor(NumberSchema);
 export const oneOf = wrapConstructor(OneOfSchema);
 export const literal = wrapConstructor(LiteralSchema);

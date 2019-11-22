@@ -4,10 +4,6 @@
     "jsx": "react",
     "noEmit": true,
     "isolatedModules": true,
-    "plugins": [
-      { "name": "typescript-tslint-plugin", "ignoreDefinitionFiles": true },
-      { "name": "typescript-styled-plugin" }
-    ],
 
     "baseUrl": "src",
     "paths": {

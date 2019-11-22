@@ -28,7 +28,7 @@ const generators: Record<string, () => Promise<void>> = {
       await generators[name]();
     }),
   );
-})().catch(err => {
-  console.error(err);
+})().catch(error => {
+  console.error(error);
   process.exit(1);
 });

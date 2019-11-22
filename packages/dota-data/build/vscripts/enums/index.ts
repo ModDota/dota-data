@@ -18,15 +18,18 @@ export { types as enumsTypes } from './types';
 
 function commonStart(strings: string[]) {
   if (strings.length < 2) return '';
-  return strings.slice(1).reduce((common, str) => {
-    while (!str.startsWith(common)) common = common.slice(0, -1);
+  return strings.slice(1).reduce((common, string) => {
+    while (!string.startsWith(common)) {
+      common = common.slice(0, -1);
+    }
+
     return common;
   }, strings[0]);
 }
 
 function normalizeScopeName(s: string) {
   if (enumRenames[s] != null) return enumRenames[s];
-  if (s.startsWith('modifier')) return `Modifier${_.upperFirst(s.substring(8))}`;
+  if (s.startsWith('modifier')) return `Modifier${_.upperFirst(s.slice(8))}`;
   return _.upperFirst(_.camelCase(s.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
 }
 
@@ -47,6 +50,7 @@ export async function generateEnums() {
       console.error(`${name} is available only on client`);
       return;
     }
+
     if (client == null) return;
     if (client.value !== server.value || client.description !== server.description) {
       throw new Error(`${name} exists on server and client, but has different values`);
@@ -94,7 +98,7 @@ export async function generateEnums() {
     throw new Error('Enum has members with different availability');
   };
 
-  let enums: Enum[] = [
+  const enums: Enum[] = [
     ...prefixedEnums.map(
       (prefix): Enum => {
         const members = allConstants.filter(x => x.name.startsWith(prefix));
@@ -125,7 +129,8 @@ export async function generateEnums() {
               ...x,
               description:
                 x.description && x.description !== 'Unused'
-                  ? modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
+                  ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                    modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
                     ? `${modifierPropertyData[x.description][2]}\n\nMethod Name: \`${
                         x.description
                       }\``
@@ -182,11 +187,11 @@ export async function generateEnums() {
     });
   });
 
-  const replacements = enums.reduce<Record<string, string>>((acc, { originalName, name }) => {
-    if (originalName == null) return acc;
-    acc[originalName] = acc[originalName] == null ? name : `${acc[originalName]} | ${name}`;
-    return acc;
-  }, {});
+  // TODO: API doesn't seem to have any references to enums
+  const replacements = _.mapValues(
+    _.groupBy(enums.filter(x => x.originalName), x => x.originalName),
+    value => value.map(x => x.name).join(' | '),
+  );
 
   return { declarations: [...constants, ...enums], replacements };
 }

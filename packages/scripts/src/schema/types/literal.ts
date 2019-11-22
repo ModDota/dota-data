@@ -2,7 +2,7 @@ import { Schema, ValidationContext } from '../schema';
 
 export type LiteralSchemaValue = string | boolean | number;
 export class LiteralSchema extends Schema {
-  public constructor(public _value: LiteralSchemaValue) {
+  constructor(public _value: LiteralSchemaValue) {
     super();
   }
 

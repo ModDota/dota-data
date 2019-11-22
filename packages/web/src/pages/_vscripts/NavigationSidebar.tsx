@@ -44,19 +44,17 @@ const OverviewListWrapper = styled.div`
   padding: 4px 8px;
 `;
 
-const OverviewList: React.FC = () => {
-  return (
-    <OverviewListWrapper>
-      <OverviewListElement to="functions" icon="function" text="Functions" />
-      <OverviewListElement to="constants" icon="constant" text="Constants" />
-      {topLevelData
-        .filter(x => x.kind === 'class' || x.kind === 'enum')
-        .map(({ name, kind }) => (
-          <OverviewListElement key={name} to={name} icon={kind} text={name} />
-        ))}
-    </OverviewListWrapper>
-  );
-};
+const OverviewList: React.FC = () => (
+  <OverviewListWrapper>
+    <OverviewListElement to="functions" icon="function" text="Functions" />
+    <OverviewListElement to="constants" icon="constant" text="Constants" />
+    {topLevelData
+      .filter(x => x.kind === 'class' || x.kind === 'enum')
+      .map(({ name, kind }) => (
+        <OverviewListElement key={name} to={name} icon={kind} text={name} />
+      ))}
+  </OverviewListWrapper>
+);
 
 const NavigationSidebarWrapper = styled.div`
   display: flex;

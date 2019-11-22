@@ -29,6 +29,7 @@ export const useFilteredData = () => {
     default:
       data = data.filter(x => x.name === scope);
   }
+
   return { data, isSearching: false };
 };
 

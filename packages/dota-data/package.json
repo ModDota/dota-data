@@ -13,10 +13,7 @@
   ],
   "scripts": {
     "build": "rimraf files/**/* && ts-node build",
-    "dev": "nodemon -w build -w ../dumper/dump -e ts,json -x ts-node build",
-    "lint": "run-p lint:build lint:src",
-    "lint:build": "tslint --project build",
-    "lint:src": "tslint --project ."
+    "dev": "nodemon -w build -w ../dumper/dump -e ts,json -x ts-node build"
   },
   "dependencies": {
     "lodash": "^4.17.11"

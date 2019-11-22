@@ -1,0 +1,7 @@
+{
+  // TODO:
+  // "extends": "@ark120202/eslint-config/+react",
+  "rules": {
+    "import/no-anonymous-default-export": "off"
+  }
+}

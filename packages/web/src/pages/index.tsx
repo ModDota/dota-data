@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 export default () => {
   useEffect(() => {
-    // tslint:disable-next-line: no-floating-promises
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Router.push('/vscripts');
   });
   return <></>;

@@ -4,10 +4,13 @@ import vdf from 'vdf-extra';
 import { schemas } from './schemas';
 import { getDotaVdfFile, outputFile, outputJson, remove } from './utils';
 
-const sortNumericKeys = (obj: Record<string, any>) =>
-  Object.keys(obj)
-    .sort((a, b) => Number(a) - Number(b))
-    .reduce<Record<string, any>>((acc, x) => ({ ...acc, [Number(x)]: obj[x] }), {});
+// TODO: Remove
+const sortNumericKeys = (object: Record<string, any>) =>
+  _.fromPairs(
+    Object.entries(object)
+      .sort(([a], [b]) => Number(a) - Number(b))
+      .map(([key, value]) => [Number(key), value]),
+  );
 
 function transformAbilities(content: any) {
   _.each(content, a => {
@@ -96,18 +99,18 @@ export const getScripts = () =>
       return {
         name,
         content,
-        types: types + '\ndeclare const file: file.Root;\nexport = file;\n',
+        types: `${types}\ndeclare const file: file.Root;\nexport = file;\n`,
       };
     }),
   );
 
 export const cleanupScripts = () =>
-  Promise.all(_.flatMap(LINKS, x => [remove(x.name + '.json'), remove(x.name + '.d.ts')]));
+  Promise.all(_.flatMap(LINKS, x => [remove(`${x.name}.json`), remove(`${x.name}.d.ts`)]));
 
 export async function generateScripts() {
   await Promise.all(
     (await getScripts()).map(({ name, content, types }) =>
-      Promise.all([outputJson(name, content), outputFile(name + '.d.ts', types)]),
+      Promise.all([outputJson(name, content), outputFile(`${name}.d.ts`, types)]),
     ),
   );
 }

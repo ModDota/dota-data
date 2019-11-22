@@ -68,12 +68,10 @@ export interface LanguageData {
   native: string;
 }
 
-/* eslint sort-keys: "error" */
 // https://partner.steamgames.com/doc/store/localization#supported_languages
 export const dotaLanguagesData: Record<DotaLanguage, LanguageData> = {
+  brazilian: { code: 'pt-BR', english: 'Portuguese-Brazil', native: 'Português-Brasil' },
   bulgarian: { code: 'bg', english: 'Bulgarian', native: 'български език' },
-  schinese: { code: 'zh-CN', english: 'Chinese (Simplified)', native: '简体中文' },
-  tchinese: { code: 'zh-TW', english: 'Chinese (Traditional)', native: '繁體中文' },
   czech: { code: 'cs', english: 'Czech', native: 'čeština' },
   danish: { code: 'da', english: 'Danish', native: 'Dansk' },
   dutch: { code: 'nl', english: 'Dutch', native: 'Nederlands' },
@@ -86,18 +84,18 @@ export const dotaLanguagesData: Record<DotaLanguage, LanguageData> = {
   italian: { code: 'it', english: 'Italian', native: 'Italiano' },
   japanese: { code: 'ja', english: 'Japanese', native: '日本語' },
   koreana: { code: 'ko', english: 'Korean', native: '한국어' },
+  latam: { code: 'es-419', english: 'Spanish-Latin America', native: 'Español-Latinoamérica' },
   norwegian: { code: 'no', english: 'Norwegian', native: 'Norsk' },
   polish: { code: 'pl', english: 'Polish', native: 'Polski' },
   portuguese: { code: 'pt', english: 'Portuguese', native: 'Português' },
-  brazilian: { code: 'pt-BR', english: 'Portuguese-Brazil', native: 'Português-Brasil' },
   romanian: { code: 'ro', english: 'Romanian', native: 'Română' },
   russian: { code: 'ru', english: 'Russian', native: 'Русский' },
+  schinese: { code: 'zh-CN', english: 'Chinese (Simplified)', native: '简体中文' },
   spanish: { code: 'es', english: 'Spanish-Spain', native: 'Español-España' },
-  latam: { code: 'es-419', english: 'Spanish-Latin America', native: 'Español-Latinoamérica' },
   swedish: { code: 'sv', english: 'Swedish', native: 'Svenska' },
+  tchinese: { code: 'zh-TW', english: 'Chinese (Traditional)', native: '繁體中文' },
   thai: { code: 'th', english: 'Thai', native: 'ไทย' },
   turkish: { code: 'tr', english: 'Turkish', native: 'Türkçe' },
   ukrainian: { code: 'uk', english: 'Ukrainian', native: 'Українська' },
   vietnamese: { code: 'vn', english: 'Vietnamese', native: 'Tiếng Việt' },
 };
-/* eslint sort-keys: "off" */

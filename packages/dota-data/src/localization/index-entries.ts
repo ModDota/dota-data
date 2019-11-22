@@ -25,7 +25,7 @@ const fetchIndexEntries = async () =>
       },
     );
 
-// tslint:disable-next-line: no-require-imports no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const CACHE_VERSION = require('../../package.json').version;
 // Cache responses for 120s, because unauthenticated requests are limited to 60 per hour
 const CACHE_LIFETIME = 120000;

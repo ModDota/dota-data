@@ -1,7 +1,7 @@
 import { Schema, TsContext, ValidationContext } from '../schema';
 
 export class ArraySchema extends Schema {
-  public constructor(private _items: Schema) {
+  constructor(private readonly _items: Schema) {
     super();
   }
 

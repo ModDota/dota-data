@@ -37,8 +37,8 @@ export const InactiveLink: React.FC<Props> = ({
   to,
   toPath,
   ...props
-}) => {
-  return to ? (
+}) =>
+  to ? (
     <BaseLink as={toPath} href={to} {...props}>
       <a className={className} style={style}>
         {children}
@@ -49,17 +49,9 @@ export const InactiveLink: React.FC<Props> = ({
       {children}
     </span>
   );
-};
 
-export const ButtonLink: React.FC<Props> = ({
-  children,
-  className,
-  style,
-  to,
-  toPath,
-  ...props
-}) => {
-  return to ? (
+export const ButtonLink: React.FC<Props> = ({ children, className, style, to, toPath, ...props }) =>
+  to ? (
     <BaseLink as={toPath} href={to} {...props}>
       <button className={className} style={style}>
         {children}
@@ -70,7 +62,6 @@ export const ButtonLink: React.FC<Props> = ({
       {children}
     </button>
   );
-};
 
 export const ActiveLink: React.FC<Props> = ({ className, to, ...props }) => {
   const { pathname, query } = useRouter();

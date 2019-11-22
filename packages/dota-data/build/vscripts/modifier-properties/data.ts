@@ -96,7 +96,11 @@ export const modifierPropertyData: Record<string, [ArgumentType, ReturnsType, st
   GetModifierMoveSpeedBonus_Special_Boots: ['void', 'number'],
   GetModifierMoveSpeedOverride: ['void', 'number'],
   GetModifierMPRegenAmplify_Percentage: ['void', 'number'],
-  GetModifierMPRestoreAmplify_Percentage: ['void', 'number', 'Total amplify value is clamped to 0.'],
+  GetModifierMPRestoreAmplify_Percentage: [
+    'void',
+    'number',
+    'Total amplify value is clamped to 0.',
+  ],
   GetModifierNegativeEvasion_Constant: ['void', 'number', 'Not working.'],
   GetModifierOverrideAttackDamage: ['void', 'number', 'Not working.'],
   GetModifierPercentageCasttime: ['ability', 'number'],

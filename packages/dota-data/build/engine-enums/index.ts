@@ -27,14 +27,14 @@ export async function generateEngineEnums() {
         .filter(filter);
       if (selectedStrings.length === 0) throw new Error(`Enum "${name}" has no matching values.`);
 
-      for (const str of selectedStrings) {
-        if (usedStrings.has(str)) {
+      for (const string of selectedStrings) {
+        if (usedStrings.has(string)) {
           throw new Error(
-            `Enum "${name}" can't use string "${str}" used by ${usedStrings.get(str)}`,
+            `Enum "${name}" can't use string "${string}" used by ${usedStrings.get(string)}`,
           );
         }
 
-        usedStrings.set(str, name);
+        usedStrings.set(string, name);
       }
 
       return {

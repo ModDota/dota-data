@@ -18,7 +18,7 @@ interface FieldOptions {
 export class ObjectSchema extends Schema {
   protected _fields: ObjectSchemaField[] = [];
   protected _rest?: { schema: Schema; of: 'string' | 'number' | RegExp };
-  public constructor(public _name?: string) {
+  constructor(public _name?: string) {
     super();
   }
 
@@ -144,23 +144,24 @@ export class ObjectSchema extends Schema {
     };
   }
 
-  public validate(obj: unknown, context: ValidationContext) {
-    if (typeof obj !== 'object' || obj == null) {
+  public validate(object: unknown, context: ValidationContext) {
+    if (typeof object !== 'object' || object == null) {
       context.addErrorThere('should be an object');
       return;
     }
 
     this._fields.forEach(({ name, value, require }) => {
       const fieldContext = context.of(name);
-      const fieldValue: unknown = (obj as any)[name];
+      const fieldValue: unknown = (object as any)[name];
       if (fieldValue == null) {
         if (require) fieldContext.addErrorThere('is missing');
         return;
       }
+
       value._validateWithHooks(fieldValue, fieldContext);
     });
 
-    const restKeys = _.difference(Object.keys(obj), this._fields.map(x => x.name));
+    const restKeys = _.difference(Object.keys(object), this._fields.map(x => x.name));
     if (this._rest == null) {
       restKeys.forEach(k => context.of(k).addErrorThere('is unknown'));
       return;
@@ -170,7 +171,7 @@ export class ObjectSchema extends Schema {
       const childContext = context.of(name);
       let checkChild = true;
       if (this._rest.of === 'number') {
-        if (isNaN(Number(name))) {
+        if (Number.isNaN(Number(name))) {
           childContext.addErrorThere("is unknown and isn't a number");
           checkChild = false;
         }
@@ -180,7 +181,7 @@ export class ObjectSchema extends Schema {
       }
 
       if (checkChild) {
-        const value = (obj as any)[name];
+        const value = (object as any)[name];
         this._rest.schema._validateWithHooks(value, childContext);
       }
     }

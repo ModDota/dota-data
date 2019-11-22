@@ -75,7 +75,7 @@ const StyledElementLink = styled(InactiveLink)`
 `;
 
 export const ElementLink: React.FC<{ scope: string; hash?: string }> = ({ scope, hash }) => {
-  const urlHash = hash ? '#' + hash : '';
+  const urlHash = hash ? `#${hash}` : '';
   return (
     <StyledElementLink
       to={{ pathname: '/vscripts', query: { scope, hash } }}

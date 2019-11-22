@@ -4,9 +4,6 @@ import { OneOfSchema } from './types/one-of';
 
 export class RootSchema extends ObjectSchema {
   public _name = 'Root';
-  public constructor() {
-    super();
-  }
 
   /** @deprecated use toTypeScriptRoot instead */
   public toTypeScript(): never {
@@ -23,7 +20,7 @@ export class RootSchema extends ObjectSchema {
     super.toTypeScript(context);
 
     const declarations = context.getDeclarations();
-    const declarationsContent = declarations.join('\n\n') + '\n';
+    const declarationsContent = `${declarations.join('\n\n')}\n`;
     const content = namespace
       ? `declare namespace ${namespace} {\n${declarationsContent.replace(/^(?!$)/gm, '    ')}}\n`
       : declarationsContent;
@@ -46,7 +43,7 @@ export class RootSchema extends ObjectSchema {
 
   public getRestRoots() {
     if (this._rest == null) throw new Error('Schema has no rest elements');
-    const schema = this._rest.schema;
+    const { schema } = this._rest;
     return schema instanceof OneOfSchema ? schema.getFlatChildren() : [schema];
   }
 

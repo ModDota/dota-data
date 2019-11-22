@@ -6,6 +6,7 @@ export class NumberSchema extends Schema {
     this._integer = integer;
     return this;
   }
+
   private _min?: number;
   public min(min?: number) {
     this._min = min;

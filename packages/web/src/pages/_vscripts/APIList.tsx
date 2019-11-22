@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import dynamic from 'next/dynamic';
 import React from 'react';
 import styled from 'styled-components';
@@ -49,23 +50,22 @@ const renderItem = (e: TopLevelElement, style?: React.CSSProperties): React.Reac
 };
 
 const SearchList = dynamic<{ data: TopLevelElement[] }>(
-  Promise.resolve(({ data }) => {
-    return data.length > 0 ? (
+  Promise.resolve(({ data }) =>
+    data.length > 0 ? (
       <MaybeLazyList isLazy={true} data={data} render={renderItem} />
     ) : (
       <TextMessage>No results found</TextMessage>
-    );
-  }),
+    ),
+  ),
   { ssr: false, loading: () => null },
 );
 
-const ExploreList: React.FC<{ data: TopLevelElement[] }> = ({ data }) => {
-  return data.length > 0 ? (
+const ExploreList: React.FC<{ data: TopLevelElement[] }> = ({ data }) =>
+  data.length > 0 ? (
     <MaybeLazyList isLazy={false} data={data} render={renderItem} />
   ) : (
     <TextMessage>Choose a category or use the search bar...</TextMessage>
   );
-};
 
 export const APIList: React.FC = () => {
   const { data, isSearching } = useFilteredData();

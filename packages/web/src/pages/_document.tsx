@@ -2,15 +2,17 @@ import Document, { DefaultDocumentIProps, NextDocumentContext } from 'next/docum
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  public static async getInitialProps(ctx: NextDocumentContext): Promise<DefaultDocumentIProps> {
+  public static async getInitialProps(
+    context: NextDocumentContext,
+  ): Promise<DefaultDocumentIProps> {
     const sheet = new ServerStyleSheet();
 
-    const originalRenderPage = ctx.renderPage;
-    ctx.renderPage = () =>
+    const originalRenderPage = context.renderPage;
+    context.renderPage = () =>
       // @ts-ignore
       originalRenderPage({ enhanceApp: App => props => sheet.collectStyles(<App {...props} />) });
 
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(context);
     // @ts-ignore
     return { ...initialProps, styles: [...initialProps.styles, ...sheet.getStyleElement()] };
   }

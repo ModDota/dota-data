@@ -14,7 +14,7 @@ export class ArrayLikeSchema extends Schema {
     return this;
   }
 
-  private _max?: number;
+  private readonly _max?: number;
   public max(max: number) {
     if (!Number.isInteger(max) || max < 2) throw new Error('Max value count is invalid');
     this._min = max;
@@ -42,25 +42,27 @@ export class ArrayLikeSchema extends Schema {
       return;
     }
 
-    const parts = String(baseValue).split(' ');
+    const elements = String(baseValue).split(' ');
 
-    if (parts.length < this._min) {
-      context.addErrorThere(`has ${parts.length} elements when at least ${this._min} is expected`);
-    }
-
-    if (this._max != null && parts.length > this._max) {
+    if (elements.length < this._min) {
       context.addErrorThere(
-        `has ${parts.length} elements when no more then ${this._max} is expected`,
+        `has ${elements.length} elements when at least ${this._min} is expected`,
       );
     }
 
-    parts.forEach((text, index) => {
+    if (this._max != null && elements.length > this._max) {
+      context.addErrorThere(
+        `has ${elements.length} elements when no more then ${this._max} is expected`,
+      );
+    }
+
+    elements.forEach((element, index) => {
       const valueContext = context.of(index);
-      const num = Number(text);
-      if (isNaN(num)) {
+      const number = Number(element);
+      if (Number.isNaN(number)) {
         valueContext.addErrorThere(`should be a${this._integers ? 'n integer' : ' number'}`);
-      } else if (this._integers && num % 1 !== 0) {
-        valueContext.addErrorThere(`should be an integer`);
+      } else if (this._integers && number % 1 !== 0) {
+        valueContext.addErrorThere('should be an integer');
       }
     });
   }

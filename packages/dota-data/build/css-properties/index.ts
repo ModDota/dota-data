@@ -26,8 +26,10 @@ export async function generateCssProperties() {
           .split('\n')
           .filter(x => x !== '')
           .reduceRight<string[]>(
-            (acc, v) =>
-              v.startsWith('//') ? [..._.initial(acc), `${v}\n${_.last(acc)}`] : [...acc, v],
+            (accumulator, v) =>
+              v.startsWith('//')
+                ? [..._.initial(accumulator), `${v}\n${_.last(accumulator)}`]
+                : [...accumulator, v],
             [],
           )
           .reverse();

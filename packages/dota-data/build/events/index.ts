@@ -22,7 +22,7 @@ function parseFile(content: string) {
       description = description != null ? formatDescription(description) : undefined;
 
       if (parsingName == null) {
-        parsingName = value.match(/"(.+)"/)![1];
+        [, parsingName] = value.match(/"(.+)"/)!;
         events[parsingName] = { description, local: false, fields: [] };
       } else {
         let [, name, type] = value.match(/^"(.+?)"\s*"(.+?)"/)!;

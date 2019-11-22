@@ -16,6 +16,6 @@ export const readDump = async (name: string) => {
 
 const FILES = path.join(__dirname, '../../files');
 export const outputFile = (name: string, data: string) =>
-  fs.outputFile(path.join(FILES, name), data.trimRight() + '\n');
+  fs.outputFile(path.join(FILES, name), `${data.trimRight()}\n`);
 export const outputJson = (name: string, data: any) =>
-  fs.outputJson(path.join(FILES, name + '.json'), data, { spaces: 2 });
+  fs.outputJson(path.join(FILES, `${name}.json`), data, { spaces: 2 });

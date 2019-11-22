@@ -1,7 +1,7 @@
 import { Schema, TsContext, ValidationContext } from '../schema';
 
 export class AliasSchema extends Schema {
-  public constructor(private name: string, private to: Schema) {
+  constructor(private readonly name: string, private readonly to: Schema) {
     super();
   }
 

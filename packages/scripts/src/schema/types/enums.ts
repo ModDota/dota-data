@@ -4,7 +4,7 @@ import { Schema, TsContext, ValidationContext } from '../schema';
 
 export class EnumsSchema extends Schema {
   public _flags = false;
-  public constructor(public _name: string) {
+  constructor(public _name: string) {
     super();
     this.getDefinition();
   }

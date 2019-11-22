@@ -13,11 +13,8 @@ export interface Metadata {
 }
 
 const METADATA_PATH = path.join(FILES, 'metadata.json');
-export async function getOldMetadata(): Promise<Metadata> {
-  return (await fs.pathExists(METADATA_PATH))
-    ? fs.readJson(METADATA_PATH)
-    : { commit: '', version: '' };
-}
+export const getOldMetadata = async (): Promise<Metadata> =>
+  (await fs.pathExists(METADATA_PATH)) ? fs.readJson(METADATA_PATH) : { commit: '', version: '' };
 
 const HEADS = 'https://api.github.com/repos/SteamDatabase/GameTracking-Dota2/git/refs/heads/master';
 const PACKAGE_VERSION: string = fs.readJsonSync(path.join(__dirname, '../package.json')).version;

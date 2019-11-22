@@ -15,8 +15,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "dev-install": "node lib/install.js",
-    "postinstall": "node install.js",
-    "lint": "tslint --project ."
+    "postinstall": "node install.js"
   },
   "dependencies": {
     "dedent": "^0.7.0",

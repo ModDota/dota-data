@@ -2,7 +2,7 @@
 
 > Auto-generated Dota 2 resource dumps
 
-Data from these packages is avaliable on [dota-data web page](https://dota-data.netlify.com).
+Data from these packages is available on [dota-data web page](https://dota-data.netlify.com).
 
 ## Packages
 

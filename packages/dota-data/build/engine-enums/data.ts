@@ -58,8 +58,11 @@ export const extracted: ExtractionRule[] = [
     name: 'ItemShareability',
     prefix: 'ITEM_',
     filter: x => x.includes('_SHAREABLE'),
-    transform: enums => {
-      enums.forEach(x => (x.name = x.name.replace('_SHAREABLE', '')));
+    transform(enums) {
+      for (const member of enums) {
+        member.name = member.name.replace('_SHAREABLE', '');
+      }
+
       return enums;
     },
   },

@@ -3,8 +3,8 @@ import { Schema, TsContext, ValidationContext } from '../schema';
 import { LiteralSchema } from './literal';
 
 export class OneOfSchema extends Schema {
-  private _schemas: Set<Schema>;
-  public constructor(schemas: Schema[]) {
+  private readonly _schemas: Set<Schema>;
+  constructor(schemas: Schema[]) {
     super();
     this._schemas = new Set(schemas);
   }
@@ -53,11 +53,12 @@ export class OneOfSchema extends Schema {
     }
 
     const results = schemas.map(schema => {
-      const ctx = context.copy();
-      ctx.errors = [];
-      schema._validateWithHooks(value, ctx);
-      return ctx.errors;
+      const temporaryContext = context.copy();
+      temporaryContext.errors = [];
+      schema._validateWithHooks(value, temporaryContext);
+      return temporaryContext.errors;
     });
+
     if (results.some(x => x.length === 0)) return;
 
     const commonErrors = results[0].filter(k => results.every(x => x.includes(k)));
@@ -69,7 +70,7 @@ export class OneOfSchema extends Schema {
     const failedMessages = _.sortBy(results, x => x.length)
       .map(
         (x, i) =>
-          `${i + 1}. ${x.join('\n').replace(/\n/g, '\n' + ' '.repeat(String(i + 1).length + 4))}`,
+          `${i + 1}. ${x.join('\n').replace(/\n/g, `\n${' '.repeat(String(i + 1).length + 4)}`)}`,
       )
       .join('\n  ');
     context.addErrorThere(`not matches any of:\n  ${failedMessages}`);

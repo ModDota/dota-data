@@ -7,7 +7,7 @@ import { getOldMetadata, update } from '.';
   console.log(
     updated ? `Updated data to commit ${commit}` : `Data is up to date (v${version}, ${commit})`,
   );
-})().catch(err => {
-  console.error(err);
+})().catch(error => {
+  console.error(error);
   process.exit(1);
 });

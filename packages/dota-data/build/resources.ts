@@ -14,13 +14,13 @@ export async function generateResources() {
   await Promise.all(
     sources.map(async sourceUrl => {
       const lines = (await got(sourceUrl)).body.split('\n');
-      lines.forEach(line => {
-        const group = groups.find(x => line.startsWith(x + '/'));
+      for (const line of lines) {
+        const group = groups.find(x => line.startsWith(`${x}/`));
         if (group) {
-          const fileName = line.substring(0, line.indexOf(' '));
+          const fileName = line.slice(0, line.indexOf(' '));
           fileGroups[group].push(fileName);
         }
-      });
+      }
     }),
   );
 
@@ -30,7 +30,7 @@ export async function generateResources() {
     Object.entries(fileGroups).map(([group, files]) =>
       Promise.all([
         outputJson(`resources/${group}`, files),
-        outputFile(`resources/${group}.d.ts`, `declare const file: string[];\nexport = file;`),
+        outputFile(`resources/${group}.d.ts`, 'declare const file: string[];\nexport = file;'),
       ]),
     ),
   );

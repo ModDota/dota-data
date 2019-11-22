@@ -50,20 +50,20 @@ export interface ValidationOptions {
 export class ValidationContext {
   public path: (string | number)[] = [];
   public errors: string[] = [];
-  public constructor(public readonly options: ValidationOptions) {}
+  constructor(public readonly options: ValidationOptions) {}
 
   public copy() {
-    const ctx = new ValidationContext(this.options);
-    ctx.errors = this.errors;
-    ctx.path = [...this.path];
-    return ctx;
+    const context = new ValidationContext(this.options);
+    context.errors = this.errors;
+    context.path = [...this.path];
+    return context;
   }
 
   public of(next: string | number) {
-    const ctx = new ValidationContext(this.options);
-    ctx.errors = this.errors;
-    ctx.path = [...this.path, next];
-    return ctx;
+    const context = new ValidationContext(this.options);
+    context.errors = this.errors;
+    context.path = [...this.path, next];
+    return context;
   }
 
   public getPath() {
@@ -97,7 +97,7 @@ interface TsDeclaration {
 }
 
 export class TsContext {
-  private declarations: TsDeclaration[] = [];
+  private readonly declarations: TsDeclaration[] = [];
 
   public addDeclaration(declaration: string) {
     this.declarations.push({ value: declaration });
@@ -117,7 +117,7 @@ export class TsContext {
     );
   }
 
-  private globals = new Set<string>();
+  private readonly globals = new Set<string>();
 
   public addGlobal(declaration: string) {
     this.globals.add(declaration);

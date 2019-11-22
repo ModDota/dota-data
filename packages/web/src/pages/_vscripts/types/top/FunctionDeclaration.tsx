@@ -47,7 +47,7 @@ export const FunctionDeclaration: React.FC<{
           return (
             <li key={arg.name}>
               {arg.name}
-              {arg.description && ' - ' + arg.description}
+              {arg.description && ` - ${arg.description}`}
               {interfaces.map(x => (
                 <InterfaceDeclaration key={x.name} element={x} />
               ))}

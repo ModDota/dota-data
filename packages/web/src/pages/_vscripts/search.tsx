@@ -9,19 +9,21 @@ import { TopLevelElement } from './data';
 
 export const setSearchQuery = (query: string) => {
   if (query === '') {
-    const historyState = history.state.options;
+    const historyState = window.history.state.options;
     const url = (historyState && historyState.beforeSearchUrl) || Router.pathname;
     const asPath = (historyState && historyState.beforeSearchAs) || Router.pathname;
-    // tslint:disable-next-line no-floating-promises
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Router.push(url, asPath);
   } else {
-    // tslint:disable-next-line no-floating-promises
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Router.push(`/vscripts?search=${encodeURIComponent(query)}`, undefined, {
       beforeSearchUrl:
-        (history.state.options && history.state.options.beforeSearchUrl) ||
+        (window.history.state.options && window.history.state.options.beforeSearchUrl) ||
         `${Router.pathname}?${qs.stringify(Router.query)}`,
       beforeSearchAs:
-        (history.state.options && history.state.options.beforeSearchAs) || Router.asPath || '',
+        (window.history.state.options && window.history.state.options.beforeSearchAs) ||
+        Router.asPath ||
+        '',
     });
   }
 };
@@ -29,7 +31,7 @@ export const setSearchQuery = (query: string) => {
 export const useRouterSearch = () => {
   let { query: { search = '' } = {} } = useRouter();
   if (IS_CLIENT && search === '') {
-    search = String(qs.parse(location.search.slice(1)).search || '');
+    search = String(qs.parse(window.location.search.slice(1)).search || '');
   }
 
   return search;

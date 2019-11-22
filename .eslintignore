@@ -1,0 +1,5 @@
+node_modules
+/packages/*/lib
+/packages/*/files
+/packages/web/out
+/packages/scripts/install.js

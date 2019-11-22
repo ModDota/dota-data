@@ -22,16 +22,19 @@ function parseDefinition(definition: string) {
 
 export async function generatePanoramaEvents() {
   const dump = await readDump('dump_panorama_events');
-  const result = _.chunk(
-    (dump.trim().slice(57, -1) + '-')
-      .split('\n')
-      .filter(x => x !== '|-')
-      .map(v => v.slice(2)),
-    3,
-  ).reduce<Record<string, PanoramaEvent>>((acc, [definition, panelEvent, description]) => {
-    const { name, args } = parseDefinition(definition.slice(6, -7));
-    return { ...acc, [name]: { description, panelEvent: panelEvent === 'Yes', args } };
-  }, {});
+  const result = _.fromPairs(
+    _.chunk(
+      `${dump.trim().slice(57, -1)}-`
+        .split('\n')
+        .filter(x => x !== '|-')
+        .map(v => v.slice(2)),
+      3,
+    ).map(([definition, panelEvent, description]) => {
+      const { name, args } = parseDefinition(definition.slice(6, -7));
+      const event: PanoramaEvent = { description, panelEvent: panelEvent === 'Yes', args };
+      return [name, event];
+    }),
+  );
 
   override(result);
   return { ...result, ...additions };

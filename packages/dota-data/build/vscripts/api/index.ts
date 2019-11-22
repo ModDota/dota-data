@@ -31,6 +31,7 @@ export async function generateApi(replacements: Record<string, string>) {
     // Prefer server dump as it usually has more information
     const func = (server || client)!;
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const extension = functionExtensions[`${scopeName}.${func.name}`] || {};
     let argNames: (string | undefined)[];
     if (func.args.every(x => x.name != null)) {
@@ -42,6 +43,7 @@ export async function generateApi(replacements: Record<string, string>) {
           `${func.name} has invalid arguments (${descNames.length} and ${func.args.length})`,
         );
       }
+
       argNames = descNames || [];
     }
 
@@ -65,6 +67,7 @@ export async function generateApi(replacements: Record<string, string>) {
       returns: _.castArray(extension.returns || transformType(func.returns)),
       args: func.args.map(
         ({ type }, index): Parameter => {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           const argExtension = (extension.args || {})[index] || [];
           const name = argExtension[0] || formatArgumentName(argNames[index], index);
           const argDescription = _.defaultTo(argExtension[2], undefined);
@@ -102,6 +105,7 @@ export async function generateApi(replacements: Record<string, string>) {
       .filter((x): x is DumpClass => x.kind === 'class')
       .map(
         (serverClass): Class => {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           const extension = classExtensions[serverClass.name] || {};
           const clientClass = dump.client.find(
             (x): x is DumpClass => x.name.replace(/^C_/, 'C') === serverClass.name,

@@ -18,6 +18,7 @@ export const generateModifierProperties = async () =>
 
         const kind: Kind = enumName.startsWith('MODIFIER_EVENT_') ? 'event' : 'property';
         let data = modifierPropertyData[functionName];
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!data) {
           console.warn(`Untyped modifier field: ${functionName}`);
           data = ['void', 'void'];

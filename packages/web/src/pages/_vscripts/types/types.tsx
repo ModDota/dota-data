@@ -33,7 +33,7 @@ const TypeReference: React.FC<{ name: string }> = ({ name }) => {
     ];
   }, [name]);
 
-  const urlHash = hash ? '#' + hash : '';
+  const urlHash = hash ? `#${hash}` : '';
   return (
     <TypeReferenceLink
       to={scope ? { pathname: '/vscripts', query: { scope }, hash } : undefined}

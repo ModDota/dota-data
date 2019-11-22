@@ -22,7 +22,7 @@ export const useAnchor = <T extends Element>(id: string, enable: boolean) => {
     if (!enable) return;
     if (!ref.current) return;
     ref.current.id = id;
-    if (location.hash === '#' + id) {
+    if (window.location.hash === `#${id}`) {
       ref.current.scrollIntoView();
     }
   }, [ref.current, id, enable]);
