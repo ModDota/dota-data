@@ -27,6 +27,12 @@ export const baseUnit = () =>
     // Appearance
     .field('Model', s.str())
     .field('ModelScale', s.num())
+    .field('VersusScale', s.num())
+    // TODO: `LoadoutScale` is used for Warlock's golem
+    .field('LoadoutScale', s.num())
+    .field('SpectatorLoadoutScale', s.num().min(0))
+    .field('AlternateLoadoutScale', s.num())
+
     .field('IdleExpression', s.str().pattern(resourcePatterns.scenes))
     // TODO: Hero-only?
     .field('Portrait', s.str().pattern(/^vgui\/.+$/))
@@ -123,6 +129,9 @@ export const baseUnit = () =>
     .field('AttackDamageMax', s.int())
     .field('AttackDamageType', s.literal('DAMAGE_TYPE_ArmorPhysical'), {
       deprecated: 'The only valid value is default',
+    })
+    .field('BaseAttackSpeed', s.int(), {
+      description: 'https://dota2.gamepedia.com/Attack_speed#Initial_Attack_Speed',
     })
     .field('AttackRate', s.num(), { description: 'Base attack time of the unit.' })
     .field('AttackAnimationPoint', s.num(), {

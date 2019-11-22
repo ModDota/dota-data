@@ -17,7 +17,6 @@ const portrait = s
   .field('PortraitLightColor', s.vector().integers(), { require: true })
   .field('PortraitShadowColor', s.vector().integers(), { require: true })
   .field('PortraitShadowScale', s.num(), { require: true })
-  // Actual type should have .integers(), but models/heroes/techies/techies.vmdl has invalid value
   .field('PortraitAmbientColor', s.vector().integers(), { require: true })
   .field('PortraitAmbientScale', s.num(), { require: true })
   .field('PortraitSpecularColor', s.vector(), { require: true })
@@ -38,6 +37,9 @@ const portrait = s
   .field('PortraitAmbientDirection', s.vector(), { require: true })
   .field('PortraitAnimationActivity', s.enums('Activity'))
   .field('cameras', s.map(camera), { require: true })
+
+  // TODO: Used only in models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl
+  .field('SummonCount', s.int())
 
   .field('PortraitAnimationCycle', s.num())
   .field('PortraitAnimationRate', s.num())

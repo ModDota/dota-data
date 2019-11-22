@@ -12,7 +12,11 @@ describe('units', () => {
     integrationTest(
       schemas.npc_heroes,
       'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_heroes.txt',
-      ['npc_dota_hero_naga_siren.Team is not one of: "Good", "Bad"'],
+      [
+        'npc_dota_hero_slardar.VersusScale should be a number',
+        'npc_dota_hero_omniknight.VersusScale should be a number',
+        'npc_dota_hero_naga_siren.Team is not one of: "Good", "Bad"',
+      ],
     ));
 
   test('integration (frostivus_2017 units)', () =>

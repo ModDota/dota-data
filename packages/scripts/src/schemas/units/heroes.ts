@@ -19,6 +19,20 @@ const baseHero = () =>
       ['Model1', s.str().pattern(resourcePatterns.models)],
       ['Model2', s.str().pattern(resourcePatterns.models)],
       ['Model3', s.str().pattern(resourcePatterns.models)],
+
+      // TODO: Currently used only for Invoker
+      [
+        'Persona',
+        s.obj().rest(
+          s
+            .obj('Persona')
+            .field('name', s.str().pattern(resourcePatterns.npc))
+            .field('Model', s.str().pattern(resourcePatterns.models), {
+              description: 'For tools only.',
+            }),
+          'number',
+        ),
+      ],
     ])
 
     .fieldsAfter('Ability24', [
@@ -75,10 +89,6 @@ const baseHero = () =>
     .field('NoCombine', s.binaryBoolean())
     .field('ARDMDisabled', s.binaryBoolean())
 
-    .field('LoadoutScale', s.num())
-    .field('SpectatorLoadoutScale', s.num().min(0))
-    .field('AlternateLoadoutScale', s.num())
-
     .field('AttackSpeedActivityModifiers', s.map(s.int().min(0)))
     .field('MovementSpeedActivityModifiers', s.map(s.int().min(0)))
     .field('AttackRangeActivityModifiers', s.map(s.int().min(0)))
@@ -130,7 +140,10 @@ const baseHero = () =>
           .field('MaxBonesLOD0', s.int())
           .field('MaxBonesLOD1', s.int())
           .field('DisplayInLoadout', s.binaryBoolean())
-          .field('LoadoutPreviewMode', s.oneOfLiterals(['transformation', 'hero', 'particle']))
+          .field(
+            'LoadoutPreviewMode',
+            s.oneOfLiterals(['hero_model_override', 'hero', 'particle', 'transformation']),
+          )
           .field('CanBeUsedAsGeneratingSlot', s.binaryBoolean())
           .field('ShowItemOnGeneratedUnits', s.binaryBoolean())
           .field('GeneratesUnits', s.obj().rest(s.str().pattern(resourcePatterns.npc), 'number')),

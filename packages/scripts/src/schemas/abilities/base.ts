@@ -107,6 +107,8 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemStockInitial', s.int().min(0))
     .field('ItemStockTime', s.num().min(0))
     .field('ItemInitialStockTime', s.num().min(0))
+    // TODO: Test and add description
+    .field('BonusDelayedStockCount', s.int())
 
     .field('ItemStackable', s.binaryBoolean())
     .field('ItemPermanent', s.binaryBoolean())
@@ -141,10 +143,14 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemAlertable', s.binaryBoolean())
     .field('ItemDisplayCharges', s.binaryBoolean())
     .field('IsObsolete', s.binaryBoolean())
-    .field('EventID', s.int().min(0))
     .field('PlayerSpecificCooldown', s.binaryBoolean())
     .field('ItemContributesToNetWorthWhenDropped', s.binaryBoolean())
     .field('AllowedInBackpack', s.binaryBoolean())
     .field('ActiveDescriptionLine', s.int().min(1))
     .field('ItemCastOnPickup', s.binaryBoolean())
-    .field('PingOverrideText', s.str());
+    .field('PingOverrideText', s.str())
+
+    // TODO: Used only in `seasonal_ti9_banner`
+    .field('UnlockMinEffectIndex', s.int().min(0))
+    .field('UnlockMaxEffectIndex', s.int().min(0))
+    .field('EventID', s.int().min(0));

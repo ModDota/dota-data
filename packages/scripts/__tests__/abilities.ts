@@ -10,10 +10,12 @@ describe('abilities', () => {
         'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
         'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum',
         'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown',
-        'mars_arena_of_blood.AbilityBehavior[0] should be a AbilityBehavior enum',
         'satyr_soulstealer_mana_burn.Modelscale is unknown',
-        'special_bonus_unique_undying_5.AbilitySpecial.01.value[0] should be a number',
-        'seasonal_summon_cny_balloon.AbilityBehavior[0] should be a AbilityBehavior enum',
+
+        // Incorrect spacing, TODO: allow?
+        'tiny_tree_channel.AbilityBehavior[0] should be a AbilityBehavior enum',
+        'templar_assassin_trap_teleport.AbilityBehavior[3] should be a AbilityBehavior enum',
+        'clinkz_scepter.AbilityBehavior[2] should be a AbilityBehavior enum',
       ],
     ));
 
