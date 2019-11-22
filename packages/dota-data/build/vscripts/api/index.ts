@@ -88,7 +88,11 @@ export async function generateApi(replacements: Record<string, string>) {
   }
 
   function joinMethods(onServer: DumpMethod[], onClient: DumpMethod[]): JoinedMethod[] {
-    const names = _.union(onClient.map(x => x.name), onServer.map(x => x.name));
+    const names = _.union(
+      onClient.map(x => x.name),
+      onServer.map(x => x.name),
+    );
+
     return names.map(name => ({
       server: onServer.find(x => x.name === name),
       client: onClient.find(x => x.name === name),

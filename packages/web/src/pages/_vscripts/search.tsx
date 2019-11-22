@@ -19,7 +19,8 @@ export const setSearchQuery = (query: string) => {
     Router.push(`/vscripts?search=${encodeURIComponent(query)}`, undefined, {
       beforeSearchUrl:
         (window.history.state.options && window.history.state.options.beforeSearchUrl) ||
-        `${Router.pathname}?${qs.stringify(Router.query)}`,
+        // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/38414
+        `${Router.pathname}?${qs.stringify(Router.query as any)}`,
       beforeSearchAs:
         (window.history.state.options && window.history.state.options.beforeSearchAs) ||
         Router.asPath ||

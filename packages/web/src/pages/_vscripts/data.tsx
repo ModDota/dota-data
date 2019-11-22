@@ -5,7 +5,7 @@ import { useRouter } from '~utils/hooks';
 import { doSearch, useRouterSearch } from './search';
 
 const allData = [...api, ...enums];
-export type TopLevelElement = (typeof topLevelData)[number];
+export type TopLevelElement = typeof topLevelData[number];
 export const topLevelData = allData.filter(
   <T extends { kind: string }>(x: T | api.Interface): x is T => x.kind !== 'interface',
 );

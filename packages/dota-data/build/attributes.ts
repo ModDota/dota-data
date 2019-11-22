@@ -18,13 +18,11 @@ export async function generateAttributes() {
 
   const getBonuses = (bonuses: string[]): Record<string, number> =>
     _.fromPairs(
-      bonuses.map(
-        (bonus): [string, number] => {
-          const propName = `bonus${_.upperFirst(bonus)}`;
-          if (values[propName] == null) throw new Error(`Couldn't find attribute "${bonus}"`);
-          return [bonus, values[propName]];
-        },
-      ),
+      bonuses.map((bonus): [string, number] => {
+        const propName = `bonus${_.upperFirst(bonus)}`;
+        if (values[propName] == null) throw new Error(`Couldn't find attribute "${bonus}"`);
+        return [bonus, values[propName]];
+      }),
     );
 
   await outputJson('attributes', {

@@ -15,7 +15,18 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseTrigger.IsTouching': { args: { '0': [null, 'CBaseEntity'] } },
   'CCustomGameEventManager.RegisterListener': {
     returns: 'CustomGameEventListenerID',
-    args: { '1': ['listener', func([['userId', 'number'], ['event', 'table']], 'nil')] },
+    args: {
+      '1': [
+        'listener',
+        func(
+          [
+            ['userId', 'number'],
+            ['event', 'table'],
+          ],
+          'nil',
+        ),
+      ],
+    },
   },
   'CCustomGameEventManager.Send_ServerToAllClients': { args: { '1': [null, 'table'] } },
   'CCustomGameEventManager.Send_ServerToPlayer': {

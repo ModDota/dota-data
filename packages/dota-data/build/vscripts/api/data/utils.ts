@@ -15,5 +15,5 @@ export interface ExtensionFunction {
   deprecated?: string;
   description?: string;
   returns?: _.Many<Type>;
-  args?: Record<number, [(string | null), (_.Many<Type> | null)?, string?]>;
+  args?: Record<number, [string | null, (_.Many<Type> | null)?, string?]>;
 }

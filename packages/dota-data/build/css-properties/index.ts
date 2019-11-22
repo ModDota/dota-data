@@ -17,27 +17,25 @@ export async function generateCssProperties() {
         .split('\n')
         .map(l => l.trim()),
     )
-    .map(
-      ([rule, ...restLines]): [string, Property] => {
-        rule = rule.slice(0, -4);
-        const info = _.unescape(restLines.join('\n'));
-        const description = info.replace(EXAMPLES_REGEXP, '');
-        const examples = _.defaultTo(_.nth(info.match(EXAMPLES_REGEXP), 1), '')
-          .split('\n')
-          .filter(x => x !== '')
-          .reduceRight<string[]>(
-            (accumulator, v) =>
-              v.startsWith('//')
-                ? [..._.initial(accumulator), `${v}\n${_.last(accumulator)}`]
-                : [...accumulator, v],
-            [],
-          )
-          .reverse();
+    .map(([rule, ...restLines]): [string, Property] => {
+      rule = rule.slice(0, -4);
+      const info = _.unescape(restLines.join('\n'));
+      const description = info.replace(EXAMPLES_REGEXP, '');
+      const examples = _.defaultTo(_.nth(info.match(EXAMPLES_REGEXP), 1), '')
+        .split('\n')
+        .filter(x => x !== '')
+        .reduceRight<string[]>(
+          (accumulator, v) =>
+            v.startsWith('//')
+              ? [..._.initial(accumulator), `${v}\n${_.last(accumulator)}`]
+              : [...accumulator, v],
+          [],
+        )
+        .reverse();
 
-        const property: Property = { description, examples };
-        return [rule, property];
-      },
-    );
+      const property: Property = { description, examples };
+      return [rule, property];
+    });
 
   await Promise.all([
     outputJson('css-properties', _.fromPairs(result)),

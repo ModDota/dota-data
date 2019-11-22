@@ -44,21 +44,21 @@
   },
   "devDependencies": {
     "@ark120202/eslint-config": "^2.1.0",
-    "@ark120202/typescript-config": "^2.0.0",
-    "@types/fs-extra": "^7.0.0",
-    "@types/jest": "^24.0.13",
-    "@types/lodash": "^4.14.130",
-    "@types/prettier": "^1.16.4",
+    "@ark120202/typescript-config": "^2.1.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.149",
+    "@types/prettier": "^1.18.4",
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "jest": "^24.8.0",
-    "lerna": "^3.14.1",
-    "nodemon": "^1.19.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.19.0",
+    "nodemon": "^2.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.17.1",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
   }
 }

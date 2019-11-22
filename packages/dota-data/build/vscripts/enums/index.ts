@@ -118,26 +118,28 @@ export async function generateEnums() {
         members: transformMembers(allConstants.filter(x => values.includes(x.name))),
       }),
     ),
-    ...[['ModifierProperty', 'MODIFIER_PROPERTY_'], ['ModifierEvent', 'MODIFIER_EVENT_']].map(
+    ...[
+      ['ModifierProperty', 'MODIFIER_PROPERTY_'],
+      ['ModifierEvent', 'MODIFIER_EVENT_'],
+    ].map(
       ([name, prefix]): Enum => ({
         kind: 'enum',
         name,
         available: getEnumAvailability(allConstants.filter(x => x.name.startsWith(prefix))),
         members: [
-          ...transformMembers(allConstants.filter(x => x.name.startsWith(prefix)), prefix).map(
-            (x): typeof x => ({
-              ...x,
-              description:
-                x.description && x.description !== 'Unused'
-                  ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                    modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
-                    ? `${modifierPropertyData[x.description][2]}\n\nMethod Name: \`${
-                        x.description
-                      }\``
-                    : `Method Name: \`${x.description}\``
-                  : undefined,
-            }),
-          ),
+          ...transformMembers(
+            allConstants.filter(x => x.name.startsWith(prefix)),
+            prefix,
+          ).map((x): typeof x => ({
+            ...x,
+            description:
+              x.description && x.description !== 'Unused'
+                ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                  modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
+                  ? `${modifierPropertyData[x.description][2]}\n\nMethod Name: \`${x.description}\``
+                  : `Method Name: \`${x.description}\``
+                : undefined,
+          })),
           ...transformMembers(
             allConstants.filter(x => x.name === 'MODIFIER_FUNCTION_INVALID'),
             'MODIFIER_FUNCTION_',
@@ -189,7 +191,10 @@ export async function generateEnums() {
 
   // TODO: API doesn't seem to have any references to enums
   const replacements = _.mapValues(
-    _.groupBy(enums.filter(x => x.originalName), x => x.originalName),
+    _.groupBy(
+      enums.filter(x => x.originalName),
+      x => x.originalName,
+    ),
     value => value.map(x => x.name).join(' | '),
   );
 

@@ -16,15 +16,15 @@
     "dev": "nodemon -w build -w ../dumper/dump -e ts,json -x ts-node build"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
-    "@types/fs-extra": "^7.0.0",
-    "@types/got": "^9.4.4",
-    "@types/lodash": "^4.14.130",
+    "@types/fs-extra": "^8.0.1",
+    "@types/got": "^9.6.9",
+    "@types/lodash": "^4.14.149",
     "dedent": "^0.7.0",
-    "fs-extra": "^8.0.1",
+    "fs-extra": "^8.1.0",
     "got": "^9.6.0",
     "vdf-extra": "^2.2.2"
   }

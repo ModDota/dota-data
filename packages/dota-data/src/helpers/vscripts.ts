@@ -5,7 +5,7 @@ import enums from '../../files/vscripts/enums';
 export { api, enums };
 
 export const allData = [...api, ...enums];
-export type AllDataType = (typeof allData)[number];
+export type AllDataType = typeof allData[number];
 export const findTypeByName = (name: string): AllDataType | undefined =>
   allData.find(x => x.name === name);
 

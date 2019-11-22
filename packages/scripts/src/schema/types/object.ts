@@ -161,7 +161,11 @@ export class ObjectSchema extends Schema {
       value._validateWithHooks(fieldValue, fieldContext);
     });
 
-    const restKeys = _.difference(Object.keys(object), this._fields.map(x => x.name));
+    const restKeys = _.difference(
+      Object.keys(object),
+      this._fields.map(x => x.name),
+    );
+
     if (this._rest == null) {
       restKeys.forEach(k => context.of(k).addErrorThere('is unknown'));
       return;
