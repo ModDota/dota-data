@@ -47,7 +47,7 @@ export async function generateEnums() {
     const server = serverConstants.find(x => x.name === name);
     const client = serverConstants.find(x => x.name === name);
     if (server == null) {
-      console.error(`${name} is available only on client`);
+      console.error(`Available only on client: ${name}`);
       return;
     }
 
@@ -155,9 +155,13 @@ export async function generateEnums() {
         .filter(c => !constants.some(x => x.name === c.name))
         .filter(c => !enums.some(x => x.members.some(m => m.originalName === c.name)))
         .reduce<Record<string, DumpConstant[]>>((documentedEnums, c) => {
-          if (c.enum == null) throw new Error(`Global ${c.name} has no enum name`);
-          if (documentedEnums[c.enum] == null) documentedEnums[c.enum] = [];
-          documentedEnums[c.enum].push(c);
+          if (c.enum != null) {
+            if (documentedEnums[c.enum] == null) documentedEnums[c.enum] = [];
+            documentedEnums[c.enum].push(c);
+          } else {
+            console.log(`Unknown constant or enum: ${c.name}`);
+          }
+
           return documentedEnums;
         }, {}),
     ).map(

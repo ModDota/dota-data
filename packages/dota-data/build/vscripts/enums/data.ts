@@ -11,6 +11,13 @@ export const droppedConstants = [
   'ScriptDebugTextIndent',
   'ScriptDebugWatchFistLine',
   'radiant_melee_mars_shieldbash',
+  'debut_end',
+  'debut_start',
+  'stub',
+  'dd330_basket_keepalive',
+  'dd330_basket_start',
+  'snapfire_debut_dd330_start',
+  'snapfire_debut_dd330_keepalive',
 ];
 
 export const extractedConstants = [

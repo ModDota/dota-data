@@ -339,6 +339,53 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   // TODO:
   'CBaseEntity.SetParent': { args: { 0: [null, 'CBaseEntity'] } },
   'CDOTA_BaseNPC.RemoveAbilityByHandle': { args: { 0: [null, 'CDOTABaseAbility'] } },
+  'CDOTABaseGameMode.AddRealTimeCombatAnalyzerQuery': {
+    args: { 1: [null, 'CDOTAPlayer'] },
+    returns: 'CombatAnalyzerQueryID',
+  },
+  'CDOTABaseGameMode.ListenForQueryProgressChanged': {
+    args: {
+      '0': [null, func([['result', 'CombatAnalyzerQueryResult']], 'nil')],
+      '1': [null, 'table'],
+    },
+  },
+  'CDOTABaseGameMode.ListenForQueryFailed': {
+    args: {
+      '0': [null, func([['result', 'CombatAnalyzerQueryResult']], 'nil')],
+      '1': [null, 'table'],
+    },
+  },
+  'CDOTABaseGameMode.ListenForQuerySucceeded': {
+    args: {
+      '0': [null, func([['result', 'CombatAnalyzerQueryResult']], 'nil')],
+      '1': [null, 'table'],
+    },
+  },
+  'CDOTABaseGameMode.RemoveRealTimeCombatAnalyzerQuery': {
+    args: { 0: [null, 'CombatAnalyzerQueryID'] },
+  },
+  'CDOTAGamerules.AddBotPlayerWithEntityScript': {
+    returns: ['CDOTA_BaseNPC_Hero', 'nil'],
+    args: {
+      0: ['heroName'],
+      1: ['playerName'],
+      2: ['team', 'DotaTeam'],
+      3: [
+        'entityScript',
+        null,
+        'Path to a script file executed in the context of spawned hero entity.',
+      ],
+    },
+  },
+
+  'CDOTATutorial.IsItemInWhiteList': { args: { '0': ['itemName'] } },
+  'CDOTATutorial.AddShopWhitelistItem': { args: { '0': ['itemName'] } },
+  'CDOTATutorial.RemoveShopWhitelistItem': { args: { '0': ['itemName'] } },
+  'CDOTATutorial.SetWhiteListEnabled': { args: { '0': ['whiteListEnabled'] } },
+  'CDOTAGamerules.IsItemInWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGamerules.AddItemToWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGamerules.RemoveItemFromWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGamerules.SetWhiteListEnabled': { args: { 0: ['whiteListEnabled'] } },
 };
 
 export const attachedTypes = (() => {
@@ -442,6 +489,12 @@ export const attachedTypes = (() => {
       { kind: 'field', name: 'Mins', types: ['Vector'] },
       { kind: 'field', name: 'Maxs', types: ['Vector'] },
     ],
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'CombatAnalyzerQueryResult',
+    members: [{ kind: 'field', name: 'query_id', types: ['CombatAnalyzerQueryID'] }],
   });
 
   context.push({
