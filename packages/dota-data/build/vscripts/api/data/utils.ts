@@ -13,7 +13,7 @@ export interface ExtensionClass {
 
 export interface ExtensionFunction {
   deprecated?: string;
-  description?: string;
+  description?: string | ((original?: string) => string);
   returns?: _.Many<Type>;
   args?: Record<number, [string | null, (_.Many<Type> | null)?, string?]>;
 }

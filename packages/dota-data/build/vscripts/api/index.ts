@@ -47,12 +47,15 @@ export async function generateApi(replacements: Record<string, string>) {
       argNames = descNames || [];
     }
 
+    const originalDescription = clearDescription(func.name, func.description);
     const description =
       extension.description != null
         ? extension.description !== ''
-          ? extension.description
+          ? typeof extension.description === 'function'
+            ? extension.description(originalDescription)
+            : extension.description
           : undefined
-        : clearDescription(func.name, func.description);
+        : originalDescription;
 
     if (clearDescription(func.name, description) !== description) {
       throw new Error(`Description of ${scopeName}.${func.name} is invalid:\n${description}`);

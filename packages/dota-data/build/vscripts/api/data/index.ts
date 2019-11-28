@@ -386,6 +386,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.AddItemToWhiteList': { args: { 0: ['itemName'] } },
   'CDOTAGamerules.RemoveItemFromWhiteList': { args: { 0: ['itemName'] } },
   'CDOTAGamerules.SetWhiteListEnabled': { args: { 0: ['whiteListEnabled'] } },
+  '_G.Msg': { args: { 0: ['message'] } },
+  '_G.Warning': { args: { 0: ['message'] } },
 };
 
 export const attachedTypes = (() => {
@@ -673,7 +675,7 @@ export const attachedTypes = (() => {
     .desc(
       'Overloaded * returns the vectors multiplied together. Can also be used to multiply with scalars.',
     )
-    .arg('b', ['Vector'])
+    .arg('b', ['Vector', 'float'])
     .ret(['Vector'])
     .end()
 
