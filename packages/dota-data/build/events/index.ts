@@ -1,5 +1,7 @@
+import assert from 'assert';
 import _ from 'lodash';
 import { formatDescription, getFile, outputFile, outputJson } from '../util';
+import { extraEventFields } from './data';
 import { Event, types } from './types';
 
 function parseFile(content: string) {
@@ -14,6 +16,16 @@ function parseFile(content: string) {
     .forEach(value => {
       if (value === '{') return;
       if (value === '}') {
+        assert(parsingName);
+
+        const extraFields = extraEventFields[parsingName!];
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (extraFields) {
+          events[parsingName!].fields.push(
+            ...Object.entries(extraFields).map(([name, type]) => ({ name, type })),
+          );
+        }
+
         parsingName = undefined;
         return;
       }
@@ -29,17 +41,18 @@ function parseFile(content: string) {
 
         if (name === 'local') {
           events[parsingName].local = type === '1';
-        } else {
-          if ((type === 'byte' || type === 'short') && /player_?id/i.test(name)) {
-            type = 'PlayerID';
-          }
-
-          if (/ent(ity)?_?index/i.test(name)) {
-            type = 'EntityIndex';
-          }
-
-          events[parsingName].fields.push({ name, description, type });
+          return;
         }
+
+        if ((type === 'byte' || type === 'short') && /player_?id/i.test(name)) {
+          type = 'PlayerID';
+        }
+
+        if (/ent(ity)?_?index/i.test(name)) {
+          type = 'EntityIndex';
+        }
+
+        events[parsingName].fields.push({ name, description, type });
       }
     });
 
