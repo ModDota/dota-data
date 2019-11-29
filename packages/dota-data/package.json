@@ -13,7 +13,15 @@
   ],
   "scripts": {
     "build": "rimraf files/**/* && ts-node build",
-    "dev": "nodemon -w build -w ../dumper/dump -e ts,json -x ts-node build"
+    "dev": "nodemon"
+  },
+  "nodemonConfig": {
+    "exec": "ts-node --transpile-only build",
+    "ext": "ts,json",
+    "watch": [
+      "build",
+      "../dumper/dump"
+    ]
   },
   "dependencies": {
     "lodash": "^4.17.15"
