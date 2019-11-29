@@ -27,6 +27,7 @@ export const baseUnit = () =>
     // Appearance
     .field('Model', s.str())
     .field('ModelScale', s.num())
+    .field('MaxModelScaleMultiplier', s.num())
     .field('VersusScale', s.num())
     // TODO: `LoadoutScale` is used for Warlock's golem
     .field('LoadoutScale', s.num())

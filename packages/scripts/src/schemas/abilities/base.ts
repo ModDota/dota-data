@@ -91,6 +91,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('SideShop', s.binaryBoolean())
     .field('SecretShop', s.binaryBoolean())
     .field('GlobalShop', s.binaryBoolean())
+    .field('ItemGloballyCombinable', s.binaryBoolean())
     .field('ItemPurchasable', s.binaryBoolean())
 
     .field('ItemSellable', s.binaryBoolean())
@@ -111,6 +112,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('BonusDelayedStockCount', s.int())
 
     .field('ItemStackable', s.binaryBoolean())
+    .field('ItemStackableMax', s.int().min(0))
     .field('ItemPermanent', s.binaryBoolean())
     .field('ItemInitialCharges', s.int())
     .field('ItemHideCharges', s.binaryBoolean())

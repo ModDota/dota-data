@@ -21,8 +21,7 @@ describe('integration', () => {
       'models/heroes/techies/techies.vmdl.PortraitBackgroundColor4 has 2 elements when at least 3 is expected',
       'models/heroes/techies/techies.vmdl.PortraitBackgroundColor4[1] should be a number',
       'models/items/techies/bigshot/bigshot_remotebomb.vmdl.PortraitFOV is unknown',
-      'models/heroes/mars/mars.vmdl.cameras.Default.PortraitFar should be an integer',
-      'models/items/rubick/rubick_arcana/rubick_arcana_base.vmdl.cameras.default.PortraitFar should be an integer',
+      'models/heroes/void_spirit/void_spirit.vmdl.SummonPosition is unknown',
     ],
   });
 });

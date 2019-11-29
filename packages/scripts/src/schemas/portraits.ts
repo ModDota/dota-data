@@ -6,7 +6,7 @@ const camera = s
   .field('PortraitPosition', s.vector(), { require: true })
   .field('PortraitAngles', s.vector(), { require: true })
   .field('PortraitFOV', s.num(), { require: true })
-  .field('PortraitFar', s.int());
+  .field('PortraitFar', s.num());
 
 const portrait = s
   .obj('Portrait')
@@ -47,7 +47,8 @@ const portrait = s
   .field('PortraitHideParticles', s.binaryBoolean())
   .field('PortraitHideDropShadow', s.binaryBoolean())
   .field('PortraitDesaturateParticles', s.binaryBoolean())
-  .field('PortraitDesaturateHero', s.binaryBoolean());
+  .field('PortraitDesaturateHero', s.binaryBoolean())
+  .field('PortraitPlayIdleExpression', s.binaryBoolean());
 
 export const portraits = s
   .root()
