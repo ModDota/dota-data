@@ -1,5 +1,8 @@
 import { array, ExtensionFunction, func } from './utils';
 
+const onProjectileHitDescription =
+  "Projectile has collided with a given target or reached its destination. If 'true` is returned, projectile would be destroyed.";
+
 export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.FirstMoveChild': { returns: 'CBaseEntity' },
   'CBaseEntity.FollowEntity': { args: { '0': [null, 'CBaseEntity'] } },
@@ -138,15 +141,29 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': [null, 'CDOTA_BaseNPC'], '1': [null, 'CDOTA_BaseNPC'], '2': ['event', 'table'] },
   },
   'CDOTA_Ability_Lua.OnItemEquipped': { args: { '0': [null, 'CDOTA_Item'] } },
-  'CDOTA_Ability_Lua.OnProjectileHit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
+
+  'CDOTA_Item_Lua.OnProjectileHit': {
+    description: onProjectileHitDescription,
+    returns: ['bool', 'nil'],
+    args: { '0': [null, ['CDOTA_BaseNPC', 'nil']] },
+  },
+  'CDOTA_Ability_Lua.OnProjectileHit': {
+    description: onProjectileHitDescription,
+    returns: ['bool', 'nil'],
+    args: { '0': [null, ['CDOTA_BaseNPC', 'nil']] },
+  },
   'CDOTA_Ability_Lua.OnProjectileHitHandle': {
-    args: { '0': [null, 'CDOTA_BaseNPC'], '2': [null, 'ProjectileID'] },
+    description: onProjectileHitDescription,
+    returns: ['bool', 'nil'],
+    args: { '0': [null, ['CDOTA_BaseNPC', 'nil']], '2': [null, 'ProjectileID'] },
   },
   'CDOTA_Ability_Lua.OnProjectileHit_ExtraData': {
-    args: { '0': [null, 'CDOTA_BaseNPC'], '2': ['data', 'table'] },
+    description: onProjectileHitDescription,
+    returns: ['bool', 'nil'],
+    args: { '0': [null, ['CDOTA_BaseNPC', 'nil']], '2': ['extraData', 'table'] },
   },
   'CDOTA_Ability_Lua.OnProjectileThinkHandle': { args: { '0': [null, 'ProjectileID'] } },
-  'CDOTA_Ability_Lua.OnProjectileThink_ExtraData': { args: { '1': ['data', 'table'] } },
+  'CDOTA_Ability_Lua.OnProjectileThink_ExtraData': { args: { '1': ['extraData', 'table'] } },
   'CDOTA_Ability_Lua.OnStolen': { args: { '0': [null, 'CDOTABaseAbility'] } },
   'CDOTA_BaseNPC.AddAbility': { returns: 'CDOTABaseAbility' },
   'CDOTA_BaseNPC.AddItem': { returns: 'CDOTA_Item', args: { '0': [null, 'CDOTA_Item'] } },
@@ -272,7 +289,6 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': [null, 'CDOTA_BaseNPC'], '1': [null, 'CDOTA_BaseNPC'], '2': ['event', 'table'] },
   },
   'CDOTA_Item_Lua.OnItemEquipped': { args: { '0': [null, 'CDOTA_Item'] } },
-  'CDOTA_Item_Lua.OnProjectileHit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_Item_Lua.OnStolen': { args: { '0': [null, 'CDOTABaseAbility'] } },
   'CDOTA_Item_Physical.GetContainedItem': { returns: 'CDOTA_Item' },
   'CDOTA_Item_Physical.SetContainedItem': { args: { '0': [null, 'CDOTA_Item'] } },
@@ -612,13 +628,16 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   '_G.UTIL_Remove': { args: { '0': ['entity', 'CBaseEntity'] } },
   '_G.UTIL_RemoveImmediate': { args: { '0': ['entity', 'CBaseEntity'] } },
+  'ProjectileManager.ChangeTrackingProjectileSpeed': {
+    args: { '0': ['ability', 'CDOTABaseAbility'], '1': ['speed'] },
+  },
   'ProjectileManager.CreateLinearProjectile': {
     returns: 'ProjectileID',
-    args: { '0': ['projectileData', 'table'] },
+    args: { '0': ['options', 'CreateLinearProjectileOptions'] },
   },
   'ProjectileManager.CreateTrackingProjectile': {
     returns: 'ProjectileID',
-    args: { '0': ['projectileData', 'table'] },
+    args: { '0': ['options', 'CreateTrackingProjectileOptions'] },
   },
   'ProjectileManager.DestroyLinearProjectile': { args: { '0': ['projectile', 'ProjectileID'] } },
   'ProjectileManager.GetLinearProjectileLocation': {

@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import { Class, FunctionDeclaration, FunctionType, Interface, Type } from '../types';
+import { Class, FunctionDeclaration, FunctionType, Interface, Member, Type } from '../types';
 import { moddotaDump } from './moddota-dump';
 import { array, ExtensionClass, ExtensionFunction, func } from './utils';
 
@@ -497,6 +497,116 @@ export const attachedTypes = (() => {
     kind: 'interface',
     name: 'CombatAnalyzerQueryResult',
     members: [{ kind: 'field', name: 'query_id', types: ['CombatAnalyzerQueryID'] }],
+  });
+
+  const projectileOptionsBase = (): Member[] => [
+    { kind: 'field', name: 'EffectName', types: ['string', 'nil'] },
+    { kind: 'field', name: 'Ability', types: ['CDOTABaseAbility', 'nil'] },
+    { kind: 'field', name: 'Source', types: ['CDOTA_BaseNPC', 'nil'] },
+  ];
+
+  const projectileOptionsVision = (): Member[] => [
+    { kind: 'field', name: 'bProvidesVision', types: ['boolean', 'nil'] },
+    { kind: 'field', name: 'iVisionRadius', types: ['uint', 'nil'] },
+    { kind: 'field', name: 'iVisionTeamNumber', types: ['DotaTeam', 'nil'] },
+  ];
+
+  const projectileOptionsExtraData = (): Member => ({
+    kind: 'field',
+    name: 'ExtraData',
+    types: ['Record<string, string | number | boolean>', 'nil'],
+    description:
+      'Extra data associated with projectile instance, that is passed to `OnProjectileThink_ExtraData` and `OnProjectileHit_ExtraData`.',
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'CreateLinearProjectileOptions',
+    members: [
+      ...projectileOptionsBase(),
+
+      // Movement
+      { kind: 'field', name: 'vSpawnOrigin', types: ['Vector', 'nil'] },
+      { kind: 'field', name: 'vVelocity', types: ['Vector', 'nil'] },
+      {
+        kind: 'field',
+        name: 'vAcceleration',
+        types: ['Vector', 'nil'],
+        description: 'Velocity change per second.',
+      },
+      { kind: 'field', name: 'fMaxSpeed', types: ['float', 'nil'] },
+
+      // Behavior
+      { kind: 'field', name: 'fDistance', types: ['float', 'nil'] },
+      { kind: 'field', name: 'fStartRadius', types: ['float', 'nil'] },
+      { kind: 'field', name: 'fEndRadius', types: ['float', 'nil'] },
+      { kind: 'field', name: 'fExpireTime', types: ['float', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetTeam', types: ['UnitTargetTeam', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetFlags', types: ['UnitTargetFlags', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetType', types: ['UnitTargetType', 'nil'] },
+      { kind: 'field', name: 'bIgnoreSource', types: ['boolean', 'nil'] },
+      { kind: 'field', name: 'bHasFrontalCone', types: ['boolean', 'nil'] },
+
+      // Appearance
+      {
+        kind: 'field',
+        name: 'bDrawsOnMinimap',
+        types: ['boolean', 'nil'],
+        description: '@default false',
+      },
+      {
+        kind: 'field',
+        name: 'bVisibleToEnemies',
+        types: ['boolean', 'nil'],
+        description: 'Makes it invisible for all teams.',
+      },
+
+      ...projectileOptionsVision(),
+      projectileOptionsExtraData(),
+    ],
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'CreateTrackingProjectileOptions',
+    members: [
+      ...projectileOptionsBase(),
+
+      // Movement
+      { kind: 'field', name: 'vSourceLoc', types: ['Vector', 'nil'] },
+      { kind: 'field', name: 'Target', types: ['CDOTA_BaseNPC', 'nil'] },
+      { kind: 'field', name: 'iMoveSpeed', types: ['int', 'nil'] },
+
+      // Behavior
+      { kind: 'field', name: 'flExpireTime', types: ['float', 'nil'] },
+      { kind: 'field', name: 'bDodgeable', types: ['boolean', 'nil'] },
+      { kind: 'field', name: 'bIsAttack', types: ['boolean', 'nil'] },
+      {
+        kind: 'field',
+        name: 'bReplaceExisting',
+        types: ['boolean', 'nil'],
+        description:
+          'When enabled replaces existing projectile from the ability. Does not destroy particle.\n@default false',
+      },
+
+      // Appearance
+      { kind: 'field', name: 'iSourceAttachment', types: ['ProjectileAttachment', 'nil'] }, // NOT?
+      {
+        kind: 'field',
+        name: 'bDrawsOnMinimap',
+        types: ['boolean', 'nil'],
+        description: '@default false',
+      },
+      {
+        kind: 'field',
+        name: 'bVisibleToEnemies',
+        types: ['boolean', 'nil'],
+        description: '@default true',
+      },
+
+      ...projectileOptionsVision(),
+      projectileOptionsExtraData(),
+    ],
   });
 
   context.push({
