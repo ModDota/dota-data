@@ -32,7 +32,7 @@ function normalizeScopeName(s: string) {
   return _.upperFirst(_.camelCase(s.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
 }
 
-export const { enumDeclarations, enumReplacements } = (() => {
+export const enumDeclarations = (() => {
   const serverConstants = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
   const clientConstants = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
   const allConstants = [
@@ -191,14 +191,5 @@ export const { enumDeclarations, enumReplacements } = (() => {
     });
   });
 
-  // TODO: API doesn't seem to have any references to enums
-  const replacements = _.mapValues(
-    _.groupBy(
-      enums.filter(x => x.originalName),
-      x => x.originalName,
-    ),
-    value => value.map(x => x.name).join(' | '),
-  );
-
-  return { enumDeclarations: [...constants, ...enums], enumReplacements: replacements };
+  return [...constants, ...enums];
 })();

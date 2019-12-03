@@ -650,7 +650,6 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['options', 'CreateLinearProjectileOptions'] },
   },
   'ProjectileManager.CreateTrackingProjectile': {
-    returns: 'ProjectileID',
     args: { '0': ['options', 'CreateTrackingProjectileOptions'] },
   },
   'ProjectileManager.DestroyLinearProjectile': { args: { '0': ['projectile', 'ProjectileID'] } },

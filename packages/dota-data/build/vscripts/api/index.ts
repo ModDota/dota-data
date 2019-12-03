@@ -1,19 +1,11 @@
 import _ from 'lodash';
 import { clearDescription, extractNamesFromDescription, formatArgumentName } from '../../util';
 import { clientDump, DumpClass, DumpFunction, DumpMethod, serverDump } from '../dump';
-import { enumReplacements } from '../enums';
 import { classExtensions, extraDeclarations, functionExtensions } from './data';
-import { Class, FunctionDeclaration, Parameter, TopLevelElement } from './types';
+import { Class, FunctionDeclaration, Parameter, TopLevelElement, Type } from './types';
+import { isCompatibleOverride, isValidType } from './validation';
 
 export { types as apiTypes } from './types';
-
-const defaultReplacements: Record<string, string> = {
-  '<unknown>': 'unknown',
-  void: 'nil',
-  unsigned: 'uint',
-  uint64: 'Uint64',
-  utlstringtoken: 'string',
-};
 
 interface JoinedMethod {
   server?: DumpMethod;
@@ -32,28 +24,62 @@ function joinMethods(onServer: DumpMethod[], onClient: DumpMethod[]): JoinedMeth
   }));
 }
 
-const transformType = (type: string) => enumReplacements[type] ?? defaultReplacements[type] ?? type;
+const defaultReplacements: Record<string, string> = {
+  '<unknown>': 'unknown',
+  void: 'nil',
+  unsigned: 'uint',
+  uint64: 'Uint64',
+  utlstringtoken: 'string',
+};
+
+const transformType = (type: string) => defaultReplacements[type] ?? type;
+
+function overrideType(
+  identifier: string,
+  rawOriginal: string,
+  rawOverride: _.Many<Type> | null | undefined,
+): Type[] {
+  const original = transformType(rawOriginal);
+  if (rawOverride == null) return [original];
+
+  const override = _.castArray(rawOverride);
+
+  if (override.length === 1 && override[0] === original) {
+    console.log(`Unnecessary type override: ${identifier}`);
+  }
+
+  for (const newType of override) {
+    if (!isCompatibleOverride(original, newType)) {
+      console.log(`Incompatible type override: ${identifier} ${original} -> ${newType}`);
+    }
+  }
+
+  return override;
+}
+
 function transformFunction(
   scopeName: string,
   { server, client }: JoinedMethod,
 ): FunctionDeclaration {
   // Prefer server dump as it usually has more information
-  const func = (server || client)!;
-
+  const func = (server ?? client)!;
+  const functionIdentifier = `${scopeName}.${func.name}`;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const extension = functionExtensions[`${scopeName}.${func.name}`] || {};
+  const extension = functionExtensions[functionIdentifier] ?? {};
+
   let argNames: (string | undefined)[];
   if (func.args.every(x => x.name != null)) {
     argNames = func.args.map(x => x.name);
   } else {
     const descNames = extractNamesFromDescription(func.name, func.description);
     if (descNames && descNames.length !== func.args.length) {
-      throw new Error(
-        `${func.name} has invalid arguments (${descNames.length} and ${func.args.length})`,
+      const formattedNames = `[${descNames.join(', ')}]`;
+      console.log(
+        `Invalid inferred arguments: ${functionIdentifier}: ${formattedNames}, ${func.args.length} expected`,
       );
+    } else {
+      argNames = descNames ?? [];
     }
-
-    argNames = descNames || [];
   }
 
   const originalDescription = clearDescription(func.name, func.description);
@@ -67,7 +93,7 @@ function transformFunction(
       : originalDescription;
 
   if (clearDescription(func.name, description) !== description) {
-    throw new Error(`Description of ${scopeName}.${func.name} is invalid:\n${description}`);
+    throw new Error(`Unstable description: ${functionIdentifier}`);
   }
 
   return {
@@ -76,21 +102,24 @@ function transformFunction(
     available: server && client ? 'both' : server ? 'server' : 'client',
     deprecated: extension.deprecated,
     description,
-    returns: _.castArray(extension.returns || transformType(func.returns)),
+    returns: overrideType(`${functionIdentifier}.returns`, func.returns, extension.returns),
     args: func.args.map(
       ({ type }, index): Parameter => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        const argExtension = (extension.args || {})[index] || [];
-        const name = argExtension[0] || formatArgumentName(argNames[index], index);
-        const argDescription = _.defaultTo(argExtension[2], undefined);
+        const [extensionName, extensionType, argDescription] = extension.args?.[index] ?? [];
+        const originalName = formatArgumentName(argNames[index], index);
+        const name = extensionName ?? originalName;
 
-        let types = _.castArray(argExtension[1] || transformType(type));
-        if (name.toLowerCase().endsWith('playerid') && _.isEqual(types, ['int'])) {
-          types = ['PlayerID'];
+        if (originalName === extensionName) {
+          console.log(`Unnecessary argument name override: ${functionIdentifier} ${name}`);
         }
 
         if (!/^\w+$/.test(name)) {
-          throw new Error(`Argument name "${name}" (${scopeName}.${func.name}) is invalid`);
+          console.log(`Invalid argument name: ${functionIdentifier} ${name}`);
+        }
+
+        let types = overrideType(`${functionIdentifier}.args.${name}`, type, extensionType);
+        if (name.toLowerCase().endsWith('playerid') && _.isEqual(types, ['int'])) {
+          types = ['PlayerID'];
         }
 
         return { name, description: argDescription, types };
@@ -132,3 +161,32 @@ export const apiDeclarations: TopLevelElement[] = [
     clientDump.filter((x): x is DumpFunction => x.kind === 'function'),
   ).map(joinedMethods => transformFunction('_G', joinedMethods)),
 ].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
+
+function checkTypes(identifier: string, types: Type[]) {
+  if (!types.every(isValidType)) {
+    console.log(`Invalid type: ${identifier} = ${types}`);
+  }
+}
+
+function checkFunctionDeclaration(func: FunctionDeclaration, scopeName = '_G') {
+  const identifier = `${scopeName}.${func.name}`;
+  checkTypes(`${identifier}.returns`, func.returns);
+  for (const arg of func.args) {
+    checkTypes(`${identifier}.args.${arg.name}`, arg.types);
+  }
+}
+
+for (const declaration of apiDeclarations) {
+  if (declaration.kind === 'function') {
+    checkFunctionDeclaration(declaration);
+    continue;
+  }
+
+  for (const member of declaration.members) {
+    if (member.kind === 'function') {
+      checkFunctionDeclaration(member, declaration.name);
+    } else {
+      checkTypes(`${declaration.name}.${member.name}`, member.types);
+    }
+  }
+}

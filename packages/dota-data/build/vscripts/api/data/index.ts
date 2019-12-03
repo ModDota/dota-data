@@ -102,7 +102,9 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CScriptPrecacheContext.GetValue': { args: { 0: ['key'] } },
   '_G.PrecacheEntityFromTable': { args: { 2: ['context', 'CScriptPrecacheContext'] } },
   '_G.PrecacheEntityListFromTable': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
-  '_G.PrecacheItemByNameAsync': { args: { 0: ['itemName'], 1: ['callback', 'function'] } },
+  '_G.PrecacheItemByNameAsync': {
+    args: { 0: ['itemName'], 1: ['callback', func([['precacheId', 'int']], 'nil')] },
+  },
   '_G.PrecacheItemByNameSync': {
     args: { 0: ['itemName'], 1: ['context', 'CScriptPrecacheContext'] },
   },
@@ -111,7 +113,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.PrecacheUnitByNameAsync': {
     args: {
       0: ['unitName'],
-      1: ['callback', 'function'],
+      1: ['callback', func([['precacheId', 'int']], 'nil')],
       // TODO: Optional?
       2: ['playerId', ['PlayerID', 'nil']],
     },
@@ -124,7 +126,9 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       2: ['playerId', ['PlayerID', 'nil']],
     },
   },
-  '_G.PrecacheUnitFromTableAsync': { args: { 1: ['callback', 'function'] } },
+  '_G.PrecacheUnitFromTableAsync': {
+    args: { 1: ['callback', func([['precacheId', 'int']], 'nil')] },
+  },
   '_G.PrecacheUnitFromTableSync': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
 
   '_G.PrintLinkedConsoleMessage': { args: { 0: ['message'], 1: ['tooltip'] } },
@@ -285,10 +289,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       0: ['owner', 'CBaseEntity'],
       1: ['heroToCopy', 'CDOTA_BaseNPC_Hero'],
       2: ['modifierKeys', 'CreateIllusionsModifierKeys'],
-      3: ['numIllusions', 'int'],
-      4: ['padding', 'int'],
-      5: ['scramblePosition', 'boolean'],
-      6: ['findClearSpace', 'boolean'],
+      3: ['numIllusions'],
+      4: ['padding'],
+      5: ['scramblePosition'],
+      6: ['findClearSpace'],
     },
   },
   'CDOTA_BaseNPC_Hero.KilledHero': {
@@ -300,7 +304,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTA_Buff.HasFunction': { args: { 0: [null, ['ModifierProperty', 'ModifierEvent']] } },
 
   'CDOTA_Item_DataDriven.ApplyDataDrivenModifier': {
-    returns: 'CDOTA_Buff',
     args: {
       '0': [null, 'CDOTA_BaseNPC'],
       '1': [null, 'CDOTA_BaseNPC'],
@@ -529,7 +532,7 @@ export const extraDeclarations = (() => {
   ];
 
   const projectileOptionsVision = (): Member[] => [
-    { kind: 'field', name: 'bProvidesVision', types: ['boolean', 'nil'] },
+    { kind: 'field', name: 'bProvidesVision', types: ['bool', 'nil'] },
     { kind: 'field', name: 'iVisionRadius', types: ['uint', 'nil'] },
     { kind: 'field', name: 'iVisionTeamNumber', types: ['DotaTeam', 'nil'] },
   ];
@@ -567,20 +570,20 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'iUnitTargetTeam', types: ['UnitTargetTeam', 'nil'] },
       { kind: 'field', name: 'iUnitTargetFlags', types: ['UnitTargetFlags', 'nil'] },
       { kind: 'field', name: 'iUnitTargetType', types: ['UnitTargetType', 'nil'] },
-      { kind: 'field', name: 'bIgnoreSource', types: ['boolean', 'nil'] },
-      { kind: 'field', name: 'bHasFrontalCone', types: ['boolean', 'nil'] },
+      { kind: 'field', name: 'bIgnoreSource', types: ['bool', 'nil'] },
+      { kind: 'field', name: 'bHasFrontalCone', types: ['bool', 'nil'] },
 
       // Appearance
       {
         kind: 'field',
         name: 'bDrawsOnMinimap',
-        types: ['boolean', 'nil'],
+        types: ['bool', 'nil'],
         description: '@default false',
       },
       {
         kind: 'field',
         name: 'bVisibleToEnemies',
-        types: ['boolean', 'nil'],
+        types: ['bool', 'nil'],
         description: 'Makes it invisible for all teams.',
       },
 
@@ -602,28 +605,28 @@ export const extraDeclarations = (() => {
 
       // Behavior
       { kind: 'field', name: 'flExpireTime', types: ['float', 'nil'] },
-      { kind: 'field', name: 'bDodgeable', types: ['boolean', 'nil'] },
-      { kind: 'field', name: 'bIsAttack', types: ['boolean', 'nil'] },
+      { kind: 'field', name: 'bDodgeable', types: ['bool', 'nil'] },
+      { kind: 'field', name: 'bIsAttack', types: ['bool', 'nil'] },
       {
         kind: 'field',
         name: 'bReplaceExisting',
-        types: ['boolean', 'nil'],
+        types: ['bool', 'nil'],
         description:
           'When enabled replaces existing projectile from the ability. Does not destroy particle.\n@default false',
       },
 
       // Appearance
-      { kind: 'field', name: 'iSourceAttachment', types: ['ProjectileAttachment', 'nil'] }, // NOT?
+      { kind: 'field', name: 'iSourceAttachment', types: ['ProjectileAttachment', 'nil'] },
       {
         kind: 'field',
         name: 'bDrawsOnMinimap',
-        types: ['boolean', 'nil'],
+        types: ['bool', 'nil'],
         description: '@default false',
       },
       {
         kind: 'field',
         name: 'bVisibleToEnemies',
-        types: ['boolean', 'nil'],
+        types: ['bool', 'nil'],
         description: '@default true',
       },
 
