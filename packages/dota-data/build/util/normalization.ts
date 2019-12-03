@@ -18,7 +18,7 @@ export function formatArgumentName(name: string | null | undefined, index: numbe
 
 export function formatDescription(description: string) {
   if (description === '') return;
-  if (!description.endsWith('.')) description += '.';
+  if (!/[!?.]$/.test(description)) description += '.';
   return _.upperFirst(description);
 }
 
