@@ -113,10 +113,18 @@ export async function generateApi(replacements: Record<string, string>) {
       .map(
         (serverClass): Class => {
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          const extension = classExtensions[serverClass.name] || {};
+          const extension = classExtensions[serverClass.name] ?? {};
           const clientClass = dump.client.find(
             (x): x is DumpClass => x.name.replace(/^C_/, 'C') === serverClass.name,
           );
+
+          const members = [
+            ...joinMethods(
+              serverClass.members,
+              clientClass ? clientClass.members : [],
+            ).map(result => transformFunction(serverClass.name, result)),
+            ...(extension.members ?? []),
+          ];
 
           return {
             kind: 'class',
@@ -125,9 +133,7 @@ export async function generateApi(replacements: Record<string, string>) {
             description: extension.description,
             extend: serverClass.extend,
             instance: serverClass.instance,
-            members: joinMethods(serverClass.members, clientClass ? clientClass.members : [])
-              .map(result => transformFunction(serverClass.name, result))
-              .sort((a, b) => a.name.localeCompare(b.name, 'en')),
+            members: members.sort((a, b) => a.name.localeCompare(b.name, 'en')),
           };
         },
       ),

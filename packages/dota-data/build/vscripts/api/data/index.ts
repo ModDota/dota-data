@@ -8,6 +8,30 @@ export const classExtensions: Record<string, ExtensionClass> = {
     description:
       'Note: Actual `CScriptHTTPRequest` global exists only after CreateHTTPRequest is called.',
   },
+  CEntityInstance: {
+    members: [
+      {
+        kind: 'function',
+        name: 'IsNull',
+        available: 'both',
+        description: 'Has underlying C++ entity object been deleted?',
+        returns: ['bool'],
+        args: [],
+      },
+    ],
+  },
+  CBaseEntity: {
+    members: [
+      {
+        kind: 'function',
+        name: 'IsBaseNPC',
+        available: 'both',
+        description: 'Is this entity an CDOTA_BaseNPC?',
+        returns: ['bool'],
+        args: [],
+      },
+    ],
+  },
 };
 
 export const functionExtensions: Record<string, ExtensionFunction> = {

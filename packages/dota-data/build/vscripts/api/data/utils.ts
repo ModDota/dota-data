@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { ArrayType, FunctionType, Parameter, Type } from '../types';
+import { ArrayType, FunctionType, Member, Parameter, Type } from '../types';
 
 export const func = (args: [string, _.Many<string>][], returns: _.Many<string>): FunctionType => ({
   returns: _.castArray(returns),
@@ -9,6 +9,7 @@ export const array = (of: Type): ArrayType => ({ array: of });
 
 export interface ExtensionClass {
   description?: string;
+  members?: Member[];
 }
 
 export interface ExtensionFunction {
