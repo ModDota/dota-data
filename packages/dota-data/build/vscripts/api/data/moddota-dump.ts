@@ -5,7 +5,7 @@ const onProjectileHitDescription =
 
 export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.FirstMoveChild': { returns: 'CBaseEntity' },
-  'CBaseEntity.FollowEntity': { args: { '0': [null, 'CBaseEntity'] } },
+  'CBaseEntity.FollowEntity': { description: '', args: { '0': [null, 'CBaseEntity'] } },
   'CBaseEntity.GetMoveParent': { returns: 'CBaseEntity' },
   'CBaseEntity.GetOwner': { returns: 'CBaseEntity' },
   'CBaseEntity.GetOwnerEntity': { returns: 'CBaseEntity' },
@@ -479,14 +479,29 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CScriptParticleManager.SetParticleControlOrientation': {
     args: { '0': ['particle', 'ParticleID'], '1': ['controlPoint'] },
   },
-  'Convars.GetBool': { returns: 'bool' },
   'Convars.GetCommandClient': { returns: 'CDOTAPlayer' },
   'Convars.GetDOTACommandClient': { returns: 'CDOTAPlayer' },
-  'Convars.GetFloat': { returns: 'number' },
-  'Convars.GetInt': { returns: 'number' },
-  'Convars.GetStr': { returns: 'string' },
-  'Convars.RegisterCommand': { args: { '1': ['callback', 'function'], '2': ['description'] } },
-  'Convars.RegisterConvar': { args: { '2': ['description'] } },
+  'Convars.GetBool': { returns: ['bool', 'nil'] },
+  'Convars.GetFloat': { returns: ['float', 'nil'] },
+  'Convars.GetInt': { returns: ['int', 'nil'] },
+  'Convars.GetStr': { returns: ['string', 'nil'] },
+  'Convars.RegisterCommand': {
+    args: {
+      '1': [
+        'callback',
+        func(
+          [
+            ['name', 'string'],
+            // TODO: Make a flag for varargs?
+            ['...args', array('string')],
+          ],
+          'nil',
+        ),
+      ],
+      '3': [null, 'ConVarFlags'],
+    },
+  },
+  'Convars.RegisterConvar': { args: { '3': [null, 'ConVarFlags'] } },
   'Convars.SetBool': { args: { '1': ['value'] } },
   'Convars.SetFloat': { args: { '1': ['value'] } },
   'Convars.SetInt': { args: { '1': ['value'] } },
@@ -605,7 +620,6 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
       '0': ['team', 'DotaTeam'],
       '1': [null, 'CBaseEntity'],
       '4': [null, 'MinimapEventType'],
-      '5': ['duration', 'float'],
     },
   },
   '_G.PauseGame': { args: { '0': ['paused'] } },

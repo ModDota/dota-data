@@ -102,8 +102,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CScriptPrecacheContext.GetValue': { args: { 0: ['key'] } },
   '_G.PrecacheEntityFromTable': { args: { 2: ['context', 'CScriptPrecacheContext'] } },
   '_G.PrecacheEntityListFromTable': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
-  '_G.PrecacheItemByNameAsync': { args: { '0': ['itemName'], '1': ['callback', 'function'] } },
-  '_G.PrecacheItemByNameSync': { args: { 1: ['context', 'CScriptPrecacheContext'] } },
+  '_G.PrecacheItemByNameAsync': { args: { 0: ['itemName'], 1: ['callback', 'function'] } },
+  '_G.PrecacheItemByNameSync': {
+    args: { 0: ['itemName'], 1: ['context', 'CScriptPrecacheContext'] },
+  },
   '_G.PrecacheModel': { args: { 1: [null, 'CScriptPrecacheContext'] } },
   '_G.PrecacheResource': { args: { 2: ['context', 'CScriptPrecacheContext'] } },
   '_G.PrecacheUnitByNameAsync': {
@@ -143,10 +145,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.StartSoundEventFromPositionUnreliable': { args: { 0: ['soundName'], 1: ['position'] } },
   'CBaseEntity.EmitSoundParams': { args: { 0: ['soundName'] } },
   'GridNav.IsNearbyTree': { args: { 2: ['checkFullTreeRadius'] } },
-  'CDOTA_BaseNPC_Hero.AddExperience': {
-    description: '',
-    args: { 0: ['xp'], '1': [null, 'ModifyXpReason'] },
-  },
+  'CDOTA_BaseNPC_Hero.AddExperience': { description: '', args: { 1: [null, 'ModifyXpReason'] } },
   '_G.ListenToGameEvent': {
     returns: 'EventListenerID',
     args: {
