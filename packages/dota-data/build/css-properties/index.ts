@@ -4,8 +4,8 @@ import { Property, types } from './types';
 
 const EXAMPLES_REGEXP = /\n\n<b>Examples?:<\/b><pre>(.+)<\/pre>$/s;
 
-export async function generateCssProperties() {
-  const result = (await readDump('dump_panorama_css_properties'))
+export function generateCssProperties() {
+  const result = readDump('dump_panorama_css_properties')
     .trim()
     .slice(4)
     .split(/\n=== /)
@@ -37,8 +37,6 @@ export async function generateCssProperties() {
       return [rule, property];
     });
 
-  await Promise.all([
-    outputJson('css-properties', _.fromPairs(result)),
-    outputFile('css-properties.d.ts', types),
-  ]);
+  outputJson('css-properties', _.fromPairs(result));
+  outputFile('css-properties.d.ts', types);
 }

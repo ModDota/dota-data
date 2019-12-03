@@ -25,7 +25,7 @@ export async function generateAttributes() {
       }),
     );
 
-  await outputJson('attributes', {
+  outputJson('attributes', {
     strength: getBonuses(['health', 'healthRegenerationFlat', 'magicResistance']),
     agility: getBonuses(['armor', 'attackSpeed', 'movementSpeed']),
     intelligence: getBonuses(['mana', 'manaRegenerationFlat', 'spellDamage']),

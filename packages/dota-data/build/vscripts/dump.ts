@@ -1,3 +1,9 @@
+import { readDump } from '../util';
+
+const reloadMessage = 'Initializing script VM...\n...done';
+export const serverDump: Dump = JSON.parse(readDump('script_reload').replace(reloadMessage, ''));
+export const clientDump: Dump = JSON.parse(readDump('cl_script_reload').replace(reloadMessage, ''));
+
 export type Dump = (DumpConstant | DumpClass | DumpFunction)[];
 
 export interface DumpConstant {

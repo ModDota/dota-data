@@ -20,8 +20,8 @@ function parseDefinition(definition: string) {
   return { name, args };
 }
 
-export async function generatePanoramaEvents() {
-  const dump = await readDump('dump_panorama_events');
+export function generatePanoramaEvents() {
+  const dump = readDump('dump_panorama_events');
   const result = _.fromPairs(
     _.chunk(
       `${dump.trim().slice(57, -1)}-`

@@ -413,7 +413,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.Warning': { args: { 0: ['message'] } },
 };
 
-export const attachedTypes = (() => {
+export const extraDeclarations = (() => {
   const context: (FunctionDeclaration | Class | Interface)[] = [];
   const scope = (scopeName: string) => {
     const currentScope: Class = { kind: 'class', name: scopeName, members: [] };

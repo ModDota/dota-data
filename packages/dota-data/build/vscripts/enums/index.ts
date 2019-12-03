@@ -1,7 +1,6 @@
 import _ from 'lodash';
+import { clientDump, DumpConstant, serverDump } from '../dump';
 import { modifierPropertyData } from '../modifier-properties/data';
-import { DumpConstant } from '../types';
-import { readVScriptsDump } from '../util';
 import {
   droppedConstants,
   enumRenames,
@@ -33,10 +32,9 @@ function normalizeScopeName(s: string) {
   return _.upperFirst(_.camelCase(s.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
 }
 
-export async function generateEnums() {
-  const dump = await readVScriptsDump();
-  const serverConstants = dump.server.filter((x): x is DumpConstant => x.kind === 'constant');
-  const clientConstants = dump.client.filter((x): x is DumpConstant => x.kind === 'constant');
+export const { enumDeclarations, enumReplacements } = (() => {
+  const serverConstants = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
+  const clientConstants = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
   const allConstants = [
     ...serverConstants,
     ...clientConstants.filter(cc => !serverConstants.some(sc => sc.name === cc.name)),
@@ -202,5 +200,5 @@ export async function generateEnums() {
     value => value.map(x => x.name).join(' | '),
   );
 
-  return { declarations: [...constants, ...enums], replacements };
-}
+  return { enumDeclarations: [...constants, ...enums], enumReplacements: replacements };
+})();

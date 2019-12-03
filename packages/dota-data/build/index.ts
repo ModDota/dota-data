@@ -6,7 +6,7 @@ import { generatePanorama } from './panorama';
 import { generateResources } from './resources';
 import { generateVScripts } from './vscripts';
 
-const generators: Record<string, () => Promise<void>> = {
+const generators: Record<string, () => void | Promise<void>> = {
   attributes: generateAttributes,
   cssProperties: generateCssProperties,
   engineEnums: generateEngineEnums,
