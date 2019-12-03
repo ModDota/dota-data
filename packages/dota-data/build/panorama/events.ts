@@ -22,7 +22,7 @@ function parseDefinition(definition: string) {
 
 export function generatePanoramaEvents() {
   const dump = readDump('dump_panorama_events');
-  const result = _.fromPairs(
+  const result = Object.fromEntries(
     _.chunk(
       `${dump.trim().slice(57, -1)}-`
         .split('\n')

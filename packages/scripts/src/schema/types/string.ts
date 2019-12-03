@@ -12,7 +12,7 @@ export class StringSchema extends Schema {
   }
 
   public toSchema(): object {
-    return { type: 'string', pattern: this._pattern != null ? this._pattern.source : undefined };
+    return { type: 'string', pattern: this._pattern?.source };
   }
 
   public validate(value: unknown, context: ValidationContext) {

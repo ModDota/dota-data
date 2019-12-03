@@ -8,17 +8,17 @@ const url =
 
 export async function generateAttributes() {
   const data: string = (await got(url, { json: true })).body.query.pages[0].revisions[0].content;
-  const values = _.fromPairs(
+  const values = Object.fromEntries(
     data
       .split('\n')
       .map(x => x.match(/\['(.+)'\] = (.+),/))
       .filter(<T>(x: T | null): x is T => x != null)
-      .map(([, key, value]): [string, number] => [_.camelCase(key), Number(value)]),
+      .map(([, key, value]) => [_.camelCase(key), Number(value)]),
   );
 
   const getBonuses = (bonuses: string[]): Record<string, number> =>
-    _.fromPairs(
-      bonuses.map((bonus): [string, number] => {
+    Object.fromEntries(
+      bonuses.map(bonus => {
         const propName = `bonus${_.upperFirst(bonus)}`;
         if (values[propName] == null) throw new Error(`Couldn't find attribute "${bonus}"`);
         return [bonus, values[propName]];

@@ -37,6 +37,6 @@ export function generateCssProperties() {
       return [rule, property];
     });
 
-  outputJson('css-properties', _.fromPairs(result));
+  outputJson('css-properties', Object.fromEntries(result));
   outputFile('css-properties.d.ts', types);
 }

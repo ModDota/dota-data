@@ -73,6 +73,6 @@ export async function generateEvents() {
     })),
   );
 
-  const events = _.fromPairs(files.map(({ name, content }) => [name, content]));
+  const events = Object.fromEntries(files.map(({ name, content }) => [name, content]));
   await Promise.all([outputJson('events', events), outputFile('events.d.ts', types)]);
 }

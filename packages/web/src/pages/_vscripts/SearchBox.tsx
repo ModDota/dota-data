@@ -64,6 +64,7 @@ export const SearchBox: React.FC<{ className?: string }> = React.memo(({ classNa
   const routerSearch = useRouterSearch();
   const [search, setSearch] = useState(routerSearch);
   useEffect(() => {
+    // TODO: Use optional chaining
     const listener = () => setSearch((Router.query || {}).search || '');
     Router.events.on('routeChangeComplete', listener);
     return () => Router.events.off('routeChangeComplete', listener);

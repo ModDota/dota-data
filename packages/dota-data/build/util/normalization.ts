@@ -72,11 +72,11 @@ export function extractNamesFromDescription(funcName: string, description?: stri
   };
 
   return (
-    match(argumentNameRegExp1, splitArgumentMatch1to5) ||
-    match(argumentNameRegExp2, splitArgumentMatch1to5) ||
-    match(argumentNameRegExp3, splitArgumentMatch1to5) ||
-    match(argumentNameRegExp4, splitArgumentMatch1to5) ||
-    match(argumentNameRegExp5, splitArgumentMatch1to5) ||
+    match(argumentNameRegExp1, splitArgumentMatch1to5) ??
+    match(argumentNameRegExp2, splitArgumentMatch1to5) ??
+    match(argumentNameRegExp3, splitArgumentMatch1to5) ??
+    match(argumentNameRegExp4, splitArgumentMatch1to5) ??
+    match(argumentNameRegExp5, splitArgumentMatch1to5) ??
     match(createArgumentNameRegExp6(funcName), s => s.split(', '))
   );
 }
