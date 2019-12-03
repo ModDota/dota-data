@@ -21,7 +21,7 @@ export async function generateCssProperties() {
       rule = rule.slice(0, -4);
       const info = _.unescape(restLines.join('\n'));
       const description = info.replace(EXAMPLES_REGEXP, '');
-      const examples = _.defaultTo(_.nth(info.match(EXAMPLES_REGEXP), 1), '')
+      const examples = (info.match(EXAMPLES_REGEXP)?.[1] ?? '')
         .split('\n')
         .filter(x => x !== '')
         .reduceRight<string[]>(

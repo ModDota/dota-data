@@ -23,7 +23,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
         'listener',
         func(
           [
-            ['userId', 'number'],
+            ['userId', 'EntityIndex'],
             ['event', 'table'],
           ],
           'nil',

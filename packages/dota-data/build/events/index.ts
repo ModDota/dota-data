@@ -30,7 +30,7 @@ function parseFile(content: string) {
         return;
       }
 
-      let description = _.nth(value.match(/\/\/ (.+)$/), 1);
+      let description = value.match(/\/\/ (.+)$/)?.[1];
       description = description != null ? formatDescription(description) : undefined;
 
       if (parsingName == null) {
@@ -48,7 +48,7 @@ function parseFile(content: string) {
           type = 'PlayerID';
         }
 
-        if (/ent(ity)?_?index/i.test(name)) {
+        if (/ent(ity)?_?index/i.test(name) || name.includes('userid')) {
           type = 'EntityIndex';
         }
 
