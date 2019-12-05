@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { generateAttributes } from './attributes';
 import { generateCssProperties } from './css-properties';
 import { generateEngineEnums } from './engine-enums';
@@ -6,6 +7,11 @@ import { generatePanorama } from './panorama';
 import { generateResources } from './resources';
 import { generateVScripts } from './vscripts';
 
+function generateScriptTypes() {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require('./script-types');
+}
+
 const generators: Record<string, () => void | Promise<void>> = {
   attributes: generateAttributes,
   cssProperties: generateCssProperties,
@@ -13,14 +19,20 @@ const generators: Record<string, () => void | Promise<void>> = {
   events: generateEvents,
   panorama: generatePanorama,
   resources: generateResources,
+  scriptTypes: generateScriptTypes,
   vscripts: generateVScripts,
 };
 
 (async () => {
-  const generatorNames =
+  let generatorNames =
     process.env.DOTA_DATA_GENERATORS != null
       ? process.env.DOTA_DATA_GENERATORS.split(',')
       : Object.keys(generators);
+
+  const includesScriptTypes = generatorNames.includes('scriptTypes');
+  if (includesScriptTypes) {
+    generatorNames = _.without(generatorNames, 'scriptTypes');
+  }
 
   await Promise.all(
     generatorNames.map(async name => {
@@ -28,6 +40,10 @@ const generators: Record<string, () => void | Promise<void>> = {
       await generators[name]();
     }),
   );
+
+  if (includesScriptTypes) {
+    generateScriptTypes();
+  }
 })().catch(error => {
   console.error(error);
   process.exit(1);

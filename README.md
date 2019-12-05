@@ -7,4 +7,3 @@ Data from these packages is available on [dota-data web page](https://dota-data.
 ## Packages
 
 - [dota-data](packages/dota-data/README.md)
-- [@dota-data/scripts](packages/scripts/README.md)

@@ -4,12 +4,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "run-s build:packages build:ts",
-    "build:packages": "lerna --no-private run --parallel build",
-    "build:ts": "tsc -b packages",
-    "dev": "run-p dev:packages dev:ts",
-    "dev:packages": "lerna --no-private run --parallel dev",
-    "dev:ts": "tsc -b packages --watch",
+    "build": "yarn workspace dota-data build",
+    "dev": "yarn workspace dota-data dev",
     "lint": "run-p lint:prettier lint:eslint",
     "lint:eslint": "eslint . --ext .js,.ts,.tsx",
     "lint:prettier": "prettier --check **/*.{ts,tsx,js,md,yml,json}",
@@ -29,8 +25,9 @@
     "parserOptions": {
       "project": [
         "tsconfig.json",
-        "packages/*/tsconfig.json",
-        "packages/dota-data/build/tsconfig.json"
+        "packages/dota-data/tsconfig.json",
+        "packages/dota-data/build/tsconfig.json",
+        "packages/web/tsconfig.json"
       ]
     }
   },

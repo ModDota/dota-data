@@ -12,28 +12,35 @@
     "files/**/*.{json,ts}"
   ],
   "scripts": {
-    "build": "rimraf files/**/* && ts-node build",
-    "dev": "nodemon"
+    "build": "run-s build:clean build:static build:tsc",
+    "build:clean": "rimraf \"{files,lib}/**/*\"",
+    "build:static": "ts-node build",
+    "build:tsc": "tsc",
+    "dev": "run-p dev:static dev:tsc",
+    "dev:static": "nodemon",
+    "dev:tsc": "tsc --watch"
   },
   "nodemonConfig": {
     "exec": "ts-node --transpile-only build",
     "ext": "ts,json",
     "watch": [
       "build",
+      "src/schema",
+      "src/schemas",
       "../dumper/dump"
     ]
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
     "fs-extra": "^8.1.0",
+    "got": "^10.0.1",
     "lodash": "^4.17.15",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "vdf-extra": "^2.2.2"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
     "@types/fs-extra": "^8.0.1",
-    "@types/lodash": "^4.14.149",
-    "dedent": "^0.7.0",
-    "got": "^10.0.1",
-    "vdf-extra": "^2.2.2"
+    "dedent": "^0.7.0"
   }
 }

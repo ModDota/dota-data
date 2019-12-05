@@ -1,8 +1,10 @@
 {
-  "extends": "../tsconfig.settings.json",
-  "include": ["src"],
+  "extends": "@ark120202/typescript-config/node/10.json",
+  "include": ["src/**/*"],
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "lib"
+    "outDir": "lib",
+    // TODO: https://github.com/sindresorhus/got/issues/960
+    "skipLibCheck": true
   }
 }

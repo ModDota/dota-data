@@ -5,3 +5,6 @@ export async function tryReadJson(filePath: string) {
     return await fs.readJson(filePath);
   } catch {}
 }
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+export const CACHE_VERSION = require('../../package.json').version;

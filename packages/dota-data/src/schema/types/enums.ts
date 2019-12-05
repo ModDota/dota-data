@@ -1,5 +1,5 @@
-import enums from 'dota-data/files/engine-enums';
 import _ from 'lodash';
+import enums from '../../../files/engine-enums';
 import { Schema, TsContext, ValidationContext } from '../schema';
 
 export class EnumsSchema extends Schema {

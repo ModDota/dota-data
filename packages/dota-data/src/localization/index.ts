@@ -47,10 +47,9 @@ export async function getLocalization(
     } catch {}
   }
 
-  const indexEntries = await getIndexEntries(`${cache.path}/index.json`);
-  const updatedHashes = _.fromPairs(
-    indexEntries.filter(e => e.language === language).map(e => [e.type, e.sha]),
-  );
+  const allEntries = await getIndexEntries(`${cache.path}/index.json`);
+  const languageEntries = allEntries.filter(e => e.language === language);
+  const updatedHashes = _.fromPairs(languageEntries.map(e => [e.type, e.sha]));
 
   const hashCachePath = `${cache.path}/${language}.hash.json`;
   if (_.isEqual(await tryReadJson(hashCachePath), updatedHashes)) {
@@ -61,7 +60,11 @@ export async function getLocalization(
     await fs.outputJson(hashCachePath, updatedHashes);
   }
 
-  const updatedResults = await fetchLocalization(language, Object.keys(updatedHashes));
+  const updatedResults = await fetchLocalization(
+    language,
+    languageEntries.map(e => e.type),
+  );
+
   await fs.outputJson(resultsCachePath, updatedResults);
   return updatedResults;
 }

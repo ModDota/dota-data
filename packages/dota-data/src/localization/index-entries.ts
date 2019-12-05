@@ -1,5 +1,5 @@
 import * as fs from 'fs-extra';
-import { tryReadJson } from '../utils/cache';
+import { CACHE_VERSION, tryReadJson } from '../utils/cache';
 import { getDotaDirectoryContents } from '../utils/github';
 import { DotaLanguage } from './languages';
 
@@ -25,36 +25,31 @@ const fetchIndexEntries = async () =>
       },
     );
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const CACHE_VERSION = require('../../package.json').version;
 // Cache responses for 120s, because unauthenticated requests are limited to 60 per hour
 const CACHE_LIFETIME = 120000;
-
 async function getCachedEntries(cachePath: string) {
   const content: IndexCache | undefined = await tryReadJson(cachePath);
   if (
     content &&
-    Date.now() - content.timestamp < CACHE_LIFETIME &&
-    content.version === CACHE_VERSION
+    content.version === CACHE_VERSION &&
+    Date.now() - content.timestamp < CACHE_LIFETIME
   ) {
     return content.entries;
   }
 }
 
 export async function getIndexEntries(cachePath?: string) {
-  if (cachePath != null) {
-    const cachedEntries = await getCachedEntries(cachePath);
-    if (cachedEntries) {
-      return cachedEntries;
-    }
+  if (cachePath == null) {
+    return fetchIndexEntries();
+  }
+
+  const cachedEntries = await getCachedEntries(cachePath);
+  if (cachedEntries) {
+    return cachedEntries;
   }
 
   const entries = await fetchIndexEntries();
-
-  if (cachePath != null) {
-    const cache: IndexCache = { timestamp: Date.now(), version: CACHE_VERSION, entries };
-    await fs.outputJson(cachePath, cache);
-  }
-
+  const cache: IndexCache = { timestamp: Date.now(), version: CACHE_VERSION, entries };
+  await fs.outputJson(cachePath, cache);
   return entries;
 }
