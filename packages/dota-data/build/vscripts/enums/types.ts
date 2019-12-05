@@ -1,9 +1,9 @@
 import { exportNamespacedRoot } from '../../util';
 
-export const types = exportNamespacedRoot(__filename, 'enums', 'enums.TopLevelElement[]');
+export const types = exportNamespacedRoot(__filename, 'enums', 'enums.Declaration[]');
 
 // EXPORT START
-export type TopLevelElement = Constant | Enum;
+export type Declaration = Constant | Enum;
 export type Availability = 'server' | 'both';
 
 export interface Constant {

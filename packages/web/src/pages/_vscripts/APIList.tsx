@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import styled from 'styled-components';
 import { MaybeLazyList } from '~components/MaybeLazyList';
-import { TopLevelElement, useFilteredData } from './data';
+import { Declaration, useFilteredData } from './data';
 import { SearchBox } from './SearchBox';
 import { ClassDeclaration } from './types/top/ClassDeclaration';
 import { Constant } from './types/top/Constant';
@@ -35,21 +35,21 @@ const ListEnum = listElement.withComponent(Enum);
 const ListConstant = listElement.withComponent(Constant);
 const ListFunctionDeclaration = listElement.withComponent(FunctionDeclaration);
 
-const renderItem = (e: TopLevelElement, style?: React.CSSProperties): React.ReactNode => {
-  const commonProps = { style, key: e.name };
-  switch (e.kind) {
+const renderItem = (declaration: Declaration, style?: React.CSSProperties): React.ReactNode => {
+  const common = { style, key: declaration.name };
+  switch (declaration.kind) {
     case 'class':
-      return <ListClassDeclaration {...commonProps} element={e} />;
+      return <ListClassDeclaration {...common} declaration={declaration} />;
     case 'enum':
-      return <ListEnum {...commonProps} element={e} />;
+      return <ListEnum {...common} element={declaration} />;
     case 'constant':
-      return <ListConstant {...commonProps} element={e} />;
+      return <ListConstant {...common} element={declaration} />;
     case 'function':
-      return <ListFunctionDeclaration {...commonProps} context="functions" element={e} />;
+      return <ListFunctionDeclaration {...common} context="functions" declaration={declaration} />;
   }
 };
 
-const SearchList = dynamic<{ data: TopLevelElement[] }>(
+const SearchList = dynamic<{ data: Declaration[] }>(
   Promise.resolve(({ data }) =>
     data.length > 0 ? (
       <MaybeLazyList isLazy={true} data={data} render={renderItem} />
@@ -60,7 +60,7 @@ const SearchList = dynamic<{ data: TopLevelElement[] }>(
   { ssr: false, loading: () => null },
 );
 
-const ExploreList: React.FC<{ data: TopLevelElement[] }> = ({ data }) =>
+const ExploreList: React.FC<{ data: Declaration[] }> = ({ data }) =>
   data.length > 0 ? (
     <MaybeLazyList isLazy={false} data={data} render={renderItem} />
   ) : (

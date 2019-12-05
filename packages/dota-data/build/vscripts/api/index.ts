@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { clearDescription, extractNamesFromDescription, formatArgumentName } from '../../util';
 import { clientDump, DumpClass, DumpFunction, DumpMethod, serverDump } from '../dump';
 import { classExtensions, extraDeclarations, functionExtensions } from './data';
-import { Class, FunctionDeclaration, Parameter, TopLevelElement, Type } from './types';
+import * as apiTypes from './types';
 import { isCompatibleOverride, isValidType } from './validation';
 
 export { types as apiTypes } from './types';
@@ -38,8 +38,8 @@ const transformType = (type: string) => defaultReplacements[type] ?? type;
 function overrideType(
   identifier: string,
   rawOriginal: string,
-  rawOverride: _.Many<Type> | null | undefined,
-): Type[] {
+  rawOverride: _.Many<apiTypes.Type> | null | undefined,
+): apiTypes.Type[] {
   const original = transformType(rawOriginal);
   if (rawOverride == null) return [original];
 
@@ -61,7 +61,7 @@ function overrideType(
 function transformFunction(
   scopeName: string,
   { server, client }: JoinedMethod,
-): FunctionDeclaration {
+): apiTypes.FunctionDeclaration {
   // Prefer server dump as it usually has more information
   const func = (server ?? client)!;
   const functionIdentifier = `${scopeName}.${func.name}`;
@@ -105,7 +105,7 @@ function transformFunction(
     description,
     returns: overrideType(`${functionIdentifier}.returns`, func.returns, extension.returns),
     args: func.args.map(
-      ({ type }, index): Parameter => {
+      ({ type }, index): apiTypes.FunctionParameter => {
         const [extensionName, extensionType, argDescription] = extension.args?.[index] ?? [];
         const originalName = formatArgumentName(argNames[index], index);
         const name = extensionName ?? originalName;
@@ -129,7 +129,7 @@ function transformFunction(
   };
 }
 
-function transformClass(serverClass: DumpClass): Class {
+function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const extension = classExtensions[serverClass.name] ?? {};
   const clientClass = clientDump.find(
@@ -154,7 +154,7 @@ function transformClass(serverClass: DumpClass): Class {
   };
 }
 
-export const apiDeclarations: TopLevelElement[] = [
+export const apiDeclarations: apiTypes.Declaration[] = [
   ...extraDeclarations,
   ...serverDump.filter((x): x is DumpClass => x.kind === 'class').map(transformClass),
   ...joinMethods(
@@ -163,13 +163,13 @@ export const apiDeclarations: TopLevelElement[] = [
   ).map(joinedMethods => transformFunction('_G', joinedMethods)),
 ].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
 
-function checkTypes(identifier: string, types: Type[]) {
+function checkTypes(identifier: string, types: apiTypes.Type[]) {
   if (!types.every(isValidType)) {
     console.log(`Invalid type: ${identifier} = ${types}`);
   }
 }
 
-function checkFunctionDeclaration(func: FunctionDeclaration, scopeName = '_G') {
+function checkFunctionDeclaration(func: apiTypes.FunctionDeclaration, scopeName = '_G') {
   const identifier = `${scopeName}.${func.name}`;
   checkTypes(`${identifier}.returns`, func.returns);
   for (const arg of func.args) {

@@ -52,30 +52,34 @@ const ClassMembers = styled(CommonGroupMembers)`
 export const ClassDeclaration: React.FC<{
   className?: string;
   style?: React.CSSProperties;
-  element: api.Class;
-}> = ({ className, style, element }) => (
+  declaration: api.ClassDeclaration;
+}> = ({ className, style, declaration }) => (
   <ClassWrapper className={className} style={style}>
     <ClassHeader>
       <ClassSignature>
         <CenteredKindIcon kind="class" size="big" />
-        <ClassName>{element.name}</ClassName>
+        <ClassName>{declaration.name}</ClassName>
         &nbsp;
-        {element.extend && <ClassExtends extend={element.extend} />}
+        {declaration.extend && <ClassExtends extend={declaration.extend} />}
       </ClassSignature>
       <ElementBadges>
-        <AvailabilityBadge available={element.clientName != null ? 'both' : 'server'} />
-        <FindReferencesButton name={element.name} />
-        <ElementLink scope={element.name} />
+        <AvailabilityBadge available={declaration.clientName != null ? 'both' : 'server'} />
+        <FindReferencesButton name={declaration.name} />
+        <ElementLink scope={declaration.name} />
       </ElementBadges>
     </ClassHeader>
-    <ClassDescription description={element.description} />
-    {element.members.length > 0 && (
+    <ClassDescription description={declaration.description} />
+    {declaration.members.length > 0 && (
       <ClassMembers>
-        {element.members.map(member =>
+        {declaration.members.map(member =>
           member.kind === 'field' ? (
-            <Field key={member.name} element={member} context={element.name} />
+            <Field key={member.name} element={member} context={declaration.name} />
           ) : (
-            <FunctionDeclaration key={member.name} element={member} context={element.name} />
+            <FunctionDeclaration
+              key={member.name}
+              declaration={member}
+              context={declaration.name}
+            />
           ),
         )}
       </ClassMembers>

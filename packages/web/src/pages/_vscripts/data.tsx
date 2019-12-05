@@ -4,10 +4,9 @@ import _ from 'lodash';
 import { useRouter } from '~utils/hooks';
 import { doSearch, useRouterSearch } from './search';
 
-const allData = [...api, ...enums];
-export type TopLevelElement = typeof topLevelData[number];
-export const topLevelData = allData.filter(
-  <T extends { kind: string }>(x: T | api.Interface): x is T => x.kind !== 'interface',
+export type Declaration = typeof topLevelData[number];
+export const topLevelData = [...api, ...enums].filter(
+  <T extends { kind: string }>(x: T | api.InterfaceDeclaration): x is T => x.kind !== 'interface',
 );
 
 export const useFilteredData = () => {
@@ -34,9 +33,9 @@ export const useFilteredData = () => {
 };
 
 const interfaces = _.fromPairs(
-  api.filter((x): x is api.Interface => x.kind === 'interface').map(x => [x.name, x]),
+  api.filter((x): x is api.InterfaceDeclaration => x.kind === 'interface').map(x => [x.name, x]),
 );
-export const getInterfacesForTypes = (types: api.Type[]): api.Interface[] => {
+export const getInterfacesForTypes = (types: api.Type[]): api.InterfaceDeclaration[] => {
   const unpackedTypes = types.map(type =>
     typeof type === 'object' && 'array' in type ? type.array : type,
   ) as Exclude<api.Type, api.ArrayType>[];

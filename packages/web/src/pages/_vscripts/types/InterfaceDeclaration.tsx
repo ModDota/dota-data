@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { CenteredKindIcon, CommonGroupMembers, CommonGroupWrapper } from './common';
 import { Field } from './Field';
-import { FunctionDeclaration } from './top/FunctionDeclaration';
 
 const InterfaceWrapper = styled(CommonGroupWrapper)``;
 const InterfaceHeader = styled.div`
@@ -28,23 +27,21 @@ const InterfaceMembers = styled(CommonGroupMembers)`
 
 export const InterfaceDeclaration: React.FC<{
   className?: string;
-  element: api.Interface;
-}> = ({ className, element }) => (
+  declaration: api.InterfaceDeclaration;
+}> = ({ className, declaration }) => (
   <InterfaceWrapper className={className}>
     <InterfaceHeader>
       <CenteredKindIcon kind="interface" size="small" />
-      <InterfaceName>{element.name}</InterfaceName>
+      <InterfaceName>{declaration.name}</InterfaceName>
     </InterfaceHeader>
-    {element.description && <InterfaceDescription>{element.description}</InterfaceDescription>}
-    {element.members.length > 0 && (
+    {declaration.description && (
+      <InterfaceDescription>{declaration.description}</InterfaceDescription>
+    )}
+    {declaration.members.length > 0 && (
       <InterfaceMembers>
-        {element.members.map(member =>
-          member.kind === 'field' ? (
-            <Field key={member.name} element={member} />
-          ) : (
-            <FunctionDeclaration key={member.name} element={member} />
-          ),
-        )}
+        {declaration.members.map(member => (
+          <Field key={member.name} element={member} />
+        ))}
       </InterfaceMembers>
     )}
   </InterfaceWrapper>

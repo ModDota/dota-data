@@ -1,5 +1,5 @@
 import dedent from 'dedent';
-import { Class, FunctionDeclaration, FunctionType, Interface, Member, Type } from '../types';
+import * as apiTypes from '../types';
 import { moddotaDump } from './moddota-dump';
 import { array, ExtensionClass, ExtensionFunction, func } from './utils';
 
@@ -422,12 +422,12 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
 };
 
 export const extraDeclarations = (() => {
-  const context: (FunctionDeclaration | Class | Interface)[] = [];
+  const context: apiTypes.Declaration[] = [];
   const scope = (scopeName: string) => {
-    const currentScope: Class = { kind: 'class', name: scopeName, members: [] };
+    const currentScope: apiTypes.ClassDeclaration = { kind: 'class', name: scopeName, members: [] };
     context.push(currentScope);
     const scopeContext = {
-      call(fn: FunctionType) {
+      call(fn: apiTypes.FunctionType) {
         currentScope.call = fn;
         return this;
       },
@@ -438,7 +438,7 @@ export const extraDeclarations = (() => {
       },
 
       func(funcName: string, client = false) {
-        const fn: FunctionDeclaration = {
+        const fn: apiTypes.FunctionDeclaration = {
           kind: 'function',
           name: funcName,
           available: client ? 'both' : 'server',
@@ -451,12 +451,12 @@ export const extraDeclarations = (() => {
             fn.description = description;
             return this;
           },
-          arg(name: string, types: Type[], description?: string) {
+          arg(name: string, types: apiTypes.Type[], description?: string) {
             fn.args.push({ name, types, description });
             return this;
           },
-          ret(type: Type[]) {
-            fn.returns = type;
+          ret(types: apiTypes.Type[]) {
+            fn.returns = types;
             return this;
           },
           end: () => scopeContext,
@@ -530,19 +530,19 @@ export const extraDeclarations = (() => {
     members: [{ kind: 'field', name: 'query_id', types: ['CombatAnalyzerQueryID'] }],
   });
 
-  const projectileOptionsBase = (): Member[] => [
+  const projectileOptionsBase = (): apiTypes.Field[] => [
     { kind: 'field', name: 'EffectName', types: ['string', 'nil'] },
     { kind: 'field', name: 'Ability', types: ['CDOTABaseAbility', 'nil'] },
     { kind: 'field', name: 'Source', types: ['CDOTA_BaseNPC', 'nil'] },
   ];
 
-  const projectileOptionsVision = (): Member[] => [
+  const projectileOptionsVision = (): apiTypes.Field[] => [
     { kind: 'field', name: 'bProvidesVision', types: ['bool', 'nil'] },
     { kind: 'field', name: 'iVisionRadius', types: ['uint', 'nil'] },
     { kind: 'field', name: 'iVisionTeamNumber', types: ['DotaTeam', 'nil'] },
   ];
 
-  const projectileOptionsExtraData = (): Member => ({
+  const projectileOptionsExtraData = (): apiTypes.Field => ({
     kind: 'field',
     name: 'ExtraData',
     types: ['Record<string, string | number | boolean>', 'nil'],

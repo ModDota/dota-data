@@ -35,11 +35,11 @@ export const FunctionDeclaration: React.FC<{
   className?: string;
   style?: React.CSSProperties;
   context?: string;
-  element: api.FunctionDeclaration;
-}> = ({ className, style, context, element }) => {
+  declaration: api.FunctionDeclaration;
+}> = ({ className, style, context, declaration }) => {
   const parameterDescriptions = useMemo(
     () =>
-      element.args
+      declaration.args
         .map(arg => {
           const interfaces = getInterfacesForTypes(arg.types);
           if (!arg.description && interfaces.length === 0) return null;
@@ -49,7 +49,7 @@ export const FunctionDeclaration: React.FC<{
               {arg.name}
               {arg.description && ` - ${arg.description}`}
               {interfaces.map(x => (
-                <InterfaceDeclaration key={x.name} element={x} />
+                <InterfaceDeclaration key={x.name} declaration={x} />
               ))}
             </li>
           );
@@ -58,30 +58,30 @@ export const FunctionDeclaration: React.FC<{
     [],
   );
 
-  const ref = useAnchor<HTMLDivElement>(element.name, Boolean(context));
+  const ref = useAnchor<HTMLDivElement>(declaration.name, Boolean(context));
   return (
     <FunctionWrapper className={className} style={style} ref={ref}>
       <FunctionHeader>
         <FunctionSignature>
           <CenteredKindIcon kind="function" size="big" />
-          {element.name}(
-          {element.args.map((x, i) => [
+          {declaration.name}(
+          {declaration.args.map((x, i) => [
             <FunctionParameter key={x.name} name={x.name} types={x.types} />,
-            i === element.args.length - 1 ? null : ', ',
+            i === declaration.args.length - 1 ? null : ', ',
           ])}
-          ):&nbsp;{<Types types={element.returns} />}
+          ):&nbsp;{<Types types={declaration.returns} />}
         </FunctionSignature>
         <ElementBadges>
-          <AvailabilityBadge available={element.available} />
-          <SearchOnGitHub name={element.name} />
-          <SearchInGoogle name={element.name} />
-          {context && <ElementLink scope={context} hash={element.name} />}
+          <AvailabilityBadge available={declaration.available} />
+          <SearchOnGitHub name={declaration.name} />
+          <SearchInGoogle name={declaration.name} />
+          {context && <ElementLink scope={context} hash={declaration.name} />}
         </ElementBadges>
       </FunctionHeader>
       {parameterDescriptions.length > 0 && (
         <ParameterDescriptions>{parameterDescriptions}</ParameterDescriptions>
       )}
-      <OptionalDescription description={element.description} />
+      <OptionalDescription description={declaration.description} />
     </FunctionWrapper>
   );
 };
