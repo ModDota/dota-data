@@ -2,10 +2,8 @@ import fs from 'fs-extra';
 import got from 'got';
 import _ from 'lodash';
 import path from 'path';
-import { cleanupScripts, generateScripts } from './generator';
+import { cleanupScripts, generateScripts } from './scripts';
 import { FILES, outputJson, remove } from './utils';
-
-export { schemas } from './schemas';
 
 export interface Metadata {
   commit: string;

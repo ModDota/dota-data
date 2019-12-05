@@ -14,11 +14,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "dev-install": "node lib/install.js",
     "postinstall": "node install.js"
   },
   "dependencies": {
-    "dedent": "^0.7.0",
     "dota-data": "^0.6.0",
     "fs-extra": "^8.1.0",
     "got": "^10.0.1",
@@ -27,7 +25,6 @@
     "vdf-extra": "^2.1.2"
   },
   "devDependencies": {
-    "@types/dedent": "^0.7.0",
     "@types/fs-extra": "^8.0.1"
   },
   "publishConfig": {

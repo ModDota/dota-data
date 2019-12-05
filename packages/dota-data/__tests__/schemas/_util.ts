@@ -1,10 +1,10 @@
 import got from 'got';
 import vdf from 'vdf-extra';
-import { RootSchema } from '../../src/schema';
+import * as s from '../../src/schema';
 
 export interface CreateIntegrationTestOptions {
   name: string;
-  schema: RootSchema;
+  schema: s.RootSchema;
   url: string;
   ignore?: string[];
 }

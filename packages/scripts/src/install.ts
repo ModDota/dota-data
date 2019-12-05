@@ -1,8 +1,8 @@
 import { getOldMetadata, update } from '.';
 
 (async () => {
-  const envForce = process.env.DOTA_DATA_FORCE;
-  const updated = await update(envForce === '1');
+  const force = process.env.DOTA_DATA_FORCE === '1';
+  const updated = await update(force);
   const { version, commit } = await getOldMetadata();
   console.log(
     updated ? `Updated data to commit ${commit}` : `Data is up to date (v${version}, ${commit})`,

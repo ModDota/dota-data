@@ -2,6 +2,8 @@ import { abilities, abilitiesCustom, abilitiesOverride, items, itemsCustom } fro
 import { portraits } from './portraits';
 import { heroes, heroesCustom, units, unitsCustom } from './units';
 
+export { precacheTypes, resourcePatterns } from './resources';
+
 export const schemas = {
   npc_abilities: abilities,
   npc_abilities_custom: abilitiesCustom,
