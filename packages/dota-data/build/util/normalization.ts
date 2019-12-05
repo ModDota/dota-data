@@ -18,15 +18,15 @@ export function formatArgumentName(name: string | null | undefined, index: numbe
 
 export function formatDescription(description: string) {
   if (description === '') return;
-  if (!/[!?.]$/.test(description)) description += '.';
+  if (!/[!.?]$/.test(description)) description += '.';
   return _.upperFirst(description);
 }
 
 const argumentNameRegExp1 = /^\( (.+?) \)(?: - )?/;
 const argumentNameRegExp2 = /^\((.+?)\) - /;
-const argumentNameRegExp3 = /^\(([a-zA-Z,?]+ [a-zA-Z ,?]+)\)/;
+const argumentNameRegExp3 = /^\(([,?A-Za-z]+ [ ,?A-Za-z]+)\)/;
 const argumentNameRegExp4 = /\( (.+) \)\.?$/;
-const argumentNameRegExp5 = /\( ?([a-zA-Z]+,[a-zA-Z ,]+) ?\)\.?$/;
+const argumentNameRegExp5 = /\( ?([A-Za-z]+,[ ,A-Za-z]+) ?\)\.?$/;
 const splitArgumentMatch1to5 = (m: string) =>
   m
     .split(',')

@@ -10,7 +10,10 @@ import { TopLevelElement } from './data';
 export const setSearchQuery = (query: string) => {
   if (query === '') {
     const historyState = window.history.state.options;
+    // TODO: Use optional chaining
+    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
     const url = (historyState && historyState.beforeSearchUrl) || Router.pathname;
+    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
     const asPath = (historyState && historyState.beforeSearchAs) || Router.pathname;
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     Router.push(url, asPath);

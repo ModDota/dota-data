@@ -7,11 +7,11 @@ const url =
   'https://dota2.gamepedia.com/api.php?format=json&formatversion=2&action=query&prop=revisions&rvprop=content&titles=Module:Attribute%20bonuses/data';
 
 export async function generateAttributes() {
-  const data: string = (await got(url, { json: true })).body.query.pages[0].revisions[0].content;
+  const data: string = (await got(url).json<any>()).query.pages[0].revisions[0].content;
   const values = Object.fromEntries(
     data
       .split('\n')
-      .map(x => x.match(/\['(.+)'\] = (.+),/))
+      .map(x => x.match(/\['(.+)'] = (.+),/))
       .filter(<T>(x: T | null): x is T => x != null)
       .map(([, key, value]) => [_.camelCase(key), Number(value)]),
   );

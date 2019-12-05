@@ -32,6 +32,7 @@ const defaultReplacements: Record<string, string> = {
   utlstringtoken: 'string',
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 const transformType = (type: string) => defaultReplacements[type] ?? type;
 
 function overrideType(

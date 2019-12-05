@@ -63,7 +63,7 @@ export const ButtonLink: React.FC<Props> = ({ children, className, style, to, to
     </button>
   );
 
-export const ActiveLink: React.FC<Props> = ({ className, to, ...props }) => {
+export const ActiveLink: React.FC<Props> = ({ className = '', to, ...props }) => {
   const { pathname, query } = useRouter();
   const isActive =
     to && pathname === to.pathname && (to.query == null || _.isEqual(query, to.query));

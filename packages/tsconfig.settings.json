@@ -1,6 +1,8 @@
 {
   "extends": "@ark120202/typescript-config/node/10.json",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    // TODO: https://github.com/sindresorhus/got/issues/960
+    "skipLibCheck": true
   }
 }

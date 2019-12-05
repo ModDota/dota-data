@@ -29,11 +29,10 @@
   "devDependencies": {
     "@types/dedent": "^0.7.0",
     "@types/fs-extra": "^8.0.1",
-    "@types/got": "^9.6.9",
     "@types/lodash": "^4.14.149",
     "dedent": "^0.7.0",
     "fs-extra": "^8.1.0",
-    "got": "^9.6.0",
+    "got": "^10.0.1",
     "vdf-extra": "^2.2.2"
   }
 }

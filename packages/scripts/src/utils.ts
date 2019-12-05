@@ -6,7 +6,7 @@ import vdf from 'vdf-extra';
 export const FILES = path.join(__dirname, '../files');
 export const remove = (name: string) => fs.remove(path.join(FILES, name));
 export const outputFile = (name: string, data: string) =>
-  fs.outputFile(path.join(FILES, name), `${data.trimRight()}\n`);
+  fs.outputFile(path.join(FILES, name), `${data.trimEnd()}\n`);
 export const outputJson = (name: string, data: any) =>
   fs.outputJson(path.join(FILES, `${name}.json`), data, { spaces: 2 });
 

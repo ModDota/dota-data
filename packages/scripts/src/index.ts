@@ -19,7 +19,7 @@ export const getOldMetadata = async (): Promise<Metadata> =>
 const HEADS = 'https://api.github.com/repos/SteamDatabase/GameTracking-Dota2/git/refs/heads/master';
 const PACKAGE_VERSION: string = fs.readJsonSync(path.join(__dirname, '../package.json')).version;
 export async function getNewMetadata(): Promise<Metadata> {
-  const commit: string = (await got(HEADS, { json: true })).body.object.sha;
+  const commit: string = (await got(HEADS).json<any>()).object.sha;
   return { commit, version: PACKAGE_VERSION };
 }
 

@@ -15,6 +15,6 @@ export function readDump(name: string) {
 
 const FILES = path.join(__dirname, '../../files');
 export const outputFile = (name: string, data: string) =>
-  fs.outputFileSync(path.join(FILES, name), `${data.trimRight()}\n`);
+  fs.outputFileSync(path.join(FILES, name), `${data.trimEnd()}\n`);
 export const outputJson = (name: string, data: any) =>
   fs.outputJsonSync(path.join(FILES, `${name}.json`), data, { spaces: 2 });
