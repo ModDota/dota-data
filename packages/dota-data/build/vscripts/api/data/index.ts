@@ -158,6 +158,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       2: ['context', ['table', 'nil']],
     },
   },
+  '_G.StopListeningToGameEvent': { args: { 0: ['listenerId', 'EventListenerID'] } },
   '_G.ApplyDamage': {
     args: { 0: ['options', 'ApplyDamageOptions'] },
   },
@@ -414,6 +415,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.SetWhiteListEnabled': { args: { 0: ['whiteListEnabled'] } },
   '_G.Msg': { args: { 0: ['message'] } },
   '_G.Warning': { args: { 0: ['message'] } },
+  // TODO: `position` or `location`?
+  '_G.ResolveNPCPositions': { args: { 0: ['location'], 1: ['radius'] } },
+  'CEnvProjectedTexture.SetVolumetrics': { description: 'Turn on/off light volumetrics.' },
+  '_G.GetLobbyEventGameDetails': { description: '' },
 };
 
 export const extraDeclarations = (() => {

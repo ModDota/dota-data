@@ -5,7 +5,7 @@ const onProjectileHitDescription =
 
 export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.FirstMoveChild': { returns: 'CBaseEntity' },
-  'CBaseEntity.FollowEntity': { description: '', args: { '0': [null, 'CBaseEntity'] } },
+  'CBaseEntity.FollowEntity': { description: '', args: { '0': ['entity', 'CBaseEntity'] } },
   'CBaseEntity.GetMoveParent': { returns: 'CBaseEntity' },
   'CBaseEntity.GetOwner': { returns: 'CBaseEntity' },
   'CBaseEntity.GetOwnerEntity': { returns: 'CBaseEntity' },
@@ -39,7 +39,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['team', 'DotaTeam'], '2': [null, 'table'] },
   },
   'CCustomGameEventManager.UnregisterListener': {
-    args: { '0': ['listener', 'CustomGameEventListenerID'] },
+    args: { '0': ['listenerId', 'CustomGameEventListenerID'] },
   },
   'CDOTABaseAbility.CanAbilityBeUpgraded': { returns: 'bool' },
   'CDOTABaseAbility.GetAbilityDamageType': { returns: 'DamageTypes' },
