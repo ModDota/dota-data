@@ -10,10 +10,7 @@ export function formatArgumentName(name: string | null | undefined, index: numbe
   if (name.toLowerCase() === 'default') return 'defaultValue';
   if (name.toLowerCase() === 'function') return 'func';
 
-  name = name.replace(/(?<=[a-z])ID/g, 'Id').replace(/^ID/g, 'id');
-  name = name.toUpperCase() === name ? name.toLowerCase() : _.lowerFirst(name);
-
-  return name;
+  return _.camelCase(name);
 }
 
 export function formatDescription(description: string) {
