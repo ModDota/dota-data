@@ -2,16 +2,8 @@ import _ from 'lodash';
 
 const typePrefixes = ['b', 'e', 'h', 'v', 'n', 'p', 'i', 'f', 'fl', 'sz', 'psz'];
 const typePrefixesRegexp = new RegExp(`^(${typePrefixes.join('|')})(?=[A-Z])`);
-export function formatArgumentName(name: string | null | undefined, index: number) {
-  if (!name) return `arg${index + 1}`;
-  if (typePrefixesRegexp.test(name)) name = name.replace(typePrefixesRegexp, '');
-
-  if (name.toLowerCase() === 'class') return 'className';
-  if (name.toLowerCase() === 'default') return 'defaultValue';
-  if (name.toLowerCase() === 'function') return 'func';
-
-  return _.camelCase(name);
-}
+export const formatArgumentName = (name: string | null | undefined, index: number) =>
+  name != null ? _.camelCase(name.replace(typePrefixesRegexp, '')) : `arg${index + 1}`;
 
 export function formatDescription(description: string) {
   if (description === '') return;
