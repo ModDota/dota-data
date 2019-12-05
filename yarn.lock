@@ -5074,6 +5074,16 @@ dot-prop@^4.1.0, dot-prop@^4.2.0:
   dependencies:
     is-obj "^1.0.0"
 
+"dota-data@link:packages/dota-data":
+  version "0.7.0"
+  dependencies:
+    "@types/lodash" "^4.14.149"
+    fs-extra "^8.1.0"
+    got "^10.0.1"
+    lodash "^4.17.15"
+    tslib "^1.10.0"
+    vdf-extra "^2.2.2"
+
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
@@ -11589,7 +11599,7 @@ validate-npm-package-name@^3.0.0:
   dependencies:
     builtins "^1.0.3"
 
-vdf-extra@^2.1.2, vdf-extra@^2.2.2:
+vdf-extra@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/vdf-extra/-/vdf-extra-2.2.2.tgz#4bad5cd523522f859bc2e284030f0560e840a2f0"
   integrity sha512-wqu6E5PMjPzKQSVsWrbVoLp5Oy4pnxy59f/2xaZa7gbBjI6dYSAcpAqNIyZdixQFrNZrLbh1zkeQWWZ5tsnffA==
