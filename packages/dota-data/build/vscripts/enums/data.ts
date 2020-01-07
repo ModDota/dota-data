@@ -28,25 +28,6 @@ export const extractedConstants = [
   'DOTA_ITEM_STASH_SIZE',
   'DOTA_ITEM_STASH_MIN',
   'DOTA_ITEM_STASH_MAX',
-  // TODO:
-  // 'DOTA_DEFAULT_UI_ELEMENT_COUNT',
-  // 'DOTA_HEROPICK_STATE_COUNT',
-  // 'DOTA_HUD_VISIBILITY_COUNT',
-  // 'DOTA_LOADOUT_TYPE_COUNT',
-  // 'DOTA_PLAYER_LOADOUT_END',
-  // 'DOTA_PLAYER_LOADOUT_START',
-  // 'DOTA_PROJECTILE_ATTACHMENT_LAST',
-  // 'DOTA_RUNE_COUNT',
-  // 'DOTA_TEAM_COUNT',
-  // 'DOTA_TEAM_CUSTOM_COUNT',
-  // 'DOTA_TEAM_CUSTOM_MAX',
-  // 'DOTA_TEAM_CUSTOM_MIN',
-  // 'DOTA_TEAM_FIRST',
-  // 'DOTA_UNIT_ATTACK_CAPABILITY_BIT_COUNT',
-  // 'MAX_PATTACH_TYPES',
-  // 'MODIFIER_FUNCTION_LAST',
-  // 'MODIFIER_STATE_LAST',
-  // 'QUEST_NUM_TEXT_REPLACE_VALUES',
 ];
 
 export const globalEnums: Record<string, string[]> = {
@@ -88,32 +69,6 @@ export const prefixedEnums: Record<string, string> = {
   ShowGenericPopupType: 'DOTA_SHOWGENERICPOPUP_',
   SourceEngineAnimationEvent: 'AE_',
   SourceEngineDamageTypes: 'DMG_',
-};
-
-export const normalizedEnumNames: Record<string, string> = {
-  DOTATeam_t: 'DotaTeam',
-  attackfail: 'AttackRecord',
-  DOTAScriptInventorySlot_t: 'InventorySlot',
-  Attributes: 'Attribute',
-  AttributeDerivedStats: 'AttributeDerivedStat',
-  DOTA_RUNES: 'RuneType',
-  quest_text_replace_values_t: 'QuestTextReplaceValue',
-  subquest_text_replace_values_t: 'SubquestTextReplaceValue',
-  DOTASlotType_t: 'LoadoutType',
-  LuaModifierType: 'LuaModifierMotionType',
-  DOTAMinimapEvent_t: 'MinimapEventType',
-  EShareAbility: 'ItemShareability',
-  dotaunitorder_t: 'UnitOrder',
-};
-
-export type MemberNameNormalizer = (args: { name: string; normalizedName: string }) => string;
-export const memberNameNormalizers: Record<string, MemberNameNormalizer> = {
-  DOTA_HeroPickState: ({ name }) => name.replace(/^DOTA_HERO_?PICK_STATE_/, ''),
-  DOTAScriptInventorySlot_t: ({ normalizedName }) => normalizedName.replace('_SLOT_', '_'),
-  FindOrder: ({ normalizedName }) => (normalizedName === 'ANY_ORDER' ? 'ANY' : normalizedName),
-  LuaModifierType: ({ normalizedName }) => normalizedName.replace('MOTION_', ''),
-  modifierfunction: ({ name }) => name.replace(/^MODIFIER_(PROPERTY|EVENT|FUNCTION)_/, ''),
-  subquest_text_replace_values_t: ({ normalizedName }) => normalizedName.replace('_VALUE', ''),
 };
 
 export const enumValueDescriptions = {

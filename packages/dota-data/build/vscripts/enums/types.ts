@@ -17,7 +17,6 @@ export interface Constant {
 export interface Enum {
   kind: 'enum';
   name: string;
-  normalizedName: string;
   description?: string;
   available: Availability;
   members: EnumMember[];
@@ -25,7 +24,6 @@ export interface Enum {
 
 export interface EnumMember {
   name: string;
-  normalizedName: string;
   description?: string;
   value: number;
 }

@@ -7,41 +7,11 @@ import {
   enumValueDescriptions,
   extractedConstants,
   globalEnums,
-  MemberNameNormalizer,
-  memberNameNormalizers,
-  normalizedEnumNames,
   prefixedEnums,
 } from './data';
 import { Availability, Constant, Enum, EnumMember } from './types';
 
 export { types as enumsTypes } from './types';
-
-function findCommonStart(strings: string[]) {
-  if (strings.length < 2) return '';
-  return strings.slice(1).reduce((common, string) => {
-    while (!string.startsWith(common)) {
-      common = common.slice(0, -1);
-    }
-
-    return common;
-  }, strings[0]);
-}
-
-function normalizeEnumName(raw: string) {
-  const normalized = raw.startsWith('modifier')
-    ? `Modifier${_.upperFirst(raw.slice('modifier'.length))}`
-    : _.upperFirst(_.camelCase(raw.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
-
-  if (normalizedEnumNames[raw] != null) {
-    if (normalizedEnumNames[raw] === normalized) {
-      console.warn(`Unnecessary enum normalization override: ${raw} -> ${normalized}`);
-    }
-
-    return normalizedEnumNames[raw];
-  }
-
-  return normalized;
-}
 
 export const enumDeclarations = (() => {
   const serverGlobals = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
@@ -87,22 +57,9 @@ export const enumDeclarations = (() => {
     )
     .sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
-  const transformMembers = (
-    members: DumpConstant[],
-    common?: string,
-    normalizer?: MemberNameNormalizer,
-  ) =>
+  const transformMembers = (members: DumpConstant[]) =>
     members
-      .map(
-        ({ name, description, value }): EnumMember => {
-          let normalizedName = name;
-          if (common != null) normalizedName = normalizedName.replace(common, '');
-          normalizedName = _.snakeCase(normalizedName).toUpperCase();
-          if (normalizer != null) normalizedName = normalizer({ name, normalizedName });
-
-          return { name, normalizedName, description, value };
-        },
-      )
+      .map(({ name, description, value }): EnumMember => ({ name, description, value }))
       .sort((a, b) => a.value - b.value);
 
   const getCommonAvailability = (members: DumpConstant[]) => {
@@ -121,9 +78,8 @@ export const enumDeclarations = (() => {
         return {
           kind: 'enum',
           name,
-          normalizedName: normalizeEnumName(name),
           available: getCommonAvailability(members),
-          members: transformMembers(members, prefix),
+          members: transformMembers(members),
         };
       },
     ),
@@ -136,7 +92,6 @@ export const enumDeclarations = (() => {
         return {
           kind: 'enum',
           name,
-          normalizedName: normalizeEnumName(name),
           available: getCommonAvailability(members),
           members: transformMembers(members),
         };
@@ -151,16 +106,12 @@ export const enumDeclarations = (() => {
         x => x.enum!,
       ),
     ).map(
-      ([name, members]): Enum => {
-        const common = findCommonStart(members.map(x => x.name));
-        return {
-          kind: 'enum',
-          name,
-          normalizedName: normalizeEnumName(name),
-          available: getCommonAvailability(members),
-          members: transformMembers(members, common, memberNameNormalizers[name]),
-        };
-      },
+      ([name, members]): Enum => ({
+        kind: 'enum',
+        name,
+        available: getCommonAvailability(members),
+        members: transformMembers(members),
+      }),
     ),
   );
 
