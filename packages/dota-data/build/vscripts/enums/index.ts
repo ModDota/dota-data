@@ -1,21 +1,22 @@
+import assert from 'assert';
 import _ from 'lodash';
 import { clientDump, DumpConstant, serverDump } from '../dump';
 import { modifierPropertyData } from '../modifier-properties/data';
 import {
   droppedConstants,
-  enumRenames,
   enumValueDescriptions,
   extractedConstants,
   globalEnums,
-  KeyTransformer,
-  keyTransformers,
+  MemberNameNormalizer,
+  memberNameNormalizers,
+  normalizedEnumNames,
   prefixedEnums,
 } from './data';
 import { Availability, Constant, Enum, EnumMember } from './types';
 
 export { types as enumsTypes } from './types';
 
-function commonStart(strings: string[]) {
+function findCommonStart(strings: string[]) {
   if (strings.length < 2) return '';
   return strings.slice(1).reduce((common, string) => {
     while (!string.startsWith(common)) {
@@ -26,158 +27,146 @@ function commonStart(strings: string[]) {
   }, strings[0]);
 }
 
-function normalizeScopeName(s: string) {
-  if (enumRenames[s] != null) return enumRenames[s];
-  if (s.startsWith('modifier')) return `Modifier${_.upperFirst(s.slice(8))}`;
-  return _.upperFirst(_.camelCase(s.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
+function normalizeEnumName(raw: string) {
+  const normalized = raw.startsWith('modifier')
+    ? `Modifier${_.upperFirst(raw.slice('modifier'.length))}`
+    : _.upperFirst(_.camelCase(raw.replace(/(^E?(DOTA|Dota)_?|_t$)/g, '')));
+
+  if (normalizedEnumNames[raw] != null) {
+    if (normalizedEnumNames[raw] === normalized) {
+      console.warn(`Unnecessary enum normalization override: ${raw} -> ${normalized}`);
+    }
+
+    return normalizedEnumNames[raw];
+  }
+
+  return normalized;
 }
 
 export const enumDeclarations = (() => {
-  const serverConstants = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
-  const clientConstants = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
-  const allConstants = [
-    ...serverConstants,
-    ...clientConstants.filter(cc => !serverConstants.some(sc => sc.name === cc.name)),
+  const serverGlobals = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
+  const clientGlobals = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
+  let allGlobals = [
+    ...serverGlobals,
+    ...clientGlobals.filter(cc => !serverGlobals.some(sc => sc.name === cc.name)),
   ].filter(({ name }) => !droppedConstants.includes(name));
+  const takeGlobals = (filter: (name: DumpConstant) => boolean) => {
+    const [extracted, rest] = _.partition(allGlobals, filter);
+    assert(extracted.length > 0);
+    allGlobals = rest;
+    return extracted;
+  };
 
   // Make sure that all there are no different constants on client and server
-  allConstants.forEach(({ name }) => {
-    const server = serverConstants.find(x => x.name === name);
-    const client = serverConstants.find(x => x.name === name);
+  for (const { name } of allGlobals) {
+    const server = serverGlobals.find(x => x.name === name);
+    const client = serverGlobals.find(x => x.name === name);
     if (server == null) {
       console.error(`Available only on client: ${name}`);
-      return;
+      continue;
     }
 
-    if (client == null) return;
+    if (client == null) continue;
     if (client.value !== server.value || client.description !== server.description) {
       throw new Error(`${name} exists on server and client, but has different values`);
     }
-  });
+  }
 
   const getAvailability = (n: string): Availability =>
-    clientConstants.some(x => x.name === n) ? 'both' : 'server';
+    clientGlobals.some(x => x.name === n) ? 'both' : 'server';
 
-  const constants = allConstants
-    .filter(x => extractedConstants.includes(x.name) || x.enum === 'DOTALimits_t')
+  const constants = takeGlobals(x => extractedConstants.includes(x.name))
     .map(
-      (c): Constant => ({
+      ({ name, description, value }): Constant => ({
         kind: 'constant',
-        name: c.name,
-        description: c.description,
-        value: c.value,
-        available: getAvailability(c.name),
+        name,
+        description,
+        value,
+        available: getAvailability(name),
       }),
     )
     .sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
-  const transformMembers = (members: DumpConstant[], common?: string, kt?: KeyTransformer) =>
+  const transformMembers = (
+    members: DumpConstant[],
+    common?: string,
+    normalizer?: MemberNameNormalizer,
+  ) =>
     members
       .map(
-        ({ name: originalName, description, value }): EnumMember => {
-          let name = originalName;
-          if (common != null) name = name.replace(common, '');
-          name = _.snakeCase(name).toUpperCase();
-          if (kt != null) name = kt({ name, originalName });
-          return {
-            originalName,
-            name,
-            description,
-            value,
-          };
+        ({ name, description, value }): EnumMember => {
+          let normalizedName = name;
+          if (common != null) normalizedName = normalizedName.replace(common, '');
+          normalizedName = _.snakeCase(normalizedName).toUpperCase();
+          if (normalizer != null) normalizedName = normalizer({ name, normalizedName });
+
+          return { name, normalizedName, description, value };
         },
       )
       .sort((a, b) => a.value - b.value);
 
-  const getEnumAvailability = (members: DumpConstant[]) => {
+  const getCommonAvailability = (members: DumpConstant[]) => {
     const memberAvailability = members.map(({ name }) => getAvailability(name));
     if (memberAvailability.every(x => x === memberAvailability[0])) return memberAvailability[0];
 
     throw new Error('Enum has members with different availability');
   };
 
-  const enums: Enum[] = [
-    ...prefixedEnums.map(
-      (prefix): Enum => {
-        const members = allConstants.filter(x => x.name.startsWith(prefix));
-        return {
-          kind: 'enum',
-          name: normalizeScopeName(prefix),
-          available: getEnumAvailability(members),
-          members: transformMembers(members, prefix),
-        };
-      },
-    ),
-    ...Object.entries(globalEnums).map(
-      ([name, values]): Enum => ({
-        kind: 'enum',
-        name,
-        available: getEnumAvailability(allConstants.filter(x => values.includes(x.name))),
-        members: transformMembers(allConstants.filter(x => values.includes(x.name))),
-      }),
-    ),
-    ...[
-      ['ModifierProperty', 'MODIFIER_PROPERTY_'],
-      ['ModifierEvent', 'MODIFIER_EVENT_'],
-    ].map(
-      ([name, prefix]): Enum => ({
-        kind: 'enum',
-        name,
-        available: getEnumAvailability(allConstants.filter(x => x.name.startsWith(prefix))),
-        members: [
-          ...transformMembers(
-            allConstants.filter(x => x.name.startsWith(prefix)),
-            prefix,
-          ).map((x): typeof x => ({
-            ...x,
-            description:
-              x.description && x.description !== 'Unused'
-                ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                  modifierPropertyData[x.description] && modifierPropertyData[x.description][2]
-                  ? `${modifierPropertyData[x.description][2]}\n\nMethod Name: \`${x.description}\``
-                  : `Method Name: \`${x.description}\``
-                : undefined,
-          })),
-          ...transformMembers(
-            allConstants.filter(x => x.name === 'MODIFIER_FUNCTION_INVALID'),
-            'MODIFIER_FUNCTION_',
-          ),
-        ],
-      }),
-    ),
-  ];
+  const enums: Enum[] = [];
 
   enums.push(
-    ...Object.entries(
-      allConstants
-        .filter(c => !constants.some(x => x.name === c.name))
-        .filter(c => !enums.some(x => x.members.some(m => m.originalName === c.name)))
-        .reduce<Record<string, DumpConstant[]>>((documentedEnums, c) => {
-          if (c.enum != null) {
-            if (documentedEnums[c.enum] == null) documentedEnums[c.enum] = [];
-            documentedEnums[c.enum].push(c);
-          } else {
-            console.log(`Unknown constant or enum: ${c.name}`);
-          }
-
-          return documentedEnums;
-        }, {}),
-    ).map(
-      ([scopeName, members]): Enum => {
-        const common = commonStart(members.map(x => x.name));
-        const normalizedScope = normalizeScopeName(scopeName);
+    ...Object.entries(prefixedEnums).map(
+      ([name, prefix]): Enum => {
+        const members = takeGlobals(x => x.name.startsWith(prefix));
         return {
           kind: 'enum',
-          name: normalizedScope,
-          originalName: scopeName,
-          available: getEnumAvailability(members),
-          members: transformMembers(members, common, keyTransformers[normalizedScope]),
+          name,
+          normalizedName: normalizeEnumName(name),
+          available: getCommonAvailability(members),
+          members: transformMembers(members, prefix),
         };
       },
     ),
   );
 
-  enums.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  enums.push(
+    ...Object.entries(globalEnums).map(
+      ([name, values]): Enum => {
+        const members = takeGlobals(x => values.includes(x.name));
+        return {
+          kind: 'enum',
+          name,
+          normalizedName: normalizeEnumName(name),
+          available: getCommonAvailability(members),
+          members: transformMembers(members),
+        };
+      },
+    ),
+  );
+
+  enums.push(
+    ...Object.entries(
+      _.groupBy(
+        takeGlobals(x => x.enum != null),
+        x => x.enum!,
+      ),
+    ).map(
+      ([name, members]): Enum => {
+        const common = findCommonStart(members.map(x => x.name));
+        return {
+          kind: 'enum',
+          name,
+          normalizedName: normalizeEnumName(name),
+          available: getCommonAvailability(members),
+          members: transformMembers(members, common, memberNameNormalizers[name]),
+        };
+      },
+    ),
+  );
+
+  for (const constant of allGlobals) {
+    console.log(`Unknown constant or enum: ${constant.name}`);
+  }
 
   _.each(enumValueDescriptions, (descriptions, scopeName) => {
     const enumValue = enums.find(x => x.name === scopeName);
@@ -191,5 +180,13 @@ export const enumDeclarations = (() => {
     });
   });
 
+  for (const member of enums.find(x => x.name === 'modifierfunction')!.members) {
+    if (!member.description || member.description === 'Unused') continue;
+    member.description = modifierPropertyData[member.description]?.[2]
+      ? `${modifierPropertyData[member.description][2]}\n\nMethod Name: \`${member.description}\`.`
+      : `Method Name: \`${member.description}\``;
+  }
+
+  enums.sort((a, b) => a.name.localeCompare(b.name, 'en'));
   return [...constants, ...enums];
 })();

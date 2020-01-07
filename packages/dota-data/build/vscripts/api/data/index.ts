@@ -52,10 +52,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     returns: 'UnitFilterResult',
     args: {
       0: ['npc', 'CDOTA_BaseNPC'],
-      1: ['teamFilter', 'UnitTargetTeam'],
-      2: ['typeFilter', 'UnitTargetType'],
-      3: ['flagFilter', 'UnitTargetFlags'],
-      4: ['team', 'DotaTeam'],
+      1: ['teamFilter', 'DOTA_UNIT_TARGET_TEAM'],
+      2: ['typeFilter', 'DOTA_UNIT_TARGET_TYPE'],
+      3: ['flagFilter', 'DOTA_UNIT_TARGET_FLAGS'],
+      4: ['team', 'DOTATeam_t'],
     },
   },
 
@@ -136,9 +136,9 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
 
   '_G.EmitAnnouncerSound': { args: { 0: ['soundName'] } },
   '_G.EmitAnnouncerSoundForPlayer': { args: { 0: ['soundName'], 1: ['playerId'] } },
-  '_G.EmitAnnouncerSoundForTeam': { args: { 0: ['soundName'], 1: ['team', 'DotaTeam'] } },
+  '_G.EmitAnnouncerSoundForTeam': { args: { 0: ['soundName'], 1: ['team', 'DOTATeam_t'] } },
   '_G.EmitAnnouncerSoundForTeamOnLocation': {
-    args: { 0: ['soundName'], 1: ['team', 'DotaTeam'], 2: ['location'] },
+    args: { 0: ['soundName'], 1: ['team', 'DOTATeam_t'], 2: ['location'] },
   },
   '_G.EmitGlobalSound': { args: { 0: ['soundName'] } },
   '_G.EmitSoundOn': { args: { '0': ['soundName'], '1': ['entity', 'CBaseEntity'] } },
@@ -149,7 +149,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.StartSoundEventFromPositionUnreliable': { args: { 0: ['soundName'], 1: ['position'] } },
   'CBaseEntity.EmitSoundParams': { args: { 0: ['soundName'] } },
   'GridNav.IsNearbyTree': { args: { 2: ['checkFullTreeRadius'] } },
-  'CDOTA_BaseNPC_Hero.AddExperience': { description: '', args: { 1: [null, 'ModifyXpReason'] } },
+  'CDOTA_BaseNPC_Hero.AddExperience': {
+    description: '',
+    args: { 1: [null, 'EDOTA_ModifyXP_Reason'] },
+  },
   '_G.ListenToGameEvent': {
     returns: 'EventListenerID',
     args: {
@@ -301,8 +304,11 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: { '0': [null, 'CDOTA_BaseNPC_Hero'], '1': [null, ['CDOTABaseAbility', 'nil']] },
   },
   'CDOTA_BaseNPC_Hero.ModifyGold': { description: 'Gives this hero some gold.' },
-  'CDOTA_BaseNPC_Hero.SpendGold': { description: '', args: { '1': [null, 'ModifyGoldReason'] } },
-  'CDOTA_Buff.HasFunction': { args: { 0: [null, ['ModifierProperty', 'ModifierEvent']] } },
+  'CDOTA_BaseNPC_Hero.SpendGold': {
+    description: '',
+    args: { '1': [null, 'EDOTA_ModifyGold_Reason'] },
+  },
+  'CDOTA_Buff.HasFunction': { args: { 0: [null, 'modifierfunction'] } },
 
   'CDOTA_Item_DataDriven.ApplyDataDrivenModifier': {
     args: {
@@ -351,16 +357,16 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
   'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
   'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
-  'CDOTA_Item.GetItemSlot': { returns: ['-1', 'InventorySlot'] },
+  'CDOTA_Item.GetItemSlot': { returns: ['-1', 'DOTAScriptInventorySlot_t'] },
   '_G.CreateTrigger': { returns: 'CBaseTrigger' },
   '_G.CreateTriggerRadiusApproximate': { returns: 'CBaseTrigger' },
-  'CDOTA_ShopTrigger.GetShopType': { returns: 'ShopType' },
-  'CDOTA_ShopTrigger.SetShopType': { args: { 0: [null, 'ShopType'] } },
-  'CDOTA_BaseNPC_Shop.GetShopType': { returns: 'ShopType' },
-  'CDOTA_BaseNPC_Shop.SetShopType': { args: { 0: [null, 'ShopType'] } },
+  'CDOTA_ShopTrigger.GetShopType': { returns: 'DOTA_SHOP_TYPE' },
+  'CDOTA_ShopTrigger.SetShopType': { args: { 0: [null, 'DOTA_SHOP_TYPE'] } },
+  'CDOTA_BaseNPC_Shop.GetShopType': { returns: 'DOTA_SHOP_TYPE' },
+  'CDOTA_BaseNPC_Shop.SetShopType': { args: { 0: [null, 'DOTA_SHOP_TYPE'] } },
   'CDOTA_BaseNPC.IsInRangeOfShop': {
     description: 'Ask whether this unit is in range of the specified shop.',
-    args: { 0: [null, 'ShopType'] },
+    args: { 0: [null, 'DOTA_SHOP_TYPE'] },
   },
   'CBaseEntity.GetChildren': { returns: array('CBaseEntity') },
   // TODO:
@@ -396,7 +402,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       0: ['heroName'],
       1: ['playerName'],
-      2: ['team', 'DotaTeam'],
+      2: ['team', 'DOTATeam_t'],
       3: [
         'entityScript',
         null,
@@ -496,8 +502,8 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'victim', types: ['CDOTA_BaseNPC'] },
       { kind: 'field', name: 'attacker', types: ['CDOTA_BaseNPC'] },
       { kind: 'field', name: 'damage', types: ['float'] },
-      { kind: 'field', name: 'damage_type', types: ['DamageTypes'] },
-      { kind: 'field', name: 'damage_flags', types: ['DamageFlag', 'nil'] },
+      { kind: 'field', name: 'damage_type', types: ['DAMAGE_TYPES'] },
+      { kind: 'field', name: 'damage_flags', types: ['DOTADamageFlag_t', 'nil'] },
       { kind: 'field', name: 'ability', types: ['CDOTABaseAbility', 'nil'] },
     ],
   });
@@ -539,7 +545,7 @@ export const extraDeclarations = (() => {
   const projectileOptionsVision = (): apiTypes.Field[] => [
     { kind: 'field', name: 'bProvidesVision', types: ['bool', 'nil'] },
     { kind: 'field', name: 'iVisionRadius', types: ['uint', 'nil'] },
-    { kind: 'field', name: 'iVisionTeamNumber', types: ['DotaTeam', 'nil'] },
+    { kind: 'field', name: 'iVisionTeamNumber', types: ['DOTATeam_t', 'nil'] },
   ];
 
   const projectileOptionsExtraData = (): apiTypes.Field => ({
@@ -572,9 +578,9 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'fStartRadius', types: ['float', 'nil'] },
       { kind: 'field', name: 'fEndRadius', types: ['float', 'nil'] },
       { kind: 'field', name: 'fExpireTime', types: ['float', 'nil'] },
-      { kind: 'field', name: 'iUnitTargetTeam', types: ['UnitTargetTeam', 'nil'] },
-      { kind: 'field', name: 'iUnitTargetFlags', types: ['UnitTargetFlags', 'nil'] },
-      { kind: 'field', name: 'iUnitTargetType', types: ['UnitTargetType', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetTeam', types: ['DOTA_UNIT_TARGET_TEAM', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetFlags', types: ['DOTA_UNIT_TARGET_FLAGS', 'nil'] },
+      { kind: 'field', name: 'iUnitTargetType', types: ['DOTA_UNIT_TARGET_TYPE', 'nil'] },
       { kind: 'field', name: 'bIgnoreSource', types: ['bool', 'nil'] },
       { kind: 'field', name: 'bHasFrontalCone', types: ['bool', 'nil'] },
 
@@ -621,7 +627,7 @@ export const extraDeclarations = (() => {
       },
 
       // Appearance
-      { kind: 'field', name: 'iSourceAttachment', types: ['ProjectileAttachment', 'nil'] },
+      { kind: 'field', name: 'iSourceAttachment', types: ['DOTAProjectileAttachment_t', 'nil'] },
       {
         kind: 'field',
         name: 'bDrawsOnMinimap',
@@ -667,7 +673,7 @@ export const extraDeclarations = (() => {
     members: [
       { kind: 'field', name: 'entindex_attacker_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'entindex_victim_const', types: ['EntityIndex'] },
-      { kind: 'field', name: 'damagetype_const', types: ['DamageTypes'] },
+      { kind: 'field', name: 'damagetype_const', types: ['DAMAGE_TYPES'] },
       { kind: 'field', name: 'damage', types: ['float'] },
     ],
   });
@@ -683,7 +689,7 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'issuer_player_id_const', types: ['PlayerID'] },
       { kind: 'field', name: 'sequence_number_const', types: ['uint'] },
       { kind: 'field', name: 'queue', types: ['0', '1'] },
-      { kind: 'field', name: 'order_type', types: ['UnitOrder'] },
+      { kind: 'field', name: 'order_type', types: ['dotaunitorder_t'] },
       { kind: 'field', name: 'position_x', types: ['float'] },
       { kind: 'field', name: 'position_y', types: ['float'] },
       { kind: 'field', name: 'position_z', types: ['float'] },
@@ -706,7 +712,7 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'inventory_parent_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'item_parent_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'item_entindex_const', types: ['EntityIndex'] },
-      { kind: 'field', name: 'suggested_slot', types: ['-1', 'InventorySlot'] },
+      { kind: 'field', name: 'suggested_slot', types: ['-1', 'DOTAScriptInventorySlot_t'] },
     ],
   });
 
@@ -734,7 +740,7 @@ export const extraDeclarations = (() => {
     members: [
       { kind: 'field', name: 'hero_entindex_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'player_id_const', types: ['PlayerID'] },
-      { kind: 'field', name: 'reason_const', types: ['ModifyXpReason'] },
+      { kind: 'field', name: 'reason_const', types: ['EDOTA_ModifyXP_Reason'] },
       { kind: 'field', name: 'experience', types: ['int'] },
     ],
   });
@@ -744,7 +750,7 @@ export const extraDeclarations = (() => {
     name: 'ModifyGoldFilterEvent',
     members: [
       { kind: 'field', name: 'player_id_const', types: ['PlayerID'] },
-      { kind: 'field', name: 'reason_const', types: ['ModifyGoldReason'] },
+      { kind: 'field', name: 'reason_const', types: ['EDOTA_ModifyGold_Reason'] },
       { kind: 'field', name: 'reliable', types: ['0', '1'] },
       { kind: 'field', name: 'gold', types: ['uint'] },
     ],
@@ -755,7 +761,7 @@ export const extraDeclarations = (() => {
     name: 'RuneSpawnFilterEvent',
     members: [
       { kind: 'field', name: 'spawner_entindex_const', types: ['EntityIndex'] },
-      { kind: 'field', name: 'rune_type', types: ['RuneType'] },
+      { kind: 'field', name: 'rune_type', types: ['DOTA_RUNES'] },
     ],
   });
 

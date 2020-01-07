@@ -149,7 +149,7 @@ export const modifierPropertyData: Record<string, [ArgumentType, ReturnsType, st
   GetModifierTurnRate_Percentage: ['void', 'number'],
   GetModifierUnitDisllowUpgrading: ['void', 'binary'],
   GetModifierUnitStatsNeedsRefresh: ['void', 'binary', 'Not working.'],
-  GetOverrideAnimation: ['void', 'GameActivity'],
+  GetOverrideAnimation: ['void', 'GameActivity_t'],
   GetOverrideAnimationRate: ['void', 'number'],
   GetOverrideAnimationWeight: ['void', 'number'],
   GetOverrideAttackMagical: ['void', 'binary'],
