@@ -60,24 +60,14 @@ const Type: React.FC<{ type: api.Type }> = ({ type }) =>
     <FunctionType {...type} />
   );
 
-export const Types: React.FC<{ types: api.Type[] }> = ({ types }) => {
-  const isNullable = types.includes('nil');
-  if (isNullable && types.length === 1) return <Type type="nil" />;
-
-  const realTypes = types.filter(x => x !== 'nil');
-  const requiresWrapping = isNullable && realTypes.length > 1;
-  return (
-    <>
-      {requiresWrapping && '('}
-      {realTypes.map((type, index) => [
-        <Type key={index} type={type} />,
-        realTypes.length - 1 !== index && ' | ',
-      ])}
-      {requiresWrapping && ')'}
-      {isNullable && '?'}
-    </>
-  );
-};
+export const Types: React.FC<{ types: api.Type[] }> = ({ types }) => (
+  <>
+    {types.map((type, index) => [
+      <Type key={index} type={type} />,
+      types.length - 1 !== index && ' | ',
+    ])}
+  </>
+);
 
 export const FunctionParameter: React.FC<{ name: string; types: api.Type[] }> = ({
   name,

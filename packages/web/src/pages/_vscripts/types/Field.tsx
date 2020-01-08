@@ -28,7 +28,9 @@ export const Field: React.FC<{
     <FieldHeader>
       <FieldSignature>
         <CenteredKindIcon kind="field" size="big" />
-        {element.name}: {<Types types={element.types} />}
+        {element.name}
+        {element.types.includes('nil') && '?'}:{' '}
+        {<Types types={element.types.filter(x => x !== 'nil')} />}
       </FieldSignature>
       <ElementBadges>
         {context && <ElementLink scope={context} hash={element.name} />}
