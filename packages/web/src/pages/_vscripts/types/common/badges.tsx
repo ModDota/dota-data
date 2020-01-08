@@ -1,7 +1,7 @@
 import { Availability } from 'dota-data/files/vscripts/api';
 import { darken } from 'polished';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ButtonLink, InactiveLink } from '~components/Link';
 import { colors } from '~utils/constants';
 import SearchGitHubIcon from './search-github.svg';
@@ -14,24 +14,46 @@ export const ElementBadges = styled.div`
   }
 `;
 
-const AvailabilityBadgeWrapper = styled.div`
-  border: 1px solid lime;
-  border-radius: 5px;
-  font-size: 17px;
-  padding: 2px 5px;
-  align-self: flex-start;
+const AvailabilityBadgeBox = styled.div<{ color: string; active: boolean }>`
+  margin-top: 3px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+  text-align: center;
   user-select: none;
+  background: radial-gradient(${props => props.color}, ${props => darken(0.22, props.color)});
+
+  ${props =>
+    !props.active &&
+    css`
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+      filter: saturate(10%);
+    `}
 `;
 
-export const AvailabilityBadge: React.FC<{ available: Availability }> = ({ available }) =>
-  available === 'both' ? <AvailabilityBadgeWrapper>Client</AvailabilityBadgeWrapper> : null;
+export const AvailabilityBadge: React.FC<{ available: Availability }> = ({ available }) => {
+  const onServer = available === 'server' || available === 'both';
+  const onClient = available === 'client' || available === 'both';
+  return (
+    <>
+      <AvailabilityBadgeBox color="#5b82ee" active={onServer}>
+        s
+      </AvailabilityBadgeBox>
+      <AvailabilityBadgeBox color="#59df37" active={onClient}>
+        c
+      </AvailabilityBadgeBox>
+    </>
+  );
+};
 
 export const SearchOnGitHub: React.FC<{ name: string }> = ({ name }) => {
   const query = encodeURIComponent(`path:vscripts ${name}`);
   const href = `https://github.com/search?l=Lua&q=${query}&type=Code`;
   return (
     <a target="_blank" href={href} title="Search on GitHub">
-      <SearchGitHubIcon width={32} height={32} />
+      <SearchGitHubIcon width={30} height={30} />
     </a>
   );
 };
@@ -41,7 +63,7 @@ export const SearchInGoogle: React.FC<{ name: string }> = ({ name }) => {
   const href = `https://www.google.com/search?q=${query}`;
   return (
     <a target="_blank" href={href} title="Search on GitHub">
-      <SearchGoogleIcon width={32} height={32} />
+      <SearchGoogleIcon width={30} height={30} />
     </a>
   );
 };
