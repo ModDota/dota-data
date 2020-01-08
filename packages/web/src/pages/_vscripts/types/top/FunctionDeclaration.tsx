@@ -2,7 +2,6 @@ import api from 'dota-data/files/vscripts/api';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { useAnchor } from '~utils/hooks';
-import { isNotNil } from '~utils/types';
 import { getInterfacesForTypes } from '../../data';
 import {
   AvailabilityBadge,
@@ -26,8 +25,7 @@ const FunctionWrapper = styled(CommonGroupWrapper)`
 const FunctionHeader = styled(CommonGroupHeader)``;
 const FunctionSignature = styled(CommonGroupSignature)``;
 
-const ParameterDescriptions = styled.ul`
-  font-size: 18px;
+const RelatedInterfaces = styled.div`
   margin: 0 30px;
 `;
 
@@ -37,24 +35,26 @@ export const FunctionDeclaration: React.FC<{
   context?: string;
   declaration: api.FunctionDeclaration;
 }> = ({ className, style, context, declaration }) => {
+  const relatedInterfaces = useMemo(
+    () =>
+      declaration.args.flatMap(arg => {
+        const interfaces = getInterfacesForTypes(arg.types);
+        if (interfaces.length === 0) return [];
+        return interfaces.map(x => <InterfaceDeclaration key={x.name} declaration={x} />);
+      }),
+    [],
+  );
+
   const parameterDescriptions = useMemo(
     () =>
       declaration.args
-        .map(arg => {
-          const interfaces = getInterfacesForTypes(arg.types);
-          if (!arg.description && interfaces.length === 0) return null;
-
-          return (
-            <li key={arg.name}>
-              {arg.name}
-              {arg.description && ` - ${arg.description}`}
-              {interfaces.map(x => (
-                <InterfaceDeclaration key={x.name} declaration={x} />
-              ))}
-            </li>
-          );
-        })
-        .filter(isNotNil),
+        .filter(arg => arg.description)
+        .map(arg => (
+          <li key={arg.name}>
+            {arg.name}
+            {` - ${arg.description}`}
+          </li>
+        )),
     [],
   );
 
@@ -78,10 +78,17 @@ export const FunctionDeclaration: React.FC<{
           {context && <ElementLink scope={context} hash={declaration.name} />}
         </ElementBadges>
       </FunctionHeader>
-      {parameterDescriptions.length > 0 && (
-        <ParameterDescriptions>{parameterDescriptions}</ParameterDescriptions>
-      )}
-      <OptionalDescription description={declaration.description} />
+      {relatedInterfaces.length > 0 && <RelatedInterfaces>{relatedInterfaces}</RelatedInterfaces>}
+      <OptionalDescription
+        description={
+          (declaration.description || parameterDescriptions.length > 0) && (
+            <>
+              {parameterDescriptions}
+              {declaration.description}
+            </>
+          )
+        }
+      />
     </FunctionWrapper>
   );
 };

@@ -31,7 +31,7 @@ const DescriptionSeparator = styled.hr`
 
 export const OptionalDescription: React.FC<{
   className?: string;
-  description?: string;
+  description?: React.ReactNode;
 }> = ({ className, description }) => (
   <>
     {description && <DescriptionSeparator />}
