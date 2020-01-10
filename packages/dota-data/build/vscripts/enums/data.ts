@@ -22,7 +22,6 @@ export const droppedConstants = [
 
 export const extractedConstants = [
   'FIND_UNITS_EVERYWHERE',
-  'EF_NODRAW',
   'DOTA_ITEM_MAX',
   'DOTA_ITEM_INVENTORY_SIZE',
   'DOTA_ITEM_STASH_SIZE',
@@ -64,6 +63,7 @@ export const prefixedEnums: Record<string, string> = {
   // No known original names, so using normalized ones
   ActivateType: 'ACTIVATE_TYPE_',
   ConVarFlags: 'FCVAR_',
+  EntityEffects: 'EF_',
   FindOrder: 'FIND_',
   ItemTransient: 'DOTA_ITEM_TRANSIENT_',
   ShowGenericPopupType: 'DOTA_SHOWGENERICPOPUP_',

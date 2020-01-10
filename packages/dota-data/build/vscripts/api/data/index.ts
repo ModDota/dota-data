@@ -425,6 +425,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.ResolveNPCPositions': { args: { 0: ['location'], 1: ['radius'] } },
   'CEnvProjectedTexture.SetVolumetrics': { description: 'Turn on/off light volumetrics.' },
   '_G.GetLobbyEventGameDetails': { description: '' },
+  'CBaseEntity.AddEffects': { args: { 0: [null, 'EntityEffects'] } },
+  'CBaseEntity.RemoveEffects': { args: { 0: [null, 'EntityEffects'] } },
 };
 
 export const extraDeclarations = (() => {
