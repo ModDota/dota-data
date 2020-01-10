@@ -3,6 +3,8 @@ import { formatArgumentName, readDump } from '../../util';
 import { additions, override } from './data';
 import { PanoramaEvent, PanoramaEventArgument } from './types';
 
+export { types as panoramaEventsTypes } from './types';
+
 function parseDefinition(definition: string) {
   const [, name, parameters] = definition.match(/^(.+)\((.*)\)$/)!;
   if (parameters === '') return { name, args: [] };
