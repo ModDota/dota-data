@@ -10,7 +10,7 @@ export function readDump(name: string) {
   const [, ...groups] = dump.split(/\$> (.+)/g);
   const value = groups[groups.indexOf(name) + 1];
   if (value == null) throw new Error(`Couldn't find dump "${name}"`);
-  return value;
+  return value.trim();
 }
 
 const FILES = path.join(__dirname, '../../files');

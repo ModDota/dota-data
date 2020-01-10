@@ -26,7 +26,7 @@ export function generatePanoramaEvents() {
   const dump = readDump('dump_panorama_events');
   const result = Object.fromEntries(
     _.chunk(
-      `${dump.trim().slice(57, -1)}-`
+      `${dump.slice(57, -1)}-`
         .split('\n')
         .filter(x => x !== '|-')
         .map(v => v.slice(2)),

@@ -8,7 +8,6 @@ const EXAMPLES_REGEXP = /\n\n<b>Examples?:<\/b><pre>(.+)<\/pre>$/s;
 
 export function generateCss() {
   const result = readDump('dump_panorama_css_properties')
-    .trim()
     .slice(4)
     .split(/\n=== /)
     .map(x =>

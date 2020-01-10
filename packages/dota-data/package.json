@@ -18,7 +18,7 @@
     "build:tsc": "tsc",
     "dev": "run-p dev:static dev:tsc",
     "dev:static": "nodemon",
-    "dev:tsc": "tsc --watch"
+    "dev:tsc": "tsc --watch --preserveWatchOutput"
   },
   "nodemonConfig": {
     "exec": "ts-node --transpile-only build",

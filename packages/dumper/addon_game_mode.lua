@@ -4,6 +4,8 @@ SCRIPT = [[
   dump_panorama_css_properties
   echoln $> dump_panorama_events
   dump_panorama_events
+  echoln $> cl_panorama_script_help *
+  cl_panorama_script_help *
   echoln $> script_reload
   script_reload
   echoln $> cl_script_reload
