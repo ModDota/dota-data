@@ -47,7 +47,7 @@ export class EnumsSchema extends Schema {
   }
 
   protected getNames() {
-    return this.getDefinition().members.map(x => x.originalName);
+    return this.getDefinition().members.map(x => x.name);
   }
 
   protected getDefinition() {

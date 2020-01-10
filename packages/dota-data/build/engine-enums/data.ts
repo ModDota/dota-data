@@ -33,7 +33,7 @@ export const extracted: ExtractionRule[] = [
     name: 'Bot',
     prefix: 'DOTA_BOT_',
     filter: x => !x.startsWith('DOTA_BOT_MODE'),
-    transform: x => [...x, { name: 'SUPPORT', originalName: 'DOTA_BOT_SUPPORT' }],
+    transform: x => [...x, { name: 'DOTA_BOT_SUPPORT', shortName: 'SUPPORT' }],
   },
   { name: 'SpellImmunityType', prefix: 'SPELL_IMMUNITY_' },
   { prefix: 'DAMAGE_TYPE_' },
@@ -60,7 +60,7 @@ export const extracted: ExtractionRule[] = [
     filter: x => x.includes('_SHAREABLE'),
     transform(enums) {
       for (const member of enums) {
-        member.name = member.name.replace('_SHAREABLE', '');
+        member.shortName = member.shortName.replace('_SHAREABLE', '');
       }
 
       return enums;

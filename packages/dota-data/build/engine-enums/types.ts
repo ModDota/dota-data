@@ -8,7 +8,7 @@ export interface EngineEnum {
 
 export interface EngineEnumMember {
   name: string;
-  originalName: string;
+  shortName: string;
 }
 // EXPORT END
 

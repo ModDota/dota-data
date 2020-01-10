@@ -40,7 +40,7 @@ export async function generateEngineEnums() {
       return {
         name,
         members: transform(
-          selectedStrings.map((x): EngineEnumMember => ({ name: map(x), originalName: x })),
+          selectedStrings.map((x): EngineEnumMember => ({ name: x, shortName: map(x) })),
         ),
       };
     },
