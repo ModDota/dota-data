@@ -74,7 +74,10 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.EnableCustomGameSetupAutoLaunch': { args: { '0': ['enabled'] } },
   'CDOTAGamerules.GetCustomGameTeamMaxPlayers': { args: { '0': ['team', 'DOTATeam_t'] } },
   'CDOTAGamerules.GetDOTATime': { args: { '0': ['includePreGame'], '1': ['includeNegativeTime'] } },
-  'CDOTAGamerules.GetDroppedItem': { returns: 'CDOTA_Item', args: { '0': ['index'] } },
+  'CDOTAGamerules.GetDroppedItem': {
+    returns: ['CDOTA_Item_Physical', 'nil'],
+    args: { '0': ['index'] },
+  },
   'CDOTAGamerules.GetGameModeEntity': { returns: 'CDOTABaseGameMode' },
   'CDOTAGamerules.LockCustomGameSetupTeamAssignment': { args: { '0': ['locked'] } },
   'CDOTAGamerules.MakeTeamLose': { args: { '0': ['team', 'DOTATeam_t'] } },
@@ -199,10 +202,13 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     returns: array('CDOTA_Buff'),
     args: { '0': ['modifierName'] },
   },
-  'CDOTA_BaseNPC.FindItemInInventory': { returns: 'CDOTA_Item' },
-  'CDOTA_BaseNPC.FindModifierByName': { returns: 'CDOTA_Buff', args: { '0': ['modifierName'] } },
+  'CDOTA_BaseNPC.FindItemInInventory': { returns: ['CDOTA_Item', 'nil'] },
+  'CDOTA_BaseNPC.FindModifierByName': {
+    returns: ['CDOTA_Buff', 'nil'],
+    args: { '0': ['modifierName'] },
+  },
   'CDOTA_BaseNPC.FindModifierByNameAndCaster': {
-    returns: 'CDOTA_Buff',
+    returns: ['CDOTA_Buff', 'nil'],
     args: { '0': ['modifierName'], '1': [null, 'CDOTA_BaseNPC'] },
   },
   'CDOTA_BaseNPC.ForcePlayActivityOnce': { args: { '0': [null, 'GameActivity_t'] } },
@@ -230,6 +236,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.Kill': { args: { '0': [null, 'CDOTABaseAbility'], '1': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.MakeVisibleDueToAttack': { args: { '0': [null, 'DOTATeam_t'] } },
   'CDOTA_BaseNPC.MakeVisibleToTeam': { args: { '0': [null, 'DOTATeam_t'] } },
+  // TODO: additionalFlags - damage flags?
   'CDOTA_BaseNPC.ModifyHealth': { args: { '1': [null, 'CDOTABaseAbility'] } },
   'CDOTA_BaseNPC.MoveToNPC': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.MoveToNPCToGiveItem': {
@@ -611,7 +618,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   '_G.GetTeamHeroKills': { args: { '0': ['team', 'DOTATeam_t'] } },
   '_G.GetTeamName': { args: { '0': ['team', 'DOTATeam_t'] } },
   '_G.IsLocationVisible': { args: { '0': ['team', 'DOTATeam_t'] } },
-  '_G.IsValidEntity': { args: { '0': ['entity', 'table'] } },
+  '_G.IsValidEntity': { args: { '0': ['entity', ['table', 'nil']] } },
   '_G.LinkLuaModifier': { args: { '1': ['filePath'], '2': [null, 'LuaModifierType'] } },
   '_G.LoadKeyValues': { args: { '0': ['filePath'] } },
   '_G.LoadKeyValuesFromString': { args: { '0': ['kvString'] } },

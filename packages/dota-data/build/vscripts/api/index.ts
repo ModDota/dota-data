@@ -119,7 +119,11 @@ function transformFunction(
         }
 
         let types = overrideType(`${functionIdentifier}.args.${name}`, type, extensionType);
-        if (name.toLowerCase().endsWith('playerid') && _.isEqual(types, ['int'])) {
+        if (
+          name.toLowerCase().endsWith('playerid') &&
+          _.isEqual(types, ['int']) &&
+          !/^CDOTA_PlayerResource\.IsValid(Team)?Player(ID)?$/.test(functionIdentifier)
+        ) {
           types = ['PlayerID'];
         }
 

@@ -148,7 +148,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.StartSoundEventFromPositionReliable': { args: { 0: ['soundName'], 1: ['position'] } },
   '_G.StartSoundEventFromPositionUnreliable': { args: { 0: ['soundName'], 1: ['position'] } },
   'CBaseEntity.EmitSoundParams': { args: { 0: ['soundName'] } },
-  'GridNav.IsNearbyTree': { args: { 2: ['checkFullTreeRadius'] } },
   'CDOTA_BaseNPC_Hero.AddExperience': {
     description: '',
     args: { 1: [null, 'EDOTA_ModifyXP_Reason'] },
@@ -173,9 +172,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     // TODO: args
   },
   'CBaseEntity.TakeDamage': { args: { 0: ['damageInfo', 'CTakeDamageInfo'] } },
-  // 'CDOTAPlayer.SetTeam': {
-  // TODO: Warning: Updating player's entity team not updates team slot. Prefer using `PlayerResource.SetCustomTeamAssignment` instead.
-  // },
 
   // https://partner.steamgames.com/doc/api/ISteamHTTP
   'CScriptHTTPRequest.Send': {
@@ -283,8 +279,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     description: '',
     args: { 0: ['index'] },
   },
-  // May return nil?
-  '_G.HasRoomForItem': { description: '' },
+  // TODO: DOTAInventoryFlags_t?
+  'CDOTA_BaseNPC_Hero.HasRoomForItem': { description: '' },
   '_G.CreateIllusions': {
     description:
       'Create illusions of the passed hero that belong to passed unit using passed modifier data.',
@@ -427,6 +423,25 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.GetLobbyEventGameDetails': { description: '' },
   'CBaseEntity.AddEffects': { args: { 0: [null, 'EntityEffects'] } },
   'CBaseEntity.RemoveEffects': { args: { 0: [null, 'EntityEffects'] } },
+  '_G.IsMarkedForDeletion': { args: { 0: ['entity', 'CBaseEntity'] } },
+  'CDOTAPlayer.CheckForCourierSpawning': { args: { 0: [null, 'CDOTA_BaseNPC_Hero'] } },
+  'CDOTA_Item_Lua.CanUnitPickUp': {
+    args: { 0: [null, 'CDOTA_BaseNPC', 'Unit trying to pick up the item.'] },
+  },
+  '_G.AppendToLogFile': {
+    description: '',
+    deprecated: 'AppendToLogFile is deprecated. Print to the console for logging instead.',
+  },
+  '_G.InitLogFile': {
+    description: '',
+    deprecated: 'InitLogFile is deprecated. Print to the console for logging instead.',
+  },
+  '_G.GetDedicatedServerKey': {
+    deprecated: 'This function is unsafe. Prefer using `GetDedicatedServerKeyV2` instead.',
+  },
+  'CDOTA_BaseNPC.AddActivityModifier': {
+    args: { 0: [null, null, "The name of the activity modifier to add, e.g. 'haste'."] },
+  },
 };
 
 export const extraDeclarations = (() => {
