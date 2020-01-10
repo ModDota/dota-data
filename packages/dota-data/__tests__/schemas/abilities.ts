@@ -16,7 +16,6 @@ describe('integration', () => {
 
       // Incorrect spacing, TODO: allow?
       'tiny_tree_channel.AbilityBehavior[0] should be a AbilityBehavior enum',
-      'templar_assassin_trap_teleport.AbilityBehavior[3] should be a AbilityBehavior enum',
       'clinkz_scepter.AbilityBehavior[2] should be a AbilityBehavior enum',
     ],
   });

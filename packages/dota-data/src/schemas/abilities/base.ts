@@ -92,6 +92,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('SecretShop', s.binaryBoolean())
     .field('GlobalShop', s.binaryBoolean())
     .field('ItemGloballyCombinable', s.binaryBoolean())
+    .field('ItemIsNeutralDrop', s.binaryBoolean())
     .field('ItemPurchasable', s.binaryBoolean())
 
     .field('ItemSellable', s.binaryBoolean())
