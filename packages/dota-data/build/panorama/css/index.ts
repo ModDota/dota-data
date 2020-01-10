@@ -1,10 +1,12 @@
 import _ from 'lodash';
-import { outputFile, outputJson, readDump } from '../util';
-import { Property, types } from './types';
+import { readDump } from '../../util';
+import { Property } from './types';
+
+export { types as cssTypes } from './types';
 
 const EXAMPLES_REGEXP = /\n\n<b>Examples?:<\/b><pre>(.+)<\/pre>$/s;
 
-export function generateCssProperties() {
+export function generateCss() {
   const result = readDump('dump_panorama_css_properties')
     .trim()
     .slice(4)
@@ -37,6 +39,5 @@ export function generateCssProperties() {
       return [rule, property];
     });
 
-  outputJson('css-properties', Object.fromEntries(result));
-  outputFile('css-properties.d.ts', types);
+  return Object.fromEntries(result);
 }

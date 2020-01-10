@@ -1,4 +1,4 @@
-import { exportNamespacedRoot } from '../util';
+import { exportNamespacedRoot } from '../../util';
 
 // EXPORT START
 export interface Property {

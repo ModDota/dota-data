@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { formatArgumentName, readDump } from '../util';
-import { additions, override } from './events-data';
+import { formatArgumentName, readDump } from '../../util';
+import { additions, override } from './data';
 import { PanoramaEvent, PanoramaEventArgument } from './types';
 
 function parseDefinition(definition: string) {
