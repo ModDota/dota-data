@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { generateAttributes } from './attributes';
 import { generateEngineEnums } from './engine-enums';
 import { generateEvents } from './events';
 import { generatePanorama } from './panorama';
@@ -12,7 +11,6 @@ function generateScriptTypes() {
 }
 
 const generators: Record<string, () => void | Promise<void>> = {
-  attributes: generateAttributes,
   engineEnums: generateEngineEnums,
   events: generateEvents,
   panorama: generatePanorama,
