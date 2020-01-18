@@ -265,7 +265,11 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.SpendMana': { args: { '1': [null, 'CDOTABaseAbility'] } },
   'CDOTA_BaseNPC.StartGesture': { args: { '0': [null, 'GameActivity_t'] } },
   'CDOTA_BaseNPC.StartGestureWithPlaybackRate': { args: { '0': [null, 'GameActivity_t'] } },
-  'CDOTA_BaseNPC.TakeItem': { args: { '0': [null, 'CDOTA_Item'] } },
+  'CDOTA_BaseNPC.TakeItem': {
+    description: o => `${o} Returns the passed item.`,
+    returns: 'CDOTA_Item',
+    args: { '0': [null, 'CDOTA_Item'] },
+  },
   'CDOTA_BaseNPC.TriggerSpellAbsorb': { args: { '0': [null, 'CDOTABaseAbility'] } },
   'CDOTA_BaseNPC.TriggerSpellReflect': { args: { '0': [null, 'CDOTABaseAbility'] } },
   'CDOTA_BaseNPC_Creature.AddItemDrop': { args: { '0': [null, 'table'] } },
@@ -602,7 +606,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['team', 'DOTATeam_t'],
       '1': ['location'],
-      '2': ['cacheUnit', 'CBaseEntity'],
+      '2': ['cacheUnit', ['CBaseEntity', 'nil']],
       '3': ['radius'],
       '4': ['teamFilter', 'DOTA_UNIT_TARGET_TEAM'],
       '5': ['typeFilter', 'DOTA_UNIT_TARGET_TYPE'],

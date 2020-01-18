@@ -77,7 +77,13 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTAGameManager.GetHeroNameForUnitName': { args: { 0: ['unitName'] } },
   'CDOTAGameManager.GetHeroUnitNameByID': { args: { 0: ['heroId'] } },
 
-  'CScriptParticleManager.GetParticleReplacement': { args: { 0: ['particleName'] /* TODO: 1 */ } },
+  'CScriptParticleManager.GetParticleReplacement': {
+    args: {
+      0: ['particleName'],
+      // TODO: It accepts any table, but creatures with equipped wearables don't get replacement
+      1: ['hero', ['CDOTA_BaseNPC_Hero', 'nil']],
+    },
+  },
   'CScriptParticleManager.SetParticleControlFallback': {
     args: { 0: ['particle', 'ParticleID'], '1': ['controlPoint'] },
   },
@@ -442,6 +448,21 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.AddActivityModifier': {
     args: { 0: [null, null, "The name of the activity modifier to add, e.g. 'haste'."] },
   },
+  'CBaseEntity.GetContext': { returns: ['string', 'float', 'nil'] },
+  'CBaseEntity.SetContextThink': {
+    args: { 1: [null, [func([['entity', 'CBaseEntity']], ['float', 'nil']), 'nil']] },
+  },
+  'CDOTA_Buff.GetAuraOwner': {
+    description:
+      'Returns the owner of the aura modifier, that applied this modifier. Always `nil` on the client.',
+    returns: ['CDOTA_BaseNPC', 'nil'],
+  },
+  '_G.SpawnDOTAShopTriggerRadiusApproximate': { returns: 'CDOTA_ShopTrigger' },
+  '_G.LocalTime': { returns: 'LocalTime' },
+  '_G.GetListenServerHost': {
+    // TODO: Nullable?
+    returns: 'CDOTAPlayer',
+  },
 };
 
 export const extraDeclarations = (() => {
@@ -500,6 +521,16 @@ export const extraDeclarations = (() => {
     name: 'Quaternion',
     description: 'Invalid type.', // VScript Lua: Unhandled variant type quaternion.
     members: [],
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'LocalTime',
+    members: [
+      { kind: 'field', name: 'Minutes', types: ['int'] },
+      { kind: 'field', name: 'Seconds', types: ['int'] },
+      { kind: 'field', name: 'Hours', types: ['int'] },
+    ],
   });
 
   context.push({
