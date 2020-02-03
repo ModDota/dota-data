@@ -50,6 +50,11 @@ background-color: gradient( radial, 50% 50%, 0% 0%, 80% 80%, from( #00ff00ff ), 
 background-color: #0d1c22ff, gradient( radial, 100% -0%, 100px -40px, 320% 270%, from( #3a464bff ), color-stop( 0.23, #0d1c22ff ), to( #0d1c22ff ) );</pre>
 
 
+=== background-color-opacity ===
+Sets the background color opacity for a panel (does nothing on its own, but when merged with a full background-color it overrides the opacity).<br><br><b>Examples:</b><pre>background-color-opacity: 0.5;
+</pre>
+
+
 === background-image ===
 Comma separated list of images or movies to draw in the background. Can specify "none" to not draw a background layer. Combined with background-position, background-size and background-repeat values.<br><br><b>Example:</b><pre>background-image: url("file://{images}/default.tga"), url( "file://{movies}/Background1080p.webm" );</pre>
 
@@ -962,6 +967,7 @@ Enumeration 'dotaunitorder_t'
 	dotaunitorder_t.DOTA_UNIT_ORDER_CAST_RIVER_PAINT = 35
 	dotaunitorder_t.DOTA_UNIT_ORDER_PREGAME_ADJUST_ITEM_ASSIGNMENT = 36
 	dotaunitorder_t.DOTA_UNIT_ORDER_DROP_ITEM_AT_FOUNTAIN = 37
+	dotaunitorder_t.DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH = 38
 
 Enumeration 'DOTA_OVERHEAD_ALERT'
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_GOLD = 0
@@ -1896,7 +1902,9 @@ Enumeration 'modifierstate'
 	modifierstate.MODIFIER_STATE_UNSLOWABLE = 38
 	modifierstate.MODIFIER_STATE_TETHERED = 39
 	modifierstate.MODIFIER_STATE_IGNORING_STOP_ORDERS = 40
-	modifierstate.MODIFIER_STATE_LAST = 41
+	modifierstate.MODIFIER_STATE_FEARED = 41
+	modifierstate.MODIFIER_STATE_TAUNTED = 42
+	modifierstate.MODIFIER_STATE_LAST = 43
 
 Enumeration 'DOTAModifierAttribute_t'
 	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_NONE = 0
@@ -1980,22 +1988,23 @@ Enumeration 'DotaDefaultUIElement_t'
 	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PROTECT = 10
 	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_GOLD = 11
 	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_SHOP_SUGGESTEDITEMS = 12
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS = 13
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME = 14
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK = 15
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_MENU_BUTTONS = 16
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND = 17
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM = 18
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM = 19
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_SCORE = 20
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME = 21
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME_CHAT = 22
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS = 23
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_PREGAME_STRATEGYUI = 24
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_KILLCAM = 25
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR = 26
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS = 27
-	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ELEMENT_COUNT = 28
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_SHOP_COMMONITEMS = 13
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS = 14
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME = 15
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK = 16
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_MENU_BUTTONS = 17
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND = 18
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM = 19
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM = 20
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_SCORE = 21
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME = 22
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME_CHAT = 23
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_QUICK_STATS = 24
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_PREGAME_STRATEGYUI = 25
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_KILLCAM = 26
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR = 27
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS = 28
+	DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ELEMENT_COUNT = 29
 
 Enumeration 'PlayerUltimateStateOrTime_t'
 	PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_READY = 0
@@ -2128,147 +2137,151 @@ Enumeration 'DOTAKeybindCommand_t'
 	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5 = 87
 	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6 = 88
 	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP = 89
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_QUICKCAST = 90
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_QUICKCAST = 91
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_QUICKCAST = 92
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_QUICKCAST = 93
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_QUICKCAST = 94
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_QUICKCAST = 95
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_QUICKCAST = 96
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_AUTOCAST = 97
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_AUTOCAST = 98
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_AUTOCAST = 99
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_AUTOCAST = 100
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_AUTOCAST = 101
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_AUTOCAST = 102
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_AUTOCAST = 103
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_QUICKAUTOCAST = 104
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_QUICKAUTOCAST = 105
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_QUICKAUTOCAST = 106
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_QUICKAUTOCAST = 107
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_QUICKAUTOCAST = 108
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_QUICKAUTOCAST = 109
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_QUICKAUTOCAST = 110
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP1 = 111
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP2 = 112
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP3 = 113
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP4 = 114
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP5 = 115
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP6 = 116
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP7 = 117
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP8 = 118
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP9 = 119
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP10 = 120
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLE = 121
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY1 = 122
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY2 = 123
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY3 = 124
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY4 = 125
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY5 = 126
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_TOGGLE = 127
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SCOREBOARD_TOGGLE = 128
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SCREENSHOT = 129
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ESCAPE = 130
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONSOLE = 131
-	DOTAKeybindCommand_t.DOTA_KEYBIND_DEATH_SUMMARY = 132
-	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_ABILITIES = 133
-	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_STATS = 134
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_GLYPH = 135
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_RADAR = 136
-	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_QUICKBUY = 137
-	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_STICKY = 138
-	DOTAKeybindCommand_t.DOTA_KEYBIND_GRAB_STASH_ITEMS = 139
-	DOTAKeybindCommand_t.DOTA_KEYBIND_TOGGLE_AUTOATTACK = 140
-	DOTAKeybindCommand_t.DOTA_KEYBIND_TAUNT = 141
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CONSUMABLES = 142
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ATTRIBUTES = 143
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMAMENTS = 144
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARCANE = 145
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_BASICS = 146
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SUPPORT = 147
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CASTER = 148
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_WEAPONS = 149
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMOR = 150
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARTIFACTS = 151
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_1 = 152
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_2 = 153
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SECRET = 154
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SEARCHBOX = 155
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_1 = 156
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_2 = 157
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_3 = 158
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_4 = 159
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_5 = 160
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_6 = 161
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_7 = 162
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_8 = 163
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_9 = 164
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_10 = 165
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_11 = 166
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_12 = 167
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_13 = 168
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_14 = 169
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_UP = 170
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_DOWN = 171
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_LEFT = 172
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_RIGHT = 173
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_GRIP = 174
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_1 = 175
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_2 = 176
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_3 = 177
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_4 = 178
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_5 = 179
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_6 = 180
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_7 = 181
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_8 = 182
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_9 = 183
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_10 = 184
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_UNIT_SELECT = 185
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_HERO_SELECT = 186
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_PAUSE = 187
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CHAT = 188
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_SCOREBOARD = 189
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 190
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 191
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_HARVEST = 192
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_ITEM = 193
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_GOLD = 194
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_XP = 195
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_FANTASY = 196
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 197
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 198
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 199
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 200
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 201
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 202
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 203
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 204
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 205
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 206
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 207
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 208
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 209
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 210
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 211
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 212
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 213
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 214
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 215
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 216
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 217
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 218
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 219
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 220
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 221
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 222
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 223
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 224
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INSPECTHEROINWORLD = 225
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_IN = 226
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_OUT = 227
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 228
-	DOTAKeybindCommand_t.DOTA_KEYBIND_DOTA_ALT = 229
-	DOTAKeybindCommand_t.DOTA_KEYBIND_COUNT = 230
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYNEUTRAL = 90
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_QUICKCAST = 91
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_QUICKCAST = 92
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_QUICKCAST = 93
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_QUICKCAST = 94
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_QUICKCAST = 95
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_QUICKCAST = 96
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_QUICKCAST = 97
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYNEUTRAL_QUICKCAST = 98
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_AUTOCAST = 99
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_AUTOCAST = 100
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_AUTOCAST = 101
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_AUTOCAST = 102
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_AUTOCAST = 103
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_AUTOCAST = 104
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_AUTOCAST = 105
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYNEUTRAL_AUTOCAST = 106
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY1_QUICKAUTOCAST = 107
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY2_QUICKAUTOCAST = 108
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY3_QUICKAUTOCAST = 109
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY4_QUICKAUTOCAST = 110
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY5_QUICKAUTOCAST = 111
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORY6_QUICKAUTOCAST = 112
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYTP_QUICKAUTOCAST = 113
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INVENTORYNEUTRAL_QUICKAUTOCAST = 114
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP1 = 115
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP2 = 116
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP3 = 117
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP4 = 118
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP5 = 119
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP6 = 120
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP7 = 121
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP8 = 122
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP9 = 123
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUP10 = 124
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLE = 125
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY1 = 126
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY2 = 127
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY3 = 128
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY4 = 129
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY5 = 130
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_TOGGLE = 131
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SCOREBOARD_TOGGLE = 132
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SCREENSHOT = 133
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ESCAPE = 134
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONSOLE = 135
+	DOTAKeybindCommand_t.DOTA_KEYBIND_DEATH_SUMMARY = 136
+	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_ABILITIES = 137
+	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_STATS = 138
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_GLYPH = 139
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_RADAR = 140
+	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_QUICKBUY = 141
+	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_STICKY = 142
+	DOTAKeybindCommand_t.DOTA_KEYBIND_GRAB_STASH_ITEMS = 143
+	DOTAKeybindCommand_t.DOTA_KEYBIND_TOGGLE_AUTOATTACK = 144
+	DOTAKeybindCommand_t.DOTA_KEYBIND_TAUNT = 145
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CONSUMABLES = 146
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ATTRIBUTES = 147
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMAMENTS = 148
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARCANE = 149
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_BASICS = 150
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SUPPORT = 151
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CASTER = 152
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_WEAPONS = 153
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMOR = 154
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARTIFACTS = 155
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_1 = 156
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_2 = 157
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SECRET = 158
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SEARCHBOX = 159
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_1 = 160
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_2 = 161
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_3 = 162
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_4 = 163
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_5 = 164
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_6 = 165
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_7 = 166
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_8 = 167
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_9 = 168
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_10 = 169
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_11 = 170
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_12 = 171
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_13 = 172
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_14 = 173
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_UP = 174
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_DOWN = 175
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_LEFT = 176
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_RIGHT = 177
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_GRIP = 178
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_1 = 179
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_2 = 180
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_3 = 181
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_4 = 182
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_5 = 183
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_6 = 184
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_7 = 185
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_8 = 186
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_9 = 187
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_10 = 188
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_UNIT_SELECT = 189
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_HERO_SELECT = 190
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_PAUSE = 191
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CHAT = 192
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_SCOREBOARD = 193
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 194
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 195
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_HARVEST = 196
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_ITEM = 197
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_GOLD = 198
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_XP = 199
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_FANTASY = 200
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 201
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 202
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 203
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 204
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 205
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 206
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 207
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 208
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 209
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 210
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 211
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 212
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 213
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 214
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 215
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 216
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 217
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 218
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 219
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 220
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 221
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 222
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 223
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 224
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 225
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 226
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 227
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 228
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INSPECTHEROINWORLD = 229
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_IN = 230
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_OUT = 231
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 232
+	DOTAKeybindCommand_t.DOTA_KEYBIND_DOTA_ALT = 233
+	DOTAKeybindCommand_t.DOTA_KEYBIND_COUNT = 234
 
 Enumeration 'DOTA_SHOP_TYPE'
 	DOTA_SHOP_TYPE.DOTA_SHOP_HOME = 0
@@ -2278,7 +2291,8 @@ Enumeration 'DOTA_SHOP_TYPE'
 	DOTA_SHOP_TYPE.DOTA_SHOP_SIDE2 = 4
 	DOTA_SHOP_TYPE.DOTA_SHOP_SECRET2 = 5
 	DOTA_SHOP_TYPE.DOTA_SHOP_CUSTOM = 6
-	DOTA_SHOP_TYPE.DOTA_SHOP_NONE = 7
+	DOTA_SHOP_TYPE.DOTA_SHOP_NEUTRALS = 7
+	DOTA_SHOP_TYPE.DOTA_SHOP_NONE = 8
 
 $> script_reload
 Initializing script VM...
@@ -2512,6 +2526,16 @@ Initializing script VM...
     "kind":"function",
     "name":"CreateModifierThinker",
     "description":"Create a modifier not associated with an NPC. ( hCaster, hAbility, modifierName, paramTable, vOrigin, nTeamNumber, bPhantomBlocker )"
+  },{
+    "returns":"handle",
+    "args":[{
+        "type":"Vector"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"CreateRune",
+    "description":"Create a rune of the specified type (vLocation, iRuneType)."
   },{
     "returns":"handle",
     "args":[{
@@ -2923,6 +2947,20 @@ Initializing script VM...
     "returns":"void",
     "args":[{
         "type":"string"
+      },{
+        "type":"Vector"
+      },{
+        "type":"handle"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"DropNeutralItemAtPositionForHero",
+    "description":"Drop a neutral item for the team of the hero at the given tier."
+  },{
+    "returns":"void",
+    "args":[{
+        "type":"string"
       }],
     "kind":"function",
     "name":"EmitAnnouncerSound",
@@ -3063,6 +3101,14 @@ Initializing script VM...
     "kind":"function",
     "name":"FindClearSpaceForUnit",
     "description":"Place a unit somewhere not already occupied."
+  },{
+    "returns":"handle",
+    "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"FindSpawnEntityForTeam",
+    "description":"Find a spawn point for the given team."
   },{
     "returns":"table",
     "args":[{
@@ -3386,6 +3432,14 @@ Initializing script VM...
     "kind":"function",
     "name":"GetWorldMinY",
     "description":"Gets the world's minimum Y position."
+  },{
+    "returns":"int",
+    "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"GetXPNeededToReachNextLevel",
+    "description":"Get amount of XP required to reach the next level."
   },{
     "returns":"void",
     "args":[{
@@ -11317,22 +11371,22 @@ Initializing script VM...
     "name":"DOTA_DEFAULT_UI_ACTION_PANEL"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":27,
+    "value":28,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":28,
+    "value":29,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_ELEMENT_COUNT"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":21,
+    "value":22,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_ENDGAME"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":22,
+    "value":23,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_ENDGAME_CHAT"
   },{
@@ -11342,17 +11396,17 @@ Initializing script VM...
     "name":"DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":14,
+    "value":15,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":13,
+    "value":14,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS"
   },{
@@ -11397,19 +11451,24 @@ Initializing script VM...
     "name":"DOTA_DEFAULT_UI_INVENTORY_SHOP"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":25,
+    "value":26,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_KILLCAM"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":24,
+    "value":25,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_PREGAME_STRATEGYUI"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":23,
+    "value":24,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_QUICK_STATS"
+  },{
+    "enum":"DotaDefaultUIElement_t",
+    "value":13,
+    "kind":"constant",
+    "name":"DOTA_DEFAULT_UI_SHOP_COMMONITEMS"
   },{
     "enum":"DotaDefaultUIElement_t",
     "value":12,
@@ -11417,27 +11476,27 @@ Initializing script VM...
     "name":"DOTA_DEFAULT_UI_SHOP_SUGGESTEDITEMS"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":26,
+    "value":27,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_BAR"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":17,
+    "value":18,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":19,
+    "value":20,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":18,
+    "value":19,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":20,
+    "value":21,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_BAR_SCORE"
   },{
@@ -11447,7 +11506,7 @@ Initializing script VM...
     "name":"DOTA_DEFAULT_UI_TOP_HEROES"
   },{
     "enum":"DotaDefaultUIElement_t",
-    "value":16,
+    "value":17,
     "kind":"constant",
     "name":"DOTA_DEFAULT_UI_TOP_MENU_BUTTONS"
   },{
@@ -11836,7 +11895,7 @@ Initializing script VM...
     "name":"DOTA_HERO_PICK_STATE_CUSTOMGAME_SELECT"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":27,
+    "value":28,
     "kind":"constant",
     "name":"DOTA_HUD_CUSTOMUI_BEHIND_HUD_ELEMENTS"
   },{
@@ -11851,32 +11910,32 @@ Initializing script VM...
     "name":"DOTA_HUD_VISIBILITY_ACTION_PANEL"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":28,
+    "value":29,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_COUNT"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":21,
+    "value":22,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_ENDGAME"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":22,
+    "value":23,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_ENDGAME_CHAT"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_HERO_SELECTION_CLOCK"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":14,
+    "value":15,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_HERO_SELECTION_GAME_NAME"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":13,
+    "value":14,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_HERO_SELECTION_TEAMS"
   },{
@@ -11921,19 +11980,24 @@ Initializing script VM...
     "name":"DOTA_HUD_VISIBILITY_INVENTORY_SHOP"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":25,
+    "value":26,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_KILLCAM"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":24,
+    "value":25,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_PREGAME_STRATEGYUI"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":23,
+    "value":24,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_QUICK_STATS"
+  },{
+    "enum":"DOTAHUDVisibility_t",
+    "value":13,
+    "kind":"constant",
+    "name":"DOTA_HUD_VISIBILITY_SHOP_COMMONITEMS"
   },{
     "enum":"DOTAHUDVisibility_t",
     "value":12,
@@ -11941,27 +12005,27 @@ Initializing script VM...
     "name":"DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":26,
+    "value":27,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_BAR"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":17,
+    "value":18,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_BAR_BACKGROUND"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":19,
+    "value":20,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_BAR_DIRE_TEAM"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":18,
+    "value":19,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_BAR_RADIANT_TEAM"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":20,
+    "value":21,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_BAR_SCORE"
   },{
@@ -11971,7 +12035,7 @@ Initializing script VM...
     "name":"DOTA_HUD_VISIBILITY_TOP_HEROES"
   },{
     "enum":"DOTAHUDVisibility_t",
-    "value":16,
+    "value":17,
     "kind":"constant",
     "name":"DOTA_HUD_VISIBILITY_TOP_MENU_BUTTONS"
   },{
@@ -12020,7 +12084,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_INVENTORY_LIMIT_DROP_ON_GROUND"
   },{
-    "value":10,
+    "value":9,
     "kind":"constant",
     "name":"DOTA_ITEM_INVENTORY_SIZE"
   },{
@@ -12073,11 +12137,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_ITEM_SLOT_9"
   },{
-    "value":16,
+    "value":15,
     "kind":"constant",
     "name":"DOTA_ITEM_STASH_MAX"
   },{
-    "value":10,
+    "value":9,
     "kind":"constant",
     "name":"DOTA_ITEM_STASH_MIN"
   },{
@@ -12886,6 +12950,11 @@ Initializing script VM...
     "enum":"DOTA_SHOP_TYPE",
     "value":7,
     "kind":"constant",
+    "name":"DOTA_SHOP_NEUTRALS"
+  },{
+    "enum":"DOTA_SHOP_TYPE",
+    "value":8,
+    "kind":"constant",
     "name":"DOTA_SHOP_NONE"
   },{
     "enum":"DOTA_SHOP_TYPE",
@@ -13256,6 +13325,10 @@ Initializing script VM...
     "value":21,
     "kind":"constant",
     "name":"DOTA_UNIT_ORDER_STOP"
+  },{
+    "value":38,
+    "kind":"constant",
+    "name":"DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH"
   },{
     "value":22,
     "kind":"constant",
@@ -15076,6 +15149,11 @@ Initializing script VM...
     "name":"MODIFIER_STATE_FAKE_ALLY"
   },{
     "enum":"modifierstate",
+    "value":41,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_FEARED"
+  },{
+    "enum":"modifierstate",
     "value":23,
     "kind":"constant",
     "name":"MODIFIER_STATE_FLYING"
@@ -15116,7 +15194,7 @@ Initializing script VM...
     "name":"MODIFIER_STATE_INVULNERABLE"
   },{
     "enum":"modifierstate",
-    "value":41,
+    "value":43,
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST"
   },{
@@ -15204,6 +15282,11 @@ Initializing script VM...
     "value":5,
     "kind":"constant",
     "name":"MODIFIER_STATE_STUNNED"
+  },{
+    "enum":"modifierstate",
+    "value":42,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_TAUNTED"
   },{
     "enum":"modifierstate",
     "value":39,
@@ -18471,6 +18554,8 @@ Initializing script VM...
             "type":"int"
           },{
             "type":"string"
+          },{
+            "type":"bool"
           }],
         "returns":"handle",
         "name":"AddBotPlayerWithEntityScript",
@@ -18772,6 +18857,13 @@ Initializing script VM...
         "description":"Prepare Dota lane style spawners with a given interval"
       },{
         "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"RemoveFakeClient",
+        "description":"Removes a fake client"
+      },{
+        "args":[{
             "type":"string"
           }],
         "returns":"void",
@@ -18944,6 +19036,13 @@ Initializing script VM...
         "returns":"void",
         "name":"SetFirstBloodActive",
         "description":"Sets whether First Blood has been triggered."
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetGameTimeFrozen",
+        "description":"Freeze the game time."
       },{
         "args":[{
             "type":"int"
@@ -19128,6 +19227,11 @@ Initializing script VM...
         "description":"Spawn and release the next creep wave from Dota lane style spawners."
       },{
         "args":[],
+        "returns":"void",
+        "name":"SpawnNeutralCreeps",
+        "description":"Spawn and release the next set of neutral camps."
+      },{
+        "args":[],
         "returns":"int",
         "name":"State_Get",
         "description":"Get the current Gamerules state"
@@ -19193,6 +19297,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetSelectedHero",
         "description":"Sets this player's hero selection."
+      },{
+        "args":[{
+            "name":"vLocation",
+            "type":"Vector"
+          }],
+        "returns":"handle",
+        "name":"SpawnCourierAtPosition",
+        "description":"Spawn a courier for this player at the given position."
       }],
     "kind":"class",
     "name":"CDOTAPlayer",
@@ -22508,10 +22620,6 @@ Initializing script VM...
         "name":"SpendGold",
         "description":"Args: int nGold, int nReason"
       },{
-        "args":[],
-        "returns":"bool",
-        "name":"UnitCanRespawn"
-      },{
         "args":[{
             "name":"hAbility",
             "type":"handle"
@@ -22527,6 +22635,11 @@ Initializing script VM...
     "kind":"class",
     "name":"CDOTA_BaseNPC_Hero",
     "extend":"CDOTA_BaseNPC"
+  },{
+    "members":[],
+    "kind":"class",
+    "name":"CDOTA_BaseNPC_NeutralItemStash",
+    "extend":"CDOTA_BaseNPC_Building"
   },{
     "members":[],
     "kind":"class",
@@ -29817,7 +29930,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PUNCH"
   },{
-    "value":1775,
+    "value":1776,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -29969,7 +30082,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
   },{
-    "value":1776,
+    "value":1774,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -35448,6 +35561,11 @@ Initializing script VM...
     "enum":"DOTA_SHOP_TYPE",
     "value":7,
     "kind":"constant",
+    "name":"DOTA_SHOP_NEUTRALS"
+  },{
+    "enum":"DOTA_SHOP_TYPE",
+    "value":8,
+    "kind":"constant",
     "name":"DOTA_SHOP_NONE"
   },{
     "enum":"DOTA_SHOP_TYPE",
@@ -37389,6 +37507,11 @@ Initializing script VM...
     "name":"MODIFIER_STATE_FAKE_ALLY"
   },{
     "enum":"modifierstate",
+    "value":41,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_FEARED"
+  },{
+    "enum":"modifierstate",
     "value":23,
     "kind":"constant",
     "name":"MODIFIER_STATE_FLYING"
@@ -37429,7 +37552,7 @@ Initializing script VM...
     "name":"MODIFIER_STATE_INVULNERABLE"
   },{
     "enum":"modifierstate",
-    "value":41,
+    "value":43,
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST"
   },{
@@ -37517,6 +37640,11 @@ Initializing script VM...
     "value":5,
     "kind":"constant",
     "name":"MODIFIER_STATE_STUNNED"
+  },{
+    "enum":"modifierstate",
+    "value":42,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_TAUNTED"
   },{
     "enum":"modifierstate",
     "value":39,
@@ -37836,7 +37964,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1774,
+    "value":1775,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
