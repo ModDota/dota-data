@@ -463,6 +463,22 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     // TODO: Nullable?
     returns: 'CDOTAPlayer',
   },
+  'CDOTAGamerules.RemoveFakeClient': { args: { 0: ['playerId'] } },
+  'CDOTAGamerules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
+  '_G.CreateRune': { returns: 'CBaseAnimating', args: { 1: [null, 'DOTA_RUNES'] } },
+  '_G.DropNeutralItemAtPositionForHero': {
+    args: {
+      0: ['itemName', null, 'Can be any item name, it does not have to be neutral.'],
+      1: ['location'],
+      2: ['unit', 'CDOTA_BaseNPC'],
+      3: ['tier', null, 'Zero-based tier number.'],
+    },
+  },
+  '_G.FindSpawnEntityForTeam': {
+    returns: ['CBaseEntity', 'nil'],
+    args: { 0: ['team', 'DOTATeam_t'] },
+  },
+  '_G.GetXPNeededToReachNextLevel': { args: { 0: ['level'] } },
 };
 
 export const extraDeclarations = (() => {
@@ -721,6 +737,7 @@ export const extraDeclarations = (() => {
     members: [
       { kind: 'field', name: 'entindex_attacker_const', types: ['EntityIndex'] },
       { kind: 'field', name: 'entindex_victim_const', types: ['EntityIndex'] },
+      { kind: 'field', name: 'entindex_inflictor_const', types: ['EntityIndex', 'nil'] },
       { kind: 'field', name: 'damagetype_const', types: ['DAMAGE_TYPES'] },
       { kind: 'field', name: 'damage', types: ['float'] },
     ],
