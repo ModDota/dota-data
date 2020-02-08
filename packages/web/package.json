@@ -1,6 +1,6 @@
 {
   "name": "@dota-data/web",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": true,
   "scripts": {
     "build": "next build src && next export src -o out",
