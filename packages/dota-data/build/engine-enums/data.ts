@@ -9,7 +9,6 @@ export interface ExtractionRule {
 }
 
 export const extracted: ExtractionRule[] = [
-  { prefix: 'DOTA_UNIT_ORDER_' },
   { prefix: 'DOTA_PSEUDO_RANDOM_' },
   { prefix: 'DOTA_ORB_PRIORITY_' },
   { prefix: 'DOTA_ORB_LABEL_' },
