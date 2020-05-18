@@ -1163,9 +1163,13 @@ Enumeration 'EDOTA_ModifyGold_Reason'
 	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_Building = 11
 	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_HeroKill = 12
 	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_CreepKill = 13
-	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_RoshanKill = 14
-	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_CourierKill = 15
-	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_SharedGold = 16
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_NeutralKill = 14
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_RoshanKill = 15
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_CourierKill = 16
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_BountyRune = 17
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_SharedGold = 18
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_AbilityGold = 19
+	EDOTA_ModifyGold_Reason.DOTA_ModifyGold_WardKill = 20
 
 Enumeration 'DOTAUnitAttackCapability_t'
 	DOTAUnitAttackCapability_t.DOTA_UNIT_CAP_NO_ATTACK = 0
@@ -11126,24 +11130,19 @@ Initializing script VM...
     "name":"DOTA_ATTRIBUTE_AGILITY"
   },{
     "enum":"AttributeDerivedStats",
-    "value":6,
+    "value":4,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_ARMOR"
   },{
     "enum":"AttributeDerivedStats",
-    "value":7,
+    "value":5,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED"
   },{
     "enum":"AttributeDerivedStats",
-    "value":5,
+    "value":3,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_DAMAGE"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":8,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT"
   },{
     "enum":"Attributes",
     "value":2,
@@ -11151,29 +11150,19 @@ Initializing script VM...
     "name":"DOTA_ATTRIBUTE_INTELLECT"
   },{
     "enum":"AttributeDerivedStats",
-    "value":9,
+    "value":6,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE"
   },{
     "enum":"AttributeDerivedStats",
-    "value":13,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":10,
+    "value":7,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MANA"
   },{
     "enum":"AttributeDerivedStats",
-    "value":11,
+    "value":8,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":12,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT"
   },{
     "enum":"Attributes",
     "value":-1,
@@ -11204,16 +11193,6 @@ Initializing script VM...
     "value":2,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_STRENGTH_HP_REGEN"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":4,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_STRENGTH_MAGIC_RESISTANCE_PERCENT"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":3,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT"
   },{
     "enum":"modifierremove",
     "value":0,
@@ -12743,6 +12722,16 @@ Initializing script VM...
     "name":"DOTA_ModifyGold_AbilityCost"
   },{
     "enum":"EDOTA_ModifyGold_Reason",
+    "value":19,
+    "kind":"constant",
+    "name":"DOTA_ModifyGold_AbilityGold"
+  },{
+    "enum":"EDOTA_ModifyGold_Reason",
+    "value":17,
+    "kind":"constant",
+    "name":"DOTA_ModifyGold_BountyRune"
+  },{
+    "enum":"EDOTA_ModifyGold_Reason",
     "value":11,
     "kind":"constant",
     "name":"DOTA_ModifyGold_Building"
@@ -12758,7 +12747,7 @@ Initializing script VM...
     "name":"DOTA_ModifyGold_CheatCommand"
   },{
     "enum":"EDOTA_ModifyGold_Reason",
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"DOTA_ModifyGold_CourierKill"
   },{
@@ -12783,6 +12772,11 @@ Initializing script VM...
     "name":"DOTA_ModifyGold_HeroKill"
   },{
     "enum":"EDOTA_ModifyGold_Reason",
+    "value":14,
+    "kind":"constant",
+    "name":"DOTA_ModifyGold_NeutralKill"
+  },{
+    "enum":"EDOTA_ModifyGold_Reason",
     "value":3,
     "kind":"constant",
     "name":"DOTA_ModifyGold_PurchaseConsumable"
@@ -12793,7 +12787,7 @@ Initializing script VM...
     "name":"DOTA_ModifyGold_PurchaseItem"
   },{
     "enum":"EDOTA_ModifyGold_Reason",
-    "value":14,
+    "value":15,
     "kind":"constant",
     "name":"DOTA_ModifyGold_RoshanKill"
   },{
@@ -12808,7 +12802,7 @@ Initializing script VM...
     "name":"DOTA_ModifyGold_SellItem"
   },{
     "enum":"EDOTA_ModifyGold_Reason",
-    "value":16,
+    "value":18,
     "kind":"constant",
     "name":"DOTA_ModifyGold_SharedGold"
   },{
@@ -12816,6 +12810,11 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"DOTA_ModifyGold_Unspecified"
+  },{
+    "enum":"EDOTA_ModifyGold_Reason",
+    "value":20,
+    "kind":"constant",
+    "name":"DOTA_ModifyGold_WardKill"
   },{
     "enum":"EDOTA_ModifyXP_Reason",
     "value":2,
@@ -18682,6 +18681,13 @@ Initializing script VM...
         "name":"ForceGameStart",
         "description":"Transition game state to DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
       },{
+        "args":[{
+            "type":"int"
+          }],
+        "returns":"handle",
+        "name":"GetAnnouncer",
+        "description":"Get the announcer for a team"
+      },{
         "args":[],
         "returns":"int",
         "name":"GetCustomGameDifficulty",
@@ -20626,6 +20632,11 @@ Initializing script VM...
         "description":"Set whether this NPC is required to reach each goal entity, rather than being allowed to unkink their path."
       },{
         "args":[],
+        "returns":"string",
+        "name":"GetNeutralSpawnerName",
+        "description":"Get the name of this camp's neutral spawner."
+      },{
+        "args":[],
         "returns":"bool",
         "name":"GetNeverMoveToClearSpace",
         "description":"If set to true, we will never attempt to move this unit to clear space, even when it unphases."
@@ -20893,10 +20904,6 @@ Initializing script VM...
         "returns":"bool",
         "name":"IsCreep",
         "description":"Is this unit a creep?"
-      },{
-        "args":[],
-        "returns":"bool",
-        "name":"IsDeniable"
       },{
         "args":[],
         "returns":"bool",
@@ -21398,6 +21405,10 @@ Initializing script VM...
         "name":"Script_GetAttackRange",
         "description":"Gets this unit's attack range after all modifiers."
       },{
+        "args":[],
+        "returns":"bool",
+        "name":"Script_IsDeniable"
+      },{
         "args":[{
             "name":"hItem",
             "type":"handle"
@@ -21786,6 +21797,14 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"ShouldIdleAcquire"
+      },{
+        "args":[{
+            "name":"hCriteriaTable",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"SpeakConcept",
+        "description":"Speak a response system concept with the TLK_DOTA_CUSTOM concept."
       },{
         "args":[{
             "name":"flManaSpent",
@@ -24657,6 +24676,9 @@ Initializing script VM...
         "args":[{
             "name":"pHeroname",
             "type":"string"
+          },{
+            "name":"bIgnoreUnrevealedPick",
+            "type":"bool"
           }],
         "returns":"bool",
         "name":"IsHeroSelected"
@@ -24945,6 +24967,9 @@ Initializing script VM...
         "args":[{
             "name":"pHeroFilename",
             "type":"string"
+          },{
+            "name":"bIgnoreUnrevealedPick",
+            "type":"bool"
           }],
         "returns":"int",
         "name":"WhoSelectedHero"
@@ -28622,7 +28647,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1762,
+    "value":1769,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -29178,7 +29203,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1751,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_ARCANA_VOTE"
   },{
@@ -29206,7 +29231,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1755,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -29278,19 +29303,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1757,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE"
   },{
-    "value":1769,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1756,
+    "value":1766,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1766,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -29450,7 +29475,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
-    "value":1754,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_STATUE"
   },{
@@ -29618,7 +29643,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1768,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -29714,7 +29739,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1765,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
@@ -29926,11 +29951,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1753,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_PUNCH"
   },{
-    "value":1776,
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30006,7 +30031,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
-    "value":1764,
+    "value":1752,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -30078,11 +30103,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1752,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
   },{
-    "value":1774,
+    "value":1776,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -30094,15 +30119,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1761,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_STATUE_SEQUENCE"
   },{
-    "value":1763,
+    "value":1751,
     "kind":"constant",
     "name":"ACT_DOTA_STORM_ABILITY_4"
   },{
-    "value":1767,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -30122,7 +30147,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SNIPER"
   },{
-    "value":1760,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -30158,7 +30183,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
-    "value":1758,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
@@ -30218,7 +30243,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1759,
+    "value":1767,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_STATUE"
   },{
@@ -34988,24 +35013,19 @@ Initializing script VM...
     "name":"DOTA_ATTRIBUTE_AGILITY"
   },{
     "enum":"AttributeDerivedStats",
-    "value":6,
+    "value":4,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_ARMOR"
   },{
     "enum":"AttributeDerivedStats",
-    "value":7,
+    "value":5,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED"
   },{
     "enum":"AttributeDerivedStats",
-    "value":5,
+    "value":3,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_AGILITY_DAMAGE"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":8,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT"
   },{
     "enum":"Attributes",
     "value":2,
@@ -35013,29 +35033,19 @@ Initializing script VM...
     "name":"DOTA_ATTRIBUTE_INTELLECT"
   },{
     "enum":"AttributeDerivedStats",
-    "value":9,
+    "value":6,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE"
   },{
     "enum":"AttributeDerivedStats",
-    "value":13,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":10,
+    "value":7,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MANA"
   },{
     "enum":"AttributeDerivedStats",
-    "value":11,
+    "value":8,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":12,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT"
   },{
     "enum":"Attributes",
     "value":-1,
@@ -35066,16 +35076,6 @@ Initializing script VM...
     "value":2,
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_STRENGTH_HP_REGEN"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":4,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_STRENGTH_MAGIC_RESISTANCE_PERCENT"
-  },{
-    "enum":"AttributeDerivedStats",
-    "value":3,
-    "kind":"constant",
-    "name":"DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT"
   },{
     "enum":"modifierremove",
     "value":0,
@@ -37964,7 +37964,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1775,
+    "value":1774,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -39952,10 +39952,6 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
-        "name":"IsDeniable"
-      },{
-        "args":[],
-        "returns":"bool",
         "name":"IsDisarmed"
       },{
         "args":[],
@@ -40126,6 +40122,10 @@ Initializing script VM...
         "returns":"float",
         "name":"Script_GetAttackRange",
         "description":"Gets this unit's attack range after all modifiers."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"Script_IsDeniable"
       },{
         "args":[],
         "returns":"bool",
