@@ -9,10 +9,11 @@ describe('integration', () => {
       'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
+      'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown',
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum',
-      'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown',
       'satyr_soulstealer_mana_burn.Modelscale is unknown',
+      'shadow_demon_disruption.AbilitySpecial.07.var_type should be a FieldType enum',
 
       // Incorrect spacing, TODO: allow?
       'tiny_tree_channel.AbilityBehavior[0] should be a AbilityBehavior enum',

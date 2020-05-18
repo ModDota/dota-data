@@ -21,6 +21,8 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('AbilityUnitTargetFlags', s.enums('UnitTargetFlags').flags())
 
     .field('HasScepterUpgrade', s.binaryBoolean())
+    .field('AbilityDraftUltScepterAbility', s.str().pattern(resourcePatterns.ability))
+    .field('AbilityDraftUltScepterPreAbility', s.str().pattern(resourcePatterns.ability))
     .field('OnCastbar', s.binaryBoolean())
     .field('OnLearnbar', s.binaryBoolean())
     .field('FightRecapLevel', s.int())
@@ -28,6 +30,8 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('MaxLevel', s.int())
     .field('AbilityDamage', s.arrayLike().integers())
     .field('AbilityCooldown', s.arrayLike())
+    .field('AbilityCharges', s.arrayLike().integers())
+    .field('AbilityChargeRestoreTime', s.arrayLike())
     .field('AbilityCastRange', s.arrayLike().integers())
     .field('AbilityCastRangeBuffer', s.arrayLike().integers())
     .field('AbilityCastPoint', s.arrayLike())
