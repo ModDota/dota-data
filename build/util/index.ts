@@ -5,7 +5,7 @@ export * from '../../src/utils/github';
 export * from './export-types';
 export * from './normalization';
 
-const dump = fs.readFileSync(path.join(__dirname, '../../../dumper/dump'), 'utf8');
+const dump = fs.readFileSync(path.join(__dirname, '../../dumper/dump'), 'utf8');
 export function readDump(name: string) {
   const [, ...groups] = dump.split(/\$> (.+)/g);
   const value = groups[groups.indexOf(name) + 1];
