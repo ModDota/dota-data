@@ -233,11 +233,13 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.Heal': { args: { '1': [null, ['CDOTABaseAbility', 'nil']] } },
   'CDOTA_BaseNPC.IsAttackingEntity': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.IsOpposingTeam': { args: { '0': [null, 'DOTATeam_t'] } },
-  'CDOTA_BaseNPC.Kill': { args: { '0': [null, 'CDOTABaseAbility'], '1': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTA_BaseNPC.Kill': {
+    args: { '0': [null, ['CDOTABaseAbility', 'nil']], '1': [null, ['CDOTA_BaseNPC', 'nil']] },
+  },
   'CDOTA_BaseNPC.MakeVisibleDueToAttack': { args: { '0': [null, 'DOTATeam_t'] } },
   'CDOTA_BaseNPC.MakeVisibleToTeam': { args: { '0': [null, 'DOTATeam_t'] } },
   // TODO: additionalFlags - damage flags?
-  'CDOTA_BaseNPC.ModifyHealth': { args: { '1': [null, 'CDOTABaseAbility'] } },
+  'CDOTA_BaseNPC.ModifyHealth': { args: { '1': [null, ['CDOTABaseAbility', 'nil']] } },
   'CDOTA_BaseNPC.MoveToNPC': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.MoveToNPCToGiveItem': {
     args: { '0': [null, 'CDOTA_BaseNPC'], '1': [null, 'CDOTA_Item'] },
@@ -276,7 +278,10 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC_Hero.GetAdditionalOwnedUnits': { returns: array('CDOTA_BaseNPC') },
   'CDOTA_BaseNPC_Hero.GetPlayerID': { returns: 'PlayerID' },
   'CDOTA_BaseNPC_Hero.GetPrimaryAttribute': { returns: 'Attributes', description: '' },
-  'CDOTA_BaseNPC_Hero.GetTogglableWearable': { returns: 'CBaseEntity' },
+  'CDOTA_BaseNPC_Hero.GetTogglableWearable': {
+    returns: ['CBaseFlex', 'nil'],
+    args: { 0: [null, 'DOTASlotType_t'] },
+  },
   'CDOTA_BaseNPC_Hero.SetPrimaryAttribute': { args: { '0': [null, 'Attributes'] } },
   'CDOTA_BaseNPC_Hero.UpgradeAbility': { args: { '0': [null, 'CDOTABaseAbility'] } },
   'CDOTA_Buff.GetAbility': { returns: ['CDOTABaseAbility', 'nil'] },
@@ -611,7 +616,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
       '4': ['teamFilter', 'DOTA_UNIT_TARGET_TEAM'],
       '5': ['typeFilter', 'DOTA_UNIT_TARGET_TYPE'],
       '6': ['flagFilter', 'DOTA_UNIT_TARGET_FLAGS'],
-      '7': ['order'],
+      '7': ['order', 'FindOrder'],
       '8': ['canGrowCache'],
     },
   },
@@ -642,17 +647,25 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
       'Rolls a number from 1 to 100 and returns true if the roll is less than or equal to the number specified.',
     args: { '0': ['successPercentage'] },
   },
-  '_G.Say': { args: { '0': ['entity', 'CBaseEntity'], '1': ['message'], '2': ['teamOnly'] } },
+  '_G.Say': {
+    args: { '0': ['entity', ['CBaseEntity', 'nil']], '1': ['message'], '2': ['teamOnly'] },
+  },
   '_G.SendOverheadEventMessage': {
-    args: { '0': [null, 'CDOTAPlayer'], '2': [null, 'CDOTA_BaseNPC'], '4': [null, 'CDOTAPlayer'] },
+    description: '',
+    args: {
+      '0': [null, ['CDOTAPlayer', 'nil']],
+      '1': [null, 'DOTA_OVERHEAD_ALERT'],
+      '2': [null, 'CDOTA_BaseNPC'],
+      '4': [null, ['CDOTAPlayer', 'nil']],
+    },
   },
   '_G.SetTeamCustomHealthbarColor': { args: { '0': ['team', 'DOTATeam_t'] } },
   '_G.SpawnEntityFromTableSynchronous': {
     returns: 'CBaseEntity',
     args: { '0': ['baseclass'], '1': ['data', 'table'] },
   },
-  '_G.UTIL_Remove': { args: { '0': ['entity', 'CBaseEntity'] } },
-  '_G.UTIL_RemoveImmediate': { args: { '0': ['entity', 'CBaseEntity'] } },
+  '_G.UTIL_Remove': { args: { '0': ['entity', ['CBaseEntity', 'nil']] } },
+  '_G.UTIL_RemoveImmediate': { args: { '0': ['entity', ['CBaseEntity', 'nil']] } },
   'ProjectileManager.ChangeTrackingProjectileSpeed': {
     args: { '0': ['ability', 'CDOTABaseAbility'], '1': ['speed'] },
   },

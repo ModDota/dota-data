@@ -30,6 +30,13 @@ export const classExtensions: Record<string, ExtensionClass> = {
         returns: ['bool'],
         args: [],
       },
+      {
+        kind: 'function',
+        name: 'IsInstance',
+        available: 'both',
+        returns: ['bool'],
+        args: [{ name: 'classOrClassName', types: ['string', 'table'] }],
+      },
     ],
   },
 };
@@ -305,7 +312,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     description: '',
     args: { '0': [null, 'CDOTA_BaseNPC_Hero'], '1': [null, ['CDOTABaseAbility', 'nil']] },
   },
-  'CDOTA_BaseNPC_Hero.ModifyGold': { description: 'Gives this hero some gold.' },
+  'CDOTA_BaseNPC_Hero.ModifyGold': {
+    description: 'Gives this hero some gold.',
+    args: { '2': [null, 'EDOTA_ModifyGold_Reason'] },
+  },
   'CDOTA_BaseNPC_Hero.SpendGold': {
     description: '',
     args: { '1': [null, 'EDOTA_ModifyGold_Reason'] },
@@ -479,6 +489,16 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: { 0: ['team', 'DOTATeam_t'] },
   },
   '_G.GetXPNeededToReachNextLevel': { args: { 0: ['level'] } },
+  '_G.GetLocalPlayerID': { returns: 'PlayerID' },
+  '_G.GetLocalPlayerTeam': { returns: 'DOTATeam_t' },
+  'CDOTAGamerules.GetAnnouncer': {
+    returns: ['CDOTA_BaseNPC', 'nil'],
+    args: { 0: ['team', 'DOTATeam_t'] },
+  },
+  'CDOTA_BaseNPC_Hero.IncrementAssists': { args: { 0: [null, 'PlayerID'] } },
+  'CDOTA_BaseNPC_Hero.IncrementDeaths': { args: { 0: [null, 'PlayerID'] } },
+  'CDOTA_BaseNPC_Hero.IncrementKills': { args: { 0: [null, 'PlayerID'] } },
+  'CDOTA_PlayerResource.GetDamageDoneToHero': { args: { '1': [null, 'PlayerID'] } },
 };
 
 export const extraDeclarations = (() => {
