@@ -68,6 +68,9 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
         s
           .obj('AbilitySpecial')
           .field('var_type', s.enums('FieldType'), { require: true })
+          .field('ad_linked_ability', s.str().pattern(resourcePatterns.ability))
+          // TODO: arrayLike string
+          .field('linked_ad_abilities', s.str())
           .field('levelkey', s.oneOfLiterals(['quaslevel', 'wexlevel', 'exortlevel']))
           .field('CalculateSpellDamageTooltip', s.binaryBoolean())
           .field('LinkedSpecialBonus', s.str())

@@ -13,7 +13,6 @@ describe('integration', () => {
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum',
       'satyr_soulstealer_mana_burn.Modelscale is unknown',
-      'shadow_demon_disruption.AbilitySpecial.07.var_type should be a FieldType enum',
 
       // Incorrect spacing, TODO: allow?
       'tiny_tree_channel.AbilityBehavior[0] should be a AbilityBehavior enum',
