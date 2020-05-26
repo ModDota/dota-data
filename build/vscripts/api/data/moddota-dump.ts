@@ -359,7 +359,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_PlayerResource.IncrementKills': { args: { '1': [null, 'PlayerID'] } },
   'CDOTA_PlayerResource.IncrementTotalEarnedXP': { args: { '2': [null, 'EDOTA_ModifyXP_Reason'] } },
   'CDOTA_PlayerResource.ModifyGold': { args: { '3': [null, 'EDOTA_ModifyGold_Reason'] } },
-  'CDOTA_PlayerResource.SetCameraTarget': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTA_PlayerResource.SetCameraTarget': { args: { '1': [null, ['CBaseEntity', 'nil']] } },
   'CDOTA_PlayerResource.SetCustomTeamAssignment': { args: { '1': [null, 'DOTATeam_t'] } },
   'CDOTA_PlayerResource.SetOverrideSelectionEntity': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_PlayerResource.SpendGold': { args: { '2': [null, 'EDOTA_ModifyGold_Reason'] } },
@@ -674,6 +674,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['options', 'CreateLinearProjectileOptions'] },
   },
   'ProjectileManager.CreateTrackingProjectile': {
+    returns: 'ProjectileID',
     args: { '0': ['options', 'CreateTrackingProjectileOptions'] },
   },
   'ProjectileManager.DestroyLinearProjectile': { args: { '0': ['projectile', 'ProjectileID'] } },
@@ -682,6 +683,9 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   'ProjectileManager.GetLinearProjectileRadius': { args: { '0': ['projectile', 'ProjectileID'] } },
   'ProjectileManager.GetLinearProjectileVelocity': {
+    args: { '0': ['projectile', 'ProjectileID'] },
+  },
+  'ProjectileManager.GetTrackingProjectileLocation': {
     args: { '0': ['projectile', 'ProjectileID'] },
   },
   'ProjectileManager.ProjectileDodge': { args: { '0': ['unit', 'CDOTA_BaseNPC'] } },

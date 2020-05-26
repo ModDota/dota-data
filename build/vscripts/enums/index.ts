@@ -74,7 +74,10 @@ export const enumDeclarations = (() => {
   enums.push(
     ...Object.entries(prefixedEnums).map(
       ([name, prefix]): Enum => {
-        const members = takeGlobals(x => x.name.startsWith(prefix));
+        const members = takeGlobals(x =>
+          typeof prefix === 'string' ? x.name.startsWith(prefix) : prefix.test(x.name),
+        );
+
         return {
           kind: 'enum',
           name,

@@ -21,12 +21,14 @@ export const droppedConstants = [
 ];
 
 export const extractedConstants = [
-  'FIND_UNITS_EVERYWHERE',
-  'DOTA_ITEM_MAX',
   'DOTA_ITEM_INVENTORY_SIZE',
-  'DOTA_ITEM_STASH_SIZE',
-  'DOTA_ITEM_STASH_MIN',
+  'DOTA_ITEM_MAX',
   'DOTA_ITEM_STASH_MAX',
+  'DOTA_ITEM_STASH_MIN',
+  'DOTA_ITEM_STASH_SIZE',
+  'DOTA_MAX_ABILITIES',
+  'FIND_UNITS_EVERYWHERE',
+  'SPAWN_GROUP_HANDLE_INVALID',
 ];
 
 export const globalEnums: Record<string, string[]> = {
@@ -52,23 +54,24 @@ export const globalEnums: Record<string, string[]> = {
   ],
 };
 
-export const prefixedEnums: Record<string, string> = {
+export const prefixedEnums: Record<string, string | RegExp> = {
   // Exist in Panorama
   DOTA_GC_TEAM: 'DOTA_GC_TEAM_',
   DOTA_OVERHEAD_ALERT: 'OVERHEAD_ALERT_',
   DOTAConnectionState_t: 'DOTA_CONNECTION_STATE_',
   dotaunitorder_t: 'DOTA_UNIT_ORDER_',
   GameActivity_t: 'ACT_',
+  DOTAScriptInventorySlot_t: /DOTA_(ITEM_|STASH_SLOT_)/,
 
   // No known original names, so using normalized ones
   ActivateType: 'ACTIVATE_TYPE_',
   ConVarFlags: 'FCVAR_',
   EntityEffects: 'EF_',
   FindOrder: 'FIND_',
-  ItemTransient: 'DOTA_ITEM_TRANSIENT_',
   ShowGenericPopupType: 'DOTA_SHOWGENERICPOPUP_',
   SourceEngineAnimationEvent: 'AE_',
   SourceEngineDamageTypes: 'DMG_',
+  PseudoRandom: 'DOTA_PSEUDO_RANDOM_',
 };
 
 export const enumValueDescriptions = {

@@ -499,6 +499,35 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC_Hero.IncrementDeaths': { args: { 0: [null, 'PlayerID'] } },
   'CDOTA_BaseNPC_Hero.IncrementKills': { args: { 0: [null, 'PlayerID'] } },
   'CDOTA_PlayerResource.GetDamageDoneToHero': { args: { '1': [null, 'PlayerID'] } },
+  '_G.DebugCreateUnit': {
+    args: {
+      0: ['playerOwner', 'CDOTAPlayer'],
+      1: ['unitName'],
+      2: ['team', 'DOTATeam_t'],
+      // TODO: 3?
+      4: ['callback', func([['unit', 'CDOTA_BaseNPC']], 'nil')],
+    },
+  },
+  '_G.CenterCameraOnUnit': { args: { 1: [null, ['CBaseEntity', 'nil']] } },
+  '_G.RollPseudoRandomPercentage': {
+    description: '',
+    args: {
+      0: ['chance'],
+      1: [
+        'pseudoRandomId',
+        'PseudoRandom',
+        'Any number can be specified. Using DOTA_PSEUDO_RANDOM_NONE makes it act as a pure RNG.',
+      ],
+      2: ['unit', 'CDOTA_BaseNPC'],
+    },
+  },
+  'CLogicRelay.Trigger': {
+    args: {
+      0: [null, ['CBaseEntity', 'nil']],
+      1: [null, ['CBaseEntity', 'nil']],
+    },
+  },
+  'CDOTABaseGameMode.AllocateFowBlockerRegion': { returns: 'CFoWBlockerRegion' },
 };
 
 export const extraDeclarations = (() => {

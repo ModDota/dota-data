@@ -8,6 +8,7 @@ const primitiveTypes = [
   'bool',
   'ehandle',
   'float',
+  'double',
   'handle',
   'int',
   'nil',
