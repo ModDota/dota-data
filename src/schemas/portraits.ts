@@ -40,6 +40,8 @@ const portrait = s
 
   // TODO: Used only in models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl
   .field('SummonCount', s.int())
+  .field('SummonPosition', s.vector())
+  .field('SummonAngles', s.vector())
 
   .field('PortraitAnimationCycle', s.num())
   .field('PortraitAnimationRate', s.num())
