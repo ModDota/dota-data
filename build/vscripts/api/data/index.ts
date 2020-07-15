@@ -366,6 +366,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.GetTreeIdForEntityIndex': { args: { 0: ['entityIndex', 'EntityIndex'] } },
   'CDOTABaseAbility.GetSpecialValueFor': { returns: 'float' },
   'CDOTABaseAbility.GetLevelSpecialValueFor': { returns: 'float' },
+  'CDOTABaseAbility.GetLevelSpecialValueNoOverride': { returns: 'float' },
   'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
   'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
   'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
@@ -477,6 +478,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
   '_G.CreateRune': { returns: 'CBaseAnimating', args: { 1: [null, 'DOTA_RUNES'] } },
   '_G.DropNeutralItemAtPositionForHero': {
+    returns: 'CDOTA_Item',
     args: {
       0: ['itemName', null, 'Can be any item name, it does not have to be neutral.'],
       1: ['location'],
@@ -528,6 +530,67 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     },
   },
   'CDOTABaseGameMode.AllocateFowBlockerRegion': { returns: 'CFoWBlockerRegion' },
+  '_G.DOTA_SpawnMapAtPosition': {
+    args: {
+      0: ['mapName', null, 'A map name without extension, relative to "maps" directory.'],
+      1: ['location', null, 'Note: X and Y coordinates must be multiple of the grid size.'],
+      3: ['onReadyToSpawn', func([['spawnGroupHandle', 'int']], 'nil')],
+      4: ['onSpawnComplete', func([['spawnGroupHandle', 'int']], 'nil')],
+      5: ['context', ['table', 'nil']],
+    },
+  },
+  '_G.GetAbilityTextureNameForAbility': {
+    args: { 0: ['abilityName'] },
+  },
+  '_G.IsUnitInValidPosition': {
+    args: { 0: ['unit', 'CBaseEntity'] },
+  },
+  'CDOTAGamerules.IncreaseItemStock': {
+    description: "Increase an item's stock count, clamped to item max.",
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['itemName'],
+      2: ['count', null, 'Negative values decrease stock count.'],
+      3: [
+        'playerId',
+        null,
+        'Values other than -1 work only for items with "PlayerSpecificCooldown" property.',
+      ],
+    },
+  },
+  'CDOTA_PlayerResource.AddNeutralItemToStash': {
+    args: {
+      1: [null, 'DOTATeam_t'],
+      2: [null, 'CDOTA_Item'],
+    },
+  },
+  'CDOTA_PlayerResource.GetLiveSpectatorTeam': {
+    returns: ['DOTATeam_t', '-1'],
+  },
+  'CDOTA_BaseNPC.QueueConcept': {
+    args: {
+      2: [
+        null,
+        func(
+          [
+            ['didActuallySpeak', 'bool'],
+            ['callbackInfo', 'table'],
+          ],
+          'nil',
+        ),
+      ],
+      3: [null, 'table'],
+      4: [null, 'table'],
+    },
+  },
+  '_G.CreateModifierThinker': {
+    args: {
+      '0': [null, ['CDOTA_BaseNPC', 'nil']],
+      '1': [null, ['CDOTABaseAbility', 'nil']],
+      '3': [null, ['table', 'nil']],
+      '5': [null, 'DOTATeam_t'],
+    },
+  },
 };
 
 export const extraDeclarations = (() => {

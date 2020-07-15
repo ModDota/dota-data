@@ -677,7 +677,9 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     returns: 'ProjectileID',
     args: { '0': ['options', 'CreateTrackingProjectileOptions'] },
   },
+  // TODO: Add different types for linear and tracking projectiles
   'ProjectileManager.DestroyLinearProjectile': { args: { '0': ['projectile', 'ProjectileID'] } },
+  'ProjectileManager.DestroyTrackingProjectile': { args: { '0': ['projectile', 'ProjectileID'] } },
   'ProjectileManager.GetLinearProjectileLocation': {
     args: { '0': ['projectile', 'ProjectileID'] },
   },
