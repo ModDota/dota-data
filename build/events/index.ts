@@ -1,7 +1,5 @@
 import assert from 'assert';
-import _ from 'lodash';
 import { formatDescription, getFile, outputFile, outputJson } from '../util';
-import { extraEventFields } from './data';
 import { Event, types } from './types';
 
 function parseFile(content: string) {
@@ -17,15 +15,6 @@ function parseFile(content: string) {
       if (value === '{') return;
       if (value === '}') {
         assert(parsingName);
-
-        const extraFields = extraEventFields[parsingName!];
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (extraFields) {
-          events[parsingName!].fields.push(
-            ...Object.entries(extraFields).map(([name, type]) => ({ name, type })),
-          );
-        }
-
         parsingName = undefined;
         return;
       }
