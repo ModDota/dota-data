@@ -68,18 +68,20 @@ function transformFunction(
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const extension = functionExtensions[functionIdentifier] ?? {};
 
-  let argNames: (string | undefined)[];
+  let argNames: (string | undefined)[] = [];
   if (func.args.every(x => x.name != null)) {
     argNames = func.args.map(x => x.name);
   } else {
     const descNames = extractNamesFromDescription(func.name, func.description);
-    if (descNames && descNames.length !== func.args.length) {
-      const formattedNames = `[${descNames.join(', ')}]`;
-      console.log(
-        `Invalid inferred arguments: ${functionIdentifier}: ${formattedNames}, ${func.args.length} expected`,
-      );
-    } else {
-      argNames = descNames ?? [];
+    if (descNames) {
+      if (descNames.length !== func.args.length) {
+        const formattedNames = `[${descNames.join(', ')}]`;
+        console.log(
+          `Invalid inferred arguments: ${functionIdentifier}: ${formattedNames}, ${func.args.length} expected`,
+        );
+      } else {
+        argNames = descNames;
+      }
     }
   }
 

@@ -299,7 +299,7 @@ Sets letter-spacing for text in a string. Possible values:<br>normal - no manual
 
 
 === line-height ===
-Specifies the line height (distance between top edge of line above and line below) to use for text.  By default this is unset and a value that matches the font-size reasonably will be used automatically.<br><br><b>Example:</b><pre>line-height: 20px;</pre>
+Specifies the line height (distance between top edge of line above and line below) to use for text. By default this is 'normal' and a value that matches the font-size reasonably will be used automatically. Unlike the web, we don't have a weird CSS inheritence problem with the 120% vs 1.2 styles.<br><br><b>Example:</b><pre>line-height: normal;line-height: 20px;line-height: 1.2;line-height: 120%;</pre>
 
 
 === margin ===
@@ -627,6 +627,10 @@ $> dump_panorama_events
 | Yes
 | Hide the text tooltip
 |-
+| <code>DOTAHideTI10EventGameTooltip()</code>
+| Yes
+| Hide the ti10 event game tooltip
+|-
 | <code>DOTAHideTitleImageTextTooltip()</code>
 | Yes
 | Hide the title image text tooltip.
@@ -694,6 +698,10 @@ $> dump_panorama_events
 | <code>DOTAShowTextTooltipStyled(string text, string style)</code>
 | Yes
 | Show a tooltip with the given text. Also apply a CSS class named "style" to allow custom styling.
+|-
+| <code>DOTAShowTI10EventGameTooltip(struct TI10EventGameTooltipInfo_t const * __ptr64 X)</code>
+| Yes
+| Show a ti10 event game tooltip
 |-
 | <code>DOTAShowTitleImageTextTooltip(string title, string imagePath, string text)</code>
 | Yes
@@ -1885,7 +1893,9 @@ Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_EVENT_ON_ATTACK_CANCELLED = 225 (OnAttackCancelled)
 	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_CLEAVE = 226 (GetSuppressCleave)
 	modifierfunction.MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS = 227 (BotAttackScoreBonus)
-	modifierfunction.MODIFIER_FUNCTION_LAST = 228
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE = 228 (GetModifierAttackSpeedReductionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 229 (GetModifierMoveSpeedReductionPercentage)
+	modifierfunction.MODIFIER_FUNCTION_LAST = 230
 	modifierfunction.MODIFIER_FUNCTION_INVALID = 255
 
 Enumeration 'modifierstate'
@@ -2695,6 +2705,24 @@ Initializing script VM...
     "name":"CrossVectors",
     "description":"(vector,vector) cross product between two vectors"
   },{
+    "returns":"int",
+    "args":[{
+        "type":"string"
+      },{
+        "type":"Vector"
+      },{
+        "type":"bool"
+      },{
+        "type":"handle"
+      },{
+        "type":"handle"
+      },{
+        "type":"handle"
+      }],
+    "kind":"function",
+    "name":"DOTA_SpawnMapAtPosition",
+    "description":"Spawn a .vmap at the target location."
+  },{
     "returns":"void",
     "args":[],
     "kind":"function",
@@ -3008,7 +3036,7 @@ Initializing script VM...
     "name":"DotProduct",
     "kind":"function"
   },{
-    "returns":"void",
+    "returns":"handle",
     "args":[{
         "type":"string"
       },{
@@ -3017,6 +3045,8 @@ Initializing script VM...
         "type":"handle"
       },{
         "type":"int"
+      },{
+        "type":"bool"
       }],
     "kind":"function",
     "name":"DropNeutralItemAtPositionForHero",
@@ -3092,6 +3122,18 @@ Initializing script VM...
   },{
     "returns":"void",
     "args":[{
+        "type":"string"
+      },{
+        "type":"handle"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"EmitSoundOnEntityForPlayer",
+    "description":"Emit a sound on an entity for only a specific player"
+  },{
+    "returns":"void",
+    "args":[{
         "type":"Vector"
       },{
         "type":"string"
@@ -3101,6 +3143,18 @@ Initializing script VM...
     "kind":"function",
     "name":"EmitSoundOnLocationForAllies",
     "description":"Emit a sound on a location from a unit, only for players allied with that unit (vLocation, soundName, hCaster"
+  },{
+    "returns":"void",
+    "args":[{
+        "type":"string"
+      },{
+        "type":"Vector"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"EmitSoundOnLocationForPlayer",
+    "description":"Emit a sound on a location for only a specific player"
   },{
     "returns":"void",
     "args":[{
@@ -3279,6 +3333,14 @@ Initializing script VM...
     "kind":"function",
     "name":"FrameTime",
     "description":"Get the time spent on the server in the last frame"
+  },{
+    "returns":"string",
+    "args":[{
+        "type":"string"
+      }],
+    "kind":"function",
+    "name":"GetAbilityTextureNameForAbility",
+    "description":"Gets the ability texture name for an ability"
   },{
     "returns":"int",
     "args":[],
@@ -3568,6 +3630,14 @@ Initializing script VM...
     "kind":"function",
     "name":"IsServer",
     "description":"Returns true if this is lua running from the server.dll."
+  },{
+    "returns":"bool",
+    "args":[{
+        "type":"handle"
+      }],
+    "kind":"function",
+    "name":"IsUnitInValidPosition",
+    "description":"Returns true if the unit is in a valid position in the gridnav."
   },{
     "returns":"bool",
     "args":[{
@@ -5257,7 +5327,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1756,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -5346,19 +5416,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1757,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST1_STATUE"
-  },{
-    "value":1760,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1759,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST3_STATUE"
-  },{
-    "value":1758,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -5697,6 +5759,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_DEFEAT_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1506,
     "kind":"constant",
@@ -5747,7 +5813,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1762,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -5866,10 +5932,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1755,
-    "kind":"constant",
-    "name":"ACT_DOTA_IDLE_STATUE"
-  },{
     "enum":"GameActivity_t",
     "value":1623,
     "kind":"constant",
@@ -5969,10 +6031,6 @@ Initializing script VM...
     "value":1683,
     "kind":"constant",
     "name":"ACT_DOTA_LOADOUT_RARE"
-  },{
-    "value":1754,
-    "kind":"constant",
-    "name":"ACT_DOTA_LOADOUT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1643,
@@ -6209,7 +6267,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1753,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -6288,6 +6346,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN"
   },{
+    "value":1753,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPAWN_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1594,
     "kind":"constant",
@@ -6308,7 +6370,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1761,
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE"
+  },{
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -6376,6 +6442,10 @@ Initializing script VM...
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
+  },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1537,
@@ -6446,6 +6516,10 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
+  },{
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1689,
@@ -10329,10 +10403,6 @@ Initializing script VM...
     "value":77,
     "kind":"constant",
     "name":"AE_DEFIBRILLATOR_SHOCK"
-  },{
-    "value":200,
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
   },{
     "value":199,
     "kind":"constant",
@@ -14242,7 +14312,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":228,
+    "value":230,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -14324,6 +14394,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT",
     "description":"GetModifierAttackSpeedBonus_Constant"
+  },{
+    "enum":"modifierfunction",
+    "value":228,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
+    "description":"GetModifierAttackSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
     "value":35,
@@ -14947,6 +15023,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MOVESPEED_LIMIT",
     "description":"GetModifierMoveSpeed_Limit"
+  },{
+    "enum":"modifierfunction",
+    "value":229,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
+    "description":"GetModifierMoveSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
     "value":47,
@@ -16120,6 +16202,14 @@ Initializing script VM...
         "returns":"float",
         "name":"SequenceDuration",
         "description":"Returns the duration in seconds of the given sequence name."
+      },{
+        "args":[{
+            "name":"flCycle",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetCycle",
+        "description":"Set the cycle of the animation."
       },{
         "args":[{
             "name":"vValue",
@@ -17540,6 +17630,16 @@ Initializing script VM...
         "name":"GetLevelSpecialValueFor"
       },{
         "args":[{
+            "name":"szName",
+            "type":"string"
+          },{
+            "name":"nLevel",
+            "type":"int"
+          }],
+        "returns":"table",
+        "name":"GetLevelSpecialValueNoOverride"
+      },{
+        "args":[{
             "name":"iLevel",
             "type":"int"
           }],
@@ -17936,6 +18036,20 @@ Initializing script VM...
   },{
     "members":[{
         "args":[{
+            "name":"pszItemName",
+            "type":"string"
+          },{
+            "name":"pszShopName",
+            "type":"string"
+          },{
+            "name":"pszCategory",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"AddItemToCustomShop",
+        "description":"( pszItem, pszShop, pszCategory ) Add an item to purchase at a custom shop."
+      },{
+        "args":[{
             "name":"hQueryTable",
             "type":"handle"
           },{
@@ -18025,6 +18139,14 @@ Initializing script VM...
         "description":"Clear the script filter that controls when tracking projectiles are launched."
       },{
         "args":[{
+            "name":"bDisabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"DisableClumpingBehaviorByDefault",
+        "description":"Disable npc_dota_creature clumping behavior by default."
+      },{
+        "args":[{
             "name":"bDisable",
             "type":"bool"
           }],
@@ -18097,6 +18219,16 @@ Initializing script VM...
         "returns":"float",
         "name":"GetCustomScanCooldown",
         "description":"Get the current custom scan cooldown."
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetEventGameSeed",
+        "description":"Get the Game Seed passed from the GC."
+      },{
+        "args":[],
+        "returns":"unsigned",
+        "name":"GetEventWindowStartTime",
+        "description":"Get the Event Window Start Time passed from the GC."
       },{
         "args":[],
         "returns":"float",
@@ -18213,6 +18345,17 @@ Initializing script VM...
         "returns":"void",
         "name":"ListenForQuerySucceeded",
         "description":"Set function and context for real time combat analyzer query succeeded."
+      },{
+        "args":[{
+            "name":"pszItemName",
+            "type":"string"
+          },{
+            "name":"pszShopName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveItemFromCustomShop",
+        "description":"( pszItem, pszShop ) Remove an item to purchase at a custom shop."
       },{
         "args":[{
             "name":"nQueryID",
@@ -18333,6 +18476,17 @@ Initializing script VM...
         "description":"Set a different camera smooth count; dota default is 8."
       },{
         "args":[{
+            "name":"flMinZ",
+            "type":"float"
+          },{
+            "name":"flMaxZ",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetCameraZRange",
+        "description":"Sets the camera Z range"
+      },{
+        "args":[{
             "name":"nStatType",
             "type":"int"
           },{
@@ -18450,6 +18604,14 @@ Initializing script VM...
         "description":"Specify whether the full screen death overlay effect plays when the selected hero dies."
       },{
         "args":[{
+            "name":"pItem",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"SetDefaultStickyItem",
+        "description":"Sets the default sticky item in the quickbuy"
+      },{
+        "args":[{
             "name":"flValue",
             "type":"float"
           }],
@@ -18491,6 +18653,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetFogOfWarDisabled",
         "description":"Turn the fog of war on or off."
+      },{
+        "args":[{
+            "name":"bDisabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetForceRightClickAttackDisabled",
+        "description":"Prevent users from using the right click deny setting."
       },{
         "args":[{
             "name":"flConstantManaRegen",
@@ -18659,8 +18829,24 @@ Initializing script VM...
             "type":"bool"
           }],
         "returns":"void",
+        "name":"SetNeutralItemHideUndiscoveredEnabled",
+        "description":"When enabled, undiscovered items in the neutral item stash are hidden."
+      },{
+        "args":[{
+            "name":"bEnable",
+            "type":"bool"
+          }],
+        "returns":"void",
         "name":"SetNeutralStashEnabled",
         "description":"Allow items to be sent to the neutral stash."
+      },{
+        "args":[{
+            "name":"bEnable",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetNeutralStashTeamViewOnlyEnabled",
+        "description":"When enabled, the all neutral items tab cannot be viewed."
       },{
         "args":[{
             "name":"hOverrideEntity",
@@ -18685,6 +18871,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetPowerRuneSpawnInterval",
         "description":"Set power rune spawn rate"
+      },{
+        "args":[{
+            "name":"bDisabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetRandomHeroBonusItemGrantDisabled",
+        "description":"Disables bonus items for randoming a hero."
       },{
         "args":[{
             "name":"bDisabled",
@@ -18763,6 +18957,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetStickyItemDisabled",
         "description":"Hide the sticky item in the quickbuy."
+      },{
+        "args":[{
+            "name":"pItemName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"SetTPScrollSlotItemOverride",
+        "description":"Sets the item which goes in the TP scroll slot"
       },{
         "args":[{
             "name":"iTeam",
@@ -18925,6 +19127,27 @@ Initializing script VM...
         "returns":"bool",
         "name":"AddEventMetadataLeaderboardEntry",
         "description":"Event-only ( string szNameSuffix, int nStars, int nMaxStars, int nExtraData1, int nExtraData2 )"
+      },{
+        "args":[{
+            "type":"string"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          },{
+            "type":"unsigned"
+          }],
+        "returns":"bool",
+        "name":"AddEventMetadataLeaderboardEntryRawScore",
+        "description":"Event-only ( string szNameSuffix, int nScore, int nExtraData1, int nExtraData2 )"
       },{
         "args":[{
             "type":"string"
@@ -19124,6 +19347,19 @@ Initializing script VM...
         "returns":"Vector",
         "name":"GetWeatherWindDirection",
         "description":"Get Weather Wind Direction Vector"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          },{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"IncreaseItemStock",
+        "description":"Increase an item's stock count, clamped to item max (nTeamNumber, szItemName, nCount, nPlayerID ."
       },{
         "args":[],
         "returns":"bool",
@@ -19858,6 +20094,22 @@ Initializing script VM...
       }],
     "name":"CDOTAVoteSystem",
     "kind":"class"
+  },{
+    "members":[{
+        "args":[{
+            "name":"vTarget",
+            "type":"Vector"
+          },{
+            "name":"vStart",
+            "type":"Vector"
+          }],
+        "returns":"void",
+        "name":"LaunchSpear",
+        "description":"Launch Spear to a target position from a source position"
+      }],
+    "kind":"class",
+    "name":"CDOTA_Ability_Aghanim_Spear",
+    "extend":"CDOTABaseAbility"
   },{
     "members":[{
         "args":[{
@@ -21250,6 +21502,14 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
+        "name":"IsCurrentlyHorizontalMotionControlled"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsCurrentlyVerticalMotionControlled"
+      },{
+        "args":[],
+        "returns":"bool",
         "name":"IsDisarmed"
       },{
         "args":[],
@@ -21665,6 +21925,26 @@ Initializing script VM...
         "description":"(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions"
       },{
         "args":[{
+            "name":"flDelay",
+            "type":"float"
+          },{
+            "name":"hCriteriaTable",
+            "type":"handle"
+          },{
+            "name":"hCompletionCallbackFn",
+            "type":"handle"
+          },{
+            "name":"hContext",
+            "type":"handle"
+          },{
+            "name":"hCallbackInfo",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"QueueConcept",
+        "description":"Queue a response system concept with the TLK_DOTA_CUSTOM concept, after a delay."
+      },{
+        "args":[{
             "name":"flAmount",
             "type":"float"
           }],
@@ -21687,6 +21967,13 @@ Initializing script VM...
         "returns":"void",
         "name":"RemoveAbilityByHandle",
         "description":"Remove the passed ability from this unit."
+      },{
+        "args":[{
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveAbilityFromIndexByName"
       },{
         "args":[{
             "name":"nActivity",
@@ -22175,6 +22462,28 @@ Initializing script VM...
         "args":[{
             "name":"nActivity",
             "type":"int"
+          }],
+        "returns":"void",
+        "name":"StartGestureFadeWithSequenceSettings",
+        "description":"Add the given gesture activity faded according to its sequence settings."
+      },{
+        "args":[{
+            "name":"nActivity",
+            "type":"int"
+          },{
+            "name":"fFadeIn",
+            "type":"float"
+          },{
+            "name":"fFadeOut",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"StartGestureWithFade",
+        "description":"Add the given gesture activity faded according to to the parameters."
+      },{
+        "args":[{
+            "name":"nActivity",
+            "type":"int"
           },{
             "name":"flRate",
             "type":"float"
@@ -22306,9 +22615,24 @@ Initializing script VM...
         "description":"Level the creature up by the specified number of levels"
       },{
         "args":[],
+        "returns":"float",
+        "name":"GetDisableResistance",
+        "description":"Set creature's current disable resistance"
+      },{
+        "args":[],
+        "returns":"float",
+        "name":"GetUltimateDisableResistance",
+        "description":"Set creature's current disable resistance from ultimates"
+      },{
+        "args":[],
         "returns":"bool",
         "name":"IsChampion",
         "description":"Is this unit a champion?"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsReincarnating",
+        "description":"Is this creature respawning?"
       },{
         "args":[],
         "returns":"void",
@@ -22354,6 +22678,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetDamageGain",
         "description":"Set the damage gained per level on this creature."
+      },{
+        "args":[{
+            "name":"flDisableResistance",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetDisableResistance",
+        "description":"Set creature's current disable resistance"
       },{
         "args":[{
             "name":"flDisableResistanceGain",
@@ -22418,6 +22750,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetRequiresReachingEndPath",
         "description":"Set whether creatures require reaching their end path before becoming idle"
+      },{
+        "args":[{
+            "name":"flUltDisableResistance",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetUltimateDisableResistance",
+        "description":"Set creature's current disable resistance from ultimates"
       },{
         "args":[{
             "name":"nXPGain",
@@ -23007,11 +23347,6 @@ Initializing script VM...
     "name":"CDOTA_BaseNPC_NeutralItemStash",
     "extend":"CDOTA_BaseNPC_Building"
   },{
-    "members":[],
-    "kind":"class",
-    "name":"CDOTA_BaseNPC_RotatableBuilding",
-    "extend":"CDOTA_BaseNPC"
-  },{
     "members":[{
         "args":[],
         "returns":"int",
@@ -23349,6 +23684,10 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"IsMuted"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsNeutralDrop"
       },{
         "args":[],
         "returns":"bool",
@@ -24315,6 +24654,19 @@ Initializing script VM...
         "args":[{
             "name":"iPlayerID",
             "type":"int"
+          },{
+            "name":"nTeamNumber",
+            "type":"int"
+          },{
+            "name":"hItem",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"AddNeutralItemToStash"
+      },{
+        "args":[{
+            "name":"iPlayerID",
+            "type":"int"
           }],
         "returns":"void",
         "name":"AddRunePickup"
@@ -24489,6 +24841,28 @@ Initializing script VM...
         "args":[{
             "name":"nPlayerID",
             "type":"int"
+          },{
+            "name":"unActionID",
+            "type":"unsigned"
+          }],
+        "returns":"int",
+        "name":"GetEventGameCustomActionClaimCount",
+        "description":"(nPlayerID, nActionID)"
+      },{
+        "args":[{
+            "name":"nPlayerID",
+            "type":"int"
+          },{
+            "name":"pActionName",
+            "type":"string"
+          }],
+        "returns":"int",
+        "name":"GetEventGameCustomActionClaimCountByName",
+        "description":"(nPlayerID, pActionName)"
+      },{
+        "args":[{
+            "name":"nPlayerID",
+            "type":"int"
           }],
         "returns":"unsigned",
         "name":"GetEventPointsForPlayerID"
@@ -24617,6 +24991,13 @@ Initializing script VM...
           }],
         "returns":"int",
         "name":"GetLevel"
+      },{
+        "args":[{
+            "name":"iPlayerID",
+            "type":"int"
+          }],
+        "returns":"<unknown>",
+        "name":"GetLiveSpectatorTeam"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -24928,6 +25309,10 @@ Initializing script VM...
           }],
         "returns":"bool",
         "name":"HasSelectedHero"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"HasSetEventGameCustomActionClaimCount"
       },{
         "args":[],
         "returns":"bool",
@@ -25247,6 +25632,16 @@ Initializing script VM...
             "name":"iPlayerID",
             "type":"int"
           },{
+            "name":"iParam",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetCustomIntParam"
+      },{
+        "args":[{
+            "name":"iPlayerID",
+            "type":"int"
+          },{
             "name":"r",
             "type":"int"
           },{
@@ -25411,6 +25806,19 @@ Initializing script VM...
     "members":[],
     "kind":"class",
     "name":"CDOTA_Unit_Courier",
+    "extend":"CDOTA_BaseNPC"
+  },{
+    "members":[{
+        "args":[{
+            "name":"bIsServerAuthoritative",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetServerAuthoritative",
+        "description":"Determines whether response criteria is matched on server or client"
+      }],
+    "kind":"class",
+    "name":"CDOTA_Unit_CustomGameAnnouncer",
     "extend":"CDOTA_BaseNPC"
   },{
     "members":[{
@@ -27831,6 +28239,13 @@ Initializing script VM...
         "args":[{
             "type":"int"
           }],
+        "returns":"void",
+        "name":"DestroyTrackingProjectile",
+        "description":"Destroy a tracking projectile early"
+      },{
+        "args":[{
+            "type":"int"
+          }],
         "returns":"Vector",
         "name":"GetLinearProjectileLocation",
         "description":"Returns current location of projectile"
@@ -28327,6 +28742,14 @@ Initializing script VM...
     "kind":"function",
     "name":"FrameTime",
     "description":"Get the time spent on the server in the last frame"
+  },{
+    "returns":"string",
+    "args":[{
+        "type":"string"
+      }],
+    "kind":"function",
+    "name":"GetAbilityTextureNameForAbility",
+    "description":"Gets the ability texture name for an ability"
   },{
     "returns":"int",
     "args":[],
@@ -29129,7 +29552,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1765,
+    "value":1766,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -29709,7 +30132,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1756,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -29781,19 +30204,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1757,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST1_STATUE"
-  },{
-    "value":1760,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE"
   },{
-    "value":1759,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST3_STATUE"
-  },{
-    "value":1758,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -29909,7 +30324,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1768,
+    "value":1769,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30053,7 +30468,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1773,
+    "value":1774,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30073,6 +30488,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_DEFEAT_STATUE"
+  },{
     "value":1506,
     "kind":"constant",
     "name":"ACT_DOTA_DIE"
@@ -30085,7 +30504,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1764,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30117,7 +30536,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1762,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -30213,11 +30632,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1755,
-    "kind":"constant",
-    "name":"ACT_DOTA_IDLE_STATUE"
-  },{
-    "value":1774,
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30301,7 +30716,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_LOADOUT_RARE"
   },{
-    "value":1754,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_LOADOUT_STATUE"
   },{
@@ -30433,7 +30848,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1770,
+    "value":1771,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30473,7 +30888,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1766,
+    "value":1767,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30485,7 +30900,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1767,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30505,11 +30920,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1772,
+    "value":1773,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
-    "value":1753,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -30573,7 +30988,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN"
   },{
-    "value":1763,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN_STATUE"
   },{
@@ -30585,7 +31000,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1771,
+    "value":1772,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -30597,7 +31012,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1761,
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE"
+  },{
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -30652,6 +31071,10 @@ Initializing script VM...
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
+  },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "value":1537,
     "kind":"constant",
@@ -30708,6 +31131,10 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
+  },{
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "value":1689,
     "kind":"constant",
@@ -36835,7 +37262,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":228,
+    "value":230,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -36917,6 +37344,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT",
     "description":"GetModifierAttackSpeedBonus_Constant"
+  },{
+    "enum":"modifierfunction",
+    "value":228,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
+    "description":"GetModifierAttackSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
     "value":35,
@@ -37540,6 +37973,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MOVESPEED_LIMIT",
     "description":"GetModifierMoveSpeed_Limit"
+  },{
+    "enum":"modifierfunction",
+    "value":229,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
+    "description":"GetModifierMoveSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
     "value":47,
@@ -38500,7 +38939,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1769,
+    "value":1770,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -40107,6 +40546,16 @@ Initializing script VM...
         "returns":"table",
         "name":"GetLevelSpecialValueFor",
         "description":"Gets a value from this ability's special value block for passed level."
+      },{
+        "args":[{
+            "name":"szName",
+            "type":"string"
+          },{
+            "name":"nLevel",
+            "type":"int"
+          }],
+        "returns":"table",
+        "name":"GetLevelSpecialValueNoOverride"
       },{
         "args":[{
             "name":"szName",
