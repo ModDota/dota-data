@@ -1,7 +1,7 @@
 import assert from 'assert';
 import _ from 'lodash';
+import { getEnumDescription } from '../api/data/modifier-properties';
 import { clientDump, DumpConstant, serverDump } from '../dump';
-import { modifierPropertyData } from '../modifier-properties/data';
 import {
   droppedConstants,
   enumValueDescriptions,
@@ -135,10 +135,7 @@ export const enumDeclarations = (() => {
   });
 
   for (const member of enums.find(x => x.name === 'modifierfunction')!.members) {
-    if (!member.description || member.description === 'Unused') continue;
-    member.description = modifierPropertyData[member.description]?.[2]
-      ? `${modifierPropertyData[member.description][2]}\n\nMethod Name: \`${member.description}\`.`
-      : `Method Name: \`${member.description}\``;
+    member.description = getEnumDescription(member.description);
   }
 
   enums.sort((a, b) => a.name.localeCompare(b.name, 'en'));

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { clearDescription, extractNamesFromDescription, formatArgumentName } from '../../util';
 import { clientDump, DumpClass, DumpFunction, DumpMethod, serverDump } from '../dump';
 import { classExtensions, extraDeclarations, functionExtensions } from './data';
+import { modifierFunctionMethods } from './data/modifier-properties';
 import * as apiTypes from './types';
 import { isCompatibleOverride, isValidType } from './validation';
 
@@ -149,6 +150,11 @@ function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
     ),
   ];
 
+  if (serverClass.name === 'CDOTA_Modifier_Lua') {
+    members.push(...modifierFunctionMethods);
+  }
+
+  const isAbstract = (member: apiTypes.ClassMember) => 'abstract' in member && member.abstract;
   return {
     kind: 'class',
     name: serverClass.name,
@@ -156,7 +162,11 @@ function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
     description: extension.description,
     extend: serverClass.extend,
     instance: serverClass.instance,
-    members: members.sort((a, b) => a.name.localeCompare(b.name, 'en')),
+    members: members
+      .sort((a, b) => a.name.localeCompare(b.name, 'en'))
+      .sort((a, b) =>
+        isAbstract(a) && !isAbstract(b) ? 1 : !isAbstract(a) && isAbstract(b) ? -1 : 0,
+      ),
   };
 }
 

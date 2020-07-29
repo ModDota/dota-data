@@ -1,6 +1,11 @@
-import { ArgumentType, ReturnsType } from './types';
+import _ from 'lodash';
+import * as apiTypes from '../types';
+import { DumpConstant, serverDump } from '../../dump';
 
-export const modifierPropertyData: Record<string, [ArgumentType, ReturnsType, string?]> = {
+type ArgumentType = 'void' | 'unit' | 'ability' | 'attack';
+type ReturnsType = 'void' | 'number' | 'string' | 'binary' | ({} & string);
+
+export const modifiersData: Record<string, [ArgumentType, ReturnsType, string?]> = {
   GetAbsoluteNoDamageMagical: ['attack', 'binary'],
   GetAbsoluteNoDamagePhysical: ['attack', 'binary'],
   GetAbsoluteNoDamagePure: ['attack', 'binary'],
@@ -198,3 +203,51 @@ export const modifierPropertyData: Record<string, [ArgumentType, ReturnsType, st
   PreserveParticlesOnModelChanged: ['void', 'binary'],
   ReincarnateTime: ['void', 'number'],
 };
+
+export function getEnumDescription(functionName?: string) {
+  if (!functionName || functionName === 'Unused') return undefined;
+
+  return modifiersData[functionName]?.[2]
+    ? `${modifiersData[functionName][2]}\n\nMethod Name: \`${functionName}\`.`
+    : `Method Name: \`${functionName}\``;
+}
+
+export const modifierFunctionMethods: apiTypes.ClassMethod[] = serverDump
+  .filter((x): x is DumpConstant => x.kind === 'constant')
+  .filter((x): x is typeof x & { enum: string } => x.enum === 'modifierfunction')
+  .filter((x): x is typeof x & { description: string } => x.description != null)
+  .filter(x => x.description !== 'Unused')
+  .map(
+    (x): apiTypes.ClassMethod => {
+      const functionName = x.description;
+
+      if (!(functionName in modifiersData)) {
+        console.warn(`Untyped modifier field: ${functionName}`);
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      const [argument, returns, description] = modifiersData[functionName] ?? ['void', 'void'];
+
+      const args: apiTypes.FunctionParameter[] = [];
+      if (argument !== 'void') {
+        args.push({ name: 'event', types: [`Modifier${_.capitalize(argument)}Event`] });
+      }
+
+      return {
+        kind: 'function',
+        name: functionName,
+        available: 'both',
+        abstract: true,
+        description,
+        args,
+        returns:
+          returns === 'binary'
+            ? ['0', '1']
+            : returns === 'number'
+            ? ['float']
+            : returns === 'void'
+            ? ['nil']
+            : [returns],
+      };
+    },
+  );

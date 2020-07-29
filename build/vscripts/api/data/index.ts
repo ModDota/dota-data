@@ -1046,6 +1046,44 @@ export const extraDeclarations = (() => {
     ],
   });
 
+  context.push({
+    kind: 'interface',
+    name: 'ModifierAttackEvent',
+    members: [
+      { kind: 'field', name: 'attacker', types: ['CDOTA_BaseNPC'] },
+      { kind: 'field', name: 'damage', types: ['float'] },
+      { kind: 'field', name: 'damage_type', types: ['DAMAGE_TYPES'] },
+      { kind: 'field', name: 'damage_category', types: ['DamageCategory_t'] },
+      { kind: 'field', name: 'damage_flags', types: ['DOTADamageFlag_t'] },
+      { kind: 'field', name: 'inflictor', types: ['CDOTABaseAbility', 'nil'] },
+      { kind: 'field', name: 'original_damage', types: ['float'] },
+      { kind: 'field', name: 'ranged_attack', types: ['bool'] },
+      { kind: 'field', name: 'target', types: ['CDOTA_BaseNPC'] },
+    ],
+  });
+
+  const unitEventFields: apiTypes.Field[] = [
+    { kind: 'field', name: 'new_pos', types: ['Vector'] },
+    { kind: 'field', name: 'order_type', types: ['dotaunitorder_t'] },
+    { kind: 'field', name: 'unit', types: ['CDOTA_BaseNPC'] },
+  ];
+
+  context.push({
+    kind: 'interface',
+    name: 'ModifierUnitEvent',
+    members: unitEventFields,
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'ModifierAbilityEvent',
+    members: [
+      ...unitEventFields,
+      { kind: 'field', name: 'ability', types: ['CDOTABaseAbility'] },
+      { kind: 'field', name: 'target', types: ['CDOTA_BaseNPC', 'nil'] },
+    ],
+  });
+
   scope('Vector', true)
     .desc('3D Vector class.')
     .call({

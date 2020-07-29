@@ -1,5 +1,5 @@
 import { readDump } from '../../util';
-import { modifierPropertyData } from '../../vscripts/modifier-properties/data';
+import { getEnumDescription } from '../../vscripts/api/data/modifier-properties';
 import { Enum, EnumMember } from './types';
 
 export { types as enumsTypes } from './types';
@@ -23,10 +23,7 @@ export const enums = (() => {
     );
 
   for (const member of result.find(x => x.name === 'modifierfunction')!.members) {
-    if (!member.description || member.description === 'Unused') continue;
-    member.description = modifierPropertyData[member.description]?.[2]
-      ? `${modifierPropertyData[member.description][2]}\n\nMethod Name: \`${member.description}\`.`
-      : `Method Name: \`${member.description}\``;
+    member.description = getEnumDescription(member.description);
   }
 
   return result;
