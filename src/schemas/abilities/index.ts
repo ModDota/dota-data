@@ -12,7 +12,7 @@ export const abilities = s
   .root()
   .field('ability_base', baseItem())
   .rest(s.oneOf([baseAbility(), baseRecipeItem()]));
-export const abilitiesOverride = s.root().rest(s.oneOf([baseAbility(), baseItem(), s.literal('')]));
+export const abilitiesOverride = s.root().rest(s.oneOf([baseAbility(), baseItem()]));
 export const abilitiesCustom = s
   .root()
   .rest(s.oneOf([baseAbility(), luaCustomAbility, datadrivenCustomAbility]));
