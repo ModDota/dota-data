@@ -595,9 +595,16 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
 
 export const extraDeclarations = (() => {
   const context: apiTypes.Declaration[] = [];
-  const scope = (scopeName: string) => {
-    const currentScope: apiTypes.ClassDeclaration = { kind: 'class', name: scopeName, members: [] };
+  const scope = (scopeName: string, isClient: boolean) => {
+    const currentScope: apiTypes.ClassDeclaration = {
+      kind: 'class',
+      name: scopeName,
+      clientName: isClient ? scopeName : undefined,
+      members: [],
+    };
+
     context.push(currentScope);
+
     const scopeContext = {
       call(fn: apiTypes.FunctionType) {
         currentScope.call = fn;
@@ -609,11 +616,11 @@ export const extraDeclarations = (() => {
         return this;
       },
 
-      func(funcName: string, client = false) {
+      func(funcName: string) {
         const fn: apiTypes.FunctionDeclaration = {
           kind: 'function',
           name: funcName,
-          available: client ? 'both' : 'server',
+          available: isClient ? 'both' : 'server',
           args: [],
           returns: [],
         };
@@ -979,7 +986,7 @@ export const extraDeclarations = (() => {
     ],
   });
 
-  scope('Vector')
+  scope('Vector', true)
     .desc('3D Vector class.')
     .call({
       returns: ['Vector'],
@@ -1080,7 +1087,7 @@ export const extraDeclarations = (() => {
     .arg('t', ['float'], 'Interpolant')
     .ret(['Vector']);
 
-  scope('QAngle')
+  scope('QAngle', true)
     .desc('QAngle class.')
     .call({
       returns: ['QAngle'],
@@ -1127,7 +1134,7 @@ export const extraDeclarations = (() => {
     .end();
 
   // https://developer.valvesoftware.com/wiki/Destinations/Scripting/API#Uint64
-  scope('Uint64')
+  scope('Uint64', false)
     .desc('Integer with binary operations.')
 
     .func('__eq')
