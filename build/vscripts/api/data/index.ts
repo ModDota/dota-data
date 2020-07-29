@@ -3,6 +3,25 @@ import * as apiTypes from '../types';
 import { moddotaDump } from './moddota-dump';
 import { array, ExtensionClass, ExtensionFunction, func } from './utils';
 
+const abilityPrecacheFunction: apiTypes.ClassMember = {
+  kind: 'function',
+  name: 'Precache',
+  available: 'server',
+  abstract: true,
+  returns: ['nil'],
+  args: [{ name: 'context', types: ['CScriptPrecacheContext'] }],
+};
+
+const abilitySpawnFunction: apiTypes.ClassMember = {
+  kind: 'function',
+  name: 'Spawn',
+  available: 'both',
+  abstract: true,
+  description: 'Called when ability entity is created, after Init.',
+  returns: ['nil'],
+  args: [],
+};
+
 export const classExtensions: Record<string, ExtensionClass> = {
   CScriptHTTPRequest: {
     description:
@@ -36,6 +55,47 @@ export const classExtensions: Record<string, ExtensionClass> = {
         available: 'both',
         returns: ['bool'],
         args: [{ name: 'classOrClassName', types: ['string', 'table'] }],
+      },
+    ],
+  },
+  CDOTA_Ability_Lua: {
+    members: [
+      {
+        kind: 'function',
+        name: 'Init',
+        available: 'both',
+        abstract: true,
+        description: 'Called first when ability entity is created.',
+        returns: ['nil'],
+        args: [],
+      },
+      abilityPrecacheFunction,
+      abilitySpawnFunction,
+    ],
+  },
+  CDOTA_Item_Lua: {
+    members: [abilityPrecacheFunction, abilitySpawnFunction],
+  },
+  CDOTA_Modifier_Lua: {
+    members: [
+      {
+        kind: 'function',
+        name: 'DeclareFunctions',
+        available: 'both',
+        abstract: true,
+        description: 'Return a list of modifier functions this modifier implements.',
+        returns: [{ array: 'modifierfunction' }],
+        args: [],
+      },
+      {
+        kind: 'function',
+        name: 'CheckState',
+        available: 'both',
+        abstract: true,
+        description: 'Return a map of enabled/disabled states.',
+        // TODO:
+        returns: ['Partial<Record<modifierstate, boolean>>'],
+        args: [],
       },
     ],
   },

@@ -45,7 +45,11 @@ export interface InterfaceDeclaration {
   members: Field[];
 }
 
-export type ClassMember = FunctionDeclaration | Field;
+export interface ClassMethod extends FunctionDeclaration {
+  abstract?: true;
+}
+
+export type ClassMember = ClassMethod | Field;
 export interface ClassDeclaration {
   kind: 'class';
   name: string;
