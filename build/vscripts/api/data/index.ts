@@ -645,6 +645,27 @@ export const extraDeclarations = (() => {
   };
 
   context.push({
+    kind: 'function',
+    name: 'DeepPrintTable',
+    description: 'Print out a table (and subtables) to the console.',
+    available: 'both',
+    args: [{ name: 'table', types: ['table', 'nil'] }],
+    returns: ['nil'],
+  });
+
+  context.push({
+    kind: 'function',
+    name: 'Dynamic_Wrap',
+    description: 'A function to re-lookup a function by name every time.',
+    available: 'both',
+    args: [
+      { name: 'context', types: ['table'] },
+      { name: 'name', types: ['string'] },
+    ],
+    returns: ['unknown'],
+  });
+
+  context.push({
     kind: 'interface',
     name: 'Quaternion',
     description: 'Invalid type.', // VScript Lua: Unhandled variant type quaternion.
