@@ -2651,6 +2651,14 @@ Initializing script VM...
   },{
     "returns":"handle",
     "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"CreateUniformRandomStream",
+    "description":"( iSeed ) - Creates a separate random number stream."
+  },{
+    "returns":"handle",
+    "args":[{
         "type":"string"
       },{
         "type":"Vector"
@@ -5329,10 +5337,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1754,
-    "kind":"constant",
-    "name":"ACT_DOTA_ATTACK_STATUE"
-  },{
     "enum":"GameActivity_t",
     "value":1707,
     "kind":"constant",
@@ -5417,14 +5421,6 @@ Initializing script VM...
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
-  },{
-    "value":1758,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST2_STATUE"
-  },{
-    "value":1757,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST4_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1510,
@@ -5761,10 +5757,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
-    "value":1760,
-    "kind":"constant",
-    "name":"ACT_DOTA_DEFEAT_STATUE"
-  },{
     "enum":"GameActivity_t",
     "value":1506,
     "kind":"constant",
@@ -5814,10 +5806,6 @@ Initializing script VM...
     "value":1508,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
-  },{
-    "value":1755,
-    "kind":"constant",
-    "name":"ACT_DOTA_FLAIL_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1685,
@@ -6269,10 +6257,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1761,
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN_STATUE"
-  },{
     "enum":"GameActivity_t",
     "value":1568,
     "kind":"constant",
@@ -6348,10 +6332,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN"
   },{
-    "value":1753,
-    "kind":"constant",
-    "name":"ACT_DOTA_SPAWN_STATUE"
-  },{
     "enum":"GameActivity_t",
     "value":1594,
     "kind":"constant",
@@ -6371,14 +6351,6 @@ Initializing script VM...
     "value":1680,
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
-  },{
-    "value":1763,
-    "kind":"constant",
-    "name":"ACT_DOTA_STATUE"
-  },{
-    "value":1756,
-    "kind":"constant",
-    "name":"ACT_DOTA_STUN_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1684,
@@ -6444,10 +6416,6 @@ Initializing script VM...
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
-  },{
-    "value":1762,
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1537,
@@ -6518,10 +6486,6 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
-  },{
-    "value":1759,
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1689,
@@ -27763,6 +27727,50 @@ Initializing script VM...
   },{
     "members":[{
         "args":[{
+            "name":"flMinVal",
+            "type":"float"
+          },{
+            "name":"flMaxVal",
+            "type":"float"
+          }],
+        "returns":"float",
+        "name":"RandomFloat"
+      },{
+        "args":[{
+            "name":"flMinVal",
+            "type":"float"
+          },{
+            "name":"flMaxVal",
+            "type":"float"
+          },{
+            "name":"flExponent",
+            "type":"float"
+          }],
+        "returns":"float",
+        "name":"RandomFloatExp"
+      },{
+        "args":[{
+            "name":"iMinVal",
+            "type":"int"
+          },{
+            "name":"iMaxVal",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"RandomInt"
+      },{
+        "args":[{
+            "name":"iPercentage",
+            "type":"int"
+          }],
+        "returns":"bool",
+        "name":"RollPercentage"
+      }],
+    "name":"CScriptUniformRandomStream",
+    "kind":"class"
+  },{
+    "members":[{
+        "args":[{
             "name":"flAddAmount",
             "type":"float"
           }],
@@ -28423,6 +28431,14 @@ Initializing script VM...
     "kind":"function",
     "name":"CreateHTTPRequestScriptVM",
     "description":"Create an HTTP request."
+  },{
+    "returns":"handle",
+    "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"CreateUniformRandomStream",
+    "description":"( iSeed ) - Creates a separate random number stream."
   },{
     "returns":"Vector",
     "args":[{
@@ -29565,7 +29581,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1766,
+    "value":1754,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30145,10 +30161,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
-    "value":1754,
-    "kind":"constant",
-    "name":"ACT_DOTA_ATTACK_STATUE"
-  },{
     "value":1707,
     "kind":"constant",
     "name":"ACT_DOTA_AW_MAGNETIC_FIELD"
@@ -30216,14 +30228,6 @@ Initializing script VM...
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
-  },{
-    "value":1758,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST2_STATUE"
-  },{
-    "value":1757,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST4_STATUE"
   },{
     "value":1510,
     "kind":"constant",
@@ -30337,7 +30341,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1769,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30481,7 +30485,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1774,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30501,10 +30505,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
-    "value":1760,
-    "kind":"constant",
-    "name":"ACT_DOTA_DEFEAT_STATUE"
-  },{
     "value":1506,
     "kind":"constant",
     "name":"ACT_DOTA_DIE"
@@ -30517,7 +30517,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1765,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30548,10 +30548,6 @@ Initializing script VM...
     "value":1508,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
-  },{
-    "value":1755,
-    "kind":"constant",
-    "name":"ACT_DOTA_FLAIL_STATUE"
   },{
     "value":1685,
     "kind":"constant",
@@ -30645,7 +30641,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1775,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30728,10 +30724,6 @@ Initializing script VM...
     "value":1683,
     "kind":"constant",
     "name":"ACT_DOTA_LOADOUT_RARE"
-  },{
-    "value":1764,
-    "kind":"constant",
-    "name":"ACT_DOTA_LOADOUT_STATUE"
   },{
     "value":1643,
     "kind":"constant",
@@ -30861,7 +30853,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1771,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30901,7 +30893,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1767,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30913,7 +30905,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1768,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30933,13 +30925,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1773,
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN_ALT"
-  },{
     "value":1761,
     "kind":"constant",
-    "name":"ACT_DOTA_RUN_STATUE"
+    "name":"ACT_DOTA_RUN_ALT"
   },{
     "value":1568,
     "kind":"constant",
@@ -31001,10 +30989,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN"
   },{
-    "value":1753,
-    "kind":"constant",
-    "name":"ACT_DOTA_SPAWN_STATUE"
-  },{
     "value":1594,
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_END"
@@ -31013,7 +30997,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1772,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -31024,14 +31008,6 @@ Initializing script VM...
     "value":1680,
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
-  },{
-    "value":1763,
-    "kind":"constant",
-    "name":"ACT_DOTA_STATUE"
-  },{
-    "value":1756,
-    "kind":"constant",
-    "name":"ACT_DOTA_STUN_STATUE"
   },{
     "value":1684,
     "kind":"constant",
@@ -31084,10 +31060,6 @@ Initializing script VM...
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
-  },{
-    "value":1762,
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "value":1537,
     "kind":"constant",
@@ -31144,10 +31116,6 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
-  },{
-    "value":1759,
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "value":1689,
     "kind":"constant",
@@ -38963,7 +38931,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1770,
+    "value":1758,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -40487,6 +40455,50 @@ Initializing script VM...
         "description":"Reads a spawn key"
       }],
     "name":"CScriptPrecacheContext",
+    "kind":"class"
+  },{
+    "members":[{
+        "args":[{
+            "name":"flMinVal",
+            "type":"float"
+          },{
+            "name":"flMaxVal",
+            "type":"float"
+          }],
+        "returns":"float",
+        "name":"RandomFloat"
+      },{
+        "args":[{
+            "name":"flMinVal",
+            "type":"float"
+          },{
+            "name":"flMaxVal",
+            "type":"float"
+          },{
+            "name":"flExponent",
+            "type":"float"
+          }],
+        "returns":"float",
+        "name":"RandomFloatExp"
+      },{
+        "args":[{
+            "name":"iMinVal",
+            "type":"int"
+          },{
+            "name":"iMaxVal",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"RandomInt"
+      },{
+        "args":[{
+            "name":"iPercentage",
+            "type":"int"
+          }],
+        "returns":"bool",
+        "name":"RollPercentage"
+      }],
+    "name":"CScriptUniformRandomStream",
     "kind":"class"
   },{
     "members":[],

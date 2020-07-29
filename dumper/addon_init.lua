@@ -108,6 +108,7 @@ end
 
 -- These calls define globals
 CreateHTTPRequest("GET", "")
+CreateUniformRandomStream(0)
 if IsServer() then CreateDamageInfo(nil, nil, Vector(), Vector(), 0, 0) end
 
 for line in json.encode(dumpScriptBindings(), { indent = true }):gmatch("[^\n]+") do
