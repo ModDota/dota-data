@@ -3,7 +3,7 @@ import { exportNamespacedRoot } from '../../util';
 export const types = exportNamespacedRoot(__filename, 'api', 'api.Declaration[]');
 
 // EXPORT START
-export type Declaration = FunctionDeclaration | ClassDeclaration | InterfaceDeclaration;
+export type Declaration = FunctionDeclaration | ClassDeclaration;
 export type Availability = 'server' | 'client' | 'both';
 
 export type Type = string | FunctionType | ArrayType;
@@ -36,13 +36,6 @@ export interface Field {
   name: string;
   description?: string;
   types: string[];
-}
-
-export interface InterfaceDeclaration {
-  kind: 'interface';
-  name: string;
-  description?: string;
-  members: Field[];
 }
 
 export interface ClassMethod extends FunctionDeclaration {

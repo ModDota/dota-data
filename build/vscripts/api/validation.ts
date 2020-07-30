@@ -1,5 +1,6 @@
 import { serverDump } from '../dump';
 import { enumDeclarations } from '../enums';
+import { typesDeclarations } from '../types';
 import { extraDeclarations } from './data';
 import { ArrayType, FunctionType, Type } from './types';
 
@@ -33,10 +34,12 @@ const uniqueTypes = [
 const isEnumReference = (type: Type) => enumNames.includes(type as any);
 const enumNames = enumDeclarations.filter(x => x.kind === 'enum').map(x => x.name);
 
-const isClassOrInterfaceReference = (type: Type) => classOrDeclarationNames.includes(type as any);
-const classOrDeclarationNames = [...serverDump, ...extraDeclarations]
-  .filter(x => x.kind === 'class' || x.kind === 'interface')
+const isClassReference = (type: Type) => classNames.includes(type as any);
+const classNames = [...serverDump, ...extraDeclarations]
+  .filter(x => x.kind === 'class')
   .map(x => x.name);
+
+const isTypeReference = (type: Type) => typesDeclarations.some(t => t.name === (type as any));
 
 const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
 
@@ -60,9 +63,10 @@ export const isValidType = (type: Type): boolean =>
   isPseudoRecordType(type) ||
   isValidArrayType(type) ||
   isValidFunctionType(type) ||
-  isEnumReference(type) ||
   isNumberLiteral(type) ||
-  isClassOrInterfaceReference(type);
+  isEnumReference(type) ||
+  isClassReference(type) ||
+  isTypeReference(type);
 
 export function isCompatibleOverride(original: string, override: Type) {
   if (override === 'nil') return true;
@@ -80,7 +84,8 @@ export function isCompatibleOverride(original: string, override: Type) {
         isPseudoRecordType(override) ||
         isArrayType(override) ||
         isFunctionType(override) ||
-        isClassOrInterfaceReference(override)
+        isClassReference(override) ||
+        isTypeReference(override)
       );
 
     case 'unknown':
