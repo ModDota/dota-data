@@ -86,7 +86,8 @@ function transformFunction(
     }
   }
 
-  const originalDescription = clearDescription(func.name, func.description);
+  // Few functions have description only on the client
+  const originalDescription = clearDescription(func.name, func.description ?? client?.description);
   const description =
     extension.description != null
       ? extension.description !== ''
