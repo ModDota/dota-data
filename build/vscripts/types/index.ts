@@ -1,3 +1,4 @@
+import assert from 'assert';
 import * as typesTypes from './types';
 
 export { types as typesTypes } from './types';
@@ -101,25 +102,23 @@ typesDeclarations.push({
   ],
 });
 
-const traceCollideableInputs: typesTypes.ObjectField[] = [
-  { name: 'startpos', types: ['Vector'] },
-  { name: 'endpos', types: ['Vector'] },
-  { name: 'ent', types: ['CBaseEntity'] },
-  { name: 'mins', types: ['unknown', 'nil'] },
-  { name: 'maxs', types: ['unknown', 'nil'] },
-];
-
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceCollideableInputs',
-  fields: traceCollideableInputs,
+  fields: [
+    { name: 'startpos', types: ['Vector'] },
+    { name: 'endpos', types: ['Vector'] },
+    { name: 'ent', types: ['CBaseEntity'] },
+    { name: 'mins', types: ['unknown', 'nil'] },
+    { name: 'maxs', types: ['unknown', 'nil'] },
+  ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceCollideableOutputs',
+  extend: ['TraceCollideableInputs'],
   fields: [
-    ...traceCollideableInputs,
     { name: 'hit', types: ['bool'] },
     { name: 'pos', types: ['Vector'] },
     { name: 'normal', types: ['Vector'] },
@@ -127,26 +126,24 @@ typesDeclarations.push({
   ],
 });
 
-const traceHullInputs: typesTypes.ObjectField[] = [
-  { name: 'startpos', types: ['Vector'] },
-  { name: 'endpos', types: ['Vector'] },
-  { name: 'min', types: ['unknown'] },
-  { name: 'max', types: ['unknown'] },
-  { name: 'mask', types: ['unknown', 'nil'] },
-  { name: 'ignore', types: ['unknown', 'nil'] },
-];
-
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceHullInputs',
-  fields: traceHullInputs,
+  fields: [
+    { name: 'startpos', types: ['Vector'] },
+    { name: 'endpos', types: ['Vector'] },
+    { name: 'min', types: ['unknown'] },
+    { name: 'max', types: ['unknown'] },
+    { name: 'mask', types: ['unknown', 'nil'] },
+    { name: 'ignore', types: ['unknown', 'nil'] },
+  ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceHullOutputs',
+  extend: ['TraceHullInputs'],
   fields: [
-    ...traceHullInputs,
     { name: 'hit', types: ['bool'] },
     { name: 'startsolid', types: ['bool'] },
     { name: 'pos', types: ['Vector'] },
@@ -156,24 +153,22 @@ typesDeclarations.push({
   ],
 });
 
-const traceLineInputs: typesTypes.ObjectField[] = [
-  { name: 'startpos', types: ['Vector'] },
-  { name: 'endpos', types: ['Vector'] },
-  { name: 'mask', types: ['unknown', 'nil'] },
-  { name: 'ignore', types: ['unknown', 'nil'] },
-];
-
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceLineInputs',
-  fields: traceLineInputs,
+  fields: [
+    { name: 'startpos', types: ['Vector'] },
+    { name: 'endpos', types: ['Vector'] },
+    { name: 'mask', types: ['unknown', 'nil'] },
+    { name: 'ignore', types: ['unknown', 'nil'] },
+  ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'TraceLineOutputs',
+  extend: ['TraceLineInputs'],
   fields: [
-    ...traceLineInputs,
     { name: 'hit', types: ['bool'] },
     { name: 'startsolid', types: ['bool'] },
     { name: 'pos', types: ['Vector'] },
@@ -183,31 +178,34 @@ typesDeclarations.push({
   ],
 });
 
-const projectileOptionsBase = (): typesTypes.ObjectField[] => [
-  { name: 'EffectName', types: ['string', 'nil'] },
-  { name: 'Ability', types: ['CDOTABaseAbility', 'nil'] },
-  { name: 'Source', types: ['CDOTA_BaseNPC', 'nil'] },
-];
+typesDeclarations.push({
+  kind: 'object',
+  name: 'CreateBaseProjectileOptions',
+  fields: [
+    // Base
+    { name: 'EffectName', types: ['string', 'nil'] },
+    { name: 'Ability', types: ['CDOTABaseAbility', 'nil'] },
+    { name: 'Source', types: ['CDOTA_BaseNPC', 'nil'] },
 
-const projectileOptionsVision = (): typesTypes.ObjectField[] => [
-  { name: 'bProvidesVision', types: ['bool', 'nil'] },
-  { name: 'iVisionRadius', types: ['uint', 'nil'] },
-  { name: 'iVisionTeamNumber', types: ['DOTATeam_t', 'nil'] },
-];
+    // Vision
+    { name: 'bProvidesVision', types: ['bool', 'nil'] },
+    { name: 'iVisionRadius', types: ['uint', 'nil'] },
+    { name: 'iVisionTeamNumber', types: ['DOTATeam_t', 'nil'] },
 
-const projectileOptionsExtraData = (): typesTypes.ObjectField => ({
-  name: 'ExtraData',
-  types: ['Record<string, string | number | boolean>', 'nil'],
-  description:
-    'Extra data associated with projectile instance, that is passed to `OnProjectileThink_ExtraData` and `OnProjectileHit_ExtraData`.',
+    {
+      name: 'ExtraData',
+      types: ['Record<string, string | number | boolean>', 'nil'],
+      description:
+        'Extra data associated with projectile instance, that is passed to `OnProjectileThink_ExtraData` and `OnProjectileHit_ExtraData`.',
+    },
+  ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'CreateLinearProjectileOptions',
+  extend: ['CreateBaseProjectileOptions'],
   fields: [
-    ...projectileOptionsBase(),
-
     // Movement
     { name: 'vSpawnOrigin', types: ['Vector', 'nil'] },
     { name: 'vVelocity', types: ['Vector', 'nil'] },
@@ -232,18 +230,14 @@ typesDeclarations.push({
       types: ['bool', 'nil'],
       description: 'Makes it invisible for all teams.',
     },
-
-    ...projectileOptionsVision(),
-    projectileOptionsExtraData(),
   ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'CreateTrackingProjectileOptions',
+  extend: ['CreateBaseProjectileOptions'],
   fields: [
-    ...projectileOptionsBase(),
-
     // Movement
     { name: 'vSourceLoc', types: ['Vector', 'nil'] },
     { name: 'Target', types: ['CDOTA_BaseNPC', 'nil'] },
@@ -264,9 +258,6 @@ typesDeclarations.push({
     { name: 'iSourceAttachment', types: ['DOTAProjectileAttachment_t', 'nil'] },
     { name: 'bDrawsOnMinimap', types: ['bool', 'nil'], description: '@default false' },
     { name: 'bVisibleToEnemies', types: ['bool', 'nil'], description: '@default true' },
-
-    ...projectileOptionsVision(),
-    projectileOptionsExtraData(),
   ],
 });
 
@@ -422,24 +413,42 @@ typesDeclarations.push({
   ],
 });
 
-const unitEventFields: typesTypes.ObjectField[] = [
-  { name: 'new_pos', types: ['Vector'] },
-  { name: 'order_type', types: ['dotaunitorder_t'] },
-  { name: 'unit', types: ['CDOTA_BaseNPC'] },
-];
-
 typesDeclarations.push({
   kind: 'object',
   name: 'ModifierUnitEvent',
-  fields: unitEventFields,
+  fields: [
+    { name: 'new_pos', types: ['Vector'] },
+    { name: 'order_type', types: ['dotaunitorder_t'] },
+    { name: 'unit', types: ['CDOTA_BaseNPC'] },
+  ],
 });
 
 typesDeclarations.push({
   kind: 'object',
   name: 'ModifierAbilityEvent',
+  extend: ['ModifierUnitEvent'],
   fields: [
-    ...unitEventFields,
     { name: 'ability', types: ['CDOTABaseAbility'] },
     { name: 'target', types: ['CDOTA_BaseNPC', 'nil'] },
   ],
 });
+
+// Validation
+
+for (const declaration of typesDeclarations) {
+  switch (declaration.kind) {
+    case 'object':
+      if (declaration.extend !== undefined) {
+        assert(declaration.extend.length > 0);
+        for (const extendedName of declaration.extend) {
+          assert(
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            typesDeclarations.some(t => t.kind === 'object' && t.name === extendedName),
+            `${declaration.name}.extend: ${extendedName} must be a valid object type.`,
+          );
+        }
+      }
+
+      break;
+  }
+}

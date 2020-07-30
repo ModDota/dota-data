@@ -10,6 +10,7 @@ export interface Object {
   kind: 'object';
   name: string;
   description?: string;
+  extend?: string[];
   fields: ObjectField[];
 }
 
