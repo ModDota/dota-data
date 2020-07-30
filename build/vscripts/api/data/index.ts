@@ -426,7 +426,11 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.GetTreeIdForEntityIndex': { args: { 0: ['entityIndex', 'EntityIndex'] } },
   'CDOTABaseAbility.GetSpecialValueFor': { returns: 'float' },
   'CDOTABaseAbility.GetLevelSpecialValueFor': { returns: 'float' },
-  'CDOTABaseAbility.GetLevelSpecialValueNoOverride': { returns: 'float' },
+  'CDOTABaseAbility.GetLevelSpecialValueNoOverride': {
+    description:
+      "Gets a value from this ability's special value block for passed level, ignoring MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL.",
+    returns: 'float',
+  },
   'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
   'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
   'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
@@ -538,7 +542,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
   '_G.CreateRune': { returns: 'CBaseAnimating', args: { 1: [null, 'DOTA_RUNES'] } },
   '_G.DropNeutralItemAtPositionForHero': {
-    returns: 'CDOTA_Item',
+    returns: 'CDOTA_Item_Physical',
     args: {
       0: ['itemName', null, 'Can be any item name, it does not have to be neutral.'],
       1: ['location'],
@@ -593,8 +597,21 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.DOTA_SpawnMapAtPosition': {
     args: {
       0: ['mapName', null, 'A map name without extension, relative to "maps" directory.'],
-      1: ['location', null, 'Note: X and Y coordinates must be multiple of the grid size.'],
-      3: ['onReadyToSpawn', func([['spawnGroupHandle', 'int']], 'nil')],
+      1: [
+        'location',
+        null,
+        'The value of x and y must be multiple the grid size 64.\nTo avoid GridNav conflicts, tiles on these coordinates on the base map must be empty.',
+      ],
+      2: [
+        'deferCompletion',
+        null,
+        'If true, to finish map loading you need to call ManuallyTriggerSpawnGroupCompletion(spawnGroupHandle).',
+      ],
+      3: [
+        'onReadyToSpawn',
+        func([['spawnGroupHandle', 'int']], 'nil'),
+        'Called only when deferCompletion is true.',
+      ],
       4: ['onSpawnComplete', func([['spawnGroupHandle', 'int']], 'nil')],
       5: ['context', ['table', 'nil']],
     },
@@ -651,6 +668,39 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       '5': [null, 'DOTATeam_t'],
     },
   },
+  '_G.CreateUniformRandomStream': { returns: 'CScriptUniformRandomStream' },
+  '_G.ExecuteOrderFromTable': { args: { 0: ['order', 'ExecuteOrderOptions'] } },
+  '_G.TraceCollideable': { description: '', args: { 0: ['query', 'TraceCollideableInputs'] } },
+  '_G.TraceHull': { description: '', args: { 0: ['query', 'TraceHullInputs'] } },
+  '_G.TraceLine': { description: '', args: { 0: ['query', 'TraceLineInputs'] } },
+  'CBaseEntity.SetAngularVelocity': { description: 'Set the local angular velocity.' }, // Remove argument names
+  'CBaseModelEntity.SetSkin': { description: '' }, // Remove argument type and function name
+  'CDOTAGamerules.AddEventMetadataLeaderboardEntry': {
+    args: {
+      0: ['nameSuffix'],
+      1: ['stars'],
+      2: ['maxStars'],
+      3: ['extraData1'],
+      4: ['extraData2'],
+      5: ['extraData3'],
+      6: ['extraData4'],
+      7: ['extraData5'],
+      8: ['extraData6'],
+    },
+  },
+  'CDOTAGamerules.AddEventMetadataLeaderboardEntryRawScore': {
+    args: {
+      0: ['nameSuffix'],
+      1: ['score'],
+      2: ['extraData1'],
+      3: ['extraData2'],
+      4: ['extraData3'],
+      5: ['extraData4'],
+      6: ['extraData5'],
+      7: ['extraData6'],
+    },
+  },
+  'CDOTAPlayer.SpawnCourierAtPosition': { returns: 'CDOTA_Unit_Courier' },
 };
 
 export const extraDeclarations = (() => {
@@ -743,6 +793,121 @@ export const extraDeclarations = (() => {
     kind: 'interface',
     name: 'CombatAnalyzerQueryResult',
     members: [{ kind: 'field', name: 'query_id', types: ['CombatAnalyzerQueryID'] }],
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'ExecuteOrderOptions',
+    members: [
+      { kind: 'field', name: 'UnitIndex', types: ['EntityIndex'] },
+      { kind: 'field', name: 'OrderType', types: ['dotaunitorder_t'] },
+      {
+        kind: 'field',
+        name: 'TargetIndex',
+        types: ['EntityIndex', 'nil'],
+        description: 'Only used when targeting units.',
+      },
+      {
+        kind: 'field',
+        name: 'AbilityIndex',
+        types: ['EntityIndex', 'nil'],
+        description: 'Only used when casting abilities.',
+      },
+      {
+        kind: 'field',
+        name: 'Position',
+        types: ['Vector', 'nil'],
+        description: 'Only used when targeting the ground.',
+      },
+      {
+        kind: 'field',
+        name: 'Queue',
+        types: ['bool', 'nil'],
+        description: 'Used for queueing up abilities.',
+      },
+    ],
+  });
+
+  const traceCollideableInputs: apiTypes.Field[] = [
+    { kind: 'field', name: 'startpos', types: ['Vector'] },
+    { kind: 'field', name: 'endpos', types: ['Vector'] },
+    { kind: 'field', name: 'ent', types: ['CBaseEntity'] },
+    { kind: 'field', name: 'mins', types: ['unknown', 'nil'] },
+    { kind: 'field', name: 'maxs', types: ['unknown', 'nil'] },
+  ];
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceCollideableInputs',
+    members: traceCollideableInputs,
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceCollideableOutputs',
+    members: [
+      ...traceCollideableInputs,
+      { kind: 'field', name: 'hit', types: ['bool'] },
+      { kind: 'field', name: 'pos', types: ['Vector'] },
+      { kind: 'field', name: 'normal', types: ['Vector'] },
+      { kind: 'field', name: 'fraction', types: ['float'] },
+    ],
+  });
+
+  const traceHullInputs: apiTypes.Field[] = [
+    { kind: 'field', name: 'startpos', types: ['Vector'] },
+    { kind: 'field', name: 'endpos', types: ['Vector'] },
+    { kind: 'field', name: 'min', types: ['unknown'] },
+    { kind: 'field', name: 'max', types: ['unknown'] },
+    { kind: 'field', name: 'mask', types: ['unknown', 'nil'] },
+    { kind: 'field', name: 'ignore', types: ['unknown', 'nil'] },
+  ];
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceHullInputs',
+    members: traceHullInputs,
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceHullOutputs',
+    members: [
+      ...traceHullInputs,
+      { kind: 'field', name: 'hit', types: ['bool'] },
+      { kind: 'field', name: 'startsolid', types: ['bool'] },
+      { kind: 'field', name: 'pos', types: ['Vector'] },
+      { kind: 'field', name: 'normal', types: ['Vector'] },
+      { kind: 'field', name: 'fraction', types: ['float'] },
+      { kind: 'field', name: 'enthit', types: ['CBaseEntity', 'nil'] },
+    ],
+  });
+
+  const traceLineInputs: apiTypes.Field[] = [
+    { kind: 'field', name: 'startpos', types: ['Vector'] },
+    { kind: 'field', name: 'endpos', types: ['Vector'] },
+    { kind: 'field', name: 'mask', types: ['unknown', 'nil'] },
+    { kind: 'field', name: 'ignore', types: ['unknown', 'nil'] },
+  ];
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceLineInputs',
+    members: traceLineInputs,
+  });
+
+  context.push({
+    kind: 'interface',
+    name: 'TraceLineOutputs',
+    members: [
+      ...traceLineInputs,
+      { kind: 'field', name: 'hit', types: ['bool'] },
+      { kind: 'field', name: 'startsolid', types: ['bool'] },
+      { kind: 'field', name: 'pos', types: ['Vector'] },
+      { kind: 'field', name: 'normal', types: ['Vector'] },
+      { kind: 'field', name: 'fraction', types: ['float'] },
+      { kind: 'field', name: 'enthit', types: ['CBaseEntity', 'nil'] },
+    ],
   });
 
   const projectileOptionsBase = (): apiTypes.Field[] => [
@@ -1004,6 +1169,7 @@ export const extraDeclarations = (() => {
       { kind: 'field', name: 'original_damage', types: ['float'] },
       { kind: 'field', name: 'ranged_attack', types: ['bool'] },
       { kind: 'field', name: 'target', types: ['CDOTA_BaseNPC'] },
+      { kind: 'field', name: 'unit', types: ['CDOTA_BaseNPC', 'nil'] },
     ],
   });
 

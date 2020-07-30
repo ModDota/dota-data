@@ -43,6 +43,7 @@ export function clearDescription(functionName: string, description?: string) {
 
 const outdatedDescriptionNameFuncs = new Set([
   'AddEventMetadataLeaderboardEntry',
+  'AddEventMetadataLeaderboardEntryRawScore',
   'CommandLineFloat',
   'CommandLineInt',
   'CommandLineStr',

@@ -46,7 +46,12 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTABaseAbility.GetAbilityTargetFlags': { returns: 'DOTA_UNIT_TARGET_FLAGS' },
   'CDOTABaseAbility.GetAbilityTargetTeam': { returns: 'DOTA_UNIT_TARGET_TEAM' },
   'CDOTABaseAbility.GetAbilityTargetType': { returns: 'DOTA_UNIT_TARGET_TYPE' },
-  'CDOTABaseAbility.GetCastRange': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTABaseAbility.GetCastRange': {
+    args: {
+      0: [null, ['Vector', 'nil']],
+      1: [null, ['CDOTA_BaseNPC', 'nil']],
+    },
+  },
   'CDOTABaseAbility.GetCaster': { returns: 'CDOTA_BaseNPC' },
   'CDOTABaseAbility.GetCloneSource': { returns: ['CDOTA_BaseNPC', 'nil'] },
   'CDOTABaseAbility.GetCursorTarget': { returns: ['CDOTA_BaseNPC', 'nil'] },
@@ -124,7 +129,13 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTAPlayer.SetKillCamUnit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTATutorial.AddBot': { args: { '0': ['heroName'] } },
   'CDOTATutorial.SelectHero': { args: { '0': ['heroName'] } },
-  'CDOTATutorial.SetOrModifyPlayerGold': { args: { '0': ['goldAmount'], '1': ['setNotModify'] } },
+  'CDOTATutorial.SetOrModifyPlayerGold': {
+    description: 'Set gold amount for the tutorial player.', // Remove argument information
+    args: {
+      0: ['goldAmount'],
+      1: ['setNotModify', null, 'When true sets gold amount, otherwise modifies it'],
+    },
+  },
   'CDOTATutorial.SetQuickBuy': { args: { '0': ['itemName'] } },
   'CDOTATutorial.SetShopOpen': { args: { '0': ['open'] } },
   'CDOTATutorial.SetTimeFrozen': { args: { '0': ['timeFrozen'] } },
@@ -137,7 +148,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   'CDOTA_Ability_Lua.GetBehavior': { returns: 'DOTA_ABILITY_BEHAVIOR' },
   'CDOTA_Ability_Lua.GetCastAnimation': { returns: 'GameActivity_t' },
-  'CDOTA_Ability_Lua.GetCastRange': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTA_Ability_Lua.GetCastRange': { args: { 1: [null, ['CDOTA_BaseNPC', 'nil']] } },
   'CDOTA_Ability_Lua.GetChannelAnimation': { returns: 'GameActivity_t' },
   'CDOTA_Ability_Lua.GetCustomCastErrorTarget': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_Ability_Lua.OnHeroDiedNearby': {
@@ -265,8 +276,10 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.SetModifierStackCount': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.SetMoveCapability': { args: { '0': [null, 'DOTAUnitMoveCapability_t'] } },
   'CDOTA_BaseNPC.SpendMana': { args: { '1': [null, 'CDOTABaseAbility'] } },
-  'CDOTA_BaseNPC.StartGesture': { args: { '0': [null, 'GameActivity_t'] } },
-  'CDOTA_BaseNPC.StartGestureWithPlaybackRate': { args: { '0': [null, 'GameActivity_t'] } },
+  'CDOTA_BaseNPC.StartGesture': { args: { 0: [null, 'GameActivity_t'] } },
+  'CDOTA_BaseNPC.StartGestureFadeWithSequenceSettings': { args: { 0: [null, 'GameActivity_t'] } },
+  'CDOTA_BaseNPC.StartGestureWithFade': { args: { 0: [null, 'GameActivity_t'] } },
+  'CDOTA_BaseNPC.StartGestureWithPlaybackRate': { args: { 0: [null, 'GameActivity_t'] } },
   'CDOTA_BaseNPC.TakeItem': {
     description: o => `${o} Returns the passed item.`,
     returns: 'CDOTA_Item',
@@ -299,7 +312,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': [null, 'CDOTA_BaseNPC'] },
   },
   'CDOTA_Item_Lua.GetBehavior': { returns: 'DOTA_ABILITY_BEHAVIOR' },
-  'CDOTA_Item_Lua.GetCastRange': { args: { '1': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTA_Item_Lua.GetCastRange': { args: { 1: [null, ['CDOTA_BaseNPC', 'nil']] } },
   'CDOTA_Item_Lua.GetCustomCastErrorTarget': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_Item_Lua.OnHeroDiedNearby': {
     args: { '0': [null, 'CDOTA_BaseNPC'], '1': [null, 'CDOTA_BaseNPC'], '2': ['event', 'table'] },
@@ -310,7 +323,10 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_Item_Physical.SetContainedItem': { args: { '0': [null, 'CDOTA_Item'] } },
   'CDOTA_MapTree.CutDown': { args: { '0': [null, 'DOTATeam_t'] } },
   'CDOTA_MapTree.CutDownRegrowAfter': { args: { '1': [null, 'DOTATeam_t'] } },
-  'CDOTA_Modifier_Lua.GetAttributes': { returns: 'DOTAModifierAttribute_t' },
+  'CDOTA_Modifier_Lua.GetAttributes': {
+    description: 'Return the types of attributes applied to this modifier.', // Remove return type
+    returns: 'DOTAModifierAttribute_t',
+  },
   'CDOTA_Modifier_Lua.GetAuraEntityReject': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_Modifier_Lua.GetAuraSearchFlags': { returns: 'DOTA_UNIT_TARGET_FLAGS' },
   'CDOTA_Modifier_Lua.GetAuraSearchTeam': { returns: 'DOTA_UNIT_TARGET_TEAM' },
@@ -591,7 +607,6 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     returns: ['CBaseEntity', 'nil'],
     args: { '0': ['entityIndex', 'EntityIndex'] },
   },
-  '_G.ExecuteOrderFromTable': { args: { '0': ['order', 'table'] } },
   '_G.FindClearSpaceForUnit': { args: { '0': ['unit', 'CDOTA_BaseNPC'], '1': ['location'] } },
   '_G.FindUnitsInLine': {
     returns: array('CDOTA_BaseNPC'),
