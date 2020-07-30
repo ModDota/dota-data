@@ -655,61 +655,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
 
 export const extraDeclarations = (() => {
   const context: apiTypes.Declaration[] = [];
-  const scope = (scopeName: string, isClient: boolean) => {
-    const currentScope: apiTypes.ClassDeclaration = {
-      kind: 'class',
-      name: scopeName,
-      clientName: isClient ? scopeName : undefined,
-      members: [],
-    };
-
-    context.push(currentScope);
-
-    const scopeContext = {
-      call(fn: apiTypes.FunctionType) {
-        currentScope.call = fn;
-        return this;
-      },
-
-      desc(description: string) {
-        currentScope.description = description;
-        return this;
-      },
-
-      func(funcName: string) {
-        const fn: apiTypes.FunctionDeclaration = {
-          kind: 'function',
-          name: funcName,
-          available: isClient ? 'both' : 'server',
-          args: [],
-          returns: [],
-        };
-        currentScope.members.push(fn);
-        return {
-          desc(description: string) {
-            fn.description = description;
-            return this;
-          },
-          arg(name: string, types: apiTypes.Type[], description?: string) {
-            fn.args.push({ name, types, description });
-            return this;
-          },
-          ret(types: apiTypes.Type[]) {
-            fn.returns = types;
-            return this;
-          },
-          end: () => scopeContext,
-        };
-      },
-
-      field(name: string, type: string, description?: string) {
-        currentScope.members.push({ kind: 'field', name, types: [type], description });
-        return this;
-      },
-    };
-
-    return scopeContext;
-  };
 
   context.push({
     kind: 'function',
@@ -1084,218 +1029,310 @@ export const extraDeclarations = (() => {
     ],
   });
 
-  scope('Vector', true)
-    .desc('3D Vector class.')
-    .call({
+  context.push({
+    kind: 'class',
+    name: 'Vector',
+    clientName: 'Vector',
+    description: '3D Vector class.',
+    call: {
       returns: ['Vector'],
       args: [
         { name: 'x', types: ['float', 'nil'] },
         { name: 'y', types: ['float', 'nil'] },
         { name: 'z', types: ['float', 'nil'] },
       ],
-    })
-    .field('x', 'float', 'X-axis')
-    .field('y', 'float', 'Y-axis')
-    .field('z', 'float', 'Z-axis')
+    },
+    members: [
+      { kind: 'field', name: 'x', types: ['float'], description: 'X-axis' },
+      { kind: 'field', name: 'y', types: ['float'], description: 'Y-axis' },
+      { kind: 'field', name: 'z', types: ['float'], description: 'Z-axis' },
+      {
+        kind: 'function',
+        name: '__add',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['Vector'],
+        description: 'Overloaded +. Adds vectors together.',
+      },
+      {
+        kind: 'function',
+        name: '__div',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['Vector'],
+        description: 'Overloaded /. Divides vectors.',
+      },
+      {
+        kind: 'function',
+        name: '__eq',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['bool'],
+        description: 'Overloaded ==. Tests for Equality.',
+      },
+      {
+        kind: 'function',
+        name: '__len',
+        available: 'both',
+        args: [],
+        returns: ['float'],
+        description: 'Overloaded # returns the length of the vector.',
+      },
+      {
+        kind: 'function',
+        name: '__mul',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector', 'float'] }],
+        returns: ['Vector'],
+        description:
+          'Overloaded * returns the vectors multiplied together. Can also be used to multiply with scalars.',
+      },
+      {
+        kind: 'function',
+        name: '__sub',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['Vector'],
+        description: 'Overloaded -. Subtracts vectors.',
+      },
+      {
+        kind: 'function',
+        name: '__tostring',
+        available: 'both',
+        args: [],
+        returns: ['string'],
+        description: 'Overloaded .. Converts vectors to strings.',
+      },
+      {
+        kind: 'function',
+        name: '__unm',
+        available: 'both',
+        args: [],
+        returns: ['Vector'],
+        description: 'Overloaded - operator. Reverses the vector.',
+      },
+      {
+        kind: 'function',
+        name: 'Cross',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['Vector'],
+        description: 'Cross product of two vectors.',
+      },
+      {
+        kind: 'function',
+        name: 'Dot',
+        available: 'both',
+        args: [{ name: 'b', types: ['Vector'] }],
+        returns: ['float'],
+        description: 'Dot product of two vectors.',
+      },
+      {
+        kind: 'function',
+        name: 'Length',
+        available: 'both',
+        args: [],
+        returns: ['float'],
+        description: 'Length of the Vector.',
+      },
+      {
+        kind: 'function',
+        name: 'Length2D',
+        available: 'both',
+        args: [],
+        returns: ['float'],
+        description: 'Length of the Vector in the XY plane.',
+      },
+      {
+        kind: 'function',
+        name: 'Normalized',
+        available: 'both',
+        args: [],
+        returns: ['Vector'],
+        description: 'Returns the vector normalized.',
+      },
+      {
+        kind: 'function',
+        name: 'Lerp',
+        available: 'both',
+        args: [
+          { name: 'b', types: ['Vector'] },
+          { name: 't', types: ['float'], description: 'Interpolant' },
+        ],
+        returns: ['Vector'],
+        // https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html
+        description: dedent`
+          Linearly interpolates between two vectors.
+          This is most commonly used to find a point some fraction of the way along a line between two endpoints.
+          Same as \`this + (b - this) * t\`.
+        `,
+      },
+    ],
+  });
 
-    .func('__add')
-    .desc('Overloaded +. Adds vectors together.')
-    .arg('b', ['Vector'])
-    .ret(['Vector'])
-    .end()
-
-    .func('__div')
-    .desc('Overloaded /. Divides vectors.')
-    .arg('b', ['Vector'])
-    .ret(['Vector'])
-    .end()
-
-    .func('__eq')
-    .desc('Overloaded ==. Tests for Equality.')
-    .arg('b', ['Vector'])
-    .ret(['bool'])
-    .end()
-
-    .func('__len')
-    .desc('Overloaded # returns the length of the vector.')
-    .ret(['float'])
-    .end()
-
-    .func('__mul')
-    .desc(
-      'Overloaded * returns the vectors multiplied together. Can also be used to multiply with scalars.',
-    )
-    .arg('b', ['Vector', 'float'])
-    .ret(['Vector'])
-    .end()
-
-    .func('__sub')
-    .desc('Overloaded -. Subtracts vectors.')
-    .arg('b', ['Vector'])
-    .ret(['Vector'])
-    .end()
-
-    .func('__tostring')
-    .desc('Overloaded .. Converts vectors to strings.')
-    .ret(['string'])
-    .end()
-
-    .func('__unm')
-    .desc('Overloaded - operator. Reverses the vector.')
-    .ret(['Vector'])
-    .end()
-
-    .func('Cross')
-    .desc('Cross product of two vectors.')
-    .arg('b', ['Vector'])
-    .ret(['Vector'])
-    .end()
-
-    .func('Dot')
-    .desc('Dot product of two vectors.')
-    .arg('b', ['Vector'])
-    .ret(['float'])
-    .end()
-
-    .func('Length')
-    .desc('Length of the Vector.')
-    .ret(['float'])
-    .end()
-
-    .func('Length2D')
-    .desc('Length of the Vector in the XY plane.')
-    .ret(['float'])
-    .end()
-
-    .func('Normalized')
-    .desc('Returns the vector normalized.')
-    .ret(['Vector'])
-    .end()
-
-    // https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html
-    .func('Lerp')
-    .desc(
-      dedent`
-        Linearly interpolates between two vectors.
-        This is most commonly used to find a point some fraction of the way along a line between two endpoints.
-        Same as \`this + (b - this) * t\`.
-      `,
-    )
-    .arg('b', ['Vector'])
-    .arg('t', ['float'], 'Interpolant')
-    .ret(['Vector']);
-
-  scope('QAngle', true)
-    .desc('QAngle class.')
-    .call({
+  context.push({
+    kind: 'class',
+    name: 'QAngle',
+    clientName: 'QAngle',
+    description: 'QAngle class.',
+    call: {
       returns: ['QAngle'],
       args: [
         { name: 'x', types: ['float', 'nil'], description: 'Pitch +down/-up.' },
         { name: 'y', types: ['float', 'nil'], description: 'Yaw +left/-right.' },
         { name: 'z', types: ['float', 'nil'], description: 'Roll +right/-left.' },
       ],
-    })
-    .field('x', 'float', 'Pitch angle')
-    .field('y', 'float', 'Yaw angle')
-    .field('z', 'float', 'Roll angle')
-
-    .func('__add')
-    .desc('Overloaded +. Adds angles together.')
-    .arg('b', ['QAngle'])
-    .ret(['QAngle'])
-    .end()
-
-    .func('__eq')
-    .desc('Overloaded ==. Tests for Equality.')
-    .arg('b', ['QAngle'])
-    .ret(['bool'])
-    .end()
-
-    .func('__tostring')
-    .desc('Overloaded .. Converts the QAngles to strings.')
-    .ret(['string'])
-    .end()
-
-    .func('Forward')
-    .desc('Returns the forward vector.')
-    .ret(['Vector'])
-    .end()
-
-    .func('Left')
-    .desc('Returns the left vector.')
-    .ret(['Vector'])
-    .end()
-
-    .func('Up')
-    .desc('Returns the up vector.')
-    .ret(['Vector'])
-    .end();
+    },
+    members: [
+      { kind: 'field', name: 'x', types: ['float'], description: 'Pitch angle' },
+      { kind: 'field', name: 'y', types: ['float'], description: 'Yaw angle' },
+      { kind: 'field', name: 'z', types: ['float'], description: 'Roll angle' },
+      {
+        kind: 'function',
+        name: '__add',
+        available: 'both',
+        args: [{ name: 'b', types: ['QAngle'] }],
+        returns: ['QAngle'],
+        description: 'Overloaded +. Adds angles together.',
+      },
+      {
+        kind: 'function',
+        name: '__eq',
+        available: 'both',
+        args: [{ name: 'b', types: ['QAngle'] }],
+        returns: ['bool'],
+        description: 'Overloaded ==. Tests for Equality.',
+      },
+      {
+        kind: 'function',
+        name: '__tostring',
+        available: 'both',
+        args: [],
+        returns: ['string'],
+        description: 'Overloaded .. Converts the QAngles to strings.',
+      },
+      {
+        kind: 'function',
+        name: 'Forward',
+        available: 'both',
+        args: [],
+        returns: ['Vector'],
+        description: 'Returns the forward vector.',
+      },
+      {
+        kind: 'function',
+        name: 'Left',
+        available: 'both',
+        args: [],
+        returns: ['Vector'],
+        description: 'Returns the left vector.',
+      },
+      {
+        kind: 'function',
+        name: 'Up',
+        available: 'both',
+        args: [],
+        returns: ['Vector'],
+        description: 'Returns the up vector.',
+      },
+    ],
+  });
 
   // https://developer.valvesoftware.com/wiki/Destinations/Scripting/API#Uint64
-  scope('Uint64', false)
-    .desc('Integer with binary operations.')
-
-    .func('__eq')
-    .arg('b', ['Uint64'])
-    .ret(['bool'])
-    .end()
-
-    .func('__tostring')
-    .desc('Overloaded .. Converts Uint64s to strings.')
-    .ret(['string'])
-    .end()
-
-    .func('BitwiseAnd')
-    .desc('Performs bitwise AND between two integers.')
-    .arg('operand', ['Uint64'])
-    .ret(['Uint64'])
-    .end()
-
-    .func('BitwiseOr')
-    .desc('Performs bitwise OR between two integers.')
-    .arg('operand', ['Uint64'])
-    .ret(['Uint64'])
-    .end()
-
-    .func('BitwiseXor')
-    .desc('Performs bitwise XOR between two integers.')
-    .arg('operand', ['Uint64'])
-    .ret(['Uint64'])
-    .end()
-
-    .func('BitwiseNot')
-    .desc('Performs bitwise NOT.')
-    .ret(['Uint64'])
-    .end()
-
-    .func('SetBit')
-    .desc('Sets the specified bit.')
-    .arg('bitvalue', ['int'])
-    .ret(['nil'])
-    .end()
-
-    .func('ClearBit')
-    .desc('Clears the specified bit.')
-    .arg('bitvalue', ['int'])
-    .ret(['int'])
-    .end()
-
-    .func('IsBitSet')
-    .desc('Checks if bit is set.')
-    .arg('bitvalue', ['int'])
-    .ret(['int', 'nil'])
-    .end()
-
-    .func('ToggleBit')
-    .desc('Toggles the specified bit.')
-    .arg('bitvalue', ['int'])
-    .ret(['int'])
-    .end()
-
-    .func('ToHexString')
-    .desc('Returns a hexadecimal string representation of the integer.')
-    .ret(['string'])
-    .end();
+  context.push({
+    kind: 'class',
+    name: 'Uint64',
+    description: 'Integer with binary operations.',
+    members: [
+      {
+        kind: 'function',
+        name: '__eq',
+        available: 'server',
+        args: [{ name: 'b', types: ['Uint64'] }],
+        returns: ['bool'],
+      },
+      {
+        kind: 'function',
+        name: '__tostring',
+        available: 'server',
+        args: [],
+        returns: ['string'],
+        description: 'Overloaded .. Converts Uint64s to strings.',
+      },
+      {
+        kind: 'function',
+        name: 'BitwiseAnd',
+        available: 'server',
+        args: [{ name: 'operand', types: ['Uint64'] }],
+        returns: ['Uint64'],
+        description: 'Performs bitwise AND between two integers.',
+      },
+      {
+        kind: 'function',
+        name: 'BitwiseOr',
+        available: 'server',
+        args: [{ name: 'operand', types: ['Uint64'] }],
+        returns: ['Uint64'],
+        description: 'Performs bitwise OR between two integers.',
+      },
+      {
+        kind: 'function',
+        name: 'BitwiseXor',
+        available: 'server',
+        args: [{ name: 'operand', types: ['Uint64'] }],
+        returns: ['Uint64'],
+        description: 'Performs bitwise XOR between two integers.',
+      },
+      {
+        kind: 'function',
+        name: 'BitwiseNot',
+        available: 'server',
+        args: [],
+        returns: ['Uint64'],
+        description: 'Performs bitwise NOT.',
+      },
+      {
+        kind: 'function',
+        name: 'SetBit',
+        available: 'server',
+        args: [{ name: 'bitvalue', types: ['int'] }],
+        returns: ['nil'],
+        description: 'Sets the specified bit.',
+      },
+      {
+        kind: 'function',
+        name: 'ClearBit',
+        available: 'server',
+        args: [{ name: 'bitvalue', types: ['int'] }],
+        returns: ['int'],
+        description: 'Clears the specified bit.',
+      },
+      {
+        kind: 'function',
+        name: 'IsBitSet',
+        available: 'server',
+        args: [{ name: 'bitvalue', types: ['int'] }],
+        returns: ['int', 'nil'],
+        description: 'Checks if bit is set.',
+      },
+      {
+        kind: 'function',
+        name: 'ToggleBit',
+        available: 'server',
+        args: [{ name: 'bitvalue', types: ['int'] }],
+        returns: ['int'],
+        description: 'Toggles the specified bit.',
+      },
+      {
+        kind: 'function',
+        name: 'ToHexString',
+        available: 'server',
+        args: [],
+        returns: ['string'],
+        description: 'Returns a hexadecimal string representation of the integer.',
+      },
+    ],
+  });
 
   return context;
 })();
