@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { exportNamespacedRoot } from '../../util';
 
-export const types = exportNamespacedRoot(__filename, 'types', 'types.Declaration[]');
+export const types = exportNamespacedRoot(__filename, 'apiTypes', 'apiTypes.Declaration[]');
 
 // EXPORT START
 export type Declaration = Object;

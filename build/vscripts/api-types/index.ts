@@ -1,18 +1,18 @@
 import assert from 'assert';
-import * as typesTypes from './types';
+import * as apiTypesTypes from './types';
 
-export { types as typesTypes } from './types';
+export { types as apiTypesTypes } from './types';
 
-export const typesDeclarations: typesTypes.Declaration[] = [];
+export const apiTypesDeclarations: apiTypesTypes.Declaration[] = [];
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'Quaternion',
   description: 'Invalid type.', // VScript Lua: Unhandled variant type quaternion.
   fields: [],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'LocalTime',
   fields: [
@@ -22,7 +22,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CScriptHTTPResponse',
   fields: [
@@ -32,7 +32,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ApplyDamageOptions',
   fields: [
@@ -45,7 +45,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CreateIllusionsModifierKeys',
   fields: [
@@ -58,7 +58,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'EntityBounds',
   fields: [
@@ -67,13 +67,13 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CombatAnalyzerQueryResult',
   fields: [{ name: 'query_id', types: ['CombatAnalyzerQueryID'] }],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ExecuteOrderOptions',
   fields: [
@@ -102,7 +102,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceCollideableInputs',
   fields: [
@@ -114,7 +114,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceCollideableOutputs',
   extend: ['TraceCollideableInputs'],
@@ -126,7 +126,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceHullInputs',
   fields: [
@@ -139,7 +139,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceHullOutputs',
   extend: ['TraceHullInputs'],
@@ -153,7 +153,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceLineInputs',
   fields: [
@@ -164,7 +164,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TraceLineOutputs',
   extend: ['TraceLineInputs'],
@@ -178,7 +178,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CreateBaseProjectileOptions',
   fields: [
@@ -201,7 +201,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CreateLinearProjectileOptions',
   extend: ['CreateBaseProjectileOptions'],
@@ -233,7 +233,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'CreateTrackingProjectileOptions',
   extend: ['CreateBaseProjectileOptions'],
@@ -261,7 +261,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'AbilityTuningValueFilterEvent',
   fields: [
@@ -272,7 +272,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'BountyRunePickupFilterEvent',
   fields: [
@@ -282,7 +282,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'DamageFilterEvent',
   fields: [
@@ -294,7 +294,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ExecuteOrderFilterEvent',
   fields: [
@@ -312,7 +312,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'HealingFilterEvent',
   fields: [
@@ -321,7 +321,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ItemAddedToInventoryFilterEvent',
   fields: [
@@ -332,7 +332,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifierGainedFilterEvent',
   fields: [
@@ -349,7 +349,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifyExperienceFilterEvent',
   fields: [
@@ -360,7 +360,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifyGoldFilterEvent',
   fields: [
@@ -371,7 +371,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'RuneSpawnFilterEvent',
   fields: [
@@ -380,7 +380,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'TrackingProjectileFilterEvent',
   fields: [
@@ -396,7 +396,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifierAttackEvent',
   fields: [
@@ -413,7 +413,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifierUnitEvent',
   fields: [
@@ -423,7 +423,7 @@ typesDeclarations.push({
   ],
 });
 
-typesDeclarations.push({
+apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifierAbilityEvent',
   extend: ['ModifierUnitEvent'],
@@ -435,7 +435,7 @@ typesDeclarations.push({
 
 // Validation
 
-for (const declaration of typesDeclarations) {
+for (const declaration of apiTypesDeclarations) {
   switch (declaration.kind) {
     case 'object':
       if (declaration.extend !== undefined) {
@@ -443,7 +443,7 @@ for (const declaration of typesDeclarations) {
         for (const extendedName of declaration.extend) {
           assert(
             // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-            typesDeclarations.some(t => t.kind === 'object' && t.name === extendedName),
+            apiTypesDeclarations.some(t => t.kind === 'object' && t.name === extendedName),
             `${declaration.name}.extend: ${extendedName} must be a valid object type.`,
           );
         }

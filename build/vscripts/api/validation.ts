@@ -1,6 +1,6 @@
+import { apiTypesDeclarations } from '../api-types';
 import { serverDump } from '../dump';
 import { enumDeclarations } from '../enums';
-import { typesDeclarations } from '../types';
 import { extraDeclarations } from './data';
 import { ArrayType, FunctionType, Type } from './types';
 
@@ -39,7 +39,7 @@ const classNames = [...serverDump, ...extraDeclarations]
   .filter(x => x.kind === 'class')
   .map(x => x.name);
 
-const isTypeReference = (type: Type) => typesDeclarations.some(t => t.name === (type as any));
+const isTypeReference = (type: Type) => apiTypesDeclarations.some(t => t.name === (type as any));
 
 const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
 
