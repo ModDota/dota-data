@@ -5,12 +5,36 @@ export { types as apiTypesTypes } from './types';
 
 export const apiTypesDeclarations: apiTypesTypes.Declaration[] = [];
 
+apiTypesDeclarations.push({ kind: 'primitive', name: 'bool' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'ehandle' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'float' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'double' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'handle' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'int' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'nil' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'string' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'table' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'uint' });
+apiTypesDeclarations.push({ kind: 'primitive', name: 'unknown' });
 apiTypesDeclarations.push({
-  kind: 'object',
+  kind: 'primitive',
   name: 'Quaternion',
-  description: 'Invalid type.', // VScript Lua: Unhandled variant type quaternion.
-  fields: [],
+  // VScript Lua: Unhandled variant type quaternion.
+  description: 'There is no known way to create values of this type.',
 });
+apiTypesDeclarations.push({
+  kind: 'primitive',
+  name: 'Vector2D',
+  description: 'There is no known way to create values of this type.',
+});
+
+apiTypesDeclarations.push({ kind: 'nominal', name: 'CombatAnalyzerQueryID', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'CustomGameEventListenerID', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'EntityIndex', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'EventListenerID', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'ParticleID', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'PlayerID', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'ProjectileID', baseType: 'int' });
 
 apiTypesDeclarations.push({
   kind: 'object',
@@ -434,7 +458,6 @@ apiTypesDeclarations.push({
 });
 
 // Validation
-
 for (const declaration of apiTypesDeclarations) {
   switch (declaration.kind) {
     case 'object':
@@ -442,12 +465,21 @@ for (const declaration of apiTypesDeclarations) {
         assert(declaration.extend.length > 0);
         for (const extendedName of declaration.extend) {
           assert(
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             apiTypesDeclarations.some(t => t.kind === 'object' && t.name === extendedName),
-            `${declaration.name}.extend: ${extendedName} must be a valid object type.`,
+            `${declaration.name}.extend: ${extendedName} must be an object type.`,
           );
         }
       }
+
+      break;
+
+    case 'nominal':
+      assert(
+        apiTypesDeclarations.some(
+          t => (t.kind === 'primitive' || t.kind === 'nominal') && t.name === declaration.baseType,
+        ),
+        `${declaration.name}.baseType: ${declaration.baseType} must be a primitive or nominal type.`,
+      );
 
       break;
   }

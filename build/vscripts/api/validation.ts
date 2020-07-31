@@ -4,32 +4,16 @@ import { enumDeclarations } from '../enums';
 import { extraDeclarations } from './data';
 import { ArrayType, FunctionType, Type } from './types';
 
-const isPrimitiveType = (type: Type) => primitiveTypes.includes(type as any);
-const primitiveTypes = [
-  'bool',
-  'ehandle',
-  'float',
-  'double',
-  'handle',
-  'int',
-  'nil',
-  'string',
-  'table',
-  'uint',
-  'unknown',
-  'Vector2D',
-];
+const isPrimitiveType = (type: Type) =>
+  apiTypesDeclarations.some(t => t.kind === 'primitive' && t.name === (type as any));
 
-const isUniqueType = (type: Type) => uniqueTypes.includes(type as any);
-const uniqueTypes = [
-  'CombatAnalyzerQueryID',
-  'CustomGameEventListenerID',
-  'EntityIndex',
-  'EventListenerID',
-  'ParticleID',
-  'PlayerID',
-  'ProjectileID',
-];
+const isNominalPrimitiveType = (type: Type): boolean =>
+  apiTypesDeclarations.some(
+    t =>
+      t.kind === 'nominal' &&
+      t.name === (type as any) &&
+      (isPrimitiveType(t.baseType) || isNominalPrimitiveType(t.baseType)),
+  );
 
 const isEnumReference = (type: Type) => enumNames.includes(type as any);
 const enumNames = enumDeclarations.filter(x => x.kind === 'enum').map(x => x.name);
@@ -39,7 +23,8 @@ const classNames = [...serverDump, ...extraDeclarations]
   .filter(x => x.kind === 'class')
   .map(x => x.name);
 
-const isTypeReference = (type: Type) => apiTypesDeclarations.some(t => t.name === (type as any));
+const isObjectReference = (type: Type) =>
+  apiTypesDeclarations.some(t => t.kind === 'object' && t.name === (type as any));
 
 const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
 
@@ -59,14 +44,14 @@ const isValidFunctionType = (type: Type) =>
 
 export const isValidType = (type: Type): boolean =>
   isPrimitiveType(type) ||
-  isUniqueType(type) ||
+  isNominalPrimitiveType(type) ||
   isPseudoRecordType(type) ||
   isValidArrayType(type) ||
   isValidFunctionType(type) ||
   isNumberLiteral(type) ||
   isEnumReference(type) ||
   isClassReference(type) ||
-  isTypeReference(type);
+  isObjectReference(type);
 
 export function isCompatibleOverride(original: string, override: Type) {
   if (override === 'nil') return true;
@@ -76,7 +61,9 @@ export function isCompatibleOverride(original: string, override: Type) {
     case 'int':
     case 'uint':
     case 'float':
-      return isUniqueType(override) || isNumberLiteral(override) || isEnumReference(override);
+      return (
+        isNominalPrimitiveType(override) || isNumberLiteral(override) || isEnumReference(override)
+      );
 
     case 'handle':
       return (
@@ -85,7 +72,7 @@ export function isCompatibleOverride(original: string, override: Type) {
         isArrayType(override) ||
         isFunctionType(override) ||
         isClassReference(override) ||
-        isTypeReference(override)
+        isObjectReference(override)
       );
 
     case 'unknown':

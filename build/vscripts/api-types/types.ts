@@ -4,7 +4,20 @@ import { exportNamespacedRoot } from '../../util';
 export const types = exportNamespacedRoot(__filename, 'apiTypes', 'apiTypes.Declaration[]');
 
 // EXPORT START
-export type Declaration = Object;
+export type Declaration = Primitive | Nominal | Object;
+
+export interface Primitive {
+  kind: 'primitive';
+  name: string;
+  description?: string;
+}
+
+export interface Nominal {
+  kind: 'nominal';
+  name: string;
+  description?: string;
+  baseType: string;
+}
 
 export interface Object {
   kind: 'object';
