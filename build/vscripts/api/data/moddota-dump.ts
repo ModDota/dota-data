@@ -3,6 +3,14 @@ import { array, ExtensionFunction, func } from './utils';
 const onProjectileHitDescription =
   "Projectile has collided with a given target or reached its destination. If 'true` is returned, projectile would be destroyed.";
 
+const setOwnerDescription =
+  'This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity.';
+
+const createUnitByNameDescription = `Creates a unit by its dota_npc_units.txt name.
+The spawned unit will not be controllable by default. You can use unit.SetControllableByPlayer() to change this.`;
+
+const createUnitEntityOwnerDescription = `${setOwnerDescription} Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.`;
+
 export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.FirstMoveChild': { returns: 'CBaseEntity' },
   'CBaseEntity.FollowEntity': { description: '', args: { '0': ['entity', 'CBaseEntity'] } },
@@ -13,7 +21,10 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.GetTeam': { returns: 'DOTATeam_t' },
   'CBaseEntity.GetTeamNumber': { returns: 'DOTATeam_t' },
   'CBaseEntity.NextMovePeer': { returns: 'CBaseEntity' },
-  'CBaseEntity.SetOwner': { args: { '0': [null, 'CBaseEntity'] } },
+  'CBaseEntity.SetOwner': {
+    description: o => `${o} ${setOwnerDescription}`,
+    args: { '0': [null, 'CBaseEntity'] },
+  },
   'CBaseEntity.SetTeam': { args: { '0': [null, 'DOTATeam_t'] } },
   'CBaseTrigger.IsTouching': { args: { '0': [null, 'CBaseEntity'] } },
   'CCustomGameEventManager.RegisterListener': {
@@ -569,23 +580,26 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['location'], '1': ['item', ['CDOTA_Item', 'nil']] },
   },
   '_G.CreateUnitByName': {
+    description: `${createUnitByNameDescription}
+Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsync unless synchronous access is required.`,
     returns: 'CDOTA_BaseNPC',
     args: {
       '0': ['unitName'],
       '1': ['location'],
       '2': ['findClearSpace'],
-      '3': ['npcOwner', ['CBaseEntity', 'nil']],
-      '4': ['unitOwner', ['CDOTAPlayer', 'nil']],
-      '5': ['teamNumber', 'DOTATeam_t'],
+      '3': ['npcOwner', ['CBaseEntity', 'nil']], // Unknown
+      '4': ['entityOwner', ['CBaseEntity', 'nil'], createUnitEntityOwnerDescription],
+      '5': ['team', 'DOTATeam_t'],
     },
   },
   '_G.CreateUnitByNameAsync': {
+    description: createUnitByNameDescription,
     args: {
       '0': ['unitName'],
       '1': ['location'],
       '2': ['findClearSpace'],
-      '3': ['npcOwner', ['CDOTA_BaseNPC', 'nil']],
-      '4': ['playerOwner', ['CDOTAPlayer', 'nil']],
+      '3': ['npcOwner', ['CBaseEntity', 'nil']], // Unknown
+      '4': ['entityOwner', ['CBaseEntity', 'nil'], createUnitEntityOwnerDescription],
       '5': ['team', 'DOTATeam_t'],
       '6': ['callback', func([['unit', 'CDOTA_BaseNPC']], 'nil')],
     },
