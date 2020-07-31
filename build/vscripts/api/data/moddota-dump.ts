@@ -594,6 +594,7 @@ Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsyn
   },
   '_G.CreateUnitByNameAsync': {
     description: createUnitByNameDescription,
+    returns: 'SpawnGroupHandle',
     args: {
       '0': ['unitName'],
       '1': ['location'],

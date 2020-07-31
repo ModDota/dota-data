@@ -595,6 +595,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   'CDOTABaseGameMode.AllocateFowBlockerRegion': { returns: 'CFoWBlockerRegion' },
   '_G.DOTA_SpawnMapAtPosition': {
+    returns: 'SpawnGroupHandle',
     args: {
       0: ['mapName', null, 'A map name without extension, relative to "maps" directory.'],
       1: [
@@ -609,10 +610,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       ],
       3: [
         'onReadyToSpawn',
-        func([['spawnGroupHandle', 'int']], 'nil'),
+        func([['spawnGroupHandle', 'SpawnGroupHandle']], 'nil'),
         'Called only when deferCompletion is true.',
       ],
-      4: ['onSpawnComplete', func([['spawnGroupHandle', 'int']], 'nil')],
+      4: ['onSpawnComplete', func([['spawnGroupHandle', 'SpawnGroupHandle']], 'nil')],
       5: ['context', ['table', 'nil']],
     },
   },
@@ -701,6 +702,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     },
   },
   'CDOTAPlayer.SpawnCourierAtPosition': { returns: 'CDOTA_Unit_Courier' },
+  '_G.GetActiveSpawnGroupHandle': { returns: 'SpawnGroupHandle' },
+  '_G.ManuallyTriggerSpawnGroupCompletion': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
+  '_G.UnloadSpawnGroupByHandle': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
+  'CBaseEntity.GetSpawnGroupHandle': { returns: 'SpawnGroupHandle' },
 };
 
 export const extraDeclarations = (() => {
