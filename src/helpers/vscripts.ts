@@ -1,25 +1,33 @@
-import _ from 'lodash';
 import api from '../../files/vscripts/api';
+import apiTypes from '../../files/vscripts/api-types';
 import enums from '../../files/vscripts/enums';
 
 export { api, enums };
 
-export const allData = [...api, ...enums];
-export type AllDataType = typeof allData[number];
-export const findTypeByName = (name: string): AllDataType | undefined =>
+export type AllDataType = api.Declaration | enums.Declaration;
+export const allData: AllDataType[] = [...api, ...enums];
+
+export const findTypeByName = (name: string): AllDataType | apiTypes.Declaration | undefined =>
+  // TODO: Throw when not found?
   allData.find(x => x.name === name);
 
 export const getFuncDeepTypes = (func: api.FunctionType): string[] =>
-  getDeepTypes([..._.flatMap(func.args, x => x.types), ...func.returns]);
+  getDeepTypes([...func.args.flatMap(x => x.types), ...func.returns]);
 
-export const getDeepTypes = (types: api.Type[]): string[] => {
-  const unpackedTypes = types.map(type =>
-    typeof type === 'object' && 'array' in type ? type.array : type,
-  ) as Exclude<api.Type, api.ArrayType>[];
-  return _.union(
-    unpackedTypes.filter(_.isString),
-    ...unpackedTypes
-      .filter((x): x is api.FunctionType => typeof x === 'object')
-      .map(getFuncDeepTypes),
-  );
-};
+export function getDeepTypes(types: api.Type[]): string[] {
+  const allTypes = new Set<string>();
+
+  function walkType(type: api.Type) {
+    if (typeof type === 'string') {
+      allTypes.add(type);
+    } else if ('array' in type) {
+      walkType(type.array);
+    } else {
+      getFuncDeepTypes(type).forEach(t => allTypes.add(t));
+    }
+  }
+
+  types.forEach(walkType);
+
+  return [...allTypes];
+}
