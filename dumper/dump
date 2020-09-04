@@ -294,6 +294,10 @@ Sets the hue rotation to apply to the panel and all it's children during composi
 Specifies image shadows.  The shadow shape will match the image the panel can generate,and this is only meaningful for images.  Syntax takes horizontal offset pixels, vertical offset pixels, blur radius pixels, strength, and then shadow color.<br><br><b>Example:</b><pre>img-shadow: 2px 2px 8px 3.0 #333333b0;</pre>
 
 
+=== layout-position ===
+Sets how the panel is positioned relative to its parent. "static" means position in the default way. "fixed" means position in the default way, but ignoring the parent's scroll offset.<br><br><b>Example:</b><pre>layout-position: fixed;</pre>
+
+
 === letter-spacing ===
 Sets letter-spacing for text in a string. Possible values:<br>normal - no manual spacing<br>&lt;pixels&gt; - Any fixed pixel value (ex: "1px")
 
@@ -363,7 +367,7 @@ opacity-mask-scroll-up-down: url( "file://{images}/upper_row_mask_up_down.tga" )
 
 
 === overflow ===
-Specifies what to do with contents that overflow the available space for the panel. Possible values:<br>"squish" - Children are squished to fit within the panel's bounds if needed (default)<br>"clip" - Children maintain their desired size but their contents are clipped<br>"scroll" - Children maintain their desired size and a scrollbar is added to this panel<br><br><b>Examples:</b><pre>overflow: squish squish; // squishes contents in horizontal and vertical directions
+Specifies what to do with contents that overflow the available space for the panel. Possible values:<br>"squish" - Children are squished to fit within the panel's bounds if needed (default)<br>"clip" - Children maintain their desired size but their contents are clipped<br>"scroll" - Children maintain their desired size and a scrollbar is added to this panel<br><br>"noclip" - Children maintain their desired size and content is allowed to overflow this panel<br><br><b>Examples:</b><pre>overflow: squish squish; // squishes contents in horizontal and vertical directions
 overflow: squish scroll; // scrolls contents in the Y direction</pre>
 
 
@@ -437,10 +441,11 @@ Specifies the decoration style for text within this panel, defaults to none. Pos
 
 
 === text-overflow ===
-Controls truncation of text that doesn't fit in a panel.  "clip" means to simply truncate (on char boundaries), "ellipsis" means to end with '...', and "shrink" means to a
+Controls truncation of text that doesn't fit in a panel.  "clip" means to simply truncate (on char boundaries), "ellipsis" means to end with '...', and "shrink" means lower the font size to fit.  "noclip" allows the text to overflow based on the "overflow" style.
 We default to ellipsis, which is contrary to the normal CSS spec.<br><br><b>Examples:</b><pre>text-overflow: ellipsis;
 text-overflow: clip;
 text-overflow: shrink;
+text-overflow: noclip;
 </pre>
 
 
@@ -1011,6 +1016,7 @@ Enumeration 'DOTA_OVERHEAD_ALERT'
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_DISABLE_RESIST = 19
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_DEATH = 20
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_BLOCKED = 21
+	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_ITEM_RECEIVED = 22
 
 Enumeration 'DOTA_HeroPickState'
 	DOTA_HeroPickState.DOTA_HEROPICK_STATE_NONE = 0
@@ -2340,7 +2346,7 @@ $> script_reload
 Initializing script VM...
 ...done
 [{
-    "returns":"void",
+    "returns":"int",
     "args":[{
         "type":"int"
       },{
@@ -2354,7 +2360,7 @@ Initializing script VM...
       }],
     "kind":"function",
     "name":"AddFOWViewer",
-    "description":"Add temporary vision for a given team ( nTeamID, vLocation, flRadius, flDuration, bObstructedVision)"
+    "description":"Add temporary vision for a given team, returns a ViewerID ( nTeamID, vLocation, flRadius, flDuration, bObstructedVision)"
   },{
     "returns":"float",
     "args":[{
@@ -3950,6 +3956,16 @@ Initializing script VM...
     "kind":"function",
     "name":"ReloadMOTD",
     "description":"Reloads the MotD file"
+  },{
+    "returns":"void",
+    "args":[{
+        "type":"int"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"RemoveFOWViewer",
+    "description":"Remove temporary vision for a given team ( nTeamID, nViewerID )"
   },{
     "returns":"void",
     "args":[{
@@ -8832,10 +8848,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_RANGE_ATTACK_TRIPWIRE"
   },{
-    "value":136,
-    "kind":"constant",
-    "name":"ACT_RAPPEL_LOOP"
-  },{
     "value":421,
     "kind":"constant",
     "name":"ACT_READINESS_AGITATED_TO_STIMULATED"
@@ -10142,71 +10154,71 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_ZOMBIE_TRIP"
   },{
-    "value":147,
+    "value":144,
     "kind":"constant",
     "name":"AE_ABILITY_END_EVENT"
   },{
-    "value":146,
+    "value":143,
     "kind":"constant",
     "name":"AE_ABILITY_START_EVENT"
   },{
-    "value":148,
+    "value":145,
     "kind":"constant",
     "name":"AE_ABILITY_TICK"
   },{
-    "value":142,
+    "value":139,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_COMBO"
   },{
-    "value":144,
+    "value":141,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_DODGE"
   },{
-    "value":138,
+    "value":135,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_MOVE_INTERRUPT"
   },{
-    "value":139,
+    "value":136,
     "kind":"constant",
     "name":"AE_ACTION_AVOID_DAMAGE"
   },{
-    "value":165,
+    "value":162,
     "kind":"constant",
     "name":"AE_ACTION_DROP_ITEM"
   },{
-    "value":150,
+    "value":147,
     "kind":"constant",
     "name":"AE_ACTION_END_TURN"
   },{
-    "value":136,
+    "value":133,
     "kind":"constant",
     "name":"AE_ACTION_ENTERING_IDLE"
   },{
-    "value":137,
+    "value":134,
     "kind":"constant",
     "name":"AE_ACTION_OVERLAP_MOVE"
   },{
-    "value":143,
+    "value":140,
     "kind":"constant",
     "name":"AE_ACTION_PREVENT_COMBO"
   },{
-    "value":145,
+    "value":142,
     "kind":"constant",
     "name":"AE_ACTION_PREVENT_DODGE"
   },{
-    "value":141,
+    "value":138,
     "kind":"constant",
     "name":"AE_ACTION_SET_TURN_RATE_SCALE"
   },{
-    "value":149,
+    "value":146,
     "kind":"constant",
     "name":"AE_ACTION_START_TURN"
   },{
-    "value":140,
+    "value":137,
     "kind":"constant",
     "name":"AE_ACTION_STOP_AVOIDING_DAMAGE"
   },{
-    "value":151,
+    "value":148,
     "kind":"constant",
     "name":"AE_ACTION_USE"
   },{
@@ -10226,18 +10238,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_ATTACK_START"
   },{
-    "value":74,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_IMPACT"
-  },{
-    "value":76,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_SOUND"
-  },{
-    "value":75,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_VOCALIZE"
-  },{
     "value":21,
     "kind":"constant",
     "name":"AE_CLIENT_EFFECT_ATTACH"
@@ -10254,23 +10254,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":183,
+    "value":179,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":193,
+    "value":187,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":189,
+    "value":183,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":190,
+    "value":184,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":182,
+    "value":178,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
@@ -10282,7 +10282,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT"
   },{
-    "value":181,
+    "value":177,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT_CFG"
   },{
@@ -10290,19 +10290,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":197,
+    "value":191,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":195,
+    "value":189,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":198,
+    "value":192,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":196,
+    "value":190,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
@@ -10310,27 +10310,27 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_ENABLE_BODYGROUP"
   },{
-    "value":103,
+    "value":100,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_LEFT"
   },{
-    "value":104,
+    "value":101,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_RIGHT"
   },{
-    "value":105,
+    "value":102,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT"
   },{
-    "value":107,
+    "value":104,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT_LOUD"
   },{
-    "value":106,
+    "value":103,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT"
   },{
-    "value":108,
+    "value":105,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT_LOUD"
   },{
@@ -10342,15 +10342,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_ATTACHMENT"
   },{
-    "value":176,
+    "value":172,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_LOOPING"
   },{
-    "value":163,
+    "value":160,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":131,
+    "value":128,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
@@ -10362,35 +10362,35 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_STOP_PARTICLE_EFFECT"
   },{
-    "value":192,
+    "value":186,
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":77,
+    "value":74,
     "kind":"constant",
     "name":"AE_DEFIBRILLATOR_SHOCK"
   },{
-    "value":199,
+    "value":193,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
-    "value":153,
+    "value":150,
     "kind":"constant",
     "name":"AE_DRAW_WEAPONS"
   },{
-    "value":155,
+    "value":152,
     "kind":"constant",
     "name":"AE_DROP_ITEM"
   },{
-    "value":162,
+    "value":159,
     "kind":"constant",
     "name":"AE_DROP_PRIMARY_WEAPON"
   },{
-    "value":158,
+    "value":155,
     "kind":"constant",
     "name":"AE_EF_DRAW"
   },{
-    "value":157,
+    "value":154,
     "kind":"constant",
     "name":"AE_EF_NODRAW"
   },{
@@ -10398,11 +10398,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":100,
+    "value":97,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
-    "value":184,
+    "value":180,
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
@@ -10414,7 +10414,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_FOOTSTEP_RIGHT"
   },{
-    "value":186,
+    "value":182,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
@@ -10422,111 +10422,111 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_HIDE_WEAPON"
   },{
-    "value":93,
+    "value":90,
     "kind":"constant",
     "name":"AE_HIT_ARM_LEFT_SEVERED"
   },{
-    "value":92,
+    "value":89,
     "kind":"constant",
     "name":"AE_HIT_ARM_RIGHT_SEVERED"
   },{
-    "value":97,
+    "value":94,
     "kind":"constant",
     "name":"AE_HIT_BACK"
   },{
-    "value":83,
+    "value":80,
     "kind":"constant",
     "name":"AE_HIT_BACK_LOWER"
   },{
-    "value":82,
+    "value":79,
     "kind":"constant",
     "name":"AE_HIT_BACK_UPPER"
   },{
-    "value":81,
+    "value":78,
     "kind":"constant",
     "name":"AE_HIT_CHEST"
   },{
-    "value":96,
+    "value":93,
     "kind":"constant",
     "name":"AE_HIT_FRONT"
   },{
-    "value":79,
+    "value":76,
     "kind":"constant",
     "name":"AE_HIT_HEAD_BACK"
   },{
-    "value":78,
+    "value":75,
     "kind":"constant",
     "name":"AE_HIT_HEAD_FRONT"
   },{
-    "value":98,
+    "value":95,
     "kind":"constant",
     "name":"AE_HIT_LEFT"
   },{
-    "value":91,
+    "value":88,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_BACK"
   },{
-    "value":90,
+    "value":87,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_FRONT"
   },{
-    "value":95,
+    "value":92,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_SEVERED"
   },{
-    "value":89,
+    "value":86,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_BACK"
   },{
-    "value":88,
+    "value":85,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_FRONT"
   },{
-    "value":94,
+    "value":91,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_SEVERED"
   },{
-    "value":99,
+    "value":96,
     "kind":"constant",
     "name":"AE_HIT_RIGHT"
   },{
-    "value":87,
+    "value":84,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_LEFT_BACK"
   },{
-    "value":86,
+    "value":83,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_LEFT_FRONT"
   },{
-    "value":85,
+    "value":82,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_RIGHT_BACK"
   },{
-    "value":84,
+    "value":81,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_RIGHT_FRONT"
   },{
-    "value":80,
+    "value":77,
     "kind":"constant",
     "name":"AE_HIT_STOMACH"
   },{
-    "value":178,
+    "value":174,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":180,
+    "value":176,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":177,
+    "value":173,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":179,
+    "value":175,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
-    "value":164,
+    "value":161,
     "kind":"constant",
     "name":"AE_KEYFIELD_SOUND"
   },{
@@ -10534,11 +10534,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_LOCK_STATE_CHANGED"
   },{
-    "value":161,
+    "value":158,
     "kind":"constant",
     "name":"AE_MANTLE_GRAB"
   },{
-    "value":160,
+    "value":157,
     "kind":"constant",
     "name":"AE_MANTLE_LEAP"
   },{
@@ -10558,19 +10558,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_MARINE_RELOAD_SOUND_C"
   },{
-    "value":134,
+    "value":131,
     "kind":"constant",
     "name":"AE_MELEE_FORCE_START_WEAPON_TRAIL"
   },{
-    "value":135,
+    "value":132,
     "kind":"constant",
     "name":"AE_MELEE_FORCE_STOP_WEAPON_TRAIL"
   },{
-    "value":132,
+    "value":129,
     "kind":"constant",
     "name":"AE_MELEE_START_COLLISION_DAMAGE"
   },{
-    "value":133,
+    "value":130,
     "kind":"constant",
     "name":"AE_MELEE_STOP_COLLISION_DAMAGE"
   },{
@@ -10590,10 +10590,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_ATTACK_BROADCAST"
   },{
-    "value":175,
-    "kind":"constant",
-    "name":"AE_NPC_BECOME_TEMPORARY_RAGDOLL"
-  },{
     "value":4,
     "kind":"constant",
     "name":"AE_NPC_BODYDROP_HEAVY"
@@ -10606,11 +10602,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_DRAW"
   },{
-    "value":188,
-    "kind":"constant",
-    "name":"AE_NPC_END_POWERED_RAGDOLL"
-  },{
-    "value":185,
+    "value":181,
     "kind":"constant",
     "name":"AE_NPC_GIB"
   },{
@@ -10650,10 +10642,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_SET_INTERACTION_CANTDIE"
   },{
-    "value":187,
-    "kind":"constant",
-    "name":"AE_NPC_START_POWERED_RAGDOLL"
-  },{
     "value":5,
     "kind":"constant",
     "name":"AE_NPC_SWISHSOUND"
@@ -10666,7 +10654,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_WEAPON_FIRE"
   },{
-    "value":191,
+    "value":185,
     "kind":"constant",
     "name":"AE_NPC_WEAPON_FIRE_SHARED"
   },{
@@ -10698,7 +10686,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_PICKUP_FASSIST"
   },{
-    "value":154,
+    "value":151,
     "kind":"constant",
     "name":"AE_PICK_UP_ITEM"
   },{
@@ -10738,39 +10726,39 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_REMOVE_CLIENT_AIM"
   },{
-    "value":168,
+    "value":165,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CANINTERRUPT"
   },{
-    "value":174,
+    "value":171,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_END"
   },{
-    "value":173,
+    "value":170,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_START"
   },{
-    "value":170,
+    "value":167,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_DEAD"
   },{
-    "value":169,
+    "value":166,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_FIREEVENT"
   },{
-    "value":172,
+    "value":169,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_FIRE_INPUT"
   },{
-    "value":167,
+    "value":164,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_NOINTERRUPT"
   },{
-    "value":171,
+    "value":168,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_NOT_DEAD"
   },{
-    "value":152,
+    "value":149,
     "kind":"constant",
     "name":"AE_SHEATHE_WEAPONS"
   },{
@@ -10778,7 +10766,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_SHOW_WEAPON"
   },{
-    "value":166,
+    "value":163,
     "kind":"constant",
     "name":"AE_SOUND_EMITTED"
   },{
@@ -10798,11 +10786,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_SV_DUSTTRAIL"
   },{
-    "value":101,
+    "value":98,
     "kind":"constant",
     "name":"AE_SV_FOOTSTEP_LEFT"
   },{
-    "value":102,
+    "value":99,
     "kind":"constant",
     "name":"AE_SV_FOOTSTEP_RIGHT"
   },{
@@ -10814,7 +10802,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_THUMPER_THUMP"
   },{
-    "value":156,
+    "value":153,
     "kind":"constant",
     "name":"AE_TOSS_ITEM"
   },{
@@ -10822,95 +10810,95 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_TUG_INCAP"
   },{
-    "value":114,
+    "value":111,
     "kind":"constant",
     "name":"AE_WEAPON_AR1"
   },{
-    "value":115,
+    "value":112,
     "kind":"constant",
     "name":"AE_WEAPON_AR2"
   },{
-    "value":129,
+    "value":126,
     "kind":"constant",
     "name":"AE_WEAPON_AR2_ALTFIRE"
   },{
-    "value":120,
+    "value":117,
     "kind":"constant",
     "name":"AE_WEAPON_AR2_GRENADE"
   },{
-    "value":116,
+    "value":113,
     "kind":"constant",
     "name":"AE_WEAPON_HMG1"
   },{
-    "value":109,
+    "value":106,
     "kind":"constant",
     "name":"AE_WEAPON_MELEE_HIT"
   },{
-    "value":111,
+    "value":108,
     "kind":"constant",
     "name":"AE_WEAPON_MELEE_SWISH"
   },{
-    "value":118,
+    "value":115,
     "kind":"constant",
     "name":"AE_WEAPON_MISSILE_FIRE"
   },{
-    "value":122,
+    "value":119,
     "kind":"constant",
     "name":"AE_WEAPON_PISTOL_FIRE"
   },{
-    "value":123,
+    "value":120,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD"
   },{
-    "value":126,
+    "value":123,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD_FILL_CLIP"
   },{
-    "value":125,
+    "value":122,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD_SOUND"
   },{
-    "value":130,
+    "value":127,
     "kind":"constant",
     "name":"AE_WEAPON_SEQUENCE_FINISHED"
   },{
-    "value":112,
+    "value":109,
     "kind":"constant",
     "name":"AE_WEAPON_SHOTGUN_FIRE"
   },{
-    "value":159,
+    "value":156,
     "kind":"constant",
     "name":"AE_WEAPON_SLAM_GROUND"
   },{
-    "value":110,
+    "value":107,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1"
   },{
-    "value":127,
+    "value":124,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1_BURST1"
   },{
-    "value":128,
+    "value":125,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1_BURSTN"
   },{
-    "value":117,
+    "value":114,
     "kind":"constant",
     "name":"AE_WEAPON_SMG2"
   },{
-    "value":119,
+    "value":116,
     "kind":"constant",
     "name":"AE_WEAPON_SNIPER_RIFLE_FIRE"
   },{
-    "value":113,
+    "value":110,
     "kind":"constant",
     "name":"AE_WEAPON_THROW"
   },{
-    "value":121,
+    "value":118,
     "kind":"constant",
     "name":"AE_WEAPON_THROW2"
   },{
-    "value":124,
+    "value":121,
     "kind":"constant",
     "name":"AE_WEAPON_THROW3"
   },{
@@ -15720,6 +15708,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"OVERHEAD_ALERT_INCOMING_DAMAGE"
   },{
+    "value":22,
+    "kind":"constant",
+    "name":"OVERHEAD_ALERT_ITEM_RECEIVED"
+  },{
     "value":14,
     "kind":"constant",
     "name":"OVERHEAD_ALERT_LAST_HIT_CLOSE"
@@ -17145,60 +17137,14 @@ Initializing script VM...
   },{
     "members":[{
         "args":[],
-        "returns":"bool",
-        "name":"AreChaperoneBoundsVisible",
-        "description":"Returns whether this player's chaperone bounds are visible."
-      },{
-        "args":[],
-        "returns":"handle",
-        "name":"GetHMDAnchor",
-        "description":"Returns the HMD anchor entity for this player if it exists."
-      },{
-        "args":[],
-        "returns":"handle",
-        "name":"GetHMDAvatar",
-        "description":"Returns the HMD Avatar entity for this player if it exists."
-      },{
-        "args":[{
-            "name":"nPoint",
-            "type":"int"
-          }],
-        "returns":"Vector",
-        "name":"GetPlayArea",
-        "description":"Returns the Vector position of the point you ask for. Pass 0-3 to get the four points."
-      },{
-        "args":[],
         "returns":"int",
         "name":"GetUserID",
         "description":"Returns the player's user id."
       },{
         "args":[],
-        "returns":"<unknown>",
-        "name":"GetVRControllerType",
-        "description":"Returns the type of controller being used while in VR."
-      },{
-        "args":[],
         "returns":"bool",
         "name":"IsNoclipping",
         "description":"Returns true if the player is in noclip mode."
-      },{
-        "args":[],
-        "returns":"bool",
-        "name":"IsUsePressed",
-        "description":"Returns true if the use key is pressed."
-      },{
-        "args":[{
-            "name":"nButton",
-            "type":"int"
-          }],
-        "returns":"bool",
-        "name":"IsVRControllerButtonPressed",
-        "description":"Returns true if the controller button is pressed."
-      },{
-        "args":[],
-        "returns":"bool",
-        "name":"IsVRDashboardShowing",
-        "description":"Returns true if the SteamVR dashboard is showing for this player."
       }],
     "kind":"class",
     "name":"CBasePlayer",
@@ -18352,6 +18298,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetAbilityTuningValueFilter",
         "description":"Set a filter function to control the tuning values that abilities use. (Modify the table and Return true to use new values, return false to use the old values)"
+      },{
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetAllowNeutralItemDrops",
+        "description":"If set to true, neutral items will be dropped on killing neutral monsters.  Otherwise nothing will be dropped."
       },{
         "args":[{
             "name":"bAlwaysShow",
@@ -20650,6 +20604,10 @@ Initializing script VM...
         "args":[],
         "returns":"float",
         "name":"BoundingRadius2D"
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"CalculateGenericBonuses"
       },{
         "args":[{
             "name":"hEntity",
@@ -27093,6 +27051,24 @@ Initializing script VM...
   },{
     "members":[{
         "args":[],
+        "returns":"bool",
+        "name":"IsEnabled",
+        "description":"Returns whether the object is currently active"
+      },{
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetEnabled",
+        "description":"Enable or disable the obstruction"
+      }],
+    "kind":"class",
+    "name":"CInfoPlayerStartDota",
+    "extend":"CPointEntity"
+  },{
+    "members":[{
+        "args":[],
         "returns":"void",
         "name":"HideWorldLayer",
         "description":"Hides this layer"
@@ -27224,6 +27200,11 @@ Initializing script VM...
     "name":"CPointClientUIWorldPanel",
     "extend":"CBaseModelEntity"
   },{
+    "members":[],
+    "kind":"class",
+    "name":"CPointEntity",
+    "extend":"CBaseEntity"
+  },{
     "members":[{
         "args":[],
         "returns":"void",
@@ -27267,118 +27248,6 @@ Initializing script VM...
     "kind":"class",
     "name":"CPointWorldText",
     "extend":"CBaseModelEntity"
-  },{
-    "members":[{
-        "args":[{
-            "name":"nHandID",
-            "type":"int"
-          }],
-        "returns":"handle",
-        "name":"GetVRHand",
-        "description":"Get VR hand by ID"
-      }],
-    "kind":"class",
-    "name":"CPropHMDAvatar",
-    "extend":"CBaseAnimating"
-  },{
-    "members":[{
-        "args":[{
-            "name":"hAttachment",
-            "type":"handle"
-          }],
-        "returns":"void",
-        "name":"AddHandAttachment",
-        "description":"Add the attachment to this hand"
-      },{
-        "args":[{
-            "name":"pModelName",
-            "type":"string"
-          }],
-        "returns":"handle",
-        "name":"AddHandModelOverride",
-        "description":"Add a model override for this hand"
-      },{
-        "args":[{
-            "name":"pModelName",
-            "type":"string"
-          }],
-        "returns":"handle",
-        "name":"FindHandModelOverride",
-        "description":"Find a specific model override for this hand"
-      },{
-        "args":[{
-            "name":"nStrength",
-            "type":"int"
-          }],
-        "returns":"void",
-        "name":"FireHapticPulse",
-        "description":"Fire a haptic pulse on this hand. [0,2] for strength."
-      },{
-        "args":[{
-            "name":"nPulseDuration",
-            "type":"int"
-          }],
-        "returns":"void",
-        "name":"FireHapticPulsePrecise",
-        "description":"Fire a haptic pulse on this hand. Specify the duration in micro seconds."
-      },{
-        "args":[],
-        "returns":"handle",
-        "name":"GetHandAttachment",
-        "description":"Get the attachment on this hand"
-      },{
-        "args":[],
-        "returns":"int",
-        "name":"GetHandID",
-        "description":"Get hand ID"
-      },{
-        "args":[],
-        "returns":"int",
-        "name":"GetLiteralHandType",
-        "description":"Get literal type for this hand"
-      },{
-        "args":[],
-        "returns":"handle",
-        "name":"GetPlayer",
-        "description":"Get the player for this hand"
-      },{
-        "args":[],
-        "returns":"Vector",
-        "name":"GetVelocity",
-        "description":"Get the filtered controller velocity."
-      },{
-        "args":[],
-        "returns":"void",
-        "name":"RemoveAllHandModelOverrides",
-        "description":"Remove all model overrides for this hand"
-      },{
-        "args":[{
-            "name":"hAttachment",
-            "type":"handle"
-          }],
-        "returns":"void",
-        "name":"RemoveHandAttachmentByHandle",
-        "description":"Remove hand attachment by handle"
-      },{
-        "args":[{
-            "name":"pModelName",
-            "type":"string"
-          }],
-        "returns":"void",
-        "name":"RemoveHandModelOverride",
-        "description":"Remove a model override for this hand"
-      },{
-        "args":[{
-            "name":"hAttachment",
-            "type":"handle"
-          }],
-        "returns":"void",
-        "name":"SetHandAttachment",
-        "description":"Set the attachment for this hand"
-      }],
-    "kind":"class",
-    "name":"CPropVRHand",
-    "extend":"CBaseAnimating"
   },{
     "members":[{
         "args":[{
@@ -29581,7 +29450,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1754,
+    "value":1755,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30341,7 +30210,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1757,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30485,7 +30354,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1762,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30517,7 +30386,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1753,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30641,7 +30510,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1763,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30853,7 +30722,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1759,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30893,7 +30762,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1755,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30905,7 +30774,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1756,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30997,10 +30866,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1760,
-    "kind":"constant",
-    "name":"ACT_DOTA_SPWN"
-  },{
     "value":1629,
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE"
@@ -31080,6 +30945,10 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
+  },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -33457,10 +33326,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_RANGE_ATTACK_TRIPWIRE"
   },{
-    "value":136,
-    "kind":"constant",
-    "name":"ACT_RAPPEL_LOOP"
-  },{
     "value":421,
     "kind":"constant",
     "name":"ACT_READINESS_AGITATED_TO_STIMULATED"
@@ -34761,71 +34626,71 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_ZOMBIE_TRIP"
   },{
-    "value":147,
+    "value":144,
     "kind":"constant",
     "name":"AE_ABILITY_END_EVENT"
   },{
-    "value":146,
+    "value":143,
     "kind":"constant",
     "name":"AE_ABILITY_START_EVENT"
   },{
-    "value":148,
+    "value":145,
     "kind":"constant",
     "name":"AE_ABILITY_TICK"
   },{
-    "value":142,
+    "value":139,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_COMBO"
   },{
-    "value":144,
+    "value":141,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_DODGE"
   },{
-    "value":138,
+    "value":135,
     "kind":"constant",
     "name":"AE_ACTION_ALLOW_MOVE_INTERRUPT"
   },{
-    "value":139,
+    "value":136,
     "kind":"constant",
     "name":"AE_ACTION_AVOID_DAMAGE"
   },{
-    "value":165,
+    "value":162,
     "kind":"constant",
     "name":"AE_ACTION_DROP_ITEM"
   },{
-    "value":150,
+    "value":147,
     "kind":"constant",
     "name":"AE_ACTION_END_TURN"
   },{
-    "value":136,
+    "value":133,
     "kind":"constant",
     "name":"AE_ACTION_ENTERING_IDLE"
   },{
-    "value":137,
+    "value":134,
     "kind":"constant",
     "name":"AE_ACTION_OVERLAP_MOVE"
   },{
-    "value":143,
+    "value":140,
     "kind":"constant",
     "name":"AE_ACTION_PREVENT_COMBO"
   },{
-    "value":145,
+    "value":142,
     "kind":"constant",
     "name":"AE_ACTION_PREVENT_DODGE"
   },{
-    "value":141,
+    "value":138,
     "kind":"constant",
     "name":"AE_ACTION_SET_TURN_RATE_SCALE"
   },{
-    "value":149,
+    "value":146,
     "kind":"constant",
     "name":"AE_ACTION_START_TURN"
   },{
-    "value":140,
+    "value":137,
     "kind":"constant",
     "name":"AE_ACTION_STOP_AVOIDING_DAMAGE"
   },{
-    "value":151,
+    "value":148,
     "kind":"constant",
     "name":"AE_ACTION_USE"
   },{
@@ -34845,18 +34710,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_ATTACK_START"
   },{
-    "value":74,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_IMPACT"
-  },{
-    "value":76,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_SOUND"
-  },{
-    "value":75,
-    "kind":"constant",
-    "name":"AE_CHARGER_POUND_VOCALIZE"
-  },{
     "value":21,
     "kind":"constant",
     "name":"AE_CLIENT_EFFECT_ATTACH"
@@ -34873,23 +34726,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":183,
+    "value":179,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":193,
+    "value":187,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":189,
+    "value":183,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":190,
+    "value":184,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":182,
+    "value":178,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
@@ -34901,7 +34754,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT"
   },{
-    "value":181,
+    "value":177,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT_CFG"
   },{
@@ -34909,19 +34762,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":197,
+    "value":191,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":195,
+    "value":189,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":198,
+    "value":192,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":196,
+    "value":190,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
@@ -34929,27 +34782,27 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_ENABLE_BODYGROUP"
   },{
-    "value":103,
+    "value":100,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_LEFT"
   },{
-    "value":104,
+    "value":101,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_RIGHT"
   },{
-    "value":105,
+    "value":102,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT"
   },{
-    "value":107,
+    "value":104,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT_LOUD"
   },{
-    "value":106,
+    "value":103,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT"
   },{
-    "value":108,
+    "value":105,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT_LOUD"
   },{
@@ -34961,15 +34814,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_ATTACHMENT"
   },{
-    "value":176,
+    "value":172,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_LOOPING"
   },{
-    "value":163,
+    "value":160,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":131,
+    "value":128,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
@@ -34981,39 +34834,39 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_STOP_PARTICLE_EFFECT"
   },{
-    "value":192,
+    "value":186,
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":77,
+    "value":74,
     "kind":"constant",
     "name":"AE_DEFIBRILLATOR_SHOCK"
   },{
-    "value":200,
+    "value":194,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
   },{
-    "value":199,
+    "value":193,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
-    "value":153,
+    "value":150,
     "kind":"constant",
     "name":"AE_DRAW_WEAPONS"
   },{
-    "value":155,
+    "value":152,
     "kind":"constant",
     "name":"AE_DROP_ITEM"
   },{
-    "value":162,
+    "value":159,
     "kind":"constant",
     "name":"AE_DROP_PRIMARY_WEAPON"
   },{
-    "value":158,
+    "value":155,
     "kind":"constant",
     "name":"AE_EF_DRAW"
   },{
-    "value":157,
+    "value":154,
     "kind":"constant",
     "name":"AE_EF_NODRAW"
   },{
@@ -35021,11 +34874,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":100,
+    "value":97,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
-    "value":184,
+    "value":180,
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
@@ -35037,7 +34890,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_FOOTSTEP_RIGHT"
   },{
-    "value":186,
+    "value":182,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
@@ -35045,111 +34898,111 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_HIDE_WEAPON"
   },{
-    "value":93,
+    "value":90,
     "kind":"constant",
     "name":"AE_HIT_ARM_LEFT_SEVERED"
   },{
-    "value":92,
+    "value":89,
     "kind":"constant",
     "name":"AE_HIT_ARM_RIGHT_SEVERED"
   },{
-    "value":97,
+    "value":94,
     "kind":"constant",
     "name":"AE_HIT_BACK"
   },{
-    "value":83,
+    "value":80,
     "kind":"constant",
     "name":"AE_HIT_BACK_LOWER"
   },{
-    "value":82,
+    "value":79,
     "kind":"constant",
     "name":"AE_HIT_BACK_UPPER"
   },{
-    "value":81,
+    "value":78,
     "kind":"constant",
     "name":"AE_HIT_CHEST"
   },{
-    "value":96,
+    "value":93,
     "kind":"constant",
     "name":"AE_HIT_FRONT"
   },{
-    "value":79,
+    "value":76,
     "kind":"constant",
     "name":"AE_HIT_HEAD_BACK"
   },{
-    "value":78,
+    "value":75,
     "kind":"constant",
     "name":"AE_HIT_HEAD_FRONT"
   },{
-    "value":98,
+    "value":95,
     "kind":"constant",
     "name":"AE_HIT_LEFT"
   },{
-    "value":91,
+    "value":88,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_BACK"
   },{
-    "value":90,
+    "value":87,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_FRONT"
   },{
-    "value":95,
+    "value":92,
     "kind":"constant",
     "name":"AE_HIT_LEG_LEFT_SEVERED"
   },{
-    "value":89,
+    "value":86,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_BACK"
   },{
-    "value":88,
+    "value":85,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_FRONT"
   },{
-    "value":94,
+    "value":91,
     "kind":"constant",
     "name":"AE_HIT_LEG_RIGHT_SEVERED"
   },{
-    "value":99,
+    "value":96,
     "kind":"constant",
     "name":"AE_HIT_RIGHT"
   },{
-    "value":87,
+    "value":84,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_LEFT_BACK"
   },{
-    "value":86,
+    "value":83,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_LEFT_FRONT"
   },{
-    "value":85,
+    "value":82,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_RIGHT_BACK"
   },{
-    "value":84,
+    "value":81,
     "kind":"constant",
     "name":"AE_HIT_SHOULDER_RIGHT_FRONT"
   },{
-    "value":80,
+    "value":77,
     "kind":"constant",
     "name":"AE_HIT_STOMACH"
   },{
-    "value":178,
+    "value":174,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":180,
+    "value":176,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":177,
+    "value":173,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":179,
+    "value":175,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
-    "value":164,
+    "value":161,
     "kind":"constant",
     "name":"AE_KEYFIELD_SOUND"
   },{
@@ -35157,11 +35010,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_LOCK_STATE_CHANGED"
   },{
-    "value":161,
+    "value":158,
     "kind":"constant",
     "name":"AE_MANTLE_GRAB"
   },{
-    "value":160,
+    "value":157,
     "kind":"constant",
     "name":"AE_MANTLE_LEAP"
   },{
@@ -35181,19 +35034,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_MARINE_RELOAD_SOUND_C"
   },{
-    "value":134,
+    "value":131,
     "kind":"constant",
     "name":"AE_MELEE_FORCE_START_WEAPON_TRAIL"
   },{
-    "value":135,
+    "value":132,
     "kind":"constant",
     "name":"AE_MELEE_FORCE_STOP_WEAPON_TRAIL"
   },{
-    "value":132,
+    "value":129,
     "kind":"constant",
     "name":"AE_MELEE_START_COLLISION_DAMAGE"
   },{
-    "value":133,
+    "value":130,
     "kind":"constant",
     "name":"AE_MELEE_STOP_COLLISION_DAMAGE"
   },{
@@ -35213,10 +35066,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_ATTACK_BROADCAST"
   },{
-    "value":175,
-    "kind":"constant",
-    "name":"AE_NPC_BECOME_TEMPORARY_RAGDOLL"
-  },{
     "value":4,
     "kind":"constant",
     "name":"AE_NPC_BODYDROP_HEAVY"
@@ -35229,11 +35078,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_DRAW"
   },{
-    "value":188,
-    "kind":"constant",
-    "name":"AE_NPC_END_POWERED_RAGDOLL"
-  },{
-    "value":185,
+    "value":181,
     "kind":"constant",
     "name":"AE_NPC_GIB"
   },{
@@ -35273,10 +35118,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_SET_INTERACTION_CANTDIE"
   },{
-    "value":187,
-    "kind":"constant",
-    "name":"AE_NPC_START_POWERED_RAGDOLL"
-  },{
     "value":5,
     "kind":"constant",
     "name":"AE_NPC_SWISHSOUND"
@@ -35289,7 +35130,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_NPC_WEAPON_FIRE"
   },{
-    "value":191,
+    "value":185,
     "kind":"constant",
     "name":"AE_NPC_WEAPON_FIRE_SHARED"
   },{
@@ -35321,7 +35162,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_PICKUP_FASSIST"
   },{
-    "value":154,
+    "value":151,
     "kind":"constant",
     "name":"AE_PICK_UP_ITEM"
   },{
@@ -35361,39 +35202,39 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_REMOVE_CLIENT_AIM"
   },{
-    "value":168,
+    "value":165,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CANINTERRUPT"
   },{
-    "value":174,
+    "value":171,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_END"
   },{
-    "value":173,
+    "value":170,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_START"
   },{
-    "value":170,
+    "value":167,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_DEAD"
   },{
-    "value":169,
+    "value":166,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_FIREEVENT"
   },{
-    "value":172,
+    "value":169,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_FIRE_INPUT"
   },{
-    "value":167,
+    "value":164,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_NOINTERRUPT"
   },{
-    "value":171,
+    "value":168,
     "kind":"constant",
     "name":"AE_SCRIPT_EVENT_NOT_DEAD"
   },{
-    "value":152,
+    "value":149,
     "kind":"constant",
     "name":"AE_SHEATHE_WEAPONS"
   },{
@@ -35401,7 +35242,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_SHOW_WEAPON"
   },{
-    "value":166,
+    "value":163,
     "kind":"constant",
     "name":"AE_SOUND_EMITTED"
   },{
@@ -35421,11 +35262,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_SV_DUSTTRAIL"
   },{
-    "value":101,
+    "value":98,
     "kind":"constant",
     "name":"AE_SV_FOOTSTEP_LEFT"
   },{
-    "value":102,
+    "value":99,
     "kind":"constant",
     "name":"AE_SV_FOOTSTEP_RIGHT"
   },{
@@ -35437,7 +35278,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_THUMPER_THUMP"
   },{
-    "value":156,
+    "value":153,
     "kind":"constant",
     "name":"AE_TOSS_ITEM"
   },{
@@ -35445,95 +35286,95 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_TUG_INCAP"
   },{
-    "value":114,
+    "value":111,
     "kind":"constant",
     "name":"AE_WEAPON_AR1"
   },{
-    "value":115,
+    "value":112,
     "kind":"constant",
     "name":"AE_WEAPON_AR2"
   },{
-    "value":129,
+    "value":126,
     "kind":"constant",
     "name":"AE_WEAPON_AR2_ALTFIRE"
   },{
-    "value":120,
+    "value":117,
     "kind":"constant",
     "name":"AE_WEAPON_AR2_GRENADE"
   },{
-    "value":116,
+    "value":113,
     "kind":"constant",
     "name":"AE_WEAPON_HMG1"
   },{
-    "value":109,
+    "value":106,
     "kind":"constant",
     "name":"AE_WEAPON_MELEE_HIT"
   },{
-    "value":111,
+    "value":108,
     "kind":"constant",
     "name":"AE_WEAPON_MELEE_SWISH"
   },{
-    "value":118,
+    "value":115,
     "kind":"constant",
     "name":"AE_WEAPON_MISSILE_FIRE"
   },{
-    "value":122,
+    "value":119,
     "kind":"constant",
     "name":"AE_WEAPON_PISTOL_FIRE"
   },{
-    "value":123,
+    "value":120,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD"
   },{
-    "value":126,
+    "value":123,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD_FILL_CLIP"
   },{
-    "value":125,
+    "value":122,
     "kind":"constant",
     "name":"AE_WEAPON_RELOAD_SOUND"
   },{
-    "value":130,
+    "value":127,
     "kind":"constant",
     "name":"AE_WEAPON_SEQUENCE_FINISHED"
   },{
-    "value":112,
+    "value":109,
     "kind":"constant",
     "name":"AE_WEAPON_SHOTGUN_FIRE"
   },{
-    "value":159,
+    "value":156,
     "kind":"constant",
     "name":"AE_WEAPON_SLAM_GROUND"
   },{
-    "value":110,
+    "value":107,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1"
   },{
-    "value":127,
+    "value":124,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1_BURST1"
   },{
-    "value":128,
+    "value":125,
     "kind":"constant",
     "name":"AE_WEAPON_SMG1_BURSTN"
   },{
-    "value":117,
+    "value":114,
     "kind":"constant",
     "name":"AE_WEAPON_SMG2"
   },{
-    "value":119,
+    "value":116,
     "kind":"constant",
     "name":"AE_WEAPON_SNIPER_RIFLE_FIRE"
   },{
-    "value":113,
+    "value":110,
     "kind":"constant",
     "name":"AE_WEAPON_THROW"
   },{
-    "value":121,
+    "value":118,
     "kind":"constant",
     "name":"AE_WEAPON_THROW2"
   },{
-    "value":124,
+    "value":121,
     "kind":"constant",
     "name":"AE_WEAPON_THROW3"
   },{
@@ -38931,9 +38772,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1758,
+    "value":1756,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
+  },{
+    "value":1753,
+    "kind":"constant",
+    "name":"wr_arc_debut_camera"
   },{
     "members":[{
         "args":[{
@@ -41602,6 +41447,11 @@ Initializing script VM...
     "kind":"class",
     "name":"C_DOTA_Modifier_Lua",
     "extend":"CDOTA_Buff"
+  },{
+    "members":[],
+    "kind":"class",
+    "name":"C_PointEntity",
+    "extend":"C_BaseEntity"
   },{
     "members":[{
         "args":[{
