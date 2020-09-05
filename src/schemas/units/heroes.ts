@@ -9,10 +9,7 @@ const baseHero = () =>
     .field('CMEnabled', s.binaryBoolean())
     .field(
       'HeroID',
-      s
-        .int()
-        .min(1)
-        .max(255), // TODO: check
+      s.int().min(1).max(255), // TODO: check
     )
 
     .fieldsAfter('Model', [
@@ -68,14 +65,7 @@ const baseHero = () =>
         'stone',
       ]),
     )
-    .field(
-      'GibTintColor',
-      s
-        .arrayLike()
-        .integers()
-        .min(4)
-        .max(4),
-    )
+    .field('GibTintColor', s.arrayLike().integers().min(4).max(4))
 
     .field('LastHitChallengeRival', s.str().pattern(resourcePatterns.hero))
     .field('HeroGlowColor', s.vector().integers())
@@ -159,13 +149,7 @@ const baseHero = () =>
         .field('Loadout', s.obj().rest(s.enums('BotItemType').flags(), 'string'))
         .field('Build', s.obj().rest(s.str(), 'number'))
         .field('HeroType', s.enums('Bot').flags())
-        .field(
-          'AggressionFactor',
-          s
-            .num()
-            .min(0)
-            .max(1),
-        )
+        .field('AggressionFactor', s.num().min(0).max(1))
         .field(
           'LaningInfo',
           s

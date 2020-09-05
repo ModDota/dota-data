@@ -466,7 +466,7 @@ for (const declaration of apiTypesDeclarations) {
         assert(declaration.extend.length > 0);
         for (const extendedName of declaration.extend) {
           assert(
-            apiTypesDeclarations.some(t => t.kind === 'object' && t.name === extendedName),
+            apiTypesDeclarations.some((t) => t.kind === 'object' && t.name === extendedName),
             `${declaration.name}.extend: ${extendedName} must be an object type.`,
           );
         }
@@ -477,7 +477,8 @@ for (const declaration of apiTypesDeclarations) {
     case 'nominal':
       assert(
         apiTypesDeclarations.some(
-          t => (t.kind === 'primitive' || t.kind === 'nominal') && t.name === declaration.baseType,
+          (t) =>
+            (t.kind === 'primitive' || t.kind === 'nominal') && t.name === declaration.baseType,
         ),
         `${declaration.name}.baseType: ${declaration.baseType} must be a primitive or nominal type.`,
       );

@@ -19,8 +19,8 @@ const argumentNameRegExp5 = /\( ?([A-Za-z]+,[ ,A-Za-z]+) ?\)\.?$/;
 const splitArgumentMatch1to5 = (m: string) =>
   m
     .split(',')
-    .map(v => v.trim())
-    .map(v => (v.includes(' ') ? v.split(' ')[1] : v));
+    .map((v) => v.trim())
+    .map((v) => (v.includes(' ') ? v.split(' ')[1] : v));
 const createArgumentNameRegExp6 = (n: string) => new RegExp(String.raw`^${n}\(\s*(.*?)\s*\) ?: `);
 
 const argumentTypeRegExp1 = /^\(([a-z]+(,|))+\)\s+/;
@@ -67,6 +67,6 @@ export function extractNamesFromDescription(funcName: string, description?: stri
     match(argumentNameRegExp3, splitArgumentMatch1to5) ??
     match(argumentNameRegExp4, splitArgumentMatch1to5) ??
     match(argumentNameRegExp5, splitArgumentMatch1to5) ??
-    match(createArgumentNameRegExp6(funcName), s => s.split(', '))
+    match(createArgumentNameRegExp6(funcName), (s) => s.split(', '))
   );
 }

@@ -47,10 +47,6 @@ export const bool = wrapConstructor(BoolSchema);
 
 export const int = () => num().integer();
 export const map = (schema: Schema, name?: string) => obj(name).rest(schema);
-// @ts-ignore
 export const oneOfLiterals = (values: LiteralSchemaValue[]) => oneOf(values.map(literal));
 export const binaryBoolean = () => oneOfLiterals([0, 1]);
-export const vector = () =>
-  arrayLike()
-    .min(3)
-    .max(3);
+export const vector = () => arrayLike().min(3).max(3);

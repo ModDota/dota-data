@@ -1,5 +1,5 @@
 {
-  "extends": "@ark120202/typescript-config/node/12.json",
+  "extends": "@ark120202/typescript-config/node/14.json",
   "include": ["**/*"],
   "compilerOptions": {
     "rootDir": ".",

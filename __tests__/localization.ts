@@ -6,8 +6,8 @@ let actualLanguages: string[];
 beforeAll(async () => {
   actualLanguages = _.uniq(
     (await getDotaDirectoryContents('pak01_dir/resource/localization'))
-      .filter(x => x.type === 'file')
-      .map(x => x.name.match(/^.+_(.+)\.txt$/)![1]),
+      .filter((x) => x.type === 'file')
+      .map((x) => x.name.match(/^.+_(.+)\.txt$/)![1]),
   );
 });
 

@@ -5,26 +5,26 @@ import { extraDeclarations } from './data';
 import { ArrayType, FunctionType, Type } from './types';
 
 const isPrimitiveType = (type: Type) =>
-  apiTypesDeclarations.some(t => t.kind === 'primitive' && t.name === (type as any));
+  apiTypesDeclarations.some((t) => t.kind === 'primitive' && t.name === (type as any));
 
 const isNominalPrimitiveType = (type: Type): boolean =>
   apiTypesDeclarations.some(
-    t =>
+    (t) =>
       t.kind === 'nominal' &&
       t.name === (type as any) &&
       (isPrimitiveType(t.baseType) || isNominalPrimitiveType(t.baseType)),
   );
 
-const isEnumReference = (type: Type) => enumNames.includes(type as any);
-const enumNames = enumDeclarations.filter(x => x.kind === 'enum').map(x => x.name);
+const isEnumReference = (type: Type) => enumNames.has(type as any);
+const enumNames = new Set(enumDeclarations.filter((x) => x.kind === 'enum').map((x) => x.name));
 
-const isClassReference = (type: Type) => classNames.includes(type as any);
-const classNames = [...serverDump, ...extraDeclarations]
-  .filter(x => x.kind === 'class')
-  .map(x => x.name);
+const isClassReference = (type: Type) => classNames.has(type as any);
+const classNames = new Set(
+  [...serverDump, ...extraDeclarations].filter((x) => x.kind === 'class').map((x) => x.name),
+);
 
 const isObjectReference = (type: Type) =>
-  apiTypesDeclarations.some(t => t.kind === 'object' && t.name === (type as any));
+  apiTypesDeclarations.some((t) => t.kind === 'object' && t.name === (type as any));
 
 const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
 
@@ -40,7 +40,7 @@ const isValidArrayType = (type: Type) => isArrayType(type) && isValidType(type.a
 const isValidFunctionType = (type: Type) =>
   isFunctionType(type) &&
   type.returns.every(isValidType) &&
-  type.args.every(arg => arg.types.every(isValidType));
+  type.args.every((arg) => arg.types.every(isValidType));
 
 export const isValidType = (type: Type): boolean =>
   isPrimitiveType(type) ||

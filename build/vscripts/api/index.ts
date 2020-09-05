@@ -15,13 +15,13 @@ interface JoinedMethod {
 
 function joinMethods(onServer: DumpMethod[], onClient: DumpMethod[]): JoinedMethod[] {
   const names = _.union(
-    onClient.map(x => x.name),
-    onServer.map(x => x.name),
+    onClient.map((x) => x.name),
+    onServer.map((x) => x.name),
   );
 
-  return names.map(name => ({
-    server: onServer.find(x => x.name === name),
-    client: onClient.find(x => x.name === name),
+  return names.map((name) => ({
+    server: onServer.find((x) => x.name === name),
+    client: onClient.find((x) => x.name === name),
   }));
 }
 
@@ -70,8 +70,8 @@ function transformFunction(
   const extension = functionExtensions[functionIdentifier] ?? {};
 
   let argNames: (string | undefined)[] = [];
-  if (func.args.every(x => x.name != null)) {
-    argNames = func.args.map(x => x.name);
+  if (func.args.every((x) => x.name != null)) {
+    argNames = func.args.map((x) => x.name);
   } else {
     const descNames = extractNamesFromDescription(func.name, func.description);
     if (descNames) {
@@ -146,7 +146,7 @@ function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
 
   const members = [
     ...(extension.members ?? []),
-    ...joinMethods(serverClass.members, clientClass?.members ?? []).map(joinedMethods =>
+    ...joinMethods(serverClass.members, clientClass?.members ?? []).map((joinedMethods) =>
       transformFunction(serverClass.name, joinedMethods),
     ),
   ];
@@ -177,7 +177,7 @@ export const apiDeclarations: apiTypes.Declaration[] = [
   ...joinMethods(
     serverDump.filter((x): x is DumpFunction => x.kind === 'function'),
     clientDump.filter((x): x is DumpFunction => x.kind === 'function'),
-  ).map(joinedMethods => transformFunction('_G', joinedMethods)),
+  ).map((joinedMethods) => transformFunction('_G', joinedMethods)),
 ].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
 
 function checkTypes(identifier: string, types: apiTypes.Type[]) {

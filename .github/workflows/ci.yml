@@ -3,16 +3,15 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  main:
-    name: Main
+  check:
+    name: Check
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
         with:
-          node-version: 12
+          node-version: 14
       - run: yarn --frozen-lockfile
       - run: yarn build
       - run: yarn lint

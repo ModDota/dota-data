@@ -10,13 +10,13 @@ export function generateCss() {
   const result = readDump('dump_panorama_css_properties')
     .slice(4)
     .split(/\n=== /)
-    .map(x =>
+    .map((x) =>
       x
         .trim()
         .replace(/<br>/g, '\n')
         .replace(/ {2,}/, ' ')
         .split('\n')
-        .map(l => l.trim()),
+        .map((l) => l.trim()),
     )
     .map(([rule, ...restLines]): [string, Property] => {
       rule = rule.slice(0, -4);
@@ -24,7 +24,7 @@ export function generateCss() {
       const description = info.replace(EXAMPLES_REGEXP, '');
       const examples = (info.match(EXAMPLES_REGEXP)?.[1] ?? '')
         .split('\n')
-        .filter(x => x !== '')
+        .filter((x) => x !== '')
         .reduceRight<string[]>(
           (accumulator, v) =>
             v.startsWith('//')

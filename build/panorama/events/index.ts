@@ -11,7 +11,7 @@ function parseDefinition(definition: string) {
 
   const args = parameters
     .split(', ')
-    .map(x => x.replace(/^class /, '').split(' '))
+    .map((x) => x.replace(/^class /, '').split(' '))
     .map(
       ([type, n], i): PanoramaEventArgument => ({
         name: formatArgumentName(n, i),
@@ -28,8 +28,8 @@ export function generatePanoramaEvents() {
     _.chunk(
       `${dump.slice(57, -1)}-`
         .split('\n')
-        .filter(x => x !== '|-')
-        .map(v => v.slice(2)),
+        .filter((x) => x !== '|-')
+        .map((v) => v.slice(2)),
       3,
     ).map(([definition, panelEvent, description]) => {
       const { name, args } = parseDefinition(definition.slice(6, -7));

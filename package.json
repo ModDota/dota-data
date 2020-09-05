@@ -12,14 +12,14 @@
   "scripts": {
     "build": "run-s build:clean build:static build:tsc",
     "build:clean": "rimraf \"{files,lib}/**/*\"",
-    "build:static": "ts-node build",
+    "build:static": "ts-node-script build",
     "build:tsc": "tsc",
     "dev": "run-p dev:static dev:tsc",
     "dev:static": "nodemon",
     "dev:tsc": "tsc --watch --preserveWatchOutput",
-    "lint": "run-p lint:prettier lint:eslint",
-    "lint:eslint": "eslint . --ext .js,.ts,.tsx",
-    "lint:prettier": "prettier --check **/*.{ts,tsx,js,md,yml,json}",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check .",
     "prepublishOnly": "yarn build",
     "test": "jest"
   },
@@ -40,51 +40,59 @@
     "trailingComma": "all"
   },
   "eslintConfig": {
-    "extends": "@ark120202/eslint-config/node",
     "parserOptions": {
       "project": [
         "tsconfig.json",
         "build/tsconfig.json",
         "__tests__/tsconfig.json"
       ]
-    }
+    },
+    "extends": "@ark120202/eslint-config/node",
+    "ignorePatterns": [
+      "/lib",
+      "/files"
+    ]
   },
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/__tests__/tsconfig.json"
+      }
+    },
     "preset": "ts-jest",
     "testEnvironment": "node",
     "testMatch": [
       "**/__tests__/**/*.[jt]s?(x)",
       "!**/_*"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "<rootDir>/__tests__/tsconfig.json"
-      }
-    }
+    ]
   },
   "dependencies": {
-    "fs-extra": "^8.1.0",
-    "got": "^10.0.1",
-    "lodash": "^4.17.15",
-    "tslib": "^1.10.0",
+    "fs-extra": "^9.0.1",
+    "got": "^11.6.0",
+    "lodash": "^4.17.20",
+    "tslib": "^2.0.1",
     "vdf-extra": "^2.2.2"
   },
   "devDependencies": {
-    "@ark120202/eslint-config": "^2.2.0",
-    "@ark120202/typescript-config": "^2.1.0",
+    "@ark120202/eslint-config": "^2.4.2",
+    "@ark120202/typescript-config": "^2.2.0",
     "@types/dedent": "^0.7.0",
-    "@types/fs-extra": "^8.0.1",
-    "@types/jest": "^24.0.23",
-    "@types/lodash": "^4.14.149",
-    "@types/prettier": "^1.19.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/jest": "^26.0.13",
+    "@types/lodash": "^4.14.161",
+    "@types/prettier": "^2.1.0",
     "dedent": "^0.7.0",
-    "eslint": "^6.7.2",
-    "jest": "^24.9.0",
-    "nodemon": "^2.0.1",
+    "eslint": "^7.8.1",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.3"
+    "prettier": "^2.1.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "engines": {
+    "node": ">=12.13.0"
   }
 }

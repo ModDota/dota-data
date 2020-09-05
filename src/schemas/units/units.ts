@@ -103,17 +103,11 @@ export const baseUnit = () =>
     .field('IgnoreAddSummonedToSelection', s.binaryBoolean())
 
     // Abilities
-    .field(
-      'AbilityLayout',
-      s
-        .int()
-        .min(4)
-        .max(6),
-    )
+    .field('AbilityLayout', s.int().min(4).max(6))
     .field('Ability1', s.anything())
     .fieldsAfter(
       'Ability1',
-      _.range(24, 0).map(i => [
+      _.range(24, 0).map((i) => [
         `Ability${i}`,
         s.str(),
         { description: `An ability that goes to unit's ${i} slot.` },

@@ -22,7 +22,7 @@ export const enums = (() => {
       },
     );
 
-  for (const member of result.find(x => x.name === 'modifierfunction')!.members) {
+  for (const member of result.find((x) => x.name === 'modifierfunction')!.members) {
     member.description = getEnumDescription(member.description);
   }
 

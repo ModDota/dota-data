@@ -31,7 +31,8 @@ const generators: Record<string, () => void | Promise<void>> = {
   }
 
   await Promise.all(
-    generatorNames.map(async name => {
+    generatorNames.map(async (name) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (generators[name] == null) throw new Error(`Unknown generator name "${name}"`);
       await generators[name]();
     }),
@@ -40,7 +41,7 @@ const generators: Record<string, () => void | Promise<void>> = {
   if (includesScriptTypes) {
     generateScriptTypes();
   }
-})().catch(error => {
+})().catch((error) => {
   console.error(error);
   process.exit(1);
 });

@@ -22,7 +22,7 @@ export const extracted: ExtractionRule[] = [
   {
     name: 'UnitAttackCapability',
     prefix: 'DOTA_UNIT_CAP_',
-    filter: x => !x.startsWith('DOTA_UNIT_CAP_MOVE_'),
+    filter: (x) => !x.startsWith('DOTA_UNIT_CAP_MOVE_'),
   },
   { name: 'Activity', prefix: 'ACT_' },
   { name: 'FieldType', prefix: 'FIELD_' },
@@ -31,8 +31,8 @@ export const extracted: ExtractionRule[] = [
   {
     name: 'Bot',
     prefix: 'DOTA_BOT_',
-    filter: x => !x.startsWith('DOTA_BOT_MODE'),
-    transform: x => [...x, { name: 'DOTA_BOT_SUPPORT', shortName: 'SUPPORT' }],
+    filter: (x) => !x.startsWith('DOTA_BOT_MODE'),
+    transform: (x) => [...x, { name: 'DOTA_BOT_SUPPORT', shortName: 'SUPPORT' }],
   },
   { name: 'SpellImmunityType', prefix: 'SPELL_IMMUNITY_' },
   { prefix: 'DAMAGE_TYPE_' },
@@ -40,14 +40,15 @@ export const extracted: ExtractionRule[] = [
   {
     name: 'UnitTargetType',
     prefix: 'DOTA_UNIT_TARGET_',
-    filter: x => !x.startsWith('DOTA_UNIT_TARGET_TEAM_') && !x.startsWith('DOTA_UNIT_TARGET_FLAG_'),
+    filter: (x) =>
+      !x.startsWith('DOTA_UNIT_TARGET_TEAM_') && !x.startsWith('DOTA_UNIT_TARGET_FLAG_'),
   },
   { prefix: 'DOTA_UNIT_TARGET_TEAM_' },
   { prefix: 'DOTA_ABILITY_TYPE_' },
   {
     name: 'BotItemType',
     prefix: 'ITEM_',
-    filter: x =>
+    filter: (x) =>
       !x.startsWith('ITEM_FLAG_') &&
       !x.startsWith('ITEM_FULLY_') &&
       !x.startsWith('ITEM_SLOT_TYPE_') &&
@@ -56,7 +57,7 @@ export const extracted: ExtractionRule[] = [
   {
     name: 'ItemShareability',
     prefix: 'ITEM_',
-    filter: x => x.includes('_SHAREABLE'),
+    filter: (x) => x.includes('_SHAREABLE'),
     transform(enums) {
       for (const member of enums) {
         member.shortName = member.shortName.replace('_SHAREABLE', '');

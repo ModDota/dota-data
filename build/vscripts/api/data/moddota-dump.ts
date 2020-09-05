@@ -22,7 +22,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.GetTeamNumber': { returns: 'DOTATeam_t' },
   'CBaseEntity.NextMovePeer': { returns: 'CBaseEntity' },
   'CBaseEntity.SetOwner': {
-    description: o => `${o} ${setOwnerDescription}`,
+    description: (o) => `${o} ${setOwnerDescription}`,
     args: { '0': [null, 'CBaseEntity'] },
   },
   'CBaseEntity.SetTeam': { args: { '0': [null, 'DOTATeam_t'] } },
@@ -76,7 +76,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   'CDOTABaseGameMode.SetCustomHeroMaxLevel': { args: { '0': ['maxLevel'] } },
   'CDOTABaseGameMode.SetCustomXPRequiredToReachNextLevel': {
-    description: original => `${original}\nRequires \`SetUseCustomHeroLevels\` to be enabled.`,
+    description: (original) => `${original}\nRequires \`SetUseCustomHeroLevels\` to be enabled.`,
     args: { '0': [null, 'Record<number, number>'] },
   },
   'CDOTABaseGameMode.SetHUDVisible': { args: { '0': [null, 'DOTAHUDVisibility_t'] } },
@@ -292,7 +292,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC.StartGestureWithFade': { args: { 0: [null, 'GameActivity_t'] } },
   'CDOTA_BaseNPC.StartGestureWithPlaybackRate': { args: { 0: [null, 'GameActivity_t'] } },
   'CDOTA_BaseNPC.TakeItem': {
-    description: o => `${o} Returns the passed item.`,
+    description: (o) => `${o} Returns the passed item.`,
     returns: 'CDOTA_Item',
     args: { '0': [null, 'CDOTA_Item'] },
   },

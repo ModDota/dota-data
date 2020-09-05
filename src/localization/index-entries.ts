@@ -17,7 +17,7 @@ interface IndexCache {
 
 const fetchIndexEntries = async () =>
   (await getDotaDirectoryContents('pak01_dir/resource/localization'))
-    .filter(x => x.type === 'file')
+    .filter((x) => x.type === 'file')
     .map(
       (file): IndexEntry => {
         const [, type, language] = file.name.match(/^(.+)_(.+)\.txt$/)!;

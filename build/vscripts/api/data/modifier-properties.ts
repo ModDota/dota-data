@@ -207,8 +207,10 @@ export const modifiersData: Record<string, [ArgumentType, ReturnsType, string?]>
 export function getEnumDescription(functionName?: string) {
   if (!functionName || functionName === 'Unused') return undefined;
 
-  return modifiersData[functionName]?.[2]
-    ? `${modifiersData[functionName][2]}\n\nMethod Name: \`${functionName}\`.`
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  const description = modifiersData[functionName]?.[2];
+  return description
+    ? `${description}\n\nMethod Name: \`${functionName}\`.`
     : `Method Name: \`${functionName}\``;
 }
 
@@ -216,7 +218,7 @@ export const modifierFunctionMethods: apiTypes.ClassMethod[] = serverDump
   .filter((x): x is DumpConstant => x.kind === 'constant')
   .filter((x): x is typeof x & { enum: string } => x.enum === 'modifierfunction')
   .filter((x): x is typeof x & { description: string } => x.description != null)
-  .filter(x => x.description !== 'Unused')
+  .filter((x) => x.description !== 'Unused')
   .map(
     (x): apiTypes.ClassMethod => {
       const functionName = x.description;

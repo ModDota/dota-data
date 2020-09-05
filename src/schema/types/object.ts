@@ -23,7 +23,10 @@ export class ObjectSchema extends Schema {
   }
 
   public getChildren() {
-    return [...this._fields.map(x => x.value), ...(this._rest != null ? [this._rest.schema] : [])];
+    return [
+      ...this._fields.map((x) => x.value),
+      ...(this._rest != null ? [this._rest.schema] : []),
+    ];
   }
 
   public clone() {
@@ -34,7 +37,7 @@ export class ObjectSchema extends Schema {
   }
 
   public delete(name: string) {
-    this._fields = this._fields.filter(x => x.name !== name);
+    this._fields = this._fields.filter((x) => x.name !== name);
     return this;
   }
 
@@ -44,7 +47,7 @@ export class ObjectSchema extends Schema {
   }
 
   public fields(fields: [string, Schema, FieldOptions?][]) {
-    fields.forEach(field => this.field(...field));
+    fields.forEach((field) => this.field(...field));
     return this;
   }
 
@@ -54,7 +57,7 @@ export class ObjectSchema extends Schema {
   }
 
   public fieldsBefore(before: string, fields: [string, Schema, FieldOptions?][]) {
-    fields.forEach(field => this.fieldBefore(before, ...field));
+    fields.forEach((field) => this.fieldBefore(before, ...field));
     return this;
   }
 
@@ -64,7 +67,7 @@ export class ObjectSchema extends Schema {
   }
 
   public fieldsAfter(after: string, fields: [string, Schema, FieldOptions?][]) {
-    _.forEachRight(fields, field => this.fieldAfter(after, ...field));
+    _.forEachRight(fields, (field) => this.fieldAfter(after, ...field));
     return this;
   }
 
@@ -74,13 +77,13 @@ export class ObjectSchema extends Schema {
   }
 
   private setFieldNear(field: ObjectSchemaField, otherFieldName: string, offset: 1 | -1) {
-    const otherIndex = this._fields.findIndex(x => x.name === otherFieldName);
+    const otherIndex = this._fields.findIndex((x) => x.name === otherFieldName);
     if (otherIndex === -1) {
       this.insertOrReplaceField(field);
       return this;
     }
 
-    const index = this._fields.findIndex(x => x.name === field.name);
+    const index = this._fields.findIndex((x) => x.name === field.name);
     if (index === -1) {
       this._fields.splice(otherIndex + offset, 0, field);
       return;
@@ -95,7 +98,7 @@ export class ObjectSchema extends Schema {
   }
 
   private insertOrReplaceField(field: ObjectSchemaField) {
-    const index = this._fields.findIndex(x => x.name === field.name);
+    const index = this._fields.findIndex((x) => x.name === field.name);
     if (index === -1) {
       this._fields.push(field);
     } else {
@@ -119,7 +122,7 @@ export class ObjectSchema extends Schema {
     });
     const fieldsType = fields.length > 0 ? `{\n${fields.join('\n')}\n}` : null;
 
-    const type = [fieldsType, restType].filter(x => x != null).join(' & ');
+    const type = [fieldsType, restType].filter((x) => x != null).join(' & ');
     if (this._name == null) return type;
     context.addNamedType(this._name, type);
     return this._name;
@@ -130,7 +133,7 @@ export class ObjectSchema extends Schema {
       type: 'object',
       ...(this._fields.length > 0
         ? {
-            required: this._fields.filter(x => x.require).map(x => x.name),
+            required: this._fields.filter((x) => x.require).map((x) => x.name),
             properties: _.fromPairs(
               this._fields.map(({ name, value, description }) => [
                 name,
@@ -163,11 +166,11 @@ export class ObjectSchema extends Schema {
 
     const restKeys = _.difference(
       Object.keys(object),
-      this._fields.map(x => x.name),
+      this._fields.map((x) => x.name),
     );
 
     if (this._rest == null) {
-      restKeys.forEach(k => context.of(k).addErrorThere('is unknown'));
+      restKeys.forEach((k) => context.of(k).addErrorThere('is unknown'));
       return;
     }
 

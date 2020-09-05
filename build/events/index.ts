@@ -8,10 +8,10 @@ function parseFile(content: string) {
 
   content
     .split('\n')
-    .filter(value => value.match(/^(\t*)/)![0].length !== 0)
-    .map(value => value.trim())
-    .filter(value => value !== '' && !value.startsWith('//'))
-    .forEach(value => {
+    .filter((value) => value.match(/^(\t*)/)![0].length !== 0)
+    .map((value) => value.trim())
+    .filter((value) => value !== '' && !value.startsWith('//'))
+    .forEach((value) => {
       if (value === '{') return;
       if (value === '}') {
         assert(parsingName);
@@ -56,7 +56,7 @@ export async function generateEvents() {
   ];
 
   const files = await Promise.all(
-    fileNames.map(async fileName => ({
+    fileNames.map(async (fileName) => ({
       name: fileName.match(/resource\/(.+)\.gameevents$/)![1],
       content: parseFile(await getFile(fileName)),
     })),

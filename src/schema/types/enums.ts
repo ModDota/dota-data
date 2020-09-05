@@ -23,7 +23,7 @@ export class EnumsSchema extends Schema {
     const namesSchema = { enum: names };
     if (!this._flags) return namesSchema;
 
-    const namesPattern = `(${names.map(x => _.escapeRegExp(x)).join('|')})`;
+    const namesPattern = `(${names.map((x) => _.escapeRegExp(x)).join('|')})`;
     return {
       anyOf: [namesSchema, { type: 'string', pattern: `^(${namesPattern} \\| )*${namesPattern}$` }],
     };
@@ -47,11 +47,11 @@ export class EnumsSchema extends Schema {
   }
 
   protected getNames() {
-    return this.getDefinition().members.map(x => x.name);
+    return this.getDefinition().members.map((x) => x.name);
   }
 
   protected getDefinition() {
-    const def = enums.find(x => x.name === this._name);
+    const def = enums.find((x) => x.name === this._name);
     if (def == null) throw new Error(`"${this._name}" is not a valid enum name`);
     return def;
   }

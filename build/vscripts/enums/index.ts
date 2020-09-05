@@ -18,7 +18,7 @@ export const enumDeclarations = (() => {
   const clientGlobals = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
   let allGlobals = [
     ...serverGlobals,
-    ...clientGlobals.filter(cc => !serverGlobals.some(sc => sc.name === cc.name)),
+    ...clientGlobals.filter((cc) => !serverGlobals.some((sc) => sc.name === cc.name)),
   ].filter(({ name }) => !droppedConstants.includes(name));
   const takeGlobals = (filter: (name: DumpConstant) => boolean) => {
     const [extracted, rest] = _.partition(allGlobals, filter);
@@ -29,8 +29,8 @@ export const enumDeclarations = (() => {
 
   // Make sure that all there are no different constants on client and server
   for (const { name } of allGlobals) {
-    const server = serverGlobals.find(x => x.name === name);
-    const client = serverGlobals.find(x => x.name === name);
+    const server = serverGlobals.find((x) => x.name === name);
+    const client = serverGlobals.find((x) => x.name === name);
     if (server == null) {
       console.error(`Available only on client: ${name}`);
       continue;
@@ -43,9 +43,9 @@ export const enumDeclarations = (() => {
   }
 
   const getAvailability = (n: string): Availability =>
-    clientGlobals.some(x => x.name === n) ? 'both' : 'server';
+    clientGlobals.some((x) => x.name === n) ? 'both' : 'server';
 
-  const constants = takeGlobals(x => extractedConstants.includes(x.name))
+  const constants = takeGlobals((x) => extractedConstants.includes(x.name))
     .map(
       ({ name, description, value }): Constant => ({
         kind: 'constant',
@@ -64,7 +64,7 @@ export const enumDeclarations = (() => {
 
   const getCommonAvailability = (members: DumpConstant[]) => {
     const memberAvailability = members.map(({ name }) => getAvailability(name));
-    if (memberAvailability.every(x => x === memberAvailability[0])) return memberAvailability[0];
+    if (memberAvailability.every((x) => x === memberAvailability[0])) return memberAvailability[0];
 
     throw new Error('Enum has members with different availability');
   };
@@ -74,7 +74,7 @@ export const enumDeclarations = (() => {
   enums.push(
     ...Object.entries(prefixedEnums).map(
       ([name, prefix]): Enum => {
-        const members = takeGlobals(x =>
+        const members = takeGlobals((x) =>
           typeof prefix === 'string' ? x.name.startsWith(prefix) : prefix.test(x.name),
         );
 
@@ -91,7 +91,7 @@ export const enumDeclarations = (() => {
   enums.push(
     ...Object.entries(globalEnums).map(
       ([name, values]): Enum => {
-        const members = takeGlobals(x => values.includes(x.name));
+        const members = takeGlobals((x) => values.includes(x.name));
         return {
           kind: 'enum',
           name,
@@ -105,8 +105,8 @@ export const enumDeclarations = (() => {
   enums.push(
     ...Object.entries(
       _.groupBy(
-        takeGlobals(x => x.enum != null),
-        x => x.enum!,
+        takeGlobals((x) => x.enum != null),
+        (x) => x.enum!,
       ),
     ).map(
       ([name, members]): Enum => ({
@@ -123,18 +123,18 @@ export const enumDeclarations = (() => {
   }
 
   _.each(enumValueDescriptions, (descriptions, scopeName) => {
-    const enumValue = enums.find(x => x.name === scopeName);
+    const enumValue = enums.find((x) => x.name === scopeName);
     if (enumValue == null) throw new Error(`Enum ${scopeName} not found`);
     _.each(descriptions, (description, memberName) => {
       if (memberName === '__self') {
         enumValue.description = description;
       } else {
-        enumValue.members.find(x => x.name === memberName)!.description = description;
+        enumValue.members.find((x) => x.name === memberName)!.description = description;
       }
     });
   });
 
-  for (const member of enums.find(x => x.name === 'modifierfunction')!.members) {
+  for (const member of enums.find((x) => x.name === 'modifierfunction')!.members) {
     member.description = getEnumDescription(member.description);
   }
 

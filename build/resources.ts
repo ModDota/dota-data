@@ -12,10 +12,10 @@ export async function generateResources() {
   const fileGroups: Record<string, string[]> = _.mapValues(_.keyBy(groups), () => []);
 
   await Promise.all(
-    sources.map(async sourceUrl => {
+    sources.map(async (sourceUrl) => {
       const lines = (await got(sourceUrl)).body.split('\n');
       for (const line of lines) {
-        const group = groups.find(x => line.startsWith(`${x}/`));
+        const group = groups.find((x) => line.startsWith(`${x}/`));
         if (group) {
           const fileName = line.slice(0, line.indexOf(' '));
           fileGroups[group].push(fileName);

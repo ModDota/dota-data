@@ -36,7 +36,7 @@ export abstract class Schema {
 
   public replaceWith(replacement: Schema) {
     // TODO: Consider making something better
-    Object.getOwnPropertyNames(this).forEach(k => delete (this as any)[k]);
+    Object.getOwnPropertyNames(this).forEach((k) => delete (this as any)[k]);
     Object.setPrototypeOf(this, Object.getPrototypeOf(replacement));
     Object.assign(this, replacement);
   }
@@ -112,7 +112,7 @@ export class TsContext {
   }
 
   public getDeclarations() {
-    return _.uniqBy(this.declarations, x => x.value).map(x =>
+    return _.uniqBy(this.declarations, (x) => x.value).map((x) =>
       x.name != null ? x.value.replace(/{name}/g, x.name) : x.value,
     );
   }

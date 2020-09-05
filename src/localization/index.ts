@@ -10,11 +10,11 @@ export * from './languages';
 
 async function fetchLocalization(language: DotaLanguage, types: string[]) {
   const files = await Promise.all(
-    types.map(async t => getDotaVdfFile(`pak01_dir/resource/localization/${t}_${language}.txt`)),
+    types.map(async (t) => getDotaVdfFile(`pak01_dir/resource/localization/${t}_${language}.txt`)),
   );
 
   return _.omitBy(
-    Object.assign({}, ...files.map(x => x.Tokens)),
+    Object.assign({}, ...files.map((x) => x.Tokens)),
     // EXTRA_VALUES appears because there are some repeated tokens in valve files
     (_value, key: string | typeof vdf.EXTRA_VALUES) =>
       typeof key !== 'string' || key.startsWith('[english]'),
@@ -35,7 +35,7 @@ export async function getLocalization(
   if (!cache) {
     return fetchLocalization(
       language,
-      (await getIndexEntries()).filter(x => x.language === language).map(x => x.type),
+      (await getIndexEntries()).filter((x) => x.language === language).map((x) => x.type),
     );
   }
 
@@ -48,8 +48,8 @@ export async function getLocalization(
   }
 
   const allEntries = await getIndexEntries(`${cache.path}/index.json`);
-  const languageEntries = allEntries.filter(e => e.language === language);
-  const updatedHashes = _.fromPairs(languageEntries.map(e => [e.type, e.sha]));
+  const languageEntries = allEntries.filter((e) => e.language === language);
+  const updatedHashes = _.fromPairs(languageEntries.map((e) => [e.type, e.sha]));
 
   const hashCachePath = `${cache.path}/${language}.hash.json`;
   if (_.isEqual(await tryReadJson(hashCachePath), updatedHashes)) {
@@ -62,7 +62,7 @@ export async function getLocalization(
 
   const updatedResults = await fetchLocalization(
     language,
-    languageEntries.map(e => e.type),
+    languageEntries.map((e) => e.type),
   );
 
   await fs.outputJson(resultsCachePath, updatedResults);

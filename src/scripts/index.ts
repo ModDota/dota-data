@@ -59,7 +59,7 @@ export const getPortraits: GetFunction<Portraits> = createGetFunction(
 export type Emoticons = import('./emoticons.generated').Root;
 export const getEmoticons: GetFunction<Emoticons> = createGetFunction(
   'pak01_dir/scripts/emoticons.txt',
-  content =>
+  (content) =>
     Object.entries<any>(content).map(([id, v]) => ({
       id: Number(id),
       image: v.image_name,
@@ -74,7 +74,7 @@ export const getEmoticons: GetFunction<Emoticons> = createGetFunction(
 export type Shops = import('./shops.generated').Root;
 export const getShops: GetFunction<Shops> = createGetFunction(
   'pak01_dir/scripts/shops.txt',
-  content => _.mapValues(content, group => vdf.entries(group).map(([, value]) => value)),
+  (content) => _.mapValues(content, (group) => vdf.entries(group).map(([, value]) => value)),
 );
 
 // TODO: Remove
@@ -86,7 +86,7 @@ const sortNumericKeys = (object: Record<string, any>) =>
   );
 
 function transformAbilities(content: any) {
-  _.each(content, a => {
+  _.each(content, (a) => {
     if (a.AbilitySpecial) a.AbilitySpecial = sortNumericKeys(a.AbilitySpecial);
     if (a.ItemRequirements) a.ItemRequirements = sortNumericKeys(a.ItemRequirements);
   });

@@ -9,10 +9,10 @@ export const allData: AllDataType[] = [...api, ...enums];
 
 export const findTypeByName = (name: string): AllDataType | apiTypes.Declaration | undefined =>
   // TODO: Throw when not found?
-  allData.find(x => x.name === name);
+  allData.find((x) => x.name === name);
 
 export const getFuncDeepTypes = (func: api.FunctionType): string[] =>
-  getDeepTypes([...func.args.flatMap(x => x.types), ...func.returns]);
+  getDeepTypes([...func.args.flatMap((x) => x.types), ...func.returns]);
 
 export function getDeepTypes(types: api.Type[]): string[] {
   const allTypes = new Set<string>();
@@ -23,7 +23,7 @@ export function getDeepTypes(types: api.Type[]): string[] {
     } else if ('array' in type) {
       walkType(type.array);
     } else {
-      getFuncDeepTypes(type).forEach(t => allTypes.add(t));
+      getFuncDeepTypes(type).forEach((t) => allTypes.add(t));
     }
   }
 
