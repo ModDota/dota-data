@@ -36,6 +36,7 @@ apiTypesDeclarations.push({ kind: 'nominal', name: 'ParticleID', baseType: 'int'
 apiTypesDeclarations.push({ kind: 'nominal', name: 'PlayerID', baseType: 'int' });
 apiTypesDeclarations.push({ kind: 'nominal', name: 'ProjectileID', baseType: 'int' });
 apiTypesDeclarations.push({ kind: 'nominal', name: 'SpawnGroupHandle', baseType: 'int' });
+apiTypesDeclarations.push({ kind: 'nominal', name: 'ViewerID', baseType: 'int' });
 
 apiTypesDeclarations.push({
   kind: 'object',

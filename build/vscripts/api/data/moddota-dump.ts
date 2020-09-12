@@ -549,7 +549,12 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'Convars.SetFloat': { args: { '1': ['value'] } },
   'Convars.SetInt': { args: { '1': ['value'] } },
   'Convars.SetStr': { args: { '1': ['value'] } },
-  '_G.AddFOWViewer': { args: { '0': ['team', 'DOTATeam_t'] } },
+  '_G.AddFOWViewer': {
+    description: 'Add temporary vision for a given team.',
+    returns: 'ViewerID',
+    args: { '0': [null, 'DOTATeam_t'] },
+  },
+  '_G.RemoveFOWViewer': { args: { '0': [null, 'DOTATeam_t'], 1: [null, 'ViewerID'] } },
   '_G.ClearTeamCustomHealthbarColor': { args: { '0': ['team', 'DOTATeam_t'] } },
   '_G.CreateHTTPRequest': {
     returns: 'CScriptHTTPRequest',
