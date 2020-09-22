@@ -1,9 +1,12 @@
 import { outputFile, outputJson } from '../util';
-import { apiDeclarations, apiTypes } from './api';
-import { apiTypesDeclarations, apiTypesTypes } from './api-types';
+import { apiDeclarations, apiTypes, validateApi } from './api';
+import { apiTypesDeclarations, apiTypesTypes, validateApiTypes } from './api-types';
 import { enumDeclarations, enumsTypes } from './enums';
 
 export function generateVScripts() {
+  validateApi();
+  validateApiTypes();
+
   outputJson('vscripts/api', apiDeclarations);
   outputFile('vscripts/api.d.ts', apiTypes);
   outputJson('vscripts/api-types', apiTypesDeclarations);

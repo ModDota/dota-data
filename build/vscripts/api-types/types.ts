@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { exportNamespacedRoot } from '../../util';
+import { Type } from '../api/types';
 
-export const types = exportNamespacedRoot(__filename, 'apiTypes', 'apiTypes.Declaration[]');
+export const types = `import { Type } from './api';
+
+${exportNamespacedRoot(__filename, 'apiTypes', 'apiTypes.Declaration[]')}`;
 
 // EXPORT START
 export type Declaration = Primitive | Nominal | Object;
@@ -30,6 +33,6 @@ export interface Object {
 export interface ObjectField {
   name: string;
   description?: string;
-  types: string[];
+  types: Type[];
 }
 // EXPORT END

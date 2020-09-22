@@ -137,8 +137,7 @@ export const classExtensions: Record<string, ExtensionClass> = {
         available: 'both',
         abstract: true,
         description: 'Return a map of enabled/disabled states.',
-        // TODO:
-        returns: ['Partial<Record<modifierstate, boolean>>'],
+        returns: [{ kind: 'table', key: ['modifierstate'], value: ['bool'] }],
         args: [],
       },
     ],

@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { checkTypes } from '../api/validation';
 import * as apiTypesTypes from './types';
 
 export { types as apiTypesTypes } from './types';
@@ -220,7 +221,7 @@ apiTypesDeclarations.push({
 
     {
       name: 'ExtraData',
-      types: ['Record<string, string | number | boolean>', 'nil'],
+      types: ['table', 'nil'],
       description:
         'Extra data associated with projectile instance, that is passed to `OnProjectileThink_ExtraData` and `OnProjectileHit_ExtraData`.',
     },
@@ -327,8 +328,7 @@ apiTypesDeclarations.push({
   kind: 'object',
   name: 'ExecuteOrderFilterEvent',
   fields: [
-    // TODO: Add a type for string map
-    { name: 'units', types: ['Record<string, EntityIndex>'] },
+    { name: 'units', types: [{ kind: 'table', key: ['string'], value: ['EntityIndex'] }] },
     { name: 'entindex_target', types: ['EntityIndex'] },
     { name: 'entindex_ability', types: ['EntityIndex'] },
     { name: 'issuer_player_id_const', types: ['PlayerID'] },
@@ -462,31 +462,36 @@ apiTypesDeclarations.push({
   ],
 });
 
-// Validation
-for (const declaration of apiTypesDeclarations) {
-  switch (declaration.kind) {
-    case 'object':
-      if (declaration.extend !== undefined) {
-        assert(declaration.extend.length > 0);
-        for (const extendedName of declaration.extend) {
-          assert(
-            apiTypesDeclarations.some((t) => t.kind === 'object' && t.name === extendedName),
-            `${declaration.name}.extend: ${extendedName} must be an object type.`,
-          );
+export function validateApiTypes() {
+  for (const declaration of apiTypesDeclarations) {
+    switch (declaration.kind) {
+      case 'object':
+        if (declaration.extend !== undefined) {
+          assert(declaration.extend.length > 0);
+          for (const extendedName of declaration.extend) {
+            assert(
+              apiTypesDeclarations.some((t) => t.kind === 'object' && t.name === extendedName),
+              `${declaration.name}.extend: ${extendedName} must be an object type.`,
+            );
+          }
         }
-      }
 
-      break;
+        for (const field of declaration.fields) {
+          checkTypes(`${declaration.name}.${field.name}`, field.types);
+        }
 
-    case 'nominal':
-      assert(
-        apiTypesDeclarations.some(
-          (t) =>
-            (t.kind === 'primitive' || t.kind === 'nominal') && t.name === declaration.baseType,
-        ),
-        `${declaration.name}.baseType: ${declaration.baseType} must be a primitive or nominal type.`,
-      );
+        break;
 
-      break;
+      case 'nominal':
+        assert(
+          apiTypesDeclarations.some(
+            (t) =>
+              (t.kind === 'primitive' || t.kind === 'nominal') && t.name === declaration.baseType,
+          ),
+          `${declaration.name}.baseType: ${declaration.baseType} must be a primitive or nominal type.`,
+        );
+
+        break;
+    }
   }
 }

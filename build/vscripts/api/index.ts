@@ -4,7 +4,7 @@ import { clientDump, DumpClass, DumpFunction, DumpMethod, serverDump } from '../
 import { classExtensions, extraDeclarations, functionExtensions } from './data';
 import { modifierFunctionMethods } from './data/modifier-properties';
 import * as apiTypes from './types';
-import { isCompatibleOverride, isValidType } from './validation';
+import { checkTypes, isCompatibleOverride } from './validation';
 
 export { types as apiTypes } from './types';
 
@@ -180,31 +180,27 @@ export const apiDeclarations: apiTypes.Declaration[] = [
   ).map((joinedMethods) => transformFunction('_G', joinedMethods)),
 ].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
 
-function checkTypes(identifier: string, types: apiTypes.Type[]) {
-  if (!types.every(isValidType)) {
-    console.log(`Invalid type: ${identifier} = ${types}`);
-  }
-}
-
-function checkFunctionDeclaration(func: apiTypes.FunctionDeclaration, scopeName = '_G') {
-  const identifier = `${scopeName}.${func.name}`;
-  checkTypes(`${identifier}.returns`, func.returns);
-  for (const arg of func.args) {
-    checkTypes(`${identifier}.args.${arg.name}`, arg.types);
-  }
-}
-
-for (const declaration of apiDeclarations) {
-  if (declaration.kind === 'function') {
-    checkFunctionDeclaration(declaration);
-    continue;
+export function validateApi() {
+  function checkFunctionDeclaration(func: apiTypes.FunctionDeclaration, scopeName = '_G') {
+    const identifier = `${scopeName}.${func.name}`;
+    checkTypes(`${identifier}.returns`, func.returns);
+    for (const arg of func.args) {
+      checkTypes(`${identifier}.args.${arg.name}`, arg.types);
+    }
   }
 
-  for (const member of declaration.members) {
-    if (member.kind === 'function') {
-      checkFunctionDeclaration(member, declaration.name);
-    } else {
-      checkTypes(`${declaration.name}.${member.name}`, member.types);
+  for (const declaration of apiDeclarations) {
+    if (declaration.kind === 'function') {
+      checkFunctionDeclaration(declaration);
+      continue;
+    }
+
+    for (const member of declaration.members) {
+      if (member.kind === 'function') {
+        checkFunctionDeclaration(member, declaration.name);
+      } else {
+        checkTypes(`${declaration.name}.${member.name}`, member.types);
+      }
     }
   }
 }

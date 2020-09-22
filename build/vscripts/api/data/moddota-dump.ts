@@ -77,7 +77,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTABaseGameMode.SetCustomHeroMaxLevel': { args: { '0': ['maxLevel'] } },
   'CDOTABaseGameMode.SetCustomXPRequiredToReachNextLevel': {
     description: (original) => `${original}\nRequires \`SetUseCustomHeroLevels\` to be enabled.`,
-    args: { '0': [null, 'Record<number, number>'] },
+    args: { '0': [null, { kind: 'table', key: ['int'], value: ['int'] }] },
   },
   'CDOTABaseGameMode.SetHUDVisible': { args: { '0': [null, 'DOTAHUDVisibility_t'] } },
   'CDOTABaseGameMode.SetOverrideSelectionEntity': {

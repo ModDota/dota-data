@@ -6,7 +6,13 @@ export const types = exportNamespacedRoot(__filename, 'api', 'api.Declaration[]'
 export type Declaration = FunctionDeclaration | ClassDeclaration;
 export type Availability = 'server' | 'client' | 'both';
 
-export type Type = string | FunctionType | ArrayType;
+export type Type = string | TableType | ArrayType | FunctionType;
+
+export interface TableType {
+  kind: 'table';
+  key: Type[];
+  value: Type[];
+}
 
 export interface ArrayType {
   kind: 'array';
