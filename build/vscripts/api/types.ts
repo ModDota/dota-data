@@ -9,10 +9,12 @@ export type Availability = 'server' | 'client' | 'both';
 export type Type = string | FunctionType | ArrayType;
 
 export interface ArrayType {
-  array: Type;
+  kind: 'array';
+  types: Type[];
 }
 
 export interface FunctionType {
+  kind: 'function';
   returns: Type[];
   args: FunctionParameter[];
 }
@@ -24,7 +26,6 @@ export interface FunctionParameter {
 }
 
 export interface FunctionDeclaration extends FunctionType {
-  kind: 'function';
   name: string;
   available: Availability;
   description?: string;

@@ -1,6 +1,7 @@
 import api from '../../files/vscripts/api';
 import apiTypes from '../../files/vscripts/api-types';
 import enums from '../../files/vscripts/enums';
+import { assertNever } from '../utils/core';
 
 export { api, enums };
 
@@ -20,10 +21,12 @@ export function getDeepTypes(types: api.Type[]): string[] {
   function walkType(type: api.Type) {
     if (typeof type === 'string') {
       allTypes.add(type);
-    } else if ('array' in type) {
-      walkType(type.array);
-    } else {
+    } else if (type.kind === 'array') {
+      type.types.forEach(walkType);
+    } else if (type.kind === 'function') {
       getFuncDeepTypes(type).forEach((t) => allTypes.add(t));
+    } else {
+      assertNever(type);
     }
   }
 

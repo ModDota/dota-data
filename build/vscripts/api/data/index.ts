@@ -128,7 +128,7 @@ export const classExtensions: Record<string, ExtensionClass> = {
         available: 'both',
         abstract: true,
         description: 'Return a list of modifier functions this modifier implements.',
-        returns: [{ array: 'modifierfunction' }],
+        returns: [{ kind: 'array', types: ['modifierfunction'] }],
         args: [],
       },
       {
@@ -782,6 +782,7 @@ export const extraDeclarations = (() => {
     clientName: 'Vector',
     description: '3D Vector class.',
     call: {
+      kind: 'function',
       returns: ['Vector'],
       args: [
         { name: 'x', types: ['float', 'nil'] },
@@ -923,6 +924,7 @@ export const extraDeclarations = (() => {
     clientName: 'QAngle',
     description: 'QAngle class.',
     call: {
+      kind: 'function',
       returns: ['QAngle'],
       args: [
         { name: 'x', types: ['float', 'nil'], description: 'Pitch +down/-up.' },

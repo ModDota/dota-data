@@ -11,7 +11,7 @@ const isNominalPrimitiveType = (type: Type): boolean =>
   apiTypesDeclarations.some(
     (t) =>
       t.kind === 'nominal' &&
-      t.name === (type as any) &&
+      t.name === type &&
       (isPrimitiveType(t.baseType) || isNominalPrimitiveType(t.baseType)),
   );
 
@@ -30,12 +30,13 @@ const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
 
 const isPseudoRecordType = (type: Type) => typeof type === 'string' && type.includes('Record<');
 
-const isArrayType = (type: Type): type is ArrayType => typeof type === 'object' && 'array' in type;
+const isArrayType = (type: Type): type is ArrayType =>
+  typeof type === 'object' && type.kind === 'array';
 
 const isFunctionType = (type: Type): type is FunctionType =>
-  typeof type === 'object' && 'returns' in type;
+  typeof type === 'object' && type.kind === 'function';
 
-const isValidArrayType = (type: Type) => isArrayType(type) && isValidType(type.array);
+const isValidArrayType = (type: Type) => isArrayType(type) && type.types.every(isValidType);
 
 const isValidFunctionType = (type: Type) =>
   isFunctionType(type) &&
