@@ -22,6 +22,14 @@ const abilitySpawnFunction: apiTypes.ClassMember = {
   args: [],
 };
 
+// https://github.com/SteamDatabase/GameTracking-Dota2/blob/master/game/core/scripts/vscripts/utils/vscriptinit.lua
+// https://github.com/SteamDatabase/GameTracking-Dota2/blob/master/game/dota/scripts/vscripts/game/gameinit.lua
+// TODO: Potentially useful functions:
+// EntFire
+// EntFireByHandle
+// ScriptDebug*
+// SpawnGroupEntityFilter
+
 export const classExtensions: Record<string, ExtensionClass> = {
   CScriptHTTPRequest: {
     description:
@@ -48,6 +56,42 @@ export const classExtensions: Record<string, ExtensionClass> = {
         description: 'Is this entity an CDOTA_BaseNPC?',
         returns: ['bool'],
         args: [],
+      },
+      {
+        kind: 'function',
+        name: 'SetThink',
+        available: 'both',
+        description:
+          'Set a think function on this entity. Uses `CBaseEntity:SetContextThink` internally.\nNote: optional parameters can be given in any order.',
+        returns: ['nil'],
+        args: [
+          {
+            name: 'functionName',
+            types: [func([['entity', 'CBaseEntity']], ['float', 'nil']), 'string'],
+            description:
+              'If `context` is provided, think function would perform a dynamic lookup on `context` table. Otherwise searches for that function name in caller scope.',
+          },
+          { name: 'context', types: ['table', 'nil'] },
+          {
+            name: 'contextName',
+            types: ['string', 'nil'],
+            description: "Defaults to `functionName` if it's a string.",
+          },
+          {
+            name: 'initialDelay',
+            types: ['float', 'nil'],
+            description: 'Defaults to 0 (next game frame).',
+          },
+        ],
+      },
+      {
+        kind: 'function',
+        name: 'StopThink',
+        available: 'both',
+        description:
+          'Stops thinker created with `CBaseEntity.SetThink`.\nAlias for `CBaseEntity:SetContextThink(contextName, nil, 0)`.',
+        returns: ['nil'],
+        args: [{ name: 'contextName', types: ['string'] }],
       },
       {
         kind: 'function',
