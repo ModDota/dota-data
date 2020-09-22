@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import { clearDescription, extractNamesFromDescription, formatArgumentName } from '../../util';
 import { clientDump, DumpClass, DumpFunction, DumpMethod, serverDump } from '../dump';
+import { checkTypes, isCompatibleOverride } from '../validation';
 import { classExtensions, extraDeclarations, functionExtensions } from './data';
 import { modifierFunctionMethods } from './data/modifier-properties';
 import * as apiTypes from './types';
-import { checkTypes, isCompatibleOverride } from './validation';
 
 export { types as apiTypes } from './types';
 

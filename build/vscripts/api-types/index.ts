@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { binaryBoolean, literal } from '../api/data/utils';
-import { checkTypes } from '../api/validation';
+import { checkTypes } from '../validation';
 import * as apiTypesTypes from './types';
 
 export { types as apiTypesTypes } from './types';

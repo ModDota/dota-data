@@ -1,19 +1,14 @@
-import { apiTypesDeclarations } from '../api-types';
-import { serverDump } from '../dump';
-import { enumDeclarations } from '../enums';
-import { extraDeclarations } from './data';
-import { ArrayType, FunctionType, LiteralType, TableType, Type } from './types';
+import { apiTypesDeclarations } from './api-types';
+import { extraDeclarations } from './api/data';
+import { ArrayType, FunctionType, LiteralType, TableType, Type } from './api/types';
+import { serverDump } from './dump';
+import { enumDeclarations } from './enums';
 
 const isPrimitiveType = (type: Type) =>
   apiTypesDeclarations.some((t) => t.kind === 'primitive' && t.name === (type as any));
 
-const isNominalPrimitiveType = (type: Type): boolean =>
-  apiTypesDeclarations.some(
-    (t) =>
-      t.kind === 'nominal' &&
-      t.name === type &&
-      (isPrimitiveType(t.baseType) || isNominalPrimitiveType(t.baseType)),
-  );
+const isNominalType = (type: Type): boolean =>
+  apiTypesDeclarations.some((t) => t.kind === 'nominal' && t.name === type);
 
 const isEnumReference = (type: Type) => enumNames.has(type as any);
 const enumNames = new Set(enumDeclarations.filter((x) => x.kind === 'enum').map((x) => x.name));
@@ -38,33 +33,6 @@ const isArrayType = (type: Type): type is ArrayType =>
 const isFunctionType = (type: Type): type is FunctionType =>
   typeof type === 'object' && type.kind === 'function';
 
-const isValidTableType = (type: Type) =>
-  isTableType(type) && type.key.every(isValidType) && type.value.every(isValidType);
-
-const isValidArrayType = (type: Type) => isArrayType(type) && type.types.every(isValidType);
-
-const isValidFunctionType = (type: Type) =>
-  isFunctionType(type) &&
-  type.returns.every(isValidType) &&
-  type.args.every((arg) => arg.types.every(isValidType));
-
-const isValidType = (type: Type): boolean =>
-  isPrimitiveType(type) ||
-  isNominalPrimitiveType(type) ||
-  isLiteralType(type) ||
-  isValidTableType(type) ||
-  isValidArrayType(type) ||
-  isValidFunctionType(type) ||
-  isEnumReference(type) ||
-  isClassReference(type) ||
-  isObjectReference(type);
-
-export function checkTypes(identifier: string, types: Type[]) {
-  if (!types.every(isValidType)) {
-    console.log(`Invalid type: ${identifier} = ${types.join(' | ')}`);
-  }
-}
-
 export function isCompatibleOverride(original: string, override: Type) {
   if (override === 'nil') return true;
   if (override === original) return true;
@@ -74,7 +42,7 @@ export function isCompatibleOverride(original: string, override: Type) {
     case 'uint':
     case 'float':
       return (
-        isNominalPrimitiveType(override) ||
+        isNominalType(override) ||
         (isLiteralType(override) && typeof override.value === 'number') ||
         isEnumReference(override)
       );
@@ -99,5 +67,32 @@ export function isCompatibleOverride(original: string, override: Type) {
 
     default:
       throw new Error(`Unknown source type ${original}`);
+  }
+}
+
+const isValidTableType = (type: Type) =>
+  isTableType(type) && type.key.every(isValidType) && type.value.every(isValidType);
+
+const isValidArrayType = (type: Type) => isArrayType(type) && type.types.every(isValidType);
+
+const isValidFunctionType = (type: Type) =>
+  isFunctionType(type) &&
+  type.returns.every(isValidType) &&
+  type.args.every((arg) => arg.types.every(isValidType));
+
+const isValidType = (type: Type): boolean =>
+  isPrimitiveType(type) ||
+  isNominalType(type) ||
+  isLiteralType(type) ||
+  isValidTableType(type) ||
+  isValidArrayType(type) ||
+  isValidFunctionType(type) ||
+  isEnumReference(type) ||
+  isClassReference(type) ||
+  isObjectReference(type);
+
+export function checkTypes(identifier: string, types: Type[]) {
+  if (!types.every(isValidType)) {
+    console.log(`Invalid type: ${identifier} = ${types.join(' | ')}`);
   }
 }
