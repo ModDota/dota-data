@@ -2,7 +2,7 @@ import { apiTypesDeclarations } from '../api-types';
 import { serverDump } from '../dump';
 import { enumDeclarations } from '../enums';
 import { extraDeclarations } from './data';
-import { ArrayType, FunctionType, TableType, Type } from './types';
+import { ArrayType, FunctionType, LiteralType, TableType, Type } from './types';
 
 const isPrimitiveType = (type: Type) =>
   apiTypesDeclarations.some((t) => t.kind === 'primitive' && t.name === (type as any));
@@ -26,7 +26,8 @@ const classNames = new Set(
 const isObjectReference = (type: Type) =>
   apiTypesDeclarations.some((t) => t.kind === 'object' && t.name === (type as any));
 
-const isNumberLiteral = (type: Type) => !Number.isNaN(Number(type));
+const isLiteralType = (type: Type): type is LiteralType =>
+  typeof type === 'object' && type.kind === 'literal';
 
 const isTableType = (type: Type): type is TableType =>
   typeof type === 'object' && type.kind === 'table';
@@ -50,10 +51,10 @@ const isValidFunctionType = (type: Type) =>
 const isValidType = (type: Type): boolean =>
   isPrimitiveType(type) ||
   isNominalPrimitiveType(type) ||
+  isLiteralType(type) ||
   isValidTableType(type) ||
   isValidArrayType(type) ||
   isValidFunctionType(type) ||
-  isNumberLiteral(type) ||
   isEnumReference(type) ||
   isClassReference(type) ||
   isObjectReference(type);
@@ -73,7 +74,9 @@ export function isCompatibleOverride(original: string, override: Type) {
     case 'uint':
     case 'float':
       return (
-        isNominalPrimitiveType(override) || isNumberLiteral(override) || isEnumReference(override)
+        isNominalPrimitiveType(override) ||
+        (isLiteralType(override) && typeof override.value === 'number') ||
+        isEnumReference(override)
       );
 
     case 'handle':

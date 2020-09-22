@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import * as apiTypes from '../types';
 
+export const literal = (value: number): apiTypes.LiteralType => ({ kind: 'literal', value });
+export const binaryBoolean = [literal(0), literal(1)];
+
 export const array = (types: _.Many<apiTypes.Type>): apiTypes.ArrayType => ({
   kind: 'array',
   types: _.castArray(types),

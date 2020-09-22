@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import * as apiTypes from '../types';
 import { DumpConstant, serverDump } from '../../dump';
+import * as apiTypes from '../types';
+import { binaryBoolean } from './utils';
 
 type ArgumentType = 'void' | 'unit' | 'ability' | 'attack';
 type ReturnsType = 'void' | 'number' | 'string' | 'binary' | ({} & string);
@@ -244,7 +245,7 @@ export const modifierFunctionMethods: apiTypes.ClassMethod[] = serverDump
         args,
         returns:
           returns === 'binary'
-            ? ['0', '1']
+            ? binaryBoolean
             : returns === 'number'
             ? ['float']
             : returns === 'void'

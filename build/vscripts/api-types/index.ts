@@ -1,4 +1,5 @@
 import assert from 'assert';
+import { binaryBoolean, literal } from '../api/data/utils';
 import { checkTypes } from '../api/validation';
 import * as apiTypesTypes from './types';
 
@@ -333,7 +334,7 @@ apiTypesDeclarations.push({
     { name: 'entindex_ability', types: ['EntityIndex'] },
     { name: 'issuer_player_id_const', types: ['PlayerID'] },
     { name: 'sequence_number_const', types: ['uint'] },
-    { name: 'queue', types: ['0', '1'] },
+    { name: 'queue', types: binaryBoolean },
     { name: 'order_type', types: ['dotaunitorder_t'] },
     { name: 'position_x', types: ['float'] },
     { name: 'position_y', types: ['float'] },
@@ -357,7 +358,7 @@ apiTypesDeclarations.push({
     { name: 'inventory_parent_entindex_const', types: ['EntityIndex'] },
     { name: 'item_parent_entindex_const', types: ['EntityIndex'] },
     { name: 'item_entindex_const', types: ['EntityIndex'] },
-    { name: 'suggested_slot', types: ['-1', 'DOTAScriptInventorySlot_t'] },
+    { name: 'suggested_slot', types: [literal(-1), 'DOTAScriptInventorySlot_t'] },
   ],
 });
 
@@ -395,7 +396,7 @@ apiTypesDeclarations.push({
   fields: [
     { name: 'player_id_const', types: ['PlayerID'] },
     { name: 'reason_const', types: ['EDOTA_ModifyGold_Reason'] },
-    { name: 'reliable', types: ['0', '1'] },
+    { name: 'reliable', types: binaryBoolean },
     { name: 'gold', types: ['uint'] },
   ],
 });
@@ -416,8 +417,8 @@ apiTypesDeclarations.push({
     { name: 'entindex_source_const', types: ['EntityIndex'] },
     { name: 'entindex_target_const', types: ['EntityIndex'] },
     { name: 'entindex_ability_const', types: ['EntityIndex'] },
-    { name: 'is_attack', types: ['0', '1'] },
-    { name: 'dodgeable', types: ['0', '1'] },
+    { name: 'is_attack', types: binaryBoolean },
+    { name: 'dodgeable', types: binaryBoolean },
     // FIXME: Always was 0 on tests
     { name: 'max_impact_time', types: ['int'] },
     { name: 'move_speed', types: ['int'] },

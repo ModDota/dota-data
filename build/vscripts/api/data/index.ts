@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 import * as apiTypes from '../types';
 import { moddotaDump } from './moddota-dump';
-import { array, ExtensionClass, ExtensionFunction, func } from './utils';
+import { array, binaryBoolean, ExtensionClass, ExtensionFunction, func, literal } from './utils';
 
 const abilityPrecacheFunction: apiTypes.ClassMember = {
   kind: 'function',
@@ -387,7 +387,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       '2': ['frequency'],
       '3': ['duration'],
       '4': ['radius'],
-      '5': ['command', ['0', '1'], 'SHAKE_START = 0, SHAKE_STOP = 1'],
+      '5': ['command', binaryBoolean, 'SHAKE_START = 0, SHAKE_STOP = 1'],
       '6': ['airShake'],
     },
   },
@@ -477,7 +477,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
   'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
   'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
-  'CDOTA_Item.GetItemSlot': { returns: ['-1', 'DOTAScriptInventorySlot_t'] },
+  'CDOTA_Item.GetItemSlot': { returns: [literal(-1), 'DOTAScriptInventorySlot_t'] },
   '_G.CreateTrigger': { returns: 'CBaseTrigger' },
   '_G.CreateTriggerRadiusApproximate': { returns: 'CBaseTrigger' },
   'CDOTA_ShopTrigger.GetShopType': { returns: 'DOTA_SHOP_TYPE' },
@@ -686,7 +686,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     },
   },
   'CDOTA_PlayerResource.GetLiveSpectatorTeam': {
-    returns: ['DOTATeam_t', '-1'],
+    returns: ['DOTATeam_t', literal(-1)],
   },
   'CDOTA_BaseNPC.QueueConcept': {
     args: {

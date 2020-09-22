@@ -21,6 +21,8 @@ export function getDeepTypes(types: api.Type[]): string[] {
   function walkType(type: api.Type) {
     if (typeof type === 'string') {
       allTypes.add(type);
+    } else if (type.kind === 'literal') {
+      // Ignore
     } else if (type.kind === 'table') {
       type.key.forEach(walkType);
       type.value.forEach(walkType);
