@@ -230,7 +230,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       0: ['unitName'],
       1: ['callback', func([['precacheId', 'int']], 'nil')],
-      // TODO: Optional?
       2: ['playerId', ['PlayerID', 'nil']],
     },
   },
@@ -238,7 +237,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       0: ['unitName'],
       1: ['context', 'CScriptPrecacheContext'],
-      // TODO: Optional?
       2: ['playerId', ['PlayerID', 'nil']],
     },
   },

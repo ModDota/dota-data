@@ -614,7 +614,7 @@ Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsyn
     args: {
       0: ['attacker', 'CDOTA_BaseNPC'],
       1: ['target', 'CDOTA_BaseNPC'],
-      2: ['ability', 'CDOTABaseAbility'],
+      2: ['ability', ['CDOTABaseAbility', 'nil']],
       3: ['damage'],
       4: ['startRadius'],
       5: ['endRadius'],
