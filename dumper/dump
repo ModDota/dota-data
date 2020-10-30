@@ -16929,6 +16929,11 @@ Initializing script VM...
         "name":"GetBehavior"
       },{
         "args":[],
+        "returns":"int",
+        "name":"GetBehaviorInt",
+        "description":"Get ability behavior flags as an int for compatability."
+      },{
+        "args":[],
         "returns":"float",
         "name":"GetCastPoint"
       },{
@@ -17307,6 +17312,10 @@ Initializing script VM...
         "args":[],
         "returns":"void",
         "name":"RefreshCharges"
+      },{
+        "args":[],
+        "returns":"<unknown>",
+        "name":"RefreshIntrinsicModifier"
       },{
         "args":[],
         "returns":"void",
@@ -23122,6 +23131,10 @@ Initializing script VM...
         "returns":"void",
         "name":"Destroy",
         "description":"Run all associated destroy functions, then remove the modifier."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"DestroyOnExpire"
       },{
         "args":[],
         "returns":"void",
@@ -30556,7 +30569,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1760,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30700,7 +30713,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1758,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -38052,7 +38065,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1759,
+    "value":1758,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -38306,6 +38319,10 @@ Initializing script VM...
         "returns":"void",
         "name":"Destroy",
         "description":"Run all associated destroy functions, then remove the modifier."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"DestroyOnExpire"
       },{
         "args":[],
         "returns":"void",
@@ -39724,7 +39741,8 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"int",
-        "name":"GetBehavior"
+        "name":"GetBehaviorInt",
+        "description":"Get ability behavior flags as an int for compatability."
       },{
         "args":[],
         "returns":"handle",
