@@ -164,13 +164,6 @@ export const enumValueDescriptions = {
     DMG_REMOVENORAGDOLL: "Don't create a ragdoll on death.",
     DMG_PHYSGUN: 'Damage done by the gravity gun.',
     DMG_PLASMA: 'Plasma.',
-    DMG_AIRBOAT: 'Airboat gun damage.',
-    DMG_DISSOLVE:
-      'Forces the entity to dissolve on death. This is what the combine ball uses when it hits a target.',
-    DMG_BLAST_SURFACE: "This won't hurt the player underwater.",
-    DMG_DIRECT:
-      'Direct damage to the entity that does not go through any damage value modifications.',
-    DMG_BUCKSHOT: 'The pellets fired from a shotgun.',
   },
   SourceEngineSoundData: {
     __self: 'https://developer.valvesoftware.com/wiki/Weapon_script#SoundData',

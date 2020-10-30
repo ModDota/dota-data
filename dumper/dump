@@ -125,6 +125,13 @@ Specifies border style for the bottom edge of the panel. <br><br><b>Examples:</b
 Specifies border width for the bottom edge of the panel. <br><br><b>Examples:</b><pre>border-bottom-width: 2px;</pre>
 
 
+=== border-brush ===
+EXPERIMENTAL: Sets a more-complex brush for the entire border paint area (ignores normal border color).<br><br><b>Examples:</b><pre>border-brush: gradient( linear, 0% 0%, 0% 100%, from( #fbfbfbff ), to( #c0c0c0c0 ) );
+border-brush: gradient( linear, 0% 0%, 0% 100%, from( #fbfbfbff ), color-stop( 0.3, #ebebebff ), to( #c0c0c0c0 ) );
+border-brush: gradient( radial, 50% 50%, 0% 0%, 80% 80%, from( #00ff00ff ), to( #0000ffff ) );
+</pre>
+
+
 === border-color ===
 Specifies border color for panel.  If a single color value is set it applies to all sides, if 2 are set the first is top/bottom and the second is left/right, if all four are set then they are top, right, bottom, left in order.<br><br><b>Examples:</b><pre>border-color: #111111FF;
 border-color: #FF0000FF #00FF00FF #0000FFFF #00FFFFFF;</pre>
@@ -1262,6 +1269,7 @@ Enumeration 'DOTA_ABILITY_BEHAVIOR'
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_UNLOCKED_BY_EFFECT_INDEX = 17179869184
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE = 34359738368
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_FREE_DRAW_TARGETING = 68719476736
+	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE = 137438953472
 
 Enumeration 'DAMAGE_TYPES'
 	DAMAGE_TYPES.DAMAGE_TYPE_NONE = 0
@@ -1600,75 +1608,81 @@ Enumeration 'DOTASlotType_t'
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_GLOVES = 12
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAIL = 13
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_MISC = 14
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_BODY_HEAD = 15
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MOUNT = 16
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_SUMMON = 17
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHAPESHIFT = 18
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAUNT = 19
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS = 20
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ATTACK = 21
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY1 = 22
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY2 = 23
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY3 = 24
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY4 = 25
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE = 26
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_VOICE = 27
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1 = 28
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1 = 29
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1 = 30
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1 = 31
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEAD_PERSONA_1 = 32
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1 = 33
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ARMS_PERSONA_1 = 34
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1 = 35
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_BELT_PERSONA_1 = 36
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_NECK_PERSONA_1 = 37
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_BACK_PERSONA_1 = 38
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_LEGS_PERSONA_1 = 39
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1 = 40
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAIL_PERSONA_1 = 41
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MISC_PERSONA_1 = 42
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1 = 43
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1 = 44
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1 = 45
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1 = 46
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1 = 47
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1 = 48
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1 = 49
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1 = 50
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1 = 51
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1 = 52
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1 = 53
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1 = 54
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_VOICE_PERSONA_1 = 55
-	DOTASlotType_t.DOTA_LOADOUT_PERSONA_1_START = 28
-	DOTASlotType_t.DOTA_LOADOUT_PERSONA_1_END = 55
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_PERSONA_SELECTOR = 56
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_COURIER = 57
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_ANNOUNCER = 58
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MEGA_KILLS = 59
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MUSIC = 60
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_WARD = 61
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_HUD_SKIN = 62
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_LOADING_SCREEN = 63
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEATHER = 64
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEROIC_STATUE = 65
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_MULTIKILL_BANNER = 66
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_CURSOR_PACK = 67
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_TELEPORT_EFFECT = 68
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_BLINK_EFFECT = 69
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_EMBLEM = 70
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_TERRAIN = 71
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_RADIANT_CREEPS = 72
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_DIRE_CREEPS = 73
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_RADIANT_TOWER = 74
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_DIRE_TOWER = 75
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_VERSUS_SCREEN = 76
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_STREAK_EFFECT = 77
-	DOTASlotType_t.DOTA_PLAYER_LOADOUT_START = 57
-	DOTASlotType_t.DOTA_PLAYER_LOADOUT_END = 77
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_NONE = 78
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_COUNT = 79
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_COSTUME = 15
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_BODY_HEAD = 16
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MOUNT = 17
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_SUMMON = 18
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHAPESHIFT = 19
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAUNT = 20
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS = 21
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ATTACK = 22
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY1 = 23
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY2 = 24
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY3 = 25
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY4 = 26
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE = 27
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_VOICE = 28
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1 = 29
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1 = 30
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1 = 31
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1 = 32
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEAD_PERSONA_1 = 33
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1 = 34
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ARMS_PERSONA_1 = 35
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1 = 36
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_BELT_PERSONA_1 = 37
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_NECK_PERSONA_1 = 38
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_BACK_PERSONA_1 = 39
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_LEGS_PERSONA_1 = 40
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1 = 41
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAIL_PERSONA_1 = 42
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MISC_PERSONA_1 = 43
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1 = 44
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1 = 45
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1 = 46
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1 = 47
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1 = 48
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1 = 49
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1 = 50
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1 = 51
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1 = 52
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1 = 53
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1 = 54
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1 = 55
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_VOICE_PERSONA_1 = 56
+	DOTASlotType_t.DOTA_LOADOUT_PERSONA_1_START = 29
+	DOTASlotType_t.DOTA_LOADOUT_PERSONA_1_END = 56
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_PERSONA_SELECTOR = 57
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_COURIER = 58
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_ANNOUNCER = 59
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MEGA_KILLS = 60
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MUSIC = 61
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_WARD = 62
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_HUD_SKIN = 63
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_LOADING_SCREEN = 64
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_WEATHER = 65
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEROIC_STATUE = 66
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MULTIKILL_BANNER = 67
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_CURSOR_PACK = 68
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_TELEPORT_EFFECT = 69
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_BLINK_EFFECT = 70
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_EMBLEM = 71
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_TERRAIN = 72
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_RADIANT_CREEPS = 73
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_DIRE_CREEPS = 74
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_RADIANT_TOWER = 75
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_DIRE_TOWER = 76
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_VERSUS_SCREEN = 77
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_STREAK_EFFECT = 78
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_KILL_EFFECT = 79
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_DEATH_EFFECT = 80
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEAD_EFFECT = 81
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_MAP_EFFECT = 82
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_COURIER_EFFECT = 83
+	DOTASlotType_t.DOTA_PLAYER_LOADOUT_START = 58
+	DOTASlotType_t.DOTA_PLAYER_LOADOUT_END = 83
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_NONE = 84
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_COUNT = 85
 
 Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE = 0 (GetModifierPreAttack_BonusDamage)
@@ -2004,7 +2018,8 @@ Enumeration 'DOTASpeechType_t'
 	DOTASpeechType_t.DOTA_SPEECH_GOOD_TEAM = 6
 	DOTASpeechType_t.DOTA_SPEECH_BAD_TEAM = 7
 	DOTASpeechType_t.DOTA_SPEECH_SPECTATOR = 8
-	DOTASpeechType_t.DOTA_SPEECH_RECIPIENT_TYPE_MAX = 9
+	DOTASpeechType_t.DOTA_SPEECH_USER_TEAM_NOSPECTATOR = 9
+	DOTASpeechType_t.DOTA_SPEECH_RECIPIENT_TYPE_MAX = 10
 
 Enumeration 'DOTAAbilitySpeakTrigger_t'
 	DOTAAbilitySpeakTrigger_t.DOTA_ABILITY_SPEAK_START_ACTION_PHASE = 0
@@ -2013,12 +2028,13 @@ Enumeration 'DOTAAbilitySpeakTrigger_t'
 Enumeration 'DotaCustomUIType_t'
 	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_HUD = 0
 	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_HERO_SELECTION = 1
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_GAME_INFO = 2
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_GAME_SETUP = 3
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_FLYOUT_SCOREBOARD = 4
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_HUD_TOP_BAR = 5
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_END_SCREEN = 6
-	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_COUNT = 7
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_PREGAME_STRATEGY = 2
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_GAME_INFO = 3
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_GAME_SETUP = 4
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_FLYOUT_SCOREBOARD = 5
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_HUD_TOP_BAR = 6
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_END_SCREEN = 7
+	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_COUNT = 8
 	DotaCustomUIType_t.DOTA_CUSTOM_UI_TYPE_INVALID = -1
 
 Enumeration 'DotaDefaultUIElement_t'
@@ -3484,6 +3500,16 @@ Initializing script VM...
     "description":"Get Velocity for VPHYS or normal object"
   },{
     "returns":"string",
+    "args":[{
+        "type":"int"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"GetPotentialNeutralItemDrop",
+    "description":"Given the item tier and the team, roll for the name of a valid neutral item drop, considering previous drops and consumables."
+  },{
+    "returns":"string",
     "args":[],
     "kind":"function",
     "name":"GetSystemDate",
@@ -3632,6 +3658,14 @@ Initializing script VM...
     "kind":"function",
     "name":"IsLocationVisible",
     "description":"Ask fog of war if a location is visible to a certain team (nTeamNumber, vLocation)."
+  },{
+    "returns":"bool",
+    "args":[{
+        "type":"handle"
+      }],
+    "kind":"function",
+    "name":"IsMangoTree",
+    "description":"Is this entity a mango tree? (hEntity)."
   },{
     "returns":"bool",
     "args":[{
@@ -10154,773 +10188,225 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_ZOMBIE_TRIP"
   },{
-    "value":144,
-    "kind":"constant",
-    "name":"AE_ABILITY_END_EVENT"
-  },{
-    "value":143,
-    "kind":"constant",
-    "name":"AE_ABILITY_START_EVENT"
-  },{
-    "value":145,
-    "kind":"constant",
-    "name":"AE_ABILITY_TICK"
-  },{
-    "value":139,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_COMBO"
-  },{
-    "value":141,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_DODGE"
-  },{
-    "value":135,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_MOVE_INTERRUPT"
-  },{
-    "value":136,
-    "kind":"constant",
-    "name":"AE_ACTION_AVOID_DAMAGE"
-  },{
-    "value":162,
-    "kind":"constant",
-    "name":"AE_ACTION_DROP_ITEM"
-  },{
-    "value":147,
-    "kind":"constant",
-    "name":"AE_ACTION_END_TURN"
-  },{
-    "value":133,
-    "kind":"constant",
-    "name":"AE_ACTION_ENTERING_IDLE"
-  },{
-    "value":134,
-    "kind":"constant",
-    "name":"AE_ACTION_OVERLAP_MOVE"
-  },{
-    "value":140,
-    "kind":"constant",
-    "name":"AE_ACTION_PREVENT_COMBO"
-  },{
-    "value":142,
-    "kind":"constant",
-    "name":"AE_ACTION_PREVENT_DODGE"
-  },{
-    "value":138,
-    "kind":"constant",
-    "name":"AE_ACTION_SET_TURN_RATE_SCALE"
-  },{
-    "value":146,
-    "kind":"constant",
-    "name":"AE_ACTION_START_TURN"
-  },{
-    "value":137,
-    "kind":"constant",
-    "name":"AE_ACTION_STOP_AVOIDING_DAMAGE"
-  },{
-    "value":148,
-    "kind":"constant",
-    "name":"AE_ACTION_USE"
-  },{
-    "value":25,
-    "kind":"constant",
-    "name":"AE_AMMOCRATE_PICKUP_AMMO"
-  },{
-    "value":58,
-    "kind":"constant",
-    "name":"AE_ATTACK_END"
-  },{
-    "value":57,
-    "kind":"constant",
-    "name":"AE_ATTACK_HIT"
-  },{
-    "value":56,
-    "kind":"constant",
-    "name":"AE_ATTACK_START"
-  },{
-    "value":21,
+    "value":7,
     "kind":"constant",
     "name":"AE_CLIENT_EFFECT_ATTACH"
   },{
-    "value":35,
+    "value":10,
     "kind":"constant",
     "name":"AE_CL_ADD_PARTICLE_EFFECT_CP"
   },{
-    "value":40,
+    "value":28,
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE"
   },{
-    "value":42,
+    "value":30,
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":179,
+    "value":39,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":187,
+    "value":42,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":183,
+    "value":40,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":184,
+    "value":41,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":178,
+    "value":43,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
-    "value":36,
-    "kind":"constant",
-    "name":"AE_CL_CREATE_PARTICLE_BRASS"
-  },{
-    "value":33,
+    "value":8,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT"
   },{
-    "value":177,
+    "value":11,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT_CFG"
   },{
-    "value":39,
+    "value":27,
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":191,
+    "value":47,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":189,
+    "value":45,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":192,
+    "value":48,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":190,
+    "value":46,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
-    "value":38,
+    "value":26,
     "kind":"constant",
     "name":"AE_CL_ENABLE_BODYGROUP"
   },{
-    "value":100,
+    "value":19,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_LEFT"
   },{
-    "value":101,
+    "value":20,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_RIGHT"
   },{
-    "value":102,
+    "value":21,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT"
   },{
-    "value":104,
+    "value":23,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT_LOUD"
   },{
-    "value":103,
+    "value":22,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT"
   },{
-    "value":105,
+    "value":24,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT_LOUD"
   },{
-    "value":15,
+    "value":1,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND"
   },{
-    "value":16,
+    "value":2,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_ATTACHMENT"
   },{
-    "value":172,
+    "value":6,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_LOOPING"
   },{
-    "value":160,
+    "value":3,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":128,
+    "value":33,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
-    "value":18,
+    "value":5,
     "kind":"constant",
     "name":"AE_CL_STOPSOUND"
   },{
-    "value":34,
+    "value":9,
     "kind":"constant",
     "name":"AE_CL_STOP_PARTICLE_EFFECT"
   },{
-    "value":186,
+    "value":12,
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":74,
+    "value":53,
     "kind":"constant",
-    "name":"AE_DEFIBRILLATOR_SHOCK"
+    "name":"AE_DOTA_CREATE_CLINKZ_ATTACK"
   },{
-    "value":193,
+    "value":50,
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_DROP"
+  },{
+    "value":49,
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_PICKUP"
+  },{
+    "value":54,
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB"
+  },{
+    "value":52,
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
+  },{
+    "value":51,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
-  },{
-    "value":150,
-    "kind":"constant",
-    "name":"AE_DRAW_WEAPONS"
-  },{
-    "value":152,
-    "kind":"constant",
-    "name":"AE_DROP_ITEM"
-  },{
-    "value":159,
-    "kind":"constant",
-    "name":"AE_DROP_PRIMARY_WEAPON"
-  },{
-    "value":155,
-    "kind":"constant",
-    "name":"AE_EF_DRAW"
-  },{
-    "value":154,
-    "kind":"constant",
-    "name":"AE_EF_NODRAW"
   },{
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":97,
+    "value":34,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
-    "value":180,
+    "value":18,
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
-    "value":54,
-    "kind":"constant",
-    "name":"AE_FOOTSTEP_LEFT"
-  },{
-    "value":55,
-    "kind":"constant",
-    "name":"AE_FOOTSTEP_RIGHT"
-  },{
-    "value":182,
+    "value":44,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
-    "value":60,
-    "kind":"constant",
-    "name":"AE_HIDE_WEAPON"
-  },{
-    "value":90,
-    "kind":"constant",
-    "name":"AE_HIT_ARM_LEFT_SEVERED"
-  },{
-    "value":89,
-    "kind":"constant",
-    "name":"AE_HIT_ARM_RIGHT_SEVERED"
-  },{
-    "value":94,
-    "kind":"constant",
-    "name":"AE_HIT_BACK"
-  },{
-    "value":80,
-    "kind":"constant",
-    "name":"AE_HIT_BACK_LOWER"
-  },{
-    "value":79,
-    "kind":"constant",
-    "name":"AE_HIT_BACK_UPPER"
-  },{
-    "value":78,
-    "kind":"constant",
-    "name":"AE_HIT_CHEST"
-  },{
-    "value":93,
-    "kind":"constant",
-    "name":"AE_HIT_FRONT"
-  },{
-    "value":76,
-    "kind":"constant",
-    "name":"AE_HIT_HEAD_BACK"
-  },{
-    "value":75,
-    "kind":"constant",
-    "name":"AE_HIT_HEAD_FRONT"
-  },{
-    "value":95,
-    "kind":"constant",
-    "name":"AE_HIT_LEFT"
-  },{
-    "value":88,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_BACK"
-  },{
-    "value":87,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_FRONT"
-  },{
-    "value":92,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_SEVERED"
-  },{
-    "value":86,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_BACK"
-  },{
-    "value":85,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_FRONT"
-  },{
-    "value":91,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_SEVERED"
-  },{
-    "value":96,
-    "kind":"constant",
-    "name":"AE_HIT_RIGHT"
-  },{
-    "value":84,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_LEFT_BACK"
-  },{
-    "value":83,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_LEFT_FRONT"
-  },{
-    "value":82,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_RIGHT_BACK"
-  },{
-    "value":81,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_RIGHT_FRONT"
-  },{
-    "value":77,
-    "kind":"constant",
-    "name":"AE_HIT_STOMACH"
-  },{
-    "value":174,
+    "value":36,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":176,
+    "value":38,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":173,
+    "value":35,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":175,
+    "value":37,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
-    "value":161,
-    "kind":"constant",
-    "name":"AE_KEYFIELD_SOUND"
-  },{
-    "value":72,
-    "kind":"constant",
-    "name":"AE_LOCK_STATE_CHANGED"
-  },{
-    "value":158,
-    "kind":"constant",
-    "name":"AE_MANTLE_GRAB"
-  },{
-    "value":157,
-    "kind":"constant",
-    "name":"AE_MANTLE_LEAP"
-  },{
-    "value":49,
-    "kind":"constant",
-    "name":"AE_MARINE_FOOTSTEP"
-  },{
-    "value":50,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_A"
-  },{
-    "value":51,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_B"
-  },{
-    "value":52,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_C"
-  },{
-    "value":131,
-    "kind":"constant",
-    "name":"AE_MELEE_FORCE_START_WEAPON_TRAIL"
-  },{
-    "value":132,
-    "kind":"constant",
-    "name":"AE_MELEE_FORCE_STOP_WEAPON_TRAIL"
-  },{
-    "value":129,
-    "kind":"constant",
-    "name":"AE_MELEE_START_COLLISION_DAMAGE"
-  },{
-    "value":130,
-    "kind":"constant",
-    "name":"AE_MELEE_STOP_COLLISION_DAMAGE"
-  },{
-    "value":22,
+    "value":15,
     "kind":"constant",
     "name":"AE_MUZZLEFLASH"
   },{
-    "value":6,
-    "kind":"constant",
-    "name":"AE_NPC_180TURN"
-  },{
-    "value":27,
-    "kind":"constant",
-    "name":"AE_NPC_ADDGESTURE"
-  },{
-    "value":29,
-    "kind":"constant",
-    "name":"AE_NPC_ATTACK_BROADCAST"
-  },{
-    "value":4,
-    "kind":"constant",
-    "name":"AE_NPC_BODYDROP_HEAVY"
-  },{
-    "value":3,
-    "kind":"constant",
-    "name":"AE_NPC_BODYDROP_LIGHT"
-  },{
-    "value":13,
-    "kind":"constant",
-    "name":"AE_NPC_DRAW"
-  },{
-    "value":181,
-    "kind":"constant",
-    "name":"AE_NPC_GIB"
-  },{
-    "value":12,
-    "kind":"constant",
-    "name":"AE_NPC_HOLSTER"
-  },{
-    "value":30,
-    "kind":"constant",
-    "name":"AE_NPC_HURT_INTERACTION_PARTNER"
-  },{
-    "value":7,
-    "kind":"constant",
-    "name":"AE_NPC_ITEM_PICKUP"
-  },{
-    "value":1,
-    "kind":"constant",
-    "name":"AE_NPC_LEFTFOOT"
-  },{
-    "value":23,
+    "value":16,
     "kind":"constant",
     "name":"AE_NPC_MUZZLEFLASH"
   },{
-    "value":26,
-    "kind":"constant",
-    "name":"AE_NPC_RAGDOLL"
-  },{
-    "value":28,
-    "kind":"constant",
-    "name":"AE_NPC_RESTARTGESTURE"
-  },{
-    "value":2,
-    "kind":"constant",
-    "name":"AE_NPC_RIGHTFOOT"
-  },{
-    "value":31,
-    "kind":"constant",
-    "name":"AE_NPC_SET_INTERACTION_CANTDIE"
-  },{
-    "value":5,
-    "kind":"constant",
-    "name":"AE_NPC_SWISHSOUND"
-  },{
-    "value":8,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_DROP"
-  },{
-    "value":14,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_FIRE"
-  },{
-    "value":185,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_FIRE_SHARED"
-  },{
-    "value":11,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_ACTIVITY"
-  },{
-    "value":9,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_SEQUENCE_NAME"
-  },{
-    "value":10,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_SEQUENCE_NUMBER"
-  },{
-    "value":59,
-    "kind":"constant",
-    "name":"AE_OPTIONAL_END"
-  },{
-    "value":63,
-    "kind":"constant",
-    "name":"AE_PICKUP_CHARGING"
-  },{
-    "value":62,
-    "kind":"constant",
-    "name":"AE_PICKUP_CLIPIN"
-  },{
-    "value":64,
-    "kind":"constant",
-    "name":"AE_PICKUP_FASSIST"
-  },{
-    "value":151,
-    "kind":"constant",
-    "name":"AE_PICK_UP_ITEM"
-  },{
-    "value":37,
+    "value":25,
     "kind":"constant",
     "name":"AE_RAGDOLL"
   },{
-    "value":66,
-    "kind":"constant",
-    "name":"AE_RELOAD_CLIPIN"
-  },{
-    "value":65,
-    "kind":"constant",
-    "name":"AE_RELOAD_CLIPOUT"
-  },{
-    "value":68,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPIN"
-  },{
-    "value":69,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPIN2"
-  },{
-    "value":67,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPOUT"
-  },{
-    "value":71,
-    "kind":"constant",
-    "name":"AE_RELOAD_PUMPEND"
-  },{
-    "value":70,
-    "kind":"constant",
-    "name":"AE_RELOAD_SHELL_INSERT"
-  },{
-    "value":53,
-    "kind":"constant",
-    "name":"AE_REMOVE_CLIENT_AIM"
-  },{
-    "value":165,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CANINTERRUPT"
-  },{
-    "value":171,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_END"
-  },{
-    "value":170,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_START"
-  },{
-    "value":167,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_DEAD"
-  },{
-    "value":166,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_FIREEVENT"
-  },{
-    "value":169,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_FIRE_INPUT"
-  },{
-    "value":164,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_NOINTERRUPT"
-  },{
-    "value":168,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_NOT_DEAD"
-  },{
-    "value":149,
-    "kind":"constant",
-    "name":"AE_SHEATHE_WEAPONS"
-  },{
-    "value":61,
-    "kind":"constant",
-    "name":"AE_SHOW_WEAPON"
-  },{
-    "value":163,
-    "kind":"constant",
-    "name":"AE_SOUND_EMITTED"
-  },{
-    "value":19,
+    "value":13,
     "kind":"constant",
     "name":"AE_START_SCRIPTED_EFFECT"
   },{
-    "value":20,
+    "value":14,
     "kind":"constant",
     "name":"AE_STOP_SCRIPTED_EFFECT"
   },{
-    "value":41,
+    "value":29,
     "kind":"constant",
     "name":"AE_SV_BODYGROUP_SET_VALUE"
   },{
-    "value":32,
+    "value":17,
     "kind":"constant",
     "name":"AE_SV_DUSTTRAIL"
   },{
-    "value":98,
-    "kind":"constant",
-    "name":"AE_SV_FOOTSTEP_LEFT"
-  },{
-    "value":99,
-    "kind":"constant",
-    "name":"AE_SV_FOOTSTEP_RIGHT"
-  },{
-    "value":17,
+    "value":4,
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND"
   },{
-    "value":24,
-    "kind":"constant",
-    "name":"AE_THUMPER_THUMP"
-  },{
-    "value":153,
-    "kind":"constant",
-    "name":"AE_TOSS_ITEM"
-  },{
-    "value":73,
-    "kind":"constant",
-    "name":"AE_TUG_INCAP"
-  },{
-    "value":111,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR1"
-  },{
-    "value":112,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2"
-  },{
-    "value":126,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2_ALTFIRE"
-  },{
-    "value":117,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2_GRENADE"
-  },{
-    "value":113,
-    "kind":"constant",
-    "name":"AE_WEAPON_HMG1"
-  },{
-    "value":106,
-    "kind":"constant",
-    "name":"AE_WEAPON_MELEE_HIT"
-  },{
-    "value":108,
-    "kind":"constant",
-    "name":"AE_WEAPON_MELEE_SWISH"
-  },{
-    "value":115,
-    "kind":"constant",
-    "name":"AE_WEAPON_MISSILE_FIRE"
-  },{
-    "value":119,
-    "kind":"constant",
-    "name":"AE_WEAPON_PISTOL_FIRE"
-  },{
-    "value":120,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD"
-  },{
-    "value":123,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD_FILL_CLIP"
-  },{
-    "value":122,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD_SOUND"
-  },{
-    "value":127,
-    "kind":"constant",
-    "name":"AE_WEAPON_SEQUENCE_FINISHED"
-  },{
-    "value":109,
-    "kind":"constant",
-    "name":"AE_WEAPON_SHOTGUN_FIRE"
-  },{
-    "value":156,
-    "kind":"constant",
-    "name":"AE_WEAPON_SLAM_GROUND"
-  },{
-    "value":107,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1"
-  },{
-    "value":124,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1_BURST1"
-  },{
-    "value":125,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1_BURSTN"
-  },{
-    "value":114,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG2"
-  },{
-    "value":116,
-    "kind":"constant",
-    "name":"AE_WEAPON_SNIPER_RIFLE_FIRE"
-  },{
-    "value":110,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW"
-  },{
-    "value":118,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW2"
-  },{
-    "value":121,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW3"
-  },{
-    "value":45,
-    "kind":"constant",
-    "name":"AE_WPN_HIDE"
-  },{
-    "value":44,
-    "kind":"constant",
-    "name":"AE_WPN_INCREMENTAMMO"
-  },{
-    "value":47,
+    "value":32,
     "kind":"constant",
     "name":"AE_WPN_PLAYWPNSOUND"
   },{
-    "value":43,
+    "value":31,
     "kind":"constant",
     "name":"AE_WPN_PRIMARYATTACK"
-  },{
-    "value":46,
-    "kind":"constant",
-    "name":"AE_WPN_UNHIDE"
   },{
     "value":5,
     "kind":"constant",
@@ -10960,10 +10446,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"DMG_ACID"
   },{
-    "value":33554432,
-    "kind":"constant",
-    "name":"DMG_AIRBOAT"
-  },{
     "value":8192,
     "kind":"constant",
     "name":"DMG_ALWAYSGIB"
@@ -10971,14 +10453,6 @@ Initializing script VM...
     "value":64,
     "kind":"constant",
     "name":"DMG_BLAST"
-  },{
-    "value":134217728,
-    "kind":"constant",
-    "name":"DMG_BLAST_SURFACE"
-  },{
-    "value":536870912,
-    "kind":"constant",
-    "name":"DMG_BUCKSHOT"
   },{
     "value":2,
     "kind":"constant",
@@ -10995,14 +10469,6 @@ Initializing script VM...
     "value":1,
     "kind":"constant",
     "name":"DMG_CRUSH"
-  },{
-    "value":268435456,
-    "kind":"constant",
-    "name":"DMG_DIRECT"
-  },{
-    "value":67108864,
-    "kind":"constant",
-    "name":"DMG_DISSOLVE"
   },{
     "value":16384,
     "kind":"constant",
@@ -11164,6 +10630,11 @@ Initializing script VM...
     "value":2097152,
     "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "value":0,
+    "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "value":2048,
@@ -12355,87 +11826,87 @@ Initializing script VM...
     "name":"DOTA_ITEM_TRANSIENT_RECIPE"
   },{
     "enum":"DOTASlotType_t",
-    "value":55,
+    "value":56,
     "kind":"constant",
     "name":"DOTA_LOADOUT_PERSONA_1_END"
   },{
     "enum":"DOTASlotType_t",
-    "value":28,
+    "value":29,
     "kind":"constant",
     "name":"DOTA_LOADOUT_PERSONA_1_START"
   },{
     "enum":"DOTASlotType_t",
-    "value":22,
+    "value":23,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY1"
   },{
     "enum":"DOTASlotType_t",
-    "value":50,
+    "value":51,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":23,
+    "value":24,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY2"
   },{
     "enum":"DOTASlotType_t",
-    "value":51,
+    "value":52,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":24,
+    "value":25,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY3"
   },{
     "enum":"DOTASlotType_t",
-    "value":52,
+    "value":53,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":25,
+    "value":26,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY4"
   },{
     "enum":"DOTASlotType_t",
-    "value":53,
+    "value":54,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":21,
+    "value":22,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY_ATTACK"
   },{
     "enum":"DOTASlotType_t",
-    "value":49,
+    "value":50,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":26,
+    "value":27,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE"
   },{
     "enum":"DOTASlotType_t",
-    "value":54,
+    "value":55,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":20,
+    "value":21,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS"
   },{
     "enum":"DOTASlotType_t",
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":58,
+    "value":59,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ANNOUNCER"
   },{
@@ -12445,7 +11916,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_ARMOR"
   },{
     "enum":"DOTASlotType_t",
-    "value":35,
+    "value":36,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1"
   },{
@@ -12455,7 +11926,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_ARMS"
   },{
     "enum":"DOTASlotType_t",
-    "value":34,
+    "value":35,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_ARMS_PERSONA_1"
   },{
@@ -12465,7 +11936,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_BACK"
   },{
     "enum":"DOTASlotType_t",
-    "value":38,
+    "value":39,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_BACK_PERSONA_1"
   },{
@@ -12475,52 +11946,67 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_BELT"
   },{
     "enum":"DOTASlotType_t",
-    "value":36,
+    "value":37,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_BELT_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":69,
+    "value":70,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_BLINK_EFFECT"
   },{
     "enum":"DOTASlotType_t",
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_BODY_HEAD"
   },{
     "enum":"DOTASlotType_t",
-    "value":43,
+    "value":44,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":79,
+    "value":15,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_COSTUME"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":85,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_COUNT"
   },{
     "enum":"DOTASlotType_t",
-    "value":57,
+    "value":58,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_COURIER"
   },{
     "enum":"DOTASlotType_t",
-    "value":67,
+    "value":83,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_COURIER_EFFECT"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":68,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_CURSOR_PACK"
   },{
     "enum":"DOTASlotType_t",
-    "value":73,
+    "value":80,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_DEATH_EFFECT"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":74,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_DIRE_CREEPS"
   },{
     "enum":"DOTASlotType_t",
-    "value":75,
+    "value":76,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_DIRE_TOWER"
   },{
     "enum":"DOTASlotType_t",
-    "value":70,
+    "value":71,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_EMBLEM"
   },{
@@ -12530,7 +12016,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_GLOVES"
   },{
     "enum":"DOTASlotType_t",
-    "value":40,
+    "value":41,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1"
   },{
@@ -12540,17 +12026,22 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_HEAD"
   },{
     "enum":"DOTASlotType_t",
-    "value":32,
+    "value":81,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_HEAD_EFFECT"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":33,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_HEAD_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":65,
+    "value":66,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_HEROIC_STATUE"
   },{
     "enum":"DOTASlotType_t",
-    "value":62,
+    "value":63,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_HUD_SKIN"
   },{
@@ -12560,22 +12051,32 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_INVALID"
   },{
     "enum":"DOTASlotType_t",
+    "value":79,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_KILL_EFFECT"
+  },{
+    "enum":"DOTASlotType_t",
     "value":11,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_LEGS"
   },{
     "enum":"DOTASlotType_t",
-    "value":39,
+    "value":40,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_LEGS_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":63,
+    "value":64,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_LOADING_SCREEN"
   },{
     "enum":"DOTASlotType_t",
-    "value":59,
+    "value":82,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_MAP_EFFECT"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":60,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MEGA_KILLS"
   },{
@@ -12585,27 +12086,27 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_MISC"
   },{
     "enum":"DOTASlotType_t",
-    "value":42,
+    "value":43,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MISC_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":16,
+    "value":17,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MOUNT"
   },{
     "enum":"DOTASlotType_t",
-    "value":44,
+    "value":45,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":66,
+    "value":67,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MULTIKILL_BANNER"
   },{
     "enum":"DOTASlotType_t",
-    "value":60,
+    "value":61,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_MUSIC"
   },{
@@ -12615,12 +12116,12 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_NECK"
   },{
     "enum":"DOTASlotType_t",
-    "value":37,
+    "value":38,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_NECK_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":78,
+    "value":84,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_NONE"
   },{
@@ -12635,37 +12136,37 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2"
   },{
     "enum":"DOTASlotType_t",
-    "value":31,
+    "value":32,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":29,
+    "value":30,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":56,
+    "value":57,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_PERSONA_SELECTOR"
   },{
     "enum":"DOTASlotType_t",
-    "value":72,
+    "value":73,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_RADIANT_CREEPS"
   },{
     "enum":"DOTASlotType_t",
-    "value":74,
+    "value":75,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_RADIANT_TOWER"
   },{
     "enum":"DOTASlotType_t",
-    "value":18,
+    "value":19,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_SHAPESHIFT"
   },{
     "enum":"DOTASlotType_t",
-    "value":46,
+    "value":47,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1"
   },{
@@ -12675,22 +12176,22 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_SHOULDER"
   },{
     "enum":"DOTASlotType_t",
-    "value":33,
+    "value":34,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":77,
+    "value":78,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_STREAK_EFFECT"
   },{
     "enum":"DOTASlotType_t",
-    "value":17,
+    "value":18,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_SUMMON"
   },{
     "enum":"DOTASlotType_t",
-    "value":45,
+    "value":46,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1"
   },{
@@ -12700,47 +12201,47 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_TAIL"
   },{
     "enum":"DOTASlotType_t",
-    "value":41,
+    "value":42,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_TAIL_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":19,
+    "value":20,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_TAUNT"
   },{
     "enum":"DOTASlotType_t",
-    "value":47,
+    "value":48,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":68,
+    "value":69,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_TELEPORT_EFFECT"
   },{
     "enum":"DOTASlotType_t",
-    "value":71,
+    "value":72,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_TERRAIN"
   },{
     "enum":"DOTASlotType_t",
-    "value":76,
+    "value":77,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_VERSUS_SCREEN"
   },{
     "enum":"DOTASlotType_t",
-    "value":27,
+    "value":28,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_VOICE"
   },{
     "enum":"DOTASlotType_t",
-    "value":55,
+    "value":56,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_VOICE_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":61,
+    "value":62,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_WARD"
   },{
@@ -12755,17 +12256,17 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_WEAPON2"
   },{
     "enum":"DOTASlotType_t",
-    "value":30,
+    "value":31,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":28,
+    "value":29,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":64,
+    "value":65,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_WEATHER"
   },{
@@ -13075,12 +12576,12 @@ Initializing script VM...
     "name":"DOTA_ModifyXP_Unspecified"
   },{
     "enum":"DOTASlotType_t",
-    "value":77,
+    "value":83,
     "kind":"constant",
     "name":"DOTA_PLAYER_LOADOUT_END"
   },{
     "enum":"DOTASlotType_t",
-    "value":57,
+    "value":58,
     "kind":"constant",
     "name":"DOTA_PLAYER_LOADOUT_START"
   },{
@@ -13273,7 +12774,7 @@ Initializing script VM...
     "name":"DOTA_SPEECH_GOOD_TEAM"
   },{
     "enum":"DOTASpeechType_t",
-    "value":9,
+    "value":10,
     "kind":"constant",
     "name":"DOTA_SPEECH_RECIPIENT_TYPE_MAX"
   },{
@@ -13311,6 +12812,11 @@ Initializing script VM...
     "value":3,
     "kind":"constant",
     "name":"DOTA_SPEECH_USER_TEAM_NEARBY"
+  },{
+    "enum":"DOTASpeechType_t",
+    "value":9,
+    "kind":"constant",
+    "name":"DOTA_SPEECH_USER_TEAM_NOSPECTATOR"
   },{
     "enum":"DOTAScriptInventorySlot_t",
     "value":9,
@@ -13824,7 +13330,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"EMPTY"
   },{
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"FASTRELOAD"
   },{
@@ -13968,6 +13474,10 @@ Initializing script VM...
     "value":9,
     "kind":"constant",
     "name":"MELEE_HIT"
+  },{
+    "value":11,
+    "kind":"constant",
+    "name":"MELEE_HIT_PLAYER"
   },{
     "value":10,
     "kind":"constant",
@@ -15894,15 +15404,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"SPAWN_GROUP_HANDLE_INVALID"
   },{
-    "value":11,
+    "value":12,
     "kind":"constant",
     "name":"SPECIAL1"
   },{
-    "value":12,
+    "value":13,
     "kind":"constant",
     "name":"SPECIAL2"
   },{
-    "value":13,
+    "value":14,
     "kind":"constant",
     "name":"SPECIAL3"
   },{
@@ -15941,7 +15451,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ScriptDebugWatchFistLine"
   },{
-    "value":14,
+    "value":15,
     "kind":"constant",
     "name":"TAUNT"
   },{
@@ -16096,30 +15606,6 @@ Initializing script VM...
         "name":"ActiveSequenceDuration",
         "description":"Returns the duration in seconds of the active sequence."
       },{
-        "args":[{
-            "name":"iAttachment",
-            "type":"int"
-          }],
-        "returns":"Vector",
-        "name":"GetAttachmentAngles",
-        "description":"Get the attachment id's angles as a p,y,r vector."
-      },{
-        "args":[{
-            "name":"iAttachment",
-            "type":"int"
-          }],
-        "returns":"Vector",
-        "name":"GetAttachmentForward",
-        "description":"Get the attachment id's forward vector."
-      },{
-        "args":[{
-            "name":"iAttachment",
-            "type":"int"
-          }],
-        "returns":"Vector",
-        "name":"GetAttachmentOrigin",
-        "description":"Get the attachment id's origin vector."
-      },{
         "args":[],
         "returns":"float",
         "name":"GetCycle",
@@ -16132,11 +15618,6 @@ Initializing script VM...
         "returns":"table",
         "name":"GetGraphParameter",
         "description":"Get the value of the given animGraph parameter"
-      },{
-        "args":[],
-        "returns":"float",
-        "name":"GetModelScale",
-        "description":"Get scale of entity's model."
       },{
         "args":[],
         "returns":"string",
@@ -16155,14 +15636,6 @@ Initializing script VM...
         "returns":"void",
         "name":"ResetSequence",
         "description":"Sets the active sequence by name, resetting the current cycle."
-      },{
-        "args":[{
-            "name":"pAttachmentName",
-            "type":"string"
-          }],
-        "returns":"int",
-        "name":"ScriptLookupAttachment",
-        "description":"Get the named attachment id."
       },{
         "args":[{
             "name":"pSequenceName",
@@ -16255,14 +15728,6 @@ Initializing script VM...
         "description":"Pass the vector value to the specified param in the graph"
       },{
         "args":[{
-            "name":"flScale",
-            "type":"float"
-          }],
-        "returns":"void",
-        "name":"SetModelScale",
-        "description":"Set scale of entity's model."
-      },{
-        "args":[{
             "name":"szName",
             "type":"string"
           },{
@@ -16298,24 +15763,8 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"int",
-        "name":"GetFaction",
-        "description":"Get the combat character faction."
-      },{
-        "args":[],
-        "returns":"int",
         "name":"GetWeaponCount",
         "description":"GetWeaponCount() : Gets the number of weapons currently equipped"
-      },{
-        "args":[{
-            "name":"nHand",
-            "type":"int"
-          },{
-            "name":"nMuzzle",
-            "type":"int"
-          }],
-        "returns":"Vector",
-        "name":"ShootPosition",
-        "description":"Returns the shoot position eyes (or hand in VR)."
       }],
     "kind":"class",
     "name":"CBaseCombatCharacter",
@@ -16994,6 +16443,30 @@ Initializing script VM...
     "extend":"CBaseAnimating"
   },{
     "members":[{
+        "args":[{
+            "name":"iAttachment",
+            "type":"int"
+          }],
+        "returns":"Vector",
+        "name":"GetAttachmentAngles",
+        "description":"Get the attachment id's angles as a p,y,r vector."
+      },{
+        "args":[{
+            "name":"iAttachment",
+            "type":"int"
+          }],
+        "returns":"Vector",
+        "name":"GetAttachmentForward",
+        "description":"Get the attachment id's forward vector."
+      },{
+        "args":[{
+            "name":"iAttachment",
+            "type":"int"
+          }],
+        "returns":"Vector",
+        "name":"GetAttachmentOrigin",
+        "description":"Get the attachment id's origin vector."
+      },{
         "args":[],
         "returns":"unsigned",
         "name":"GetMaterialGroupHash",
@@ -17005,6 +16478,11 @@ Initializing script VM...
         "description":"GetMaterialGroupMask(): Get the mesh group mask of this entity."
       },{
         "args":[],
+        "returns":"float",
+        "name":"GetModelScale",
+        "description":"Get scale of entity's model."
+      },{
+        "args":[],
         "returns":"int",
         "name":"GetRenderAlpha",
         "description":"GetRenderAlpha(): Get the alpha modulation of this entity."
@@ -17013,6 +16491,14 @@ Initializing script VM...
         "returns":"Vector",
         "name":"GetRenderColor",
         "description":"GetRenderColor(): Get the render color of the entity."
+      },{
+        "args":[{
+            "name":"pAttachmentName",
+            "type":"string"
+          }],
+        "returns":"int",
+        "name":"ScriptLookupAttachment",
+        "description":"Get the named attachment id."
       },{
         "args":[{
             "name":"iGroup",
@@ -17074,6 +16560,14 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"SetModel"
+      },{
+        "args":[{
+            "name":"flScale",
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetModelScale",
+        "description":"Set scale of entity's model."
       },{
         "args":[{
             "name":"nAlpha",
@@ -17493,6 +16987,10 @@ Initializing script VM...
         "name":"GetCooldownTimeRemaining"
       },{
         "args":[],
+        "returns":"int",
+        "name":"GetCurrentAbilityCharges"
+      },{
+        "args":[],
         "returns":"Vector",
         "name":"GetCursorPosition"
       },{
@@ -17840,6 +17338,13 @@ Initializing script VM...
         "name":"SetChanneling"
       },{
         "args":[{
+            "name":"nCharges",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetCurrentAbilityCharges"
+      },{
+        "args":[{
             "name":"bFrozenCooldown",
             "type":"bool"
           }],
@@ -18129,6 +17634,11 @@ Initializing script VM...
         "description":"Turns on capability to define custom buyback costs."
       },{
         "args":[],
+        "returns":"int",
+        "name":"GetCustomDireScore",
+        "description":"Get the topbar score display value for dire."
+      },{
+        "args":[],
         "returns":"float",
         "name":"GetCustomGlyphCooldown",
         "description":"Get the current custom glyph cooldown."
@@ -18137,6 +17647,11 @@ Initializing script VM...
         "returns":"int",
         "name":"GetCustomHeroMaxLevel",
         "description":"Allows definition of the max level heroes can achieve (default is 25)."
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetCustomRadiantScore",
+        "description":"Get the topbar score display value for radiant."
       },{
         "args":[],
         "returns":"float",
@@ -18461,6 +17976,14 @@ Initializing script VM...
         "description":"Turns on capability to define custom buyback costs."
       },{
         "args":[{
+            "name":"nScore",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetCustomDireScore",
+        "description":"Sets the topbar score display value for dire."
+      },{
+        "args":[{
             "name":"pHeroName",
             "type":"string"
           }],
@@ -18482,6 +18005,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetCustomHeroMaxLevel",
         "description":"Allows definition of the max level heroes can achieve (default is 25)."
+      },{
+        "args":[{
+            "name":"nScore",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetCustomRadiantScore",
+        "description":"Sets the topbar score display value for radiant."
       },{
         "args":[{
             "name":"flCooldown",
@@ -19163,6 +18694,21 @@ Initializing script VM...
         "name":"EnableCustomGameSetupAutoLaunch",
         "description":"Enabled (true) or disable (false) auto launch for custom game setup."
       },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"float"
+          },{
+            "type":"float"
+          },{
+            "type":"handle"
+          },{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"ExecuteTeamPing",
+        "description":"Sends a minimap ping to all players on the team"
+      },{
         "args":[],
         "returns":"void",
         "name":"FinishCustomGameSetup",
@@ -19184,6 +18730,11 @@ Initializing script VM...
         "returns":"handle",
         "name":"GetAnnouncer",
         "description":"Get the announcer for a team"
+      },{
+        "args":[],
+        "returns":"table",
+        "name":"GetBannedHeroes",
+        "description":"Returns the hero unit names banned in this game, if any"
       },{
         "args":[],
         "returns":"int",
@@ -19242,6 +18793,39 @@ Initializing script VM...
         "name":"GetGameTime",
         "description":"Returns the number of seconds elapsed since map start. This time doesn't count up when the game is paused"
       },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"GetItemStockCount",
+        "description":"Get the stock count of the item"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"float",
+        "name":"GetItemStockDuration",
+        "description":"Get the time it takes to add a new item to stock"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"float",
+        "name":"GetItemStockTime",
+        "description":"Get the time an item will be added to stock"
+      },{
         "args":[],
         "returns":"uint64",
         "name":"GetMatchID",
@@ -19251,6 +18835,16 @@ Initializing script VM...
         "returns":"bool",
         "name":"GetMatchSignoutComplete",
         "description":"Have we received the post match signout message that includes reward information"
+      },{
+        "args":[],
+        "returns":"float",
+        "name":"GetNextBountyRuneSpawnTime",
+        "description":"Gets next bounty rune spawn time"
+      },{
+        "args":[],
+        "returns":"float",
+        "name":"GetNextRuneSpawnTime",
+        "description":"Gets next rune spawn time"
       },{
         "args":[],
         "returns":"int",
@@ -19347,6 +18941,19 @@ Initializing script VM...
         "returns":"void",
         "name":"MakeTeamLose",
         "description":"Makes the specified team lose"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"int"
+          },{
+            "type":"bool"
+          },{
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"ModifyGoldFiltered",
+        "description":"Like ModifyGold, but will use the gold filter if SetFilterMoreGold has been set true"
       },{
         "args":[],
         "returns":"int",
@@ -19475,6 +19082,20 @@ Initializing script VM...
         "description":"Sets a flag to enable/disable the default music handling code for custom games"
       },{
         "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetCustomGameAllowSecondaryAbilitiesOnOtherUnits",
+        "description":"Sets a flag to enable/disable the casting secondary abilities from units other than the player's own hero."
+      },{
+        "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetCustomGameBansPerTeam",
+        "description":"Set number of hero bans each team gets"
+      },{
+        "args":[{
             "type":"int"
           }],
         "returns":"void",
@@ -19550,6 +19171,13 @@ Initializing script VM...
             "type":"bool"
           }],
         "returns":"void",
+        "name":"SetFilterMoreGold",
+        "description":"Sets whether to filter more gold events than normal"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
         "name":"SetFirstBloodActive",
         "description":"Sets whether First Blood has been triggered."
       },{
@@ -19566,6 +19194,15 @@ Initializing script VM...
         "returns":"void",
         "name":"SetGameWinner",
         "description":"Makes the specified team win"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetGlyphCooldown",
+        "description":"Set Glyph cooldown for team"
       },{
         "args":[{
             "type":"int"
@@ -19615,6 +19252,40 @@ Initializing script VM...
         "returns":"void",
         "name":"SetHideKillMessageHeaders",
         "description":"Sets whether the multikill, streak, and first-blood banners appear at the top of the screen."
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetIgnoreLobbyTeamsInCustomGame",
+        "description":"Set whether custom and event games should ignore Lobby teams when assigning players to teams. Defaults to true."
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetItemStockCount",
+        "description":"Set the stock count of the item"
+      },{
+        "args":[{
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetNextBountyRuneSpawnTime",
+        "description":"Sets next bounty rune spawn time"
+      },{
+        "args":[{
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetNextRuneSpawnTime",
+        "description":"Sets next rune spawn time"
       },{
         "args":[{
             "type":"handle"
@@ -19673,6 +19344,13 @@ Initializing script VM...
         "returns":"void",
         "name":"SetShowcaseTime",
         "description":"Sets the amount of time players have between the strategy phase and entering the pre-game phase."
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetSpeechUseSpawnInsteadOfRespawnConcept",
+        "description":"Set whether to speak a Spawn concept instead of a Respawn concept on respawn."
       },{
         "args":[{
             "type":"int"
@@ -20145,7 +19823,7 @@ Initializing script VM...
         "description":"Returns other abilities that are stolen simultaneously, or otherwise related in functionality.  Generally hidden abilities."
       },{
         "args":[],
-        "returns":"int",
+        "returns":"uint64",
         "name":"GetBehavior",
         "description":"Return cast behavior type of this ability."
       },{
@@ -20976,6 +20654,16 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"GetCursorTargetingNothing"
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetDamageMax",
+        "description":"Get the maximum attack damage of this unit."
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetDamageMin",
+        "description":"Get the minimum attack damage of this unit."
       },{
         "args":[],
         "returns":"int",
@@ -21857,7 +21545,7 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"Purge",
-        "description":"(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions"
+        "description":"(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions)"
       },{
         "args":[{
             "name":"flDelay",
@@ -21878,6 +21566,46 @@ Initializing script VM...
         "returns":"void",
         "name":"QueueConcept",
         "description":"Queue a response system concept with the TLK_DOTA_CUSTOM concept, after a delay."
+      },{
+        "args":[{
+            "name":"flDelay",
+            "type":"float"
+          },{
+            "name":"hCriteriaTable",
+            "type":"handle"
+          },{
+            "name":"hCompletionCallbackFn",
+            "type":"handle"
+          },{
+            "name":"hContext",
+            "type":"handle"
+          },{
+            "name":"hCallbackInfo",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"QueueTeamConcept",
+        "description":"Queue a response system concept with the TLK_DOTA_CUSTOM concept, after a delay, for the same team this speaker is on."
+      },{
+        "args":[{
+            "name":"flDelay",
+            "type":"float"
+          },{
+            "name":"hCriteriaTable",
+            "type":"handle"
+          },{
+            "name":"hCompletionCallbackFn",
+            "type":"handle"
+          },{
+            "name":"hContext",
+            "type":"handle"
+          },{
+            "name":"hCallbackInfo",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"QueueTeamConceptNoSpectators",
+        "description":"Queue a response system concept with the TLK_DOTA_CUSTOM concept, after a delay, for the same team this speaker is on. Is not played for spectators."
       },{
         "args":[{
             "name":"flAmount",
@@ -21909,6 +21637,23 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"RemoveAbilityFromIndexByName"
+      },{
+        "args":[{
+            "name":"targets",
+            "type":"int"
+          },{
+            "name":"bNow",
+            "type":"bool"
+          },{
+            "name":"bPermanent",
+            "type":"bool"
+          },{
+            "name":"bDeath",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"RemoveAllModifiers",
+        "description":"(int targets [0=all, 1=enemy, 2=ally], bool bNow, bool bPermanent, bool bDeath)"
       },{
         "args":[{
             "name":"nActivity",
@@ -22509,6 +22254,10 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"UnitCanRespawn"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"WasKilledPassively"
       }],
     "kind":"class",
     "name":"CDOTA_BaseNPC",
@@ -22861,6 +22610,10 @@ Initializing script VM...
         "name":"GetGoldBounty"
       },{
         "args":[],
+        "returns":"int",
+        "name":"GetHeroID"
+      },{
+        "args":[],
         "returns":"float",
         "name":"GetIncreasedAttackSpeed",
         "description":"Hero attack speed is also affected by agility."
@@ -22921,6 +22674,10 @@ Initializing script VM...
         "args":[],
         "returns":"float",
         "name":"GetPrimaryStatValue"
+      },{
+        "args":[],
+        "returns":"handle",
+        "name":"GetReplicatingOtherHero"
       },{
         "args":[],
         "returns":"float",
@@ -23088,6 +22845,20 @@ Initializing script VM...
         "returns":"int",
         "name":"ModifyGold",
         "description":"Gives this hero some gold.  Args: int nGoldChange, bool bReliable, int reason"
+      },{
+        "args":[{
+            "name":"iGoldChange",
+            "type":"int"
+          },{
+            "name":"bReliabe",
+            "type":"bool"
+          },{
+            "name":"iReason",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"ModifyGoldFiltered",
+        "description":"Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason"
       },{
         "args":[{
             "name":"flNewIntellect",
@@ -23752,6 +23523,13 @@ Initializing script VM...
         "description":"Sets whether item is unequipped or ready."
       },{
         "args":[{
+            "name":"bOnlyPlayerHero",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetOnlyPlayerHeroPickup"
+      },{
+        "args":[{
             "name":"flTime",
             "type":"float"
           }],
@@ -24054,6 +23832,11 @@ Initializing script VM...
         "returns":"void",
         "name":"OnChannelThink",
         "description":"(float flInterval) Channeling is taking place."
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"OnChargeCountChanged",
+        "description":"Runs when item's charge count changes."
       },{
         "args":[],
         "returns":"void",
@@ -24562,6 +24345,16 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"AddAegisPickup"
+      },{
+        "args":[{
+            "name":"iPlayerID",
+            "type":"int"
+          },{
+            "name":"nReason",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"AddCandyEvent"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -25755,6 +25548,40 @@ Initializing script VM...
     "kind":"class",
     "name":"CDOTA_Unit_CustomGameAnnouncer",
     "extend":"CDOTA_BaseNPC"
+  },{
+    "members":[{
+        "args":[],
+        "returns":"handle",
+        "name":"GetPartnerPortal"
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"ResetPortal"
+      },{
+        "args":[{
+            "name":"nRuneType",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetInvasionRuneType"
+      },{
+        "args":[{
+            "name":"hPortal",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"SetPartnerPortal"
+      },{
+        "args":[{
+            "name":"bActive",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetPortalActive"
+      }],
+    "kind":"class",
+    "name":"CDOTA_Unit_Diretide_Portal",
+    "extend":"CDOTA_BaseNPC_Building"
   },{
     "members":[{
         "args":[],
@@ -28162,6 +27989,13 @@ Initializing script VM...
         "description":"Returns current location of projectile"
       },{
         "args":[{
+            "type":"int"
+          }],
+        "returns":"bool",
+        "name":"IsValidProjectile",
+        "description":"Is this a valid projectile?"
+      },{
+        "args":[{
             "type":"handle"
           }],
         "returns":"void",
@@ -29450,7 +29284,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1755,
+    "value":1754,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30210,7 +30044,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1764,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30354,7 +30188,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1758,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30386,7 +30220,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1754,
+    "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30510,7 +30344,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1759,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30722,7 +30556,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1757,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30762,7 +30596,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1762,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30774,7 +30608,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1763,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30866,6 +30700,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
+    "value":1758,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN"
+  },{
     "value":1629,
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE"
@@ -30945,10 +30783,6 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
-  },{
-    "value":1760,
-    "kind":"constant",
-    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -34626,777 +34460,229 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_ZOMBIE_TRIP"
   },{
-    "value":144,
-    "kind":"constant",
-    "name":"AE_ABILITY_END_EVENT"
-  },{
-    "value":143,
-    "kind":"constant",
-    "name":"AE_ABILITY_START_EVENT"
-  },{
-    "value":145,
-    "kind":"constant",
-    "name":"AE_ABILITY_TICK"
-  },{
-    "value":139,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_COMBO"
-  },{
-    "value":141,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_DODGE"
-  },{
-    "value":135,
-    "kind":"constant",
-    "name":"AE_ACTION_ALLOW_MOVE_INTERRUPT"
-  },{
-    "value":136,
-    "kind":"constant",
-    "name":"AE_ACTION_AVOID_DAMAGE"
-  },{
-    "value":162,
-    "kind":"constant",
-    "name":"AE_ACTION_DROP_ITEM"
-  },{
-    "value":147,
-    "kind":"constant",
-    "name":"AE_ACTION_END_TURN"
-  },{
-    "value":133,
-    "kind":"constant",
-    "name":"AE_ACTION_ENTERING_IDLE"
-  },{
-    "value":134,
-    "kind":"constant",
-    "name":"AE_ACTION_OVERLAP_MOVE"
-  },{
-    "value":140,
-    "kind":"constant",
-    "name":"AE_ACTION_PREVENT_COMBO"
-  },{
-    "value":142,
-    "kind":"constant",
-    "name":"AE_ACTION_PREVENT_DODGE"
-  },{
-    "value":138,
-    "kind":"constant",
-    "name":"AE_ACTION_SET_TURN_RATE_SCALE"
-  },{
-    "value":146,
-    "kind":"constant",
-    "name":"AE_ACTION_START_TURN"
-  },{
-    "value":137,
-    "kind":"constant",
-    "name":"AE_ACTION_STOP_AVOIDING_DAMAGE"
-  },{
-    "value":148,
-    "kind":"constant",
-    "name":"AE_ACTION_USE"
-  },{
-    "value":25,
-    "kind":"constant",
-    "name":"AE_AMMOCRATE_PICKUP_AMMO"
-  },{
-    "value":58,
-    "kind":"constant",
-    "name":"AE_ATTACK_END"
-  },{
-    "value":57,
-    "kind":"constant",
-    "name":"AE_ATTACK_HIT"
-  },{
-    "value":56,
-    "kind":"constant",
-    "name":"AE_ATTACK_START"
-  },{
-    "value":21,
+    "value":7,
     "kind":"constant",
     "name":"AE_CLIENT_EFFECT_ATTACH"
   },{
-    "value":35,
+    "value":10,
     "kind":"constant",
     "name":"AE_CL_ADD_PARTICLE_EFFECT_CP"
   },{
-    "value":40,
+    "value":28,
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE"
   },{
-    "value":42,
+    "value":30,
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":179,
+    "value":39,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":187,
+    "value":42,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":183,
+    "value":40,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":184,
+    "value":41,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":178,
+    "value":43,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
-    "value":36,
-    "kind":"constant",
-    "name":"AE_CL_CREATE_PARTICLE_BRASS"
-  },{
-    "value":33,
+    "value":8,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT"
   },{
-    "value":177,
+    "value":11,
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT_CFG"
   },{
-    "value":39,
+    "value":27,
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":191,
+    "value":47,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":189,
+    "value":45,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":192,
+    "value":48,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":190,
+    "value":46,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
-    "value":38,
+    "value":26,
     "kind":"constant",
     "name":"AE_CL_ENABLE_BODYGROUP"
   },{
-    "value":100,
+    "value":19,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_LEFT"
   },{
-    "value":101,
+    "value":20,
     "kind":"constant",
     "name":"AE_CL_FOOTSTEP_RIGHT"
   },{
-    "value":102,
+    "value":21,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT"
   },{
-    "value":104,
+    "value":23,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_LEFT_LOUD"
   },{
-    "value":103,
+    "value":22,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT"
   },{
-    "value":105,
+    "value":24,
     "kind":"constant",
     "name":"AE_CL_MFOOTSTEP_RIGHT_LOUD"
   },{
-    "value":15,
+    "value":1,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND"
   },{
-    "value":16,
+    "value":2,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_ATTACHMENT"
   },{
-    "value":172,
+    "value":6,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_LOOPING"
   },{
-    "value":160,
+    "value":3,
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":128,
+    "value":33,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
-    "value":18,
+    "value":5,
     "kind":"constant",
     "name":"AE_CL_STOPSOUND"
   },{
-    "value":34,
+    "value":9,
     "kind":"constant",
     "name":"AE_CL_STOP_PARTICLE_EFFECT"
   },{
-    "value":186,
+    "value":12,
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":74,
+    "value":53,
     "kind":"constant",
-    "name":"AE_DEFIBRILLATOR_SHOCK"
+    "name":"AE_DOTA_CREATE_CLINKZ_ATTACK"
   },{
-    "value":194,
+    "value":55,
+    "kind":"constant",
+    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES"
+  },{
+    "value":50,
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_DROP"
+  },{
+    "value":49,
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_PICKUP"
+  },{
+    "value":54,
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB"
+  },{
+    "value":52,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
   },{
-    "value":193,
+    "value":51,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
-  },{
-    "value":150,
-    "kind":"constant",
-    "name":"AE_DRAW_WEAPONS"
-  },{
-    "value":152,
-    "kind":"constant",
-    "name":"AE_DROP_ITEM"
-  },{
-    "value":159,
-    "kind":"constant",
-    "name":"AE_DROP_PRIMARY_WEAPON"
-  },{
-    "value":155,
-    "kind":"constant",
-    "name":"AE_EF_DRAW"
-  },{
-    "value":154,
-    "kind":"constant",
-    "name":"AE_EF_NODRAW"
   },{
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":97,
+    "value":34,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
-    "value":180,
+    "value":18,
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
-    "value":54,
-    "kind":"constant",
-    "name":"AE_FOOTSTEP_LEFT"
-  },{
-    "value":55,
-    "kind":"constant",
-    "name":"AE_FOOTSTEP_RIGHT"
-  },{
-    "value":182,
+    "value":44,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
-    "value":60,
-    "kind":"constant",
-    "name":"AE_HIDE_WEAPON"
-  },{
-    "value":90,
-    "kind":"constant",
-    "name":"AE_HIT_ARM_LEFT_SEVERED"
-  },{
-    "value":89,
-    "kind":"constant",
-    "name":"AE_HIT_ARM_RIGHT_SEVERED"
-  },{
-    "value":94,
-    "kind":"constant",
-    "name":"AE_HIT_BACK"
-  },{
-    "value":80,
-    "kind":"constant",
-    "name":"AE_HIT_BACK_LOWER"
-  },{
-    "value":79,
-    "kind":"constant",
-    "name":"AE_HIT_BACK_UPPER"
-  },{
-    "value":78,
-    "kind":"constant",
-    "name":"AE_HIT_CHEST"
-  },{
-    "value":93,
-    "kind":"constant",
-    "name":"AE_HIT_FRONT"
-  },{
-    "value":76,
-    "kind":"constant",
-    "name":"AE_HIT_HEAD_BACK"
-  },{
-    "value":75,
-    "kind":"constant",
-    "name":"AE_HIT_HEAD_FRONT"
-  },{
-    "value":95,
-    "kind":"constant",
-    "name":"AE_HIT_LEFT"
-  },{
-    "value":88,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_BACK"
-  },{
-    "value":87,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_FRONT"
-  },{
-    "value":92,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_LEFT_SEVERED"
-  },{
-    "value":86,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_BACK"
-  },{
-    "value":85,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_FRONT"
-  },{
-    "value":91,
-    "kind":"constant",
-    "name":"AE_HIT_LEG_RIGHT_SEVERED"
-  },{
-    "value":96,
-    "kind":"constant",
-    "name":"AE_HIT_RIGHT"
-  },{
-    "value":84,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_LEFT_BACK"
-  },{
-    "value":83,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_LEFT_FRONT"
-  },{
-    "value":82,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_RIGHT_BACK"
-  },{
-    "value":81,
-    "kind":"constant",
-    "name":"AE_HIT_SHOULDER_RIGHT_FRONT"
-  },{
-    "value":77,
-    "kind":"constant",
-    "name":"AE_HIT_STOMACH"
-  },{
-    "value":174,
+    "value":36,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":176,
+    "value":38,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":173,
+    "value":35,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":175,
+    "value":37,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
-    "value":161,
-    "kind":"constant",
-    "name":"AE_KEYFIELD_SOUND"
-  },{
-    "value":72,
-    "kind":"constant",
-    "name":"AE_LOCK_STATE_CHANGED"
-  },{
-    "value":158,
-    "kind":"constant",
-    "name":"AE_MANTLE_GRAB"
-  },{
-    "value":157,
-    "kind":"constant",
-    "name":"AE_MANTLE_LEAP"
-  },{
-    "value":49,
-    "kind":"constant",
-    "name":"AE_MARINE_FOOTSTEP"
-  },{
-    "value":50,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_A"
-  },{
-    "value":51,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_B"
-  },{
-    "value":52,
-    "kind":"constant",
-    "name":"AE_MARINE_RELOAD_SOUND_C"
-  },{
-    "value":131,
-    "kind":"constant",
-    "name":"AE_MELEE_FORCE_START_WEAPON_TRAIL"
-  },{
-    "value":132,
-    "kind":"constant",
-    "name":"AE_MELEE_FORCE_STOP_WEAPON_TRAIL"
-  },{
-    "value":129,
-    "kind":"constant",
-    "name":"AE_MELEE_START_COLLISION_DAMAGE"
-  },{
-    "value":130,
-    "kind":"constant",
-    "name":"AE_MELEE_STOP_COLLISION_DAMAGE"
-  },{
-    "value":22,
+    "value":15,
     "kind":"constant",
     "name":"AE_MUZZLEFLASH"
   },{
-    "value":6,
-    "kind":"constant",
-    "name":"AE_NPC_180TURN"
-  },{
-    "value":27,
-    "kind":"constant",
-    "name":"AE_NPC_ADDGESTURE"
-  },{
-    "value":29,
-    "kind":"constant",
-    "name":"AE_NPC_ATTACK_BROADCAST"
-  },{
-    "value":4,
-    "kind":"constant",
-    "name":"AE_NPC_BODYDROP_HEAVY"
-  },{
-    "value":3,
-    "kind":"constant",
-    "name":"AE_NPC_BODYDROP_LIGHT"
-  },{
-    "value":13,
-    "kind":"constant",
-    "name":"AE_NPC_DRAW"
-  },{
-    "value":181,
-    "kind":"constant",
-    "name":"AE_NPC_GIB"
-  },{
-    "value":12,
-    "kind":"constant",
-    "name":"AE_NPC_HOLSTER"
-  },{
-    "value":30,
-    "kind":"constant",
-    "name":"AE_NPC_HURT_INTERACTION_PARTNER"
-  },{
-    "value":7,
-    "kind":"constant",
-    "name":"AE_NPC_ITEM_PICKUP"
-  },{
-    "value":1,
-    "kind":"constant",
-    "name":"AE_NPC_LEFTFOOT"
-  },{
-    "value":23,
+    "value":16,
     "kind":"constant",
     "name":"AE_NPC_MUZZLEFLASH"
   },{
-    "value":26,
-    "kind":"constant",
-    "name":"AE_NPC_RAGDOLL"
-  },{
-    "value":28,
-    "kind":"constant",
-    "name":"AE_NPC_RESTARTGESTURE"
-  },{
-    "value":2,
-    "kind":"constant",
-    "name":"AE_NPC_RIGHTFOOT"
-  },{
-    "value":31,
-    "kind":"constant",
-    "name":"AE_NPC_SET_INTERACTION_CANTDIE"
-  },{
-    "value":5,
-    "kind":"constant",
-    "name":"AE_NPC_SWISHSOUND"
-  },{
-    "value":8,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_DROP"
-  },{
-    "value":14,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_FIRE"
-  },{
-    "value":185,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_FIRE_SHARED"
-  },{
-    "value":11,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_ACTIVITY"
-  },{
-    "value":9,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_SEQUENCE_NAME"
-  },{
-    "value":10,
-    "kind":"constant",
-    "name":"AE_NPC_WEAPON_SET_SEQUENCE_NUMBER"
-  },{
-    "value":59,
-    "kind":"constant",
-    "name":"AE_OPTIONAL_END"
-  },{
-    "value":63,
-    "kind":"constant",
-    "name":"AE_PICKUP_CHARGING"
-  },{
-    "value":62,
-    "kind":"constant",
-    "name":"AE_PICKUP_CLIPIN"
-  },{
-    "value":64,
-    "kind":"constant",
-    "name":"AE_PICKUP_FASSIST"
-  },{
-    "value":151,
-    "kind":"constant",
-    "name":"AE_PICK_UP_ITEM"
-  },{
-    "value":37,
+    "value":25,
     "kind":"constant",
     "name":"AE_RAGDOLL"
   },{
-    "value":66,
-    "kind":"constant",
-    "name":"AE_RELOAD_CLIPIN"
-  },{
-    "value":65,
-    "kind":"constant",
-    "name":"AE_RELOAD_CLIPOUT"
-  },{
-    "value":68,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPIN"
-  },{
-    "value":69,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPIN2"
-  },{
-    "value":67,
-    "kind":"constant",
-    "name":"AE_RELOAD_EMPTY_CLIPOUT"
-  },{
-    "value":71,
-    "kind":"constant",
-    "name":"AE_RELOAD_PUMPEND"
-  },{
-    "value":70,
-    "kind":"constant",
-    "name":"AE_RELOAD_SHELL_INSERT"
-  },{
-    "value":53,
-    "kind":"constant",
-    "name":"AE_REMOVE_CLIENT_AIM"
-  },{
-    "value":165,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CANINTERRUPT"
-  },{
-    "value":171,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_END"
-  },{
-    "value":170,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_CUSTOMINTERRUPT_START"
-  },{
-    "value":167,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_DEAD"
-  },{
-    "value":166,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_FIREEVENT"
-  },{
-    "value":169,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_FIRE_INPUT"
-  },{
-    "value":164,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_NOINTERRUPT"
-  },{
-    "value":168,
-    "kind":"constant",
-    "name":"AE_SCRIPT_EVENT_NOT_DEAD"
-  },{
-    "value":149,
-    "kind":"constant",
-    "name":"AE_SHEATHE_WEAPONS"
-  },{
-    "value":61,
-    "kind":"constant",
-    "name":"AE_SHOW_WEAPON"
-  },{
-    "value":163,
-    "kind":"constant",
-    "name":"AE_SOUND_EMITTED"
-  },{
-    "value":19,
+    "value":13,
     "kind":"constant",
     "name":"AE_START_SCRIPTED_EFFECT"
   },{
-    "value":20,
+    "value":14,
     "kind":"constant",
     "name":"AE_STOP_SCRIPTED_EFFECT"
   },{
-    "value":41,
+    "value":29,
     "kind":"constant",
     "name":"AE_SV_BODYGROUP_SET_VALUE"
   },{
-    "value":32,
+    "value":17,
     "kind":"constant",
     "name":"AE_SV_DUSTTRAIL"
   },{
-    "value":98,
-    "kind":"constant",
-    "name":"AE_SV_FOOTSTEP_LEFT"
-  },{
-    "value":99,
-    "kind":"constant",
-    "name":"AE_SV_FOOTSTEP_RIGHT"
-  },{
-    "value":17,
+    "value":4,
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND"
   },{
-    "value":24,
-    "kind":"constant",
-    "name":"AE_THUMPER_THUMP"
-  },{
-    "value":153,
-    "kind":"constant",
-    "name":"AE_TOSS_ITEM"
-  },{
-    "value":73,
-    "kind":"constant",
-    "name":"AE_TUG_INCAP"
-  },{
-    "value":111,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR1"
-  },{
-    "value":112,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2"
-  },{
-    "value":126,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2_ALTFIRE"
-  },{
-    "value":117,
-    "kind":"constant",
-    "name":"AE_WEAPON_AR2_GRENADE"
-  },{
-    "value":113,
-    "kind":"constant",
-    "name":"AE_WEAPON_HMG1"
-  },{
-    "value":106,
-    "kind":"constant",
-    "name":"AE_WEAPON_MELEE_HIT"
-  },{
-    "value":108,
-    "kind":"constant",
-    "name":"AE_WEAPON_MELEE_SWISH"
-  },{
-    "value":115,
-    "kind":"constant",
-    "name":"AE_WEAPON_MISSILE_FIRE"
-  },{
-    "value":119,
-    "kind":"constant",
-    "name":"AE_WEAPON_PISTOL_FIRE"
-  },{
-    "value":120,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD"
-  },{
-    "value":123,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD_FILL_CLIP"
-  },{
-    "value":122,
-    "kind":"constant",
-    "name":"AE_WEAPON_RELOAD_SOUND"
-  },{
-    "value":127,
-    "kind":"constant",
-    "name":"AE_WEAPON_SEQUENCE_FINISHED"
-  },{
-    "value":109,
-    "kind":"constant",
-    "name":"AE_WEAPON_SHOTGUN_FIRE"
-  },{
-    "value":156,
-    "kind":"constant",
-    "name":"AE_WEAPON_SLAM_GROUND"
-  },{
-    "value":107,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1"
-  },{
-    "value":124,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1_BURST1"
-  },{
-    "value":125,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG1_BURSTN"
-  },{
-    "value":114,
-    "kind":"constant",
-    "name":"AE_WEAPON_SMG2"
-  },{
-    "value":116,
-    "kind":"constant",
-    "name":"AE_WEAPON_SNIPER_RIFLE_FIRE"
-  },{
-    "value":110,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW"
-  },{
-    "value":118,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW2"
-  },{
-    "value":121,
-    "kind":"constant",
-    "name":"AE_WEAPON_THROW3"
-  },{
-    "value":45,
-    "kind":"constant",
-    "name":"AE_WPN_HIDE"
-  },{
-    "value":44,
-    "kind":"constant",
-    "name":"AE_WPN_INCREMENTAMMO"
-  },{
-    "value":47,
+    "value":32,
     "kind":"constant",
     "name":"AE_WPN_PLAYWPNSOUND"
   },{
-    "value":43,
+    "value":31,
     "kind":"constant",
     "name":"AE_WPN_PRIMARYATTACK"
-  },{
-    "value":46,
-    "kind":"constant",
-    "name":"AE_WPN_UNHIDE"
   },{
     "value":5,
     "kind":"constant",
@@ -35410,10 +34696,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"DMG_ACID"
   },{
-    "value":33554432,
-    "kind":"constant",
-    "name":"DMG_AIRBOAT"
-  },{
     "value":8192,
     "kind":"constant",
     "name":"DMG_ALWAYSGIB"
@@ -35421,14 +34703,6 @@ Initializing script VM...
     "value":64,
     "kind":"constant",
     "name":"DMG_BLAST"
-  },{
-    "value":134217728,
-    "kind":"constant",
-    "name":"DMG_BLAST_SURFACE"
-  },{
-    "value":536870912,
-    "kind":"constant",
-    "name":"DMG_BUCKSHOT"
   },{
     "value":2,
     "kind":"constant",
@@ -35445,14 +34719,6 @@ Initializing script VM...
     "value":1,
     "kind":"constant",
     "name":"DMG_CRUSH"
-  },{
-    "value":268435456,
-    "kind":"constant",
-    "name":"DMG_DIRECT"
-  },{
-    "value":67108864,
-    "kind":"constant",
-    "name":"DMG_DISSOLVE"
   },{
     "value":16384,
     "kind":"constant",
@@ -35614,6 +34880,11 @@ Initializing script VM...
     "value":2097152,
     "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "value":0,
+    "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "value":2048,
@@ -36336,7 +35607,7 @@ Initializing script VM...
     "name":"DOTA_SPEECH_GOOD_TEAM"
   },{
     "enum":"DOTASpeechType_t",
-    "value":9,
+    "value":10,
     "kind":"constant",
     "name":"DOTA_SPEECH_RECIPIENT_TYPE_MAX"
   },{
@@ -36374,6 +35645,11 @@ Initializing script VM...
     "value":3,
     "kind":"constant",
     "name":"DOTA_SPEECH_USER_TEAM_NEARBY"
+  },{
+    "enum":"DOTASpeechType_t",
+    "value":9,
+    "kind":"constant",
+    "name":"DOTA_SPEECH_USER_TEAM_NOSPECTATOR"
   },{
     "enum":"DOTATeam_t",
     "value":3,
@@ -36657,7 +35933,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"EMPTY"
   },{
-    "value":15,
+    "value":16,
     "kind":"constant",
     "name":"FASTRELOAD"
   },{
@@ -36786,6 +36062,10 @@ Initializing script VM...
     "value":9,
     "kind":"constant",
     "name":"MELEE_HIT"
+  },{
+    "value":11,
+    "kind":"constant",
+    "name":"MELEE_HIT_PLAYER"
   },{
     "value":10,
     "kind":"constant",
@@ -38591,15 +37871,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"SPAWN_GROUP_HANDLE_INVALID"
   },{
-    "value":11,
+    "value":12,
     "kind":"constant",
     "name":"SPECIAL1"
   },{
-    "value":12,
+    "value":13,
     "kind":"constant",
     "name":"SPECIAL2"
   },{
-    "value":13,
+    "value":14,
     "kind":"constant",
     "name":"SPECIAL3"
   },{
@@ -38623,7 +37903,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ScriptDebugWatchFistLine"
   },{
-    "value":14,
+    "value":15,
     "kind":"constant",
     "name":"TAUNT"
   },{
@@ -38772,13 +38052,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1756,
+    "value":1759,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
-  },{
-    "value":1753,
-    "kind":"constant",
-    "name":"wr_arc_debut_camera"
   },{
     "members":[{
         "args":[{
@@ -38913,6 +38189,11 @@ Initializing script VM...
     "instance":"GameRules",
     "members":[{
         "args":[],
+        "returns":"table",
+        "name":"GetBannedHeroes",
+        "description":"Returns the hero unit names banned in this game, if any"
+      },{
+        "args":[],
         "returns":"int",
         "name":"GetCustomGameDifficulty",
         "description":"Returns the difficulty level of the custom game mode"
@@ -38940,6 +38221,39 @@ Initializing script VM...
         "returns":"float",
         "name":"GetGameTime",
         "description":"Returns the number of seconds elapsed since map start. This time doesn't count up when the game is paused"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"GetItemStockCount",
+        "description":"Get the stock count of the item"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"float",
+        "name":"GetItemStockDuration",
+        "description":"Get the time it takes to add a new item to stock"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"int"
+          }],
+        "returns":"float",
+        "name":"GetItemStockTime",
+        "description":"Get the time an item will be added to stock"
       },{
         "args":[],
         "returns":"Vector",
@@ -40363,6 +39677,10 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"int",
+        "name":"GetMaxHealth"
+      },{
+        "args":[],
+        "returns":"int",
         "name":"GetTeamNumber"
       },{
         "args":[{
@@ -40411,6 +39729,10 @@ Initializing script VM...
         "args":[],
         "returns":"handle",
         "name":"GetCaster"
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetCurrentAbilityCharges"
       },{
         "args":[],
         "returns":"int",
@@ -40493,7 +39815,7 @@ Initializing script VM...
         "description":"Allows code overriding of the ability texture shown in the HUD."
       },{
         "args":[],
-        "returns":"int",
+        "returns":"uint64",
         "name":"GetBehavior",
         "description":"Return cast behavior type of this ability."
       },{
@@ -40618,6 +39940,14 @@ Initializing script VM...
         "returns":"int",
         "name":"GetCurrentVisionRange",
         "description":"Gets the current vision range."
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetDamageMax"
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetDamageMin"
       },{
         "args":[],
         "returns":"int",
@@ -41052,6 +40382,10 @@ Initializing script VM...
     "extend":"C_DOTA_BaseNPC"
   },{
     "members":[{
+        "args":[],
+        "returns":"bool",
+        "name":"CanOnlyPlayerHeroPickup"
+      },{
         "args":[],
         "returns":"int",
         "name":"GetCurrentCharges"
