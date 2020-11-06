@@ -440,6 +440,9 @@ apiTypesDeclarations.push({
     { name: 'ranged_attack', types: ['bool'] },
     { name: 'target', types: ['CDOTA_BaseNPC'] },
     { name: 'unit', types: ['CDOTA_BaseNPC', 'nil'] },
+    { name: 'no_attack_cooldown', types: ['bool'] },
+    { name: 'record', types: ['int'] }, // TODO: Add attack record type?
+    { name: 'fail_type', types: ['attackfail'] },
   ],
 });
 
