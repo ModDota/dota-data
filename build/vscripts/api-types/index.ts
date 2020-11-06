@@ -282,8 +282,8 @@ apiTypesDeclarations.push({
         'When enabled replaces existing projectile from the ability. Does not destroy the particle.\n@default false',
     },
     // https://github.com/SteamDatabase/GameTracking-Dota2/blob/54e1f818cd61c23874f09d52f0c2b8b87b24e709/game/dota_addons/aghanim/scripts/vscripts/abilities/creatures/aghanim_staff_beams.lua#L72-L73
-    { name: 'bIgnoreObstructions', types: ['bool'] },
-    { name: 'bSuppressTargetCheck', types: ['bool'] },
+    { name: 'bIgnoreObstructions', types: ['bool', 'nil'] },
+    { name: 'bSuppressTargetCheck', types: ['bool', 'nil'] },
 
     // Appearance
     { name: 'iSourceAttachment', types: ['DOTAProjectileAttachment_t', 'nil'] },
