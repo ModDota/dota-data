@@ -8,9 +8,9 @@ export { api, enums };
 export type AllDataType = api.Declaration | enums.Declaration;
 export const allData: AllDataType[] = [...api, ...enums];
 
+const dataAndTypes = [...allData, ...apiTypes];
 export const findTypeByName = (name: string): AllDataType | apiTypes.Declaration | undefined =>
-  // TODO: Throw when not found?
-  allData.find((x) => x.name === name);
+  dataAndTypes.find((x) => x.name === name);
 
 export const getFuncDeepTypes = (func: api.FunctionType): string[] =>
   getDeepTypes([...func.args.flatMap((x) => x.types), ...func.returns]);
