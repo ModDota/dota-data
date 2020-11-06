@@ -702,6 +702,38 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       4: [null, 'table'],
     },
   },
+  'CDOTA_BaseNPC.QueueTeamConcept': {
+    args: {
+      2: [
+        null,
+        func(
+          [
+            ['didActuallySpeak', 'bool'],
+            ['callbackInfo', 'table'],
+          ],
+          'nil',
+        ),
+      ],
+      3: [null, 'table'],
+      4: [null, 'table'],
+    },
+  },
+  'CDOTA_BaseNPC.QueueTeamConceptNoSpectators': {
+    args: {
+      2: [
+        null,
+        func(
+          [
+            ['didActuallySpeak', 'bool'],
+            ['callbackInfo', 'table'],
+          ],
+          'nil',
+        ),
+      ],
+      3: [null, 'table'],
+      4: [null, 'table'],
+    },
+  },
   '_G.CreateModifierThinker': {
     args: {
       '0': [null, ['CDOTA_BaseNPC', 'nil']],
@@ -747,6 +779,86 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.ManuallyTriggerSpawnGroupCompletion': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
   '_G.UnloadSpawnGroupByHandle': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
   'CBaseEntity.GetSpawnGroupHandle': { returns: 'SpawnGroupHandle' },
+  'CDOTABaseAbility.RefreshIntrinsicModifier': {
+    returns: 'bool',
+    description: 'Returns true if ability has intrinsic modifier.',
+  },
+  'CDOTABaseAbility.GetBehavior': { returns: 'DOTA_ABILITY_BEHAVIOR' },
+  'CDOTABaseAbility.GetBehaviorInt': { returns: 'DOTA_ABILITY_BEHAVIOR' },
+  'CDOTA_BaseNPC.RemoveAllModifiers': {
+    description: '',
+    args: {
+      0: [null, [literal(0), literal(1), literal(2)], '0=all, 1=enemy, 2=ally'],
+    },
+  },
+  'CDOTAGamerules.GetBannedHeroes': { returns: array('string') },
+  'ProjectileManager.IsValidProjectile': { args: { 0: ['value'] } },
+  '_G.IsMangoTree': { args: { 0: ['entity', 'CBaseEntity'] } },
+  '_G.GetPotentialNeutralItemDrop': { args: { 0: ['tier'], 1: ['team', 'DOTATeam_t'] } },
+  'CDOTA_BaseNPC_Hero.GetReplicatingOtherHero': {
+    description: 'If hero is under Replicate effect, returns original hero entity.',
+    returns: ['CDOTA_BaseNPC_Hero', 'nil'],
+  },
+  'CDOTA_BaseNPC_Hero.ModifyGoldFiltered': {
+    // TODO: Detect "Args: " pattern?
+    description: 'Gives this hero some gold, using the gold filter if extra filtering is on.',
+    args: { 1: ['reliable'], 2: [null, 'EDOTA_ModifyGold_Reason'] },
+  },
+  'CDOTAGamerules.ModifyGoldFiltered': {
+    args: {
+      0: ['playerId'],
+      1: ['goldChange'],
+      2: ['reliable'],
+      3: ['reason', 'EDOTA_ModifyGold_Reason'],
+    },
+  },
+  'CDOTAGamerules.ExecuteTeamPing': {
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['xCoord'],
+      2: ['yCoord'],
+      3: ['entity', ['CBaseEntity', 'nil']],
+      4: [
+        'type',
+        [literal(0), literal(1), literal(2), literal(3), literal(4), literal(5), literal(6)],
+      ],
+    },
+  },
+  'CDOTAGamerules.GetItemStockCount': {
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['itemName'],
+      2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
+    },
+  },
+  'CDOTAGamerules.GetItemStockDuration': {
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['itemName'],
+      2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
+    },
+  },
+  'CDOTAGamerules.GetItemStockTime': {
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['itemName'],
+      2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
+    },
+  },
+  'CDOTAGamerules.SetItemStockCount': {
+    args: {
+      0: ['count'],
+      1: ['team', 'DOTATeam_t'],
+      2: ['itemName'],
+      3: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
+    },
+  },
+  'CDOTAGamerules.SetGlyphCooldown': {
+    args: {
+      0: ['team', 'DOTATeam_t'],
+      1: ['cooldown'],
+    },
+  },
 };
 
 export const extraDeclarations = (() => {
