@@ -2,8 +2,7 @@ import assert from 'assert';
 import { formatDescription, getFile, outputFile, outputJson } from '../util';
 import { Event, types } from './types';
 
-function parseFile(content: string) {
-  const events: Record<string, Event> = {};
+function parseFile(events: Record<string, Event>, content: string, sourceFile: string) {
   let parsingName: string | undefined;
 
   content
@@ -24,9 +23,22 @@ function parseFile(content: string) {
 
       if (parsingName == null) {
         [, parsingName] = value.match(/"(.+)"/)!;
-        events[parsingName] = { description, local: false, fields: [] };
+        events[parsingName] ??= {
+          name: parsingName,
+          sourceFile,
+          description,
+          local: false,
+          fields: [],
+        };
+        events[parsingName].sourceFile = sourceFile;
       } else {
         let [, name, type] = value.match(/^"(.+?)"\s*"(.+?)"/)!;
+
+        const existingField = events[parsingName].fields.find((f) => f.name === name);
+        if (existingField) {
+          existingField.description ??= description;
+          return;
+        }
 
         if (name === 'local') {
           events[parsingName].local = type === '1';
@@ -44,24 +56,24 @@ function parseFile(content: string) {
         events[parsingName].fields.push({ name, description, type });
       }
     });
-
-  return events;
 }
 
 export async function generateEvents() {
-  const fileNames = [
-    'game/core/pak01_dir/resource/core.gameevents',
-    'game/dota/pak01_dir/resource/game.gameevents',
-    'game/dota/pak01_dir/resource/port.gameevents',
-  ];
-
   const files = await Promise.all(
-    fileNames.map(async (fileName) => ({
-      name: fileName.match(/resource\/(.+)\.gameevents$/)![1],
-      content: parseFile(await getFile(fileName)),
-    })),
+    [
+      'game/core/pak01_dir/resource/core.gameevents',
+      'game/dota/pak01_dir/resource/game.gameevents',
+      'game/dota/pak01_dir/resource/port.gameevents',
+    ].map(async (fileName) => [fileName, await getFile(fileName)] as const),
   );
 
-  const events = Object.fromEntries(files.map(({ name, content }) => [name, content]));
-  await Promise.all([outputJson('events', events), outputFile('events.d.ts', types)]);
+  const events: Record<string, Event> = {};
+  for (const [fileName, content] of files) {
+    parseFile(events, content, fileName.match(/resource\/(.+)\.gameevents$/)![1]);
+  }
+
+  await Promise.all([
+    outputJson('events', Object.values(events)),
+    outputFile('events.d.ts', types),
+  ]);
 }

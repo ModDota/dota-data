@@ -2,6 +2,8 @@ import { exportNamespacedRoot } from '../util';
 
 // EXPORT START
 export interface Event {
+  name: string;
+  sourceFile: string;
   description?: string;
   local: boolean;
   fields: EventField[];
@@ -14,8 +16,4 @@ export interface EventField {
 }
 // EXPORT END
 
-export const types = exportNamespacedRoot(
-  __filename,
-  'events',
-  'Record<string, Record<string, events.Event>>',
-);
+export const types = exportNamespacedRoot(__filename, 'events', 'events.Event[]');
