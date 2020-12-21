@@ -13,10 +13,6 @@ describe('integration', () => {
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum',
       'satyr_soulstealer_mana_burn.Modelscale is unknown',
-
-      // Incorrect spacing, TODO: allow?
-      'tiny_tree_channel.AbilityBehavior[0] should be a AbilityBehavior enum',
-      'clinkz_scepter.AbilityBehavior[2] should be a AbilityBehavior enum',
     ],
   });
 
@@ -28,8 +24,11 @@ describe('integration', () => {
 
     ignore: [
       'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum',
+      // Item removed and cost made an empty string
+      'item_recipe_hood_of_defiance.ItemCost should be an integer',
       // TODO: Is Nf valid for floats or it's a typo?
-      'item_armlet.AbilitySpecial.11.toggle_cooldown[0] should be a number',
+      'item_armlet.AbilitySpecial.10.toggle_cooldown[0] should be a number',
+      // TODO they used .mdl here, should we allow it?
       'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/',
       // TODO: Should flag enums allow empty string?
       'item_ring_of_aquila.ItemShareability should be a ItemShareability enum',
@@ -39,19 +38,16 @@ describe('integration', () => {
   1. item_recipe_trident.ItemRecipe should be "0"
      item_recipe_trident.ItemResult is unknown
      item_recipe_trident.ItemRequirements is unknown
-  2. item_recipe_trident.ItemRequirements.01 should match pattern: /^(\\w+;)*\\w+$/
-     item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+;)*\\w+$/
-     item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+;)*\\w+$/
-     item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+;)*\\w+$/`,
+  2. item_recipe_trident.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
+     item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
+     item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
+     item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/`,
 
       `item_recipe_fallen_sky not matches any of:
-  1. item_recipe_fallen_sky.ItemRequirements.01 should match pattern: /^(\\w+;)*\\w+$/
+  1. item_recipe_fallen_sky.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
   2. item_recipe_fallen_sky.ItemRecipe should be "0"
      item_recipe_fallen_sky.ItemResult is unknown
      item_recipe_fallen_sky.ItemRequirements is unknown`,
-
-      // Incorrect spacing, TODO: allow?
-      'item_horizon.AbilityBehavior[1] should be a AbilityBehavior enum',
     ],
   });
 

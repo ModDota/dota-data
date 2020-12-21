@@ -21,8 +21,12 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('AbilityUnitTargetFlags', s.enums('UnitTargetFlags').flags())
 
     .field('HasScepterUpgrade', s.binaryBoolean())
+    .field('HasShardUpgrade', s.binaryBoolean())
+    .field('IsShardUpgrade', s.binaryBoolean())
+    .field('IsGrantedByShard', s.binaryBoolean())
     .field('AbilityDraftUltScepterAbility', s.str().pattern(resourcePatterns.ability))
     .field('AbilityDraftUltScepterPreAbility', s.str().pattern(resourcePatterns.ability))
+    .field('AbilityDraftUltShardAbility', s.str().pattern(resourcePatterns.ability))
     .field('OnCastbar', s.binaryBoolean())
     .field('OnLearnbar', s.binaryBoolean())
     .field('FightRecapLevel', s.int())
@@ -159,6 +163,9 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ActiveDescriptionLine', s.int().min(1))
     .field('ItemCastOnPickup', s.binaryBoolean())
     .field('PingOverrideText', s.str())
+    .field('InvalidHeroes', s.str().pattern(resourcePatterns.hero))
+    .field('DisplayOverheadAlertOnReceived', s.literal(0))
+    .field('ItemInitialStockTimeTurbo', s.num().min(0))
 
     // TODO: Used only in `seasonal_ti9_banner`
     .field('UnlockMinEffectIndex', s.int().min(0))

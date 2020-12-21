@@ -23,6 +23,7 @@ const portrait = s
   .field('PortraitSpecularDirection', s.vector())
   .field('PortraitSpecularPower', s.int())
   .field('PortraitParticle', s.str().pattern(resourcePatterns.particles))
+  .field('PortraitVignetteItem', s.literal(0))
 
   // At least one of them is required?
   .field('PortraitBackgroundTexture', s.str().pattern(resourcePatterns.materials))
