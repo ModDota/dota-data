@@ -2,7 +2,7 @@
   "name": "dota-data",
   "version": "0.13.0",
   "description": "Auto-generated Dota 2 resource dumps",
-  "repository": "https://github.com/ark120202/dota-data",
+  "repository": "https://github.com/ModDota/dota-data",
   "license": "Apache-2.0",
   "author": "ark120202",
   "files": [
