@@ -1,5 +1,6 @@
 name: Publish to GitHub registry
 on:
+  workflow_dispatch:
   release:
     types: [created]
 jobs:
