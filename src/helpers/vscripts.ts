@@ -28,6 +28,7 @@ export function getDeepTypes(types: api.Type[]): string[] {
       type.value.forEach(walkType);
     } else if (type.kind === 'array') {
       type.types.forEach(walkType);
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     } else if (type.kind === 'function') {
       getFuncDeepTypes(type).forEach((t) => allTypes.add(t));
     } else {
