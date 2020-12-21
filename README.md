@@ -19,3 +19,5 @@ Auto-generated Dota 2 resource dumps.
 10. Up the version in the package.json and commit changes again
 11. Create a new git tag (e.g. `git tag -a v0.14.0 -m "v0.14.0"`)
 12. Push with tags
+13. Trigger `Publish` workflow on the repository (TODO: figure out how to do that automatically on
+    package.json version change)
