@@ -1,5 +1,5 @@
 {
-  "name": "dota-data",
+  "name": "@moddota/dota-data",
   "version": "0.14.0",
   "description": "Auto-generated Dota 2 resource dumps",
   "repository": "https://github.com/ModDota/dota-data",
