@@ -741,7 +741,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       '3': [null, ['table', 'nil']],
       '5': [null, 'DOTATeam_t'],
     },
-    returns: 'CDOTA_BaseNPC'
+    returns: 'CDOTA_BaseNPC',
   },
   '_G.CreateUniformRandomStream': { returns: 'CScriptUniformRandomStream' },
   '_G.ExecuteOrderFromTable': { args: { 0: ['order', 'ExecuteOrderOptions'] } },
