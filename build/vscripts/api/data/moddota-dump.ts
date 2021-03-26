@@ -610,6 +610,13 @@ Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsyn
       '6': ['callback', func([['unit', 'CDOTA_BaseNPC']], 'nil')],
     },
   },
+  '_G.CreateUnitFromTable': {
+    args: {
+      '0': ['options', ['CreateUnitFromTableOptions']],
+      '1': ['location', ['Vector']],
+    },
+    returns: 'CDOTA_BaseNPC',
+  },
   '_G.DoCleaveAttack': {
     args: {
       0: ['attacker', 'CDOTA_BaseNPC'],

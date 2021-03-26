@@ -466,6 +466,38 @@ apiTypesDeclarations.push({
   ],
 });
 
+apiTypesDeclarations.push({
+  kind: 'object',
+  name: 'SpawnEntityFromTableOptions',
+  fields: [
+    { name: 'origin', types: ['string', 'Vector', 'nil'] },
+    { name: 'angles', types: ['string', 'QAngle', 'nil'] },
+    { name: 'scales', types: ['string', 'Vector', 'nil'] },
+    { name: 'targetname', types: ['string', 'nil'] },
+    { name: 'vscripts', types: ['string', 'nil'] },
+  ],
+});
+
+apiTypesDeclarations.push({
+  kind: 'object',
+  name: 'CreateUnitFromTableOptions',
+  extend: ['SpawnEntityFromTableOptions'],
+  fields: [
+    { name: 'MapUnitName', types: ['string'] },
+    { name: 'teamnumber', types: ['DOTATeam_t', 'nil'] },
+    { name: 'modelscale', types: ['number', 'nil'] },
+    {
+      name: 'initial_waypoint',
+      types: ['string', 'nil'],
+      description: 'targetname of path_corner or path_track',
+    },
+    { name: 'EnableAutoStyles', types: ['string', 'nil'] },
+    { name: 'rendercolor', types: ['string', 'nil'], description: 'RGB, example: "255 255 255"' },
+    { name: 'skin', types: ['number', 'nil'] },
+    { name: 'NeverMoveToClearSpace', types: ['boolean', 'nil'] },
+  ],
+});
+
 export function validateApiTypes() {
   for (const declaration of apiTypesDeclarations) {
     switch (declaration.kind) {
