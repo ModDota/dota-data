@@ -485,7 +485,7 @@ apiTypesDeclarations.push({
   fields: [
     { name: 'MapUnitName', types: ['string'] },
     { name: 'teamnumber', types: ['DOTATeam_t', 'nil'] },
-    { name: 'modelscale', types: ['number', 'nil'] },
+    { name: 'modelscale', types: ['int', 'nil'] },
     {
       name: 'initial_waypoint',
       types: ['string', 'nil'],
@@ -493,8 +493,8 @@ apiTypesDeclarations.push({
     },
     { name: 'EnableAutoStyles', types: ['string', 'nil'] },
     { name: 'rendercolor', types: ['string', 'nil'], description: 'RGB, example: "255 255 255"' },
-    { name: 'skin', types: ['number', 'nil'] },
-    { name: 'NeverMoveToClearSpace', types: ['boolean', 'nil'] },
+    { name: 'skin', types: ['int', 'nil'] },
+    { name: 'NeverMoveToClearSpace', types: ['bool', 'nil'] },
   ],
 });
 
