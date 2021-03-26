@@ -10,7 +10,7 @@ export const enums = (() => {
     .map(
       (group): Enum => {
         const enumName = group.match(/Enumeration '(.+?)'/)![1];
-        const members = [...group.matchAll(/^\t.+\.(.+?) = (\d+)(?: \((.+)\))?$/gm)].map(
+        const members = [...group.matchAll(/^\t.+\.(.+?) = (-?\d+)(?: \((.+)\))?$/gm)].map(
           ([, name, value, description]): EnumMember => ({
             name,
             description,
