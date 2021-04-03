@@ -9,8 +9,11 @@ const dump = fs.readFileSync(path.join(__dirname, '../../dumper/dump'), 'utf8');
 export function readDump(name: string) {
   const [, ...groups] = dump.split(/\$> (.+)/g);
   let value = groups[groups.indexOf(name) + 1];
-  // Cut off initializing scripting VM line
-  value = value.slice(value.indexOf('['));
+  if (value.trim().startsWith('Initializing')) {
+    // Cut off initializing scripting VM line
+    value = value.slice(value.indexOf('['));
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (value == null) throw new Error(`Couldn't find dump "${name}"`);
   return value.trim();
