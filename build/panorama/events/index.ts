@@ -24,8 +24,11 @@ function parseDefinition(definition: string) {
 export function generatePanoramaEvents() {
   const dump = readDump('dump_panorama_events');
 
-  const eventDefinitions = dump.split('|-').map(c => c.trim()).slice(1) // Split events and skip header
-    .map(d => d.split(/\r?\n/).map(l => l.slice(2).trim())); // Split each event into its lines and cut off leading |
+  const eventDefinitions = dump
+    .split('|-')
+    .map((c) => c.trim())
+    .slice(1) // Split events and skip header
+    .map((d) => d.split(/\r?\n/).map((l) => l.slice(2).trim())); // Split each event into its lines and cut off leading |
 
   const result = Object.fromEntries(
     eventDefinitions.map(([definition, panelEvent, description]) => {
