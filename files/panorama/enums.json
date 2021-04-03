@@ -134,6 +134,10 @@
       {
         "name": "GameManagedItems",
         "value": 12
+      },
+      {
+        "name": "All",
+        "value": -1
       }
     ]
   },
@@ -872,6 +876,10 @@
   {
     "name": "DOTA_RUNES",
     "members": [
+      {
+        "name": "DOTA_RUNE_INVALID",
+        "value": -1
+      },
       {
         "name": "DOTA_RUNE_DOUBLEDAMAGE",
         "value": 0
@@ -2752,6 +2760,10 @@
     "name": "DOTASlotType_t",
     "members": [
       {
+        "name": "DOTA_LOADOUT_TYPE_INVALID",
+        "value": -1
+      },
+      {
         "name": "DOTA_LOADOUT_TYPE_WEAPON",
         "value": 0
       },
@@ -4577,12 +4589,20 @@
       {
         "name": "DOTA_ATTRIBUTE_MAX",
         "value": 3
+      },
+      {
+        "name": "DOTA_ATTRIBUTE_INVALID",
+        "value": -1
       }
     ]
   },
   {
     "name": "ParticleAttachment_t",
     "members": [
+      {
+        "name": "PATTACH_INVALID",
+        "value": -1
+      },
       {
         "name": "PATTACH_ABSORIGIN",
         "value": 0
@@ -4778,12 +4798,20 @@
       {
         "name": "DOTA_CUSTOM_UI_TYPE_COUNT",
         "value": 8
+      },
+      {
+        "name": "DOTA_CUSTOM_UI_TYPE_INVALID",
+        "value": -1
       }
     ]
   },
   {
     "name": "DotaDefaultUIElement_t",
     "members": [
+      {
+        "name": "DOTA_DEFAULT_UI_INVALID",
+        "value": -1
+      },
       {
         "name": "DOTA_DEFAULT_UI_TOP_TIMEOFDAY",
         "value": 0
@@ -4912,6 +4940,18 @@
       {
         "name": "PLAYER_ULTIMATE_STATE_READY",
         "value": 0
+      },
+      {
+        "name": "PLAYER_ULTIMATE_STATE_NO_MANA",
+        "value": -1
+      },
+      {
+        "name": "PLAYER_ULTIMATE_STATE_NOT_LEVELED",
+        "value": -2
+      },
+      {
+        "name": "PLAYER_ULTIMATE_STATE_HIDDEN",
+        "value": -3
       }
     ]
   },

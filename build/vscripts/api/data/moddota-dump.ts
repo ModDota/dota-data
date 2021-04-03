@@ -476,7 +476,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['particleName'],
       '1': ['particleAttach', 'ParticleAttachment_t'],
-      '2': ['owner', ['CDOTA_BaseNPC', 'nil']],
+      '2': ['owner', ['CBaseEntity', 'nil']],
     },
   },
   'CScriptParticleManager.CreateParticleForPlayer': {
@@ -484,7 +484,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['particleName'],
       '1': ['particleAttach', 'ParticleAttachment_t'],
-      '2': ['owner', ['CDOTA_BaseNPC', 'nil']],
+      '2': ['owner', ['CBaseEntity', 'nil']],
       '3': ['player', 'CDOTAPlayer'],
     },
   },
@@ -493,7 +493,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['particleName'],
       '1': ['particleAttach', 'ParticleAttachment_t'],
-      '2': ['owner', ['CDOTA_BaseNPC', 'nil']],
+      '2': ['owner', ['CBaseEntity', 'nil']],
       '3': ['team', 'DOTATeam_t'],
     },
   },
@@ -509,7 +509,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['particle', 'ParticleID'],
       '1': ['controlPoint'],
-      '2': ['unit', 'CDOTA_BaseNPC'],
+      '2': ['unit', 'CBaseEntity'],
       '3': ['particleAttach', 'ParticleAttachment_t'],
       '4': ['attachment'],
       '5': ['offset'],
@@ -609,6 +609,13 @@ Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsyn
       '5': ['team', 'DOTATeam_t'],
       '6': ['callback', func([['unit', 'CDOTA_BaseNPC']], 'nil')],
     },
+  },
+  '_G.CreateUnitFromTable': {
+    args: {
+      '0': ['options', ['CreateUnitFromTableOptions']],
+      '1': ['location', ['Vector']],
+    },
+    returns: 'CDOTA_BaseNPC',
   },
   '_G.DoCleaveAttack': {
     args: {

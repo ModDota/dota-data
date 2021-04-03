@@ -29989,7 +29989,7 @@
           {
             "name": "owner",
             "types": [
-              "CDOTA_BaseNPC",
+              "CBaseEntity",
               "nil"
             ]
           }
@@ -30019,7 +30019,7 @@
           {
             "name": "owner",
             "types": [
-              "CDOTA_BaseNPC",
+              "CBaseEntity",
               "nil"
             ]
           },
@@ -30055,7 +30055,7 @@
           {
             "name": "owner",
             "types": [
-              "CDOTA_BaseNPC",
+              "CBaseEntity",
               "nil"
             ]
           },
@@ -30198,7 +30198,7 @@
           {
             "name": "unit",
             "types": [
-              "CDOTA_BaseNPC"
+              "CBaseEntity"
             ]
           },
           {
@@ -32738,7 +32738,7 @@
     "available": "server",
     "description": "Create a modifier not associated with an NPC.",
     "returns": [
-      "handle"
+      "CDOTA_BaseNPC"
     ],
     "args": [
       {
@@ -33074,17 +33074,17 @@
     "available": "server",
     "description": "Creates a DOTA unit by its dota_npc_units.txt name from a table of entity key values and a position to spawn at.",
     "returns": [
-      "handle"
+      "CDOTA_BaseNPC"
     ],
     "args": [
       {
-        "name": "arg1",
+        "name": "options",
         "types": [
-          "handle"
+          "CreateUnitFromTableOptions"
         ]
       },
       {
-        "name": "arg2",
+        "name": "location",
         "types": [
           "Vector"
         ]
