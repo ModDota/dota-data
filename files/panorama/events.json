@@ -1,0 +1,829 @@
+{
+  "AddStyle": {
+    "description": "Add a CSS class to a panel.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "AddStyleAfterDelay": {
+    "description": "Add a CSS class to a panel after a specified delay.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      },
+      {
+        "name": "preDelay",
+        "type": "float"
+      }
+    ]
+  },
+  "AddStyleToEachChild": {
+    "description": "Add a CSS class to all children of this panel.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "AddTimedStyle": {
+    "description": "Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "float"
+      },
+      {
+        "name": "preDelay",
+        "type": "float"
+      }
+    ]
+  },
+  "AsyncEvent": {
+    "description": "Fire another event after a delay (in seconds).",
+    "panelEvent": false,
+    "args": [
+      {
+        "name": "delay",
+        "type": "float"
+      },
+      {
+        "name": "eventToFire",
+        "type": "event"
+      }
+    ]
+  },
+  "DOTADisplayDashboardTip": {
+    "description": "Tip to display, panel to attach to (default 'DefaultTipAttachment')",
+    "panelEvent": false,
+    "args": [
+      {
+        "name": "string",
+        "type": "string"
+      },
+      {
+        "name": "optional",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAHideAbilityTooltip": {
+    "description": "Hide the ability tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideBuffTooltip": {
+    "description": "Hide the buff tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideDroppedItemTooltip": {
+    "description": "Hide the dropped item tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideEconItemTooltip": {
+    "description": "Hide the econ item tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideProfileCardBattleCupTooltip": {
+    "description": "Hide the profile card / battle cup tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideProfileCardTooltip": {
+    "description": "Hide the profile card tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideRankTierTooltip": {
+    "description": "Hide the rank tier tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideRuneTooltip": {
+    "description": "Hide the rune tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideTextTooltip": {
+    "description": "Hide the text tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideTI10EventGameTooltip": {
+    "description": "Hide the ti10 event game tooltip",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideTitleImageTextTooltip": {
+    "description": "Hide the title image text tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTAHideTitleTextTooltip": {
+    "description": "Hide the title text tooltip.",
+    "panelEvent": true,
+    "args": []
+  },
+  "DOTALiveStreamUpcoming": {
+    "description": "Notify change in RTime32 we expect the stream to start",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "time",
+        "type": "uint32"
+      }
+    ]
+  },
+  "DOTALiveStreamVideoLive": {
+    "description": "Notify change in video state (is it pointing at a live stream page or not)",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "isLive",
+        "type": "bool"
+      }
+    ]
+  },
+  "DOTAShowAbilityInventoryItemTooltip": {
+    "description": "Show tooltip for an item in the entityIndex NPC's inventory.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "entityIndex",
+        "type": "int32"
+      },
+      {
+        "name": "inventorySlot",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowAbilityShopItemTooltip": {
+    "description": "Show tooltip for an item in the entityIndex NPC's shop.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "guideName",
+        "type": "string"
+      },
+      {
+        "name": "entityIndex",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowAbilityTooltip": {
+    "description": "Show an ability tooltip.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowAbilityTooltipForEntityIndex": {
+    "description": "Show an ability tooltip. Level information comes from the entity specified by the entityIndex.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "entityIndex",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowAbilityTooltipForGuide": {
+    "description": "Show an ability tooltip annotated with a particular guide's info.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "guideName",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowAbilityTooltipForHero": {
+    "description": "Show an ability tooltip for the specified hero.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "heroid",
+        "type": "int32"
+      },
+      {
+        "name": "arg3",
+        "type": "bool"
+      }
+    ]
+  },
+  "DOTAShowAbilityTooltipForLevel": {
+    "description": "Show an ability tooltip for a specific level.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "level",
+        "type": "string"
+      },
+      {
+        "name": "arg2",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowBuffTooltip": {
+    "description": "Show a buff tooltip for the specified entityIndex + buff serial.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "entityIndex",
+        "type": "int32"
+      },
+      {
+        "name": "buffSerial",
+        "type": "int32"
+      },
+      {
+        "name": "onEnemy",
+        "type": "bool"
+      }
+    ]
+  },
+  "DOTAShowEconItemTooltip": {
+    "description": "Show the econ item tooltip for a given item, style, and hero. Use 0 for the default style, and -1 for the default hero.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "itemDef",
+        "type": "item_definition_index_t"
+      },
+      {
+        "name": "styleIndex",
+        "type": "style_index_t"
+      },
+      {
+        "name": "heroId",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowProfileCardBattleCupTooltip": {
+    "description": "Show the battle cup portion of the user's profile card, if it exists",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "steamId",
+        "type": "uint64"
+      }
+    ]
+  },
+  "DOTAShowProfileCardTooltip": {
+    "description": "Show a user's profile card. Use pro name determines whether to use their professional team name if applicable.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "steamId",
+        "type": "uint64"
+      },
+      {
+        "name": "useProName",
+        "type": "bool"
+      }
+    ]
+  },
+  "DOTAShowRankTierTooltip": {
+    "description": "Show the rank tier tooltip for a user",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "steamId",
+        "type": "uint64"
+      },
+      {
+        "name": "edotaPlayerMmrType",
+        "type": "enum"
+      }
+    ]
+  },
+  "DOTAShowRuneTooltip": {
+    "description": "Show a rune tooltip in the X Y location for the rune type",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "x",
+        "type": "int32"
+      },
+      {
+        "name": "y",
+        "type": "int32"
+      },
+      {
+        "name": "runeType",
+        "type": "int32"
+      }
+    ]
+  },
+  "DOTAShowTextTooltip": {
+    "description": "Show a tooltip with the given text.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "text",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowTextTooltipStyled": {
+    "description": "Show a tooltip with the given text. Also apply a CSS class named \"style\" to allow custom styling.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "style",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowTI10EventGameTooltip": {
+    "description": "Show a ti10 event game tooltip",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "ti10EventGameTooltipInfoT",
+        "type": "struct"
+      }
+    ]
+  },
+  "DOTAShowTitleImageTextTooltip": {
+    "description": "Show a tooltip with the given title, image, and text.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "imagePath",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowTitleImageTextTooltipStyled": {
+    "description": "Show a tooltip with the given title, image, and text. Also apply a CSS class named \"style\" to allow custom styling.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "imagePath",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "style",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowTitleTextTooltip": {
+    "description": "Show a tooltip with the given title and text.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAShowTitleTextTooltipStyled": {
+    "description": "Show a tooltip with the given title and text. Also apply a CSS class named \"style\" to allow custom styling.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "style",
+        "type": "string"
+      }
+    ]
+  },
+  "DropInputFocus": {
+    "description": "Drop focus entirely from the window containing this panel.",
+    "panelEvent": true,
+    "args": []
+  },
+  "IfHasClassEvent": {
+    "description": "Fire another event if this panel has a given class.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      },
+      {
+        "name": "eventToFire",
+        "type": "event"
+      }
+    ]
+  },
+  "IfHoverOtherEvent": {
+    "description": "Fire another event if currently hovering over a panel with the given ID.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "otherPanelId",
+        "type": "string"
+      },
+      {
+        "name": "eventToFire",
+        "type": "event"
+      }
+    ]
+  },
+  "IfNotHasClassEvent": {
+    "description": "Fire another event if this panel does not have a given class.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      },
+      {
+        "name": "eventToFire",
+        "type": "event"
+      }
+    ]
+  },
+  "IfNotHoverOtherEvent": {
+    "description": "Fire another event if not currently hovering over a panel with the given ID.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "otherPanelId",
+        "type": "string"
+      },
+      {
+        "name": "eventToFire",
+        "type": "event"
+      }
+    ]
+  },
+  "MovePanelDown": {
+    "description": "Move down from the panel. By default, this will change the focus position, but other panel types may implement this differently.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "repeatCount",
+        "type": "int32"
+      }
+    ]
+  },
+  "MovePanelLeft": {
+    "description": "Move left from the panel. By default, this will change the focus position, but other panel types may implement this differently.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "repeatCount",
+        "type": "int32"
+      }
+    ]
+  },
+  "MovePanelRight": {
+    "description": "Move right from the panel. By default, this will change the focus position, but other panel types may implement this differently.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "repeatCount",
+        "type": "int32"
+      }
+    ]
+  },
+  "MovePanelUp": {
+    "description": "Move up from the panel. By default, this will change the focus position, but other panel types may implement this differently.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "repeatCount",
+        "type": "int32"
+      }
+    ]
+  },
+  "PageDown": {
+    "description": "Scroll the panel down by one page.",
+    "panelEvent": false,
+    "args": []
+  },
+  "PageLeft": {
+    "description": "Scroll the panel left by one page.",
+    "panelEvent": false,
+    "args": []
+  },
+  "PagePanelDown": {
+    "description": "Scroll the panel down by one page.",
+    "panelEvent": true,
+    "args": []
+  },
+  "PagePanelLeft": {
+    "description": "Scroll the panel left by one page.",
+    "panelEvent": true,
+    "args": []
+  },
+  "PagePanelRight": {
+    "description": "Scroll the panel left by one page.",
+    "panelEvent": true,
+    "args": []
+  },
+  "PagePanelUp": {
+    "description": "Scroll the panel up by one page.",
+    "panelEvent": true,
+    "args": []
+  },
+  "PageRight": {
+    "description": "Scroll the panel right by one page.",
+    "panelEvent": false,
+    "args": []
+  },
+  "PageUp": {
+    "description": "Scroll the panel up by one page.",
+    "panelEvent": false,
+    "args": []
+  },
+  "RemoveStyle": {
+    "description": "Remove a CSS class from a panel.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "RemoveStyleAfterDelay": {
+    "description": "Remove a CSS class from a panel after a specified delay.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      },
+      {
+        "name": "preDelay",
+        "type": "float"
+      }
+    ]
+  },
+  "RemoveStyleFromEachChild": {
+    "description": "Remove a CSS class from all children of this panel.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "ScrollDown": {
+    "description": "Scroll the panel down by one line.",
+    "panelEvent": false,
+    "args": []
+  },
+  "ScrollLeft": {
+    "description": "Scroll the panel left by one line.",
+    "panelEvent": false,
+    "args": []
+  },
+  "ScrollPanelDown": {
+    "description": "Scroll the panel down by one line.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollPanelLeft": {
+    "description": "Scroll the panel left by one line.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollPanelRight": {
+    "description": "Scroll the panel right by one line.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollPanelUp": {
+    "description": "Scroll the panel up by one line.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollRight": {
+    "description": "Scroll the panel right by one line.",
+    "panelEvent": false,
+    "args": []
+  },
+  "ScrollToBottom": {
+    "description": "Scroll this panel to the bottom.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollToTop": {
+    "description": "Scroll this panel to the top.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ScrollUp": {
+    "description": "Scroll the panel up by one line.",
+    "panelEvent": false,
+    "args": []
+  },
+  "SetChildPanelsSelected": {
+    "description": "Set whether any child panels are :selected.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "selected",
+        "type": "bool"
+      }
+    ]
+  },
+  "SetInputFocus": {
+    "description": "Set focus to this panel.",
+    "panelEvent": true,
+    "args": []
+  },
+  "SetPanelEnabled": {
+    "description": "Sets whether the given panel is enabled",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "enabled",
+        "type": "bool"
+      }
+    ]
+  },
+  "SetPanelSelected": {
+    "description": "Set whether this panel is :selected.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "selected",
+        "type": "bool"
+      }
+    ]
+  },
+  "SwitchStyle": {
+    "description": "Switch which class the panel has for a given attribute slot. Allows easily changing between multiple states.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "slot",
+        "type": "string"
+      },
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "TogglePanelSelected": {
+    "description": "Toggle whether this panel is :selected.",
+    "panelEvent": true,
+    "args": []
+  },
+  "ToggleStyle": {
+    "description": "Toggle whether a panel has the given CSS class.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "TriggerStyle": {
+    "description": "Remove then immediately add back a CSS class from a panel. Useful to re-trigger events like animations or sound effects.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "class",
+        "type": "string"
+      }
+    ]
+  },
+  "DismissAllContextMenus": {
+    "description": "",
+    "panelEvent": false,
+    "args": []
+  },
+  "BrowserGoToURL": {
+    "description": "",
+    "panelEvent": false,
+    "args": [
+      {
+        "name": "url",
+        "type": "string"
+      }
+    ]
+  },
+  "ExternalBrowserGoToURL": {
+    "description": "",
+    "panelEvent": false,
+    "args": [
+      {
+        "name": "url",
+        "type": "string"
+      }
+    ]
+  },
+  "UIHideCustomLayoutTooltip": {
+    "description": "",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "name",
+        "type": "string"
+      }
+    ]
+  },
+  "UIShowCustomLayoutParametersTooltip": {
+    "description": "",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "layoutPath",
+        "type": "string"
+      },
+      {
+        "name": "parameters",
+        "type": "string"
+      }
+    ]
+  },
+  "DOTAHUDGameDisconnect": {
+    "description": "",
+    "panelEvent": false,
+    "args": []
+  },
+  "DOTAShowMatchDetails": {
+    "description": "",
+    "panelEvent": false,
+    "args": [
+      {
+        "name": "matchId",
+        "type": "int32"
+      }
+    ]
+  }
+}

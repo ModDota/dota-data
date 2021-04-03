@@ -79,12 +79,12 @@ background-position: left 10px top 40px;</pre>
 
 === background-repeat ===
 Controls if the background should be repeated in the horizontal and vertical directions.<br><br>Possible values per direction:<br>"repeat" - (default) Repeated in the specified direction until it fills the panel<br>"space" - Repeated as many times as required to fill the panel w/o being clipped. Space is added between images to to align first and last image with panel edges.<br>"round" - Repeated as many times as required to fill the panel w/o being clipped. The image is resized to align first and last image with panel edges.<br>"no-repeat" - Not repeated<br><br>Possible single values:<br>"repeat-x" - equals "repeat no-repeat"<br>"repeat-y" - equals "no-repeat repeat"<br><br><b>Examples:</b><pre>background-repeat: repeat; // equals "repeat repeat" (default)
-background-repeat: repeat space; // repeats horizontally, spaces vertically
+background-repeat: repeat space; // repeats horizontally, spaces vertically 
 background-repeat: no-repeat round; // 1 column of images, scaled to fit evenly</pre>
 
 
 === background-size ===
-Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default)
+Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default) 
 background-size: 100% 100%; // image fills the panel
 background-size: 50% 75%; // image fills 50% of the panel's width, and 75% of the panel's height
 background-size: 300px 200px; // image is drawn 300px wide, 200px tall</pre>
@@ -160,7 +160,7 @@ border-radius: 2px;
 border-radius: 50% / 50%;
 // 2 px horizontal radii 4px vertical elliptical corners on all sides
 border-radius: 2px / 4px;
-// All corners fully specified
+// All corners fully specified 
 border-radius: 2px 3px 4px 2px / 2px 3px 3px 2px;</pre>
 
 
@@ -589,7 +589,7 @@ $> dump_panorama_events
 |-
 | <code>AddStyleAfterDelay(string class, float pre-delay)</code>
 | Yes
-| Add a CSS class to a panel after a specified delay.
+| Add a CSS class to a panel after a specified delay. 
 |-
 | <code>AddStyleToEachChild(string class)</code>
 | Yes
@@ -597,11 +597,15 @@ $> dump_panorama_events
 |-
 | <code>AddTimedStyle(string class, float duration, float pre-delay)</code>
 | Yes
-| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.
+| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class. 
 |-
 | <code>AsyncEvent(float delay, event eventToFire)</code>
 | No
 | Fire another event after a delay (in seconds).
+|-
+| <code>DOTADisplayDashboardTip(string string, string optional string)</code>
+| No
+| Tip to display, panel to attach to (default 'DefaultTipAttachment')
 |-
 | <code>DOTAHideAbilityTooltip()</code>
 | Yes
@@ -650,6 +654,14 @@ $> dump_panorama_events
 | <code>DOTAHideTitleTextTooltip()</code>
 | Yes
 | Hide the title text tooltip.
+|-
+| <code>DOTALiveStreamUpcoming(uint32 time)</code>
+| Yes
+| Notify change in RTime32 we expect the stream to start
+|-
+| <code>DOTALiveStreamVideoLive(bool isLive)</code>
+| Yes
+| Notify change in video state (is it pointing at a live stream page or not)
 |-
 | <code>DOTAShowAbilityInventoryItemTooltip(int32 entityIndex, int32 inventorySlot)</code>
 | Yes
@@ -805,7 +817,7 @@ $> dump_panorama_events
 |-
 | <code>RemoveStyleAfterDelay(string class, float pre-delay)</code>
 | Yes
-| Remove a CSS class from a panel after a specified delay.
+| Remove a CSS class from a panel after a specified delay. 
 |-
 | <code>RemoveStyleFromEachChild(string class)</code>
 | Yes
@@ -1025,6 +1037,7 @@ Enumeration 'DOTA_OVERHEAD_ALERT'
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_BLOCKED = 21
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_ITEM_RECEIVED = 22
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_SHARD = 23
+	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_DEADLY_BLOW = 24
 
 Enumeration 'DOTA_HeroPickState'
 	DOTA_HeroPickState.DOTA_HEROPICK_STATE_NONE = 0
@@ -1717,214 +1730,218 @@ Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE = 28 (GetModifierAttackSpeedBaseOverride)
 	modifierfunction.MODIFIER_PROPERTY_FIXED_ATTACK_RATE = 29 (GetModifierFixedAttackRate)
 	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT = 30 (GetModifierAttackSpeedBonus_Constant)
-	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT = 31 (GetModifierCooldownReduction_Constant)
-	modifierfunction.MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT = 32 (GetModifierManacostReduction_Constant)
-	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT = 33 (GetModifierBaseAttackTimeConstant)
-	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST = 34 (GetModifierBaseAttackTimeConstant_Adjust)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT = 35 (GetModifierAttackPointConstant)
-	modifierfunction.MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE = 36 (GetModifierBonusDamageOutgoing_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE = 37 (GetModifierDamageOutgoing_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION = 38 (GetModifierDamageOutgoing_Percentage_Illusion)
-	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY = 39 (GetModifierDamageOutgoing_Percentage_Illusion_Amplify)
-	modifierfunction.MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE = 40 (GetModifierTotalDamageOutgoing_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP = 41 (GetModifierSpellAmplify_PercentageCreep)
-	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE = 42 (GetModifierSpellAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE = 43 (GetModifierSpellAmplify_PercentageUnique)
-	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE = 44 (GetModifierHealAmplify_PercentageSource)
-	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET = 45 (GetModifierHealAmplify_PercentageTarget)
-	modifierfunction.MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE = 46 (GetModifierHPRegenAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE = 47 (GetModifierLifestealRegenAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE = 48 (GetModifierSpellLifestealRegenAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE = 49 (GetModifierMPRegenAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE = 50 (GetModifierManaDrainAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE = 51 (GetModifierMPRestoreAmplify_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE = 52 (GetModifierBaseDamageOutgoing_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE = 53 (GetModifierBaseDamageOutgoing_PercentageUnique)
-	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE = 54 (GetModifierIncomingDamage_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE = 55 (GetModifierIncomingPhysicalDamage_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT = 56 (GetModifierIncomingPhysicalDamageConstant)
-	modifierfunction.MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT = 57 (GetModifierIncomingSpellDamageConstant)
-	modifierfunction.MODIFIER_PROPERTY_EVASION_CONSTANT = 58 (GetModifierEvasion_Constant)
-	modifierfunction.MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT = 59 (GetModifierNegativeEvasion_Constant)
-	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE = 60 (GetModifierStatusResistance)
-	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING = 61 (GetModifierStatusResistanceStacking)
-	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER = 62 (GetModifierStatusResistanceCaster)
-	modifierfunction.MODIFIER_PROPERTY_AVOID_DAMAGE = 63 (GetModifierAvoidDamage)
-	modifierfunction.MODIFIER_PROPERTY_AVOID_SPELL = 64 (GetModifierAvoidSpell)
-	modifierfunction.MODIFIER_PROPERTY_MISS_PERCENTAGE = 65 (GetModifierMiss_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE = 66 (GetModifierPhysicalArmorBase_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE = 67 (GetModifierPhysicalArmorTotal_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS = 68 (GetModifierPhysicalArmorBonus)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE = 69 (GetModifierPhysicalArmorBonusUnique)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE = 70 (GetModifierPhysicalArmorBonusUniqueActive)
-	modifierfunction.MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR = 71 (GetModifierIgnorePhysicalArmor)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION = 72 (GetModifierMagicalResistanceBaseReduction)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION = 73 (GetModifierMagicalResistanceDirectModification)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS = 74 (GetModifierMagicalResistanceBonus)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS = 75 (GetModifierMagicalResistanceBonusIllusions)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE = 76 (GetModifierMagicalResistanceDecrepifyUnique)
-	modifierfunction.MODIFIER_PROPERTY_BASE_MANA_REGEN = 77 (GetModifierBaseRegen)
-	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = 78 (GetModifierConstantManaRegen)
-	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE = 79 (GetModifierConstantManaRegenUnique)
-	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE = 80 (GetModifierTotalPercentageManaRegen)
-	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = 81 (GetModifierConstantHealthRegen)
-	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE = 82 (GetModifierHealthRegenPercentage)
-	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE = 83 (GetModifierHealthRegenPercentageUnique)
-	modifierfunction.MODIFIER_PROPERTY_HEALTH_BONUS = 84 (GetModifierHealthBonus)
-	modifierfunction.MODIFIER_PROPERTY_MANA_BONUS = 85 (GetModifierManaBonus)
-	modifierfunction.MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS = 86 (GetModifierExtraStrengthBonus)
-	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS = 87 (GetModifierExtraHealthBonus)
-	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_BONUS = 88 (GetModifierExtraManaBonus)
-	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE = 89 (GetModifierExtraHealthPercentage)
-	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE = 90 (GetModifierExtraManaPercentage)
-	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = 91 (GetModifierBonusStats_Strength)
-	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS = 92 (GetModifierBonusStats_Agility)
-	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = 93 (GetModifierBonusStats_Intellect)
-	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE = 94 (GetModifierBonusStats_Strength_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE = 95 (GetModifierBonusStats_Agility_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE = 96 (GetModifierBonusStats_Intellect_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS = 97 (GetModifierCastRangeBonus)
-	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET = 98 (GetModifierCastRangeBonusTarget)
-	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING = 99 (GetModifierCastRangeBonusStacking)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE = 100 (GetModifierAttackRangeOverride)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS = 101 (GetModifierAttackRangeBonus)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE = 102 (GetModifierAttackRangeBonusUnique)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE = 103 (GetModifierAttackRangeBonusPercentage)
-	modifierfunction.MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 104 (GetModifierMaxAttackRange)
-	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS = 105 (GetModifierProjectileSpeedBonus)
-	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE = 106 (GetModifierProjectileSpeedBonusPercentage)
-	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_NAME = 107 (GetModifierProjectileName)
-	modifierfunction.MODIFIER_PROPERTY_REINCARNATION = 108 (ReincarnateTime)
-	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME = 109 (GetModifierConstantRespawnTime)
-	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE = 110 (GetModifierPercentageRespawnTime)
-	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_STACKING = 111 (GetModifierStackingRespawnTime)
-	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE = 112 (GetModifierPercentageCooldown)
-	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING = 113 (GetModifierPercentageCooldownOngoing)
-	modifierfunction.MODIFIER_PROPERTY_CASTTIME_PERCENTAGE = 114 (GetModifierPercentageCasttime)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE = 115 (GetModifierPercentageAttackAnimTime)
-	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE = 116 (GetModifierPercentageManacost)
-	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING = 117 (GetModifierPercentageManacostStacking)
-	modifierfunction.MODIFIER_PROPERTY_DEATHGOLDCOST = 118 (GetModifierConstantDeathGoldCost)
-	modifierfunction.MODIFIER_PROPERTY_EXP_RATE_BOOST = 119 (GetModifierPercentageExpRateBoost)
-	modifierfunction.MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE = 120 (GetModifierPreAttack_CriticalStrike)
-	modifierfunction.MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE = 121 (GetModifierPreAttack_Target_CriticalStrike)
-	modifierfunction.MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK = 122 (GetModifierMagical_ConstantBlock)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK = 123 (GetModifierPhysical_ConstantBlock)
-	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL = 124 (GetModifierPhysical_ConstantBlockSpecial)
-	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR = 125 (GetModifierPhysical_ConstantBlockUnavoidablePreArmor)
-	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK = 126 (GetModifierTotal_ConstantBlock)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION = 127 (GetOverrideAnimation)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT = 128 (GetOverrideAnimationWeight)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE = 129 (GetOverrideAnimationRate)
-	modifierfunction.MODIFIER_PROPERTY_ABSORB_SPELL = 130 (GetAbsorbSpell)
-	modifierfunction.MODIFIER_PROPERTY_REFLECT_SPELL = 131 (GetReflectSpell)
-	modifierfunction.MODIFIER_PROPERTY_DISABLE_AUTOATTACK = 132 (GetDisableAutoAttack)
-	modifierfunction.MODIFIER_PROPERTY_BONUS_DAY_VISION = 133 (GetBonusDayVision)
-	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION = 134 (GetBonusNightVision)
-	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE = 135 (GetBonusNightVisionUnique)
-	modifierfunction.MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE = 136 (GetBonusVisionPercentage)
-	modifierfunction.MODIFIER_PROPERTY_FIXED_DAY_VISION = 137 (GetFixedDayVision)
-	modifierfunction.MODIFIER_PROPERTY_FIXED_NIGHT_VISION = 138 (GetFixedNightVision)
-	modifierfunction.MODIFIER_PROPERTY_MIN_HEALTH = 139 (GetMinHealth)
-	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 140 (GetAbsoluteNoDamagePhysical)
-	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL = 141 (GetAbsoluteNoDamageMagical)
-	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE = 142 (GetAbsoluteNoDamagePure)
-	modifierfunction.MODIFIER_PROPERTY_IS_ILLUSION = 143 (GetIsIllusion)
-	modifierfunction.MODIFIER_PROPERTY_ILLUSION_LABEL = 144 (GetModifierIllusionLabel)
-	modifierfunction.MODIFIER_PROPERTY_STRONG_ILLUSION = 145 (GetModifierStrongIllusion)
-	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION = 146 (GetModifierSuperIllusion)
-	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE = 147 (GetModifierSuperIllusionWithUltimate)
-	modifierfunction.MODIFIER_PROPERTY_XP_DURING_DEATH = 148 (GetModifierXPDuringDeath)
-	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE = 149 (GetModifierTurnRate_Percentage)
-	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_OVERRIDE = 150 (GetModifierTurnRate_Override)
-	modifierfunction.MODIFIER_PROPERTY_DISABLE_HEALING = 151 (GetDisableHealing)
-	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK = 152 (GetAlwaysAllowAttack)
-	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK = 153 (GetAllowEtherealAttack)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL = 154 (GetOverrideAttackMagical)
-	modifierfunction.MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH = 155 (GetModifierUnitStatsNeedsRefresh)
-	modifierfunction.MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER = 156 (Unused)
-	modifierfunction.MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER = 157 (Unused)
-	modifierfunction.MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING = 158 (GetModifierUnitDisllowUpgrading)
-	modifierfunction.MODIFIER_PROPERTY_DODGE_PROJECTILE = 159 (GetModifierDodgeProjectile)
-	modifierfunction.MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK = 160 (GetTriggerCosmeticAndEndAttack)
-	modifierfunction.MODIFIER_PROPERTY_MAX_DEBUFF_DURATION = 161 (GetModifierMaxDebuffDuration)
-	modifierfunction.MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER = 162 (GetPrimaryStatDamageMultiplier)
-	modifierfunction.MODIFIER_EVENT_ON_SPELL_TARGET_READY = 163 (OnSpellTargetReady)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD = 164 (OnAttackRecord)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_START = 165 (OnAttackStart)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK = 166 (OnAttack)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_LANDED = 167 (OnAttackLanded)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FAIL = 168 (OnAttackFail)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_ALLIED = 169 (OnAttackAllied)
-	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_DODGE = 170 (OnProjectileDodge)
-	modifierfunction.MODIFIER_EVENT_ON_ORDER = 171 (OnOrder)
-	modifierfunction.MODIFIER_EVENT_ON_UNIT_MOVED = 172 (OnUnitMoved)
-	modifierfunction.MODIFIER_EVENT_ON_ABILITY_START = 173 (OnAbilityStart)
-	modifierfunction.MODIFIER_EVENT_ON_ABILITY_EXECUTED = 174 (OnAbilityExecuted)
-	modifierfunction.MODIFIER_EVENT_ON_ABILITY_FULLY_CAST = 175 (OnAbilityFullyCast)
-	modifierfunction.MODIFIER_EVENT_ON_BREAK_INVISIBILITY = 176 (OnBreakInvisibility)
-	modifierfunction.MODIFIER_EVENT_ON_ABILITY_END_CHANNEL = 177 (OnAbilityEndChannel)
-	modifierfunction.MODIFIER_EVENT_ON_PROCESS_UPGRADE = 178 (Unused)
-	modifierfunction.MODIFIER_EVENT_ON_REFRESH = 179 (Unused)
-	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE = 180 (OnTakeDamage)
-	modifierfunction.MODIFIER_EVENT_ON_DEATH_PREVENTED = 181 (OnDamagePrevented)
-	modifierfunction.MODIFIER_EVENT_ON_STATE_CHANGED = 182 (OnStateChanged)
-	modifierfunction.MODIFIER_EVENT_ON_ORB_EFFECT = 183 (Unused)
-	modifierfunction.MODIFIER_EVENT_ON_PROCESS_CLEAVE = 184 (OnProcessCleave)
-	modifierfunction.MODIFIER_EVENT_ON_DAMAGE_CALCULATED = 185 (OnDamageCalculated)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACKED = 186 (OnAttacked)
-	modifierfunction.MODIFIER_EVENT_ON_DEATH = 187 (OnDeath)
-	modifierfunction.MODIFIER_EVENT_ON_RESPAWN = 188 (OnRespawn)
-	modifierfunction.MODIFIER_EVENT_ON_SPENT_MANA = 189 (OnSpentMana)
-	modifierfunction.MODIFIER_EVENT_ON_TELEPORTING = 190 (OnTeleporting)
-	modifierfunction.MODIFIER_EVENT_ON_TELEPORTED = 191 (OnTeleported)
-	modifierfunction.MODIFIER_EVENT_ON_SET_LOCATION = 192 (OnSetLocation)
-	modifierfunction.MODIFIER_EVENT_ON_HEALTH_GAINED = 193 (OnHealthGained)
-	modifierfunction.MODIFIER_EVENT_ON_MANA_GAINED = 194 (OnManaGained)
-	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT = 195 (OnTakeDamageKillCredit)
-	modifierfunction.MODIFIER_EVENT_ON_HERO_KILLED = 196 (OnHeroKilled)
-	modifierfunction.MODIFIER_EVENT_ON_HEAL_RECEIVED = 197 (OnHealReceived)
-	modifierfunction.MODIFIER_EVENT_ON_BUILDING_KILLED = 198 (OnBuildingKilled)
-	modifierfunction.MODIFIER_EVENT_ON_MODEL_CHANGED = 199 (OnModelChanged)
-	modifierfunction.MODIFIER_EVENT_ON_MODIFIER_ADDED = 200 (OnModifierAdded)
-	modifierfunction.MODIFIER_PROPERTY_TOOLTIP = 201 (OnTooltip)
-	modifierfunction.MODIFIER_PROPERTY_MODEL_CHANGE = 202 (GetModifierModelChange)
-	modifierfunction.MODIFIER_PROPERTY_MODEL_SCALE = 203 (GetModifierModelScale)
-	modifierfunction.MODIFIER_PROPERTY_IS_SCEPTER = 204 (GetModifierScepter)
-	modifierfunction.MODIFIER_PROPERTY_IS_SHARD = 205 (GetModifierShard)
-	modifierfunction.MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION = 206 (GetModifierRadarCooldownReduction)
-	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS = 207 (GetActivityTranslationModifiers)
-	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND = 208 (GetAttackSound)
-	modifierfunction.MODIFIER_PROPERTY_LIFETIME_FRACTION = 209 (GetUnitLifetimeFraction)
-	modifierfunction.MODIFIER_PROPERTY_PROVIDES_FOW_POSITION = 210 (GetModifierProvidesFOWVision)
-	modifierfunction.MODIFIER_PROPERTY_SPELLS_REQUIRE_HP = 211 (GetModifierSpellsRequireHP)
-	modifierfunction.MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP = 212 (GetForceDrawOnMinimap)
-	modifierfunction.MODIFIER_PROPERTY_DISABLE_TURNING = 213 (GetModifierDisableTurning)
-	modifierfunction.MODIFIER_PROPERTY_IGNORE_CAST_ANGLE = 214 (GetModifierIgnoreCastAngle)
-	modifierfunction.MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE = 215 (GetModifierChangeAbilityValue)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL = 216 (GetModifierOverrideAbilitySpecial)
-	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE = 217 (GetModifierOverrideAbilitySpecialValue)
-	modifierfunction.MODIFIER_PROPERTY_ABILITY_LAYOUT = 218 (GetModifierAbilityLayout)
-	modifierfunction.MODIFIER_EVENT_ON_DOMINATED = 219 (OnDominated)
-	modifierfunction.MODIFIER_PROPERTY_TEMPEST_DOUBLE = 220 (GetModifierTempestDouble)
-	modifierfunction.MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE = 221 (PreserveParticlesOnModelChanged)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FINISHED = 222 (OnAttackFinished)
-	modifierfunction.MODIFIER_PROPERTY_IGNORE_COOLDOWN = 223 (GetModifierIgnoreCooldown)
-	modifierfunction.MODIFIER_PROPERTY_CAN_ATTACK_TREES = 224 (GetModifierCanAttackTrees)
-	modifierfunction.MODIFIER_PROPERTY_VISUAL_Z_DELTA = 225 (GetVisualZDelta)
-	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION = 226
-	modifierfunction.MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER = 227 (GetModifierNoVisionOfAttacker)
-	modifierfunction.MODIFIER_PROPERTY_TOOLTIP2 = 228 (OnTooltip2)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY = 229 (OnAttackRecordDestroy)
-	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT = 230 (OnProjectileObstructionHit)
-	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_TELEPORT = 231 (GetSuppressTeleport)
-	modifierfunction.MODIFIER_EVENT_ON_ATTACK_CANCELLED = 232 (OnAttackCancelled)
-	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_CLEAVE = 233 (GetSuppressCleave)
-	modifierfunction.MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS = 234 (BotAttackScoreBonus)
-	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE = 235 (GetModifierAttackSpeedReductionPercentage)
-	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 236 (GetModifierMoveSpeedReductionPercentage)
-	modifierfunction.MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 237
-	modifierfunction.MODIFIER_FUNCTION_LAST = 238
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT = 31 (GetModifierAttackSpeed_Limit)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT = 32 (GetModifierCooldownReduction_Constant)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT = 33 (GetModifierManacostReduction_Constant)
+	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT = 34 (GetModifierBaseAttackTimeConstant)
+	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST = 35 (GetModifierBaseAttackTimeConstant_Adjust)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT = 36 (GetModifierAttackPointConstant)
+	modifierfunction.MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE = 37 (GetModifierBonusDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE = 38 (GetModifierDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION = 39 (GetModifierDamageOutgoing_Percentage_Illusion)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY = 40 (GetModifierDamageOutgoing_Percentage_Illusion_Amplify)
+	modifierfunction.MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE = 41 (GetModifierTotalDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP = 42 (GetModifierSpellAmplify_PercentageCreep)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE = 43 (GetModifierSpellAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE = 44 (GetModifierSpellAmplify_PercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE = 45 (GetModifierHealAmplify_PercentageSource)
+	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET = 46 (GetModifierHealAmplify_PercentageTarget)
+	modifierfunction.MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE = 47 (GetModifierHPRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE = 48 (GetModifierLifestealRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE = 49 (GetModifierSpellLifestealRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE = 50 (GetModifierMPRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE = 51 (GetModifierManaDrainAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE = 52 (GetModifierMPRestoreAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE = 53 (GetModifierBaseDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE = 54 (GetModifierBaseDamageOutgoing_PercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE = 55 (GetModifierIncomingDamage_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE = 56 (GetModifierIncomingPhysicalDamage_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT = 57 (GetModifierIncomingPhysicalDamageConstant)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT = 58 (GetModifierIncomingSpellDamageConstant)
+	modifierfunction.MODIFIER_PROPERTY_EVASION_CONSTANT = 59 (GetModifierEvasion_Constant)
+	modifierfunction.MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT = 60 (GetModifierNegativeEvasion_Constant)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE = 61 (GetModifierStatusResistance)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING = 62 (GetModifierStatusResistanceStacking)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER = 63 (GetModifierStatusResistanceCaster)
+	modifierfunction.MODIFIER_PROPERTY_AVOID_DAMAGE = 64 (GetModifierAvoidDamage)
+	modifierfunction.MODIFIER_PROPERTY_AVOID_SPELL = 65 (GetModifierAvoidSpell)
+	modifierfunction.MODIFIER_PROPERTY_MISS_PERCENTAGE = 66 (GetModifierMiss_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE = 67 (GetModifierPhysicalArmorBase_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE = 68 (GetModifierPhysicalArmorTotal_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS = 69 (GetModifierPhysicalArmorBonus)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE = 70 (GetModifierPhysicalArmorBonusUnique)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE = 71 (GetModifierPhysicalArmorBonusUniqueActive)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR = 72 (GetModifierIgnorePhysicalArmor)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION = 73 (GetModifierMagicalResistanceBaseReduction)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION = 74 (GetModifierMagicalResistanceDirectModification)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS = 75 (GetModifierMagicalResistanceBonus)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS = 76 (GetModifierMagicalResistanceBonusIllusions)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE = 77 (GetModifierMagicalResistanceDecrepifyUnique)
+	modifierfunction.MODIFIER_PROPERTY_BASE_MANA_REGEN = 78 (GetModifierBaseRegen)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = 79 (GetModifierConstantManaRegen)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE = 80 (GetModifierConstantManaRegenUnique)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE = 81 (GetModifierTotalPercentageManaRegen)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = 82 (GetModifierConstantHealthRegen)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE = 83 (GetModifierHealthRegenPercentage)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE = 84 (GetModifierHealthRegenPercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_BONUS = 85 (GetModifierHealthBonus)
+	modifierfunction.MODIFIER_PROPERTY_MANA_BONUS = 86 (GetModifierManaBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS = 87 (GetModifierExtraStrengthBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS = 88 (GetModifierExtraHealthBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_BONUS = 89 (GetModifierExtraManaBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE = 90 (GetModifierExtraHealthPercentage)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE = 91 (GetModifierExtraManaPercentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = 92 (GetModifierBonusStats_Strength)
+	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS = 93 (GetModifierBonusStats_Agility)
+	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = 94 (GetModifierBonusStats_Intellect)
+	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE = 95 (GetModifierBonusStats_Strength_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE = 96 (GetModifierBonusStats_Agility_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE = 97 (GetModifierBonusStats_Intellect_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS = 98 (GetModifierCastRangeBonus)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET = 99 (GetModifierCastRangeBonusTarget)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING = 100 (GetModifierCastRangeBonusStacking)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE = 101 (GetModifierAttackRangeOverride)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS = 102 (GetModifierAttackRangeBonus)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE = 103 (GetModifierAttackRangeBonusUnique)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE = 104 (GetModifierAttackRangeBonusPercentage)
+	modifierfunction.MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 105 (GetModifierMaxAttackRange)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS = 106 (GetModifierProjectileSpeedBonus)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE = 107 (GetModifierProjectileSpeedBonusPercentage)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_NAME = 108 (GetModifierProjectileName)
+	modifierfunction.MODIFIER_PROPERTY_REINCARNATION = 109 (ReincarnateTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME = 110 (GetModifierConstantRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE = 111 (GetModifierPercentageRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_STACKING = 112 (GetModifierStackingRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE = 113 (GetModifierPercentageCooldown)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING = 114 (GetModifierPercentageCooldownOngoing)
+	modifierfunction.MODIFIER_PROPERTY_CASTTIME_PERCENTAGE = 115 (GetModifierPercentageCasttime)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE = 116 (GetModifierPercentageAttackAnimTime)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE = 117 (GetModifierPercentageManacost)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING = 118 (GetModifierPercentageManacostStacking)
+	modifierfunction.MODIFIER_PROPERTY_DEATHGOLDCOST = 119 (GetModifierConstantDeathGoldCost)
+	modifierfunction.MODIFIER_PROPERTY_EXP_RATE_BOOST = 120 (GetModifierPercentageExpRateBoost)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE = 121 (GetModifierPreAttack_CriticalStrike)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE = 122 (GetModifierPreAttack_Target_CriticalStrike)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK = 123 (GetModifierMagical_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK = 124 (GetModifierPhysical_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL = 125 (GetModifierPhysical_ConstantBlockSpecial)
+	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR = 126 (GetModifierPhysical_ConstantBlockUnavoidablePreArmor)
+	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK = 127 (GetModifierTotal_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION = 128 (GetOverrideAnimation)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT = 129 (GetOverrideAnimationWeight)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE = 130 (GetOverrideAnimationRate)
+	modifierfunction.MODIFIER_PROPERTY_ABSORB_SPELL = 131 (GetAbsorbSpell)
+	modifierfunction.MODIFIER_PROPERTY_REFLECT_SPELL = 132 (GetReflectSpell)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_AUTOATTACK = 133 (GetDisableAutoAttack)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_DAY_VISION = 134 (GetBonusDayVision)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION = 135 (GetBonusNightVision)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE = 136 (GetBonusNightVisionUnique)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE = 137 (GetBonusVisionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_FIXED_DAY_VISION = 138 (GetFixedDayVision)
+	modifierfunction.MODIFIER_PROPERTY_FIXED_NIGHT_VISION = 139 (GetFixedNightVision)
+	modifierfunction.MODIFIER_PROPERTY_MIN_HEALTH = 140 (GetMinHealth)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 141 (GetAbsoluteNoDamagePhysical)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL = 142 (GetAbsoluteNoDamageMagical)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE = 143 (GetAbsoluteNoDamagePure)
+	modifierfunction.MODIFIER_PROPERTY_IS_ILLUSION = 144 (GetIsIllusion)
+	modifierfunction.MODIFIER_PROPERTY_ILLUSION_LABEL = 145 (GetModifierIllusionLabel)
+	modifierfunction.MODIFIER_PROPERTY_STRONG_ILLUSION = 146 (GetModifierStrongIllusion)
+	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION = 147 (GetModifierSuperIllusion)
+	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE = 148 (GetModifierSuperIllusionWithUltimate)
+	modifierfunction.MODIFIER_PROPERTY_XP_DURING_DEATH = 149 (GetModifierXPDuringDeath)
+	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE = 150 (GetModifierTurnRate_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_OVERRIDE = 151 (GetModifierTurnRate_Override)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_HEALING = 152 (GetDisableHealing)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK = 153 (GetAlwaysAllowAttack)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK = 154 (GetAllowEtherealAttack)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL = 155 (GetOverrideAttackMagical)
+	modifierfunction.MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH = 156 (GetModifierUnitStatsNeedsRefresh)
+	modifierfunction.MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER = 157 (Unused)
+	modifierfunction.MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER = 158 (Unused)
+	modifierfunction.MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING = 159 (GetModifierUnitDisllowUpgrading)
+	modifierfunction.MODIFIER_PROPERTY_DODGE_PROJECTILE = 160 (GetModifierDodgeProjectile)
+	modifierfunction.MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK = 161 (GetTriggerCosmeticAndEndAttack)
+	modifierfunction.MODIFIER_PROPERTY_MAX_DEBUFF_DURATION = 162 (GetModifierMaxDebuffDuration)
+	modifierfunction.MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER = 163 (GetPrimaryStatDamageMultiplier)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW = 164 (GetModifierPreAttack_DeadlyBlow)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION = 165 (GetAlwaysAutoAttackWhileHoldPosition)
+	modifierfunction.MODIFIER_EVENT_ON_SPELL_TARGET_READY = 166 (OnSpellTargetReady)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD = 167 (OnAttackRecord)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_START = 168 (OnAttackStart)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK = 169 (OnAttack)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_LANDED = 170 (OnAttackLanded)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FAIL = 171 (OnAttackFail)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_ALLIED = 172 (OnAttackAllied)
+	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_DODGE = 173 (OnProjectileDodge)
+	modifierfunction.MODIFIER_EVENT_ON_ORDER = 174 (OnOrder)
+	modifierfunction.MODIFIER_EVENT_ON_UNIT_MOVED = 175 (OnUnitMoved)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_START = 176 (OnAbilityStart)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_EXECUTED = 177 (OnAbilityExecuted)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_FULLY_CAST = 178 (OnAbilityFullyCast)
+	modifierfunction.MODIFIER_EVENT_ON_BREAK_INVISIBILITY = 179 (OnBreakInvisibility)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_END_CHANNEL = 180 (OnAbilityEndChannel)
+	modifierfunction.MODIFIER_EVENT_ON_PROCESS_UPGRADE = 181 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_REFRESH = 182 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE = 183 (OnTakeDamage)
+	modifierfunction.MODIFIER_EVENT_ON_DEATH_PREVENTED = 184 (OnDamagePrevented)
+	modifierfunction.MODIFIER_EVENT_ON_STATE_CHANGED = 185 (OnStateChanged)
+	modifierfunction.MODIFIER_EVENT_ON_ORB_EFFECT = 186 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_PROCESS_CLEAVE = 187 (OnProcessCleave)
+	modifierfunction.MODIFIER_EVENT_ON_DAMAGE_CALCULATED = 188 (OnDamageCalculated)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACKED = 189 (OnAttacked)
+	modifierfunction.MODIFIER_EVENT_ON_DEATH = 190 (OnDeath)
+	modifierfunction.MODIFIER_EVENT_ON_RESPAWN = 191 (OnRespawn)
+	modifierfunction.MODIFIER_EVENT_ON_SPENT_MANA = 192 (OnSpentMana)
+	modifierfunction.MODIFIER_EVENT_ON_TELEPORTING = 193 (OnTeleporting)
+	modifierfunction.MODIFIER_EVENT_ON_TELEPORTED = 194 (OnTeleported)
+	modifierfunction.MODIFIER_EVENT_ON_SET_LOCATION = 195 (OnSetLocation)
+	modifierfunction.MODIFIER_EVENT_ON_HEALTH_GAINED = 196 (OnHealthGained)
+	modifierfunction.MODIFIER_EVENT_ON_MANA_GAINED = 197 (OnManaGained)
+	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT = 198 (OnTakeDamageKillCredit)
+	modifierfunction.MODIFIER_EVENT_ON_HERO_KILLED = 199 (OnHeroKilled)
+	modifierfunction.MODIFIER_EVENT_ON_HEAL_RECEIVED = 200 (OnHealReceived)
+	modifierfunction.MODIFIER_EVENT_ON_BUILDING_KILLED = 201 (OnBuildingKilled)
+	modifierfunction.MODIFIER_EVENT_ON_MODEL_CHANGED = 202 (OnModelChanged)
+	modifierfunction.MODIFIER_EVENT_ON_MODIFIER_ADDED = 203 (OnModifierAdded)
+	modifierfunction.MODIFIER_PROPERTY_TOOLTIP = 204 (OnTooltip)
+	modifierfunction.MODIFIER_PROPERTY_MODEL_CHANGE = 205 (GetModifierModelChange)
+	modifierfunction.MODIFIER_PROPERTY_MODEL_SCALE = 206 (GetModifierModelScale)
+	modifierfunction.MODIFIER_PROPERTY_IS_SCEPTER = 207 (GetModifierScepter)
+	modifierfunction.MODIFIER_PROPERTY_IS_SHARD = 208 (GetModifierShard)
+	modifierfunction.MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION = 209 (GetModifierRadarCooldownReduction)
+	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS = 210 (GetActivityTranslationModifiers)
+	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND = 211 (GetAttackSound)
+	modifierfunction.MODIFIER_PROPERTY_LIFETIME_FRACTION = 212 (GetUnitLifetimeFraction)
+	modifierfunction.MODIFIER_PROPERTY_PROVIDES_FOW_POSITION = 213 (GetModifierProvidesFOWVision)
+	modifierfunction.MODIFIER_PROPERTY_SPELLS_REQUIRE_HP = 214 (GetModifierSpellsRequireHP)
+	modifierfunction.MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP = 215 (GetForceDrawOnMinimap)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_TURNING = 216 (GetModifierDisableTurning)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_CAST_ANGLE = 217 (GetModifierIgnoreCastAngle)
+	modifierfunction.MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE = 218 (GetModifierChangeAbilityValue)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL = 219 (GetModifierOverrideAbilitySpecial)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE = 220 (GetModifierOverrideAbilitySpecialValue)
+	modifierfunction.MODIFIER_PROPERTY_ABILITY_LAYOUT = 221 (GetModifierAbilityLayout)
+	modifierfunction.MODIFIER_EVENT_ON_DOMINATED = 222 (OnDominated)
+	modifierfunction.MODIFIER_PROPERTY_TEMPEST_DOUBLE = 223 (GetModifierTempestDouble)
+	modifierfunction.MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE = 224 (PreserveParticlesOnModelChanged)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FINISHED = 225 (OnAttackFinished)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_COOLDOWN = 226 (GetModifierIgnoreCooldown)
+	modifierfunction.MODIFIER_PROPERTY_CAN_ATTACK_TREES = 227 (GetModifierCanAttackTrees)
+	modifierfunction.MODIFIER_PROPERTY_VISUAL_Z_DELTA = 228 (GetVisualZDelta)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION = 229
+	modifierfunction.MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER = 230 (GetModifierNoVisionOfAttacker)
+	modifierfunction.MODIFIER_PROPERTY_TOOLTIP2 = 231 (OnTooltip2)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY = 232 (OnAttackRecordDestroy)
+	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT = 233 (OnProjectileObstructionHit)
+	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_TELEPORT = 234 (GetSuppressTeleport)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_CANCELLED = 235 (OnAttackCancelled)
+	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_CLEAVE = 236 (GetSuppressCleave)
+	modifierfunction.MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS = 237 (BotAttackScoreBonus)
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE = 238 (GetModifierAttackSpeedReductionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 239 (GetModifierMoveSpeedReductionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 240
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE = 241 (GetModifierAttackSpeedPercentage)
+	modifierfunction.MODIFIER_FUNCTION_LAST = 242
 	modifierfunction.MODIFIER_FUNCTION_INVALID = 255
 
 Enumeration 'modifierstate'
@@ -1976,7 +1993,8 @@ Enumeration 'modifierstate'
 	modifierstate.MODIFIER_STATE_ATTACK_ALLIES = 45
 	modifierstate.MODIFIER_STATE_ALLOW_PATHING_THROUGH_CLIFFS = 46
 	modifierstate.MODIFIER_STATE_ALLOW_PATHING_THROUGH_FISSURE = 47
-	modifierstate.MODIFIER_STATE_LAST = 48
+	modifierstate.MODIFIER_STATE_SPECIALLY_UNDENIABLE = 48
+	modifierstate.MODIFIER_STATE_LAST = 49
 
 Enumeration 'DOTAModifierAttribute_t'
 	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_NONE = 0
@@ -3377,6 +3395,14 @@ Initializing script VM...
     "name":"FrameTime",
     "description":"Get the time spent on the server in the last frame"
   },{
+    "returns":"table",
+    "args":[{
+        "type":"string"
+      }],
+    "kind":"function",
+    "name":"GetAbilityKeyValuesByName",
+    "description":"Get ability data by ability name."
+  },{
     "returns":"string",
     "args":[{
         "type":"string"
@@ -4002,6 +4028,21 @@ Initializing script VM...
     "name":"ReloadMOTD",
     "description":"Reloads the MotD file"
   },{
+    "args":[{
+        "type":"float"
+      },{
+        "type":"float"
+      },{
+        "type":"float"
+      },{
+        "type":"float"
+      },{
+        "type":"float"
+      }],
+    "returns":"float",
+    "name":"RemapValClamped",
+    "kind":"function"
+  },{
     "returns":"void",
     "args":[{
         "type":"int"
@@ -4536,16 +4577,6 @@ Initializing script VM...
     "name":"TraceLine",
     "description":"Pass table - Inputs: startpos, endpos, mask, ignore  -- outputs: pos, fraction, hit, enthit, startsolid"
   },{
-    "returns":"float",
-    "args":[{
-        "type":"float"
-      },{
-        "type":"float"
-      }],
-    "kind":"function",
-    "name":"UTIL_AngleDiff",
-    "description":"Returns the number of degrees difference between two yaw angles"
-  },{
     "returns":"void",
     "args":[{
         "type":"int"
@@ -4809,10 +4840,6 @@ Initializing script VM...
     "value":1,
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
-  },{
-    "value":1754,
-    "kind":"constant",
-    "name":"ACD_DOTA_IDLE"
   },{
     "value":1,
     "kind":"constant",
@@ -5627,10 +5654,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1762,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST_FENCE"
-  },{
     "enum":"GameActivity_t",
     "value":1588,
     "kind":"constant",
@@ -5806,10 +5829,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1757,
-    "kind":"constant",
-    "name":"ACT_DOTA_CYCLONE"
-  },{
     "enum":"GameActivity_t",
     "value":1651,
     "kind":"constant",
@@ -5844,10 +5863,6 @@ Initializing script VM...
     "value":1509,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
-  },{
-    "value":1755,
-    "kind":"constant",
-    "name":"ACT_DOTA_DISABLED_END"
   },{
     "enum":"GameActivity_t",
     "value":1712,
@@ -5998,10 +6013,6 @@ Initializing script VM...
     "value":1639,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
-  },{
-    "value":1758,
-    "kind":"constant",
-    "name":"ACT_DOTA_IMPALE"
   },{
     "enum":"GameActivity_t",
     "value":1623,
@@ -6263,10 +6274,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1764,
-    "kind":"constant",
-    "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
-  },{
     "enum":"GameActivity_t",
     "value":1549,
     "kind":"constant",
@@ -6312,10 +6319,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1760,
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_IN"
-  },{
     "enum":"GameActivity_t",
     "value":1609,
     "kind":"constant",
@@ -6325,10 +6328,6 @@ Initializing script VM...
     "value":1634,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
-  },{
-    "value":1761,
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_OUT"
   },{
     "enum":"GameActivity_t",
     "value":1608,
@@ -6349,10 +6348,6 @@ Initializing script VM...
     "value":1502,
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
-  },{
-    "value":1756,
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN_ALT"
   },{
     "enum":"GameActivity_t",
     "value":1568,
@@ -6538,10 +6533,6 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
-  },{
-    "value":1759,
-    "kind":"constant",
-    "name":"ACT_DOTA_TORRENT"
   },{
     "enum":"GameActivity_t",
     "value":1731,
@@ -10462,10 +10453,6 @@ Initializing script VM...
     "value":32,
     "kind":"constant",
     "name":"AE_WPN_SECONDARYATTACK"
-  },{
-    "value":5,
-    "kind":"constant",
-    "name":"BURST"
   },{
     "enum":"DAMAGE_TYPES",
     "value":7,
@@ -13369,13 +13356,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_UNIT_TARGET_TREE"
   },{
-    "value":3,
+    "value":2,
     "kind":"constant",
     "name":"DOUBLE_SHOT"
-  },{
-    "value":4,
-    "kind":"constant",
-    "name":"DOUBLE_SHOT_NPC"
   },{
     "value":32,
     "kind":"constant",
@@ -13384,10 +13367,6 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"EMPTY"
-  },{
-    "value":16,
-    "kind":"constant",
-    "name":"FASTRELOAD"
   },{
     "value":128,
     "kind":"constant",
@@ -13526,19 +13505,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"MAX_PATTACH_TYPES"
   },{
-    "value":9,
+    "value":5,
     "kind":"constant",
     "name":"MELEE_HIT"
   },{
-    "value":11,
+    "value":7,
     "kind":"constant",
     "name":"MELEE_HIT_PLAYER"
   },{
-    "value":10,
+    "value":6,
     "kind":"constant",
     "name":"MELEE_HIT_WORLD"
   },{
-    "value":8,
+    "value":4,
     "kind":"constant",
     "name":"MELEE_MISS"
   },{
@@ -13568,259 +13547,259 @@ Initializing script VM...
     "name":"MODIFIER_ATTRIBUTE_PERMANENT"
   },{
     "enum":"modifierfunction",
-    "value":177,
+    "value":180,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_END_CHANNEL",
     "description":"OnAbilityEndChannel"
   },{
     "enum":"modifierfunction",
-    "value":174,
+    "value":177,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_EXECUTED",
     "description":"OnAbilityExecuted"
   },{
     "enum":"modifierfunction",
-    "value":175,
+    "value":178,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_FULLY_CAST",
     "description":"OnAbilityFullyCast"
   },{
     "enum":"modifierfunction",
-    "value":173,
+    "value":176,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_START",
     "description":"OnAbilityStart"
   },{
     "enum":"modifierfunction",
-    "value":166,
+    "value":169,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK",
     "description":"OnAttack"
   },{
     "enum":"modifierfunction",
-    "value":186,
+    "value":189,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACKED",
     "description":"OnAttacked"
   },{
     "enum":"modifierfunction",
-    "value":169,
+    "value":172,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_ALLIED",
     "description":"OnAttackAllied"
   },{
     "enum":"modifierfunction",
-    "value":232,
+    "value":235,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_CANCELLED",
     "description":"OnAttackCancelled"
   },{
     "enum":"modifierfunction",
-    "value":168,
+    "value":171,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FAIL",
     "description":"OnAttackFail"
   },{
     "enum":"modifierfunction",
-    "value":222,
+    "value":225,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FINISHED",
     "description":"OnAttackFinished"
   },{
     "enum":"modifierfunction",
-    "value":167,
+    "value":170,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_LANDED",
     "description":"OnAttackLanded"
   },{
     "enum":"modifierfunction",
-    "value":164,
+    "value":167,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_RECORD",
     "description":"OnAttackRecord"
   },{
     "enum":"modifierfunction",
-    "value":229,
+    "value":232,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY",
     "description":"OnAttackRecordDestroy"
   },{
     "enum":"modifierfunction",
-    "value":165,
+    "value":168,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_START",
     "description":"OnAttackStart"
   },{
     "enum":"modifierfunction",
-    "value":176,
+    "value":179,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
     "description":"OnBreakInvisibility"
   },{
     "enum":"modifierfunction",
-    "value":198,
+    "value":201,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BUILDING_KILLED",
     "description":"OnBuildingKilled"
   },{
     "enum":"modifierfunction",
-    "value":185,
+    "value":188,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DAMAGE_CALCULATED",
     "description":"OnDamageCalculated"
   },{
     "enum":"modifierfunction",
-    "value":187,
+    "value":190,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DEATH",
     "description":"OnDeath"
   },{
     "enum":"modifierfunction",
-    "value":181,
+    "value":184,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DEATH_PREVENTED",
     "description":"OnDamagePrevented"
   },{
     "enum":"modifierfunction",
-    "value":219,
+    "value":222,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DOMINATED",
     "description":"OnDominated"
   },{
     "enum":"modifierfunction",
-    "value":193,
+    "value":196,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HEALTH_GAINED",
     "description":"OnHealthGained"
   },{
     "enum":"modifierfunction",
-    "value":197,
+    "value":200,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HEAL_RECEIVED",
     "description":"OnHealReceived"
   },{
     "enum":"modifierfunction",
-    "value":196,
+    "value":199,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HERO_KILLED",
     "description":"OnHeroKilled"
   },{
     "enum":"modifierfunction",
-    "value":194,
+    "value":197,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MANA_GAINED",
     "description":"OnManaGained"
   },{
     "enum":"modifierfunction",
-    "value":199,
+    "value":202,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MODEL_CHANGED",
     "description":"OnModelChanged"
   },{
     "enum":"modifierfunction",
-    "value":200,
+    "value":203,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MODIFIER_ADDED",
     "description":"OnModifierAdded"
   },{
     "enum":"modifierfunction",
-    "value":183,
+    "value":186,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ORB_EFFECT",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":171,
+    "value":174,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ORDER",
     "description":"OnOrder"
   },{
     "enum":"modifierfunction",
-    "value":184,
+    "value":187,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROCESS_CLEAVE",
     "description":"OnProcessCleave"
   },{
     "enum":"modifierfunction",
-    "value":178,
+    "value":181,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROCESS_UPGRADE",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":170,
+    "value":173,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROJECTILE_DODGE",
     "description":"OnProjectileDodge"
   },{
     "enum":"modifierfunction",
-    "value":230,
+    "value":233,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT",
     "description":"OnProjectileObstructionHit"
   },{
     "enum":"modifierfunction",
-    "value":179,
+    "value":182,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_REFRESH",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":188,
+    "value":191,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_RESPAWN",
     "description":"OnRespawn"
   },{
     "enum":"modifierfunction",
-    "value":192,
+    "value":195,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SET_LOCATION",
     "description":"OnSetLocation"
   },{
     "enum":"modifierfunction",
-    "value":163,
+    "value":166,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SPELL_TARGET_READY",
     "description":"OnSpellTargetReady"
   },{
     "enum":"modifierfunction",
-    "value":189,
+    "value":192,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SPENT_MANA",
     "description":"OnSpentMana"
   },{
     "enum":"modifierfunction",
-    "value":182,
+    "value":185,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_STATE_CHANGED",
     "description":"OnStateChanged"
   },{
     "enum":"modifierfunction",
-    "value":180,
+    "value":183,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TAKEDAMAGE",
     "description":"OnTakeDamage"
   },{
     "enum":"modifierfunction",
-    "value":195,
+    "value":198,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT",
     "description":"OnTakeDamageKillCredit"
   },{
     "enum":"modifierfunction",
-    "value":191,
+    "value":194,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TELEPORTED",
     "description":"OnTeleported"
   },{
     "enum":"modifierfunction",
-    "value":190,
+    "value":193,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TELEPORTING",
     "description":"OnTeleporting"
   },{
     "enum":"modifierfunction",
-    "value":172,
+    "value":175,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_UNIT_MOVED",
     "description":"OnUnitMoved"
@@ -13831,7 +13810,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":238,
+    "value":242,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -13861,43 +13840,49 @@ Initializing script VM...
     "name":"MODIFIER_PRIORITY_ULTRA"
   },{
     "enum":"modifierfunction",
-    "value":218,
+    "value":221,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABILITY_LAYOUT",
     "description":"GetModifierAbilityLayout"
   },{
     "enum":"modifierfunction",
-    "value":141,
+    "value":142,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL",
     "description":"GetAbsoluteNoDamageMagical"
   },{
     "enum":"modifierfunction",
-    "value":140,
+    "value":141,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL",
     "description":"GetAbsoluteNoDamagePhysical"
   },{
     "enum":"modifierfunction",
-    "value":142,
+    "value":143,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE",
     "description":"GetAbsoluteNoDamagePure"
   },{
     "enum":"modifierfunction",
-    "value":130,
+    "value":131,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSORB_SPELL",
     "description":"GetAbsorbSpell"
   },{
     "enum":"modifierfunction",
-    "value":152,
+    "value":153,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK",
     "description":"GetAlwaysAllowAttack"
   },{
     "enum":"modifierfunction",
-    "value":153,
+    "value":165,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION",
+    "description":"GetAlwaysAutoAttackWhileHoldPosition"
+  },{
+    "enum":"modifierfunction",
+    "value":154,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
     "description":"GetAllowEtherealAttack"
@@ -13915,60 +13900,66 @@ Initializing script VM...
     "description":"GetModifierAttackSpeedBonus_Constant"
   },{
     "enum":"modifierfunction",
-    "value":235,
+    "value":241,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE",
+    "description":"GetModifierAttackSpeedPercentage"
+  },{
+    "enum":"modifierfunction",
+    "value":238,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
     "description":"GetModifierAttackSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":115,
+    "value":116,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE",
     "description":"GetModifierPercentageAttackAnimTime"
   },{
     "enum":"modifierfunction",
-    "value":35,
+    "value":36,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT",
     "description":"GetModifierAttackPointConstant"
   },{
     "enum":"modifierfunction",
-    "value":100,
+    "value":101,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE",
     "description":"GetModifierAttackRangeOverride"
   },{
     "enum":"modifierfunction",
-    "value":101,
+    "value":102,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS",
     "description":"GetModifierAttackRangeBonus"
   },{
     "enum":"modifierfunction",
-    "value":103,
+    "value":104,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE",
     "description":"GetModifierAttackRangeBonusPercentage"
   },{
     "enum":"modifierfunction",
-    "value":102,
+    "value":103,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE",
     "description":"GetModifierAttackRangeBonusUnique"
   },{
     "enum":"modifierfunction",
-    "value":237,
+    "value":240,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET"
   },{
     "enum":"modifierfunction",
-    "value":63,
+    "value":64,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_DAMAGE",
     "description":"GetModifierAvoidDamage"
   },{
     "enum":"modifierfunction",
-    "value":64,
+    "value":65,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_SPELL",
     "description":"GetModifierAvoidSpell"
@@ -13980,229 +13971,229 @@ Initializing script VM...
     "description":"GetModifierBaseAttack_BonusDamage"
   },{
     "enum":"modifierfunction",
-    "value":52,
+    "value":53,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierBaseDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":53,
+    "value":54,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE",
     "description":"GetModifierBaseDamageOutgoing_PercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":33,
+    "value":34,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT",
     "description":"GetModifierBaseAttackTimeConstant"
   },{
     "enum":"modifierfunction",
-    "value":34,
+    "value":35,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST",
     "description":"GetModifierBaseAttackTimeConstant_Adjust"
   },{
     "enum":"modifierfunction",
-    "value":77,
+    "value":78,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_MANA_REGEN",
     "description":"GetModifierBaseRegen"
   },{
     "enum":"modifierfunction",
-    "value":36,
+    "value":37,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierBonusDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":133,
+    "value":134,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_DAY_VISION",
     "description":"GetBonusDayVision"
   },{
     "enum":"modifierfunction",
-    "value":134,
+    "value":135,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_NIGHT_VISION",
     "description":"GetBonusNightVision"
   },{
     "enum":"modifierfunction",
-    "value":135,
+    "value":136,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE",
     "description":"GetBonusNightVisionUnique"
   },{
     "enum":"modifierfunction",
-    "value":136,
+    "value":137,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
     "description":"GetBonusVisionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":234,
+    "value":237,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
     "description":"BotAttackScoreBonus"
   },{
     "enum":"modifierfunction",
-    "value":156,
+    "value":157,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":157,
+    "value":158,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":224,
+    "value":227,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAN_ATTACK_TREES",
     "description":"GetModifierCanAttackTrees"
   },{
     "enum":"modifierfunction",
-    "value":114,
+    "value":115,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CASTTIME_PERCENTAGE",
     "description":"GetModifierPercentageCasttime"
   },{
     "enum":"modifierfunction",
-    "value":97,
+    "value":98,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS",
     "description":"GetModifierCastRangeBonus"
   },{
     "enum":"modifierfunction",
-    "value":99,
+    "value":100,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING",
     "description":"GetModifierCastRangeBonusStacking"
   },{
     "enum":"modifierfunction",
-    "value":98,
+    "value":99,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET",
     "description":"GetModifierCastRangeBonusTarget"
   },{
     "enum":"modifierfunction",
-    "value":215,
+    "value":218,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
     "description":"GetModifierChangeAbilityValue"
   },{
     "enum":"modifierfunction",
-    "value":112,
+    "value":113,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE",
     "description":"GetModifierPercentageCooldown"
   },{
     "enum":"modifierfunction",
-    "value":113,
+    "value":114,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING",
     "description":"GetModifierPercentageCooldownOngoing"
   },{
     "enum":"modifierfunction",
-    "value":31,
+    "value":32,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT",
     "description":"GetModifierCooldownReduction_Constant"
   },{
     "enum":"modifierfunction",
-    "value":37,
+    "value":38,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":38,
+    "value":39,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION",
     "description":"GetModifierDamageOutgoing_Percentage_Illusion"
   },{
     "enum":"modifierfunction",
-    "value":39,
+    "value":40,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY",
     "description":"GetModifierDamageOutgoing_Percentage_Illusion_Amplify"
   },{
     "enum":"modifierfunction",
-    "value":118,
+    "value":119,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DEATHGOLDCOST",
     "description":"GetModifierConstantDeathGoldCost"
   },{
     "enum":"modifierfunction",
-    "value":132,
+    "value":133,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_AUTOATTACK",
     "description":"GetDisableAutoAttack"
   },{
     "enum":"modifierfunction",
-    "value":151,
+    "value":152,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_HEALING",
     "description":"GetDisableHealing"
   },{
     "enum":"modifierfunction",
-    "value":213,
+    "value":216,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_TURNING",
     "description":"GetModifierDisableTurning"
   },{
     "enum":"modifierfunction",
-    "value":159,
+    "value":160,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DODGE_PROJECTILE",
     "description":"GetModifierDodgeProjectile"
   },{
     "enum":"modifierfunction",
-    "value":227,
+    "value":230,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
     "description":"GetModifierNoVisionOfAttacker"
   },{
     "enum":"modifierfunction",
-    "value":58,
+    "value":59,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EVASION_CONSTANT",
     "description":"GetModifierEvasion_Constant"
   },{
     "enum":"modifierfunction",
-    "value":119,
+    "value":120,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXP_RATE_BOOST",
     "description":"GetModifierPercentageExpRateBoost"
   },{
     "enum":"modifierfunction",
-    "value":87,
+    "value":88,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS",
     "description":"GetModifierExtraHealthBonus"
   },{
     "enum":"modifierfunction",
-    "value":89,
+    "value":90,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE",
     "description":"GetModifierExtraHealthPercentage"
   },{
     "enum":"modifierfunction",
-    "value":88,
+    "value":89,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_MANA_BONUS",
     "description":"GetModifierExtraManaBonus"
   },{
     "enum":"modifierfunction",
-    "value":90,
+    "value":91,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE",
     "description":"GetModifierExtraManaPercentage"
   },{
     "enum":"modifierfunction",
-    "value":86,
+    "value":87,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS",
     "description":"GetModifierExtraStrengthBonus"
@@ -14214,73 +14205,79 @@ Initializing script VM...
     "description":"GetModifierFixedAttackRate"
   },{
     "enum":"modifierfunction",
-    "value":137,
+    "value":138,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FIXED_DAY_VISION",
     "description":"GetFixedDayVision"
   },{
     "enum":"modifierfunction",
-    "value":138,
+    "value":139,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
     "description":"GetFixedNightVision"
   },{
     "enum":"modifierfunction",
-    "value":212,
+    "value":215,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP",
     "description":"GetForceDrawOnMinimap"
   },{
     "enum":"modifierfunction",
-    "value":84,
+    "value":85,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_BONUS",
     "description":"GetModifierHealthBonus"
   },{
     "enum":"modifierfunction",
-    "value":81,
+    "value":82,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT",
     "description":"GetModifierConstantHealthRegen"
   },{
     "enum":"modifierfunction",
-    "value":82,
+    "value":83,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE",
     "description":"GetModifierHealthRegenPercentage"
   },{
     "enum":"modifierfunction",
-    "value":83,
+    "value":84,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE",
     "description":"GetModifierHealthRegenPercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":44,
+    "value":45,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE",
     "description":"GetModifierHealAmplify_PercentageSource"
   },{
     "enum":"modifierfunction",
-    "value":45,
+    "value":46,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET",
     "description":"GetModifierHealAmplify_PercentageTarget"
   },{
     "enum":"modifierfunction",
-    "value":46,
+    "value":47,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierHPRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":214,
+    "value":31,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT",
+    "description":"GetModifierAttackSpeed_Limit"
+  },{
+    "enum":"modifierfunction",
+    "value":217,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE",
     "description":"GetModifierIgnoreCastAngle"
   },{
     "enum":"modifierfunction",
-    "value":223,
+    "value":226,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_COOLDOWN",
     "description":"GetModifierIgnoreCooldown"
@@ -14292,42 +14289,42 @@ Initializing script VM...
     "description":"GetModifierIgnoreMovespeedLimit"
   },{
     "enum":"modifierfunction",
-    "value":71,
+    "value":72,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR",
     "description":"GetModifierIgnorePhysicalArmor"
   },{
     "enum":"modifierfunction",
-    "value":144,
+    "value":145,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ILLUSION_LABEL",
     "description":"GetModifierIllusionLabel"
   },{
     "enum":"modifierfunction",
-    "value":226,
+    "value":229,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION"
   },{
     "enum":"modifierfunction",
-    "value":54,
+    "value":55,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE",
     "description":"GetModifierIncomingDamage_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":56,
+    "value":57,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT",
     "description":"GetModifierIncomingPhysicalDamageConstant"
   },{
     "enum":"modifierfunction",
-    "value":55,
+    "value":56,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE",
     "description":"GetModifierIncomingPhysicalDamage_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":57,
+    "value":58,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT",
     "description":"GetModifierIncomingSpellDamageConstant"
@@ -14345,151 +14342,151 @@ Initializing script VM...
     "description":"GetModifierInvisibilityLevel"
   },{
     "enum":"modifierfunction",
-    "value":143,
+    "value":144,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_ILLUSION",
     "description":"GetIsIllusion"
   },{
     "enum":"modifierfunction",
-    "value":204,
+    "value":207,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_SCEPTER",
     "description":"GetModifierScepter"
   },{
     "enum":"modifierfunction",
-    "value":205,
+    "value":208,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_SHARD",
     "description":"GetModifierShard"
   },{
     "enum":"modifierfunction",
-    "value":47,
+    "value":48,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierLifestealRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":209,
+    "value":212,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_LIFETIME_FRACTION",
     "description":"GetUnitLifetimeFraction"
   },{
     "enum":"modifierfunction",
-    "value":122,
+    "value":123,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK",
     "description":"GetModifierMagical_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":72,
+    "value":73,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION",
     "description":"GetModifierMagicalResistanceBaseReduction"
   },{
     "enum":"modifierfunction",
-    "value":74,
+    "value":75,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS",
     "description":"GetModifierMagicalResistanceBonus"
   },{
     "enum":"modifierfunction",
-    "value":75,
+    "value":76,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS",
     "description":"GetModifierMagicalResistanceBonusIllusions"
   },{
     "enum":"modifierfunction",
-    "value":76,
+    "value":77,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE",
     "description":"GetModifierMagicalResistanceDecrepifyUnique"
   },{
     "enum":"modifierfunction",
-    "value":73,
+    "value":74,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION",
     "description":"GetModifierMagicalResistanceDirectModification"
   },{
     "enum":"modifierfunction",
-    "value":116,
+    "value":117,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_PERCENTAGE",
     "description":"GetModifierPercentageManacost"
   },{
     "enum":"modifierfunction",
-    "value":117,
+    "value":118,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING",
     "description":"GetModifierPercentageManacostStacking"
   },{
     "enum":"modifierfunction",
-    "value":32,
+    "value":33,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT",
     "description":"GetModifierManacostReduction_Constant"
   },{
     "enum":"modifierfunction",
-    "value":85,
+    "value":86,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_BONUS",
     "description":"GetModifierManaBonus"
   },{
     "enum":"modifierfunction",
-    "value":50,
+    "value":51,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierManaDrainAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":78,
+    "value":79,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT",
     "description":"GetModifierConstantManaRegen"
   },{
     "enum":"modifierfunction",
-    "value":79,
+    "value":80,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE",
     "description":"GetModifierConstantManaRegenUnique"
   },{
     "enum":"modifierfunction",
-    "value":80,
+    "value":81,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE",
     "description":"GetModifierTotalPercentageManaRegen"
   },{
     "enum":"modifierfunction",
-    "value":104,
+    "value":105,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_ATTACK_RANGE",
     "description":"GetModifierMaxAttackRange"
   },{
     "enum":"modifierfunction",
-    "value":161,
+    "value":162,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
     "description":"GetModifierMaxDebuffDuration"
   },{
     "enum":"modifierfunction",
-    "value":139,
+    "value":140,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MIN_HEALTH",
     "description":"GetMinHealth"
   },{
     "enum":"modifierfunction",
-    "value":65,
+    "value":66,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MISS_PERCENTAGE",
     "description":"GetModifierMiss_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":202,
+    "value":205,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MODEL_CHANGE",
     "description":"GetModifierModelChange"
   },{
     "enum":"modifierfunction",
-    "value":203,
+    "value":206,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MODEL_SCALE",
     "description":"GetModifierModelScale"
@@ -14573,55 +14570,55 @@ Initializing script VM...
     "description":"GetModifierMoveSpeed_Limit"
   },{
     "enum":"modifierfunction",
-    "value":236,
+    "value":239,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
     "description":"GetModifierMoveSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":49,
+    "value":50,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierMPRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":51,
+    "value":52,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE",
     "description":"GetModifierMPRestoreAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":59,
+    "value":60,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT",
     "description":"GetModifierNegativeEvasion_Constant"
   },{
     "enum":"modifierfunction",
-    "value":216,
+    "value":219,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL",
     "description":"GetModifierOverrideAbilitySpecial"
   },{
     "enum":"modifierfunction",
-    "value":217,
+    "value":220,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE",
     "description":"GetModifierOverrideAbilitySpecialValue"
   },{
     "enum":"modifierfunction",
-    "value":127,
+    "value":128,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION",
     "description":"GetOverrideAnimation"
   },{
     "enum":"modifierfunction",
-    "value":129,
+    "value":130,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE",
     "description":"GetOverrideAnimationRate"
   },{
     "enum":"modifierfunction",
-    "value":128,
+    "value":129,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT",
     "description":"GetOverrideAnimationWeight"
@@ -14633,7 +14630,7 @@ Initializing script VM...
     "description":"GetModifierOverrideAttackDamage"
   },{
     "enum":"modifierfunction",
-    "value":154,
+    "value":155,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL",
     "description":"GetOverrideAttackMagical"
@@ -14645,43 +14642,43 @@ Initializing script VM...
     "description":"GetModifierPersistentInvisibility"
   },{
     "enum":"modifierfunction",
-    "value":66,
+    "value":67,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE",
     "description":"GetModifierPhysicalArmorBase_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":68,
+    "value":69,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS",
     "description":"GetModifierPhysicalArmorBonus"
   },{
     "enum":"modifierfunction",
-    "value":69,
+    "value":70,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE",
     "description":"GetModifierPhysicalArmorBonusUnique"
   },{
     "enum":"modifierfunction",
-    "value":70,
+    "value":71,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE",
     "description":"GetModifierPhysicalArmorBonusUniqueActive"
   },{
     "enum":"modifierfunction",
-    "value":67,
+    "value":68,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE",
     "description":"GetModifierPhysicalArmorTotal_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":123,
+    "value":124,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK",
     "description":"GetModifierPhysical_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":124,
+    "value":125,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL",
     "description":"GetModifierPhysical_ConstantBlockSpecial"
@@ -14711,19 +14708,25 @@ Initializing script VM...
     "description":"GetModifierPreAttack_BonusDamage_Target"
   },{
     "enum":"modifierfunction",
-    "value":120,
+    "value":121,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE",
     "description":"GetModifierPreAttack_CriticalStrike"
   },{
     "enum":"modifierfunction",
-    "value":121,
+    "value":164,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW",
+    "description":"GetModifierPreAttack_DeadlyBlow"
+  },{
+    "enum":"modifierfunction",
+    "value":122,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE",
     "description":"GetModifierPreAttack_Target_CriticalStrike"
   },{
     "enum":"modifierfunction",
-    "value":221,
+    "value":224,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE",
     "description":"PreserveParticlesOnModelChanged"
@@ -14735,7 +14738,7 @@ Initializing script VM...
     "description":"GetModifierPreAttack"
   },{
     "enum":"modifierfunction",
-    "value":162,
+    "value":163,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER",
     "description":"GetPrimaryStatDamageMultiplier"
@@ -14765,265 +14768,265 @@ Initializing script VM...
     "description":"GetModifierProcAttack_Feedback"
   },{
     "enum":"modifierfunction",
-    "value":107,
+    "value":108,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_NAME",
     "description":"GetModifierProjectileName"
   },{
     "enum":"modifierfunction",
-    "value":105,
+    "value":106,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS",
     "description":"GetModifierProjectileSpeedBonus"
   },{
     "enum":"modifierfunction",
-    "value":106,
+    "value":107,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE",
     "description":"GetModifierProjectileSpeedBonusPercentage"
   },{
     "enum":"modifierfunction",
-    "value":210,
+    "value":213,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION",
     "description":"GetModifierProvidesFOWVision"
   },{
     "enum":"modifierfunction",
-    "value":206,
+    "value":209,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION",
     "description":"GetModifierRadarCooldownReduction"
   },{
     "enum":"modifierfunction",
-    "value":131,
+    "value":132,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_REFLECT_SPELL",
     "description":"GetReflectSpell"
   },{
     "enum":"modifierfunction",
-    "value":108,
+    "value":109,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_REINCARNATION",
     "description":"ReincarnateTime"
   },{
     "enum":"modifierfunction",
-    "value":109,
+    "value":110,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME",
     "description":"GetModifierConstantRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":110,
+    "value":111,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE",
     "description":"GetModifierPercentageRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":111,
+    "value":112,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "description":"GetModifierStackingRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":211,
+    "value":214,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELLS_REQUIRE_HP",
     "description":"GetModifierSpellsRequireHP"
   },{
     "enum":"modifierfunction",
-    "value":42,
+    "value":43,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierSpellAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":41,
+    "value":42,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP",
     "description":"GetModifierSpellAmplify_PercentageCreep"
   },{
     "enum":"modifierfunction",
-    "value":43,
+    "value":44,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE",
     "description":"GetModifierSpellAmplify_PercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierSpellLifestealRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":92,
+    "value":93,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_AGILITY_BONUS",
     "description":"GetModifierBonusStats_Agility"
   },{
     "enum":"modifierfunction",
-    "value":95,
+    "value":96,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Agility_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":93,
+    "value":94,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS",
     "description":"GetModifierBonusStats_Intellect"
   },{
     "enum":"modifierfunction",
-    "value":96,
+    "value":97,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Intellect_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":91,
+    "value":92,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS",
     "description":"GetModifierBonusStats_Strength"
   },{
     "enum":"modifierfunction",
-    "value":94,
+    "value":95,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Strength_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":60,
+    "value":61,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE",
     "description":"GetModifierStatusResistance"
   },{
     "enum":"modifierfunction",
-    "value":62,
+    "value":63,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER",
     "description":"GetModifierStatusResistanceCaster"
   },{
     "enum":"modifierfunction",
-    "value":61,
+    "value":62,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING",
     "description":"GetModifierStatusResistanceStacking"
   },{
     "enum":"modifierfunction",
-    "value":145,
+    "value":146,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STRONG_ILLUSION",
     "description":"GetModifierStrongIllusion"
   },{
     "enum":"modifierfunction",
-    "value":146,
+    "value":147,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPER_ILLUSION",
     "description":"GetModifierSuperIllusion"
   },{
     "enum":"modifierfunction",
-    "value":147,
+    "value":148,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
     "description":"GetModifierSuperIllusionWithUltimate"
   },{
     "enum":"modifierfunction",
-    "value":233,
+    "value":236,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
     "description":"GetSuppressCleave"
   },{
     "enum":"modifierfunction",
-    "value":231,
+    "value":234,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
     "description":"GetSuppressTeleport"
   },{
     "enum":"modifierfunction",
-    "value":220,
+    "value":223,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TEMPEST_DOUBLE",
     "description":"GetModifierTempestDouble"
   },{
     "enum":"modifierfunction",
-    "value":201,
+    "value":204,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOOLTIP",
     "description":"OnTooltip"
   },{
     "enum":"modifierfunction",
-    "value":228,
+    "value":231,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOOLTIP2",
     "description":"OnTooltip2"
   },{
     "enum":"modifierfunction",
-    "value":40,
+    "value":41,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierTotalDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":126,
+    "value":127,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK",
     "description":"GetModifierTotal_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":125,
+    "value":126,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR",
     "description":"GetModifierPhysical_ConstantBlockUnavoidablePreArmor"
   },{
     "enum":"modifierfunction",
-    "value":207,
+    "value":210,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS",
     "description":"GetActivityTranslationModifiers"
   },{
     "enum":"modifierfunction",
-    "value":208,
+    "value":211,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND",
     "description":"GetAttackSound"
   },{
     "enum":"modifierfunction",
-    "value":160,
+    "value":161,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK",
     "description":"GetTriggerCosmeticAndEndAttack"
   },{
     "enum":"modifierfunction",
-    "value":150,
+    "value":151,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TURN_RATE_OVERRIDE",
     "description":"GetModifierTurnRate_Override"
   },{
     "enum":"modifierfunction",
-    "value":149,
+    "value":150,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE",
     "description":"GetModifierTurnRate_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":158,
+    "value":159,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING",
     "description":"GetModifierUnitDisllowUpgrading"
   },{
     "enum":"modifierfunction",
-    "value":155,
+    "value":156,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "description":"GetModifierUnitStatsNeedsRefresh"
   },{
     "enum":"modifierfunction",
-    "value":225,
+    "value":228,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_VISUAL_Z_DELTA",
     "description":"GetVisualZDelta"
   },{
     "enum":"modifierfunction",
-    "value":148,
+    "value":149,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_XP_DURING_DEATH",
     "description":"GetModifierXPDuringDeath"
@@ -15154,7 +15157,7 @@ Initializing script VM...
     "name":"MODIFIER_STATE_INVULNERABLE"
   },{
     "enum":"modifierstate",
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST"
   },{
@@ -15239,6 +15242,11 @@ Initializing script VM...
     "name":"MODIFIER_STATE_SPECIALLY_DENIABLE"
   },{
     "enum":"modifierstate",
+    "value":48,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_SPECIALLY_UNDENIABLE"
+  },{
+    "enum":"modifierstate",
     "value":5,
     "kind":"constant",
     "name":"MODIFIER_STATE_STUNNED"
@@ -15300,6 +15308,10 @@ Initializing script VM...
     "value":6,
     "kind":"constant",
     "name":"OVERHEAD_ALERT_DAMAGE"
+  },{
+    "value":24,
+    "kind":"constant",
+    "name":"OVERHEAD_ALERT_DEADLY_BLOW"
   },{
     "value":20,
     "kind":"constant",
@@ -15495,13 +15507,9 @@ Initializing script VM...
     "kind":"constant",
     "name":"QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE"
   },{
-    "value":6,
+    "value":3,
     "kind":"constant",
     "name":"RELOAD"
-  },{
-    "value":7,
-    "kind":"constant",
-    "name":"RELOAD_NPC"
   },{
     "value":1,
     "kind":"constant",
@@ -15511,23 +15519,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"SINGLE_SHOT"
   },{
-    "value":2,
-    "kind":"constant",
-    "name":"SINGLE_SHOT_NPC"
-  },{
     "value":0,
     "kind":"constant",
     "name":"SPAWN_GROUP_HANDLE_INVALID"
   },{
-    "value":12,
+    "value":8,
     "kind":"constant",
     "name":"SPECIAL1"
   },{
-    "value":13,
+    "value":9,
     "kind":"constant",
     "name":"SPECIAL2"
   },{
-    "value":14,
+    "value":10,
     "kind":"constant",
     "name":"SPECIAL3"
   },{
@@ -15565,10 +15569,6 @@ Initializing script VM...
     "value":26,
     "kind":"constant",
     "name":"ScriptDebugWatchFistLine"
-  },{
-    "value":15,
-    "kind":"constant",
-    "name":"TAUNT"
   },{
     "enum":"UnitFilterResult",
     "value":9,
@@ -15714,14 +15714,6 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"UF_SUCCESS"
-  },{
-    "value":1753,
-    "kind":"constant",
-    "name":"hoodwink_frontpage_comp"
-  },{
-    "value":1763,
-    "kind":"constant",
-    "name":"radiant_melee_mars_shieldbash"
   },{
     "members":[{
         "args":[],
@@ -17195,6 +17187,13 @@ Initializing script VM...
         "returns":"int",
         "name":"GetManaCost"
       },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"GetMaxAbilityCharges"
+      },{
         "args":[],
         "returns":"int",
         "name":"GetMaxLevel"
@@ -17446,6 +17445,10 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
+        "name":"RequiresFacing"
+      },{
+        "args":[],
+        "returns":"bool",
         "name":"ResetToggleOnRespawn"
       },{
         "args":[{
@@ -17596,6 +17599,13 @@ Initializing script VM...
   },{
     "members":[{
         "args":[{
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"AddAbilityUpgradeToWhitelist"
+      },{
+        "args":[{
             "name":"pszItemName",
             "type":"string"
           },{
@@ -17713,6 +17723,13 @@ Initializing script VM...
         "returns":"void",
         "name":"DisableHudFlip",
         "description":"Use to disable hud flip for this mod"
+      },{
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"EnableAbilityUpgradeWhitelist"
       },{
         "args":[],
         "returns":"bool",
@@ -17873,6 +17890,13 @@ Initializing script VM...
         "name":"GetUseCustomHeroLevels",
         "description":"Are custom-defined XP values for hero level ups in use?"
       },{
+        "args":[{
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"bool",
+        "name":"IsAbilityUpgradeWhitelisted"
+      },{
         "args":[],
         "returns":"bool",
         "name":"IsBuybackEnabled",
@@ -17915,6 +17939,13 @@ Initializing script VM...
         "returns":"void",
         "name":"ListenForQuerySucceeded",
         "description":"Set function and context for real time combat analyzer query succeeded."
+      },{
+        "args":[{
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveAbilityUpgradeFromWhitelist"
       },{
         "args":[{
             "name":"pszItemName",
@@ -18959,11 +18990,6 @@ Initializing script VM...
         "description":"Get the time an item will be added to stock"
       },{
         "args":[],
-        "returns":"uint64",
-        "name":"GetMatchID",
-        "description":"Get the MatchID for this game."
-      },{
-        "args":[],
         "returns":"bool",
         "name":"GetMatchSignoutComplete",
         "description":"Have we received the post match signout message that includes reward information"
@@ -19144,6 +19170,11 @@ Initializing script VM...
         "returns":"void",
         "name":"ResetToHeroSelection",
         "description":"Restart the game at hero selection"
+      },{
+        "args":[],
+        "returns":"uint64",
+        "name":"Script_GetMatchID",
+        "description":"Get the MatchID for this game."
       },{
         "args":[{
             "type":"string"
@@ -20267,6 +20298,11 @@ Initializing script VM...
         "returns":"bool",
         "name":"ProcsMagicStick",
         "description":"Returns true if this ability will generate magic stick charges for nearby enemies."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"RequiresFacing",
+        "description":"Does this ability need the caster to face the target before executing?"
       },{
         "args":[],
         "returns":"bool",
@@ -21444,6 +21480,10 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"IsSpeciallyDeniable"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsSpeciallyUndeniable"
       },{
         "args":[],
         "returns":"bool",
@@ -23244,6 +23284,24 @@ Initializing script VM...
     "extend":"CDOTA_BaseNPC_Creature"
   },{
     "members":[{
+        "args":[],
+        "returns":"string",
+        "name":"GetInteractAbilityName",
+        "description":"The name of the ability used when triggering interaction on the outpost."
+      },{
+        "args":[{
+            "name":"pszInteractAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"SetInteractAbilityName",
+        "description":"The name of the ability used when triggering interaction on the outpost."
+      }],
+    "kind":"class",
+    "name":"CDOTA_BaseNPC_Watch_Tower",
+    "extend":"CDOTA_BaseNPC_Building"
+  },{
+    "members":[{
         "args":[{
             "name":"i",
             "type":"int"
@@ -23527,6 +23585,10 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
+        "name":"IsCombineLocked"
+      },{
+        "args":[],
+        "returns":"bool",
         "name":"IsDisassemblable"
       },{
         "args":[],
@@ -23656,6 +23718,13 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"SetCastOnPickup"
+      },{
+        "args":[{
+            "name":"bCombineLocked",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetCombineLocked"
       },{
         "args":[{
             "name":"iCharges",
@@ -24497,6 +24566,26 @@ Initializing script VM...
     "extend":"CDOTA_Modifier_Lua"
   },{
     "members":[{
+        "args":[],
+        "returns":"void",
+        "name":"CreatePendingUnits"
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"SelectSpawnType"
+      },{
+        "args":[{
+            "name":"bIgnoreBlockers",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SpawnNextBatch"
+      }],
+    "kind":"class",
+    "name":"CDOTA_NeutralSpawner",
+    "extend":"CPointEntity"
+  },{
+    "members":[{
         "args":[{
             "name":"iPlayerID",
             "type":"int"
@@ -24988,6 +25077,13 @@ Initializing script VM...
         "name":"GetPlayerName"
       },{
         "args":[{
+            "name":"nPlayerId",
+            "type":"int"
+          }],
+        "returns":"handle",
+        "name":"GetPreferredCourierForPlayer"
+      },{
+        "args":[{
             "name":"iPlayerID",
             "type":"int"
           }],
@@ -25376,7 +25472,7 @@ Initializing script VM...
         "name":"IsValidTeamPlayer"
       },{
         "args":[{
-            "name":"iPlayerID",
+            "name":"nPlayerID",
             "type":"int"
           }],
         "returns":"bool",
@@ -25689,7 +25785,15 @@ Initializing script VM...
     "name":"CDOTA_SimpleObstruction",
     "extend":"CBaseEntity"
   },{
-    "members":[],
+    "members":[{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"UpgradeCourier",
+        "description":"Upgrade the courier ( int param ) times."
+      }],
     "kind":"class",
     "name":"CDOTA_Unit_Courier",
     "extend":"CDOTA_BaseNPC"
@@ -26336,11 +26440,6 @@ Initializing script VM...
         "name":"Triangle",
         "description":"Draws a filled triangle. Specify vertices in world space."
       },{
-        "args":[],
-        "returns":"void",
-        "name":"UnitTestCycleOverlayRenderType",
-        "description":"Toggles the overlay render type, for unit tests"
-      },{
         "args":[{
             "type":"Vector"
           },{
@@ -26504,6 +26603,25 @@ Initializing script VM...
     "kind":"class",
     "name":"CDotaSubquestBase",
     "extend":"CBaseEntity"
+  },{
+    "members":[{
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetEnabled"
+      },{
+        "args":[{
+            "name":"hBlocker",
+            "type":"handle"
+          }],
+        "returns":"void",
+        "name":"SetOtherBlocker"
+      }],
+    "kind":"class",
+    "name":"CDotaTutorialNPCBlocker",
+    "extend":"CBaseFlex"
   },{
     "instance":"Entities",
     "members":[{
@@ -28625,6 +28743,14 @@ Initializing script VM...
     "name":"FrameTime",
     "description":"Get the time spent on the server in the last frame"
   },{
+    "returns":"table",
+    "args":[{
+        "type":"string"
+      }],
+    "kind":"function",
+    "name":"GetAbilityKeyValuesByName",
+    "description":"Get ability data by ability name."
+  },{
     "returns":"string",
     "args":[{
         "type":"string"
@@ -29434,7 +29560,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1754,
+    "value":1753,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30194,7 +30320,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1762,
+    "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30338,7 +30464,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1757,
+    "value":1756,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30370,7 +30496,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1755,
+    "value":1754,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30494,7 +30620,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1758,
+    "value":1757,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30706,7 +30832,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1764,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30746,7 +30872,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1760,
+    "value":1759,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30758,7 +30884,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1761,
+    "value":1760,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30778,7 +30904,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1756,
+    "value":1755,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
@@ -30930,7 +31056,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
   },{
-    "value":1759,
+    "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT"
   },{
@@ -34762,6 +34888,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
+    "value":56,
+    "kind":"constant",
+    "name":"AE_DOTA_SWITCH_ATTACK_COMBO"
+  },{
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
@@ -34833,10 +34963,6 @@ Initializing script VM...
     "value":32,
     "kind":"constant",
     "name":"AE_WPN_SECONDARYATTACK"
-  },{
-    "value":5,
-    "kind":"constant",
-    "name":"BURST"
   },{
     "value":1,
     "kind":"constant",
@@ -36071,21 +36197,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_UNIT_TARGET_TREE"
   },{
-    "value":3,
+    "value":2,
     "kind":"constant",
     "name":"DOUBLE_SHOT"
-  },{
-    "value":4,
-    "kind":"constant",
-    "name":"DOUBLE_SHOT_NPC"
   },{
     "value":0,
     "kind":"constant",
     "name":"EMPTY"
-  },{
-    "value":16,
-    "kind":"constant",
-    "name":"FASTRELOAD"
   },{
     "value":128,
     "kind":"constant",
@@ -36209,19 +36327,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"MAX_PATTACH_TYPES"
   },{
-    "value":9,
+    "value":5,
     "kind":"constant",
     "name":"MELEE_HIT"
   },{
-    "value":11,
+    "value":7,
     "kind":"constant",
     "name":"MELEE_HIT_PLAYER"
   },{
-    "value":10,
+    "value":6,
     "kind":"constant",
     "name":"MELEE_HIT_WORLD"
   },{
-    "value":8,
+    "value":4,
     "kind":"constant",
     "name":"MELEE_MISS"
   },{
@@ -36251,259 +36369,259 @@ Initializing script VM...
     "name":"MODIFIER_ATTRIBUTE_PERMANENT"
   },{
     "enum":"modifierfunction",
-    "value":177,
+    "value":180,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_END_CHANNEL",
     "description":"OnAbilityEndChannel"
   },{
     "enum":"modifierfunction",
-    "value":174,
+    "value":177,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_EXECUTED",
     "description":"OnAbilityExecuted"
   },{
     "enum":"modifierfunction",
-    "value":175,
+    "value":178,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_FULLY_CAST",
     "description":"OnAbilityFullyCast"
   },{
     "enum":"modifierfunction",
-    "value":173,
+    "value":176,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ABILITY_START",
     "description":"OnAbilityStart"
   },{
     "enum":"modifierfunction",
-    "value":166,
+    "value":169,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK",
     "description":"OnAttack"
   },{
     "enum":"modifierfunction",
-    "value":186,
+    "value":189,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACKED",
     "description":"OnAttacked"
   },{
     "enum":"modifierfunction",
-    "value":169,
+    "value":172,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_ALLIED",
     "description":"OnAttackAllied"
   },{
     "enum":"modifierfunction",
-    "value":232,
+    "value":235,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_CANCELLED",
     "description":"OnAttackCancelled"
   },{
     "enum":"modifierfunction",
-    "value":168,
+    "value":171,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FAIL",
     "description":"OnAttackFail"
   },{
     "enum":"modifierfunction",
-    "value":222,
+    "value":225,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_FINISHED",
     "description":"OnAttackFinished"
   },{
     "enum":"modifierfunction",
-    "value":167,
+    "value":170,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_LANDED",
     "description":"OnAttackLanded"
   },{
     "enum":"modifierfunction",
-    "value":164,
+    "value":167,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_RECORD",
     "description":"OnAttackRecord"
   },{
     "enum":"modifierfunction",
-    "value":229,
+    "value":232,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY",
     "description":"OnAttackRecordDestroy"
   },{
     "enum":"modifierfunction",
-    "value":165,
+    "value":168,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ATTACK_START",
     "description":"OnAttackStart"
   },{
     "enum":"modifierfunction",
-    "value":176,
+    "value":179,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
     "description":"OnBreakInvisibility"
   },{
     "enum":"modifierfunction",
-    "value":198,
+    "value":201,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BUILDING_KILLED",
     "description":"OnBuildingKilled"
   },{
     "enum":"modifierfunction",
-    "value":185,
+    "value":188,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DAMAGE_CALCULATED",
     "description":"OnDamageCalculated"
   },{
     "enum":"modifierfunction",
-    "value":187,
+    "value":190,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DEATH",
     "description":"OnDeath"
   },{
     "enum":"modifierfunction",
-    "value":181,
+    "value":184,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DEATH_PREVENTED",
     "description":"OnDamagePrevented"
   },{
     "enum":"modifierfunction",
-    "value":219,
+    "value":222,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_DOMINATED",
     "description":"OnDominated"
   },{
     "enum":"modifierfunction",
-    "value":193,
+    "value":196,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HEALTH_GAINED",
     "description":"OnHealthGained"
   },{
     "enum":"modifierfunction",
-    "value":197,
+    "value":200,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HEAL_RECEIVED",
     "description":"OnHealReceived"
   },{
     "enum":"modifierfunction",
-    "value":196,
+    "value":199,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_HERO_KILLED",
     "description":"OnHeroKilled"
   },{
     "enum":"modifierfunction",
-    "value":194,
+    "value":197,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MANA_GAINED",
     "description":"OnManaGained"
   },{
     "enum":"modifierfunction",
-    "value":199,
+    "value":202,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MODEL_CHANGED",
     "description":"OnModelChanged"
   },{
     "enum":"modifierfunction",
-    "value":200,
+    "value":203,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_MODIFIER_ADDED",
     "description":"OnModifierAdded"
   },{
     "enum":"modifierfunction",
-    "value":183,
+    "value":186,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ORB_EFFECT",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":171,
+    "value":174,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_ORDER",
     "description":"OnOrder"
   },{
     "enum":"modifierfunction",
-    "value":184,
+    "value":187,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROCESS_CLEAVE",
     "description":"OnProcessCleave"
   },{
     "enum":"modifierfunction",
-    "value":178,
+    "value":181,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROCESS_UPGRADE",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":170,
+    "value":173,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROJECTILE_DODGE",
     "description":"OnProjectileDodge"
   },{
     "enum":"modifierfunction",
-    "value":230,
+    "value":233,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT",
     "description":"OnProjectileObstructionHit"
   },{
     "enum":"modifierfunction",
-    "value":179,
+    "value":182,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_REFRESH",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":188,
+    "value":191,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_RESPAWN",
     "description":"OnRespawn"
   },{
     "enum":"modifierfunction",
-    "value":192,
+    "value":195,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SET_LOCATION",
     "description":"OnSetLocation"
   },{
     "enum":"modifierfunction",
-    "value":163,
+    "value":166,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SPELL_TARGET_READY",
     "description":"OnSpellTargetReady"
   },{
     "enum":"modifierfunction",
-    "value":189,
+    "value":192,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_SPENT_MANA",
     "description":"OnSpentMana"
   },{
     "enum":"modifierfunction",
-    "value":182,
+    "value":185,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_STATE_CHANGED",
     "description":"OnStateChanged"
   },{
     "enum":"modifierfunction",
-    "value":180,
+    "value":183,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TAKEDAMAGE",
     "description":"OnTakeDamage"
   },{
     "enum":"modifierfunction",
-    "value":195,
+    "value":198,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT",
     "description":"OnTakeDamageKillCredit"
   },{
     "enum":"modifierfunction",
-    "value":191,
+    "value":194,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TELEPORTED",
     "description":"OnTeleported"
   },{
     "enum":"modifierfunction",
-    "value":190,
+    "value":193,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_TELEPORTING",
     "description":"OnTeleporting"
   },{
     "enum":"modifierfunction",
-    "value":172,
+    "value":175,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_UNIT_MOVED",
     "description":"OnUnitMoved"
@@ -36514,7 +36632,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":238,
+    "value":242,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -36544,43 +36662,49 @@ Initializing script VM...
     "name":"MODIFIER_PRIORITY_ULTRA"
   },{
     "enum":"modifierfunction",
-    "value":218,
+    "value":221,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABILITY_LAYOUT",
     "description":"GetModifierAbilityLayout"
   },{
     "enum":"modifierfunction",
-    "value":141,
+    "value":142,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL",
     "description":"GetAbsoluteNoDamageMagical"
   },{
     "enum":"modifierfunction",
-    "value":140,
+    "value":141,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL",
     "description":"GetAbsoluteNoDamagePhysical"
   },{
     "enum":"modifierfunction",
-    "value":142,
+    "value":143,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE",
     "description":"GetAbsoluteNoDamagePure"
   },{
     "enum":"modifierfunction",
-    "value":130,
+    "value":131,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ABSORB_SPELL",
     "description":"GetAbsorbSpell"
   },{
     "enum":"modifierfunction",
-    "value":152,
+    "value":153,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK",
     "description":"GetAlwaysAllowAttack"
   },{
     "enum":"modifierfunction",
-    "value":153,
+    "value":165,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION",
+    "description":"GetAlwaysAutoAttackWhileHoldPosition"
+  },{
+    "enum":"modifierfunction",
+    "value":154,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
     "description":"GetAllowEtherealAttack"
@@ -36598,60 +36722,66 @@ Initializing script VM...
     "description":"GetModifierAttackSpeedBonus_Constant"
   },{
     "enum":"modifierfunction",
-    "value":235,
+    "value":241,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE",
+    "description":"GetModifierAttackSpeedPercentage"
+  },{
+    "enum":"modifierfunction",
+    "value":238,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
     "description":"GetModifierAttackSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":115,
+    "value":116,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE",
     "description":"GetModifierPercentageAttackAnimTime"
   },{
     "enum":"modifierfunction",
-    "value":35,
+    "value":36,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT",
     "description":"GetModifierAttackPointConstant"
   },{
     "enum":"modifierfunction",
-    "value":100,
+    "value":101,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE",
     "description":"GetModifierAttackRangeOverride"
   },{
     "enum":"modifierfunction",
-    "value":101,
+    "value":102,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS",
     "description":"GetModifierAttackRangeBonus"
   },{
     "enum":"modifierfunction",
-    "value":103,
+    "value":104,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE",
     "description":"GetModifierAttackRangeBonusPercentage"
   },{
     "enum":"modifierfunction",
-    "value":102,
+    "value":103,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE",
     "description":"GetModifierAttackRangeBonusUnique"
   },{
     "enum":"modifierfunction",
-    "value":237,
+    "value":240,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET"
   },{
     "enum":"modifierfunction",
-    "value":63,
+    "value":64,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_DAMAGE",
     "description":"GetModifierAvoidDamage"
   },{
     "enum":"modifierfunction",
-    "value":64,
+    "value":65,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_SPELL",
     "description":"GetModifierAvoidSpell"
@@ -36663,229 +36793,229 @@ Initializing script VM...
     "description":"GetModifierBaseAttack_BonusDamage"
   },{
     "enum":"modifierfunction",
-    "value":52,
+    "value":53,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierBaseDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":53,
+    "value":54,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE",
     "description":"GetModifierBaseDamageOutgoing_PercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":33,
+    "value":34,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT",
     "description":"GetModifierBaseAttackTimeConstant"
   },{
     "enum":"modifierfunction",
-    "value":34,
+    "value":35,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST",
     "description":"GetModifierBaseAttackTimeConstant_Adjust"
   },{
     "enum":"modifierfunction",
-    "value":77,
+    "value":78,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_MANA_REGEN",
     "description":"GetModifierBaseRegen"
   },{
     "enum":"modifierfunction",
-    "value":36,
+    "value":37,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierBonusDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":133,
+    "value":134,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_DAY_VISION",
     "description":"GetBonusDayVision"
   },{
     "enum":"modifierfunction",
-    "value":134,
+    "value":135,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_NIGHT_VISION",
     "description":"GetBonusNightVision"
   },{
     "enum":"modifierfunction",
-    "value":135,
+    "value":136,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE",
     "description":"GetBonusNightVisionUnique"
   },{
     "enum":"modifierfunction",
-    "value":136,
+    "value":137,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
     "description":"GetBonusVisionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":234,
+    "value":237,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
     "description":"BotAttackScoreBonus"
   },{
     "enum":"modifierfunction",
-    "value":156,
+    "value":157,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":157,
+    "value":158,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
     "description":"Unused"
   },{
     "enum":"modifierfunction",
-    "value":224,
+    "value":227,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAN_ATTACK_TREES",
     "description":"GetModifierCanAttackTrees"
   },{
     "enum":"modifierfunction",
-    "value":114,
+    "value":115,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CASTTIME_PERCENTAGE",
     "description":"GetModifierPercentageCasttime"
   },{
     "enum":"modifierfunction",
-    "value":97,
+    "value":98,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS",
     "description":"GetModifierCastRangeBonus"
   },{
     "enum":"modifierfunction",
-    "value":99,
+    "value":100,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING",
     "description":"GetModifierCastRangeBonusStacking"
   },{
     "enum":"modifierfunction",
-    "value":98,
+    "value":99,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET",
     "description":"GetModifierCastRangeBonusTarget"
   },{
     "enum":"modifierfunction",
-    "value":215,
+    "value":218,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
     "description":"GetModifierChangeAbilityValue"
   },{
     "enum":"modifierfunction",
-    "value":112,
+    "value":113,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE",
     "description":"GetModifierPercentageCooldown"
   },{
     "enum":"modifierfunction",
-    "value":113,
+    "value":114,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING",
     "description":"GetModifierPercentageCooldownOngoing"
   },{
     "enum":"modifierfunction",
-    "value":31,
+    "value":32,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT",
     "description":"GetModifierCooldownReduction_Constant"
   },{
     "enum":"modifierfunction",
-    "value":37,
+    "value":38,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":38,
+    "value":39,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION",
     "description":"GetModifierDamageOutgoing_Percentage_Illusion"
   },{
     "enum":"modifierfunction",
-    "value":39,
+    "value":40,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY",
     "description":"GetModifierDamageOutgoing_Percentage_Illusion_Amplify"
   },{
     "enum":"modifierfunction",
-    "value":118,
+    "value":119,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DEATHGOLDCOST",
     "description":"GetModifierConstantDeathGoldCost"
   },{
     "enum":"modifierfunction",
-    "value":132,
+    "value":133,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_AUTOATTACK",
     "description":"GetDisableAutoAttack"
   },{
     "enum":"modifierfunction",
-    "value":151,
+    "value":152,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_HEALING",
     "description":"GetDisableHealing"
   },{
     "enum":"modifierfunction",
-    "value":213,
+    "value":216,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DISABLE_TURNING",
     "description":"GetModifierDisableTurning"
   },{
     "enum":"modifierfunction",
-    "value":159,
+    "value":160,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DODGE_PROJECTILE",
     "description":"GetModifierDodgeProjectile"
   },{
     "enum":"modifierfunction",
-    "value":227,
+    "value":230,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
     "description":"GetModifierNoVisionOfAttacker"
   },{
     "enum":"modifierfunction",
-    "value":58,
+    "value":59,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EVASION_CONSTANT",
     "description":"GetModifierEvasion_Constant"
   },{
     "enum":"modifierfunction",
-    "value":119,
+    "value":120,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXP_RATE_BOOST",
     "description":"GetModifierPercentageExpRateBoost"
   },{
     "enum":"modifierfunction",
-    "value":87,
+    "value":88,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS",
     "description":"GetModifierExtraHealthBonus"
   },{
     "enum":"modifierfunction",
-    "value":89,
+    "value":90,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE",
     "description":"GetModifierExtraHealthPercentage"
   },{
     "enum":"modifierfunction",
-    "value":88,
+    "value":89,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_MANA_BONUS",
     "description":"GetModifierExtraManaBonus"
   },{
     "enum":"modifierfunction",
-    "value":90,
+    "value":91,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE",
     "description":"GetModifierExtraManaPercentage"
   },{
     "enum":"modifierfunction",
-    "value":86,
+    "value":87,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS",
     "description":"GetModifierExtraStrengthBonus"
@@ -36897,73 +37027,79 @@ Initializing script VM...
     "description":"GetModifierFixedAttackRate"
   },{
     "enum":"modifierfunction",
-    "value":137,
+    "value":138,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FIXED_DAY_VISION",
     "description":"GetFixedDayVision"
   },{
     "enum":"modifierfunction",
-    "value":138,
+    "value":139,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
     "description":"GetFixedNightVision"
   },{
     "enum":"modifierfunction",
-    "value":212,
+    "value":215,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP",
     "description":"GetForceDrawOnMinimap"
   },{
     "enum":"modifierfunction",
-    "value":84,
+    "value":85,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_BONUS",
     "description":"GetModifierHealthBonus"
   },{
     "enum":"modifierfunction",
-    "value":81,
+    "value":82,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT",
     "description":"GetModifierConstantHealthRegen"
   },{
     "enum":"modifierfunction",
-    "value":82,
+    "value":83,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE",
     "description":"GetModifierHealthRegenPercentage"
   },{
     "enum":"modifierfunction",
-    "value":83,
+    "value":84,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE",
     "description":"GetModifierHealthRegenPercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":44,
+    "value":45,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE",
     "description":"GetModifierHealAmplify_PercentageSource"
   },{
     "enum":"modifierfunction",
-    "value":45,
+    "value":46,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET",
     "description":"GetModifierHealAmplify_PercentageTarget"
   },{
     "enum":"modifierfunction",
-    "value":46,
+    "value":47,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierHPRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":214,
+    "value":31,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT",
+    "description":"GetModifierAttackSpeed_Limit"
+  },{
+    "enum":"modifierfunction",
+    "value":217,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE",
     "description":"GetModifierIgnoreCastAngle"
   },{
     "enum":"modifierfunction",
-    "value":223,
+    "value":226,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_COOLDOWN",
     "description":"GetModifierIgnoreCooldown"
@@ -36975,42 +37111,42 @@ Initializing script VM...
     "description":"GetModifierIgnoreMovespeedLimit"
   },{
     "enum":"modifierfunction",
-    "value":71,
+    "value":72,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR",
     "description":"GetModifierIgnorePhysicalArmor"
   },{
     "enum":"modifierfunction",
-    "value":144,
+    "value":145,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ILLUSION_LABEL",
     "description":"GetModifierIllusionLabel"
   },{
     "enum":"modifierfunction",
-    "value":226,
+    "value":229,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION"
   },{
     "enum":"modifierfunction",
-    "value":54,
+    "value":55,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE",
     "description":"GetModifierIncomingDamage_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":56,
+    "value":57,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT",
     "description":"GetModifierIncomingPhysicalDamageConstant"
   },{
     "enum":"modifierfunction",
-    "value":55,
+    "value":56,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE",
     "description":"GetModifierIncomingPhysicalDamage_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":57,
+    "value":58,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT",
     "description":"GetModifierIncomingSpellDamageConstant"
@@ -37028,151 +37164,151 @@ Initializing script VM...
     "description":"GetModifierInvisibilityLevel"
   },{
     "enum":"modifierfunction",
-    "value":143,
+    "value":144,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_ILLUSION",
     "description":"GetIsIllusion"
   },{
     "enum":"modifierfunction",
-    "value":204,
+    "value":207,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_SCEPTER",
     "description":"GetModifierScepter"
   },{
     "enum":"modifierfunction",
-    "value":205,
+    "value":208,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_IS_SHARD",
     "description":"GetModifierShard"
   },{
     "enum":"modifierfunction",
-    "value":47,
+    "value":48,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierLifestealRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":209,
+    "value":212,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_LIFETIME_FRACTION",
     "description":"GetUnitLifetimeFraction"
   },{
     "enum":"modifierfunction",
-    "value":122,
+    "value":123,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK",
     "description":"GetModifierMagical_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":72,
+    "value":73,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION",
     "description":"GetModifierMagicalResistanceBaseReduction"
   },{
     "enum":"modifierfunction",
-    "value":74,
+    "value":75,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS",
     "description":"GetModifierMagicalResistanceBonus"
   },{
     "enum":"modifierfunction",
-    "value":75,
+    "value":76,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS",
     "description":"GetModifierMagicalResistanceBonusIllusions"
   },{
     "enum":"modifierfunction",
-    "value":76,
+    "value":77,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE",
     "description":"GetModifierMagicalResistanceDecrepifyUnique"
   },{
     "enum":"modifierfunction",
-    "value":73,
+    "value":74,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION",
     "description":"GetModifierMagicalResistanceDirectModification"
   },{
     "enum":"modifierfunction",
-    "value":116,
+    "value":117,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_PERCENTAGE",
     "description":"GetModifierPercentageManacost"
   },{
     "enum":"modifierfunction",
-    "value":117,
+    "value":118,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING",
     "description":"GetModifierPercentageManacostStacking"
   },{
     "enum":"modifierfunction",
-    "value":32,
+    "value":33,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT",
     "description":"GetModifierManacostReduction_Constant"
   },{
     "enum":"modifierfunction",
-    "value":85,
+    "value":86,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_BONUS",
     "description":"GetModifierManaBonus"
   },{
     "enum":"modifierfunction",
-    "value":50,
+    "value":51,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierManaDrainAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":78,
+    "value":79,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT",
     "description":"GetModifierConstantManaRegen"
   },{
     "enum":"modifierfunction",
-    "value":79,
+    "value":80,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE",
     "description":"GetModifierConstantManaRegenUnique"
   },{
     "enum":"modifierfunction",
-    "value":80,
+    "value":81,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE",
     "description":"GetModifierTotalPercentageManaRegen"
   },{
     "enum":"modifierfunction",
-    "value":104,
+    "value":105,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_ATTACK_RANGE",
     "description":"GetModifierMaxAttackRange"
   },{
     "enum":"modifierfunction",
-    "value":161,
+    "value":162,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
     "description":"GetModifierMaxDebuffDuration"
   },{
     "enum":"modifierfunction",
-    "value":139,
+    "value":140,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MIN_HEALTH",
     "description":"GetMinHealth"
   },{
     "enum":"modifierfunction",
-    "value":65,
+    "value":66,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MISS_PERCENTAGE",
     "description":"GetModifierMiss_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":202,
+    "value":205,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MODEL_CHANGE",
     "description":"GetModifierModelChange"
   },{
     "enum":"modifierfunction",
-    "value":203,
+    "value":206,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MODEL_SCALE",
     "description":"GetModifierModelScale"
@@ -37256,55 +37392,55 @@ Initializing script VM...
     "description":"GetModifierMoveSpeed_Limit"
   },{
     "enum":"modifierfunction",
-    "value":236,
+    "value":239,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
     "description":"GetModifierMoveSpeedReductionPercentage"
   },{
     "enum":"modifierfunction",
-    "value":49,
+    "value":50,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE",
     "description":"GetModifierMPRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":51,
+    "value":52,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE",
     "description":"GetModifierMPRestoreAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":59,
+    "value":60,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT",
     "description":"GetModifierNegativeEvasion_Constant"
   },{
     "enum":"modifierfunction",
-    "value":216,
+    "value":219,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL",
     "description":"GetModifierOverrideAbilitySpecial"
   },{
     "enum":"modifierfunction",
-    "value":217,
+    "value":220,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE",
     "description":"GetModifierOverrideAbilitySpecialValue"
   },{
     "enum":"modifierfunction",
-    "value":127,
+    "value":128,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION",
     "description":"GetOverrideAnimation"
   },{
     "enum":"modifierfunction",
-    "value":129,
+    "value":130,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE",
     "description":"GetOverrideAnimationRate"
   },{
     "enum":"modifierfunction",
-    "value":128,
+    "value":129,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT",
     "description":"GetOverrideAnimationWeight"
@@ -37316,7 +37452,7 @@ Initializing script VM...
     "description":"GetModifierOverrideAttackDamage"
   },{
     "enum":"modifierfunction",
-    "value":154,
+    "value":155,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL",
     "description":"GetOverrideAttackMagical"
@@ -37328,43 +37464,43 @@ Initializing script VM...
     "description":"GetModifierPersistentInvisibility"
   },{
     "enum":"modifierfunction",
-    "value":66,
+    "value":67,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE",
     "description":"GetModifierPhysicalArmorBase_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":68,
+    "value":69,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS",
     "description":"GetModifierPhysicalArmorBonus"
   },{
     "enum":"modifierfunction",
-    "value":69,
+    "value":70,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE",
     "description":"GetModifierPhysicalArmorBonusUnique"
   },{
     "enum":"modifierfunction",
-    "value":70,
+    "value":71,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE",
     "description":"GetModifierPhysicalArmorBonusUniqueActive"
   },{
     "enum":"modifierfunction",
-    "value":67,
+    "value":68,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE",
     "description":"GetModifierPhysicalArmorTotal_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":123,
+    "value":124,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK",
     "description":"GetModifierPhysical_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":124,
+    "value":125,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL",
     "description":"GetModifierPhysical_ConstantBlockSpecial"
@@ -37394,19 +37530,25 @@ Initializing script VM...
     "description":"GetModifierPreAttack_BonusDamage_Target"
   },{
     "enum":"modifierfunction",
-    "value":120,
+    "value":121,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE",
     "description":"GetModifierPreAttack_CriticalStrike"
   },{
     "enum":"modifierfunction",
-    "value":121,
+    "value":164,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW",
+    "description":"GetModifierPreAttack_DeadlyBlow"
+  },{
+    "enum":"modifierfunction",
+    "value":122,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE",
     "description":"GetModifierPreAttack_Target_CriticalStrike"
   },{
     "enum":"modifierfunction",
-    "value":221,
+    "value":224,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE",
     "description":"PreserveParticlesOnModelChanged"
@@ -37418,7 +37560,7 @@ Initializing script VM...
     "description":"GetModifierPreAttack"
   },{
     "enum":"modifierfunction",
-    "value":162,
+    "value":163,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER",
     "description":"GetPrimaryStatDamageMultiplier"
@@ -37448,265 +37590,265 @@ Initializing script VM...
     "description":"GetModifierProcAttack_Feedback"
   },{
     "enum":"modifierfunction",
-    "value":107,
+    "value":108,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_NAME",
     "description":"GetModifierProjectileName"
   },{
     "enum":"modifierfunction",
-    "value":105,
+    "value":106,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS",
     "description":"GetModifierProjectileSpeedBonus"
   },{
     "enum":"modifierfunction",
-    "value":106,
+    "value":107,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE",
     "description":"GetModifierProjectileSpeedBonusPercentage"
   },{
     "enum":"modifierfunction",
-    "value":210,
+    "value":213,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION",
     "description":"GetModifierProvidesFOWVision"
   },{
     "enum":"modifierfunction",
-    "value":206,
+    "value":209,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION",
     "description":"GetModifierRadarCooldownReduction"
   },{
     "enum":"modifierfunction",
-    "value":131,
+    "value":132,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_REFLECT_SPELL",
     "description":"GetReflectSpell"
   },{
     "enum":"modifierfunction",
-    "value":108,
+    "value":109,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_REINCARNATION",
     "description":"ReincarnateTime"
   },{
     "enum":"modifierfunction",
-    "value":109,
+    "value":110,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME",
     "description":"GetModifierConstantRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":110,
+    "value":111,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE",
     "description":"GetModifierPercentageRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":111,
+    "value":112,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "description":"GetModifierStackingRespawnTime"
   },{
     "enum":"modifierfunction",
-    "value":211,
+    "value":214,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELLS_REQUIRE_HP",
     "description":"GetModifierSpellsRequireHP"
   },{
     "enum":"modifierfunction",
-    "value":42,
+    "value":43,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierSpellAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":41,
+    "value":42,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP",
     "description":"GetModifierSpellAmplify_PercentageCreep"
   },{
     "enum":"modifierfunction",
-    "value":43,
+    "value":44,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE",
     "description":"GetModifierSpellAmplify_PercentageUnique"
   },{
     "enum":"modifierfunction",
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE",
     "description":"GetModifierSpellLifestealRegenAmplify_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":92,
+    "value":93,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_AGILITY_BONUS",
     "description":"GetModifierBonusStats_Agility"
   },{
     "enum":"modifierfunction",
-    "value":95,
+    "value":96,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Agility_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":93,
+    "value":94,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS",
     "description":"GetModifierBonusStats_Intellect"
   },{
     "enum":"modifierfunction",
-    "value":96,
+    "value":97,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Intellect_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":91,
+    "value":92,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS",
     "description":"GetModifierBonusStats_Strength"
   },{
     "enum":"modifierfunction",
-    "value":94,
+    "value":95,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE",
     "description":"GetModifierBonusStats_Strength_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":60,
+    "value":61,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE",
     "description":"GetModifierStatusResistance"
   },{
     "enum":"modifierfunction",
-    "value":62,
+    "value":63,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER",
     "description":"GetModifierStatusResistanceCaster"
   },{
     "enum":"modifierfunction",
-    "value":61,
+    "value":62,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING",
     "description":"GetModifierStatusResistanceStacking"
   },{
     "enum":"modifierfunction",
-    "value":145,
+    "value":146,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_STRONG_ILLUSION",
     "description":"GetModifierStrongIllusion"
   },{
     "enum":"modifierfunction",
-    "value":146,
+    "value":147,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPER_ILLUSION",
     "description":"GetModifierSuperIllusion"
   },{
     "enum":"modifierfunction",
-    "value":147,
+    "value":148,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
     "description":"GetModifierSuperIllusionWithUltimate"
   },{
     "enum":"modifierfunction",
-    "value":233,
+    "value":236,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
     "description":"GetSuppressCleave"
   },{
     "enum":"modifierfunction",
-    "value":231,
+    "value":234,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
     "description":"GetSuppressTeleport"
   },{
     "enum":"modifierfunction",
-    "value":220,
+    "value":223,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TEMPEST_DOUBLE",
     "description":"GetModifierTempestDouble"
   },{
     "enum":"modifierfunction",
-    "value":201,
+    "value":204,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOOLTIP",
     "description":"OnTooltip"
   },{
     "enum":"modifierfunction",
-    "value":228,
+    "value":231,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOOLTIP2",
     "description":"OnTooltip2"
   },{
     "enum":"modifierfunction",
-    "value":40,
+    "value":41,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE",
     "description":"GetModifierTotalDamageOutgoing_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":126,
+    "value":127,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK",
     "description":"GetModifierTotal_ConstantBlock"
   },{
     "enum":"modifierfunction",
-    "value":125,
+    "value":126,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR",
     "description":"GetModifierPhysical_ConstantBlockUnavoidablePreArmor"
   },{
     "enum":"modifierfunction",
-    "value":207,
+    "value":210,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS",
     "description":"GetActivityTranslationModifiers"
   },{
     "enum":"modifierfunction",
-    "value":208,
+    "value":211,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND",
     "description":"GetAttackSound"
   },{
     "enum":"modifierfunction",
-    "value":160,
+    "value":161,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK",
     "description":"GetTriggerCosmeticAndEndAttack"
   },{
     "enum":"modifierfunction",
-    "value":150,
+    "value":151,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TURN_RATE_OVERRIDE",
     "description":"GetModifierTurnRate_Override"
   },{
     "enum":"modifierfunction",
-    "value":149,
+    "value":150,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE",
     "description":"GetModifierTurnRate_Percentage"
   },{
     "enum":"modifierfunction",
-    "value":158,
+    "value":159,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING",
     "description":"GetModifierUnitDisllowUpgrading"
   },{
     "enum":"modifierfunction",
-    "value":155,
+    "value":156,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "description":"GetModifierUnitStatsNeedsRefresh"
   },{
     "enum":"modifierfunction",
-    "value":225,
+    "value":228,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_VISUAL_Z_DELTA",
     "description":"GetVisualZDelta"
   },{
     "enum":"modifierfunction",
-    "value":148,
+    "value":149,
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_XP_DURING_DEATH",
     "description":"GetModifierXPDuringDeath"
@@ -37837,7 +37979,7 @@ Initializing script VM...
     "name":"MODIFIER_STATE_INVULNERABLE"
   },{
     "enum":"modifierstate",
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST"
   },{
@@ -37920,6 +38062,11 @@ Initializing script VM...
     "value":17,
     "kind":"constant",
     "name":"MODIFIER_STATE_SPECIALLY_DENIABLE"
+  },{
+    "enum":"modifierstate",
+    "value":48,
+    "kind":"constant",
+    "name":"MODIFIER_STATE_SPECIALLY_UNDENIABLE"
   },{
     "enum":"modifierstate",
     "value":5,
@@ -38057,35 +38204,27 @@ Initializing script VM...
     "kind":"constant",
     "name":"PRESIM"
   },{
-    "value":6,
+    "value":3,
     "kind":"constant",
     "name":"RELOAD"
-  },{
-    "value":7,
-    "kind":"constant",
-    "name":"RELOAD_NPC"
   },{
     "value":1,
     "kind":"constant",
     "name":"SINGLE_SHOT"
   },{
-    "value":2,
-    "kind":"constant",
-    "name":"SINGLE_SHOT_NPC"
-  },{
     "value":0,
     "kind":"constant",
     "name":"SPAWN_GROUP_HANDLE_INVALID"
   },{
-    "value":12,
+    "value":8,
     "kind":"constant",
     "name":"SPECIAL1"
   },{
-    "value":13,
+    "value":9,
     "kind":"constant",
     "name":"SPECIAL2"
   },{
-    "value":14,
+    "value":10,
     "kind":"constant",
     "name":"SPECIAL3"
   },{
@@ -38108,10 +38247,6 @@ Initializing script VM...
     "value":26,
     "kind":"constant",
     "name":"ScriptDebugWatchFistLine"
-  },{
-    "value":15,
-    "kind":"constant",
-    "name":"TAUNT"
   },{
     "enum":"UnitFilterResult",
     "value":9,
@@ -38258,11 +38393,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1753,
-    "kind":"constant",
-    "name":"hoodwink_frontpage_comp"
-  },{
-    "value":1763,
+    "value":1762,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -39292,11 +39423,6 @@ Initializing script VM...
         "name":"Triangle",
         "description":"Draws a filled triangle. Specify vertices in world space."
       },{
-        "args":[],
-        "returns":"void",
-        "name":"UnitTestCycleOverlayRenderType",
-        "description":"Toggles the overlay render type, for unit tests"
-      },{
         "args":[{
             "type":"Vector"
           },{
@@ -40113,6 +40239,14 @@ Initializing script VM...
     "extend":"C_DOTABaseAbility"
   },{
     "members":[{
+        "args":[{
+            "name":"pAbilityName",
+            "type":"string"
+          }],
+        "returns":"handle",
+        "name":"FindAbilityByName",
+        "description":"Retrieve an ability by name from the unit."
+      },{
         "args":[],
         "returns":"int",
         "name":"GetAbilityCount"
@@ -40511,6 +40645,10 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"IsSpeciallyDeniable"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsSpeciallyUndeniable"
       },{
         "args":[],
         "returns":"bool",

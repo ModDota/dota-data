@@ -1,0 +1,5182 @@
+[
+  {
+    "name": "server_spawn",
+    "sourceFile": "core",
+    "description": "Send once a server starts.",
+    "local": false,
+    "fields": [
+      {
+        "name": "hostname",
+        "description": "Public host name.",
+        "type": "string"
+      },
+      {
+        "name": "address",
+        "description": "Hostame, IP or DNS name.",
+        "type": "string"
+      },
+      {
+        "name": "port",
+        "description": "Server port.",
+        "type": "short"
+      },
+      {
+        "name": "game",
+        "description": "Game dir.",
+        "type": "string"
+      },
+      {
+        "name": "mapname",
+        "description": "Map name.",
+        "type": "string"
+      },
+      {
+        "name": "addonname",
+        "description": "Addon name.",
+        "type": "string"
+      },
+      {
+        "name": "maxplayers",
+        "description": "Max players.",
+        "type": "long"
+      },
+      {
+        "name": "os",
+        "description": "WIN32, LINUX.",
+        "type": "string"
+      },
+      {
+        "name": "dedicated",
+        "description": "True if dedicated server.",
+        "type": "bool"
+      },
+      {
+        "name": "password",
+        "description": "True if password protected.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "server_pre_shutdown",
+    "sourceFile": "core",
+    "description": "Server is about to be shut down.",
+    "local": false,
+    "fields": [
+      {
+        "name": "reason",
+        "description": "Reason why server is about to be shut down.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "server_shutdown",
+    "sourceFile": "core",
+    "description": "Server shut down.",
+    "local": false,
+    "fields": [
+      {
+        "name": "reason",
+        "description": "Reason why server was shut down.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "server_message",
+    "sourceFile": "core",
+    "description": "A generic server message.",
+    "local": false,
+    "fields": [
+      {
+        "name": "text",
+        "description": "The message text.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "server_cvar",
+    "sourceFile": "core",
+    "description": "A server console var has changed.",
+    "local": false,
+    "fields": [
+      {
+        "name": "cvarname",
+        "description": "Cvar name, eg \"mp_roundtime\".",
+        "type": "string"
+      },
+      {
+        "name": "cvarvalue",
+        "description": "New cvar value.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "server_addban",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "name",
+        "description": "Player name.",
+        "type": "string"
+      },
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "networkid",
+        "description": "Player network (i.e steam) id.",
+        "type": "string"
+      },
+      {
+        "name": "ip",
+        "description": "IP address.",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "description": "Length of the ban.",
+        "type": "string"
+      },
+      {
+        "name": "by",
+        "description": "Banned by...",
+        "type": "string"
+      },
+      {
+        "name": "kicked",
+        "description": "Whether the player was also kicked.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "server_removeban",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "networkid",
+        "description": "Player network (i.e steam) id.",
+        "type": "string"
+      },
+      {
+        "name": "ip",
+        "description": "IP address.",
+        "type": "string"
+      },
+      {
+        "name": "by",
+        "description": "Removed by...",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_activate",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "player_connect_full",
+    "sourceFile": "core",
+    "description": "Player has sent final message in the connection sequence.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "index",
+        "description": "Player slot (entity index-1).",
+        "type": "byte"
+      },
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "player_say",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "text",
+        "description": "The say text.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_full_update",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "count",
+        "description": "Number of this full update.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "player_connect",
+    "sourceFile": "game",
+    "description": "A new client connected.",
+    "local": false,
+    "fields": [
+      {
+        "name": "name",
+        "description": "Player name.",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "description": "Player slot (entity index-1).",
+        "type": "byte"
+      },
+      {
+        "name": "userid",
+        "description": "User ID on server (unique on server).",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "networkid",
+        "description": "Player network (i.e steam) id.",
+        "type": "string"
+      },
+      {
+        "name": "address",
+        "description": "Ip:port.",
+        "type": "string"
+      },
+      {
+        "name": "bot",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "player_disconnect",
+    "sourceFile": "core",
+    "description": "A client was disconnected.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "reason",
+        "description": "See networkdisconnect enum protobuf.",
+        "type": "short"
+      },
+      {
+        "name": "name",
+        "description": "Player name.",
+        "type": "string"
+      },
+      {
+        "name": "networkid",
+        "description": "Player network (i.e steam) id.",
+        "type": "string"
+      },
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "player_info",
+    "sourceFile": "core",
+    "description": "A player changed his name.",
+    "local": false,
+    "fields": [
+      {
+        "name": "name",
+        "description": "Player name.",
+        "type": "string"
+      },
+      {
+        "name": "index",
+        "description": "Player slot (entity index-1).",
+        "type": "byte"
+      },
+      {
+        "name": "userid",
+        "description": "User ID on server (unique on server).",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "networkid",
+        "description": "Player network (i.e steam) id.",
+        "type": "string"
+      },
+      {
+        "name": "bot",
+        "description": "True if player is a AI bot.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "player_spawn",
+    "sourceFile": "core",
+    "description": "Player spawned in game.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "player_team",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "team",
+        "description": "Team id.",
+        "type": "byte"
+      },
+      {
+        "name": "oldteam",
+        "description": "Old team id.",
+        "type": "byte"
+      },
+      {
+        "name": "disconnect",
+        "description": "Team change because player disconnects.",
+        "type": "bool"
+      },
+      {
+        "name": "autoteam",
+        "description": "True if the player was auto assigned to the team.",
+        "type": "bool"
+      },
+      {
+        "name": "silent",
+        "description": "If true wont print the team join messages.",
+        "type": "bool"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "isbot",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "local_player_team",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_changename",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "oldname",
+        "description": "Players old (current) name.",
+        "type": "string"
+      },
+      {
+        "name": "newname",
+        "description": "Players new name.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_class",
+    "sourceFile": "core",
+    "description": "A player changed his class.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "class",
+        "description": "New player class / model.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_score",
+    "sourceFile": "core",
+    "description": "Players scores changed.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "kills",
+        "description": "# of kills.",
+        "type": "short"
+      },
+      {
+        "name": "deaths",
+        "description": "# of deaths.",
+        "type": "short"
+      },
+      {
+        "name": "score",
+        "description": "Total game score.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "player_hurt",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Player index who was hurt.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "attacker",
+        "description": "Player index who attacked.",
+        "type": "short"
+      },
+      {
+        "name": "health",
+        "description": "Remaining health points.",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "player_shoot",
+    "sourceFile": "core",
+    "description": "Player shoot his weapon.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "weapon",
+        "description": "Weapon ID.",
+        "type": "byte"
+      },
+      {
+        "name": "mode",
+        "description": "Weapon mode.",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "player_chat",
+    "sourceFile": "core",
+    "description": "A public player chat.",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamonly",
+        "description": "True if team only chat.",
+        "type": "bool"
+      },
+      {
+        "name": "userid",
+        "description": "Chatting player.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "playerid",
+        "description": "Chatting player ID.",
+        "type": "PlayerID"
+      },
+      {
+        "name": "text",
+        "description": "Chat text.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "teamplay_broadcast_audio",
+    "sourceFile": "core",
+    "description": "Emits a sound to everyone on a team.",
+    "local": false,
+    "fields": [
+      {
+        "name": "team",
+        "description": "Unique team id.",
+        "type": "byte"
+      },
+      {
+        "name": "sound",
+        "description": "Name of the sound to emit.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "finale_start",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "rushes",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "player_stats_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "forceupload",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "user_data_downloaded",
+    "sourceFile": "core",
+    "description": "Fired when achievements/stats are downloaded from Steam or XBox Live.",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "ragdoll_dissolved",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "team_info",
+    "sourceFile": "core",
+    "description": "Info about team.",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamid",
+        "description": "Unique team id.",
+        "type": "byte"
+      },
+      {
+        "name": "teamname",
+        "description": "Team name eg \"Team Blue\".",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "team_score",
+    "sourceFile": "core",
+    "description": "Team score changed.",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamid",
+        "description": "Team id.",
+        "type": "byte"
+      },
+      {
+        "name": "score",
+        "description": "Total team score.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hltv_cameraman",
+    "sourceFile": "core",
+    "description": "A spectator/player is a cameraman.",
+    "local": false,
+    "fields": [
+      {
+        "name": "index",
+        "description": "Camera man entity index.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hltv_chase",
+    "sourceFile": "core",
+    "description": "Shot of a single entity.",
+    "local": false,
+    "fields": [
+      {
+        "name": "target1",
+        "description": "Primary traget index.",
+        "type": "short"
+      },
+      {
+        "name": "target2",
+        "description": "Secondary traget index or 0.",
+        "type": "short"
+      },
+      {
+        "name": "distance",
+        "description": "Camera distance.",
+        "type": "short"
+      },
+      {
+        "name": "theta",
+        "description": "View angle horizontal.",
+        "type": "short"
+      },
+      {
+        "name": "phi",
+        "description": "View angle vertical.",
+        "type": "short"
+      },
+      {
+        "name": "inertia",
+        "description": "Camera inertia.",
+        "type": "byte"
+      },
+      {
+        "name": "ineye",
+        "description": "Diretcor suggests to show ineye.",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "hltv_rank_camera",
+    "sourceFile": "core",
+    "description": "A camera ranking.",
+    "local": false,
+    "fields": [
+      {
+        "name": "index",
+        "description": "Fixed camera index.",
+        "type": "byte"
+      },
+      {
+        "name": "rank",
+        "description": "Ranking, how interesting is this camera view.",
+        "type": "float"
+      },
+      {
+        "name": "target",
+        "description": "Best/closest target entity.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hltv_rank_entity",
+    "sourceFile": "core",
+    "description": "An entity ranking.",
+    "local": false,
+    "fields": [
+      {
+        "name": "index",
+        "description": "Entity index.",
+        "type": "short"
+      },
+      {
+        "name": "rank",
+        "description": "Ranking, how interesting is this entity to view.",
+        "type": "float"
+      },
+      {
+        "name": "target",
+        "description": "Best/closest target entity.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hltv_fixed",
+    "sourceFile": "core",
+    "description": "Show from fixed view.",
+    "local": false,
+    "fields": [
+      {
+        "name": "posx",
+        "description": "Camera position in world.",
+        "type": "long"
+      },
+      {
+        "name": "posy",
+        "type": "long"
+      },
+      {
+        "name": "posz",
+        "type": "long"
+      },
+      {
+        "name": "theta",
+        "description": "Camera angles.",
+        "type": "short"
+      },
+      {
+        "name": "phi",
+        "type": "short"
+      },
+      {
+        "name": "offset",
+        "type": "short"
+      },
+      {
+        "name": "fov",
+        "type": "float"
+      },
+      {
+        "name": "target",
+        "description": "Follow this entity or 0.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hltv_message",
+    "sourceFile": "core",
+    "description": "A HLTV message send by moderators.",
+    "local": false,
+    "fields": [
+      {
+        "name": "text",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "hltv_status",
+    "sourceFile": "core",
+    "description": "General HLTV status.",
+    "local": false,
+    "fields": [
+      {
+        "name": "clients",
+        "description": "Number of HLTV spectators.",
+        "type": "long"
+      },
+      {
+        "name": "slots",
+        "description": "Number of HLTV slots.",
+        "type": "long"
+      },
+      {
+        "name": "proxies",
+        "description": "Number of HLTV proxies.",
+        "type": "short"
+      },
+      {
+        "name": "master",
+        "description": "Disptach master IP:port.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "hltv_title",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "text",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "hltv_chat",
+    "sourceFile": "game",
+    "description": "A HLTV chat msg sent by spectators.",
+    "local": false,
+    "fields": [
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "steamID",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "hltv_versioninfo",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "version",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "demo_start",
+    "sourceFile": "core",
+    "local": true,
+    "fields": [
+      {
+        "name": "dota_combatlog_list",
+        "description": "CSVCMsgList_GameEvents that are combat log events.",
+        "type": "local"
+      },
+      {
+        "name": "dota_hero_chase_list",
+        "description": "CSVCMsgList_GameEvents.",
+        "type": "local"
+      },
+      {
+        "name": "dota_pick_hero_list",
+        "description": "CSVCMsgList_GameEvents.",
+        "type": "local"
+      }
+    ]
+  },
+  {
+    "name": "demo_stop",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "demo_skip",
+    "sourceFile": "core",
+    "local": true,
+    "fields": [
+      {
+        "name": "playback_tick",
+        "description": "Current playback tick.",
+        "type": "long"
+      },
+      {
+        "name": "skipto_tick",
+        "description": "Tick we're going to.",
+        "type": "long"
+      },
+      {
+        "name": "user_message_list",
+        "description": "CSVCMsgList_UserMessages.",
+        "type": "local"
+      },
+      {
+        "name": "dota_hero_chase_list",
+        "description": "CSVCMsgList_GameEvents.",
+        "type": "local"
+      }
+    ]
+  },
+  {
+    "name": "map_shutdown",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "map_transition",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "hostname_changed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "hostname",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "difficulty_changed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "newDifficulty",
+        "type": "short"
+      },
+      {
+        "name": "oldDifficulty",
+        "type": "short"
+      },
+      {
+        "name": "strDifficulty",
+        "description": "New difficulty as string.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "game_message",
+    "sourceFile": "core",
+    "description": "A message send by game logic to everyone.",
+    "local": false,
+    "fields": [
+      {
+        "name": "target",
+        "description": "0 = console, 1 = HUD.",
+        "type": "byte"
+      },
+      {
+        "name": "text",
+        "description": "The message text.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "game_newmap",
+    "sourceFile": "core",
+    "description": "Send when new map is completely loaded.",
+    "local": false,
+    "fields": [
+      {
+        "name": "mapname",
+        "description": "Map name.",
+        "type": "string"
+      },
+      {
+        "name": "transition",
+        "description": "True if this is a transition from one map to another.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "round_start",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "timelimit",
+        "description": "Round time limit in seconds.",
+        "type": "long"
+      },
+      {
+        "name": "fraglimit",
+        "description": "Frag limit in seconds.",
+        "type": "long"
+      },
+      {
+        "name": "objective",
+        "description": "Round objective.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "round_end",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "winner",
+        "description": "Winner team/user i.",
+        "type": "byte"
+      },
+      {
+        "name": "reason",
+        "description": "Reson why team won.",
+        "type": "byte"
+      },
+      {
+        "name": "message",
+        "description": "End round message.",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "round_start_pre_entity",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "round_start_post_nav",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "round_freeze_end",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "teamplay_round_start",
+    "sourceFile": "core",
+    "description": "Round restart.",
+    "local": false,
+    "fields": [
+      {
+        "name": "full_reset",
+        "description": "Is this a full reset of the map.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "player_death",
+    "sourceFile": "core",
+    "description": "A game event, name may be 32 charaters long.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID who died.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "attacker",
+        "description": "User ID who killed.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "player_footstep",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "player_hintmessage",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "hintmessage",
+        "description": "Localizable string of a hint.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "break_breakable",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "material",
+        "description": "BREAK_GLASS, BREAK_WOOD, etc.",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "break_prop",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "player_held",
+        "type": "bool"
+      },
+      {
+        "name": "player_thrown",
+        "type": "bool"
+      },
+      {
+        "name": "player_dropped",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "entity_killed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex_killed",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "entindex_attacker",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "entindex_inflictor",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "damagebits",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "door_open",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Who opened the door.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "checkpoint",
+        "description": "Is the door a checkpoint door.",
+        "type": "bool"
+      },
+      {
+        "name": "closed",
+        "description": "Was the door closed when it started opening?",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "door_close",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Who closed the door.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "checkpoint",
+        "description": "Is the door a checkpoint door.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "door_unlocked",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Who opened the door.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "checkpoint",
+        "description": "Is the door a checkpoint door.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "vote_started",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "issue",
+        "type": "string"
+      },
+      {
+        "name": "param1",
+        "type": "string"
+      },
+      {
+        "name": "votedata",
+        "type": "string"
+      },
+      {
+        "name": "team",
+        "type": "byte"
+      },
+      {
+        "name": "initiator",
+        "description": "Entity id of the player who initiated the vote.",
+        "type": "long"
+      },
+      {
+        "name": "reliable",
+        "description": "This event is reliable.",
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "name": "vote_failed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte"
+      },
+      {
+        "name": "reliable",
+        "description": "This event is reliable.",
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "name": "vote_passed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "details",
+        "type": "string"
+      },
+      {
+        "name": "param1",
+        "type": "string"
+      },
+      {
+        "name": "team",
+        "type": "byte"
+      },
+      {
+        "name": "reliable",
+        "description": "This event is reliable.",
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "name": "vote_changed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "yesVotes",
+        "type": "byte"
+      },
+      {
+        "name": "noVotes",
+        "type": "byte"
+      },
+      {
+        "name": "potentialVotes",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "vote_cast_yes",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte"
+      },
+      {
+        "name": "entityid",
+        "description": "Entity id of the voter.",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "vote_cast_no",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte"
+      },
+      {
+        "name": "entityid",
+        "description": "Entity id of the voter.",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "achievement_event",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "achievement_name",
+        "description": "Non-localized name of achievement.",
+        "type": "string"
+      },
+      {
+        "name": "cur_val",
+        "description": "# of steps toward achievement.",
+        "type": "short"
+      },
+      {
+        "name": "max_val",
+        "description": "Total # of steps in achievement.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "achievement_earned",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "player",
+        "description": "Entindex of the player.",
+        "type": "byte"
+      },
+      {
+        "name": "achievement",
+        "description": "Achievement ID.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "achievement_write_failed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "bonus_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "numadvanced",
+        "type": "short"
+      },
+      {
+        "name": "numbronze",
+        "type": "short"
+      },
+      {
+        "name": "numsilver",
+        "type": "short"
+      },
+      {
+        "name": "numgold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "spec_target_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "entity_visible",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "The player who sees the entity.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "subject",
+        "description": "Entindex of the entity they see.",
+        "type": "long"
+      },
+      {
+        "name": "classname",
+        "description": "Classname of the entity they see.",
+        "type": "string"
+      },
+      {
+        "name": "entityname",
+        "description": "Name of the entity they see.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_use_miss",
+    "sourceFile": "core",
+    "description": "The player pressed use but a use entity wasn't found.",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Userid of user.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "gameinstructor_draw",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "gameinstructor_nodraw",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "flare_ignite_npc",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "description": "Entity ignited.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "helicopter_grenade_punt_miss",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "physgun_pickup",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "description": "Entity picked up.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "inventory_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "itemdef",
+        "type": "short"
+      },
+      {
+        "name": "itemid",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "cart_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "store_pricesheet_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "item_schema_initialized",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "drop_rate_modified",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "event_ticket_modified",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "gc_connected",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "instructor_start_lesson",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "The player who this lesson is intended for.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hint_name",
+        "description": "Name of the lesson to start.  Must match instructor_lesson.txt.",
+        "type": "string"
+      },
+      {
+        "name": "hint_target",
+        "description": "Entity id that the hint should display at. Leave empty if controller target.",
+        "type": "long"
+      },
+      {
+        "name": "vr_movement_type",
+        "type": "byte"
+      },
+      {
+        "name": "vr_single_controller",
+        "type": "bool"
+      },
+      {
+        "name": "vr_controller_type",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "instructor_close_lesson",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "The player who this lesson is intended for.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hint_name",
+        "description": "Name of the lesson to start.  Must match instructor_lesson.txt.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "instructor_server_hint_create",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID of the player that triggered the hint.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hint_entindex",
+        "description": "Entity id of the env_instructor_hint that fired the event.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hint_name",
+        "description": "What to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout).",
+        "type": "string"
+      },
+      {
+        "name": "hint_replace_key",
+        "description": "Type name so that messages of the same type will replace each other.",
+        "type": "string"
+      },
+      {
+        "name": "hint_target",
+        "description": "Entity id that the hint should display at.",
+        "type": "long"
+      },
+      {
+        "name": "hint_activator_userid",
+        "description": "Userid id of the activator.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hint_timeout",
+        "description": "How long in seconds until the hint automatically times out, 0 = never.",
+        "type": "short"
+      },
+      {
+        "name": "hint_icon_onscreen",
+        "description": "The hint icon to use when the hint is onscreen. e.g. \"icon_alert_red\".",
+        "type": "string"
+      },
+      {
+        "name": "hint_icon_offscreen",
+        "description": "The hint icon to use when the hint is offscreen. e.g. \"icon_alert\".",
+        "type": "string"
+      },
+      {
+        "name": "hint_caption",
+        "description": "The hint caption. e.g. \"#ThisIsDangerous\".",
+        "type": "string"
+      },
+      {
+        "name": "hint_activator_caption",
+        "description": "The hint caption that only the activator sees e.g. \"#YouPushedItGood\".",
+        "type": "string"
+      },
+      {
+        "name": "hint_color",
+        "description": "The hint color in \"r,g,b\" format where each component is 0-255.",
+        "type": "string"
+      },
+      {
+        "name": "hint_icon_offset",
+        "description": "How far on the z axis to offset the hint from entity origin.",
+        "type": "float"
+      },
+      {
+        "name": "hint_range",
+        "description": "Range before the hint is culled.",
+        "type": "float"
+      },
+      {
+        "name": "hint_flags",
+        "description": "Hint flags.",
+        "type": "long"
+      },
+      {
+        "name": "hint_binding",
+        "description": "Bindings to use when use_binding is the onscreen icon.",
+        "type": "string"
+      },
+      {
+        "name": "hint_allow_nodraw_target",
+        "description": "If false, the hint will dissappear if the target entity is invisible.",
+        "type": "bool"
+      },
+      {
+        "name": "hint_nooffscreen",
+        "description": "If true, the hint will not show when outside the player view.",
+        "type": "bool"
+      },
+      {
+        "name": "hint_forcecaption",
+        "description": "If true, the hint caption will show even if the hint is occluded.",
+        "type": "bool"
+      },
+      {
+        "name": "hint_local_player_only",
+        "description": "If true, only the local player will see the hint.",
+        "type": "bool"
+      },
+      {
+        "name": "hint_start_sound",
+        "description": "Game sound to play.",
+        "type": "string"
+      },
+      {
+        "name": "hint_layoutfile",
+        "description": "Path for Panorama layout file.",
+        "type": "string"
+      },
+      {
+        "name": "hint_vr_panel_type",
+        "description": "Attachment type for the Panorama panel.",
+        "type": "short"
+      },
+      {
+        "name": "hint_vr_height_offset",
+        "description": "Height offset for attached panels.",
+        "type": "float"
+      },
+      {
+        "name": "hint_vr_offset_x",
+        "description": "Offset for attached panels.",
+        "type": "float"
+      },
+      {
+        "name": "hint_vr_offset_y",
+        "description": "Offset for attached panels.",
+        "type": "float"
+      },
+      {
+        "name": "hint_vr_offset_z",
+        "description": "Offset for attached panels.",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "instructor_server_hint_stop",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "hint_name",
+        "description": "The hint to stop. Will stop ALL hints with this name.",
+        "type": "string"
+      },
+      {
+        "name": "hint_entindex",
+        "description": "Entity id of the env_instructor_hint that fired the event.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "set_instructor_group_enabled",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "group",
+        "type": "string"
+      },
+      {
+        "name": "enabled",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "clientside_lesson_closed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "lesson_name",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dynamic_shadow_light_changed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_chase_hero",
+    "sourceFile": "game",
+    "description": "Shot of a single entity.",
+    "local": false,
+    "fields": [
+      {
+        "name": "target1",
+        "description": "Primary traget index.",
+        "type": "short"
+      },
+      {
+        "name": "target2",
+        "description": "Secondary traget index or 0.",
+        "type": "short"
+      },
+      {
+        "name": "type",
+        "type": "byte"
+      },
+      {
+        "name": "priority",
+        "type": "short"
+      },
+      {
+        "name": "gametime",
+        "type": "float"
+      },
+      {
+        "name": "highlight",
+        "description": "If set, a result of highlight reel mode.",
+        "type": "bool"
+      },
+      {
+        "name": "target1playerid",
+        "type": "PlayerID"
+      },
+      {
+        "name": "target2playerid",
+        "type": "PlayerID"
+      },
+      {
+        "name": "eventtype",
+        "description": "EDOTAHeroChaseEventType.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_combatlog",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "type",
+        "type": "byte"
+      },
+      {
+        "name": "sourcename",
+        "type": "short"
+      },
+      {
+        "name": "targetname",
+        "type": "short"
+      },
+      {
+        "name": "attackername",
+        "type": "short"
+      },
+      {
+        "name": "inflictorname",
+        "type": "short"
+      },
+      {
+        "name": "attackerillusion",
+        "type": "bool"
+      },
+      {
+        "name": "targetillusion",
+        "type": "bool"
+      },
+      {
+        "name": "value",
+        "type": "short"
+      },
+      {
+        "name": "health",
+        "type": "short"
+      },
+      {
+        "name": "timestamp",
+        "type": "float"
+      },
+      {
+        "name": "targetsourcename",
+        "type": "short"
+      },
+      {
+        "name": "timestampraw",
+        "type": "float"
+      },
+      {
+        "name": "attackerhero",
+        "type": "bool"
+      },
+      {
+        "name": "targethero",
+        "type": "bool"
+      },
+      {
+        "name": "ability_toggle_on",
+        "type": "bool"
+      },
+      {
+        "name": "ability_toggle_off",
+        "type": "bool"
+      },
+      {
+        "name": "ability_level",
+        "type": "short"
+      },
+      {
+        "name": "gold_reason",
+        "type": "short"
+      },
+      {
+        "name": "xp_reason",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_game_state_change",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "old_state",
+        "type": "short"
+      },
+      {
+        "name": "new_state",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "hero_selected",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "team_number",
+        "type": "short"
+      },
+      {
+        "name": "hero_unit",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_pick_hero",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player",
+        "type": "short"
+      },
+      {
+        "name": "heroindex",
+        "type": "short"
+      },
+      {
+        "name": "hero",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "modifier_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "eventname",
+        "type": "string"
+      },
+      {
+        "name": "caster",
+        "type": "short"
+      },
+      {
+        "name": "ability",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "victim_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "killer1_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "killer2_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "killer3_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "killer4_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "killer5_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "bounty",
+        "type": "short"
+      },
+      {
+        "name": "neutral",
+        "type": "short"
+      },
+      {
+        "name": "greevil",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_deny",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "victim_userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_barracks_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "barracks_id",
+        "type": "short"
+      },
+      {
+        "name": "killer_playerid",
+        "type": "PlayerID"
+      },
+      {
+        "name": "killer_team",
+        "type": "short"
+      },
+      {
+        "name": "bounty_amount",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_tower_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_effigy_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "owner_userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_roshan_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_courier_lost",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killerid",
+        "type": "short"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "bounty_gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_courier_respawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_glyph_used",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_super_creeps",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_purchase",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_ability_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_gifted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_ability_id",
+        "type": "int"
+      },
+      {
+        "name": "sourceid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_placed_in_neutral_stash",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_ability_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_rune_pickup",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "type",
+        "type": "short"
+      },
+      {
+        "name": "rune",
+        "type": "short"
+      },
+      {
+        "name": "bounty_amount",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_ward_killed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "type",
+        "type": "short"
+      },
+      {
+        "name": "bounty_amount",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_rune_spotted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "rune",
+        "type": "short"
+      },
+      {
+        "name": "map_location",
+        "type": "string"
+      },
+      {
+        "name": "rune_team",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_spotted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_ability_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_no_battle_points",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "reason",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_informational",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "type",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_action_item",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "reason",
+        "type": "short"
+      },
+      {
+        "name": "itemdef",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_ban_notification",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_timed_reward",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "itmedef",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_pause_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "value",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_kill_streak",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "gold",
+        "type": "short"
+      },
+      {
+        "name": "killer_id",
+        "type": "short"
+      },
+      {
+        "name": "killer_streak",
+        "type": "short"
+      },
+      {
+        "name": "killer_multikill",
+        "type": "short"
+      },
+      {
+        "name": "victim_id",
+        "type": "short"
+      },
+      {
+        "name": "victim_streak",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_first_blood",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "gold",
+        "type": "short"
+      },
+      {
+        "name": "killer_id",
+        "type": "short"
+      },
+      {
+        "name": "victim_id",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_assassin_announce",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "assassin_id",
+        "type": "short"
+      },
+      {
+        "name": "target_id",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_assassin_denied",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "assassin_id",
+        "type": "short"
+      },
+      {
+        "name": "target_id",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_chat_assassin_success",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "assassin_id",
+        "type": "short"
+      },
+      {
+        "name": "target_id",
+        "type": "short"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_update_hero_selection",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "tabcycle",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_update_selected_unit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_update_query_unit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_update_killcam_unit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_take_tower_damage",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "damage",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_hud_error_message",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "reason",
+        "type": "byte"
+      },
+      {
+        "name": "message",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_action_success",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_starting_position_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_team_neutral_stash_items_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_team_neutral_stash_items_acknowledged_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_money_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_enemy_money_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_portrait_unit_stats_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_portrait_unit_modifiers_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "modifier_affects_abilities",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_force_portrait_update",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_inventory_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_item_suggestions_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_estimated_match_duration_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_hero_ability_points_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_item_picked_up",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "ItemEntityIndex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "HeroEntityIndex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_physical_destroyed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "ItemEntityIndex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "HeroEntityIndex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_neutral_item_sent_to_stash",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "item_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_inventory_item_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entityIndex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_ability_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entityIndex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_spectator_talent_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "playerid",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_portrait_ability_layout_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_inventory_item_added",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "item_slot",
+        "type": "short"
+      },
+      {
+        "name": "inventory_player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "item_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "inventory_parent_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "is_courier",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_inventory_changed_query_unit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_link_clicked",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "link",
+        "type": "string"
+      },
+      {
+        "name": "nav",
+        "description": "Internal to item panel - preserve the nav stack.",
+        "type": "bool"
+      },
+      {
+        "name": "nav_back",
+        "description": "Internal to item panel - preserve the nav stack.",
+        "type": "bool"
+      },
+      {
+        "name": "recipe",
+        "type": "short"
+      },
+      {
+        "name": "shop",
+        "description": "Show the item in a particular shop.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_set_quick_buy",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "item",
+        "type": "string"
+      },
+      {
+        "name": "recipe",
+        "type": "byte"
+      },
+      {
+        "name": "toggle",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_quick_buy_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "item",
+        "type": "string"
+      },
+      {
+        "name": "recipe",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_shop_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "prevshopmask",
+        "type": "byte"
+      },
+      {
+        "name": "shopmask",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_hero_entered_shop",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "shop_type",
+        "type": "short"
+      },
+      {
+        "name": "shop_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_show_killcam",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "nodes",
+        "type": "byte"
+      },
+      {
+        "name": "player",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_show_minikillcam",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "nodes",
+        "type": "byte"
+      },
+      {
+        "name": "player",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "gc_user_session_created",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "team_data_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "guild_data_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "guild_open_parties_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "fantasy_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "fantasy_league_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "fantasy_score_info_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "league_admin_info_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "league_series_info_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_info_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_info_individual_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "account_id",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "game_rules_state_change",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "match_history_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "SteamID",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "match_details_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "matchID",
+        "type": "uint64"
+      },
+      {
+        "name": "result",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "team_details_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamID",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "live_games_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "recent_matches_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "Page",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "news_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "persona_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "SteamID",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "tournament_state_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "party_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "lobby_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dashboard_caches_cleared",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "last_hit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "EntKilled",
+        "type": "short"
+      },
+      {
+        "name": "FirstBlood",
+        "type": "bool"
+      },
+      {
+        "name": "HeroKill",
+        "type": "bool"
+      },
+      {
+        "name": "TowerKill",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "player_completed_game",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "Winner",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "player_reconnected",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "nommed_tree",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_rune_activated_server",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "rune",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_gained_level",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player",
+        "type": "short"
+      },
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "level",
+        "type": "short"
+      },
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_learned_ability",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "player",
+        "type": "short"
+      },
+      {
+        "name": "abilityname",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_used_ability",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "caster_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_non_player_used_ability",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "caster_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_begin_cast",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "caster_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_non_player_begin_cast",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "caster_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_ability_channel_finished",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "abilityname",
+        "type": "string"
+      },
+      {
+        "name": "interrupted",
+        "type": "bool"
+      },
+      {
+        "name": "caster_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_holdout_revive_complete",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "caster",
+        "type": "short"
+      },
+      {
+        "name": "target",
+        "type": "short"
+      },
+      {
+        "name": "channel_time",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "dota_holdout_revive_eliminated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "caster",
+        "type": "short"
+      },
+      {
+        "name": "target",
+        "type": "short"
+      },
+      {
+        "name": "channel_time",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_killed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "HeroKill",
+        "type": "bool"
+      },
+      {
+        "name": "TowerKill",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_assist_earned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex_hero",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "bindpanel_open",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "bindpanel_close",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "keybind_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_item_drag_begin",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_item_drag_end",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_shop_item_drag_begin",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_shop_item_drag_end",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_item_purchased",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "itemcost",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_combined",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "itemname",
+        "type": "string"
+      },
+      {
+        "name": "itemcost",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_used",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      },
+      {
+        "name": "itemname",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_auto_purchase",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "item_id",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_unit_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "victim",
+        "type": "short"
+      },
+      {
+        "name": "attacker",
+        "type": "short"
+      },
+      {
+        "name": "basepriority",
+        "type": "short"
+      },
+      {
+        "name": "priority",
+        "type": "short"
+      },
+      {
+        "name": "eventtype",
+        "description": "EDOTAHeroChaseEventType.",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_quest_started",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "questIndex",
+        "description": "Entity index.",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "dota_quest_completed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "questIndex",
+        "description": "Entity index.",
+        "type": "long"
+      }
+    ]
+  },
+  {
+    "name": "gameui_activated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "gameui_hidden",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_fullyjoined",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "User ID on server.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "name",
+        "description": "Player name.",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_spectate_hero",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_match_done",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "winningteam",
+        "description": "The ID of the winning team.",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_match_done_client",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "joined_chat_channel",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "channelName",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "left_chat_channel",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "channelName",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "gc_chat_channel_list_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "file_downloaded",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "success",
+        "type": "bool"
+      },
+      {
+        "name": "local_filename",
+        "type": "string"
+      },
+      {
+        "name": "remote_url",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_report_counts_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "positive_remaining",
+        "type": "byte"
+      },
+      {
+        "name": "negative_remaining",
+        "type": "byte"
+      },
+      {
+        "name": "positive_total",
+        "type": "short"
+      },
+      {
+        "name": "negative_total",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "scaleform_file_download_complete",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "success",
+        "type": "bool"
+      },
+      {
+        "name": "local_filename",
+        "type": "string"
+      },
+      {
+        "name": "remote_url",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "item_purchased",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "itemid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "gc_mismatched_version",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_workshop_fileselected",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "filename",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_workshop_filecanceled",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "rich_presence_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "live_leagues_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_hero_random",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "heroid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_river_painted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "riverid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_scan_used",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_scan_found_enemy",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_rd_chat_turn",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_ad_nominated_ban",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "heroid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_ad_ban",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "heroid",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_ad_ban_count",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "count",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_ad_hero_collision",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "heroid",
+        "type": "short"
+      },
+      {
+        "name": "playerid1",
+        "type": "PlayerID"
+      },
+      {
+        "name": "playerid2",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_favorite_heroes_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "profile_opened",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "profile_closed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "item_preview_closed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dashboard_switched_section",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "section",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_tournament_item_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "winner_count",
+        "type": "short"
+      },
+      {
+        "name": "event_type",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_hero_swap",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "playerid1",
+        "type": "PlayerID"
+      },
+      {
+        "name": "playerid2",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_reset_suggested_items",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "halloween_high_score_received",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "halloween_phase_end",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "phase",
+        "type": "byte"
+      },
+      {
+        "name": "team",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "halloween_high_score_request_failed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_hud_skin_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "skin",
+        "type": "string"
+      },
+      {
+        "name": "style",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_inventory_player_got_item",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "itemname",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "player_is_experienced",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_is_notexperienced",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_tutorial_lesson_start",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_tutorial_task_advance",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_tutorial_shop_toggled",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "shop_opened",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "map_location_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "richpresence_custom_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "game_end_visible",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "enable_china_logomark",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "highlight_hud_element",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "elementname",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "hide_highlight_hud_element",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "intro_video_finished",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "matchmaking_status_visibility_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "practice_lobby_visibility_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_courier_transfer_item",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "courier_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "full_ui_unlocked",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "client_disconnect",
+    "sourceFile": "game",
+    "local": true,
+    "fields": [
+      {
+        "name": "reason_code",
+        "type": "int"
+      },
+      {
+        "name": "reason_desc",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "hero_selector_preview_set",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "setindex",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "antiaddiction_toast",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "message",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "hero_picker_shown",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "hero_picker_hidden",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_local_quickbuy_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "show_center_message",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "message",
+        "type": "string"
+      },
+      {
+        "name": "duration",
+        "type": "float"
+      },
+      {
+        "name": "clear_message_queue",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "hud_flip_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "flipped",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "frosty_points_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "defeated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "reset_defeated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "booster_state_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "custom_game_difficulty",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "difficulty",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "tree_cut",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "tree_x",
+        "type": "float"
+      },
+      {
+        "name": "tree_y",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "ugc_details_arrived",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "published_file_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "ugc_subscribed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "published_file_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "ugc_unsubscribed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "published_file_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "ugc_download_requested",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "published_file_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "ugc_installed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "published_file_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "prizepool_received",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "success",
+        "type": "bool"
+      },
+      {
+        "name": "prizepool",
+        "type": "uint64"
+      },
+      {
+        "name": "leagueid",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "microtransaction_success",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "txnid",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "dota_rubick_ability_steal",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "abilityIndex",
+        "type": "short"
+      },
+      {
+        "name": "abilityLevel",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "community_cached_names_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "spec_item_pickup",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "item_name",
+        "type": "string"
+      },
+      {
+        "name": "purchase",
+        "type": "bool"
+      },
+      {
+        "name": "gift",
+        "type": "bool"
+      },
+      {
+        "name": "gift_player_id",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "spec_aegis_reclaim_time",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "reclaim_time",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "account_trophies_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "account_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "account_all_hero_challenge_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "account_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "team_showcase_ui_update",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "show",
+        "type": "bool"
+      },
+      {
+        "name": "account_id",
+        "type": "uint64"
+      },
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "display_ui_on_left",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_match_signout",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_illusions_created",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "original_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_year_beast_killed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      },
+      {
+        "name": "beast_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_spawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "PlayerID",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_hero_undoselection",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "playerid1",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_challenge_socache_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_team_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "party_invites_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "lobby_invites_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "custom_game_mode_list_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "custom_game_lobby_list_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "friend_lobby_list_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_team_player_list_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_connection_state_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_details_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "player_profile_stats_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "account_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "custom_game_player_count_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "custom_game_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "custom_game_friends_played_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "custom_game_id",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "custom_games_friends_play_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_player_update_assigned_hero",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "playerid",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_hero_selection_dirty",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_npc_goal_reached",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "npc_entindex",
+        "description": "Entity index of the npc which was following a path and has reached a goal entity.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "goal_entindex",
+        "description": "Entity index of the path goal entity which has been reached.",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "next_goal_entindex",
+        "description": "Entity index of the next goal entity on the path (if any) which the npc will now be pathing towards.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_selected_custom_team",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "description": "Player id of the player who select a team.",
+        "type": "PlayerID"
+      },
+      {
+        "name": "team_id",
+        "description": "Id of the team the player selected.",
+        "type": "short"
+      },
+      {
+        "name": "success",
+        "description": "Was the player successfully assigned to the selected team.",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_coin_wager",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      },
+      {
+        "name": "coins",
+        "type": "uint64"
+      }
+    ]
+  },
+  {
+    "name": "dota_wager_token",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "message",
+        "type": "short"
+      },
+      {
+        "name": "amount",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_rank_wager",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_bounty",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "target",
+        "type": "short"
+      },
+      {
+        "name": "bounty_event",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_candy",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "candy_event",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_ad_randomed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_ability_id",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "colorblind_mode_changed",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_report_submitted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "result",
+        "type": "int"
+      },
+      {
+        "name": "report_flags",
+        "type": "int"
+      },
+      {
+        "name": "message",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "client_reload_game_keyvalues",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "dota_hero_inventory_item_change",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "int"
+      },
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "item_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "removed",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "game_rules_shutdown",
+    "sourceFile": "game",
+    "local": false,
+    "fields": []
+  },
+  {
+    "name": "aegis_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      },
+      {
+        "name": "chat_message_type",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_buyback",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "player_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "bought_back",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "PlayerID"
+      }
+    ]
+  },
+  {
+    "name": "dota_shrine_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "particle_system_start",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "targetname",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "particle_system_stop",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "targetname",
+        "type": "string"
+      },
+      {
+        "name": "immediate",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_combat_event_message",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "message",
+        "type": "string"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "player_id",
+        "type": "int"
+      },
+      {
+        "name": "player_id2",
+        "type": "int"
+      },
+      {
+        "name": "value",
+        "type": "float"
+      },
+      {
+        "name": "int_value",
+        "type": "int"
+      },
+      {
+        "name": "ability_name",
+        "type": "string"
+      },
+      {
+        "name": "locstring_value",
+        "type": "string"
+      },
+      {
+        "name": "string_replace_token",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_item_spawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "item_ent_index",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "player_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_player_reconnected",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_on_hero_finish_spawn",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "heroindex",
+        "type": "int"
+      },
+      {
+        "name": "hero",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "name": "dota_creature_gained_level",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "level",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_hero_teleport_to_unit",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "hero_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "unit_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_neutral_creep_camp_cleared",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "camp_name",
+        "type": "string"
+      },
+      {
+        "name": "camp_type",
+        "type": "int"
+      },
+      {
+        "name": "killer_player_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "npc_spawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "npc_replaced",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "old_entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "new_entindex",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "entity_hurt",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex_killed",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "entindex_attacker",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "entindex_inflictor",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "damagebits",
+        "type": "long"
+      },
+      {
+        "name": "damage",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "chat_new_message",
+    "sourceFile": "game",
+    "description": "The specified channel contains new messages.",
+    "local": false,
+    "fields": [
+      {
+        "name": "channel",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "chat_members_changed",
+    "sourceFile": "game",
+    "description": "The specified channel has had players leave or join.",
+    "local": false,
+    "fields": [
+      {
+        "name": "channel",
+        "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_team_kill_credit",
+    "sourceFile": "port",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "victim_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "herokills",
+        "type": "short"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1375 @@
+[
+  {
+    "kind": "primitive",
+    "name": "bool"
+  },
+  {
+    "kind": "primitive",
+    "name": "ehandle"
+  },
+  {
+    "kind": "primitive",
+    "name": "float"
+  },
+  {
+    "kind": "primitive",
+    "name": "double"
+  },
+  {
+    "kind": "primitive",
+    "name": "handle"
+  },
+  {
+    "kind": "primitive",
+    "name": "int"
+  },
+  {
+    "kind": "primitive",
+    "name": "nil"
+  },
+  {
+    "kind": "primitive",
+    "name": "string"
+  },
+  {
+    "kind": "primitive",
+    "name": "table"
+  },
+  {
+    "kind": "primitive",
+    "name": "uint"
+  },
+  {
+    "kind": "primitive",
+    "name": "unknown"
+  },
+  {
+    "kind": "primitive",
+    "name": "Quaternion",
+    "description": "There is no known way to create values of this type."
+  },
+  {
+    "kind": "primitive",
+    "name": "Vector2D",
+    "description": "There is no known way to create values of this type."
+  },
+  {
+    "kind": "nominal",
+    "name": "CombatAnalyzerQueryID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "CustomGameEventListenerID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "EntityIndex",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "EventListenerID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "ParticleID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "PlayerID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "ProjectileID",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "SpawnGroupHandle",
+    "baseType": "int"
+  },
+  {
+    "kind": "nominal",
+    "name": "ViewerID",
+    "baseType": "int"
+  },
+  {
+    "kind": "object",
+    "name": "LocalTime",
+    "fields": [
+      {
+        "name": "Minutes",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "Seconds",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "Hours",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CScriptHTTPResponse",
+    "fields": [
+      {
+        "name": "Body",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "Request",
+        "types": [
+          "CScriptHTTPRequest"
+        ]
+      },
+      {
+        "name": "StatusCode",
+        "types": [
+          "uint"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ApplyDamageOptions",
+    "fields": [
+      {
+        "name": "victim",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      },
+      {
+        "name": "attacker",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      },
+      {
+        "name": "damage",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "damage_type",
+        "types": [
+          "DAMAGE_TYPES"
+        ]
+      },
+      {
+        "name": "damage_flags",
+        "types": [
+          "DOTADamageFlag_t",
+          "nil"
+        ]
+      },
+      {
+        "name": "ability",
+        "types": [
+          "CDOTABaseAbility",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CreateIllusionsModifierKeys",
+    "fields": [
+      {
+        "name": "outgoing_damage",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "incoming_damage",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "bounty_base",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "bounty_growth",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "outgoing_damage_structure",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "outgoing_damage_roshan",
+        "types": [
+          "float",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "EntityBounds",
+    "fields": [
+      {
+        "name": "Mins",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "Maxs",
+        "types": [
+          "Vector"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CombatAnalyzerQueryResult",
+    "fields": [
+      {
+        "name": "query_id",
+        "types": [
+          "CombatAnalyzerQueryID"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ExecuteOrderOptions",
+    "fields": [
+      {
+        "name": "UnitIndex",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "OrderType",
+        "types": [
+          "dotaunitorder_t"
+        ]
+      },
+      {
+        "name": "TargetIndex",
+        "types": [
+          "EntityIndex",
+          "nil"
+        ],
+        "description": "Only used when targeting units."
+      },
+      {
+        "name": "AbilityIndex",
+        "types": [
+          "EntityIndex",
+          "nil"
+        ],
+        "description": "Only used when casting abilities."
+      },
+      {
+        "name": "Position",
+        "types": [
+          "Vector",
+          "nil"
+        ],
+        "description": "Only used when targeting the ground."
+      },
+      {
+        "name": "Queue",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "Used for queueing up abilities."
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceCollideableInputs",
+    "fields": [
+      {
+        "name": "startpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "endpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "ent",
+        "types": [
+          "CBaseEntity"
+        ]
+      },
+      {
+        "name": "mins",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      },
+      {
+        "name": "maxs",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceCollideableOutputs",
+    "extend": [
+      "TraceCollideableInputs"
+    ],
+    "fields": [
+      {
+        "name": "hit",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "pos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "normal",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "fraction",
+        "types": [
+          "float"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceHullInputs",
+    "fields": [
+      {
+        "name": "startpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "endpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "min",
+        "types": [
+          "unknown"
+        ]
+      },
+      {
+        "name": "max",
+        "types": [
+          "unknown"
+        ]
+      },
+      {
+        "name": "mask",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      },
+      {
+        "name": "ignore",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceHullOutputs",
+    "extend": [
+      "TraceHullInputs"
+    ],
+    "fields": [
+      {
+        "name": "hit",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "startsolid",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "pos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "normal",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "fraction",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "enthit",
+        "types": [
+          "CBaseEntity",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceLineInputs",
+    "fields": [
+      {
+        "name": "startpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "endpos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "mask",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      },
+      {
+        "name": "ignore",
+        "types": [
+          "unknown",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TraceLineOutputs",
+    "extend": [
+      "TraceLineInputs"
+    ],
+    "fields": [
+      {
+        "name": "hit",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "startsolid",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "pos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "normal",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "fraction",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "enthit",
+        "types": [
+          "CBaseEntity",
+          "nil"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CreateBaseProjectileOptions",
+    "fields": [
+      {
+        "name": "EffectName",
+        "types": [
+          "string",
+          "nil"
+        ]
+      },
+      {
+        "name": "Ability",
+        "types": [
+          "CDOTABaseAbility",
+          "nil"
+        ]
+      },
+      {
+        "name": "Source",
+        "types": [
+          "CDOTA_BaseNPC",
+          "nil"
+        ]
+      },
+      {
+        "name": "bProvidesVision",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "iVisionRadius",
+        "types": [
+          "uint",
+          "nil"
+        ]
+      },
+      {
+        "name": "iVisionTeamNumber",
+        "types": [
+          "DOTATeam_t",
+          "nil"
+        ]
+      },
+      {
+        "name": "ExtraData",
+        "types": [
+          "table",
+          "nil"
+        ],
+        "description": "Extra data associated with projectile instance, that is passed to `OnProjectileThink_ExtraData` and `OnProjectileHit_ExtraData`."
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CreateLinearProjectileOptions",
+    "extend": [
+      "CreateBaseProjectileOptions"
+    ],
+    "fields": [
+      {
+        "name": "vSpawnOrigin",
+        "types": [
+          "Vector",
+          "nil"
+        ]
+      },
+      {
+        "name": "vVelocity",
+        "types": [
+          "Vector",
+          "nil"
+        ]
+      },
+      {
+        "name": "vAcceleration",
+        "types": [
+          "Vector",
+          "nil"
+        ],
+        "description": "Velocity change per second."
+      },
+      {
+        "name": "fMaxSpeed",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "fDistance",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "fStartRadius",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "fEndRadius",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "fExpireTime",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "iUnitTargetTeam",
+        "types": [
+          "DOTA_UNIT_TARGET_TEAM",
+          "nil"
+        ]
+      },
+      {
+        "name": "iUnitTargetFlags",
+        "types": [
+          "DOTA_UNIT_TARGET_FLAGS",
+          "nil"
+        ]
+      },
+      {
+        "name": "iUnitTargetType",
+        "types": [
+          "DOTA_UNIT_TARGET_TYPE",
+          "nil"
+        ]
+      },
+      {
+        "name": "bIgnoreSource",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "bHasFrontalCone",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "bDrawsOnMinimap",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "@default false"
+      },
+      {
+        "name": "bVisibleToEnemies",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "Makes it invisible for all teams."
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "CreateTrackingProjectileOptions",
+    "extend": [
+      "CreateBaseProjectileOptions"
+    ],
+    "fields": [
+      {
+        "name": "vSourceLoc",
+        "types": [
+          "Vector",
+          "nil"
+        ]
+      },
+      {
+        "name": "Target",
+        "types": [
+          "CDOTA_BaseNPC",
+          "nil"
+        ]
+      },
+      {
+        "name": "iMoveSpeed",
+        "types": [
+          "int",
+          "nil"
+        ]
+      },
+      {
+        "name": "flExpireTime",
+        "types": [
+          "float",
+          "nil"
+        ]
+      },
+      {
+        "name": "bDodgeable",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "bIsAttack",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "bReplaceExisting",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "When enabled replaces existing projectile from the ability. Does not destroy the particle.\n@default false"
+      },
+      {
+        "name": "bIgnoreObstructions",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "bSuppressTargetCheck",
+        "types": [
+          "bool",
+          "nil"
+        ]
+      },
+      {
+        "name": "iSourceAttachment",
+        "types": [
+          "DOTAProjectileAttachment_t",
+          "nil"
+        ]
+      },
+      {
+        "name": "bDrawsOnMinimap",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "@default false"
+      },
+      {
+        "name": "bVisibleToEnemies",
+        "types": [
+          "bool",
+          "nil"
+        ],
+        "description": "@default true"
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "AbilityTuningValueFilterEvent",
+    "fields": [
+      {
+        "name": "entindex_caster_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_ability_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "value_name_const",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "value",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "BountyRunePickupFilterEvent",
+    "fields": [
+      {
+        "name": "player_id_const",
+        "types": [
+          "PlayerID"
+        ]
+      },
+      {
+        "name": "xp_bounty",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "gold_bounty",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "DamageFilterEvent",
+    "fields": [
+      {
+        "name": "entindex_attacker_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_victim_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_inflictor_const",
+        "types": [
+          "EntityIndex",
+          "nil"
+        ]
+      },
+      {
+        "name": "damagetype_const",
+        "types": [
+          "DAMAGE_TYPES"
+        ]
+      },
+      {
+        "name": "damage",
+        "types": [
+          "float"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ExecuteOrderFilterEvent",
+    "fields": [
+      {
+        "name": "units",
+        "types": [
+          {
+            "kind": "table",
+            "key": [
+              "string"
+            ],
+            "value": [
+              "EntityIndex"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "entindex_target",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_ability",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "issuer_player_id_const",
+        "types": [
+          "PlayerID"
+        ]
+      },
+      {
+        "name": "sequence_number_const",
+        "types": [
+          "uint"
+        ]
+      },
+      {
+        "name": "queue",
+        "types": [
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "order_type",
+        "types": [
+          "dotaunitorder_t"
+        ]
+      },
+      {
+        "name": "position_x",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "position_y",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "position_z",
+        "types": [
+          "float"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "HealingFilterEvent",
+    "fields": [
+      {
+        "name": "entindex_target_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "heal",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ItemAddedToInventoryFilterEvent",
+    "fields": [
+      {
+        "name": "inventory_parent_entindex_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "item_parent_entindex_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "item_entindex_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "suggested_slot",
+        "types": [
+          {
+            "kind": "literal",
+            "value": -1
+          },
+          "DOTAScriptInventorySlot_t"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifierGainedFilterEvent",
+    "fields": [
+      {
+        "name": "entindex_caster_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_parent_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_ability_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "name_const",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "duration",
+        "types": [
+          "int"
+        ],
+        "description": "-1 means forever. All other values less or equal to 0 would be equal to 1 frame."
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifyExperienceFilterEvent",
+    "fields": [
+      {
+        "name": "hero_entindex_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "player_id_const",
+        "types": [
+          "PlayerID"
+        ]
+      },
+      {
+        "name": "reason_const",
+        "types": [
+          "EDOTA_ModifyXP_Reason"
+        ]
+      },
+      {
+        "name": "experience",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifyGoldFilterEvent",
+    "fields": [
+      {
+        "name": "player_id_const",
+        "types": [
+          "PlayerID"
+        ]
+      },
+      {
+        "name": "reason_const",
+        "types": [
+          "EDOTA_ModifyGold_Reason"
+        ]
+      },
+      {
+        "name": "reliable",
+        "types": [
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "gold",
+        "types": [
+          "uint"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "RuneSpawnFilterEvent",
+    "fields": [
+      {
+        "name": "spawner_entindex_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "rune_type",
+        "types": [
+          "DOTA_RUNES"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "TrackingProjectileFilterEvent",
+    "fields": [
+      {
+        "name": "entindex_source_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_target_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "entindex_ability_const",
+        "types": [
+          "EntityIndex"
+        ]
+      },
+      {
+        "name": "is_attack",
+        "types": [
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "dodgeable",
+        "types": [
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "name": "max_impact_time",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "move_speed",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "expire_time",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifierAttackEvent",
+    "fields": [
+      {
+        "name": "attacker",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      },
+      {
+        "name": "damage",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "damage_type",
+        "types": [
+          "DAMAGE_TYPES"
+        ]
+      },
+      {
+        "name": "damage_category",
+        "types": [
+          "DamageCategory_t"
+        ]
+      },
+      {
+        "name": "damage_flags",
+        "types": [
+          "DOTADamageFlag_t"
+        ]
+      },
+      {
+        "name": "inflictor",
+        "types": [
+          "CDOTABaseAbility",
+          "nil"
+        ]
+      },
+      {
+        "name": "original_damage",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "ranged_attack",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "target",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      },
+      {
+        "name": "unit",
+        "types": [
+          "CDOTA_BaseNPC",
+          "nil"
+        ]
+      },
+      {
+        "name": "no_attack_cooldown",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "record",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "fail_type",
+        "types": [
+          "attackfail"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifierUnitEvent",
+    "fields": [
+      {
+        "name": "new_pos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "order_type",
+        "types": [
+          "dotaunitorder_t"
+        ]
+      },
+      {
+        "name": "unit",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "name": "ModifierAbilityEvent",
+    "extend": [
+      "ModifierUnitEvent"
+    ],
+    "fields": [
+      {
+        "name": "ability",
+        "types": [
+          "CDOTABaseAbility"
+        ]
+      },
+      {
+        "name": "target",
+        "types": [
+          "CDOTA_BaseNPC",
+          "nil"
+        ]
+      }
+    ]
+  }
+]
