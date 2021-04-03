@@ -10,7 +10,7 @@ export function readDump(name: string) {
   const [, ...groups] = dump.split(/\$> (.+)/g);
   let value = groups[groups.indexOf(name) + 1];
   // Cut off initializing scripting VM line
-  value = value.substring(value.indexOf('['));
+  value = value.slice(value.indexOf('['));
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (value == null) throw new Error(`Couldn't find dump "${name}"`);
   return value.trim();
