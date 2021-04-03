@@ -11,6 +11,14 @@ const baseHero = () =>
       'HeroID',
       s.int().min(1).max(255), // TODO: check
     )
+    .field(
+      'HeroOrderID',
+      s.int(), // TODO: check
+    )
+    .field(
+      'SimilarHeroes',
+      s.str(), // TODO: check
+    )
 
     .fieldsAfter('Model', [
       ['Model1', s.str().pattern(resourcePatterns.models)],
