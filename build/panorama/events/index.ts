@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { formatArgumentName, readDump } from '../../util';
 import { additions, override } from './data';
 import { PanoramaEvent, PanoramaEventArgument } from './types';
@@ -24,14 +23,12 @@ function parseDefinition(definition: string) {
 
 export function generatePanoramaEvents() {
   const dump = readDump('dump_panorama_events');
+
+  const eventDefinitions = dump.split('|-').map(c => c.trim()).slice(1) // Split events and skip header
+    .map(d => d.split(/\r?\n/).map(l => l.slice(2).trim())); // Split each event into its lines and cut off leading |
+
   const result = Object.fromEntries(
-    _.chunk(
-      `${dump.slice(57, -1)}-`
-        .split('\n')
-        .filter((x) => x !== '|-')
-        .map((v) => v.slice(2)),
-      3,
-    ).map(([definition, panelEvent, description]) => {
+    eventDefinitions.map(([definition, panelEvent, description]) => {
       const { name, args } = parseDefinition(definition.slice(6, -7));
       const event: PanoramaEvent = { description, panelEvent: panelEvent === 'Yes', args };
       return [name, event];

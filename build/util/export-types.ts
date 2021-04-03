@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import _ from 'lodash';
 
-const exportRegex = /(?<=\/\/ EXPORT START\n)(.)+\n(?=\/\/ EXPORT END)/s;
+const exportRegex = /(?<=\/\/ EXPORT START\r?\n)(.)+\r?\n(?=\/\/ EXPORT END)/s;
 const getExportedChunk = (fileName: string) => {
   const fileContent = fs.readFileSync(fileName, 'utf8');
   const matches = fileContent.match(exportRegex);

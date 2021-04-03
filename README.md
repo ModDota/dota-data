@@ -13,8 +13,8 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 4. Launch `dumper` addon
 5. In `vsconsole` do `dota_launch_custom_game dumper test_basic`
 6. Proceed through the game setup screen
-7. Copy-paste the console output into `dumper/dump` in this repository
-8. Run `yarn build` in the root of the repository
+7. Copy-paste the console output (starting with `$> dump_panorama_css_properties`) into `dumper/dump` in this repository
+8. Run `yarn install` then `yarn build` in the root of the repository
 9. Commit changes
 10. Up the version in the package.json and commit changes again
 11. Create a new git tag (e.g. `git tag -a v0.14.0 -m "v0.14.0"`)

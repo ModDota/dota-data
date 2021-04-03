@@ -6,7 +6,7 @@ export { types as enumsTypes } from './types';
 
 export const enums = (() => {
   const result = readDump('cl_panorama_script_help *')
-    .split('\n\n')
+    .split(/\r?\n\r?\n/)
     .map(
       (group): Enum => {
         const enumName = group.match(/Enumeration '(.+?)'/)![1];
