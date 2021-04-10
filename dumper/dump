@@ -63,6 +63,10 @@ Sets the background color opacity for a panel (does nothing on its own, but when
 Comma separated list of images or movies to draw in the background. Can specify "none" to not draw a background layer. Combined with background-position, background-size and background-repeat values.<br><br><b>Example:</b><pre>background-image: url("file://{images}/default.tga"), url( "file://{movies}/Background1080p.webm" );</pre>
 
 
+=== background-img-opacity ===
+Sets the Opacity of background-image<br><br><b>Examples:</b><pre>background-img-opacity: 0.5;</pre>
+
+
 === background-position ===
 Controls the horizontal and vertical placement of the background image, with the format: &lt;left|center|right&gt; &lt;horizontal length&gt; &lt;top|center|bottom&gt; &lt;vertical length&gt;<br><br>If length is a percent, the specified location within the image is positioned over that same specified position in the background. If the length is pixels, the top left corner is placed relative to the provided alignment keywords (left, bottom, etc.). See examples for more details.<br><br>If 1 value is specified, the other value is assumed to be center. If 2 values are specified, the first value must be for horizontal placement and the second for vertical.<br><br><b>Examples:</b><pre>// aligns the top left corner of the image with the top left corner of the panel (default)
 background-position: 0% 0%;
@@ -1131,7 +1135,7 @@ Enumeration 'DOTA_RUNES'
 	DOTA_RUNES.DOTA_RUNE_REGENERATION = 4
 	DOTA_RUNES.DOTA_RUNE_BOUNTY = 5
 	DOTA_RUNES.DOTA_RUNE_ARCANE = 6
-	DOTA_RUNES.DOTA_RUNE_XP = 7
+	DOTA_RUNES.DOTA_RUNE_WATER = 7
 	DOTA_RUNES.DOTA_RUNE_COUNT = 8
 
 Enumeration 'DOTA_UNIT_TARGET_TEAM'
@@ -1941,7 +1945,8 @@ Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 239 (GetModifierMoveSpeedReductionPercentage)
 	modifierfunction.MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 240
 	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE = 241 (GetModifierAttackSpeedPercentage)
-	modifierfunction.MODIFIER_FUNCTION_LAST = 242
+	modifierfunction.MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE = 242 (OnAttemptProjectileDodge)
+	modifierfunction.MODIFIER_FUNCTION_LAST = 243
 	modifierfunction.MODIFIER_FUNCTION_INVALID = 255
 
 Enumeration 'modifierstate'
@@ -5429,6 +5434,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_ATTACK_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1707,
     "kind":"constant",
@@ -5513,6 +5522,14 @@ Initializing script VM...
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
+  },{
+    "value":1754,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1755,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1510,
@@ -5799,6 +5816,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CHANNEL_END_ABILITY_6"
   },{
+    "value":1761,
+    "kind":"constant",
+    "name":"ACT_DOTA_CHANNEL_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1673,
     "kind":"constant",
@@ -5849,6 +5870,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
+    "value":1758,
+    "kind":"constant",
+    "name":"ACT_DOTA_DEFEAT_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1506,
     "kind":"constant",
@@ -5898,6 +5923,10 @@ Initializing script VM...
     "value":1508,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
+  },{
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1685,
@@ -6013,6 +6042,10 @@ Initializing script VM...
     "value":1639,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
+  },{
+    "value":1756,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1623,
@@ -6444,6 +6477,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1684,
     "kind":"constant",
@@ -6508,6 +6545,10 @@ Initializing script VM...
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
+  },{
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1537,
@@ -6578,6 +6619,10 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
+  },{
+    "value":1757,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1689,
@@ -12750,7 +12795,7 @@ Initializing script VM...
     "enum":"DOTA_RUNES",
     "value":7,
     "kind":"constant",
-    "name":"DOTA_RUNE_XP"
+    "name":"DOTA_RUNE_WATER"
   },{
     "enum":"DOTA_SHOP_TYPE",
     "value":6,
@@ -13631,6 +13676,12 @@ Initializing script VM...
     "description":"OnAttackStart"
   },{
     "enum":"modifierfunction",
+    "value":242,
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
+    "description":"OnAttemptProjectileDodge"
+  },{
+    "enum":"modifierfunction",
     "value":179,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
@@ -13810,7 +13861,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":242,
+    "value":243,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -15714,6 +15765,10 @@ Initializing script VM...
     "value":0,
     "kind":"constant",
     "name":"UF_SUCCESS"
+  },{
+    "value":1753,
+    "kind":"constant",
+    "name":"battlemaiden_debut_truncated"
   },{
     "members":[{
         "args":[],
@@ -20096,6 +20151,14 @@ Initializing script VM...
         "name":"GetPlaybackRateOverride",
         "description":"Return the animation rate of the cast animation."
       },{
+        "args":[{
+            "name":"hEntity",
+            "type":"handle"
+          }],
+        "returns":"bool",
+        "name":"IsCosmetic",
+        "description":"Is this a cosmetic only ability?"
+      },{
         "args":[],
         "returns":"bool",
         "name":"IsHiddenAbilityCastable",
@@ -20293,6 +20356,10 @@ Initializing script VM...
         "returns":"void",
         "name":"OnUpgrade",
         "description":"Ability gained a level."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"OtherAbilitiesAlwaysInterruptChanneling"
       },{
         "args":[],
         "returns":"bool",
@@ -23572,6 +23639,11 @@ Initializing script VM...
         "name":"GetShareability"
       },{
         "args":[],
+        "returns":"int",
+        "name":"GetValuelessCharges",
+        "description":"Get the number of valueless charges this item currently has."
+      },{
+        "args":[],
         "returns":"bool",
         "name":"IsAlertableItem"
       },{
@@ -23617,7 +23689,8 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
-        "name":"IsPermanent"
+        "name":"IsPermanent",
+        "description":"Is this a permanent item?"
       },{
         "args":[],
         "returns":"bool",
@@ -23692,6 +23765,14 @@ Initializing script VM...
           }],
         "returns":"void",
         "name":"LaunchLootRequiredHeight"
+      },{
+        "args":[{
+            "name":"iCharges",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"ModifyNumValuelessCharges",
+        "description":"Modifies the number of valueless charges on this item"
       },{
         "args":[],
         "returns":"void",
@@ -25015,6 +25096,11 @@ Initializing script VM...
         "returns":"int",
         "name":"GetNthPlayerIDOnTeam"
       },{
+        "args":[],
+        "returns":"int",
+        "name":"GetNumConnectedHumanPlayers",
+        "description":"Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game"
+      },{
         "args":[{
             "name":"iPlayerID",
             "type":"int"
@@ -25185,7 +25271,7 @@ Initializing script VM...
         "args":[],
         "returns":"int",
         "name":"GetTeamPlayerCount",
-        "description":"Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game"
+        "description":"(Deprecated: use GetNumConnectedHumanPlayers) Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -29560,7 +29646,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1753,
+    "value":1766,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30140,6 +30226,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_EVENT_BASH"
   },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_ATTACK_STATUE"
+  },{
     "value":1707,
     "kind":"constant",
     "name":"ACT_DOTA_AW_MAGNETIC_FIELD"
@@ -30207,6 +30297,18 @@ Initializing script VM...
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
+  },{
+    "value":1754,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1755,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
+  },{
+    "value":1764,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST4_STATUE"
   },{
     "value":1510,
     "kind":"constant",
@@ -30320,7 +30422,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1761,
+    "value":1769,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30440,6 +30542,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CHANNEL_END_ABILITY_6"
   },{
+    "value":1761,
+    "kind":"constant",
+    "name":"ACT_DOTA_CHANNEL_STATUE"
+  },{
     "value":1673,
     "kind":"constant",
     "name":"ACT_DOTA_CHILLING_TOUCH"
@@ -30464,7 +30570,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
-    "value":1756,
+    "value":1774,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30484,6 +30590,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DEFEAT_START"
   },{
+    "value":1758,
+    "kind":"constant",
+    "name":"ACT_DOTA_DEFEAT_STATUE"
+  },{
     "value":1506,
     "kind":"constant",
     "name":"ACT_DOTA_DIE"
@@ -30496,7 +30606,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1754,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30527,6 +30637,10 @@ Initializing script VM...
     "value":1508,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
+  },{
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
   },{
     "value":1685,
     "kind":"constant",
@@ -30620,7 +30734,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1757,
+    "value":1756,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
+  },{
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30832,7 +30950,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1763,
+    "value":1771,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30872,7 +30990,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1759,
+    "value":1767,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30884,7 +31002,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1760,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30904,7 +31022,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1755,
+    "value":1773,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
@@ -30976,6 +31094,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
+    "value":1772,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN"
+  },{
     "value":1629,
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE"
@@ -30983,6 +31105,10 @@ Initializing script VM...
     "value":1680,
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
+  },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
   },{
     "value":1684,
     "kind":"constant",
@@ -31036,6 +31162,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
+  },{
     "value":1537,
     "kind":"constant",
     "name":"ACT_DOTA_THIRST"
@@ -31055,10 +31185,6 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
-  },{
-    "value":1758,
-    "kind":"constant",
-    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -31095,6 +31221,10 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
+  },{
+    "value":1757,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "value":1689,
     "kind":"constant",
@@ -35825,7 +35955,7 @@ Initializing script VM...
     "enum":"DOTA_RUNES",
     "value":7,
     "kind":"constant",
-    "name":"DOTA_RUNE_XP"
+    "name":"DOTA_RUNE_WATER"
   },{
     "enum":"DOTA_SHOP_TYPE",
     "value":6,
@@ -36453,6 +36583,12 @@ Initializing script VM...
     "description":"OnAttackStart"
   },{
     "enum":"modifierfunction",
+    "value":242,
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
+    "description":"OnAttemptProjectileDodge"
+  },{
+    "enum":"modifierfunction",
     "value":179,
     "kind":"constant",
     "name":"MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
@@ -36632,7 +36768,7 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
-    "value":242,
+    "value":243,
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -38393,7 +38529,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
-    "value":1762,
+    "value":1753,
+    "kind":"constant",
+    "name":"battlemaiden_debut_truncated"
+  },{
+    "value":1770,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
@@ -40061,6 +40201,10 @@ Initializing script VM...
         "returns":"string",
         "name":"GetAbilityName",
         "description":"Name of this ability."
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetBehavior"
       },{
         "args":[],
         "returns":"int",

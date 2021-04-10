@@ -9,10 +9,11 @@ describe('integration', () => {
       'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
-      'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown',
-      'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
-      'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum',
-      'satyr_soulstealer_mana_burn.Modelscale is unknown',
+      'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
+      'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum', // DOTA_ABILITY_TYPE_ULTIMATE
+      'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum', // Extra |, empty string ability behavior
+      'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
+      'hoodwink_decoy.AbilityBehavior[0] should be a AbilityBehavior enum', // Should be DOTA_ABILITY_BEHAVIOR_POINT
     ],
   });
 

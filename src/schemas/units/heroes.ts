@@ -40,10 +40,10 @@ const baseHero = () =>
       ],
     ])
 
-    .fieldsAfter('Ability24', [
+    .fieldsAfter('Ability25', [
       ['AbilityTalentStart', s.int().min(0)],
       ['AbilityDraftDisabled', s.binaryBoolean()],
-      ['AbilityDraftIgnoreCount', s.int().max(24)],
+      ['AbilityDraftIgnoreCount', s.int().max(25)],
       ['AbilityDraftAbilities', s.obj().rest(s.str(), /^Ability\d+$/)],
       ['AbilityDraftUniqueAbilities', s.obj().rest(s.str(), /^Ability\d+$/)],
     ])

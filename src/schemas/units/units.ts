@@ -107,7 +107,7 @@ export const baseUnit = () =>
     .field('Ability1', s.anything())
     .fieldsAfter(
       'Ability1',
-      _.range(24, 0).map((i) => [
+      _.range(25, 0).map((i) => [
         `Ability${i}`,
         s.str(),
         { description: `An ability that goes to unit's ${i} slot.` },

@@ -1040,7 +1040,7 @@
         "value": 6
       },
       {
-        "name": "DOTA_RUNE_XP",
+        "name": "DOTA_RUNE_WATER",
         "value": 7
       },
       {
@@ -7999,40 +7999,84 @@
         "value": 1752
       },
       {
-        "name": "ACT_DOTA_DISABLED_END",
+        "name": "ACT_DOTA_CAST1_STATUE",
         "value": 1754
       },
       {
-        "name": "ACT_DOTA_RUN_ALT",
+        "name": "ACT_DOTA_CAST3_STATUE",
         "value": 1755
       },
       {
-        "name": "ACT_DOTA_CYCLONE",
+        "name": "ACT_DOTA_IDLE_STATUE",
         "value": 1756
       },
       {
-        "name": "ACT_DOTA_IMPALE",
+        "name": "ACT_DOTA_VICTORY_STATUE",
         "value": 1757
       },
       {
-        "name": "ACT_DOTA_TORRENT",
+        "name": "ACT_DOTA_DEFEAT_STATUE",
         "value": 1758
       },
       {
-        "name": "ACT_DOTA_RELAX_IN",
+        "name": "ACT_DOTA_FLAIL_STATUE",
         "value": 1759
       },
       {
-        "name": "ACT_DOTA_RELAX_OUT",
+        "name": "ACT_DOTA_STUN_STATUE",
         "value": 1760
       },
       {
-        "name": "ACT_DOTA_CAST_FENCE",
+        "name": "ACT_DOTA_CHANNEL_STATUE",
         "value": 1761
       },
       {
-        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "name": "ACT_DOTA_ATTACK_STATUE",
+        "value": 1762
+      },
+      {
+        "name": "ACT_DOTA_TELEPORT_STATUE",
         "value": 1763
+      },
+      {
+        "name": "ACT_DOTA_CAST4_STATUE",
+        "value": 1764
+      },
+      {
+        "name": "ACT_DOTA_DISABLED_END",
+        "value": 1765
+      },
+      {
+        "name": "ACT_DOTA_RELAX_IN",
+        "value": 1767
+      },
+      {
+        "name": "ACT_DOTA_RELAX_OUT",
+        "value": 1768
+      },
+      {
+        "name": "ACT_DOTA_CAST_FENCE",
+        "value": 1769
+      },
+      {
+        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "value": 1771
+      },
+      {
+        "name": "ACT_DOTA_SPWN",
+        "value": 1772
+      },
+      {
+        "name": "ACT_DOTA_RUN_ALT",
+        "value": 1773
+      },
+      {
+        "name": "ACT_DOTA_CYCLONE",
+        "value": 1774
+      },
+      {
+        "name": "ACT_DOTA_IMPALE",
+        "value": 1775
       }
     ]
   },
@@ -9272,8 +9316,13 @@
         "value": 241
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
+        "description": "Method Name: `OnAttemptProjectileDodge`",
         "value": 242
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 243
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

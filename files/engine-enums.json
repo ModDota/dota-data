@@ -407,6 +407,10 @@
         "shortName": "BARRACKS"
       },
       {
+        "name": "DOTA_HULL_SIZE_BIG_HERO",
+        "shortName": "BIG_HERO"
+      },
+      {
         "name": "DOTA_HULL_SIZE_BUILDING",
         "shortName": "BUILDING"
       },

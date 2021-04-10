@@ -909,7 +909,7 @@
         "value": 6
       },
       {
-        "name": "DOTA_RUNE_XP",
+        "name": "DOTA_RUNE_WATER",
         "value": 7
       },
       {
@@ -4332,8 +4332,13 @@
         "value": 241
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
+        "description": "Method Name: `OnAttemptProjectileDodge`",
         "value": 242
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 243
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

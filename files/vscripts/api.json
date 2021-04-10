@@ -4976,6 +4976,23 @@
       },
       {
         "kind": "function",
+        "name": "IsCosmetic",
+        "available": "server",
+        "description": "Is this a cosmetic only ability?",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "entity",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "IsHiddenAbilityCastable",
         "available": "server",
         "description": "Returns true if this ability can be used when not on the action panel.",
@@ -5385,6 +5402,15 @@
         "description": "Ability gained a level.",
         "returns": [
           "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "OtherAbilitiesAlwaysInterruptChanneling",
+        "available": "server",
+        "returns": [
+          "bool"
         ],
         "args": []
       },
@@ -12509,6 +12535,16 @@
       },
       {
         "kind": "function",
+        "name": "GetValuelessCharges",
+        "available": "server",
+        "description": "Get the number of valueless charges this item currently has.",
+        "returns": [
+          "int"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsAlertableItem",
         "available": "both",
         "returns": [
@@ -12610,6 +12646,7 @@
         "kind": "function",
         "name": "IsPermanent",
         "available": "both",
+        "description": "Is this a permanent item?",
         "returns": [
           "bool"
         ],
@@ -12770,6 +12807,23 @@
             "name": "endPoint",
             "types": [
               "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "ModifyNumValuelessCharges",
+        "available": "server",
+        "description": "Modifies the number of valueless charges on this item.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "charges",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -16999,6 +17053,16 @@
       },
       {
         "kind": "function",
+        "name": "OnAttemptProjectileDodge",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnBreakInvisibility",
         "available": "both",
         "abstract": true,
@@ -18738,6 +18802,16 @@
       },
       {
         "kind": "function",
+        "name": "GetNumConnectedHumanPlayers",
+        "available": "server",
+        "description": "Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game.",
+        "returns": [
+          "int"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetNumConsumablesPurchased",
         "available": "server",
         "returns": [
@@ -19122,7 +19196,7 @@
         "kind": "function",
         "name": "GetTeamPlayerCount",
         "available": "server",
-        "description": "Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game.",
+        "description": "(Deprecated: use GetNumConnectedHumanPlayers) Players on a valid team (radiant, dire, or custom*) who haven't abandoned the game.",
         "returns": [
           "int"
         ],
@@ -20828,7 +20902,7 @@
       {
         "kind": "function",
         "name": "GetBehavior",
-        "available": "server",
+        "available": "both",
         "returns": [
           "DOTA_ABILITY_BEHAVIOR"
         ],
