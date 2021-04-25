@@ -16281,6 +16281,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierProcAttack_BonusDamage_Magical_Target",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierProcAttack_BonusDamage_Physical",
         "available": "both",
         "abstract": true,
