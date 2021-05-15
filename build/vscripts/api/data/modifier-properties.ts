@@ -3,7 +3,12 @@ import { DumpConstant, serverDump } from '../../dump';
 import * as apiTypes from '../types';
 import { binaryBoolean } from './utils';
 
-type ArgumentType = null | 'ModifierUnitEvent' | 'ModifierAbilityEvent' | 'ModifierAttackEvent';
+type ArgumentType =
+  | null
+  | 'ModifierUnitEvent'
+  | 'ModifierAbilityEvent'
+  | 'ModifierAttackEvent'
+  | 'ModifierOverrideAbilitySpecialEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
@@ -106,6 +111,8 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   GetModifierMPRegenAmplify_Percentage: [null, anyNumber],
   GetModifierMPRestoreAmplify_Percentage: [null, anyNumber, 'Total amplify value is clamped to 0.'],
   GetModifierNegativeEvasion_Constant: [null, anyNumber],
+  GetModifierOverrideAbilitySpecial: ['ModifierOverrideAbilitySpecialEvent', binaryBoolean],
+  GetModifierOverrideAbilitySpecialValue: ['ModifierOverrideAbilitySpecialEvent', anyNumber],
   GetModifierOverrideAttackDamage: [null, anyNumber],
   GetModifierPercentageCasttime: ['ModifierAbilityEvent', anyNumber],
   GetModifierPercentageCooldown: ['ModifierAbilityEvent', anyNumber],
