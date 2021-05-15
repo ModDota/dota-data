@@ -3,7 +3,12 @@ import { DumpConstant, serverDump } from '../../dump';
 import * as apiTypes from '../types';
 import { binaryBoolean } from './utils';
 
-type ArgumentType = null | 'ModifierUnitEvent' | 'ModifierAbilityEvent' | 'ModifierAttackEvent' | 'ModifierOverrideAbilitySpecialEvent';
+type ArgumentType =
+  | null
+  | 'ModifierUnitEvent'
+  | 'ModifierAbilityEvent'
+  | 'ModifierAttackEvent'
+  | 'ModifierOverrideAbilitySpecialEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
