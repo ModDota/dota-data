@@ -468,6 +468,16 @@ apiTypesDeclarations.push({
 
 apiTypesDeclarations.push({
   kind: 'object',
+  name: 'ModifierOverrideAbilitySpecialEvent',
+  fields: [
+    { name: 'ability', types: ['CDOTABaseAbility'] },
+    { name: 'ability_special_value', types: ['string'] },
+    { name: 'ability_special_level', types: ['int'] },
+  ],
+});
+
+apiTypesDeclarations.push({
+  kind: 'object',
   name: 'SpawnEntityFromTableOptions',
   fields: [
     { name: 'origin', types: ['string', 'Vector', 'nil'] },
