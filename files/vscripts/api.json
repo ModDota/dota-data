@@ -15909,9 +15909,23 @@
         "name": "GetModifierOverrideAbilitySpecial",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierOverrideAbilitySpecialEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
         ]
       },
       {
@@ -15919,9 +15933,16 @@
         "name": "GetModifierOverrideAbilitySpecialValue",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierOverrideAbilitySpecialEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {

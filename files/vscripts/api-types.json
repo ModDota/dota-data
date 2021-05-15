@@ -1374,6 +1374,30 @@
   },
   {
     "kind": "object",
+    "name": "ModifierOverrideAbilitySpecialEvent",
+    "fields": [
+      {
+        "name": "ability",
+        "types": [
+          "CDOTABaseAbility"
+        ]
+      },
+      {
+        "name": "ability_special_value",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "ability_special_level",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
     "name": "SpawnEntityFromTableOptions",
     "fields": [
       {
