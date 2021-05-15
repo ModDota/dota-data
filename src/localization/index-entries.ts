@@ -18,12 +18,10 @@ interface IndexCache {
 const fetchIndexEntries = async () =>
   (await getDotaDirectoryContents('pak01_dir/resource/localization'))
     .filter((x) => x.type === 'file')
-    .map(
-      (file): IndexEntry => {
-        const [, type, language] = file.name.match(/^(.+)_(.+)\.txt$/)!;
-        return { language: language as DotaLanguage, type, sha: file.sha };
-      },
-    );
+    .map((file): IndexEntry => {
+      const [, type, language] = file.name.match(/^(.+)_(.+)\.txt$/)!;
+      return { language: language as DotaLanguage, type, sha: file.sha };
+    });
 
 // Cache responses for 120s, because unauthenticated requests are limited to 60 per hour
 const CACHE_LIFETIME = 120000;

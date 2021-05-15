@@ -24,9 +24,10 @@ export {
   StringSchema,
 };
 
-const wrapConstructor = <T extends new (...args: any[]) => any>(constructor: T) => (
-  ...args: ConstructorParameters<T>
-): InstanceType<T> => new constructor(...args);
+const wrapConstructor =
+  <T extends new (...args: any[]) => any>(constructor: T) =>
+  (...args: ConstructorParameters<T>): InstanceType<T> =>
+    new constructor(...args);
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const obj = wrapConstructor(ObjectSchema);

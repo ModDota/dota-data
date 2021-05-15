@@ -108,32 +108,30 @@ function transformFunction(
     deprecated: extension.deprecated,
     description,
     returns: overrideType(`${functionIdentifier}.returns`, func.returns, extension.returns),
-    args: func.args.map(
-      ({ type }, index): apiTypes.FunctionParameter => {
-        const [extensionName, extensionType, argDescription] = extension.args?.[index] ?? [];
-        const originalName = formatArgumentName(argNames[index], index);
-        const name = extensionName ?? originalName;
+    args: func.args.map(({ type }, index): apiTypes.FunctionParameter => {
+      const [extensionName, extensionType, argDescription] = extension.args?.[index] ?? [];
+      const originalName = formatArgumentName(argNames[index], index);
+      const name = extensionName ?? originalName;
 
-        if (originalName === extensionName) {
-          console.log(`Unnecessary argument name override: ${functionIdentifier} ${name}`);
-        }
+      if (originalName === extensionName) {
+        console.log(`Unnecessary argument name override: ${functionIdentifier} ${name}`);
+      }
 
-        if (!/^\w+$/.test(name)) {
-          console.log(`Invalid argument name: ${functionIdentifier} ${name}`);
-        }
+      if (!/^\w+$/.test(name)) {
+        console.log(`Invalid argument name: ${functionIdentifier} ${name}`);
+      }
 
-        let types = overrideType(`${functionIdentifier}.args.${name}`, type, extensionType);
-        if (
-          name.toLowerCase().endsWith('playerid') &&
-          _.isEqual(types, ['int']) &&
-          !/^CDOTA_PlayerResource\.IsValid(Team)?Player(ID)?$/.test(functionIdentifier)
-        ) {
-          types = ['PlayerID'];
-        }
+      let types = overrideType(`${functionIdentifier}.args.${name}`, type, extensionType);
+      if (
+        name.toLowerCase().endsWith('playerid') &&
+        _.isEqual(types, ['int']) &&
+        !/^CDOTA_PlayerResource\.IsValid(Team)?Player(ID)?$/.test(functionIdentifier)
+      ) {
+        types = ['PlayerID'];
+      }
 
-        return { name, description: argDescription, types };
-      },
-    ),
+      return { name, description: argDescription, types };
+    }),
   };
 }
 

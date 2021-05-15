@@ -72,34 +72,30 @@ export const enumDeclarations = (() => {
   const enums: Enum[] = [];
 
   enums.push(
-    ...Object.entries(prefixedEnums).map(
-      ([name, prefix]): Enum => {
-        const members = takeGlobals((x) =>
-          typeof prefix === 'string' ? x.name.startsWith(prefix) : prefix.test(x.name),
-        );
+    ...Object.entries(prefixedEnums).map(([name, prefix]): Enum => {
+      const members = takeGlobals((x) =>
+        typeof prefix === 'string' ? x.name.startsWith(prefix) : prefix.test(x.name),
+      );
 
-        return {
-          kind: 'enum',
-          name,
-          available: getCommonAvailability(members),
-          members: transformMembers(members),
-        };
-      },
-    ),
+      return {
+        kind: 'enum',
+        name,
+        available: getCommonAvailability(members),
+        members: transformMembers(members),
+      };
+    }),
   );
 
   enums.push(
-    ...Object.entries(globalEnums).map(
-      ([name, values]): Enum => {
-        const members = takeGlobals((x) => values.includes(x.name));
-        return {
-          kind: 'enum',
-          name,
-          available: getCommonAvailability(members),
-          members: transformMembers(members),
-        };
-      },
-    ),
+    ...Object.entries(globalEnums).map(([name, values]): Enum => {
+      const members = takeGlobals((x) => values.includes(x.name));
+      return {
+        kind: 'enum',
+        name,
+        available: getCommonAvailability(members),
+        members: transformMembers(members),
+      };
+    }),
   );
 
   enums.push(
