@@ -439,7 +439,25 @@ apiTypesDeclarations.push({
     { name: 'original_damage', types: ['float'] },
     { name: 'ranged_attack', types: ['bool'] },
     { name: 'target', types: ['CDOTA_BaseNPC'] },
-    { name: 'unit', types: ['CDOTA_BaseNPC', 'nil'] },
+    { name: 'no_attack_cooldown', types: ['bool'] },
+    { name: 'record', types: ['int'] }, // TODO: Add attack record type?
+    { name: 'fail_type', types: ['attackfail'] },
+  ],
+});
+
+apiTypesDeclarations.push({
+  kind: 'object',
+  name: 'ModifierInstanceEvent',
+  fields: [
+    { name: 'attacker', types: ['CDOTA_BaseNPC'] },
+    { name: 'damage', types: ['float'] },
+    { name: 'damage_type', types: ['DAMAGE_TYPES'] },
+    { name: 'damage_category', types: ['DamageCategory_t'] },
+    { name: 'damage_flags', types: ['DOTADamageFlag_t'] },
+    { name: 'inflictor', types: ['CDOTABaseAbility', 'nil'] },
+    { name: 'original_damage', types: ['float'] },
+    { name: 'ranged_attack', types: ['bool'] },
+    { name: 'unit', types: ['CDOTA_BaseNPC'] },
     { name: 'no_attack_cooldown', types: ['bool'] },
     { name: 'record', types: ['int'] }, // TODO: Add attack record type?
     { name: 'fail_type', types: ['attackfail'] },

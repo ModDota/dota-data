@@ -17111,7 +17111,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierAttackEvent"
+              "ModifierInstanceEvent"
             ]
           }
         ],
@@ -17155,7 +17155,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierAttackEvent"
+              "ModifierInstanceEvent"
             ]
           }
         ],
@@ -17416,7 +17416,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierAttackEvent"
+              "ModifierInstanceEvent"
             ]
           }
         ],
@@ -17433,7 +17433,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierAttackEvent"
+              "ModifierInstanceEvent"
             ]
           }
         ],

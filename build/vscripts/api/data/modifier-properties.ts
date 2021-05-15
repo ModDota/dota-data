@@ -8,6 +8,7 @@ type ArgumentType =
   | 'ModifierUnitEvent'
   | 'ModifierAbilityEvent'
   | 'ModifierAttackEvent'
+  | 'ModifierInstanceEvent'
   | 'ModifierOverrideAbilitySpecialEvent';
 
 // TODO: Use more specific number types
@@ -182,9 +183,9 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnAttackRecordDestroy: ['ModifierAttackEvent', ['nil']],
   OnAttackStart: ['ModifierAttackEvent', ['nil']],
   OnBreakInvisibility: [null, ['nil']],
-  OnBuildingKilled: ['ModifierAttackEvent', ['nil']],
+  OnBuildingKilled: ['ModifierInstanceEvent', ['nil']],
   OnDamageCalculated: ['ModifierAttackEvent', ['nil']],
-  OnDeath: ['ModifierAttackEvent', ['nil']],
+  OnDeath: ['ModifierInstanceEvent', ['nil']],
   OnDominated: ['ModifierUnitEvent', ['nil']],
   OnHealReceived: ['ModifierUnitEvent', ['nil']],
   OnHealthGained: ['ModifierUnitEvent', ['nil']],
@@ -199,8 +200,8 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnSpellTargetReady: [null, ['nil']],
   OnSpentMana: ['ModifierAbilityEvent', ['nil']],
   OnStateChanged: ['ModifierUnitEvent', ['nil']],
-  OnTakeDamage: ['ModifierAttackEvent', ['nil']],
-  OnTakeDamageKillCredit: ['ModifierAttackEvent', ['nil']],
+  OnTakeDamage: ['ModifierInstanceEvent', ['nil']],
+  OnTakeDamageKillCredit: ['ModifierInstanceEvent', ['nil']],
   OnTeleported: ['ModifierUnitEvent', ['nil']],
   OnTeleporting: ['ModifierUnitEvent', ['nil']],
   OnTooltip: [null, anyNumber],
