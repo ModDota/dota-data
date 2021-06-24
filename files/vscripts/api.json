@@ -4814,6 +4814,22 @@
       },
       {
         "kind": "function",
+        "name": "GetCastRangeBonus",
+        "available": "both",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "target",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetChannelAnimation",
         "available": "server",
         "description": "Return channel animation of this ability.",
@@ -4922,6 +4938,29 @@
       },
       {
         "kind": "function",
+        "name": "GetEffectiveCastRange",
+        "available": "both",
+        "description": "Return cast range of this ability, accounting for modifiers.",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "location",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "target",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetGoldCost",
         "available": "both",
         "description": "Return gold cost at the given level (-1 is current).",
@@ -4994,7 +5033,7 @@
       {
         "kind": "function",
         "name": "IsHiddenAbilityCastable",
-        "available": "server",
+        "available": "both",
         "description": "Returns true if this ability can be used when not on the action panel.",
         "returns": [
           "bool"
@@ -6435,6 +6474,15 @@
         "name": "GetBaseDayTimeVisionRange",
         "available": "server",
         "description": "Returns the vision range before modifiers.",
+        "returns": [
+          "int"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetBaseHealthBarOffset",
+        "available": "server",
         "returns": [
           "int"
         ],
@@ -9442,6 +9490,22 @@
       },
       {
         "kind": "function",
+        "name": "SetHealthBarOffsetOverride",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "offset",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetHullRadius",
         "available": "server",
         "description": "Set the collision hull radius of this NPC.",
@@ -11974,6 +12038,22 @@
       },
       {
         "kind": "function",
+        "name": "CheckStateToTable",
+        "available": "both",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "table",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "DecrementStackCount",
         "available": "both",
         "description": "Decrease this modifier's stack count by 1.",
@@ -13438,6 +13518,29 @@
             "name": "target",
             "types": [
               "CDOTA_BaseNPC"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetEffectiveCastRange",
+        "available": "both",
+        "description": "Return cast range of this ability, taking modifiers into account.",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "location",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "target",
+            "types": [
+              "handle"
             ]
           }
         ]
@@ -16017,6 +16120,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPercentageGoldRateBoost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -21128,6 +21241,29 @@
       },
       {
         "kind": "function",
+        "name": "GetEffectiveCastRange",
+        "available": "server",
+        "description": "Gets the cast range of the ability, taking modifiers into account.",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "location",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "target",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetEffectiveCooldown",
         "available": "server",
         "returns": [
@@ -22615,6 +22751,16 @@
       },
       {
         "kind": "function",
+        "name": "GetDaynightCycleAdvanceRate",
+        "available": "server",
+        "description": "Get the rate at which the day/night cycle advances (1.0 = default).",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetEventGameSeed",
         "available": "server",
         "description": "Get the Game Seed passed from the GC.",
@@ -23281,6 +23427,22 @@
       },
       {
         "kind": "function",
+        "name": "SetCanSellAnywhere",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "allow",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetCustomAttributeDerivedStatValue",
         "available": "server",
         "description": "Modify derived stat value constants.",
@@ -23546,6 +23708,23 @@
             "name": "context",
             "types": [
               "table"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDaynightCycleAdvanceRate",
+        "available": "server",
+        "description": "Sets the rate at which the day/night cycle advances (1.0 = default).",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "rate",
+            "types": [
+              "float"
             ]
           }
         ]
@@ -24607,6 +24786,23 @@
       },
       {
         "kind": "function",
+        "name": "SetUseTurboCouriers",
+        "available": "server",
+        "description": "Enables or disables turbo couriers.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "enabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetWeatherEffectsDisabled",
         "available": "server",
         "description": "Set if weather effects are disabled.",
@@ -25229,6 +25425,16 @@
               "string"
             ]
           }
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetBannedHeroIDs",
+        "available": "both",
+        "description": "Returns the hero unit IDs banned in this game, if any.",
+        "returns": [
+          "table"
         ],
         "args": []
       },
@@ -26924,7 +27130,7 @@
         "available": "server",
         "description": "Attempt to spawn the appropriate couriers for this mode.",
         "returns": [
-          "nil"
+          "handle"
         ],
         "args": [
           {
@@ -37250,6 +37456,59 @@
         "name": "radius",
         "types": [
           "float"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "SpawnEffigyOfUnitOrModel",
+    "available": "server",
+    "description": "Spawn an effigy of the target unit.",
+    "returns": [
+      "handle"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "arg3",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "arg4",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "arg5",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg6",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg7",
+        "types": [
+          "int"
         ]
       }
     ]

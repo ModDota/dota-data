@@ -1390,8 +1390,20 @@
         "shortName": "DOTA_CUSTOM_TOWER_DIE"
       },
       {
+        "name": "ACT_DOTA_CUSTOM_TOWER_HIGH_FIVE",
+        "shortName": "DOTA_CUSTOM_TOWER_HIGH_FIVE"
+      },
+      {
         "name": "ACT_DOTA_CUSTOM_TOWER_IDLE",
         "shortName": "DOTA_CUSTOM_TOWER_IDLE"
+      },
+      {
+        "name": "ACT_DOTA_CUSTOM_TOWER_IDLE_RARE",
+        "shortName": "DOTA_CUSTOM_TOWER_IDLE_RARE"
+      },
+      {
+        "name": "ACT_DOTA_CUSTOM_TOWER_TAUNT",
+        "shortName": "DOTA_CUSTOM_TOWER_TAUNT"
       },
       {
         "name": "ACT_DOTA_DAGON",
@@ -1472,6 +1484,10 @@
       {
         "name": "ACT_DOTA_GENERIC_CHANNEL_1",
         "shortName": "DOTA_GENERIC_CHANNEL_1"
+      },
+      {
+        "name": "ACT_DOTA_GENERIC_CHANNEL_1_START",
+        "shortName": "DOTA_GENERIC_CHANNEL_1_START"
       },
       {
         "name": "ACT_DOTA_GESTURE_ACCENT",
@@ -1936,6 +1952,10 @@
       {
         "name": "ACT_DOTA_TELEPORT_REACT",
         "shortName": "DOTA_TELEPORT_REACT"
+      },
+      {
+        "name": "ACT_DOTA_TELEPORT_START",
+        "shortName": "DOTA_TELEPORT_START"
       },
       {
         "name": "ACT_DOTA_THIRST",
@@ -5643,6 +5663,10 @@
     "name": "FieldType",
     "members": [
       {
+        "name": "FIELD_AI_SCHEDULE_BITS",
+        "shortName": "AI_SCHEDULE_BITS"
+      },
+      {
         "name": "FIELD_AMMO_INDEX",
         "shortName": "AMMO_INDEX"
       },
@@ -5673,6 +5697,10 @@
       {
         "name": "FIELD_COLOR32",
         "shortName": "COLOR32"
+      },
+      {
+        "name": "FIELD_CONDITION_ID",
+        "shortName": "CONDITION_ID"
       },
       {
         "name": "FIELD_CSTRING",
@@ -5781,6 +5809,10 @@
       {
         "name": "FIELD_MATRIX3X4_WORLDSPACE",
         "shortName": "MATRIX3X4_WORLDSPACE"
+      },
+      {
+        "name": "FIELD_MODIFIER_HANDLE",
+        "shortName": "MODIFIER_HANDLE"
       },
       {
         "name": "FIELD_NETWORK_ORIGIN_CELL_QUANTIZED_POSITION_VECTOR",
