@@ -38,11 +38,14 @@ export class EnumsSchema extends Schema {
     const names = this.getNames();
 
     if (this._flags) {
-      value.trim().split(/\s*\|\s*/g).forEach((v, i) => {
-        if (!names.includes(v)) {
-          context.of(i).addErrorThere(`should be a ${this._name} enum`);
-        }
-      });
+      value
+        .trim()
+        .split(/\s*\|\s*/g)
+        .forEach((v, i) => {
+          if (!names.includes(v)) {
+            context.of(i).addErrorThere(`should be a ${this._name} enum`);
+          }
+        });
     } else if (!names.includes(value)) {
       context.addErrorThere(`should be a ${this._name} enum`);
     }
