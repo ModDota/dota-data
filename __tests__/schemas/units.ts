@@ -15,7 +15,6 @@ describe('integration', () => {
 
     ignore: [
       'npc_dota_hero_slardar.VersusScale should be a number',
-      'npc_dota_hero_omniknight.VersusScale should be a number',
       'npc_dota_hero_naga_siren.Team is not one of: "Good", "Bad"',
     ],
   });

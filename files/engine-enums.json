@@ -103,6 +103,10 @@
         "shortName": "ITEM_SANGE_MAIM"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_SILVER_EDGE",
+        "shortName": "ITEM_SILVER_EDGE"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_STOUT",
         "shortName": "ITEM_STOUT"
       },

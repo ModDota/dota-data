@@ -15003,6 +15003,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierBaseAttackTimePercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierBaseDamageOutgoing_Percentage",
         "available": "both",
         "abstract": true,
@@ -17401,6 +17411,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnPreDebuffApplied",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]

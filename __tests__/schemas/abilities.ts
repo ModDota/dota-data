@@ -13,6 +13,8 @@ describe('integration', () => {
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum', // Extra |, empty string ability behavior
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
       'hoodwink_decoy.AbilityBehavior[0] should be a AbilityBehavior enum', // Should be DOTA_ABILITY_BEHAVIOR_POINT
+      'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
+      'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
     ],
   });
 
