@@ -5,8 +5,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard abilities',
     schema: schemas.npc_abilities,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_abilities.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
@@ -14,14 +13,15 @@ describe('integration', () => {
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum', // Extra |, empty string ability behavior
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
       'hoodwink_decoy.AbilityBehavior[0] should be a AbilityBehavior enum', // Should be DOTA_ABILITY_BEHAVIOR_POINT
+      'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
+      'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
     ],
   });
 
   createIntegrationTest({
     name: 'standard items',
     schema: schemas.items,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/items.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/items.txt',
 
     ignore: [
       'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum',
@@ -55,8 +55,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'frostivus_2017 abilities',
     schema: schemas.npc_abilities_custom,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_abilities_custom.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_abilities_custom.txt',
 
     ignore: [
       'furion_teleport_lua.AbilityBehavior[0] should be a AbilityBehavior enum',
@@ -67,8 +66,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'frostivus_2017 items',
     schema: schemas.npc_items_custom,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_items_custom.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_items_custom.txt',
 
     ignore: ['item_containers_lua_pack.ItemCanChangeContainer is unknown'],
   });
@@ -76,22 +74,19 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'cavern abilities',
     schema: schemas.npc_abilities_custom,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_abilities_custom.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_abilities_custom.txt',
   });
 
   createIntegrationTest({
     name: 'cavern items',
     schema: schemas.npc_items_custom,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_items_custom.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_items_custom.txt',
   });
 
   createIntegrationTest({
     name: 'dungeon abilities',
     schema: schemas.npc_abilities_custom,
-    url:
-      'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/dungeon/scripts/npc/npc_abilities_custom.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/dungeon/scripts/npc/npc_abilities_custom.txt',
 
     ignore: [
       'holdout_focusfire.ItemBaseLevel is unknown',

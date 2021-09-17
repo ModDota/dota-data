@@ -3,7 +3,13 @@ import { DumpConstant, serverDump } from '../../dump';
 import * as apiTypes from '../types';
 import { binaryBoolean } from './utils';
 
-type ArgumentType = null | 'ModifierUnitEvent' | 'ModifierAbilityEvent' | 'ModifierAttackEvent';
+type ArgumentType =
+  | null
+  | 'ModifierUnitEvent'
+  | 'ModifierAbilityEvent'
+  | 'ModifierAttackEvent'
+  | 'ModifierInstanceEvent'
+  | 'ModifierOverrideAbilitySpecialEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
@@ -106,6 +112,8 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   GetModifierMPRegenAmplify_Percentage: [null, anyNumber],
   GetModifierMPRestoreAmplify_Percentage: [null, anyNumber, 'Total amplify value is clamped to 0.'],
   GetModifierNegativeEvasion_Constant: [null, anyNumber],
+  GetModifierOverrideAbilitySpecial: ['ModifierOverrideAbilitySpecialEvent', binaryBoolean],
+  GetModifierOverrideAbilitySpecialValue: ['ModifierOverrideAbilitySpecialEvent', anyNumber],
   GetModifierOverrideAttackDamage: [null, anyNumber],
   GetModifierPercentageCasttime: ['ModifierAbilityEvent', anyNumber],
   GetModifierPercentageCooldown: ['ModifierAbilityEvent', anyNumber],
@@ -175,9 +183,9 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnAttackRecordDestroy: ['ModifierAttackEvent', ['nil']],
   OnAttackStart: ['ModifierAttackEvent', ['nil']],
   OnBreakInvisibility: [null, ['nil']],
-  OnBuildingKilled: ['ModifierAttackEvent', ['nil']],
+  OnBuildingKilled: ['ModifierInstanceEvent', ['nil']],
   OnDamageCalculated: ['ModifierAttackEvent', ['nil']],
-  OnDeath: ['ModifierAttackEvent', ['nil']],
+  OnDeath: ['ModifierInstanceEvent', ['nil']],
   OnDominated: ['ModifierUnitEvent', ['nil']],
   OnHealReceived: ['ModifierUnitEvent', ['nil']],
   OnHealthGained: ['ModifierUnitEvent', ['nil']],
@@ -192,8 +200,8 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnSpellTargetReady: [null, ['nil']],
   OnSpentMana: ['ModifierAbilityEvent', ['nil']],
   OnStateChanged: ['ModifierUnitEvent', ['nil']],
-  OnTakeDamage: ['ModifierAttackEvent', ['nil']],
-  OnTakeDamageKillCredit: ['ModifierAttackEvent', ['nil']],
+  OnTakeDamage: ['ModifierInstanceEvent', ['nil']],
+  OnTakeDamageKillCredit: ['ModifierInstanceEvent', ['nil']],
   OnTeleported: ['ModifierUnitEvent', ['nil']],
   OnTeleporting: ['ModifierUnitEvent', ['nil']],
   OnTooltip: [null, anyNumber],
@@ -218,30 +226,28 @@ export const modifierFunctionMethods: apiTypes.ClassMethod[] = serverDump
   .filter((x): x is typeof x & { enum: string } => x.enum === 'modifierfunction')
   .filter((x): x is typeof x & { description: string } => x.description != null)
   .filter((x) => x.description !== 'Unused')
-  .map(
-    (x): apiTypes.ClassMethod => {
-      const functionName = x.description;
+  .map((x): apiTypes.ClassMethod => {
+    const functionName = x.description;
 
-      if (!(functionName in modifiersData)) {
-        console.warn(`Untyped modifier field: ${functionName}`);
-      }
+    if (!(functionName in modifiersData)) {
+      console.warn(`Untyped modifier field: ${functionName}`);
+    }
 
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      const [argumentType, returns, description] = modifiersData[functionName] ?? [null, ['nil']];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    const [argumentType, returns, description] = modifiersData[functionName] ?? [null, ['nil']];
 
-      const args: apiTypes.FunctionParameter[] = [];
-      if (argumentType !== null) {
-        args.push({ name: 'event', types: [argumentType] });
-      }
+    const args: apiTypes.FunctionParameter[] = [];
+    if (argumentType !== null) {
+      args.push({ name: 'event', types: [argumentType] });
+    }
 
-      return {
-        kind: 'function',
-        name: functionName,
-        available: 'both',
-        abstract: true,
-        description,
-        args,
-        returns,
-      };
-    },
-  );
+    return {
+      kind: 'function',
+      name: functionName,
+      available: 'both',
+      abstract: true,
+      description,
+      args,
+      returns,
+    };
+  });

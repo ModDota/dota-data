@@ -2692,6 +2692,26 @@
       {
         "name": "ACT_DOTA_TAUNT_SPECIAL",
         "value": 1752
+      },
+      {
+        "name": "ACT_DOTA_TELEPORT_START",
+        "value": 1753
+      },
+      {
+        "name": "ACT_DOTA_GENERIC_CHANNEL_1_START",
+        "value": 1754
+      },
+      {
+        "name": "ACT_DOTA_CUSTOM_TOWER_IDLE_RARE",
+        "value": 1755
+      },
+      {
+        "name": "ACT_DOTA_CUSTOM_TOWER_TAUNT",
+        "value": 1756
+      },
+      {
+        "name": "ACT_DOTA_CUSTOM_TOWER_HIGH_FIVE",
+        "value": 1757
       }
     ]
   },

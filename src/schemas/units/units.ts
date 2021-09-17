@@ -33,6 +33,7 @@ export const baseUnit = () =>
     .field('LoadoutScale', s.num())
     .field('SpectatorLoadoutScale', s.num().min(0))
     .field('AlternateLoadoutScale', s.num())
+    .field('TransformedLoadoutScale', s.num())
 
     .field('IdleExpression', s.str().pattern(resourcePatterns.scenes))
     // TODO: Hero-only?

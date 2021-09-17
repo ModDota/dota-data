@@ -13,33 +13,32 @@ export interface GetFunctionOptions {
   };
 }
 
-const createGetFunction = (
-  scriptPath: string,
-  transform?: (content: any) => any,
-): GetFunction<any> => async ({ cache }: GetFunctionOptions = {}) => {
-  const fetchFile = async () => {
-    const content = await getDotaVdfFile(scriptPath);
-    delete content.Version;
-    return transform ? transform(content) : content;
+const createGetFunction =
+  (scriptPath: string, transform?: (content: any) => any): GetFunction<any> =>
+  async ({ cache }: GetFunctionOptions = {}) => {
+    const fetchFile = async () => {
+      const content = await getDotaVdfFile(scriptPath);
+      delete content.Version;
+      return transform ? transform(content) : content;
+    };
+
+    if (cache == null) {
+      return fetchFile();
+    }
+
+    const cacheName = path.basename(scriptPath, path.extname(scriptPath));
+    const cachePath = `${cache.path}/${cacheName}.json`;
+
+    if (cache.preferCached || (await isUnchangedHash(`${cache.path}/manifest.json`))) {
+      try {
+        return await fs.readJson(cachePath);
+      } catch {}
+    }
+
+    const content = await fetchFile();
+    await fs.outputJson(cachePath, content);
+    return content;
   };
-
-  if (cache == null) {
-    return fetchFile();
-  }
-
-  const cacheName = path.basename(scriptPath, path.extname(scriptPath));
-  const cachePath = `${cache.path}/${cacheName}.json`;
-
-  if (cache.preferCached || (await isUnchangedHash(`${cache.path}/manifest.json`))) {
-    try {
-      return await fs.readJson(cachePath);
-    } catch {}
-  }
-
-  const content = await fetchFile();
-  await fs.outputJson(cachePath, content);
-  return content;
-};
 
 // @ts-ignore
 export type Units = import('./units.generated').Root;
