@@ -5601,6 +5601,31 @@
   },
   {
     "kind": "class",
+    "name": "CDOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
+    "clientName": "C_DOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
+    "extend": "CDOTABaseAbility",
+    "members": [
+      {
+        "kind": "function",
+        "name": "SetNumDoubles",
+        "available": "both",
+        "description": "Sets the number of doubles to spawn.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "doubles",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
     "name": "CDOTA_BaseNPC",
     "clientName": "C_DOTA_BaseNPC",
     "extend": "CBaseFlex",
@@ -7559,6 +7584,16 @@
       },
       {
         "kind": "function",
+        "name": "IsBossCreature",
+        "available": "server",
+        "description": "Is this unit a Boss Creature? (used by custom games).",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsBuilding",
         "available": "both",
         "description": "Is this unit a building?",
@@ -8876,6 +8911,23 @@
             "name": "death",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveAllModifiersOfName",
+        "available": "server",
+        "description": "Removes all copies of a modifier.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "scriptName",
+            "types": [
+              "string"
             ]
           }
         ]
@@ -14200,6 +14252,16 @@
       },
       {
         "kind": "function",
+        "name": "GetCritDamage",
+        "available": "both",
+        "description": "A Modifier that listens to MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE has to have a GetCritDamage implementation so we can know when to evaluate it. Value should be in 'times the original value format' e.g: 1.5 not 150.",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetEffectAttachType",
         "available": "both",
         "description": "Return the attach type of the particle system from GetEffectName.",
@@ -16120,6 +16182,23 @@
         "args": [],
         "returns": [
           "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPercentageCooldownStacking",
+        "available": "both",
+        "abstract": true,
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
+        "returns": [
+          "float"
         ]
       },
       {
@@ -21086,6 +21165,7 @@
         "kind": "function",
         "name": "GetCaster",
         "available": "both",
+        "description": "Get the owner of this ability.",
         "returns": [
           "CDOTA_BaseNPC"
         ],
@@ -21217,6 +21297,7 @@
         "kind": "function",
         "name": "GetCurrentAbilityCharges",
         "available": "both",
+        "description": "The number of charges remaining on this ability.",
         "returns": [
           "int"
         ],
@@ -22344,6 +22425,7 @@
         "kind": "function",
         "name": "AddAbilityUpgradeToWhitelist",
         "available": "server",
+        "description": "Const char* pszAbilityName.",
         "returns": [
           "nil"
         ],
@@ -22603,6 +22685,7 @@
         "kind": "function",
         "name": "EnableAbilityUpgradeWhitelist",
         "available": "server",
+        "description": "Bool bEnabled.",
         "returns": [
           "nil"
         ],
@@ -22950,6 +23033,7 @@
         "kind": "function",
         "name": "IsAbilityUpgradeWhitelisted",
         "available": "server",
+        "description": "Const char* pszAbilityName.",
         "returns": [
           "bool"
         ],
@@ -23094,6 +23178,7 @@
         "kind": "function",
         "name": "RemoveAbilityUpgradeFromWhitelist",
         "available": "server",
+        "description": "Const char* pszAbilityName.",
         "returns": [
           "nil"
         ],
@@ -23449,6 +23534,7 @@
         "kind": "function",
         "name": "SetCanSellAnywhere",
         "available": "server",
+        "description": "Bool bAllow.",
         "returns": [
           "nil"
         ],
@@ -24000,6 +24086,23 @@
         "args": [
           {
             "name": "enabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetGiveFreeTPOnDeath",
+        "available": "server",
+        "description": "Bool bGive.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "give",
             "types": [
               "bool"
             ]
@@ -24837,6 +24940,15 @@
             ]
           }
         ]
+      },
+      {
+        "kind": "function",
+        "name": "ShouldGiveFreeTPOnDeath",
+        "available": "server",
+        "returns": [
+          "bool"
+        ],
+        "args": []
       }
     ]
   },
@@ -25108,6 +25220,74 @@
       },
       {
         "kind": "function",
+        "name": "AddHeroIDToBlacklist",
+        "available": "server",
+        "description": "Add the hero ID to the hero blacklist if it is not already present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddHeroIDToWhitelist",
+        "available": "server",
+        "description": "Add the hero ID to the hero whitelist if it is not already present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddHeroToBlacklist",
+        "available": "server",
+        "description": "Add the hero to the hero blacklist if it is not already present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddHeroToWhitelist",
+        "available": "server",
+        "description": "Add the hero to the hero whitelist if it is not already present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "AddItemToWhiteList",
         "available": "server",
         "description": "Add an item to the whitelist.",
@@ -25274,6 +25454,36 @@
         "name": "BotPopulate",
         "available": "server",
         "description": "Fills all the teams with bots if cheat mode is enabled.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ClearHeroBlacklist",
+        "available": "server",
+        "description": "Clears the hero blacklist.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ClearHeroWhitelist",
+        "available": "server",
+        "description": "Clears the hero whitelist.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ClearRiverPaint",
+        "available": "server",
+        "description": "Clears the current river paint.",
         "returns": [
           "nil"
         ],
@@ -25591,41 +25801,40 @@
       },
       {
         "kind": "function",
-        "name": "GetItemStockCount",
+        "name": "GetIetmStockDuration",
         "available": "both",
-        "description": "Get the stock count of the item.",
+        "description": "Get the time it takes to add a new item to stock.",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
-            "name": "team",
+            "name": "arg1",
             "types": [
-              "DOTATeam_t"
+              "int"
             ]
           },
           {
-            "name": "itemName",
+            "name": "arg2",
             "types": [
               "string"
             ]
           },
           {
-            "name": "playerId",
-            "description": "Used only for items with \"PlayerSpecificCooldown\"",
+            "name": "arg3",
             "types": [
-              "PlayerID"
+              "int"
             ]
           }
         ]
       },
       {
         "kind": "function",
-        "name": "GetItemStockDuration",
+        "name": "GetItemStockCount",
         "available": "both",
-        "description": "Get the time it takes to add a new item to stock.",
+        "description": "Get the stock count of the item.",
         "returns": [
-          "float"
+          "int"
         ],
         "args": [
           {
@@ -25836,6 +26045,23 @@
       },
       {
         "kind": "function",
+        "name": "IsHeroEnabledViaLists",
+        "available": "both",
+        "description": "Is the hero not blacklisted, and is it either whitelisted or the whitelist is empty?",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "IsHeroRespawnEnabled",
         "available": "server",
         "description": "Returns whether hero respawn is enabled.",
@@ -26027,6 +26253,74 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveHeroFromBlacklist",
+        "available": "server",
+        "description": "Remove the hero from the hero blacklist if present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveHeroFromWhitelist",
+        "available": "server",
+        "description": "Remove the hero from the hero whitelist if present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveHeroIDFromBlacklist",
+        "available": "server",
+        "description": "Remove the hero ID from the hero blacklist if present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveHeroIDFromWhitelist",
+        "available": "server",
+        "description": "Remove the hero ID from the hero whitelist if present.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -26693,6 +26987,23 @@
       },
       {
         "kind": "function",
+        "name": "SetHideBlacklistedHeroes",
+        "available": "server",
+        "description": "Should blacklisted heroes be hidden, or just dimmed, in hero picking?",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetHideKillMessageHeaders",
         "available": "server",
         "description": "Sets whether the multikill, streak, and first-blood banners appear at the top of the screen.",
@@ -26846,6 +27157,29 @@
         "args": [
           {
             "name": "time",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetRiverPaint",
+        "available": "server",
+        "description": "Paints the river for a duration.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "arg2",
             "types": [
               "float"
             ]
@@ -27106,6 +27440,16 @@
             ]
           }
         ]
+      },
+      {
+        "kind": "function",
+        "name": "ShouldHideBlacklistedHeroes",
+        "available": "both",
+        "description": "Are blacklisted heroes hidden, or just dimmed, in hero picking?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
       },
       {
         "kind": "function",
@@ -37656,6 +38000,47 @@
         "name": "arg1",
         "types": [
           "handle"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "SpawnMangoTree",
+    "available": "server",
+    "description": "Spawn a mango tree.",
+    "returns": [
+      "handle"
+    ],
+    "args": [
+      {
+        "name": "pos",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "team",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "duration",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "mangoInterval",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "initialMangoes",
+        "types": [
+          "int"
         ]
       }
     ]

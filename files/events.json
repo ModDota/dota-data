@@ -2281,6 +2281,21 @@
     ]
   },
   {
+    "name": "dota_rune_deny",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "rune",
+        "type": "short"
+      }
+    ]
+  },
+  {
     "name": "dota_ward_killed",
     "sourceFile": "game",
     "local": false,
@@ -4972,6 +4987,18 @@
         "type": "float"
       },
       {
+        "name": "value1",
+        "type": "float"
+      },
+      {
+        "name": "value2",
+        "type": "float"
+      },
+      {
+        "name": "value3",
+        "type": "float"
+      },
+      {
         "name": "int_value",
         "type": "int"
       },
@@ -5076,6 +5103,25 @@
       {
         "name": "killer_player_id",
         "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_watch_tower_captured",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "team_number",
+        "type": "short"
+      },
+      {
+        "name": "old_team_number",
+        "type": "short"
       }
     ]
   },
