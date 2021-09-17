@@ -191,15 +191,15 @@
       },
       {
         "name": "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS",
-        "value": 8
-      },
-      {
-        "name": "DOTA_GAMERULES_STATE_POST_GAME",
         "value": 9
       },
       {
-        "name": "DOTA_GAMERULES_STATE_DISCONNECT",
+        "name": "DOTA_GAMERULES_STATE_POST_GAME",
         "value": 10
+      },
+      {
+        "name": "DOTA_GAMERULES_STATE_DISCONNECT",
+        "value": 11
       },
       {
         "name": "DOTA_GAMERULES_STATE_TEAM_SHOWCASE",
@@ -212,6 +212,10 @@
       {
         "name": "DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD",
         "value": 6
+      },
+      {
+        "name": "DOTA_GAMERULES_STATE_SCENARIO_SETUP",
+        "value": 8
       },
       {
         "name": "DOTA_GAMERULES_STATE_LAST",
@@ -439,6 +443,10 @@
       {
         "name": "DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH",
         "value": 38
+      },
+      {
+        "name": "DOTA_UNIT_ORDER_MOVE_RELATIVE",
+        "value": 39
       }
     ]
   },
@@ -795,8 +803,12 @@
         "value": 60
       },
       {
-        "name": "DOTA_HEROPICK_STATE_COUNT",
+        "name": "DOTA_HEROPICK_STATE_SCENARIO",
         "value": 61
+      },
+      {
+        "name": "DOTA_HEROPICK_STATE_COUNT",
+        "value": 62
       }
     ]
   },
@@ -3128,20 +3140,28 @@
         "value": 83
       },
       {
+        "name": "DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS",
+        "value": 84
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS",
+        "value": 85
+      },
+      {
         "name": "DOTA_PLAYER_LOADOUT_START",
         "value": 58
       },
       {
         "name": "DOTA_PLAYER_LOADOUT_END",
-        "value": 83
+        "value": 85
       },
       {
         "name": "DOTA_LOADOUT_TYPE_NONE",
-        "value": 84
+        "value": 86
       },
       {
         "name": "DOTA_LOADOUT_TYPE_COUNT",
-        "value": 85
+        "value": 87
       }
     ]
   },
@@ -4377,8 +4397,13 @@
         "value": 246
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
+        "description": "Method Name: `GetModifierPercentageCooldownStacking`",
         "value": 247
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 248
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

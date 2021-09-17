@@ -569,16 +569,20 @@
         "value": 7
       },
       {
-        "name": "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS",
+        "name": "DOTA_GAMERULES_STATE_SCENARIO_SETUP",
         "value": 8
       },
       {
-        "name": "DOTA_GAMERULES_STATE_POST_GAME",
+        "name": "DOTA_GAMERULES_STATE_GAME_IN_PROGRESS",
         "value": 9
       },
       {
-        "name": "DOTA_GAMERULES_STATE_DISCONNECT",
+        "name": "DOTA_GAMERULES_STATE_POST_GAME",
         "value": 10
+      },
+      {
+        "name": "DOTA_GAMERULES_STATE_DISCONNECT",
+        "value": 11
       }
     ]
   },
@@ -863,8 +867,12 @@
         "value": 60
       },
       {
-        "name": "DOTA_HEROPICK_STATE_COUNT",
+        "name": "DOTA_HEROPICK_STATE_SCENARIO",
         "value": 61
+      },
+      {
+        "name": "DOTA_HEROPICK_STATE_COUNT",
+        "value": 62
       }
     ]
   },
@@ -2327,16 +2335,24 @@
         "value": 83
       },
       {
-        "name": "DOTA_PLAYER_LOADOUT_END",
-        "value": 83
-      },
-      {
-        "name": "DOTA_LOADOUT_TYPE_NONE",
+        "name": "DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS",
         "value": 84
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "name": "DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS",
         "value": 85
+      },
+      {
+        "name": "DOTA_PLAYER_LOADOUT_END",
+        "value": 85
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_NONE",
+        "value": 86
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "value": 87
       }
     ]
   },
@@ -2672,6 +2688,10 @@
       {
         "name": "DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH",
         "value": 38
+      },
+      {
+        "name": "DOTA_UNIT_ORDER_MOVE_RELATIVE",
+        "value": 39
       }
     ]
   },
@@ -8019,19 +8039,19 @@
         "value": 1757
       },
       {
-        "name": "ACT_DOTA_VOODOO_REST",
+        "name": "ACT_DOTA_ARCANA_VOTE",
         "value": 1759
       },
       {
-        "name": "ACT_DOTA_RUN_STATUE",
+        "name": "ACT_DOTA_SPIRIT_BREAKER_ULT_RUN",
         "value": 1760
       },
       {
-        "name": "ACT_DOTA_SPAWN_STATUE",
+        "name": "ACT_DOTA_PUNCH",
         "value": 1761
       },
       {
-        "name": "ACT_DOTA_IDLE_STATUE",
+        "name": "ACT_DOTA_CAST_STATUE",
         "value": 1762
       },
       {
@@ -8039,136 +8059,96 @@
         "value": 1763
       },
       {
-        "name": "ACT_DOTA_CAST1_STATUE",
+        "name": "ACT_DOTA_CAST3_STATUE",
         "value": 1764
       },
       {
-        "name": "ACT_DOTA_CAST3_STATUE",
+        "name": "ACT_DOTA_CAST1_STATUE",
         "value": 1765
       },
       {
-        "name": "ACT_DOTA_CAST4_STATUE",
+        "name": "ACT_DOTA_TELEPORT_STATUE",
         "value": 1766
       },
       {
-        "name": "ACT_DOTA_STUN_STATUE",
+        "name": "ACT_DOTA_VICTORY_STATUE",
         "value": 1767
       },
       {
-        "name": "ACT_DOTA_FLAIL_STATUE",
+        "name": "ACT_DOTA_TAUNT_STATUE",
         "value": 1768
       },
       {
-        "name": "ACT_DOTA_CAST2_STATUE",
+        "name": "ACT_DOTA_STATUE_SEQUENCE",
         "value": 1769
       },
       {
-        "name": "ACT_DOTA_TAUNT_STATUE",
+        "name": "ACT_DOTA_RUN_STATUE",
         "value": 1770
       },
       {
-        "name": "ACT_DOTA_LOADOUT_FRONTPAGE",
+        "name": "ACT_DOTA_IDLE_STATUE",
         "value": 1771
       },
       {
-        "name": "ACT_DOTA_LOADOUT_FRONTPAGE_POPUP",
+        "name": "ACT_DOTA_CAST4_STATUE",
         "value": 1772
       },
       {
-        "name": "ACT_DOTA_CRATER_CLOSED",
-        "value": 1775
+        "name": "ACT_DOTA_FLAIL_STATUE",
+        "value": 1773
       },
       {
-        "name": "ACT_DOTA_CRATER_OPEN",
-        "value": 1776
-      },
-      {
-        "name": "ACT_DOTA_DIE_ILLUSION",
-        "value": 1777
-      },
-      {
-        "name": "ACT_DOTA_CAST_STATUE",
-        "value": 1779
-      },
-      {
-        "name": "ACT_DOTA_BATTLEPASS_IDLE",
-        "value": 1780
-      },
-      {
-        "name": "ACT_DOTA_FORCESTAFF_STATUE",
-        "value": 1781
-      },
-      {
-        "name": "ACT_DOTA_TELEPORT_STATUE",
-        "value": 1782
-      },
-      {
-        "name": "ACT_DOTA_CHANNEL_STATUE",
-        "value": 1783
-      },
-      {
-        "name": "ACT_DOTA_VICTORY_STATUE",
-        "value": 1784
-      },
-      {
-        "name": "ACT_DOTA_LOADOUT_STATUE",
-        "value": 1785
-      },
-      {
-        "name": "ACT_DOTA_DEFEAT_STATUE",
-        "value": 1786
-      },
-      {
-        "name": "ACT_DOTA_ARCANA_STATUE",
-        "value": 1787
-      },
-      {
-        "name": "ACT_DOTA_REWARD_CELL",
-        "value": 1788
-      },
-      {
-        "name": "ACT_DOTA_FRONTPAGE",
-        "value": 1789
+        "name": "ACT_DOTA_STUN_STATUE",
+        "value": 1774
       },
       {
         "name": "ACT_DOTA_TELEPORT_END_STATUE",
-        "value": 1790
+        "value": 1775
       },
       {
         "name": "ACT_DOTA_DISABLED_END",
-        "value": 1792
+        "value": 1776
       },
       {
         "name": "ACT_DOTA_RELAX_IN",
-        "value": 1793
+        "value": 1778
       },
       {
         "name": "ACT_DOTA_RELAX_OUT",
-        "value": 1794
+        "value": 1779
       },
       {
         "name": "ACT_DOTA_CAST_FENCE",
-        "value": 1795
+        "value": 1780
       },
       {
         "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
-        "value": 1797
+        "value": 1782
       },
       {
         "name": "ACT_DOTA_SPWN",
-        "value": 1798
+        "value": 1783
       },
       {
         "name": "ACT_DOTA_RUN_ALT",
-        "value": 1799
+        "value": 1784
       },
       {
         "name": "ACT_DOTA_CYCLONE",
-        "value": 1800
+        "value": 1785
       },
       {
         "name": "ACT_DOTA_IMPALE",
-        "value": 1801
+        "value": 1786
+      },
+      {
+        "name": "ACT_DOTA_TORRENT",
+        "value": 1787
+      },
+      {
+        "name": "ACT_DOTA_CAST2_STATUE",
+        "value": 1788
       }
     ]
   },
@@ -9433,8 +9413,13 @@
         "value": 246
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
+        "description": "Method Name: `GetModifierPercentageCooldownStacking`",
         "value": 247
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 248
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
@@ -9785,39 +9770,39 @@
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1",
-        "value": 72
-      },
-      {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2",
         "value": 73
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_3",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2",
         "value": 74
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_4",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_3",
         "value": 75
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_5",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_4",
         "value": 76
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_6",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_5",
         "value": 77
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_7",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_6",
         "value": 78
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_7",
         "value": 79
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9",
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8",
         "value": 80
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9",
+        "value": 81
       }
     ]
   },
@@ -9933,168 +9918,172 @@
         "value": 15
       },
       {
-        "name": "AE_SV_DUSTTRAIL",
+        "name": "AE_SV_CREATE_PARTICLE_EFFECT_CFG",
         "value": 16
       },
       {
-        "name": "AE_FOOTSTEP",
+        "name": "AE_SV_STOP_PARTICLE_EFFECT",
         "value": 17
       },
       {
-        "name": "AE_CL_FOOTSTEP_LEFT",
+        "name": "AE_FOOTSTEP",
         "value": 18
       },
       {
-        "name": "AE_CL_FOOTSTEP_RIGHT",
+        "name": "AE_CL_FOOTSTEP_LEFT",
         "value": 19
       },
       {
-        "name": "AE_CL_MFOOTSTEP_LEFT",
+        "name": "AE_CL_FOOTSTEP_RIGHT",
         "value": 20
       },
       {
-        "name": "AE_CL_MFOOTSTEP_RIGHT",
+        "name": "AE_CL_MFOOTSTEP_LEFT",
         "value": 21
       },
       {
-        "name": "AE_CL_MFOOTSTEP_LEFT_LOUD",
+        "name": "AE_CL_MFOOTSTEP_RIGHT",
         "value": 22
       },
       {
-        "name": "AE_CL_MFOOTSTEP_RIGHT_LOUD",
+        "name": "AE_CL_MFOOTSTEP_LEFT_LOUD",
         "value": 23
       },
       {
-        "name": "AE_RAGDOLL",
+        "name": "AE_CL_MFOOTSTEP_RIGHT_LOUD",
         "value": 24
       },
       {
-        "name": "AE_CL_ENABLE_BODYGROUP",
+        "name": "AE_RAGDOLL",
         "value": 25
       },
       {
-        "name": "AE_CL_DISABLE_BODYGROUP",
+        "name": "AE_CL_ENABLE_BODYGROUP",
         "value": 26
       },
       {
-        "name": "AE_CL_BODYGROUP_SET_VALUE",
+        "name": "AE_CL_DISABLE_BODYGROUP",
         "value": 27
       },
       {
-        "name": "AE_SV_BODYGROUP_SET_VALUE",
+        "name": "AE_CL_BODYGROUP_SET_VALUE",
         "value": 28
       },
       {
-        "name": "AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN",
+        "name": "AE_SV_BODYGROUP_SET_VALUE",
         "value": 29
       },
       {
-        "name": "AE_WPN_PRIMARYATTACK",
+        "name": "AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN",
         "value": 30
       },
       {
-        "name": "AE_WPN_PLAYWPNSOUND",
+        "name": "AE_WPN_PRIMARYATTACK",
         "value": 31
       },
       {
-        "name": "AE_WPN_SECONDARYATTACK",
+        "name": "AE_WPN_PLAYWPNSOUND",
         "value": 32
       },
       {
-        "name": "AE_CL_SPEECH",
+        "name": "AE_WPN_SECONDARYATTACK",
         "value": 33
       },
       {
-        "name": "AE_FIRE_INPUT",
+        "name": "AE_CL_SPEECH",
         "value": 34
       },
       {
-        "name": "AE_IK_SET_LOCK_ROTATION_ALPHA",
+        "name": "AE_FIRE_INPUT",
         "value": 35
       },
       {
-        "name": "AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES",
+        "name": "AE_IK_SET_LOCK_ROTATION_ALPHA",
         "value": 36
       },
       {
-        "name": "AE_IK_SET_MASTER_BLEND_AMOUNT",
+        "name": "AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES",
         "value": 37
       },
       {
-        "name": "AE_IK_SET_CHAIN_BLEND_AMOUNT",
+        "name": "AE_IK_SET_MASTER_BLEND_AMOUNT",
         "value": 38
       },
       {
-        "name": "AE_CL_CLOTH_ATTR",
+        "name": "AE_IK_SET_CHAIN_BLEND_AMOUNT",
         "value": 39
       },
       {
-        "name": "AE_CL_CLOTH_GROUND_OFFSET",
+        "name": "AE_CL_CLOTH_ATTR",
         "value": 40
       },
       {
-        "name": "AE_CL_CLOTH_STIFFEN",
+        "name": "AE_CL_CLOTH_GROUND_OFFSET",
         "value": 41
       },
       {
-        "name": "AE_CL_CLOTH_EFFECT",
+        "name": "AE_CL_CLOTH_STIFFEN",
         "value": 42
       },
       {
-        "name": "AE_CL_CREATE_ANIM_SCOPE_PROP",
+        "name": "AE_CL_CLOTH_EFFECT",
         "value": 43
       },
       {
-        "name": "AE_HAPTIC_PULSE",
+        "name": "AE_CL_CREATE_ANIM_SCOPE_PROP",
         "value": 44
       },
       {
-        "name": "AE_CL_DOTA_PLAY_STATUS_EFFECT",
+        "name": "AE_HAPTIC_PULSE",
         "value": 45
       },
       {
-        "name": "AE_CL_DOTA_STOP_STATUS_EFFECT",
+        "name": "AE_CL_DOTA_PLAY_STATUS_EFFECT",
         "value": 46
       },
       {
-        "name": "AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
+        "name": "AE_CL_DOTA_STOP_STATUS_EFFECT",
         "value": 47
       },
       {
-        "name": "AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
+        "name": "AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
         "value": 48
       },
       {
-        "name": "AE_DOTA_PET_ITEM_PICKUP",
+        "name": "AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
         "value": 49
       },
       {
-        "name": "AE_DOTA_PET_ITEM_DROP",
+        "name": "AE_DOTA_PET_ITEM_PICKUP",
         "value": 50
       },
       {
-        "name": "AE_DOTA_SUPPRESS_CONSTANT_LAYER",
+        "name": "AE_DOTA_PET_ITEM_DROP",
         "value": 51
       },
       {
-        "name": "AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
+        "name": "AE_DOTA_SUPPRESS_CONSTANT_LAYER",
         "value": 52
       },
       {
-        "name": "AE_DOTA_CREATE_CLINKZ_ATTACK",
+        "name": "AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
         "value": 53
       },
       {
-        "name": "AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
+        "name": "AE_DOTA_CREATE_CLINKZ_ATTACK",
         "value": 54
       },
       {
-        "name": "AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
+        "name": "AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
         "value": 55
       },
       {
-        "name": "AE_DOTA_SWITCH_ATTACK_COMBO",
+        "name": "AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
         "value": 56
+      },
+      {
+        "name": "AE_DOTA_SWITCH_ATTACK_COMBO",
+        "value": 57
       }
     ],
     "description": "https://developer.valvesoftware.com/wiki/Animation_Events#Server_events"

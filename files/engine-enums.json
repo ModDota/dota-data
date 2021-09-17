@@ -5863,6 +5863,14 @@
         "shortName": "RESOURCE"
       },
       {
+        "name": "FIELD_ROTATION_VECTOR",
+        "shortName": "ROTATION_VECTOR"
+      },
+      {
+        "name": "FIELD_ROTATION_VECTOR_WORLDSPACE",
+        "shortName": "ROTATION_VECTOR_WORLDSPACE"
+      },
+      {
         "name": "FIELD_SHIM",
         "shortName": "SHIM"
       },
