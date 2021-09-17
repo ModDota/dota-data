@@ -1,6 +1,6 @@
 {
   "name": "@moddota/dota-data",
-  "version": "0.18.0",
+  "version": "0.20.0",
   "description": "Auto-generated Dota 2 resource dumps",
   "repository": "https://github.com/ModDota/dota-data",
   "license": "Apache-2.0",
