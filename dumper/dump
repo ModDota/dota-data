@@ -79,12 +79,12 @@ background-position: left 10px top 40px;</pre>
 
 === background-repeat ===
 Controls if the background should be repeated in the horizontal and vertical directions.<br><br>Possible values per direction:<br>"repeat" - (default) Repeated in the specified direction until it fills the panel<br>"space" - Repeated as many times as required to fill the panel w/o being clipped. Space is added between images to to align first and last image with panel edges.<br>"round" - Repeated as many times as required to fill the panel w/o being clipped. The image is resized to align first and last image with panel edges.<br>"no-repeat" - Not repeated<br><br>Possible single values:<br>"repeat-x" - equals "repeat no-repeat"<br>"repeat-y" - equals "no-repeat repeat"<br><br><b>Examples:</b><pre>background-repeat: repeat; // equals "repeat repeat" (default)
-background-repeat: repeat space; // repeats horizontally, spaces vertically
+background-repeat: repeat space; // repeats horizontally, spaces vertically 
 background-repeat: no-repeat round; // 1 column of images, scaled to fit evenly</pre>
 
 
 === background-size ===
-Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default)
+Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default) 
 background-size: 100% 100%; // image fills the panel
 background-size: 50% 75%; // image fills 50% of the panel's width, and 75% of the panel's height
 background-size: 300px 200px; // image is drawn 300px wide, 200px tall</pre>
@@ -160,7 +160,7 @@ border-radius: 2px;
 border-radius: 50% / 50%;
 // 2 px horizontal radii 4px vertical elliptical corners on all sides
 border-radius: 2px / 4px;
-// All corners fully specified
+// All corners fully specified 
 border-radius: 2px 3px 4px 2px / 2px 3px 3px 2px;</pre>
 
 
@@ -295,6 +295,10 @@ Sets the height for this panel. Possible values:<br>"fit-children" - Panel size 
 
 === hue-rotation ===
 Sets the hue rotation to apply to the panel and all it's children during composition. Default of 0.0 means no adjustment, domain is in degrees.<br><br><b>Example:</b><pre>hue-rotation: 180deg;</pre>
+
+
+=== ignore-parent-flow ===
+&lt;Needs a description&gt;
 
 
 === img-shadow ===
@@ -589,7 +593,7 @@ $> dump_panorama_events
 |-
 | <code>AddStyleAfterDelay(string class, float pre-delay)</code>
 | Yes
-| Add a CSS class to a panel after a specified delay.
+| Add a CSS class to a panel after a specified delay. 
 |-
 | <code>AddStyleToEachChild(string class)</code>
 | Yes
@@ -597,7 +601,7 @@ $> dump_panorama_events
 |-
 | <code>AddTimedStyle(string class, float duration, float pre-delay)</code>
 | Yes
-| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.
+| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class. 
 |-
 | <code>AsyncEvent(float delay, event eventToFire)</code>
 | No
@@ -805,7 +809,7 @@ $> dump_panorama_events
 |-
 | <code>RemoveStyleAfterDelay(string class, float pre-delay)</code>
 | Yes
-| Remove a CSS class from a panel after a specified delay.
+| Remove a CSS class from a panel after a specified delay. 
 |-
 | <code>RemoveStyleFromEachChild(string class)</code>
 | Yes
@@ -934,12 +938,13 @@ Enumeration 'DOTA_GameState'
 	DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION = 3
 	DOTA_GameState.DOTA_GAMERULES_STATE_STRATEGY_TIME = 4
 	DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME = 7
-	DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS = 8
-	DOTA_GameState.DOTA_GAMERULES_STATE_POST_GAME = 9
-	DOTA_GameState.DOTA_GAMERULES_STATE_DISCONNECT = 10
+	DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS = 9
+	DOTA_GameState.DOTA_GAMERULES_STATE_POST_GAME = 10
+	DOTA_GameState.DOTA_GAMERULES_STATE_DISCONNECT = 11
 	DOTA_GameState.DOTA_GAMERULES_STATE_TEAM_SHOWCASE = 5
 	DOTA_GameState.DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP = 2
 	DOTA_GameState.DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD = 6
+	DOTA_GameState.DOTA_GAMERULES_STATE_SCENARIO_SETUP = 8
 	DOTA_GameState.DOTA_GAMERULES_STATE_LAST = 0
 
 Enumeration 'DOTA_GC_TEAM'
@@ -999,6 +1004,7 @@ Enumeration 'dotaunitorder_t'
 	dotaunitorder_t.DOTA_UNIT_ORDER_PREGAME_ADJUST_ITEM_ASSIGNMENT = 36
 	dotaunitorder_t.DOTA_UNIT_ORDER_DROP_ITEM_AT_FOUNTAIN = 37
 	dotaunitorder_t.DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH = 38
+	dotaunitorder_t.DOTA_UNIT_ORDER_MOVE_RELATIVE = 39
 
 Enumeration 'DOTA_OVERHEAD_ALERT'
 	DOTA_OVERHEAD_ALERT.OVERHEAD_ALERT_GOLD = 0
@@ -1087,7 +1093,8 @@ Enumeration 'DOTA_HeroPickState'
 	DOTA_HeroPickState.DOTA_HERO_PICK_STATE_CUSTOMGAME_SELECT = 58
 	DOTA_HeroPickState.DOTA_HEROPICK_STATE_SELECT_PENALTY = 59
 	DOTA_HeroPickState.DOTA_HEROPICK_STATE_CUSTOM_PICK_RULES = 60
-	DOTA_HeroPickState.DOTA_HEROPICK_STATE_COUNT = 61
+	DOTA_HeroPickState.DOTA_HEROPICK_STATE_SCENARIO = 61
+	DOTA_HeroPickState.DOTA_HEROPICK_STATE_COUNT = 62
 
 Enumeration 'DOTATeam_t'
 	DOTATeam_t.DOTA_TEAM_FIRST = 2
@@ -1679,10 +1686,12 @@ Enumeration 'DOTASlotType_t'
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_HEAD_EFFECT = 81
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_MAP_EFFECT = 82
 	DOTASlotType_t.DOTA_LOADOUT_TYPE_COURIER_EFFECT = 83
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS = 84
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS = 85
 	DOTASlotType_t.DOTA_PLAYER_LOADOUT_START = 58
-	DOTASlotType_t.DOTA_PLAYER_LOADOUT_END = 83
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_NONE = 84
-	DOTASlotType_t.DOTA_LOADOUT_TYPE_COUNT = 85
+	DOTASlotType_t.DOTA_PLAYER_LOADOUT_END = 85
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_NONE = 86
+	DOTASlotType_t.DOTA_LOADOUT_TYPE_COUNT = 87
 
 Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE = 0 (GetModifierPreAttack_BonusDamage)
@@ -1693,6 +1702,7 @@ Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL = 5 (GetModifierProcAttack_BonusDamage_Physical)
 	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL = 6 (GetModifierProcAttack_BonusDamage_Magical)
 	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PURE = 7 (GetModifierProcAttack_BonusDamage_Pure)
+<<<<<<< Updated upstream
 	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_FEEDBACK = 8 (GetModifierProcAttack_Feedback)
 	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE = 9 (GetModifierOverrideAttackDamage)
 	modifierfunction.MODIFIER_PROPERTY_PRE_ATTACK = 10 (GetModifierPreAttack)
@@ -1918,6 +1928,249 @@ Enumeration 'modifierfunction'
 	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 230 (GetModifierMoveSpeedReductionPercentage)
 	modifierfunction.MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 231
 	modifierfunction.MODIFIER_FUNCTION_LAST = 232
+=======
+	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL_TARGET = 8 (GetModifierProcAttack_BonusDamage_Magical_Target)
+	modifierfunction.MODIFIER_PROPERTY_PROCATTACK_FEEDBACK = 9 (GetModifierProcAttack_Feedback)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ATTACK_DAMAGE = 10 (GetModifierOverrideAttackDamage)
+	modifierfunction.MODIFIER_PROPERTY_PRE_ATTACK = 11 (GetModifierPreAttack)
+	modifierfunction.MODIFIER_PROPERTY_INVISIBILITY_LEVEL = 12 (GetModifierInvisibilityLevel)
+	modifierfunction.MODIFIER_PROPERTY_INVISIBILITY_ATTACK_BEHAVIOR_EXCEPTION = 13 (GetModifierInvisibilityAttackBehaviorException)
+	modifierfunction.MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY = 14 (GetModifierPersistentInvisibility)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT = 15 (GetModifierMoveSpeedBonus_Constant)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE = 16 (GetModifierMoveSpeedOverride)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE = 17 (GetModifierMoveSpeedBonus_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE = 18 (GetModifierMoveSpeedBonus_Percentage_Unique)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE_2 = 19 (GetModifierMoveSpeedBonus_Percentage_Unique_2)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE = 20 (GetModifierMoveSpeedBonus_Special_Boots)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE_2 = 21 (GetModifierMoveSpeedBonus_Special_Boots_2)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE = 22 (GetModifierMoveSpeedBonus_Constant_Unique)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT_UNIQUE_2 = 23 (GetModifierMoveSpeedBonus_Constant_Unique_2)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE = 24 (GetModifierMoveSpeed_Absolute)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MIN = 25 (GetModifierMoveSpeed_AbsoluteMin)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE_MAX = 26 (GetModifierMoveSpeed_AbsoluteMax)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT = 27 (GetModifierIgnoreMovespeedLimit)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_LIMIT = 28 (GetModifierMoveSpeed_Limit)
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_BASE_OVERRIDE = 29 (GetModifierAttackSpeedBaseOverride)
+	modifierfunction.MODIFIER_PROPERTY_FIXED_ATTACK_RATE = 30 (GetModifierFixedAttackRate)
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT = 31 (GetModifierAttackSpeedBonus_Constant)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT = 32 (GetModifierAttackSpeed_Limit)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT = 33 (GetModifierCooldownReduction_Constant)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_REDUCTION_CONSTANT = 34 (GetModifierManacostReduction_Constant)
+	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT = 35 (GetModifierBaseAttackTimeConstant)
+	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT_ADJUST = 36 (GetModifierBaseAttackTimeConstant_Adjust)
+	modifierfunction.MODIFIER_PROPERTY_BASE_ATTACK_TIME_PERCENTAGE = 37 (GetModifierBaseAttackTimePercentage)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_POINT_CONSTANT = 38 (GetModifierAttackPointConstant)
+	modifierfunction.MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE = 39 (GetModifierBonusDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE = 40 (GetModifierDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION = 41 (GetModifierDamageOutgoing_Percentage_Illusion)
+	modifierfunction.MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY = 42 (GetModifierDamageOutgoing_Percentage_Illusion_Amplify)
+	modifierfunction.MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE = 43 (GetModifierTotalDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_CREEP = 44 (GetModifierSpellAmplify_PercentageCreep)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE = 45 (GetModifierSpellAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE_UNIQUE = 46 (GetModifierSpellAmplify_PercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE = 47 (GetModifierHealAmplify_PercentageSource)
+	modifierfunction.MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET = 48 (GetModifierHealAmplify_PercentageTarget)
+	modifierfunction.MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE = 49 (GetModifierHPRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE = 50 (GetModifierLifestealRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE = 51 (GetModifierSpellLifestealRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE = 52 (GetModifierMPRegenAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MANA_DRAIN_AMPLIFY_PERCENTAGE = 53 (GetModifierManaDrainAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_MP_RESTORE_AMPLIFY_PERCENTAGE = 54 (GetModifierMPRestoreAmplify_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE = 55 (GetModifierBaseDamageOutgoing_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE_UNIQUE = 56 (GetModifierBaseDamageOutgoing_PercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE = 57 (GetModifierIncomingDamage_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE = 58 (GetModifierIncomingPhysicalDamage_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT = 59 (GetModifierIncomingPhysicalDamageConstant)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT = 60 (GetModifierIncomingSpellDamageConstant)
+	modifierfunction.MODIFIER_PROPERTY_EVASION_CONSTANT = 61 (GetModifierEvasion_Constant)
+	modifierfunction.MODIFIER_PROPERTY_NEGATIVE_EVASION_CONSTANT = 62 (GetModifierNegativeEvasion_Constant)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE = 63 (GetModifierStatusResistance)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING = 64 (GetModifierStatusResistanceStacking)
+	modifierfunction.MODIFIER_PROPERTY_STATUS_RESISTANCE_CASTER = 65 (GetModifierStatusResistanceCaster)
+	modifierfunction.MODIFIER_PROPERTY_AVOID_DAMAGE = 66 (GetModifierAvoidDamage)
+	modifierfunction.MODIFIER_PROPERTY_AVOID_SPELL = 67 (GetModifierAvoidSpell)
+	modifierfunction.MODIFIER_PROPERTY_MISS_PERCENTAGE = 68 (GetModifierMiss_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BASE_PERCENTAGE = 69 (GetModifierPhysicalArmorBase_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_TOTAL_PERCENTAGE = 70 (GetModifierPhysicalArmorTotal_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS = 71 (GetModifierPhysicalArmorBonus)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE = 72 (GetModifierPhysicalArmorBonusUnique)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE = 73 (GetModifierPhysicalArmorBonusUniqueActive)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_PHYSICAL_ARMOR = 74 (GetModifierIgnorePhysicalArmor)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BASE_REDUCTION = 75 (GetModifierMagicalResistanceBaseReduction)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION = 76 (GetModifierMagicalResistanceDirectModification)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS = 77 (GetModifierMagicalResistanceBonus)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS_ILLUSIONS = 78 (GetModifierMagicalResistanceBonusIllusions)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE = 79 (GetModifierMagicalResistanceDecrepifyUnique)
+	modifierfunction.MODIFIER_PROPERTY_BASE_MANA_REGEN = 80 (GetModifierBaseRegen)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT = 81 (GetModifierConstantManaRegen)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE = 82 (GetModifierConstantManaRegenUnique)
+	modifierfunction.MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE = 83 (GetModifierTotalPercentageManaRegen)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT = 84 (GetModifierConstantHealthRegen)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE = 85 (GetModifierHealthRegenPercentage)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE = 86 (GetModifierHealthRegenPercentageUnique)
+	modifierfunction.MODIFIER_PROPERTY_HEALTH_BONUS = 87 (GetModifierHealthBonus)
+	modifierfunction.MODIFIER_PROPERTY_MANA_BONUS = 88 (GetModifierManaBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_STRENGTH_BONUS = 89 (GetModifierExtraStrengthBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS = 90 (GetModifierExtraHealthBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_BONUS = 91 (GetModifierExtraManaBonus)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE = 92 (GetModifierExtraHealthPercentage)
+	modifierfunction.MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE = 93 (GetModifierExtraManaPercentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS = 94 (GetModifierBonusStats_Strength)
+	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS = 95 (GetModifierBonusStats_Agility)
+	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS = 96 (GetModifierBonusStats_Intellect)
+	modifierfunction.MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE = 97 (GetModifierBonusStats_Strength_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE = 98 (GetModifierBonusStats_Agility_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE = 99 (GetModifierBonusStats_Intellect_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS = 100 (GetModifierCastRangeBonus)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET = 101 (GetModifierCastRangeBonusTarget)
+	modifierfunction.MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING = 102 (GetModifierCastRangeBonusStacking)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE = 103 (GetModifierAttackRangeOverride)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS = 104 (GetModifierAttackRangeBonus)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE = 105 (GetModifierAttackRangeBonusUnique)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE = 106 (GetModifierAttackRangeBonusPercentage)
+	modifierfunction.MODIFIER_PROPERTY_MAX_ATTACK_RANGE = 107 (GetModifierMaxAttackRange)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS = 108 (GetModifierProjectileSpeedBonus)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE = 109 (GetModifierProjectileSpeedBonusPercentage)
+	modifierfunction.MODIFIER_PROPERTY_PROJECTILE_NAME = 110 (GetModifierProjectileName)
+	modifierfunction.MODIFIER_PROPERTY_REINCARNATION = 111 (ReincarnateTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME = 112 (GetModifierConstantRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE = 113 (GetModifierPercentageRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_RESPAWNTIME_STACKING = 114 (GetModifierStackingRespawnTime)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE = 115 (GetModifierPercentageCooldown)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING = 116 (GetModifierPercentageCooldownOngoing)
+	modifierfunction.MODIFIER_PROPERTY_CASTTIME_PERCENTAGE = 117 (GetModifierPercentageCasttime)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE = 118 (GetModifierPercentageAttackAnimTime)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE = 119 (GetModifierPercentageManacost)
+	modifierfunction.MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING = 120 (GetModifierPercentageManacostStacking)
+	modifierfunction.MODIFIER_PROPERTY_DEATHGOLDCOST = 121 (GetModifierConstantDeathGoldCost)
+	modifierfunction.MODIFIER_PROPERTY_EXP_RATE_BOOST = 122 (GetModifierPercentageExpRateBoost)
+	modifierfunction.MODIFIER_PROPERTY_GOLD_RATE_BOOST = 123 (GetModifierPercentageGoldRateBoost)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE = 124 (GetModifierPreAttack_CriticalStrike)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE = 125 (GetModifierPreAttack_Target_CriticalStrike)
+	modifierfunction.MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK = 126 (GetModifierMagical_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK = 127 (GetModifierPhysical_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL = 128 (GetModifierPhysical_ConstantBlockSpecial)
+	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR = 129 (GetModifierPhysical_ConstantBlockUnavoidablePreArmor)
+	modifierfunction.MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK = 130 (GetModifierTotal_ConstantBlock)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION = 131 (GetOverrideAnimation)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT = 132 (GetOverrideAnimationWeight)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE = 133 (GetOverrideAnimationRate)
+	modifierfunction.MODIFIER_PROPERTY_ABSORB_SPELL = 134 (GetAbsorbSpell)
+	modifierfunction.MODIFIER_PROPERTY_REFLECT_SPELL = 135 (GetReflectSpell)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_AUTOATTACK = 136 (GetDisableAutoAttack)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_DAY_VISION = 137 (GetBonusDayVision)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION = 138 (GetBonusNightVision)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE = 139 (GetBonusNightVisionUnique)
+	modifierfunction.MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE = 140 (GetBonusVisionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_FIXED_DAY_VISION = 141 (GetFixedDayVision)
+	modifierfunction.MODIFIER_PROPERTY_FIXED_NIGHT_VISION = 142 (GetFixedNightVision)
+	modifierfunction.MODIFIER_PROPERTY_MIN_HEALTH = 143 (GetMinHealth)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL = 144 (GetAbsoluteNoDamagePhysical)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL = 145 (GetAbsoluteNoDamageMagical)
+	modifierfunction.MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE = 146 (GetAbsoluteNoDamagePure)
+	modifierfunction.MODIFIER_PROPERTY_IS_ILLUSION = 147 (GetIsIllusion)
+	modifierfunction.MODIFIER_PROPERTY_ILLUSION_LABEL = 148 (GetModifierIllusionLabel)
+	modifierfunction.MODIFIER_PROPERTY_STRONG_ILLUSION = 149 (GetModifierStrongIllusion)
+	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION = 150 (GetModifierSuperIllusion)
+	modifierfunction.MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE = 151 (GetModifierSuperIllusionWithUltimate)
+	modifierfunction.MODIFIER_PROPERTY_XP_DURING_DEATH = 152 (GetModifierXPDuringDeath)
+	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE = 153 (GetModifierTurnRate_Percentage)
+	modifierfunction.MODIFIER_PROPERTY_TURN_RATE_OVERRIDE = 154 (GetModifierTurnRate_Override)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_HEALING = 155 (GetDisableHealing)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK = 156 (GetAlwaysAllowAttack)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK = 157 (GetAllowEtherealAttack)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL = 158 (GetOverrideAttackMagical)
+	modifierfunction.MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH = 159 (GetModifierUnitStatsNeedsRefresh)
+	modifierfunction.MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER = 160 (Unused)
+	modifierfunction.MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER = 161 (Unused)
+	modifierfunction.MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING = 162 (GetModifierUnitDisllowUpgrading)
+	modifierfunction.MODIFIER_PROPERTY_DODGE_PROJECTILE = 163 (GetModifierDodgeProjectile)
+	modifierfunction.MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK = 164 (GetTriggerCosmeticAndEndAttack)
+	modifierfunction.MODIFIER_PROPERTY_MAX_DEBUFF_DURATION = 165 (GetModifierMaxDebuffDuration)
+	modifierfunction.MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER = 166 (GetPrimaryStatDamageMultiplier)
+	modifierfunction.MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW = 167 (GetModifierPreAttack_DeadlyBlow)
+	modifierfunction.MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION = 168 (GetAlwaysAutoAttackWhileHoldPosition)
+	modifierfunction.MODIFIER_EVENT_ON_SPELL_TARGET_READY = 169 (OnSpellTargetReady)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD = 170 (OnAttackRecord)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_START = 171 (OnAttackStart)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK = 172 (OnAttack)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_LANDED = 173 (OnAttackLanded)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FAIL = 174 (OnAttackFail)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_ALLIED = 175 (OnAttackAllied)
+	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_DODGE = 176 (OnProjectileDodge)
+	modifierfunction.MODIFIER_EVENT_ON_ORDER = 177 (OnOrder)
+	modifierfunction.MODIFIER_EVENT_ON_UNIT_MOVED = 178 (OnUnitMoved)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_START = 179 (OnAbilityStart)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_EXECUTED = 180 (OnAbilityExecuted)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_FULLY_CAST = 181 (OnAbilityFullyCast)
+	modifierfunction.MODIFIER_EVENT_ON_BREAK_INVISIBILITY = 182 (OnBreakInvisibility)
+	modifierfunction.MODIFIER_EVENT_ON_ABILITY_END_CHANNEL = 183 (OnAbilityEndChannel)
+	modifierfunction.MODIFIER_EVENT_ON_PROCESS_UPGRADE = 184 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_REFRESH = 185 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE = 186 (OnTakeDamage)
+	modifierfunction.MODIFIER_EVENT_ON_DEATH_PREVENTED = 187 (OnDamagePrevented)
+	modifierfunction.MODIFIER_EVENT_ON_STATE_CHANGED = 188 (OnStateChanged)
+	modifierfunction.MODIFIER_EVENT_ON_ORB_EFFECT = 189 (Unused)
+	modifierfunction.MODIFIER_EVENT_ON_PROCESS_CLEAVE = 190 (OnProcessCleave)
+	modifierfunction.MODIFIER_EVENT_ON_DAMAGE_CALCULATED = 191 (OnDamageCalculated)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACKED = 192 (OnAttacked)
+	modifierfunction.MODIFIER_EVENT_ON_DEATH = 193 (OnDeath)
+	modifierfunction.MODIFIER_EVENT_ON_RESPAWN = 194 (OnRespawn)
+	modifierfunction.MODIFIER_EVENT_ON_SPENT_MANA = 195 (OnSpentMana)
+	modifierfunction.MODIFIER_EVENT_ON_TELEPORTING = 196 (OnTeleporting)
+	modifierfunction.MODIFIER_EVENT_ON_TELEPORTED = 197 (OnTeleported)
+	modifierfunction.MODIFIER_EVENT_ON_SET_LOCATION = 198 (OnSetLocation)
+	modifierfunction.MODIFIER_EVENT_ON_HEALTH_GAINED = 199 (OnHealthGained)
+	modifierfunction.MODIFIER_EVENT_ON_MANA_GAINED = 200 (OnManaGained)
+	modifierfunction.MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT = 201 (OnTakeDamageKillCredit)
+	modifierfunction.MODIFIER_EVENT_ON_HERO_KILLED = 202 (OnHeroKilled)
+	modifierfunction.MODIFIER_EVENT_ON_HEAL_RECEIVED = 203 (OnHealReceived)
+	modifierfunction.MODIFIER_EVENT_ON_BUILDING_KILLED = 204 (OnBuildingKilled)
+	modifierfunction.MODIFIER_EVENT_ON_MODEL_CHANGED = 205 (OnModelChanged)
+	modifierfunction.MODIFIER_EVENT_ON_MODIFIER_ADDED = 206 (OnModifierAdded)
+	modifierfunction.MODIFIER_PROPERTY_TOOLTIP = 207 (OnTooltip)
+	modifierfunction.MODIFIER_PROPERTY_MODEL_CHANGE = 208 (GetModifierModelChange)
+	modifierfunction.MODIFIER_PROPERTY_MODEL_SCALE = 209 (GetModifierModelScale)
+	modifierfunction.MODIFIER_PROPERTY_IS_SCEPTER = 210 (GetModifierScepter)
+	modifierfunction.MODIFIER_PROPERTY_IS_SHARD = 211 (GetModifierShard)
+	modifierfunction.MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION = 212 (GetModifierRadarCooldownReduction)
+	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS = 213 (GetActivityTranslationModifiers)
+	modifierfunction.MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND = 214 (GetAttackSound)
+	modifierfunction.MODIFIER_PROPERTY_LIFETIME_FRACTION = 215 (GetUnitLifetimeFraction)
+	modifierfunction.MODIFIER_PROPERTY_PROVIDES_FOW_POSITION = 216 (GetModifierProvidesFOWVision)
+	modifierfunction.MODIFIER_PROPERTY_SPELLS_REQUIRE_HP = 217 (GetModifierSpellsRequireHP)
+	modifierfunction.MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP = 218 (GetForceDrawOnMinimap)
+	modifierfunction.MODIFIER_PROPERTY_DISABLE_TURNING = 219 (GetModifierDisableTurning)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_CAST_ANGLE = 220 (GetModifierIgnoreCastAngle)
+	modifierfunction.MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE = 221 (GetModifierChangeAbilityValue)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL = 222 (GetModifierOverrideAbilitySpecial)
+	modifierfunction.MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE = 223 (GetModifierOverrideAbilitySpecialValue)
+	modifierfunction.MODIFIER_PROPERTY_ABILITY_LAYOUT = 224 (GetModifierAbilityLayout)
+	modifierfunction.MODIFIER_EVENT_ON_DOMINATED = 225 (OnDominated)
+	modifierfunction.MODIFIER_PROPERTY_TEMPEST_DOUBLE = 226 (GetModifierTempestDouble)
+	modifierfunction.MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE = 227 (PreserveParticlesOnModelChanged)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_FINISHED = 228 (OnAttackFinished)
+	modifierfunction.MODIFIER_PROPERTY_IGNORE_COOLDOWN = 229 (GetModifierIgnoreCooldown)
+	modifierfunction.MODIFIER_PROPERTY_CAN_ATTACK_TREES = 230 (GetModifierCanAttackTrees)
+	modifierfunction.MODIFIER_PROPERTY_VISUAL_Z_DELTA = 231 (GetVisualZDelta)
+	modifierfunction.MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION = 232
+	modifierfunction.MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER = 233 (GetModifierNoVisionOfAttacker)
+	modifierfunction.MODIFIER_PROPERTY_TOOLTIP2 = 234 (OnTooltip2)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY = 235 (OnAttackRecordDestroy)
+	modifierfunction.MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT = 236 (OnProjectileObstructionHit)
+	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_TELEPORT = 237 (GetSuppressTeleport)
+	modifierfunction.MODIFIER_EVENT_ON_ATTACK_CANCELLED = 238 (OnAttackCancelled)
+	modifierfunction.MODIFIER_PROPERTY_SUPPRESS_CLEAVE = 239 (GetSuppressCleave)
+	modifierfunction.MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS = 240 (BotAttackScoreBonus)
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE = 241 (GetModifierAttackSpeedReductionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE = 242 (GetModifierMoveSpeedReductionPercentage)
+	modifierfunction.MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET = 243
+	modifierfunction.MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE = 244 (GetModifierAttackSpeedPercentage)
+	modifierfunction.MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE = 245 (OnAttemptProjectileDodge)
+	modifierfunction.MODIFIER_EVENT_ON_PREDEBUFF_APPLIED = 246 (OnPreDebuffApplied)
+	modifierfunction.MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING = 247 (GetModifierPercentageCooldownStacking)
+	modifierfunction.MODIFIER_FUNCTION_LAST = 248
+>>>>>>> Stashed changes
 	modifierfunction.MODIFIER_FUNCTION_INVALID = 255
 
 Enumeration 'modifierstate'
@@ -4357,6 +4610,22 @@ Initializing script VM...
     "name":"SpawnEntityListFromTableSynchronous",
     "description":"Synchronously spawn an entity group from a list of spawn tables."
   },{
+    "returns":"handle",
+    "args":[{
+        "type":"Vector"
+      },{
+        "type":"int"
+      },{
+        "type":"float"
+      },{
+        "type":"float"
+      },{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"SpawnMangoTree",
+    "description":"Spawn a mango tree ( vPos, nTeam, flDuration, flMangoInterval, nInitialMangoes )"
+  },{
     "returns":"Quaternion",
     "args":[{
         "type":"Quaternion"
@@ -4754,6 +5023,10 @@ Initializing script VM...
     "name":"rr_QueryBestResponse",
     "description":"Params: (entity, query) : tests 'query' against entity's response system and returns the best response found (or null if none found)."
   },{
+    "value":58,
+    "kind":"constant",
+    "name":""
+  },{
     "enum":"AbilityLearnResult_t",
     "value":2,
     "kind":"constant",
@@ -4798,6 +5071,10 @@ Initializing script VM...
     "value":1,
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
+  },{
+    "value":1777,
+    "kind":"constant",
+    "name":"ACD_DOTA_IDLE"
   },{
     "value":1,
     "kind":"constant",
@@ -5357,6 +5634,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_ARCANA_VOTE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1682,
     "kind":"constant",
@@ -5472,6 +5756,25 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1765,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1788,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST2_STATUE"
+  },{
+    "value":1764,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
+  },{
+    "value":1772,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST4_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1510,
     "kind":"constant",
@@ -5612,6 +5915,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
+    "value":1780,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST_FENCE"
+  },{
     "enum":"GameActivity_t",
     "value":1588,
     "kind":"constant",
@@ -5662,6 +5969,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1587,
     "kind":"constant",
@@ -5788,6 +6102,23 @@ Initializing script VM...
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
     "enum":"GameActivity_t",
+<<<<<<< Updated upstream
+=======
+    "value":1755,
+    "kind":"constant",
+    "name":"ACT_DOTA_CUSTOM_TOWER_IDLE_RARE"
+  },{
+    "enum":"GameActivity_t",
+    "value":1756,
+    "kind":"constant",
+    "name":"ACT_DOTA_CUSTOM_TOWER_TAUNT"
+  },{
+    "value":1785,
+    "kind":"constant",
+    "name":"ACT_DOTA_CYCLONE"
+  },{
+    "enum":"GameActivity_t",
+>>>>>>> Stashed changes
     "value":1651,
     "kind":"constant",
     "name":"ACT_DOTA_DAGON"
@@ -5821,6 +6152,10 @@ Initializing script VM...
     "value":1509,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
+  },{
+    "value":1776,
+    "kind":"constant",
+    "name":"ACT_DOTA_DISABLED_END"
   },{
     "enum":"GameActivity_t",
     "value":1712,
@@ -5857,6 +6192,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1773,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1685,
     "kind":"constant",
@@ -5972,6 +6314,17 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1771,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
+  },{
+    "value":1786,
+    "kind":"constant",
+    "name":"ACT_DOTA_IMPALE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1623,
     "kind":"constant",
@@ -6232,6 +6585,14 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
+    "value":1761,
+    "kind":"constant",
+    "name":"ACT_DOTA_PUNCH"
+  },{
+    "value":1782,
+    "kind":"constant",
+    "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
+  },{
     "enum":"GameActivity_t",
     "value":1549,
     "kind":"constant",
@@ -6277,6 +6638,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
+    "value":1778,
+    "kind":"constant",
+    "name":"ACT_DOTA_RELAX_IN"
+  },{
     "enum":"GameActivity_t",
     "value":1609,
     "kind":"constant",
@@ -6286,6 +6651,10 @@ Initializing script VM...
     "value":1634,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
+  },{
+    "value":1779,
+    "kind":"constant",
+    "name":"ACT_DOTA_RELAX_OUT"
   },{
     "enum":"GameActivity_t",
     "value":1608,
@@ -6307,6 +6676,17 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1784,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_ALT"
+  },{
+    "value":1770,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1568,
     "kind":"constant",
@@ -6392,6 +6772,14 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
+  },{
+    "value":1783,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN"
+  },{
     "enum":"GameActivity_t",
     "value":1629,
     "kind":"constant",
@@ -6402,6 +6790,17 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1769,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE_SEQUENCE"
+  },{
+    "value":1774,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1684,
     "kind":"constant",
@@ -6427,6 +6826,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1768,
+    "kind":"constant",
+    "name":"ACT_DOTA_TAUNT_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1595,
     "kind":"constant",
@@ -6462,12 +6868,28 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_END_REACT"
   },{
+    "value":1775,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_END_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
     "enum":"GameActivity_t",
+<<<<<<< Updated upstream
+=======
+    "value":1753,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_START"
+  },{
+    "value":1766,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
+  },{
+    "enum":"GameActivity_t",
+>>>>>>> Stashed changes
     "value":1537,
     "kind":"constant",
     "name":"ACT_DOTA_THIRST"
@@ -6491,6 +6913,10 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
+  },{
+    "value":1787,
+    "kind":"constant",
+    "name":"ACT_DOTA_TORRENT"
   },{
     "enum":"GameActivity_t",
     "value":1731,
@@ -6537,6 +6963,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1767,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
+  },{
+>>>>>>> Stashed changes
     "enum":"GameActivity_t",
     "value":1689,
     "kind":"constant",
@@ -10204,23 +10637,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":39,
+    "value":40,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":42,
+    "value":43,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":40,
+    "value":41,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":41,
+    "value":42,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":43,
+    "value":44,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
@@ -10236,19 +10669,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":47,
+    "value":48,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":45,
+    "value":46,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":46,
+    "value":47,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
@@ -10296,7 +10729,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":33,
+    "value":34,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
@@ -10312,35 +10745,50 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":53,
+    "value":54,
     "kind":"constant",
     "name":"AE_DOTA_CREATE_CLINKZ_ATTACK"
   },{
+<<<<<<< Updated upstream
     "value":50,
+=======
+    "value":56,
+    "kind":"constant",
+    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES"
+  },{
+    "value":51,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"AE_DOTA_PET_ITEM_DROP"
   },{
-    "value":49,
+    "value":50,
     "kind":"constant",
     "name":"AE_DOTA_PET_ITEM_PICKUP"
   },{
-    "value":54,
+    "value":55,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB"
   },{
-    "value":52,
+    "value":53,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
   },{
-    "value":51,
+    "value":52,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":57,
+    "kind":"constant",
+    "name":"AE_DOTA_SWITCH_ATTACK_COMBO"
+  },{
+>>>>>>> Stashed changes
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":34,
+    "value":35,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
@@ -10348,23 +10796,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
-    "value":44,
+    "value":45,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
-    "value":36,
+    "value":37,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":38,
+    "value":39,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":35,
+    "value":36,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":37,
+    "value":38,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
@@ -10372,10 +10820,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_MUZZLEFLASH"
   },{
+<<<<<<< Updated upstream
     "value":16,
     "kind":"constant",
     "name":"AE_NPC_MUZZLEFLASH"
   },{
+=======
+>>>>>>> Stashed changes
     "value":25,
     "kind":"constant",
     "name":"AE_RAGDOLL"
@@ -10394,12 +10845,19 @@ Initializing script VM...
   },{
     "value":17,
     "kind":"constant",
-    "name":"AE_SV_DUSTTRAIL"
+    "name":"AE_SV_CREATE_PARTICLE_EFFECT_CFG"
   },{
     "value":4,
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":17,
+    "kind":"constant",
+    "name":"AE_SV_STOP_PARTICLE_EFFECT"
+  },{
+>>>>>>> Stashed changes
     "value":32,
     "kind":"constant",
     "name":"AE_WPN_PLAYWPNSOUND"
@@ -10408,7 +10866,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_WPN_PRIMARYATTACK"
   },{
+<<<<<<< Updated upstream
     "value":5,
+=======
+    "value":33,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"BURST"
   },{
@@ -11167,12 +11629,12 @@ Initializing script VM...
     "name":"DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP"
   },{
     "enum":"DOTA_GameState",
-    "value":10,
+    "value":11,
     "kind":"constant",
     "name":"DOTA_GAMERULES_STATE_DISCONNECT"
   },{
     "enum":"DOTA_GameState",
-    "value":8,
+    "value":9,
     "kind":"constant",
     "name":"DOTA_GAMERULES_STATE_GAME_IN_PROGRESS"
   },{
@@ -11187,7 +11649,7 @@ Initializing script VM...
     "name":"DOTA_GAMERULES_STATE_INIT"
   },{
     "enum":"DOTA_GameState",
-    "value":9,
+    "value":10,
     "kind":"constant",
     "name":"DOTA_GAMERULES_STATE_POST_GAME"
   },{
@@ -11195,6 +11657,11 @@ Initializing script VM...
     "value":7,
     "kind":"constant",
     "name":"DOTA_GAMERULES_STATE_PRE_GAME"
+  },{
+    "enum":"DOTA_GameState",
+    "value":8,
+    "kind":"constant",
+    "name":"DOTA_GAMERULES_STATE_SCENARIO_SETUP"
   },{
     "enum":"DOTA_GameState",
     "value":4,
@@ -11491,7 +11958,7 @@ Initializing script VM...
     "name":"DOTA_HEROPICK_STATE_CM_SELECT9"
   },{
     "enum":"DOTA_HeroPickState",
-    "value":61,
+    "value":62,
     "kind":"constant",
     "name":"DOTA_HEROPICK_STATE_COUNT"
   },{
@@ -11524,6 +11991,11 @@ Initializing script VM...
     "value":4,
     "kind":"constant",
     "name":"DOTA_HEROPICK_STATE_RD_SELECT_UNUSED"
+  },{
+    "enum":"DOTA_HeroPickState",
+    "value":61,
+    "kind":"constant",
+    "name":"DOTA_HEROPICK_STATE_SCENARIO"
   },{
     "enum":"DOTA_HeroPickState",
     "value":2,
@@ -11971,7 +12443,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_COSTUME"
   },{
     "enum":"DOTASlotType_t",
-    "value":85,
+    "value":87,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_COUNT"
   },{
@@ -11999,6 +12471,11 @@ Initializing script VM...
     "value":74,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_DIRE_CREEPS"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":85,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS"
   },{
     "enum":"DOTASlotType_t",
     "value":76,
@@ -12121,7 +12598,7 @@ Initializing script VM...
     "name":"DOTA_LOADOUT_TYPE_NECK_PERSONA_1"
   },{
     "enum":"DOTASlotType_t",
-    "value":84,
+    "value":86,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_NONE"
   },{
@@ -12154,6 +12631,11 @@ Initializing script VM...
     "value":73,
     "kind":"constant",
     "name":"DOTA_LOADOUT_TYPE_RADIANT_CREEPS"
+  },{
+    "enum":"DOTASlotType_t",
+    "value":84,
+    "kind":"constant",
+    "name":"DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS"
   },{
     "enum":"DOTASlotType_t",
     "value":75,
@@ -12576,7 +13058,7 @@ Initializing script VM...
     "name":"DOTA_ModifyXP_Unspecified"
   },{
     "enum":"DOTASlotType_t",
-    "value":83,
+    "value":85,
     "kind":"constant",
     "name":"DOTA_PLAYER_LOADOUT_END"
   },{
@@ -12620,6 +13102,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_PROJECTILE_ATTACHMENT_NONE"
   },{
+<<<<<<< Updated upstream
     "value":68,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1"
@@ -12653,6 +13136,41 @@ Initializing script VM...
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8"
   },{
     "value":76,
+=======
+    "value":73,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1"
+  },{
+    "value":74,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2"
+  },{
+    "value":75,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_3"
+  },{
+    "value":76,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_4"
+  },{
+    "value":77,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_5"
+  },{
+    "value":78,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_6"
+  },{
+    "value":79,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_7"
+  },{
+    "value":80,
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8"
+  },{
+    "value":81,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9"
   },{
@@ -12708,7 +13226,11 @@ Initializing script VM...
     "enum":"DOTA_RUNES",
     "value":7,
     "kind":"constant",
+<<<<<<< Updated upstream
     "name":"DOTA_RUNE_XP"
+=======
+    "name":"DOTA_RUNE_WATER"
+>>>>>>> Stashed changes
   },{
     "enum":"DOTA_SHOP_TYPE",
     "value":6,
@@ -13052,6 +13574,10 @@ Initializing script VM...
     "value":19,
     "kind":"constant",
     "name":"DOTA_UNIT_ORDER_MOVE_ITEM"
+  },{
+    "value":39,
+    "kind":"constant",
+    "name":"DOTA_UNIT_ORDER_MOVE_RELATIVE"
   },{
     "value":28,
     "kind":"constant",
@@ -13776,7 +14302,11 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
+<<<<<<< Updated upstream
     "value":232,
+=======
+    "value":248,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -14045,7 +14575,17 @@ Initializing script VM...
     "description":"GetModifierPercentageCooldownOngoing"
   },{
     "enum":"modifierfunction",
+<<<<<<< Updated upstream
     "value":31,
+=======
+    "value":247,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
+    "description":"GetModifierPercentageCooldownStacking"
+  },{
+    "enum":"modifierfunction",
+    "value":33,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT",
     "description":"GetModifierCooldownReduction_Constant"
@@ -15600,6 +16140,17 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1781,
+    "kind":"constant",
+    "name":"radiant_melee_mars_shieldbash"
+  },{
+    "value":1758,
+    "kind":"constant",
+    "name":"time_remap_smoke_side"
+  },{
+>>>>>>> Stashed changes
     "members":[{
         "args":[],
         "returns":"float",
@@ -17473,6 +18024,17 @@ Initializing script VM...
   },{
     "members":[{
         "args":[{
+<<<<<<< Updated upstream
+=======
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"AddAbilityUpgradeToWhitelist",
+        "description":"const char* pszAbilityName"
+      },{
+        "args":[{
+>>>>>>> Stashed changes
             "name":"pszItemName",
             "type":"string"
           },{
@@ -17591,6 +18153,17 @@ Initializing script VM...
         "name":"DisableHudFlip",
         "description":"Use to disable hud flip for this mod"
       },{
+<<<<<<< Updated upstream
+=======
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"EnableAbilityUpgradeWhitelist",
+        "description":"bool bEnabled"
+      },{
+>>>>>>> Stashed changes
         "args":[],
         "returns":"bool",
         "name":"GetAlwaysShowPlayerInventory",
@@ -17750,6 +18323,17 @@ Initializing script VM...
         "name":"GetUseCustomHeroLevels",
         "description":"Are custom-defined XP values for hero level ups in use?"
       },{
+<<<<<<< Updated upstream
+=======
+        "args":[{
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"bool",
+        "name":"IsAbilityUpgradeWhitelisted",
+        "description":"const char* pszAbilityName"
+      },{
+>>>>>>> Stashed changes
         "args":[],
         "returns":"bool",
         "name":"IsBuybackEnabled",
@@ -17794,6 +18378,17 @@ Initializing script VM...
         "description":"Set function and context for real time combat analyzer query succeeded."
       },{
         "args":[{
+<<<<<<< Updated upstream
+=======
+            "name":"pszAbilityName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveAbilityUpgradeFromWhitelist",
+        "description":"const char* pszAbilityName"
+      },{
+        "args":[{
+>>>>>>> Stashed changes
             "name":"pszItemName",
             "type":"string"
           },{
@@ -17942,6 +18537,17 @@ Initializing script VM...
         "description":"Sets the camera Z range"
       },{
         "args":[{
+<<<<<<< Updated upstream
+=======
+            "name":"bAllow",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetCanSellAnywhere",
+        "description":"bool bAllow"
+      },{
+        "args":[{
+>>>>>>> Stashed changes
             "name":"nStatType",
             "type":"int"
           },{
@@ -18172,6 +18778,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetFriendlyBuildingMoveToEnabled",
         "description":"Allows clicks on friendly buildings to be handled normally."
+      },{
+        "args":[{
+            "name":"bGive",
+            "type":"bool"
+          }],
+        "returns":"void",
+        "name":"SetGiveFreeTPOnDeath",
+        "description":"bool bGive"
       },{
         "args":[{
             "name":"bDisabled",
@@ -18514,6 +19128,10 @@ Initializing script VM...
         "returns":"void",
         "name":"SetWeatherEffectsDisabled",
         "description":"Set if weather effects are disabled."
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"ShouldGiveFreeTPOnDeath"
       }],
     "kind":"class",
     "name":"CDOTABaseGameMode",
@@ -18621,6 +19239,34 @@ Initializing script VM...
         "description":"Event-only ( string szNameSuffix, int nScore, int nExtraData1, int nExtraData2 )"
       },{
         "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"AddHeroIDToBlacklist",
+        "description":"Add the hero ID to the hero blacklist if it is not already present"
+      },{
+        "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"AddHeroIDToWhitelist",
+        "description":"Add the hero ID to the hero whitelist if it is not already present"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"AddHeroToBlacklist",
+        "description":"Add the hero to the hero blacklist if it is not already present"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"AddHeroToWhitelist",
+        "description":"Add the hero to the hero whitelist if it is not already present"
+      },{
+        "args":[{
             "type":"string"
           }],
         "returns":"void",
@@ -18685,6 +19331,21 @@ Initializing script VM...
         "returns":"void",
         "name":"BotPopulate",
         "description":"Fills all the teams with bots if cheat mode is enabled."
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"ClearHeroBlacklist",
+        "description":"Clears the hero blacklist"
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"ClearHeroWhitelist",
+        "description":"Clears the hero whitelist"
+      },{
+        "args":[],
+        "returns":"void",
+        "name":"ClearRiverPaint",
+        "description":"Clears the current river paint"
       },{
         "args":[],
         "returns":"void",
@@ -18809,9 +19470,9 @@ Initializing script VM...
           },{
             "type":"int"
           }],
-        "returns":"int",
-        "name":"GetItemStockCount",
-        "description":"Get the stock count of the item"
+        "returns":"float",
+        "name":"GetIetmStockDuration",
+        "description":"Get the time it takes to add a new item to stock"
       },{
         "args":[{
             "type":"int"
@@ -18820,9 +19481,9 @@ Initializing script VM...
           },{
             "type":"int"
           }],
-        "returns":"float",
-        "name":"GetItemStockDuration",
-        "description":"Get the time it takes to add a new item to stock"
+        "returns":"int",
+        "name":"GetItemStockCount",
+        "description":"Get the stock count of the item"
       },{
         "args":[{
             "type":"int"
@@ -18910,6 +19571,13 @@ Initializing script VM...
         "name":"IsGamePaused",
         "description":"Returns whether the game is paused."
       },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"bool",
+        "name":"IsHeroEnabledViaLists",
+        "description":"Is the hero not blacklisted, and is it either whitelisted or the whitelist is empty?"
+      },{
         "args":[],
         "returns":"bool",
         "name":"IsHeroRespawnEnabled",
@@ -18994,6 +19662,34 @@ Initializing script VM...
         "returns":"void",
         "name":"RemoveFakeClient",
         "description":"Removes a fake client"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveHeroFromBlacklist",
+        "description":"Remove the hero from the hero blacklist if present"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveHeroFromWhitelist",
+        "description":"Remove the hero from the hero whitelist if present"
+      },{
+        "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"RemoveHeroIDFromBlacklist",
+        "description":"Remove the hero ID from the hero blacklist if present"
+      },{
+        "args":[{
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"RemoveHeroIDFromWhitelist",
+        "description":"Remove the hero ID from the hero whitelist if present"
       },{
         "args":[{
             "type":"string"
@@ -19259,6 +19955,13 @@ Initializing script VM...
             "type":"bool"
           }],
         "returns":"void",
+        "name":"SetHideBlacklistedHeroes",
+        "description":"Should blacklisted heroes be hidden, or just dimmed, in hero picking?"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "returns":"void",
         "name":"SetHideKillMessageHeaders",
         "description":"Sets whether the multikill, streak, and first-blood banners appear at the top of the screen."
       },{
@@ -19318,6 +20021,15 @@ Initializing script VM...
         "returns":"void",
         "name":"SetPreGameTime",
         "description":"Sets the amount of time players have between picking their hero and game start."
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"float"
+          }],
+        "returns":"void",
+        "name":"SetRiverPaint",
+        "description":"Paints the river for a duration"
       },{
         "args":[{
             "type":"float"
@@ -19423,6 +20135,11 @@ Initializing script VM...
         "returns":"void",
         "name":"SetWhiteListEnabled",
         "description":"Item whitelist functionality enable/disable"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"ShouldHideBlacklistedHeroes",
+        "description":"Are blacklisted heroes hidden, or just dimmed, in hero picking?"
       },{
         "args":[],
         "returns":"void",
@@ -20186,6 +20903,19 @@ Initializing script VM...
       }],
     "kind":"class",
     "name":"CDOTA_Ability_Nian_Roar",
+    "extend":"CDOTABaseAbility"
+  },{
+    "members":[{
+        "args":[{
+            "name":"nDoubles",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetNumDoubles",
+        "description":"Sets the number of doubles to spawn."
+      }],
+    "kind":"class",
+    "name":"CDOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
     "extend":"CDOTABaseAbility"
   },{
     "members":[{
@@ -21090,6 +21820,11 @@ Initializing script VM...
       },{
         "args":[],
         "returns":"bool",
+        "name":"IsBossCreature",
+        "description":"Is this unit a Boss Creature? (used by custom games)"
+      },{
+        "args":[],
+        "returns":"bool",
         "name":"IsBuilding",
         "description":"Is this unit a building?"
       },{
@@ -21663,6 +22398,14 @@ Initializing script VM...
         "returns":"void",
         "name":"RemoveAllModifiers",
         "description":"(int targets [0=all, 1=enemy, 2=ally], bool bNow, bool bPermanent, bool bDeath)"
+      },{
+        "args":[{
+            "name":"pszScriptName",
+            "type":"string"
+          }],
+        "returns":"void",
+        "name":"RemoveAllModifiersOfName",
+        "description":"Removes all copies of a modifier."
       },{
         "args":[{
             "name":"nActivity",
@@ -24068,6 +24811,11 @@ Initializing script VM...
         "returns":"int",
         "name":"GetAuraSearchType",
         "description":"Return the unit classifications this aura applies its buff to."
+      },{
+        "args":[],
+        "returns":"float",
+        "name":"GetCritDamage",
+        "description":"A Modifier that listens to MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE has to have a GetCritDamage implementation so we can know when to evaluate it. Value should be in 'times the original value format' e.g: 1.5 not 150"
       },{
         "args":[],
         "returns":"int",
@@ -29252,6 +30000,10 @@ Initializing script VM...
     "name":"rr_QueryBestResponse",
     "description":"Params: (entity, query) : tests 'query' against entity's response system and returns the best response found (or null if none found)."
   },{
+    "value":58,
+    "kind":"constant",
+    "name":""
+  },{
     "enum":"AbilityLearnResult_t",
     "value":2,
     "kind":"constant",
@@ -29297,7 +30049,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
+<<<<<<< Updated upstream
     "value":1754,
+=======
+    "value":1777,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -29853,6 +30609,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1759,
+    "kind":"constant",
+    "name":"ACT_DOTA_ARCANA_VOTE"
+  },{
+>>>>>>> Stashed changes
     "value":1682,
     "kind":"constant",
     "name":"ACT_DOTA_ARCTIC_BURN_END"
@@ -29945,6 +30708,25 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1765,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1788,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST2_STATUE"
+  },{
+    "value":1764,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
+  },{
+    "value":1772,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST4_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1510,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_ABILITY_1"
@@ -30057,7 +30839,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
+<<<<<<< Updated upstream
     "value":1757,
+=======
+    "value":1780,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -30101,6 +30887,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1587,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_SUN_STRIKE"
@@ -30201,7 +30994,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_IDLE"
   },{
+<<<<<<< Updated upstream
     "value":1762,
+=======
+    "value":1755,
+    "kind":"constant",
+    "name":"ACT_DOTA_CUSTOM_TOWER_IDLE_RARE"
+  },{
+    "value":1756,
+    "kind":"constant",
+    "name":"ACT_DOTA_CUSTOM_TOWER_TAUNT"
+  },{
+    "value":1785,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -30233,7 +31038,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
+<<<<<<< Updated upstream
     "value":1753,
+=======
+    "value":1776,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -30265,6 +31074,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1773,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1685,
     "kind":"constant",
     "name":"ACT_DOTA_FLEE"
@@ -30357,7 +31173,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
+<<<<<<< Updated upstream
     "value":1763,
+=======
+    "value":1771,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
+  },{
+    "value":1786,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -30569,7 +31393,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
+<<<<<<< Updated upstream
     "value":1759,
+=======
+    "value":1761,
+    "kind":"constant",
+    "name":"ACT_DOTA_PUNCH"
+  },{
+    "value":1782,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -30609,7 +31441,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
+<<<<<<< Updated upstream
     "value":1755,
+=======
+    "value":1778,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -30621,7 +31457,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
+<<<<<<< Updated upstream
     "value":1756,
+=======
+    "value":1779,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -30641,10 +31481,21 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
+<<<<<<< Updated upstream
     "value":1761,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
+=======
+    "value":1784,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_ALT"
+  },{
+    "value":1770,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1568,
     "kind":"constant",
     "name":"ACT_DOTA_SAND_KING_BURROW_IN"
@@ -30714,6 +31565,13 @@ Initializing script VM...
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
     "value":1760,
+<<<<<<< Updated upstream
+=======
+    "kind":"constant",
+    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
+  },{
+    "value":1783,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -30725,6 +31583,17 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1769,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE_SEQUENCE"
+  },{
+    "value":1774,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1684,
     "kind":"constant",
     "name":"ACT_DOTA_SWIM"
@@ -30745,6 +31614,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1768,
+    "kind":"constant",
+    "name":"ACT_DOTA_TAUNT_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1595,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT"
@@ -30773,10 +31649,28 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_END_REACT"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1775,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_END_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1753,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_START"
+  },{
+    "value":1766,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1537,
     "kind":"constant",
     "name":"ACT_DOTA_THIRST"
@@ -30796,6 +31690,10 @@ Initializing script VM...
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
+  },{
+    "value":1787,
+    "kind":"constant",
+    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -30833,6 +31731,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1767,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
+  },{
+>>>>>>> Stashed changes
     "value":1689,
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE"
@@ -34489,23 +35394,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN"
   },{
-    "value":39,
+    "value":40,
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR"
   },{
-    "value":42,
+    "value":43,
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT"
   },{
-    "value":40,
+    "value":41,
     "kind":"constant",
     "name":"AE_CL_CLOTH_GROUND_OFFSET"
   },{
-    "value":41,
+    "value":42,
     "kind":"constant",
     "name":"AE_CL_CLOTH_STIFFEN"
   },{
-    "value":43,
+    "value":44,
     "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP"
   },{
@@ -34521,19 +35426,19 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP"
   },{
-    "value":47,
+    "value":48,
     "kind":"constant",
     "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT"
   },{
-    "value":45,
+    "value":46,
     "kind":"constant",
     "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT"
   },{
-    "value":48,
+    "value":49,
     "kind":"constant",
     "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT"
   },{
-    "value":46,
+    "value":47,
     "kind":"constant",
     "name":"AE_CL_DOTA_STOP_STATUS_EFFECT"
   },{
@@ -34581,7 +35486,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND_POSITION"
   },{
-    "value":33,
+    "value":34,
     "kind":"constant",
     "name":"AE_CL_SPEECH"
   },{
@@ -34597,39 +35502,46 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG"
   },{
-    "value":53,
+    "value":54,
     "kind":"constant",
     "name":"AE_DOTA_CREATE_CLINKZ_ATTACK"
   },{
-    "value":55,
+    "value":56,
     "kind":"constant",
     "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES"
   },{
-    "value":50,
+    "value":51,
     "kind":"constant",
     "name":"AE_DOTA_PET_ITEM_DROP"
   },{
-    "value":49,
+    "value":50,
     "kind":"constant",
     "name":"AE_DOTA_PET_ITEM_PICKUP"
   },{
-    "value":54,
+    "value":55,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB"
   },{
-    "value":52,
+    "value":53,
     "kind":"constant",
     "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL"
   },{
-    "value":51,
+    "value":52,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":57,
+    "kind":"constant",
+    "name":"AE_DOTA_SWITCH_ATTACK_COMBO"
+  },{
+>>>>>>> Stashed changes
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
   },{
-    "value":34,
+    "value":35,
     "kind":"constant",
     "name":"AE_FIRE_INPUT"
   },{
@@ -34637,23 +35549,23 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_FOOTSTEP"
   },{
-    "value":44,
+    "value":45,
     "kind":"constant",
     "name":"AE_HAPTIC_PULSE"
   },{
-    "value":36,
+    "value":37,
     "kind":"constant",
     "name":"AE_IK_ALLOW_PLANE_TILT_NORMAL_UPDATES"
   },{
-    "value":38,
+    "value":39,
     "kind":"constant",
     "name":"AE_IK_SET_CHAIN_BLEND_AMOUNT"
   },{
-    "value":35,
+    "value":36,
     "kind":"constant",
     "name":"AE_IK_SET_LOCK_ROTATION_ALPHA"
   },{
-    "value":37,
+    "value":38,
     "kind":"constant",
     "name":"AE_IK_SET_MASTER_BLEND_AMOUNT"
   },{
@@ -34661,10 +35573,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_MUZZLEFLASH"
   },{
+<<<<<<< Updated upstream
     "value":16,
     "kind":"constant",
     "name":"AE_NPC_MUZZLEFLASH"
   },{
+=======
+>>>>>>> Stashed changes
     "value":25,
     "kind":"constant",
     "name":"AE_RAGDOLL"
@@ -34683,12 +35598,19 @@ Initializing script VM...
   },{
     "value":17,
     "kind":"constant",
-    "name":"AE_SV_DUSTTRAIL"
+    "name":"AE_SV_CREATE_PARTICLE_EFFECT_CFG"
   },{
     "value":4,
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":17,
+    "kind":"constant",
+    "name":"AE_SV_STOP_PARTICLE_EFFECT"
+  },{
+>>>>>>> Stashed changes
     "value":32,
     "kind":"constant",
     "name":"AE_WPN_PLAYWPNSOUND"
@@ -34697,7 +35619,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_WPN_PRIMARYATTACK"
   },{
+<<<<<<< Updated upstream
     "value":5,
+=======
+    "value":33,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"BURST"
   },{
@@ -35362,7 +36288,7 @@ Initializing script VM...
     "name":"DOTA_HEROPICK_STATE_CM_SELECT9"
   },{
     "enum":"DOTA_HeroPickState",
-    "value":61,
+    "value":62,
     "kind":"constant",
     "name":"DOTA_HEROPICK_STATE_COUNT"
   },{
@@ -35395,6 +36321,11 @@ Initializing script VM...
     "value":4,
     "kind":"constant",
     "name":"DOTA_HEROPICK_STATE_RD_SELECT_UNUSED"
+  },{
+    "enum":"DOTA_HeroPickState",
+    "value":61,
+    "kind":"constant",
+    "name":"DOTA_HEROPICK_STATE_SCENARIO"
   },{
     "enum":"DOTA_HeroPickState",
     "value":2,
@@ -35562,7 +36493,11 @@ Initializing script VM...
     "enum":"DOTA_RUNES",
     "value":7,
     "kind":"constant",
+<<<<<<< Updated upstream
     "name":"DOTA_RUNE_XP"
+=======
+    "name":"DOTA_RUNE_WATER"
+>>>>>>> Stashed changes
   },{
     "enum":"DOTA_SHOP_TYPE",
     "value":6,
@@ -36377,7 +37312,11 @@ Initializing script VM...
     "name":"MODIFIER_FUNCTION_INVALID"
   },{
     "enum":"modifierfunction",
+<<<<<<< Updated upstream
     "value":232,
+=======
+    "value":248,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST"
   },{
@@ -36646,7 +37585,17 @@ Initializing script VM...
     "description":"GetModifierPercentageCooldownOngoing"
   },{
     "enum":"modifierfunction",
+<<<<<<< Updated upstream
     "value":31,
+=======
+    "value":247,
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
+    "description":"GetModifierPercentageCooldownStacking"
+  },{
+    "enum":"modifierfunction",
+    "value":33,
+>>>>>>> Stashed changes
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_COOLDOWN_REDUCTION_CONSTANT",
     "description":"GetModifierCooldownReduction_Constant"
@@ -38065,6 +39014,13 @@ Initializing script VM...
     "kind":"constant",
     "name":"UF_SUCCESS"
   },{
+<<<<<<< Updated upstream
+=======
+    "value":1781,
+    "kind":"constant",
+    "name":"radiant_melee_mars_shieldbash"
+  },{
+>>>>>>> Stashed changes
     "value":1758,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
@@ -38242,9 +39198,9 @@ Initializing script VM...
           },{
             "type":"int"
           }],
-        "returns":"int",
-        "name":"GetItemStockCount",
-        "description":"Get the stock count of the item"
+        "returns":"float",
+        "name":"GetIetmStockDuration",
+        "description":"Get the time it takes to add a new item to stock"
       },{
         "args":[{
             "type":"int"
@@ -38253,9 +39209,9 @@ Initializing script VM...
           },{
             "type":"int"
           }],
-        "returns":"float",
-        "name":"GetItemStockDuration",
-        "description":"Get the time it takes to add a new item to stock"
+        "returns":"int",
+        "name":"GetItemStockCount",
+        "description":"Get the stock count of the item"
       },{
         "args":[{
             "type":"int"
@@ -38277,6 +39233,18 @@ Initializing script VM...
         "returns":"bool",
         "name":"IsCheatMode",
         "description":"Are cheats enabled on the server"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "returns":"bool",
+        "name":"IsHeroEnabledViaLists",
+        "description":"Is the hero not blacklisted, and is it either whitelisted or the whitelist is empty?"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"ShouldHideBlacklistedHeroes",
+        "description":"Are blacklisted heroes hidden, or just dimmed, in hero picking?"
       },{
         "args":[],
         "returns":"int",
@@ -39742,15 +40710,17 @@ Initializing script VM...
         "args":[],
         "returns":"int",
         "name":"GetBehaviorInt",
-        "description":"Get ability behavior flags as an int for compatability."
+        "description":"Get ability behavior flags as an int for compatibility."
       },{
         "args":[],
         "returns":"handle",
-        "name":"GetCaster"
+        "name":"GetCaster",
+        "description":"Get the owner of this ability."
       },{
         "args":[],
         "returns":"int",
-        "name":"GetCurrentAbilityCharges"
+        "name":"GetCurrentAbilityCharges",
+        "description":"The number of charges remaining on this ability."
       },{
         "args":[],
         "returns":"int",
@@ -39916,6 +40886,30 @@ Initializing script VM...
     "extend":"C_DOTABaseAbility"
   },{
     "members":[{
+<<<<<<< Updated upstream
+=======
+        "args":[{
+            "name":"nDoubles",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetNumDoubles",
+        "description":"Sets the number of doubles to spawn."
+      }],
+    "kind":"class",
+    "name":"C_DOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
+    "extend":"C_DOTABaseAbility"
+  },{
+    "members":[{
+        "args":[{
+            "name":"pAbilityName",
+            "type":"string"
+          }],
+        "returns":"handle",
+        "name":"FindAbilityByName",
+        "description":"Retrieve an ability by name from the unit."
+      },{
+>>>>>>> Stashed changes
         "args":[],
         "returns":"int",
         "name":"GetAbilityCount"
@@ -40655,6 +41649,11 @@ Initializing script VM...
         "returns":"int",
         "name":"GetAuraSearchType",
         "description":"Return the unit classifications this aura applies its buff to."
+      },{
+        "args":[],
+        "returns":"float",
+        "name":"GetCritDamage",
+        "description":"A Modifier that listens to MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE has to have a GetCritDamage implementation so we can know when to evaluate it. Value should be in 'times the original value format' e.g: 1.5 not 150"
       },{
         "args":[],
         "returns":"int",
