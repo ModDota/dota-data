@@ -864,8 +864,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       0: ['from_angle'],
       1: ['to_angle'],
-    }
-  }
+    },
+  },
 };
 
 export const extraDeclarations = (() => {
