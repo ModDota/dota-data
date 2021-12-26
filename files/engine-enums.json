@@ -1078,6 +1078,10 @@
         "shortName": "DOTA_ATTACK_EVENT_BASH"
       },
       {
+        "name": "ACT_DOTA_ATTACK_SPECIAL",
+        "shortName": "DOTA_ATTACK_SPECIAL"
+      },
+      {
         "name": "ACT_DOTA_AW_MAGNETIC_FIELD",
         "shortName": "DOTA_AW_MAGNETIC_FIELD"
       },
@@ -1984,6 +1988,10 @@
       {
         "name": "ACT_DOTA_TRANSITION",
         "shortName": "DOTA_TRANSITION"
+      },
+      {
+        "name": "ACT_DOTA_TRANSITION_IDLE",
+        "shortName": "DOTA_TRANSITION_IDLE"
       },
       {
         "name": "ACT_DOTA_TRICKS_END",

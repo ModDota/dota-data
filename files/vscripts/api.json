@@ -757,7 +757,7 @@
       {
         "kind": "function",
         "name": "GetHealth",
-        "available": "server",
+        "available": "both",
         "description": "Get the health of this entity.",
         "returns": [
           "int"
@@ -5832,6 +5832,12 @@
             "types": [
               "float"
             ]
+          },
+          {
+            "name": "timeDisparityTolerance",
+            "types": [
+              "float"
+            ]
           }
         ]
       },
@@ -5859,6 +5865,15 @@
         "available": "server",
         "returns": [
           "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "CanBeSeenByAnyOpposingTeam",
+        "available": "server",
+        "returns": [
+          "bool"
         ],
         "args": []
       },
@@ -7448,6 +7463,53 @@
       },
       {
         "kind": "function",
+        "name": "HealWithParams",
+        "available": "server",
+        "description": "Heal this unit (with more parameters).",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "types": [
+              "float"
+            ]
+          },
+          {
+            "name": "inflictor",
+            "types": [
+              "handle"
+            ]
+          },
+          {
+            "name": "lifesteal",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "amplify",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "source",
+            "types": [
+              "handle"
+            ]
+          },
+          {
+            "name": "spellLifesteal",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "Hold",
         "available": "server",
         "description": "Hold position.",
@@ -8139,6 +8201,16 @@
         "kind": "function",
         "name": "IsUntargetable",
         "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsZombie",
+        "available": "server",
+        "description": "Is this entity an Undying Zombie?",
         "returns": [
           "bool"
         ],
@@ -9491,6 +9563,22 @@
       },
       {
         "kind": "function",
+        "name": "SetFollowRange",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "followRange",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetForceAttackTarget",
         "available": "server",
         "returns": [
@@ -10382,6 +10470,23 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "SetAggroOnOwnerOnDamage",
+        "available": "server",
+        "description": "Does this creature aggro on the owner of the attacking unit when taking damage?",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "aggro",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -12372,6 +12477,22 @@
       },
       {
         "kind": "function",
+        "name": "SetOverheadEffectOffset",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "offset",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetStackCount",
         "available": "both",
         "returns": [
@@ -13328,6 +13449,58 @@
             "types": [
               "table",
               "nil"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDOTA_Item_EmptyBottle",
+    "clientName": "C_DOTA_Item_EmptyBottle",
+    "extend": "CDOTA_Item",
+    "members": [
+      {
+        "kind": "function",
+        "name": "ClearStoredRune",
+        "available": "server",
+        "description": "Clear the stored rune.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "OnRune",
+        "available": "server",
+        "description": "Place a rune in the bottle.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "runeType",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetStoredRune",
+        "available": "server",
+        "description": "Set the stored rune.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "runeType",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -17782,7 +17955,7 @@
       {
         "kind": "function",
         "name": "OnHorizontalMotionInterrupted",
-        "available": "both",
+        "available": "server",
         "description": "Called when the motion gets interrupted.",
         "returns": [
           "nil"
@@ -17809,7 +17982,7 @@
       {
         "kind": "function",
         "name": "UpdateHorizontalMotion",
-        "available": "both",
+        "available": "server",
         "description": "Perform any motion from the given interval on the NPC.",
         "returns": [
           "nil"
@@ -17870,7 +18043,7 @@
       {
         "kind": "function",
         "name": "OnHorizontalMotionInterrupted",
-        "available": "both",
+        "available": "server",
         "description": "Called when the motion gets interrupted.",
         "returns": [
           "nil"
@@ -17880,7 +18053,7 @@
       {
         "kind": "function",
         "name": "OnVerticalMotionInterrupted",
-        "available": "both",
+        "available": "server",
         "description": "Called when the motion gets interrupted.",
         "returns": [
           "nil"
@@ -17907,7 +18080,7 @@
       {
         "kind": "function",
         "name": "UpdateHorizontalMotion",
-        "available": "both",
+        "available": "server",
         "description": "Perform any motion from the given interval on the NPC.",
         "returns": [
           "nil"
@@ -17930,7 +18103,7 @@
       {
         "kind": "function",
         "name": "UpdateVerticalMotion",
-        "available": "both",
+        "available": "server",
         "description": "Perform any motion from the given interval on the NPC.",
         "returns": [
           "nil"
@@ -17981,7 +18154,7 @@
       {
         "kind": "function",
         "name": "OnVerticalMotionInterrupted",
-        "available": "both",
+        "available": "server",
         "description": "Called when the motion gets interrupted.",
         "returns": [
           "nil"
@@ -18008,7 +18181,7 @@
       {
         "kind": "function",
         "name": "UpdateVerticalMotion",
-        "available": "both",
+        "available": "server",
         "description": "Perform any motion from the given interval on the NPC.",
         "returns": [
           "nil"
@@ -18205,6 +18378,12 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          },
+          {
+            "name": "runes",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -18632,6 +18811,23 @@
       },
       {
         "kind": "function",
+        "name": "GetEventGameUpgrades",
+        "available": "server",
+        "description": "(nPlayerID).",
+        "returns": [
+          "handle"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetEventPointsForPlayerID",
         "available": "server",
         "returns": [
@@ -18860,6 +19056,23 @@
           },
           {
             "name": "victimId",
+            "types": [
+              "PlayerID"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetLabyrinthEventGameHeroUnlocks",
+        "available": "server",
+        "description": "(nPlayerID).",
+        "returns": [
+          "handle"
+        ],
+        "args": [
+          {
+            "name": "playerId",
             "types": [
               "PlayerID"
             ]
@@ -19735,6 +19948,12 @@
             "types": [
               "PlayerID"
             ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -19750,6 +19969,12 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -19789,6 +20014,12 @@
             "types": [
               "PlayerID"
             ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -19827,6 +20058,12 @@
             "types": [
               "PlayerID"
             ]
+          },
+          {
+            "name": "count",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -19842,6 +20079,12 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          },
+          {
+            "name": "count",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -19859,6 +20102,12 @@
             "types": [
               "PlayerID"
             ]
+          },
+          {
+            "name": "count",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -19874,6 +20123,12 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -19891,6 +20146,12 @@
             "types": [
               "PlayerID"
             ]
+          },
+          {
+            "name": "creeps",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -19906,6 +20167,12 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          },
+          {
+            "name": "count",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -20177,6 +20444,92 @@
             "name": "chargeIncrementOrDecrement",
             "types": [
               "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RecordEventActionGrant",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "event",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "unActionId",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "unAudit",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "unQuantity",
+            "types": [
+              "uint"
+            ]
+          },
+          {
+            "name": "unAuditData",
+            "types": [
+              "uint"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RecordEventActionGrantForPrimaryEvent",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "actionName",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "unAudit",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "unQuantity",
+            "types": [
+              "uint"
+            ]
+          },
+          {
+            "name": "unAuditData",
+            "types": [
+              "uint"
             ]
           }
         ]
@@ -20791,6 +21144,47 @@
   },
   {
     "kind": "class",
+    "name": "CDOTA_Unit_CustomGameAnnouncerAghanim",
+    "extend": "CDOTA_BaseNPC",
+    "members": [
+      {
+        "kind": "function",
+        "name": "SetAnimation",
+        "available": "server",
+        "description": "Set the animation sequence for this entity.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "animation",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetServerAuthoritative",
+        "available": "server",
+        "description": "Determines whether response criteria is matched on server or client.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "isServerAuthoritative",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
     "name": "CDOTA_Unit_Diretide_Portal",
     "extend": "CDOTA_BaseNPC_Building",
     "members": [
@@ -21175,6 +21569,15 @@
         "kind": "function",
         "name": "GetCastPoint",
         "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetCastPointModifier",
+        "available": "both",
         "returns": [
           "float"
         ],
@@ -23992,6 +24395,23 @@
       },
       {
         "kind": "function",
+        "name": "SetForcedHUDSkin",
+        "available": "server",
+        "description": "Specify a HUD skin that is forced on for this game mode.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "value",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetForceRightClickAttackDisabled",
         "available": "server",
         "description": "Prevent users from using the right click deny setting.",
@@ -24198,6 +24618,57 @@
             "name": "visible",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetInnateMeleeDamageBlockAmount",
+        "available": "server",
+        "description": "Set the amount blocked innately by melee heroes.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetInnateMeleeDamageBlockPercent",
+        "available": "server",
+        "description": "Set the percent chance a melee hero will innately block damage.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "percent",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetInnateMeleeDamageBlockPerLevelAmount",
+        "available": "server",
+        "description": "Set the amount innately blocked by melee heroes gained per level.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "perLevelAmount",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -24511,6 +24982,23 @@
         "args": [
           {
             "name": "enabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetPlayerHeroAvailabilityFiltered",
+        "available": "server",
+        "description": "Bool bFilter.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "filter",
             "types": [
               "bool"
             ]
@@ -25271,6 +25759,29 @@
       },
       {
         "kind": "function",
+        "name": "AddHeroToPlayerAvailability",
+        "available": "server",
+        "description": "Adds hero of given ID to available heroes of player of given ID.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "arg2",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "AddHeroToWhitelist",
         "available": "server",
         "description": "Add the hero to the hero whitelist if it is not already present.",
@@ -25478,6 +25989,23 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ClearPlayerHeroAvailability",
+        "available": "server",
+        "description": "Clears available heroes of player of given ID.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -26028,6 +26556,15 @@
         "name": "IsDaytime",
         "available": "server",
         "description": "Is it day time?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsDev",
+        "available": "both",
         "returns": [
           "bool"
         ],
@@ -26754,6 +27291,23 @@
             "name": "duration",
             "types": [
               "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetEnableAlternateHeroGrids",
+        "available": "server",
+        "description": "Allow alternate hero grids to be used (DOTA+, etc).  True by default.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
             ]
           }
         ]
@@ -30189,12 +30743,13 @@
   {
     "kind": "class",
     "name": "CPointTemplate",
+    "clientName": "CPointTemplate",
     "extend": "CBaseEntity",
     "members": [
       {
         "kind": "function",
         "name": "DeleteCreatedSpawnGroups",
-        "available": "server",
+        "available": "both",
         "description": "Deletes any spawn groups that this point_template has spawned. Note: The point_template will not be deleted by this.",
         "returns": [
           "nil"
@@ -30204,7 +30759,7 @@
       {
         "kind": "function",
         "name": "ForceSpawn",
-        "available": "server",
+        "available": "both",
         "description": "Spawns all of the entities the point_template is pointing at.",
         "returns": [
           "nil"
@@ -30214,7 +30769,7 @@
       {
         "kind": "function",
         "name": "GetSpawnedEntities",
-        "available": "server",
+        "available": "both",
         "description": "Get the list of the most recent spawned entities.",
         "returns": [
           "handle"
@@ -30224,7 +30779,7 @@
       {
         "kind": "function",
         "name": "SetSpawnCallback",
-        "available": "server",
+        "available": "both",
         "description": "Set a callback for when the template spawns entities. The spawned entities will be passed in as an array.",
         "returns": [
           "nil"
@@ -31272,24 +31827,6 @@
       },
       {
         "kind": "function",
-        "name": "AllowFriendlyFire",
-        "available": "server",
-        "returns": [
-          "bool"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "CanBeBlocked",
-        "available": "server",
-        "returns": [
-          "bool"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "GetAmmoType",
         "available": "server",
         "returns": [
@@ -31344,15 +31881,6 @@
       },
       {
         "kind": "function",
-        "name": "GetDamageTaken",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "GetDamageType",
         "available": "server",
         "returns": [
@@ -31371,25 +31899,7 @@
       },
       {
         "kind": "function",
-        "name": "GetMaxDamage",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "GetOriginalDamage",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetRadius",
         "available": "server",
         "returns": [
           "float"
@@ -31402,15 +31912,6 @@
         "available": "server",
         "returns": [
           "Vector"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetStabilityDamage",
-        "available": "server",
-        "returns": [
-          "float"
         ],
         "args": []
       },
@@ -31448,22 +31949,6 @@
       },
       {
         "kind": "function",
-        "name": "SetAllowFriendlyFire",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "allow",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetAmmoType",
         "available": "server",
         "returns": [
@@ -31490,22 +31975,6 @@
             "name": "attacker",
             "types": [
               "handle"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetCanBeBlocked",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "block",
-            "types": [
-              "bool"
             ]
           }
         ]
@@ -31576,22 +32045,6 @@
       },
       {
         "kind": "function",
-        "name": "SetDamageTaken",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damageTaken",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetDamageType",
         "available": "server",
         "returns": [
@@ -31602,22 +32055,6 @@
             "name": "bitsDamageType",
             "types": [
               "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetMaxDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "maxDamage",
-            "types": [
-              "float"
             ]
           }
         ]
@@ -31640,22 +32077,6 @@
       },
       {
         "kind": "function",
-        "name": "SetRadius",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "radius",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetReportedPosition",
         "available": "server",
         "returns": [
@@ -31666,22 +32087,6 @@
             "name": "reportedPosition",
             "types": [
               "Vector"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetStabilityDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "stabilityDamage",
-            "types": [
-              "float"
             ]
           }
         ]
@@ -36013,6 +36418,23 @@
   },
   {
     "kind": "function",
+    "name": "GetUnitKeyValuesByName",
+    "available": "both",
+    "description": "Get unit data by ability name.",
+    "returns": [
+      "table"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "string"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
     "name": "GetWorldMaxX",
     "available": "server",
     "description": "Gets the world's maximum X position.",
@@ -36502,6 +36924,16 @@
   },
   {
     "kind": "function",
+    "name": "Plat_FloatTime",
+    "available": "both",
+    "description": "Get the current float time from the engine.",
+    "returns": [
+      "float"
+    ],
+    "args": []
+  },
+  {
+    "kind": "function",
     "name": "PlayerInstanceFromIndex",
     "available": "both",
     "description": "Get a script instance of a player by index.",
@@ -36832,6 +37264,35 @@
         "name": "tooltip",
         "types": [
           "string"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "QSlerp",
+    "available": "both",
+    "description": "Spherical lerp of angle from->to based on time.",
+    "returns": [
+      "QAngle"
+    ],
+    "args": [
+      {
+        "name": "angle",
+        "types": [
+          "QAngle"
+        ]
+      },
+      {
+        "name": "angle",
+        "types": [
+          "QAngle"
+        ]
+      },
+      {
+        "name": "time",
+        "types": [
+          "float"
         ]
       }
     ]
