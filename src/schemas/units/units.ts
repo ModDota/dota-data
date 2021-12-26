@@ -190,6 +190,14 @@ export const baseUnit = () =>
     })
 
     .field(
+      'AttackRangeActivityModifiers',
+      s
+        .obj('AttackRangeActivityModifiersBlock')
+        .field('attack_normal_range', s.num())
+        .field('attack_long_range', s.num()),
+    )
+
+    .field(
       'Creature',
       s
         .obj('CreatureBlock')
