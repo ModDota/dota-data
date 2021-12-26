@@ -37278,13 +37278,13 @@
     ],
     "args": [
       {
-        "name": "angle",
+        "name": "from_angle",
         "types": [
           "QAngle"
         ]
       },
       {
-        "name": "angle",
+        "name": "to_angle",
         "types": [
           "QAngle"
         ]
