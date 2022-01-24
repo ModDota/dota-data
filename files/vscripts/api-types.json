@@ -1470,6 +1470,24 @@
   },
   {
     "kind": "object",
+    "name": "ModifierAddedEvent",
+    "fields": [
+      {
+        "name": "unit",
+        "types": [
+          "CDOTA_BaseNPC"
+        ]
+      },
+      {
+        "name": "added_buff",
+        "types": [
+          "CDOTA_Buff"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "object",
     "name": "SpawnEntityFromTableOptions",
     "fields": [
       {
