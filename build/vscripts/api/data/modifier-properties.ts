@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { DumpConstant, serverDump } from '../../dump';
 import * as apiTypes from '../types';
 import { binaryBoolean } from './utils';
@@ -9,7 +8,8 @@ type ArgumentType =
   | 'ModifierAbilityEvent'
   | 'ModifierAttackEvent'
   | 'ModifierInstanceEvent'
-  | 'ModifierOverrideAbilitySpecialEvent';
+  | 'ModifierOverrideAbilitySpecialEvent'
+  | 'ModifierAddedEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
@@ -192,7 +192,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnHeroKilled: ['ModifierAttackEvent', ['nil']],
   OnManaGained: ['ModifierUnitEvent', ['nil']],
   OnModelChanged: ['ModifierUnitEvent', ['nil']],
-  OnModifierAdded: [null, ['nil']],
+  OnModifierAdded: ['ModifierAddedEvent', ['nil']],
   OnOrder: ['ModifierUnitEvent', ['nil']],
   OnProjectileDodge: ['ModifierAttackEvent', ['nil']],
   OnRespawn: ['ModifierUnitEvent', ['nil']],

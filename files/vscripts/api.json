@@ -17645,7 +17645,14 @@
         "name": "OnModifierAdded",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAddedEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
