@@ -16006,9 +16006,16 @@
         "name": "GetModifierManacostReduction_Constant",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {

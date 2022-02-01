@@ -93,6 +93,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   GetModifierMagicalResistanceDirectModification: ['ModifierAttackEvent', anyNumber],
   GetModifierMagicDamageOutgoing_Percentage: ['ModifierAttackEvent', anyNumber],
   GetModifierManaBonus: [null, anyNumber],
+  GetModifierManacostReduction_Constant: ['ModifierAbilityEvent', anyNumber],
   GetModifierMaxAttackRange: [null, anyNumber],
   GetModifierMiss_Percentage: [null, anyNumber],
   GetModifierModelChange: [null, ['string']],
