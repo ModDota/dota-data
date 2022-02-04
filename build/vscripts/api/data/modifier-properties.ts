@@ -202,7 +202,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnSpentMana: ['ModifierAbilityEvent', ['nil']],
   OnStateChanged: ['ModifierUnitEvent', ['nil']],
   OnTakeDamage: ['ModifierInstanceEvent', ['nil']],
-  OnTakeDamageKillCredit: ['ModifierInstanceEvent', ['nil']],
+  OnTakeDamageKillCredit: ['ModifierAttackEvent', ['nil']],
   OnTeleported: ['ModifierUnitEvent', ['nil']],
   OnTeleporting: ['ModifierUnitEvent', ['nil']],
   OnTooltip: [null, anyNumber],

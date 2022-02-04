@@ -17832,7 +17832,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierInstanceEvent"
+              "ModifierAttackEvent"
             ]
           }
         ],
