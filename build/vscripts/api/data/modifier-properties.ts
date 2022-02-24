@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { DumpConstant, serverDump } from '../../dump';
 import * as apiTypes from '../types';
 import { binaryBoolean } from './utils';
@@ -9,7 +8,8 @@ type ArgumentType =
   | 'ModifierAbilityEvent'
   | 'ModifierAttackEvent'
   | 'ModifierInstanceEvent'
-  | 'ModifierOverrideAbilitySpecialEvent';
+  | 'ModifierOverrideAbilitySpecialEvent'
+  | 'ModifierAddedEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
@@ -93,6 +93,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   GetModifierMagicalResistanceDirectModification: ['ModifierAttackEvent', anyNumber],
   GetModifierMagicDamageOutgoing_Percentage: ['ModifierAttackEvent', anyNumber],
   GetModifierManaBonus: [null, anyNumber],
+  GetModifierManacostReduction_Constant: ['ModifierAbilityEvent', anyNumber],
   GetModifierMaxAttackRange: [null, anyNumber],
   GetModifierMiss_Percentage: [null, anyNumber],
   GetModifierModelChange: [null, ['string']],
@@ -192,7 +193,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnHeroKilled: ['ModifierAttackEvent', ['nil']],
   OnManaGained: ['ModifierUnitEvent', ['nil']],
   OnModelChanged: ['ModifierUnitEvent', ['nil']],
-  OnModifierAdded: [null, ['nil']],
+  OnModifierAdded: ['ModifierAddedEvent', ['nil']],
   OnOrder: ['ModifierUnitEvent', ['nil']],
   OnProjectileDodge: ['ModifierAttackEvent', ['nil']],
   OnRespawn: ['ModifierUnitEvent', ['nil']],
@@ -201,7 +202,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnSpentMana: ['ModifierAbilityEvent', ['nil']],
   OnStateChanged: ['ModifierUnitEvent', ['nil']],
   OnTakeDamage: ['ModifierInstanceEvent', ['nil']],
-  OnTakeDamageKillCredit: ['ModifierInstanceEvent', ['nil']],
+  OnTakeDamageKillCredit: ['ModifierAttackEvent', ['nil']],
   OnTeleported: ['ModifierUnitEvent', ['nil']],
   OnTeleporting: ['ModifierUnitEvent', ['nil']],
   OnTooltip: [null, anyNumber],

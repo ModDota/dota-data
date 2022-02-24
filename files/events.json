@@ -4455,17 +4455,6 @@
     ]
   },
   {
-    "name": "account_trophies_changed",
-    "sourceFile": "game",
-    "local": false,
-    "fields": [
-      {
-        "name": "account_id",
-        "type": "uint64"
-      }
-    ]
-  },
-  {
     "name": "account_all_hero_challenge_changed",
     "sourceFile": "game",
     "local": false,
@@ -5003,11 +4992,19 @@
         "type": "int"
       },
       {
+        "name": "int_value2",
+        "type": "int"
+      },
+      {
         "name": "ability_name",
         "type": "string"
       },
       {
         "name": "locstring_value",
+        "type": "string"
+      },
+      {
+        "name": "locstring_value2",
         "type": "string"
       },
       {

@@ -496,6 +496,15 @@ apiTypesDeclarations.push({
 
 apiTypesDeclarations.push({
   kind: 'object',
+  name: 'ModifierAddedEvent',
+  fields: [
+    { name: 'unit', types: ['CDOTA_BaseNPC'] },
+    { name: 'added_buff', types: ['CDOTA_Buff'] },
+  ],
+});
+
+apiTypesDeclarations.push({
+  kind: 'object',
   name: 'SpawnEntityFromTableOptions',
   fields: [
     { name: 'origin', types: ['string', 'Vector', 'nil'] },

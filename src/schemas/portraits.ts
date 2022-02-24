@@ -42,16 +42,20 @@ const portrait = s
   // TODO: Used only in models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl
   .field('SummonCount', s.int())
   .field('SummonPosition', s.vector())
+  .field('SummonScale', s.num())
   .field('SummonAngles', s.vector())
 
   .field('PortraitAnimationCycle', s.num())
   .field('PortraitAnimationRate', s.num())
+  .field('PortraitFOV', s.num())
   .field('PortraitHideHero', s.binaryBoolean())
   .field('PortraitHideParticles', s.binaryBoolean())
   .field('PortraitHideDropShadow', s.binaryBoolean())
   .field('PortraitDesaturateParticles', s.binaryBoolean())
   .field('PortraitDesaturateHero', s.binaryBoolean())
-  .field('PortraitPlayIdleExpression', s.binaryBoolean());
+  .field('PortraitLookAt', s.vector())
+  .field('PortraitPlayIdleExpression', s.binaryBoolean())
+  .field('PortraitPosition', s.vector());
 
 export const portraits = s
   .root()

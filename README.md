@@ -8,6 +8,8 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 
 ### For contributors:
 
+#### If you want to update from an API dump
+
 1. Check out this repository
 2. Create a new DOTA addon through the addon tool, call it `dumper` for example
 3. Copy `.lua` scripts from `dumper` directory of this repository to
@@ -19,6 +21,14 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 8. Run `yarn install` then `yarn build` in the root of the repository
 9. Commit changes
 10. Create a pull request
+
+#### If you are updating the API manually
+
+1. Edit the corresponding `.ts` files (i.e. `modifier-properties.ts`)
+2. Run `yarn install` then `yarn build` in the root of the repository
+3. You should now have corresponding `.json` files re-generated (i.e. `api.json`)
+4. Commit changes
+5. Create a pull request
 
 ### For maintainers:
 

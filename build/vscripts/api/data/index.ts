@@ -860,6 +860,12 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       1: ['cooldown'],
     },
   },
+  '_G.QSlerp': {
+    args: {
+      0: ['from_angle'],
+      1: ['to_angle'],
+    },
+  },
 };
 
 export const extraDeclarations = (() => {

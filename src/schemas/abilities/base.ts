@@ -24,6 +24,8 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('HasShardUpgrade', s.binaryBoolean())
     .field('IsShardUpgrade', s.binaryBoolean())
     .field('IsGrantedByShard', s.binaryBoolean())
+    .field('AbilityDraftScepterAbility', s.str().pattern(resourcePatterns.ability))
+    .field('AbilityDraftShardAbility', s.str().pattern(resourcePatterns.ability))
     .field('AbilityDraftUltScepterAbility', s.str().pattern(resourcePatterns.ability))
     .field('AbilityDraftUltScepterPreAbility', s.str().pattern(resourcePatterns.ability))
     .field('AbilityDraftUltShardAbility', s.str().pattern(resourcePatterns.ability))
