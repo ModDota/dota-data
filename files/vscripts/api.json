@@ -1013,6 +1013,16 @@
       },
       {
         "kind": "function",
+        "name": "IsDOTANPC",
+        "available": "server",
+        "description": "Is this entity a Dota NPC?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsInstance",
         "available": "both",
         "returns": [
@@ -2261,16 +2271,6 @@
       },
       {
         "kind": "function",
-        "name": "GetUserID",
-        "available": "server",
-        "description": "Returns the player's user id.",
-        "returns": [
-          "int"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "GetWeaponCount",
         "available": "server",
         "description": "Gets the number of weapons currently equipped.",
@@ -2402,7 +2402,7 @@
         "available": "both",
         "description": "Returns the active sequence.",
         "returns": [
-          "unknown"
+          "int"
         ],
         "args": []
       },
@@ -2422,7 +2422,7 @@
         "available": "both",
         "description": "Returns a sequence id given a name.",
         "returns": [
-          "unknown"
+          "int"
         ],
         "args": [
           {
@@ -4824,6 +4824,12 @@
             "name": "target",
             "types": [
               "handle"
+            ]
+          },
+          {
+            "name": "pseudoCastRange",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -9431,9 +9437,9 @@
         ],
         "args": [
           {
-            "name": "index",
+            "name": "playerId",
             "types": [
-              "int"
+              "PlayerID"
             ]
           },
           {
@@ -15396,6 +15402,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierCastRangeBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierCastRangeBonusStacking",
         "available": "both",
         "abstract": true,
@@ -15708,6 +15724,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierHPRegen_CanBeNegative",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16170,16 +16196,6 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierMoveSpeedBonus_Percentage_Unique_2",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "float"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "GetModifierMoveSpeedBonus_Special_Boots",
         "available": "both",
         "abstract": true,
@@ -16522,6 +16538,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPhysicalArmorBonusPost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPhysicalArmorBonusUnique",
         "available": "both",
         "abstract": true,
@@ -16724,6 +16750,16 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierProcAttack_ConvertPhysicalToMagical",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17295,6 +17331,16 @@
       },
       {
         "kind": "function",
+        "name": "OnAssist",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnAttack",
         "available": "both",
         "abstract": true,
@@ -17609,6 +17655,26 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnKill",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnMagicDamageCalculated",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -36155,7 +36221,14 @@
     "returns": [
       "DOTATeam_t"
     ],
-    "args": []
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "int"
+        ]
+      }
+    ]
   },
   {
     "kind": "function",

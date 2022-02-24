@@ -5743,10 +5743,6 @@
         "shortName": "EMBEDDED"
       },
       {
-        "name": "FIELD_FLOAT",
-        "shortName": "FLOAT"
-      },
-      {
         "name": "FIELD_FLOAT32",
         "shortName": "FLOAT32"
       },
@@ -5805,10 +5801,6 @@
       {
         "name": "FIELD_INT64",
         "shortName": "INT64"
-      },
-      {
-        "name": "FIELD_INTEGER",
-        "shortName": "INTEGER"
       },
       {
         "name": "FIELD_INTERVAL",
@@ -6095,6 +6087,10 @@
   {
     "name": "DamageType",
     "members": [
+      {
+        "name": "DAMAGE_TYPE_ABILITY_DEFINED",
+        "shortName": "ABILITY_DEFINED"
+      },
       {
         "name": "DAMAGE_TYPE_ALL",
         "shortName": "ALL"
