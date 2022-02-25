@@ -6544,5 +6544,18 @@
         "shortName": "RESPECT_OBSTRUCTIONS"
       }
     ]
+  },
+  {
+    "name": "SpecialValueFieldType",
+    "members": [
+      {
+        "name": "FIELD_INTEGER",
+        "shortName": "INTEGER"
+      },
+      {
+        "name": "FIELD_FLOAT",
+        "shortName": "FLOAT"
+      }
+    ]
   }
 ]

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { getDotaFile, outputFile, outputJson } from '../util';
-import { extracted } from './data';
+import { extracted, additionalEnums } from './data';
 import { EngineEnum, EngineEnumMember, types } from './types';
 
 const identity = <T>(value: T) => value;
@@ -45,6 +45,16 @@ export async function generateEngineEnums() {
       };
     },
   );
+
+  for (const additionalEnum of additionalEnums) {
+    if (enums.find((e) => e.name === additionalEnum.name) !== undefined) {
+      throw new Error(
+        `Additional supplied enum ${additionalEnum.name} overrides already existing engine enum.`,
+      );
+    } else {
+      enums.push(additionalEnum);
+    }
+  }
 
   await Promise.all([outputJson('engine-enums', enums), outputFile('engine-enums.d.ts', types)]);
 }

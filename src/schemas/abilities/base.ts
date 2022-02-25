@@ -73,7 +73,7 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
       s.map(
         s
           .obj('AbilitySpecial')
-          .field('var_type', s.enums('FieldType'), { require: true })
+          .field('var_type', s.enums('SpecialValueFieldType'), { require: true })
           .field('ad_linked_ability', s.str().pattern(resourcePatterns.ability))
           // TODO: arrayLike string
           .field('linked_ad_abilities', s.str())
@@ -85,6 +85,7 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
           .rest(s.arrayLike()),
       ),
     )
+    .field('AbilityValues', s.map(s.arrayLike()))
 
     .field('precache', createPrecacheBlock());
 
