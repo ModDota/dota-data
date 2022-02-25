@@ -27,8 +27,8 @@ describe('integration', () => {
       'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum',
       // Item removed and cost made an empty string
       'item_recipe_hood_of_defiance.ItemCost should be an integer',
-      // TODO: Is Nf valid for floats or it's a typo?
-      'item_armlet.AbilitySpecial.10.toggle_cooldown[0] should be a number',
+      // TODO: Is 0.036f valid for floats or it's a typo?
+      'item_armlet.AbilityValues.toggle_cooldown[0] should be a number',
       // TODO they used .mdl here, should we allow it?
       'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/',
       // TODO: Should flag enums allow empty string?

@@ -1,4 +1,4 @@
-import { EngineEnumMember } from './types';
+import { EngineEnum, EngineEnumMember } from './types';
 
 export interface ExtractionRule {
   name?: string;
@@ -7,6 +7,16 @@ export interface ExtractionRule {
   map?(x: string): string;
   transform?(x: EngineEnumMember[]): EngineEnumMember[];
 }
+
+export const additionalEnums: EngineEnum[] = [
+  {
+    name: 'SpecialValueFieldType',
+    members: [
+      { name: 'FIELD_INTEGER', shortName: 'INTEGER' },
+      { name: 'FIELD_FLOAT', shortName: 'FLOAT' },
+    ],
+  },
+];
 
 export const extracted: ExtractionRule[] = [
   { prefix: 'DOTA_PSEUDO_RANDOM_' },
