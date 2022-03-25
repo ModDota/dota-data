@@ -2644,7 +2644,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           },
           {
@@ -7238,7 +7238,7 @@
         "available": "server",
         "description": "Returns the player that owns this unit.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -19463,7 +19463,7 @@
         "available": "server",
         "description": "Returns player entity for a player with specified id. Player entity represents a single connection, so a different entity might be returned. When player is disconnected nil would be returned.",
         "returns": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ],
         "args": [
@@ -23066,7 +23066,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           },
           {
@@ -28208,7 +28208,7 @@
           {
             "name": "hero",
             "types": [
-              "handle"
+              "CDOTA_BaseNPC_Hero"
             ]
           }
         ]
@@ -28219,7 +28219,7 @@
         "available": "server",
         "description": "Get the player's hero.",
         "returns": [
-          "handle"
+          "CDOTA_BaseNPC_Hero"
         ],
         "args": []
       },
@@ -28229,7 +28229,7 @@
         "available": "server",
         "description": "Get the player's official PlayerID; notably is -1 when the player isn't yet on a team.",
         "returns": [
-          "int"
+          "PlayerID"
         ],
         "args": []
       },
@@ -28272,7 +28272,7 @@
           {
             "name": "entity",
             "types": [
-              "handle"
+              "CDOTA_BaseNPC"
             ]
           }
         ]
@@ -28323,7 +28323,7 @@
         "available": "server",
         "description": "Spawn a courier for this player at the given position.",
         "returns": [
-          "handle"
+          "CDOTA_Unit_Courier"
         ],
         "args": [
           {
@@ -29559,7 +29559,7 @@
         "available": "server",
         "description": "Get the local player controller (backcompat).",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -30530,7 +30530,7 @@
         "available": "both",
         "description": "Returns the player who issued this console command.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -30540,7 +30540,7 @@
         "available": "both",
         "description": "Returns the DOTA player who issued this console command.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -31430,7 +31430,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           }
         ]
@@ -33797,7 +33797,7 @@
       {
         "name": "player",
         "types": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ]
       }
     ]
@@ -33925,14 +33925,14 @@
       {
         "name": "owner",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       },
       {
         "name": "purchaser",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       }
@@ -34239,7 +34239,7 @@
       },
       {
         "name": "entityOwner",
-        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.",
+        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayerController makes hero use owned wearables.",
         "types": [
           "CBaseEntity",
           "nil"
@@ -34289,7 +34289,7 @@
       },
       {
         "name": "entityOwner",
-        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.",
+        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayerController makes hero use owned wearables.",
         "types": [
           "CBaseEntity",
           "nil"
@@ -34430,7 +34430,7 @@
       {
         "name": "playerOwner",
         "types": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ]
       },
       {
@@ -36307,7 +36307,7 @@
     "available": "both",
     "description": "Get the local player on a listen server.",
     "returns": [
-      "CDOTAPlayer"
+      "CDOTAPlayerController"
     ],
     "args": []
   },
@@ -37159,7 +37159,7 @@
     "available": "both",
     "description": "Get a script instance of a player by index.",
     "returns": [
-      "CDOTAPlayer",
+      "CDOTAPlayerController",
       "nil"
     ],
     "args": [
@@ -38088,7 +38088,7 @@
       {
         "name": "sendToPlayer",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       },
@@ -38113,7 +38113,7 @@
       {
         "name": "sourcePlayer",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       }

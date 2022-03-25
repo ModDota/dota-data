@@ -152,9 +152,9 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       'Returns player entity for a player with specified id.' +
       ' Player entity represents a single connection, so a different entity might be returned.' +
       ' When player is disconnected nil would be returned.',
-    returns: ['CDOTAPlayer', 'nil'],
+    returns: ['CDOTAPlayerController', 'nil'],
   },
-  'CDOTAPlayer.GetPlayerID': { returns: 'PlayerID' },
+  'CDOTAPlayerController.GetPlayerID': { returns: 'PlayerID' },
 
   // Invalid parameter strings
   '_G.UnitFilter': {
@@ -458,7 +458,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.CreateTempTreeWithModel': { returns: 'CBaseAnimating' },
   '_G.CreateSceneEntity': { returns: 'CSceneEntity' },
   '_G.PlayerInstanceFromIndex': {
-    returns: ['CDOTAPlayer', 'nil'],
+    returns: ['CDOTAPlayerController', 'nil'],
     args: { 0: ['entityIndex', 'EntityIndex'] },
   },
   'CEntityInstance.entindex': { returns: 'EntityIndex' },
@@ -491,7 +491,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CBaseEntity.SetParent': { args: { 0: [null, 'CBaseEntity'] } },
   'CDOTA_BaseNPC.RemoveAbilityByHandle': { args: { 0: [null, 'CDOTABaseAbility'] } },
   'CDOTABaseGameMode.AddRealTimeCombatAnalyzerQuery': {
-    args: { 1: [null, 'CDOTAPlayer'] },
+    args: { 1: [null, 'CDOTAPlayerController'] },
     returns: 'CombatAnalyzerQueryID',
   },
   'CDOTABaseGameMode.ListenForQueryProgressChanged': {
@@ -546,7 +546,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CBaseEntity.AddEffects': { args: { 0: [null, 'EntityEffects'] } },
   'CBaseEntity.RemoveEffects': { args: { 0: [null, 'EntityEffects'] } },
   '_G.IsMarkedForDeletion': { args: { 0: ['entity', 'CBaseEntity'] } },
-  'CDOTAPlayer.CheckForCourierSpawning': { args: { 0: [null, 'CDOTA_BaseNPC_Hero'] } },
+  'CDOTAPlayerController.CheckForCourierSpawning': { args: { 0: [null, 'CDOTA_BaseNPC_Hero'] } },
   'CDOTA_Item_Lua.CanUnitPickUp': {
     args: { 0: [null, 'CDOTA_BaseNPC', 'Unit trying to pick up the item.'] },
   },
@@ -577,7 +577,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.LocalTime': { returns: 'LocalTime' },
   '_G.GetListenServerHost': {
     // TODO: Nullable?
-    returns: 'CDOTAPlayer',
+    returns: 'CDOTAPlayerController',
   },
   'CDOTAGamerules.RemoveFakeClient': { args: { 0: ['playerId'] } },
   'CDOTAGamerules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
@@ -608,7 +608,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTA_PlayerResource.GetDamageDoneToHero': { args: { '1': [null, 'PlayerID'] } },
   '_G.DebugCreateUnit': {
     args: {
-      0: ['playerOwner', 'CDOTAPlayer'],
+      0: ['playerOwner', 'CDOTAPlayerController'],
       1: ['unitName'],
       2: ['team', 'DOTATeam_t'],
       // TODO: 3?
@@ -775,7 +775,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       7: ['extraData6'],
     },
   },
-  'CDOTAPlayer.SpawnCourierAtPosition': { returns: 'CDOTA_Unit_Courier' },
+  'CDOTAPlayerController.SpawnCourierAtPosition': { returns: 'CDOTA_Unit_Courier' },
   '_G.GetActiveSpawnGroupHandle': { returns: 'SpawnGroupHandle' },
   '_G.ManuallyTriggerSpawnGroupCompletion': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
   '_G.UnloadSpawnGroupByHandle': { args: { 0: ['handle', 'SpawnGroupHandle'] } },

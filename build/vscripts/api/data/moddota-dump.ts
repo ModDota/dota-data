@@ -9,7 +9,7 @@ const setOwnerDescription =
 const createUnitByNameDescription = `Creates a unit by its dota_npc_units.txt name.
 The spawned unit will not be controllable by default. You can use unit.SetControllableByPlayer() to change this.`;
 
-const createUnitEntityOwnerDescription = `${setOwnerDescription} Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.`;
+const createUnitEntityOwnerDescription = `${setOwnerDescription} Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayerController makes hero use owned wearables.`;
 
 export const moddotaDump: Record<string, ExtensionFunction> = {
   'CBaseEntity.FirstMoveChild': { returns: 'CBaseEntity' },
@@ -44,7 +44,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   'CCustomGameEventManager.Send_ServerToAllClients': { args: { '1': [null, 'table'] } },
   'CCustomGameEventManager.Send_ServerToPlayer': {
-    args: { '0': [null, 'CDOTAPlayer'], '2': [null, 'table'] },
+    args: { '0': [null, 'CDOTAPlayerController'], '2': [null, 'table'] },
   },
   'CCustomGameEventManager.Send_ServerToTeam': {
     args: { '0': ['team', 'DOTATeam_t'], '2': [null, 'table'] },
@@ -97,7 +97,9 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.GetGameModeEntity': { returns: 'CDOTABaseGameMode' },
   'CDOTAGamerules.LockCustomGameSetupTeamAssignment': { args: { '0': ['locked'] } },
   'CDOTAGamerules.MakeTeamLose': { args: { '0': ['team', 'DOTATeam_t'] } },
-  'CDOTAGamerules.PlayerHasCustomGameHostPrivileges': { args: { '0': ['player', 'CDOTAPlayer'] } },
+  'CDOTAGamerules.PlayerHasCustomGameHostPrivileges': {
+    args: { '0': ['player', 'CDOTAPlayerController'] },
+  },
   'CDOTAGamerules.SetCreepMinimapIconScale': { args: { '0': ['scale'] } },
   'CDOTAGamerules.SetCustomGameAllowBattleMusic': { args: { '0': ['allow'] } },
   'CDOTAGamerules.SetCustomGameAllowHeroPickMusic': { args: { '0': ['allow'] } },
@@ -136,8 +138,8 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTAGamerules.SetUseCustomHeroXPValues': { args: { '0': ['useCustomXPValues'] } },
   'CDOTAGamerules.SetUseUniversalShopMode': { args: { '0': ['useUniversalShopMode'] } },
   'CDOTAGamerules.State_Get': { returns: 'DOTA_GameState' },
-  'CDOTAPlayer.GetAssignedHero': { returns: 'CDOTA_BaseNPC_Hero' },
-  'CDOTAPlayer.SetKillCamUnit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
+  'CDOTAPlayerController.GetAssignedHero': { returns: 'CDOTA_BaseNPC_Hero' },
+  'CDOTAPlayerController.SetKillCamUnit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTATutorial.AddBot': { args: { '0': ['heroName'] } },
   'CDOTATutorial.SelectHero': { args: { '0': ['heroName'] } },
   'CDOTATutorial.SetOrModifyPlayerGold': {
@@ -249,7 +251,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['modifierName'], '1': [null, 'CDOTA_BaseNPC'] },
   },
   'CDOTA_BaseNPC.GetOpposingTeamNumber': { returns: 'DOTATeam_t' },
-  'CDOTA_BaseNPC.GetPlayerOwner': { returns: 'CDOTAPlayer' },
+  'CDOTA_BaseNPC.GetPlayerOwner': { returns: 'CDOTAPlayerController' },
   'CDOTA_BaseNPC.GetPlayerOwnerID': { returns: 'PlayerID' },
   'CDOTA_BaseNPC.GetRangeToUnit': { args: { '0': [null, 'CDOTA_BaseNPC'] } },
   'CDOTA_BaseNPC.Heal': { args: { '1': [null, ['CDOTABaseAbility', 'nil']] } },
@@ -464,7 +466,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: { '0': ['previous', ['CBaseEntity', 'nil']], '1': ['location'], '2': ['radius'] },
   },
   'CEntities.First': { returns: 'CBaseEntity' },
-  'CEntities.GetLocalPlayer': { returns: 'CDOTAPlayer' },
+  'CEntities.GetLocalPlayer': { returns: 'CDOTAPlayerController' },
   'CEntities.Next': {
     returns: ['CBaseEntity', 'nil'],
     args: { '0': ['previous', ['CBaseEntity', 'nil']] },
@@ -485,7 +487,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
       '0': ['particleName'],
       '1': ['particleAttach', 'ParticleAttachment_t'],
       '2': ['owner', ['CBaseEntity', 'nil']],
-      '3': ['player', 'CDOTAPlayer'],
+      '3': ['player', 'CDOTAPlayerController'],
     },
   },
   'CScriptParticleManager.CreateParticleForTeam': {
@@ -522,8 +524,8 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CScriptParticleManager.SetParticleControlOrientation': {
     args: { '0': ['particle', 'ParticleID'], '1': ['controlPoint'] },
   },
-  'Convars.GetCommandClient': { returns: 'CDOTAPlayer' },
-  'Convars.GetDOTACommandClient': { returns: 'CDOTAPlayer' },
+  'Convars.GetCommandClient': { returns: 'CDOTAPlayerController' },
+  'Convars.GetDOTACommandClient': { returns: 'CDOTAPlayerController' },
   'Convars.GetBool': { returns: ['bool', 'nil'] },
   'Convars.GetFloat': { returns: ['float', 'nil'] },
   'Convars.GetInt': { returns: ['int', 'nil'] },
@@ -566,14 +568,14 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   },
   '_G.CreateHeroForPlayer': {
     returns: 'CDOTA_BaseNPC_Hero',
-    args: { '0': ['heroName'], '1': ['player', 'CDOTAPlayer'] },
+    args: { '0': ['heroName'], '1': ['player', 'CDOTAPlayerController'] },
   },
   '_G.CreateItem': {
     returns: ['CDOTA_Item', 'nil'],
     args: {
       '0': ['itemName'],
-      '1': ['owner', ['CDOTAPlayer', 'nil']],
-      '2': ['purchaser', ['CDOTAPlayer', 'nil']],
+      '1': ['owner', ['CDOTAPlayerController', 'nil']],
+      '2': ['purchaser', ['CDOTAPlayerController', 'nil']],
     },
   },
   '_G.CreateItemOnPositionForLaunch': {
@@ -695,10 +697,10 @@ Warning: mass synchronous unit spawning may be slow. Prefer CreateUnitByNameAsyn
   '_G.SendOverheadEventMessage': {
     description: '',
     args: {
-      '0': [null, ['CDOTAPlayer', 'nil']],
+      '0': [null, ['CDOTAPlayerController', 'nil']],
       '1': [null, 'DOTA_OVERHEAD_ALERT'],
       '2': [null, 'CDOTA_BaseNPC'],
-      '4': [null, ['CDOTAPlayer', 'nil']],
+      '4': [null, ['CDOTAPlayerController', 'nil']],
     },
   },
   '_G.SetTeamCustomHealthbarColor': { args: { '0': ['team', 'DOTATeam_t'] } },
