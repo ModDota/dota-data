@@ -22,7 +22,8 @@
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
     "prepublishOnly": "yarn build",
-    "test": "jest"
+    "test": "jest",
+    "blah": "lalala"
   },
   "nodemonConfig": {
     "exec": "ts-node --transpile-only build",
