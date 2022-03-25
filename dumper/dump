@@ -600,19 +600,19 @@ $> dump_panorama_events
 ! Panel Event
 ! Description
 |-
-| <code>AddStyle(string class)</code>
+| <code>AddStyle(panoramasymbol class)</code>
 | Yes
 | Add a CSS class to a panel.
 |-
-| <code>AddStyleAfterDelay(string class, float pre-delay)</code>
+| <code>AddStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
 | Add a CSS class to a panel after a specified delay. 
 |-
-| <code>AddStyleToEachChild(string class)</code>
+| <code>AddStyleToEachChild(panoramasymbol class)</code>
 | Yes
 | Add a CSS class to all children of this panel.
 |-
-| <code>AddTimedStyle(string class, float duration, float pre-delay)</code>
+| <code>AddTimedStyle(panoramasymbol class, float duration, float pre-delay)</code>
 | Yes
 | Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class. 
 |-
@@ -764,7 +764,7 @@ $> dump_panorama_events
 | Yes
 | Drop focus entirely from the window containing this panel.
 |-
-| <code>IfHasClassEvent(string class, event eventToFire)</code>
+| <code>IfHasClassEvent(panoramasymbol class, event eventToFire)</code>
 | Yes
 | Fire another event if this panel has a given class.
 |-
@@ -772,7 +772,7 @@ $> dump_panorama_events
 | Yes
 | Fire another event if currently hovering over a panel with the given ID.
 |-
-| <code>IfNotHasClassEvent(string class, event eventToFire)</code>
+| <code>IfNotHasClassEvent(panoramasymbol class, event eventToFire)</code>
 | Yes
 | Fire another event if this panel does not have a given class.
 |-
@@ -828,15 +828,15 @@ $> dump_panorama_events
 | No
 | Scroll the panel up by one page.
 |-
-| <code>RemoveStyle(string class)</code>
+| <code>RemoveStyle(panoramasymbol class)</code>
 | Yes
 | Remove a CSS class from a panel.
 |-
-| <code>RemoveStyleAfterDelay(string class, float pre-delay)</code>
+| <code>RemoveStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
 | Remove a CSS class from a panel after a specified delay. 
 |-
-| <code>RemoveStyleFromEachChild(string class)</code>
+| <code>RemoveStyleFromEachChild(panoramasymbol class)</code>
 | Yes
 | Remove a CSS class from all children of this panel.
 |-
@@ -896,7 +896,7 @@ $> dump_panorama_events
 | Yes
 | Set whether this panel is :selected.
 |-
-| <code>SwitchStyle(string slot, string class)</code>
+| <code>SwitchStyle(panoramasymbol slot, panoramasymbol class)</code>
 | Yes
 | Switch which class the panel has for a given attribute slot. Allows easily changing between multiple states.
 |-
@@ -904,11 +904,11 @@ $> dump_panorama_events
 | Yes
 | Toggle whether this panel is :selected.
 |-
-| <code>ToggleStyle(string class)</code>
+| <code>ToggleStyle(panoramasymbol class)</code>
 | Yes
 | Toggle whether a panel has the given CSS class.
 |-
-| <code>TriggerStyle(string class)</code>
+| <code>TriggerStyle(panoramasymbol class)</code>
 | Yes
 | Remove then immediately add back a CSS class from a panel. Useful to re-trigger events like animations or sound effects.
 |}
@@ -1305,6 +1305,7 @@ Enumeration 'DOTA_ABILITY_BEHAVIOR'
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE = 34359738368
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_FREE_DRAW_TARGETING = 68719476736
 	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE = 137438953472
+	DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_OVERSHOOT = 274877906944
 
 Enumeration 'DAMAGE_TYPES'
 	DAMAGE_TYPES.DAMAGE_TYPE_NONE = 0
@@ -1348,6 +1349,7 @@ Enumeration 'DOTADamageFlag_t'
 	DOTADamageFlag_t.DOTA_DAMAGE_FLAG_IGNORES_BASE_PHYSICAL_ARMOR = 16384
 	DOTADamageFlag_t.DOTA_DAMAGE_FLAG_SECONDARY_PROJECTILE_ATTACK = 32768
 	DOTADamageFlag_t.DOTA_DAMAGE_FLAG_FORCE_SPELL_AMPLIFICATION = 65536
+	DOTADamageFlag_t.DOTA_DAMAGE_FLAG_MAGIC_AUTO_ATTACK = 131072
 
 Enumeration 'EDOTA_ModifyXP_Reason'
 	EDOTA_ModifyXP_Reason.DOTA_ModifyXP_Unspecified = 0
@@ -1619,6 +1621,7 @@ Enumeration 'GameActivity_t'
 	GameActivity_t.ACT_DOTA_CUSTOM_TOWER_HIGH_FIVE = 1757
 	GameActivity_t.ACT_DOTA_ATTACK_SPECIAL = 1758
 	GameActivity_t.ACT_DOTA_TRANSITION_IDLE = 1759
+	GameActivity_t.ACT_DOTA_PIERCE_THE_VEIL = 1760
 
 Enumeration 'DOTAMinimapEvent_t'
 	DOTAMinimapEvent_t.DOTA_MINIMAP_EVENT_ANCIENT_UNDER_ATTACK = 2
@@ -2048,6 +2051,7 @@ Enumeration 'DOTAModifierAttribute_t'
 	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_MULTIPLE = 2
 	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE = 4
 	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_AURA_PRIORITY = 8
+	DOTAModifierAttribute_t.MODIFIER_ATTRIBUTE_IGNORE_DODGE = 16
 
 Enumeration 'Attributes'
 	Attributes.DOTA_ATTRIBUTE_STRENGTH = 0
@@ -2320,108 +2324,109 @@ Enumeration 'DOTAKeybindCommand_t'
 	DOTAKeybindCommand_t.DOTA_KEYBIND_SELECT_ALLY5 = 130
 	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_TOGGLE = 131
 	DOTAKeybindCommand_t.DOTA_KEYBIND_SCOREBOARD_TOGGLE = 132
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SCREENSHOT = 133
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ESCAPE = 134
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONSOLE = 135
-	DOTAKeybindCommand_t.DOTA_KEYBIND_DEATH_SUMMARY = 136
-	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_ABILITIES = 137
-	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_STATS = 138
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_GLYPH = 139
-	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_RADAR = 140
-	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_QUICKBUY = 141
-	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_STICKY = 142
-	DOTAKeybindCommand_t.DOTA_KEYBIND_GRAB_STASH_ITEMS = 143
-	DOTAKeybindCommand_t.DOTA_KEYBIND_TOGGLE_AUTOATTACK = 144
-	DOTAKeybindCommand_t.DOTA_KEYBIND_TAUNT = 145
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CONSUMABLES = 146
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ATTRIBUTES = 147
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMAMENTS = 148
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARCANE = 149
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_BASICS = 150
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SUPPORT = 151
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CASTER = 152
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_WEAPONS = 153
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMOR = 154
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARTIFACTS = 155
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_1 = 156
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_2 = 157
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SECRET = 158
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SEARCHBOX = 159
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_1 = 160
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_2 = 161
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_3 = 162
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_4 = 163
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_5 = 164
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_6 = 165
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_7 = 166
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_8 = 167
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_9 = 168
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_10 = 169
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_11 = 170
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_12 = 171
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_13 = 172
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_14 = 173
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_UP = 174
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_DOWN = 175
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_LEFT = 176
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_RIGHT = 177
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_GRIP = 178
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_1 = 179
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_2 = 180
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_3 = 181
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_4 = 182
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_5 = 183
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_6 = 184
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_7 = 185
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_8 = 186
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_9 = 187
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_10 = 188
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_UNIT_SELECT = 189
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_HERO_SELECT = 190
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_PAUSE = 191
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CHAT = 192
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_SCOREBOARD = 193
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 194
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 195
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_HARVEST = 196
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_ITEM = 197
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_GOLD = 198
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_XP = 199
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_FANTASY = 200
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 201
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 202
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 203
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 204
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 205
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 206
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 207
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 208
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 209
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 210
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 211
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 212
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 213
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 214
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 215
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 216
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 217
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 218
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 219
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 220
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 221
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 222
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 223
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 224
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 225
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 226
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 227
-	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 228
-	DOTAKeybindCommand_t.DOTA_KEYBIND_INSPECTHEROINWORLD = 229
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_IN = 230
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_OUT = 231
-	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 232
-	DOTAKeybindCommand_t.DOTA_KEYBIND_DOTA_ALT = 233
-	DOTAKeybindCommand_t.DOTA_KEYBIND_COUNT = 234
+	DOTAKeybindCommand_t.DOTA_KEYBIND_COMBATLOG_TOGGLE = 133
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SCREENSHOT = 134
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ESCAPE = 135
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONSOLE = 136
+	DOTAKeybindCommand_t.DOTA_KEYBIND_DEATH_SUMMARY = 137
+	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_ABILITIES = 138
+	DOTAKeybindCommand_t.DOTA_KEYBIND_LEARN_STATS = 139
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_GLYPH = 140
+	DOTAKeybindCommand_t.DOTA_KEYBIND_ACTIVATE_RADAR = 141
+	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_QUICKBUY = 142
+	DOTAKeybindCommand_t.DOTA_KEYBIND_PURCHASE_STICKY = 143
+	DOTAKeybindCommand_t.DOTA_KEYBIND_GRAB_STASH_ITEMS = 144
+	DOTAKeybindCommand_t.DOTA_KEYBIND_TOGGLE_AUTOATTACK = 145
+	DOTAKeybindCommand_t.DOTA_KEYBIND_TAUNT = 146
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CONSUMABLES = 147
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ATTRIBUTES = 148
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMAMENTS = 149
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARCANE = 150
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_BASICS = 151
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SUPPORT = 152
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_CASTER = 153
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_WEAPONS = 154
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARMOR = 155
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_ARTIFACTS = 156
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_1 = 157
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SIDE_PAGE_2 = 158
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SECRET = 159
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SEARCHBOX = 160
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_1 = 161
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_2 = 162
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_3 = 163
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_4 = 164
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_5 = 165
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_6 = 166
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_7 = 167
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_8 = 168
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_9 = 169
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_10 = 170
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_11 = 171
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_12 = 172
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_13 = 173
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SHOP_SLOT_14 = 174
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_UP = 175
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_DOWN = 176
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_LEFT = 177
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_RIGHT = 178
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_GRIP = 179
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_1 = 180
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_2 = 181
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_3 = 182
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_4 = 183
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_5 = 184
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_6 = 185
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_7 = 186
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_8 = 187
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_9 = 188
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CAMERA_SAVED_POSITION_10 = 189
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_UNIT_SELECT = 190
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_HERO_SELECT = 191
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_PAUSE = 192
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_CHAT = 193
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_SCOREBOARD = 194
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 195
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 196
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_HARVEST = 197
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_ITEM = 198
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_GOLD = 199
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_XP = 200
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_FANTASY = 201
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 202
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 203
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 204
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 205
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 206
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 207
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 208
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 209
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 210
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 211
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 212
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 213
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 214
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 215
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 216
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 217
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 218
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 219
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 220
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 221
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 222
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 223
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 224
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 225
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 226
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 227
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 228
+	DOTAKeybindCommand_t.DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 229
+	DOTAKeybindCommand_t.DOTA_KEYBIND_INSPECTHEROINWORLD = 230
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_IN = 231
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CAMERA_ZOOM_OUT = 232
+	DOTAKeybindCommand_t.DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 233
+	DOTAKeybindCommand_t.DOTA_KEYBIND_DOTA_ALT = 234
+	DOTAKeybindCommand_t.DOTA_KEYBIND_COUNT = 235
 
 Enumeration 'DOTA_SHOP_TYPE'
 	DOTA_SHOP_TYPE.DOTA_SHOP_HOME = 0
@@ -2437,6 +2442,7 @@ Enumeration 'DOTA_SHOP_TYPE'
 $> script_reload
 Initializing script VM...
 ...done
+LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
 [{
     "returns":"int",
     "args":[{
@@ -3048,6 +3054,16 @@ Initializing script VM...
     "kind":"function",
     "name":"DestroyDamageInfo",
     "description":"Free a damageinfo object that was created with CreateDamageInfo()."
+  },{
+    "returns":"void",
+    "args":[{
+        "type":"int"
+      },{
+        "type":"bool"
+      }],
+    "kind":"function",
+    "name":"DisconnectClient",
+    "description":"Kick a specific player from the game"
   },{
     "returns":"int",
     "args":[{
@@ -3712,6 +3728,14 @@ Initializing script VM...
     "kind":"function",
     "name":"GetXPNeededToReachNextLevel",
     "description":"Get amount of XP required to reach the next level."
+  },{
+    "returns":"void",
+    "args":[{
+        "type":"handle"
+      }],
+    "kind":"function",
+    "name":"HeroMaxLevel",
+    "description":"Max out a hero's level and give them all appropriate abilities and talents."
   },{
     "returns":"void",
     "args":[{
@@ -4828,6 +4852,14 @@ Initializing script VM...
     "name":"UpdateEventPoints",
     "description":"( hEventPointData )"
   },{
+    "returns":"handle",
+    "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"UserIDToControllerHScript",
+    "description":"Turn a userid integer (typically, fields named 'userid' in game events) to an HScript representing the associated player controller's script instance."
+  },{
     "args":[{
         "type":"Vector"
       }],
@@ -5508,6 +5540,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_ARCANA_VOTE"
+  },{
     "enum":"GameActivity_t",
     "value":1682,
     "kind":"constant",
@@ -5542,6 +5578,10 @@ Initializing script VM...
     "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_SPECIAL"
+  },{
+    "value":1766,
+    "kind":"constant",
+    "name":"ACT_DOTA_ATTACK_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1707,
@@ -5627,6 +5667,18 @@ Initializing script VM...
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
+  },{
+    "value":1768,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1767,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
+  },{
+    "value":1775,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST4_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1510,
@@ -5817,6 +5869,10 @@ Initializing script VM...
     "value":1597,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
+  },{
+    "value":1765,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1587,
@@ -6028,6 +6084,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
+    "value":1776,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
+  },{
     "enum":"GameActivity_t",
     "value":1685,
     "kind":"constant",
@@ -6147,6 +6207,10 @@ Initializing script VM...
     "value":1639,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
+  },{
+    "value":1774,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1623,
@@ -6399,6 +6463,11 @@ Initializing script VM...
     "name":"ACT_DOTA_PET_WARD_SENTRY"
   },{
     "enum":"GameActivity_t",
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_PIERCE_THE_VEIL"
+  },{
+    "enum":"GameActivity_t",
     "value":1603,
     "kind":"constant",
     "name":"ACT_DOTA_POOF_END"
@@ -6407,6 +6476,10 @@ Initializing script VM...
     "value":1635,
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
+  },{
+    "value":1764,
+    "kind":"constant",
+    "name":"ACT_DOTA_PUNCH"
   },{
     "enum":"GameActivity_t",
     "value":1549,
@@ -6482,6 +6555,10 @@ Initializing script VM...
     "value":1502,
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
+  },{
+    "value":1773,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1568,
@@ -6568,6 +6645,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
+  },{
     "enum":"GameActivity_t",
     "value":1629,
     "kind":"constant",
@@ -6577,6 +6658,14 @@ Initializing script VM...
     "value":1680,
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
+  },{
+    "value":1772,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE_SEQUENCE"
+  },{
+    "value":1777,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1684,
@@ -6602,6 +6691,10 @@ Initializing script VM...
     "value":1752,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
+  },{
+    "value":1771,
+    "kind":"constant",
+    "name":"ACT_DOTA_TAUNT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1595,
@@ -6647,6 +6740,10 @@ Initializing script VM...
     "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_START"
+  },{
+    "value":1769,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1537,
@@ -6722,6 +6819,10 @@ Initializing script VM...
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
+  },{
+    "value":1770,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1689,
@@ -10534,6 +10635,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
   },{
+    "value":59,
+    "kind":"constant",
+    "name":"AE_DOTA_SWITCH_ATTACK_COMBO"
+  },{
     "value":0,
     "kind":"constant",
     "name":"AE_EMPTY"
@@ -10890,6 +10995,11 @@ Initializing script VM...
     "name":"DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET"
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
+    "value":0,
+    "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
     "value":2,
     "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -11156,6 +11266,11 @@ Initializing script VM...
     "value":2,
     "kind":"constant",
     "name":"DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR"
+  },{
+    "enum":"DOTADamageFlag_t",
+    "value":131072,
+    "kind":"constant",
+    "name":"DOTA_DAMAGE_FLAG_MAGIC_AUTO_ATTACK"
   },{
     "enum":"DOTADamageFlag_t",
     "value":0,
@@ -12868,39 +12983,39 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_PROJECTILE_ATTACHMENT_NONE"
   },{
-    "value":76,
+    "value":77,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1"
   },{
-    "value":77,
+    "value":78,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2"
   },{
-    "value":78,
+    "value":79,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_3"
   },{
-    "value":79,
+    "value":80,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_4"
   },{
-    "value":80,
+    "value":81,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_5"
   },{
-    "value":81,
+    "value":82,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_6"
   },{
-    "value":82,
+    "value":83,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_7"
   },{
-    "value":83,
+    "value":84,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_8"
   },{
-    "value":84,
+    "value":85,
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_9"
   },{
@@ -13735,6 +13850,11 @@ Initializing script VM...
     "value":8,
     "kind":"constant",
     "name":"MODIFIER_ATTRIBUTE_AURA_PRIORITY"
+  },{
+    "enum":"DOTAModifierAttribute_t",
+    "value":16,
+    "kind":"constant",
+    "name":"MODIFIER_ATTRIBUTE_IGNORE_DODGE"
   },{
     "enum":"DOTAModifierAttribute_t",
     "value":4,
@@ -16010,6 +16130,10 @@ Initializing script VM...
     "kind":"constant",
     "name":"__UNKNOWN__"
   },{
+    "value":1761,
+    "kind":"constant",
+    "name":"time_remap_smoke_side"
+  },{
     "members":[{
         "args":[],
         "returns":"float",
@@ -16504,7 +16628,17 @@ Initializing script VM...
         "args":[],
         "returns":"bool",
         "name":"IsPlayer",
-        "description":"Is this entity a player?"
+        "description":"Back compat: Is this entity a player pawn *or* controller?"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsPlayerController",
+        "description":"Is this entity a player controller?"
+      },{
+        "args":[],
+        "returns":"bool",
+        "name":"IsPlayerPawn",
+        "description":"Is this entity a player pawn?"
       },{
         "args":[],
         "returns":"void",
@@ -17036,6 +17170,21 @@ Initializing script VM...
   },{
     "members":[{
         "args":[],
+        "returns":"handle",
+        "name":"GetPawn",
+        "description":"GetPawn() : Returns the pawn for this controller"
+      }],
+    "kind":"class",
+    "name":"CBasePlayerController",
+    "extend":"CBaseEntity"
+  },{
+    "members":[{
+        "args":[],
+        "returns":"handle",
+        "name":"GetController",
+        "description":"GetController() : Returns the controller for this pawn"
+      },{
+        "args":[],
         "returns":"table",
         "name":"GetEquippedWeapons",
         "description":"GetEquippedWeapons() : Returns an array of all the equipped weapons"
@@ -17051,7 +17200,7 @@ Initializing script VM...
         "description":"Returns true if the player is in noclip mode."
       }],
     "kind":"class",
-    "name":"CBasePlayer",
+    "name":"CBasePlayerPawn",
     "extend":"CBaseCombatCharacter"
   },{
     "members":[{
@@ -17460,6 +17609,13 @@ Initializing script VM...
         "args":[],
         "returns":"int",
         "name":"GetHeroLevelRequiredToUpgrade"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"GetInitialAbilityCharges"
       },{
         "args":[],
         "returns":"string",
@@ -18066,9 +18222,6 @@ Initializing script VM...
         "args":[{
             "name":"nDerivedStatType",
             "type":"int"
-          },{
-            "name":"hHero",
-            "type":"handle"
           }],
         "returns":"float",
         "name":"GetCustomAttributeDerivedStatValue",
@@ -18206,6 +18359,11 @@ Initializing script VM...
         "returns":"bool",
         "name":"GetUseCustomHeroLevels",
         "description":"Are custom-defined XP values for hero level ups in use?"
+      },{
+        "args":[],
+        "returns":"int",
+        "name":"GetWaterRuneLastSpawnTime",
+        "description":"Gets the time from game start during which water runes spawn"
       },{
         "args":[{
             "name":"pszAbilityName",
@@ -19051,6 +19209,14 @@ Initializing script VM...
         "returns":"void",
         "name":"SetUseTurboCouriers",
         "description":"Enables or disables turbo couriers."
+      },{
+        "args":[{
+            "name":"nValue",
+            "type":"int"
+          }],
+        "returns":"void",
+        "name":"SetWaterRuneLastSpawnTime",
+        "description":"Sets the time from game start during which water runes spawn"
       },{
         "args":[{
             "name":"bDisable",
@@ -20126,7 +20292,7 @@ Initializing script VM...
         "name":"State_Get",
         "description":"Get the current Gamerules state"
       }],
-    "name":"CDOTAGamerules",
+    "name":"CDOTAGameRules",
     "kind":"class"
   },{
     "members":[{
@@ -20197,7 +20363,7 @@ Initializing script VM...
         "description":"Spawn a courier for this player at the given position."
       }],
     "kind":"class",
-    "name":"CDOTAPlayer",
+    "name":"CDOTAPlayerController",
     "extend":"CBaseAnimating"
   },{
     "instance":"Tutorial",
@@ -23687,20 +23853,6 @@ Initializing script VM...
         "description":"Gives this hero some gold.  Args: int nGoldChange, bool bReliable, int reason"
       },{
         "args":[{
-            "name":"iGoldChange",
-            "type":"int"
-          },{
-            "name":"bReliabe",
-            "type":"bool"
-          },{
-            "name":"iReason",
-            "type":"int"
-          }],
-        "returns":"int",
-        "name":"ModifyGoldFiltered",
-        "description":"Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason"
-      },{
-        "args":[{
             "name":"flNewIntellect",
             "type":"float"
           }],
@@ -23734,6 +23886,20 @@ Initializing script VM...
         "returns":"void",
         "name":"RespawnHero",
         "description":"Respawn this hero."
+      },{
+        "args":[{
+            "name":"iGoldChange",
+            "type":"int"
+          },{
+            "name":"bReliabe",
+            "type":"bool"
+          },{
+            "name":"iReason",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"Script_ModifyGoldFiltered",
+        "description":"Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason"
       },{
         "args":[{
             "name":"iPoints",
@@ -26342,6 +26508,23 @@ Initializing script VM...
         "description":"(playerID, heroClassName, gold, XP) - replaces the player's hero with a new one of the specified class, gold and XP"
       },{
         "args":[{
+            "name":"iPlayerID",
+            "type":"int"
+          },{
+            "name":"pszHeroClass",
+            "type":"string"
+          },{
+            "name":"nGold",
+            "type":"int"
+          },{
+            "name":"nXP",
+            "type":"int"
+          }],
+        "returns":"handle",
+        "name":"ReplaceHeroWithNoTransfer",
+        "description":"(playerID, heroClassName, gold, XP) - replaces the player's hero with a new one of the specified class, gold and XP, without transferring items/abilities if same hero"
+      },{
+        "args":[{
             "name":"nPlayerID",
             "type":"int"
           }],
@@ -27636,7 +27819,17 @@ Initializing script VM...
         "args":[],
         "returns":"handle",
         "name":"GetLocalPlayer",
-        "description":"Get the local player."
+        "description":"Get the local player controller (backcompat)."
+      },{
+        "args":[],
+        "returns":"handle",
+        "name":"GetLocalPlayerController",
+        "description":"Get the local player controller."
+      },{
+        "args":[],
+        "returns":"handle",
+        "name":"GetLocalPlayerPawn",
+        "description":"Get the local player pawn."
       },{
         "args":[{
             "type":"handle"
@@ -29060,7 +29253,6 @@ Initializing script VM...
 $> cl_script_reload
 Initializing script VM...
 ...done
-LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
 [{
     "returns":"float",
     "args":[{
@@ -30237,6 +30429,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"UnloadSpawnGroupByHandle",
     "description":"Unload a spawn group by handle"
   },{
+    "returns":"handle",
+    "args":[{
+        "type":"int"
+      }],
+    "kind":"function",
+    "name":"UserIDToControllerHScript",
+    "description":"Turn a userid integer (typically, fields named 'userid' in game events) to an HScript representing the associated player controller's script instance."
+  },{
     "returns":"QAngle",
     "args":[{
         "type":"Vector"
@@ -30307,6 +30507,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"rr_QueryBestResponse",
     "description":"Params: (entity, query) : tests 'query' against entity's response system and returns the best response found (or null if none found)."
   },{
+    "value":60,
+    "kind":"constant",
+    "name":""
+  },{
     "enum":"AbilityLearnResult_t",
     "value":2,
     "kind":"constant",
@@ -30352,7 +30556,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1761,
+    "value":1780,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -30908,6 +31112,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
+    "value":1762,
+    "kind":"constant",
+    "name":"ACT_DOTA_ARCANA_VOTE"
+  },{
     "value":1682,
     "kind":"constant",
     "name":"ACT_DOTA_ARCTIC_BURN_END"
@@ -30935,6 +31143,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1758,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_SPECIAL"
+  },{
+    "value":1766,
+    "kind":"constant",
+    "name":"ACT_DOTA_ATTACK_STATUE"
   },{
     "value":1707,
     "kind":"constant",
@@ -31003,6 +31215,18 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1706,
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
+  },{
+    "value":1768,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST1_STATUE"
+  },{
+    "value":1767,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST3_STATUE"
+  },{
+    "value":1775,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST4_STATUE"
   },{
     "value":1510,
     "kind":"constant",
@@ -31116,7 +31340,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1771,
+    "value":1783,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -31159,6 +31383,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1597,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
+  },{
+    "value":1765,
+    "kind":"constant",
+    "name":"ACT_DOTA_CAST_STATUE"
   },{
     "value":1587,
     "kind":"constant",
@@ -31272,7 +31500,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_TAUNT"
   },{
-    "value":1766,
+    "value":1789,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -31304,7 +31532,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1760,
+    "value":1779,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -31335,6 +31563,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1508,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
+  },{
+    "value":1776,
+    "kind":"constant",
+    "name":"ACT_DOTA_FLAIL_STATUE"
   },{
     "value":1685,
     "kind":"constant",
@@ -31432,7 +31664,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1767,
+    "value":1774,
+    "kind":"constant",
+    "name":"ACT_DOTA_IDLE_STATUE"
+  },{
+    "value":1790,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -31636,6 +31872,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_PET_WARD_SENTRY"
   },{
+    "value":1760,
+    "kind":"constant",
+    "name":"ACT_DOTA_PIERCE_THE_VEIL"
+  },{
     "value":1603,
     "kind":"constant",
     "name":"ACT_DOTA_POOF_END"
@@ -31644,7 +31884,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1763,
+    "value":1764,
+    "kind":"constant",
+    "name":"ACT_DOTA_PUNCH"
+  },{
+    "value":1785,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -31684,7 +31928,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1769,
+    "value":1781,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -31696,7 +31940,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1770,
+    "value":1782,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -31716,9 +31960,13 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1764,
+    "value":1787,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
+  },{
+    "value":1773,
+    "kind":"constant",
+    "name":"ACT_DOTA_RUN_STATUE"
   },{
     "value":1568,
     "kind":"constant",
@@ -31788,6 +32036,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
+    "value":1763,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
+  },{
+    "value":1786,
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN"
+  },{
     "value":1629,
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE"
@@ -31795,6 +32051,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1680,
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
+  },{
+    "value":1772,
+    "kind":"constant",
+    "name":"ACT_DOTA_STATUE_SEQUENCE"
+  },{
+    "value":1777,
+    "kind":"constant",
+    "name":"ACT_DOTA_STUN_STATUE"
   },{
     "value":1684,
     "kind":"constant",
@@ -31815,6 +32079,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1752,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
+  },{
+    "value":1771,
+    "kind":"constant",
+    "name":"ACT_DOTA_TAUNT_STATUE"
   },{
     "value":1595,
     "kind":"constant",
@@ -31844,6 +32112,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_END_REACT"
   },{
+    "value":1778,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_END_STATUE"
+  },{
     "value":1631,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT"
@@ -31851,6 +32123,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1753,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_START"
+  },{
+    "value":1769,
+    "kind":"constant",
+    "name":"ACT_DOTA_TELEPORT_STATUE"
   },{
     "value":1537,
     "kind":"constant",
@@ -31871,10 +32147,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1557,
     "kind":"constant",
     "name":"ACT_DOTA_TINKER_REARM3"
-  },{
-    "value":1768,
-    "kind":"constant",
-    "name":"ACT_DOTA_TORRENT"
   },{
     "value":1731,
     "kind":"constant",
@@ -31916,7 +32188,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1765,
+    "value":1770,
+    "kind":"constant",
+    "name":"ACT_DOTA_VICTORY_STATUE"
+  },{
+    "value":1788,
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST"
   },{
@@ -36049,6 +36325,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET"
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
+    "value":0,
+    "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
     "value":2,
     "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -37188,6 +37469,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":8,
     "kind":"constant",
     "name":"MODIFIER_ATTRIBUTE_AURA_PRIORITY"
+  },{
+    "enum":"DOTAModifierAttribute_t",
+    "value":16,
+    "kind":"constant",
+    "name":"MODIFIER_ATTRIBUTE_IGNORE_DODGE"
   },{
     "enum":"DOTAModifierAttribute_t",
     "value":4,
@@ -39319,9 +39605,13 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"__UNKNOWN__"
   },{
-    "value":1762,
+    "value":1784,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
+  },{
+    "value":1761,
+    "kind":"constant",
+    "name":"time_remap_smoke_side"
   },{
     "members":[{
         "args":[{
@@ -39558,7 +39848,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
         "name":"State_Get",
         "description":"Get the current Gamerules state"
       }],
-    "name":"CDOTAGamerules",
+    "name":"CDOTAGameRules",
     "kind":"class"
   },{
     "members":[{
