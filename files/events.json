@@ -1267,6 +1267,18 @@
     ]
   },
   {
+    "name": "spec_mode_updated",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "description": "Spectating player.",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
     "name": "entity_visible",
     "sourceFile": "core",
     "local": false,
@@ -4938,6 +4950,21 @@
   },
   {
     "name": "npc_spawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "is_respawn",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "npc_spawn_finished",
     "sourceFile": "game",
     "local": false,
     "fields": [

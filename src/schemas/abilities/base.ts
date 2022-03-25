@@ -137,6 +137,8 @@ export const baseItem = (name = 'BaseItem') =>
 
     .field('ShouldBeSuggested', s.binaryBoolean())
     .field('ShouldBeInitiallySuggested', s.binaryBoolean())
+    .field('AbilityOvershootCastRange', s.int().min(0))
+    .field('ItemLevelByGameTime', s.int().min(0))
 
     // Sounds
     .field('UIPickupSound', s.str())

@@ -1052,7 +1052,27 @@
         "kind": "function",
         "name": "IsPlayer",
         "available": "server",
-        "description": "Is this entity a player?",
+        "description": "Back compat: Is this entity a player pawn *or* controller?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsPlayerController",
+        "available": "server",
+        "description": "Is this entity a player controller?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsPlayerPawn",
+        "available": "server",
+        "description": "Is this entity a player pawn?",
         "returns": [
           "bool"
         ],
@@ -2256,9 +2276,36 @@
   },
   {
     "kind": "class",
-    "name": "CBasePlayer",
+    "name": "CBasePlayerController",
+    "extend": "CBaseEntity",
+    "members": [
+      {
+        "kind": "function",
+        "name": "GetPawn",
+        "available": "server",
+        "description": "Returns the pawn for this controller.",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CBasePlayerPawn",
     "extend": "CBaseCombatCharacter",
     "members": [
+      {
+        "kind": "function",
+        "name": "GetController",
+        "available": "server",
+        "description": "Returns the controller for this pawn.",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      },
       {
         "kind": "function",
         "name": "GetEquippedWeapons",
@@ -2597,7 +2644,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           },
           {
@@ -7191,7 +7238,7 @@
         "available": "server",
         "description": "Returns the player that owns this unit.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -11610,35 +11657,6 @@
       },
       {
         "kind": "function",
-        "name": "ModifyGoldFiltered",
-        "available": "server",
-        "description": "Gives this hero some gold, using the gold filter if extra filtering is on.",
-        "returns": [
-          "int"
-        ],
-        "args": [
-          {
-            "name": "goldChange",
-            "types": [
-              "int"
-            ]
-          },
-          {
-            "name": "reliable",
-            "types": [
-              "bool"
-            ]
-          },
-          {
-            "name": "reason",
-            "types": [
-              "EDOTA_ModifyGold_Reason"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "ModifyIntellect",
         "available": "server",
         "description": "Adds passed value to base attribute value, then calls CalculateStatBonus.",
@@ -11708,6 +11726,35 @@
             "name": "respawnPenalty",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "Script_ModifyGoldFiltered",
+        "available": "server",
+        "description": "Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason.",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "goldChange",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "reliabe",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "reason",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -19416,7 +19463,7 @@
         "available": "server",
         "description": "Returns player entity for a player with specified id. Player entity represents a single connection, so a different entity might be returned. When player is disconnected nil would be returned.",
         "returns": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ],
         "args": [
@@ -20621,6 +20668,41 @@
         "description": "Replaces the player's hero with a new one of the specified class, gold and XP.",
         "returns": [
           "CDOTA_BaseNPC_Hero"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "heroClass",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "gold",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "xp",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "ReplaceHeroWithNoTransfer",
+        "available": "server",
+        "description": "Replaces the player's hero with a new one of the specified class, gold and XP, without transferring items/abilities if same hero.",
+        "returns": [
+          "handle"
         ],
         "args": [
           {
@@ -21905,6 +21987,22 @@
       },
       {
         "kind": "function",
+        "name": "GetInitialAbilityCharges",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetIntrinsicModifierName",
         "available": "server",
         "returns": [
@@ -22968,7 +23066,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           },
           {
@@ -23234,13 +23332,6 @@
             "name": "derivedStatType",
             "types": [
               "AttributeDerivedStats"
-            ]
-          },
-          {
-            "name": "hero",
-            "types": [
-              "CDOTA_BaseNPC_Hero",
-              "nil"
             ]
           }
         ]
@@ -23509,6 +23600,16 @@
         "description": "Are custom-defined XP values for hero level ups in use?",
         "returns": [
           "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetWaterRuneLastSpawnTime",
+        "available": "server",
+        "description": "Gets the time from game start during which water runes spawn.",
+        "returns": [
+          "int"
         ],
         "args": []
       },
@@ -25494,6 +25595,23 @@
       },
       {
         "kind": "function",
+        "name": "SetWaterRuneLastSpawnTime",
+        "available": "server",
+        "description": "Sets the time from game start during which water runes spawn.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetWeatherEffectsDisabled",
         "available": "server",
         "description": "Set if weather effects are disabled.",
@@ -25615,8 +25733,8 @@
   },
   {
     "kind": "class",
-    "name": "CDOTAGamerules",
-    "clientName": "CDOTAGamerules",
+    "name": "CDOTAGameRules",
+    "clientName": "CDOTAGameRules",
     "instance": "GameRules",
     "members": [
       {
@@ -26825,7 +26943,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           }
         ]
@@ -28119,7 +28237,7 @@
   },
   {
     "kind": "class",
-    "name": "CDOTAPlayer",
+    "name": "CDOTAPlayerController",
     "extend": "CBaseAnimating",
     "members": [
       {
@@ -29483,9 +29601,29 @@
         "kind": "function",
         "name": "GetLocalPlayer",
         "available": "server",
-        "description": "Get the local player.",
+        "description": "Get the local player controller (backcompat).",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetLocalPlayerController",
+        "available": "server",
+        "description": "Get the local player controller.",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetLocalPlayerPawn",
+        "available": "server",
+        "description": "Get the local player pawn.",
+        "returns": [
+          "handle"
         ],
         "args": []
       },
@@ -30436,7 +30574,7 @@
         "available": "both",
         "description": "Returns the player who issued this console command.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -30446,7 +30584,7 @@
         "available": "both",
         "description": "Returns the DOTA player who issued this console command.",
         "returns": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ],
         "args": []
       },
@@ -31336,7 +31474,7 @@
           {
             "name": "player",
             "types": [
-              "CDOTAPlayer"
+              "CDOTAPlayerController"
             ]
           }
         ]
@@ -33703,7 +33841,7 @@
       {
         "name": "player",
         "types": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ]
       }
     ]
@@ -33831,14 +33969,14 @@
       {
         "name": "owner",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       },
       {
         "name": "purchaser",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       }
@@ -34145,7 +34283,7 @@
       },
       {
         "name": "entityOwner",
-        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.",
+        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayerController makes hero use owned wearables.",
         "types": [
           "CBaseEntity",
           "nil"
@@ -34195,7 +34333,7 @@
       },
       {
         "name": "entityOwner",
-        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayer makes hero use owned wearables.",
+        "description": "This entity will be returned by GetOwner() and GetOwnerEntity(). GetPlayerOwner() and GetPlayerOwnerID() will be automatically inferred from this entity. Can be changed after spawn using SetOwner(entity). When spawning heroes, passing CDOTAPlayerController makes hero use owned wearables.",
         "types": [
           "CBaseEntity",
           "nil"
@@ -34336,7 +34474,7 @@
       {
         "name": "playerOwner",
         "types": [
-          "CDOTAPlayer"
+          "CDOTAPlayerController"
         ]
       },
       {
@@ -34902,6 +35040,29 @@
         "name": "damageInfo",
         "types": [
           "CTakeDamageInfo"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "DisconnectClient",
+    "available": "server",
+    "description": "Kick a specific player from the game.",
+    "returns": [
+      "nil"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "bool"
         ]
       }
     ]
@@ -36190,7 +36351,7 @@
     "available": "both",
     "description": "Get the local player on a listen server.",
     "returns": [
-      "CDOTAPlayer"
+      "CDOTAPlayerController"
     ],
     "args": []
   },
@@ -36573,6 +36734,23 @@
         "name": "level",
         "types": [
           "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "HeroMaxLevel",
+    "available": "server",
+    "description": "Max out a hero's level and give them all appropriate abilities and talents.",
+    "returns": [
+      "nil"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "handle"
         ]
       }
     ]
@@ -37025,7 +37203,7 @@
     "available": "both",
     "description": "Get a script instance of a player by index.",
     "returns": [
-      "CDOTAPlayer",
+      "CDOTAPlayerController",
       "nil"
     ],
     "args": [
@@ -37954,7 +38132,7 @@
       {
         "name": "sendToPlayer",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       },
@@ -37979,7 +38157,7 @@
       {
         "name": "sourcePlayer",
         "types": [
-          "CDOTAPlayer",
+          "CDOTAPlayerController",
           "nil"
         ]
       }
@@ -39054,6 +39232,23 @@
         "name": "eventPointData",
         "types": [
           "handle"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "UserIDToControllerHScript",
+    "available": "both",
+    "description": "Turn a userid integer (typically, fields named 'userid' in game events) to an HScript representing the associated player controller's script instance.",
+    "returns": [
+      "handle"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "int"
         ]
       }
     ]
