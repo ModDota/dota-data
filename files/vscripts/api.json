@@ -25743,29 +25743,31 @@
         "available": "server",
         "description": "Spawn a bot player of the passed hero name, player name, and team.",
         "returns": [
-          "handle"
+          "CDOTA_BaseNPC_Hero",
+          "nil"
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "heroName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg2",
+            "name": "playerName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg3",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg4",
+            "name": "entityScript",
+            "description": "Path to a script file executed in the context of spawned hero entity.",
             "types": [
               "string"
             ]
@@ -25788,55 +25790,55 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "nameSuffix",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg2",
+            "name": "stars",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg3",
+            "name": "maxStars",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg4",
+            "name": "extraData1",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg5",
+            "name": "extraData2",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg6",
+            "name": "extraData3",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg7",
+            "name": "extraData4",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg8",
+            "name": "extraData5",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg9",
+            "name": "extraData6",
             "types": [
               "uint"
             ]
@@ -25853,49 +25855,49 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "nameSuffix",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg2",
+            "name": "score",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg3",
+            "name": "extraData1",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg4",
+            "name": "extraData2",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg5",
+            "name": "extraData3",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg6",
+            "name": "extraData4",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg7",
+            "name": "extraData5",
             "types": [
               "uint"
             ]
           },
           {
-            "name": "arg8",
+            "name": "extraData6",
             "types": [
               "uint"
             ]
@@ -26003,7 +26005,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "itemName",
             "types": [
               "string"
             ]
@@ -26132,7 +26134,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "duration",
             "types": [
               "float"
             ]
@@ -26149,7 +26151,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "duration",
             "types": [
               "float"
             ]
@@ -26243,7 +26245,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "enabled",
             "types": [
               "bool"
             ]
@@ -26260,33 +26262,61 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "xCoord",
             "types": [
               "float"
             ]
           },
           {
-            "name": "arg3",
+            "name": "yCoord",
             "types": [
               "float"
             ]
           },
           {
-            "name": "arg4",
+            "name": "entity",
             "types": [
-              "handle"
+              "CBaseEntity",
+              "nil"
             ]
           },
           {
-            "name": "arg5",
+            "name": "type",
             "types": [
-              "int"
+              {
+                "kind": "literal",
+                "value": 0
+              },
+              {
+                "kind": "literal",
+                "value": 1
+              },
+              {
+                "kind": "literal",
+                "value": 2
+              },
+              {
+                "kind": "literal",
+                "value": 3
+              },
+              {
+                "kind": "literal",
+                "value": 4
+              },
+              {
+                "kind": "literal",
+                "value": 5
+              },
+              {
+                "kind": "literal",
+                "value": 6
+              }
             ]
           }
         ]
@@ -26327,13 +26357,14 @@
         "available": "server",
         "description": "Get the announcer for a team.",
         "returns": [
-          "handle"
+          "CDOTA_BaseNPC",
+          "nil"
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           }
         ]
@@ -26344,7 +26375,12 @@
         "available": "both",
         "description": "Returns the hero unit names banned in this game, if any.",
         "returns": [
-          "table"
+          {
+            "kind": "array",
+            "types": [
+              "string"
+            ]
+          }
         ],
         "args": []
       },
@@ -26378,9 +26414,9 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           }
         ]
@@ -26405,13 +26441,13 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "includePreGame",
             "types": [
               "bool"
             ]
           },
           {
-            "name": "arg2",
+            "name": "includeNegativeTime",
             "types": [
               "bool"
             ]
@@ -26424,11 +26460,12 @@
         "available": "server",
         "description": "Gets the Xth dropped item.",
         "returns": [
-          "handle"
+          "CDOTA_Item_Physical",
+          "nil"
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "index",
             "types": [
               "int"
             ]
@@ -26451,7 +26488,7 @@
         "available": "server",
         "description": "Get the game mode entity.",
         "returns": [
-          "handle"
+          "CDOTABaseGameMode"
         ],
         "args": []
       },
@@ -26527,21 +26564,22 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "itemName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg3",
+            "name": "playerId",
+            "description": "Used only for items with \"PlayerSpecificCooldown\"",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -26556,21 +26594,22 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "itemName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg3",
+            "name": "playerId",
+            "description": "Used only for items with \"PlayerSpecificCooldown\"",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -26619,15 +26658,16 @@
         "kind": "function",
         "name": "GetPlayerCustomGameAccountRecord",
         "available": "server",
-        "description": "(Preview/Unreleased) Gets the player's custom game account record, as it looked at the start of this session.",
+        "deprecated": "Unreleased.",
+        "description": "Gets the player's custom game account record, as it looked at the start of this session.",
         "returns": [
           "table"
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "playerId",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -26666,33 +26706,35 @@
         "kind": "function",
         "name": "IncreaseItemStock",
         "available": "server",
-        "description": "Increase an item's stock count, clamped to item max (nTeamNumber, szItemName, nCount, nPlayerID .",
+        "description": "Increase an item's stock count, clamped to item max.",
         "returns": [
           "nil"
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "itemName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg3",
+            "name": "count",
+            "description": "Negative values decrease stock count.",
             "types": [
               "int"
             ]
           },
           {
-            "name": "arg4",
+            "name": "playerId",
+            "description": "Values other than -1 work only for items with \"PlayerSpecificCooldown\" property.",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -26783,7 +26825,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "itemName",
             "types": [
               "string"
             ]
@@ -26820,7 +26862,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "locked",
             "types": [
               "bool"
             ]
@@ -26837,9 +26879,9 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           }
         ]
@@ -26854,27 +26896,27 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "goldChange",
             "types": [
               "int"
             ]
           },
           {
-            "name": "arg2",
-            "types": [
-              "int"
-            ]
-          },
-          {
-            "name": "arg3",
+            "name": "reliable",
             "types": [
               "bool"
             ]
           },
           {
-            "name": "arg4",
+            "name": "reason",
             "types": [
-              "int"
+              "EDOTA_ModifyGold_Reason"
             ]
           }
         ]
@@ -26899,9 +26941,9 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "player",
             "types": [
-              "handle"
+              "CDOTAPlayerController"
             ]
           }
         ]
@@ -26943,9 +26985,9 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "playerId",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -27028,7 +27070,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "itemName",
             "types": [
               "string"
             ]
@@ -27176,7 +27218,7 @@
         ],
         "args": [
           {
-            "name": "minimapCreepIconScale",
+            "name": "scale",
             "types": [
               "float"
             ]
@@ -27204,7 +27246,8 @@
         "kind": "function",
         "name": "SetCustomGameAccountRecordSaveFunction",
         "available": "server",
-        "description": "(Preview/Unreleased) Sets a callback to handle saving custom game account records (callback is passed a Player ID and should return a flat simple table).",
+        "deprecated": "Unreleased.",
+        "description": "Sets a callback to handle saving custom game account records (callback is passed a Player ID and should return a flat simple table).",
         "returns": [
           "nil"
         ],
@@ -27233,7 +27276,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "allow",
             "types": [
               "bool"
             ]
@@ -27250,7 +27293,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "allow",
             "types": [
               "bool"
             ]
@@ -27267,7 +27310,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "allow",
             "types": [
               "bool"
             ]
@@ -27318,7 +27361,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "difficulty",
             "types": [
               "int"
             ]
@@ -27335,7 +27378,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "delay",
             "types": [
               "float"
             ]
@@ -27352,7 +27395,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "delay",
             "types": [
               "float"
             ]
@@ -27369,7 +27412,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "remainingTime",
             "types": [
               "float"
             ]
@@ -27386,7 +27429,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "timeout",
             "types": [
               "float"
             ]
@@ -27403,13 +27446,13 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "maxPlayers",
             "types": [
               "int"
             ]
@@ -27426,7 +27469,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "message",
             "types": [
               "string"
             ]
@@ -27443,7 +27486,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "duration",
             "types": [
               "float"
             ]
@@ -27528,7 +27571,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "active",
             "types": [
               "bool"
             ]
@@ -27545,7 +27588,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "frozen",
             "types": [
               "bool"
             ]
@@ -27562,9 +27605,9 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           }
         ]
@@ -27579,13 +27622,13 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg2",
+            "name": "cooldown",
             "types": [
               "float"
             ]
@@ -27602,7 +27645,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "amount",
             "types": [
               "int"
             ]
@@ -27619,7 +27662,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -27636,7 +27679,7 @@
         ],
         "args": [
           {
-            "name": "minimapHeroIconScale",
+            "name": "scale",
             "types": [
               "float"
             ]
@@ -27653,7 +27696,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "enabled",
             "types": [
               "bool"
             ]
@@ -27670,7 +27713,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "selectionTime",
             "types": [
               "float"
             ]
@@ -27721,7 +27764,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "hideHeaders",
             "types": [
               "bool"
             ]
@@ -27755,27 +27798,28 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "count",
             "types": [
               "int"
             ]
           },
           {
-            "name": "arg2",
+            "name": "team",
             "types": [
-              "int"
+              "DOTATeam_t"
             ]
           },
           {
-            "name": "arg3",
+            "name": "itemName",
             "types": [
               "string"
             ]
           },
           {
-            "name": "arg4",
+            "name": "playerId",
+            "description": "Used only for items with \"PlayerSpecificCooldown\"",
             "types": [
-              "int"
+              "PlayerID"
             ]
           }
         ]
@@ -27824,13 +27868,13 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "unit",
             "types": [
-              "handle"
+              "CDOTA_BaseNPC"
             ]
           },
           {
-            "name": "arg2",
+            "name": "style",
             "types": [
               "int"
             ]
@@ -27847,7 +27891,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -27864,7 +27908,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -27921,7 +27965,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -27955,7 +27999,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "enabled",
             "types": [
               "bool"
             ]
@@ -27972,7 +28016,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -28006,7 +28050,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "amount",
             "types": [
               "int"
             ]
@@ -28023,7 +28067,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -28040,7 +28084,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -28057,7 +28101,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "time",
             "types": [
               "float"
             ]
@@ -28074,7 +28118,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "useBaseGoldBounties",
             "types": [
               "bool"
             ]
@@ -28091,7 +28135,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "useCustomXPValues",
             "types": [
               "bool"
             ]
@@ -28108,7 +28152,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "useUniversalShopMode",
             "types": [
               "bool"
             ]
@@ -28142,7 +28186,7 @@
         ],
         "args": [
           {
-            "name": "arg1",
+            "name": "whiteListEnabled",
             "types": [
               "bool"
             ]
@@ -28185,7 +28229,7 @@
         "available": "both",
         "description": "Get the current Gamerules state.",
         "returns": [
-          "int"
+          "DOTA_GameState"
         ],
         "args": []
       }

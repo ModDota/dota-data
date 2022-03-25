@@ -169,13 +169,13 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     },
   },
 
-  'CDOTAGamerules.GetPlayerCustomGameAccountRecord': {
+  'CDOTAGameRules.GetPlayerCustomGameAccountRecord': {
     deprecated: 'Unreleased.',
     description:
       "Gets the player's custom game account record, as it looked at the start of this session.",
     args: { 0: ['playerId'] },
   },
-  'CDOTAGamerules.SetCustomGameAccountRecordSaveFunction': {
+  'CDOTAGameRules.SetCustomGameAccountRecordSaveFunction': {
     deprecated: 'Unreleased.',
     description:
       'Sets a callback to handle saving custom game account records (callback is passed a Player ID and should return a flat simple table).',
@@ -515,7 +515,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTABaseGameMode.RemoveRealTimeCombatAnalyzerQuery': {
     args: { 0: [null, 'CombatAnalyzerQueryID'] },
   },
-  'CDOTAGamerules.AddBotPlayerWithEntityScript': {
+  'CDOTAGameRules.AddBotPlayerWithEntityScript': {
     returns: ['CDOTA_BaseNPC_Hero', 'nil'],
     args: {
       0: ['heroName'],
@@ -533,10 +533,10 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   'CDOTATutorial.AddShopWhitelistItem': { args: { '0': ['itemName'] } },
   'CDOTATutorial.RemoveShopWhitelistItem': { args: { '0': ['itemName'] } },
   'CDOTATutorial.SetWhiteListEnabled': { args: { '0': ['whiteListEnabled'] } },
-  'CDOTAGamerules.IsItemInWhiteList': { args: { 0: ['itemName'] } },
-  'CDOTAGamerules.AddItemToWhiteList': { args: { 0: ['itemName'] } },
-  'CDOTAGamerules.RemoveItemFromWhiteList': { args: { 0: ['itemName'] } },
-  'CDOTAGamerules.SetWhiteListEnabled': { args: { 0: ['whiteListEnabled'] } },
+  'CDOTAGameRules.IsItemInWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGameRules.AddItemToWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGameRules.RemoveItemFromWhiteList': { args: { 0: ['itemName'] } },
+  'CDOTAGameRules.SetWhiteListEnabled': { args: { 0: ['whiteListEnabled'] } },
   '_G.Msg': { args: { 0: ['message'] } },
   '_G.Warning': { args: { 0: ['message'] } },
   // TODO: `position` or `location`?
@@ -579,8 +579,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     // TODO: Nullable?
     returns: 'CDOTAPlayerController',
   },
-  'CDOTAGamerules.RemoveFakeClient': { args: { 0: ['playerId'] } },
-  'CDOTAGamerules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
+  'CDOTAGameRules.RemoveFakeClient': { args: { 0: ['playerId'] } },
+  'CDOTAGameRules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
   '_G.CreateRune': { returns: 'CBaseAnimating', args: { 1: [null, 'DOTA_RUNES'] } },
   '_G.DropNeutralItemAtPositionForHero': {
     returns: 'CDOTA_Item_Physical',
@@ -598,7 +598,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.GetXPNeededToReachNextLevel': { args: { 0: ['level'] } },
   '_G.GetLocalPlayerID': { returns: 'PlayerID' },
   '_G.GetLocalPlayerTeam': { returns: 'DOTATeam_t' },
-  'CDOTAGamerules.GetAnnouncer': {
+  'CDOTAGameRules.GetAnnouncer': {
     returns: ['CDOTA_BaseNPC', 'nil'],
     args: { 0: ['team', 'DOTATeam_t'] },
   },
@@ -664,7 +664,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.IsUnitInValidPosition': {
     args: { 0: ['unit', 'CBaseEntity'] },
   },
-  'CDOTAGamerules.IncreaseItemStock': {
+  'CDOTAGameRules.IncreaseItemStock': {
     description: "Increase an item's stock count, clamped to item max.",
     args: {
       0: ['team', 'DOTATeam_t'],
@@ -750,7 +750,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.TraceLine': { description: '', args: { 0: ['query', 'TraceLineInputs'] } },
   'CBaseEntity.SetAngularVelocity': { description: 'Set the local angular velocity.' }, // Remove argument names
   'CBaseModelEntity.SetSkin': { description: '' }, // Remove argument type and function name
-  'CDOTAGamerules.AddEventMetadataLeaderboardEntry': {
+  'CDOTAGameRules.AddEventMetadataLeaderboardEntry': {
     args: {
       0: ['nameSuffix'],
       1: ['stars'],
@@ -763,7 +763,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       8: ['extraData6'],
     },
   },
-  'CDOTAGamerules.AddEventMetadataLeaderboardEntryRawScore': {
+  'CDOTAGameRules.AddEventMetadataLeaderboardEntryRawScore': {
     args: {
       0: ['nameSuffix'],
       1: ['score'],
@@ -792,7 +792,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       0: [null, [literal(0), literal(1), literal(2)], '0=all, 1=enemy, 2=ally'],
     },
   },
-  'CDOTAGamerules.GetBannedHeroes': { returns: array('string') },
+  'CDOTAGameRules.GetBannedHeroes': { returns: array('string') },
   'ProjectileManager.IsValidProjectile': { args: { 0: ['value'] } },
   '_G.IsMangoTree': { args: { 0: ['entity', 'CBaseEntity'] } },
   '_G.GetPotentialNeutralItemDrop': { args: { 0: ['tier'], 1: ['team', 'DOTATeam_t'] } },
@@ -805,7 +805,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     description: 'Gives this hero some gold, using the gold filter if extra filtering is on.',
     args: { 1: ['reliable'], 2: [null, 'EDOTA_ModifyGold_Reason'] },
   },
-  'CDOTAGamerules.ModifyGoldFiltered': {
+  'CDOTAGameRules.ModifyGoldFiltered': {
     args: {
       0: ['playerId'],
       1: ['goldChange'],
@@ -813,7 +813,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       3: ['reason', 'EDOTA_ModifyGold_Reason'],
     },
   },
-  'CDOTAGamerules.ExecuteTeamPing': {
+  'CDOTAGameRules.ExecuteTeamPing': {
     args: {
       0: ['team', 'DOTATeam_t'],
       1: ['xCoord'],
@@ -825,28 +825,28 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       ],
     },
   },
-  'CDOTAGamerules.GetItemStockCount': {
+  'CDOTAGameRules.GetItemStockCount': {
     args: {
       0: ['team', 'DOTATeam_t'],
       1: ['itemName'],
       2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
     },
   },
-  'CDOTAGamerules.GetItemStockDuration': {
+  'CDOTAGameRules.GetItemStockDuration': {
     args: {
       0: ['team', 'DOTATeam_t'],
       1: ['itemName'],
       2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
     },
   },
-  'CDOTAGamerules.GetItemStockTime': {
+  'CDOTAGameRules.GetItemStockTime': {
     args: {
       0: ['team', 'DOTATeam_t'],
       1: ['itemName'],
       2: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
     },
   },
-  'CDOTAGamerules.SetItemStockCount': {
+  'CDOTAGameRules.SetItemStockCount': {
     args: {
       0: ['count'],
       1: ['team', 'DOTATeam_t'],
@@ -854,7 +854,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       3: ['playerId', null, 'Used only for items with "PlayerSpecificCooldown"'],
     },
   },
-  'CDOTAGamerules.SetGlyphCooldown': {
+  'CDOTAGameRules.SetGlyphCooldown': {
     args: {
       0: ['team', 'DOTATeam_t'],
       1: ['cooldown'],
