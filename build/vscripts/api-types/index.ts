@@ -339,6 +339,7 @@ apiTypesDeclarations.push({
     { name: 'position_x', types: ['float'] },
     { name: 'position_y', types: ['float'] },
     { name: 'position_z', types: ['float'] },
+    { name: 'shop_item_name', types: ['string'] },
   ],
 });
 
@@ -501,6 +502,13 @@ apiTypesDeclarations.push({
     { name: 'unit', types: ['CDOTA_BaseNPC'] },
     { name: 'added_buff', types: ['CDOTA_Buff'] },
   ],
+});
+
+apiTypesDeclarations.push({
+  kind: 'object',
+  name: 'ModifierHealEvent',
+  extend: ['ModifierUnitEvent'],
+  fields: [{ name: 'gain', types: ['number'] }],
 });
 
 apiTypesDeclarations.push({

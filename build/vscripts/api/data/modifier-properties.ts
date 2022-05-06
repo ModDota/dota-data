@@ -9,7 +9,8 @@ type ArgumentType =
   | 'ModifierAttackEvent'
   | 'ModifierInstanceEvent'
   | 'ModifierOverrideAbilitySpecialEvent'
-  | 'ModifierAddedEvent';
+  | 'ModifierAddedEvent'
+  | 'ModifierHealEvent';
 
 // TODO: Use more specific number types
 const anyNumber = ['float'];
@@ -188,8 +189,8 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnDamageCalculated: ['ModifierAttackEvent', ['nil']],
   OnDeath: ['ModifierInstanceEvent', ['nil']],
   OnDominated: ['ModifierUnitEvent', ['nil']],
-  OnHealReceived: ['ModifierUnitEvent', ['nil']],
-  OnHealthGained: ['ModifierUnitEvent', ['nil']],
+  OnHealReceived: ['ModifierHealEvent', ['nil']],
+  OnHealthGained: ['ModifierHealEvent', ['nil']],
   OnHeroKilled: ['ModifierAttackEvent', ['nil']],
   OnManaGained: ['ModifierUnitEvent', ['nil']],
   OnModelChanged: ['ModifierUnitEvent', ['nil']],
