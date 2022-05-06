@@ -17664,7 +17664,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierUnitEvent"
+              "ModifierHealEvent"
             ]
           }
         ],
@@ -17681,7 +17681,7 @@
           {
             "name": "event",
             "types": [
-              "ModifierUnitEvent"
+              "ModifierHealEvent"
             ]
           }
         ],

@@ -508,7 +508,7 @@ apiTypesDeclarations.push({
   kind: 'object',
   name: 'ModifierHealEvent',
   extend: ['ModifierUnitEvent'],
-  fields: [{ name: 'gain', types: ['number'] }],
+  fields: [{ name: 'gain', types: ['int'] }],
 });
 
 apiTypesDeclarations.push({
