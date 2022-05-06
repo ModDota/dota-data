@@ -11657,6 +11657,35 @@
       },
       {
         "kind": "function",
+        "name": "ModifyGoldFiltered",
+        "available": "server",
+        "description": "Gives this hero some gold, using the gold filter if extra filtering is on.",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "goldChange",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "reliable",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "reason",
+            "types": [
+              "EDOTA_ModifyGold_Reason"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "ModifyIntellect",
         "available": "server",
         "description": "Adds passed value to base attribute value, then calls CalculateStatBonus.",
@@ -11726,35 +11755,6 @@
             "name": "respawnPenalty",
             "types": [
               "bool"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "Script_ModifyGoldFiltered",
-        "available": "server",
-        "description": "Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason.",
-        "returns": [
-          "int"
-        ],
-        "args": [
-          {
-            "name": "goldChange",
-            "types": [
-              "int"
-            ]
-          },
-          {
-            "name": "reliabe",
-            "types": [
-              "bool"
-            ]
-          },
-          {
-            "name": "reason",
-            "types": [
-              "int"
             ]
           }
         ]

@@ -77,12 +77,12 @@ background-position: left 10px top 40px;</pre>
 
 === background-repeat ===
 Controls if the background should be repeated in the horizontal and vertical directions.<br><br>Possible values per direction:<br>"repeat" - (default) Repeated in the specified direction until it fills the panel<br>"space" - Repeated as many times as required to fill the panel w/o being clipped. Space is added between images to to align first and last image with panel edges.<br>"round" - Repeated as many times as required to fill the panel w/o being clipped. The image is resized to align first and last image with panel edges.<br>"no-repeat" - Not repeated<br><br>Possible single values:<br>"repeat-x" - equals "repeat no-repeat"<br>"repeat-y" - equals "no-repeat repeat"<br><br><b>Examples:</b><pre>background-repeat: repeat; // equals "repeat repeat" (default)
-background-repeat: repeat space; // repeats horizontally, spaces vertically 
+background-repeat: repeat space; // repeats horizontally, spaces vertically
 background-repeat: no-repeat round; // 1 column of images, scaled to fit evenly</pre>
 
 
 === background-size ===
-Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, background-texture-size and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default) 
+Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, background-texture-size and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default)
 background-size: 100% 100%; // image fills the panel
 background-size: 50% 75%; // image fills 50% of the panel's width, and 75% of the panel's height
 background-size: 300px 200px; // image is drawn 300px wide, 200px tall</pre>
@@ -163,7 +163,7 @@ border-radius: 2px;
 border-radius: 50% / 50%;
 // 2 px horizontal radii 4px vertical elliptical corners on all sides
 border-radius: 2px / 4px;
-// All corners fully specified 
+// All corners fully specified
 border-radius: 2px 3px 4px 2px / 2px 3px 3px 2px;</pre>
 
 
@@ -606,7 +606,7 @@ $> dump_panorama_events
 |-
 | <code>AddStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
-| Add a CSS class to a panel after a specified delay. 
+| Add a CSS class to a panel after a specified delay.
 |-
 | <code>AddStyleToEachChild(panoramasymbol class)</code>
 | Yes
@@ -614,7 +614,7 @@ $> dump_panorama_events
 |-
 | <code>AddTimedStyle(panoramasymbol class, float duration, float pre-delay)</code>
 | Yes
-| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class. 
+| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.
 |-
 | <code>AsyncEvent(float delay, event eventToFire)</code>
 | No
@@ -834,7 +834,7 @@ $> dump_panorama_events
 |-
 | <code>RemoveStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
-| Remove a CSS class from a panel after a specified delay. 
+| Remove a CSS class from a panel after a specified delay.
 |-
 | <code>RemoveStyleFromEachChild(panoramasymbol class)</code>
 | Yes
@@ -5540,10 +5540,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1762,
-    "kind":"constant",
-    "name":"ACT_DOTA_ARCANA_VOTE"
-  },{
     "enum":"GameActivity_t",
     "value":1682,
     "kind":"constant",
@@ -5579,7 +5575,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_SPECIAL"
   },{
-    "value":1766,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -5668,15 +5664,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1768,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST1_STATUE"
-  },{
-    "value":1767,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1775,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -5869,10 +5861,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1597,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
-  },{
-    "value":1765,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1587,
@@ -6084,7 +6072,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1776,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -6208,7 +6196,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1774,
+    "value":1766,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
@@ -6477,10 +6465,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1764,
-    "kind":"constant",
-    "name":"ACT_DOTA_PUNCH"
-  },{
     "enum":"GameActivity_t",
     "value":1549,
     "kind":"constant",
@@ -6556,7 +6540,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1773,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -6645,10 +6629,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1763,
-    "kind":"constant",
-    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
-  },{
     "enum":"GameActivity_t",
     "value":1629,
     "kind":"constant",
@@ -6659,11 +6639,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1772,
-    "kind":"constant",
-    "name":"ACT_DOTA_STATUE_SEQUENCE"
-  },{
-    "value":1777,
+    "value":1767,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -6692,7 +6668,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
   },{
-    "value":1771,
+    "value":1770,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -6819,10 +6795,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1710,
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
-  },{
-    "value":1770,
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY_STATUE"
   },{
     "enum":"GameActivity_t",
     "value":1689,
@@ -10634,10 +10606,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":54,
     "kind":"constant",
     "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER"
-  },{
-    "value":59,
-    "kind":"constant",
-    "name":"AE_DOTA_SWITCH_ATTACK_COMBO"
   },{
     "value":0,
     "kind":"constant",
@@ -23853,6 +23821,20 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
         "description":"Gives this hero some gold.  Args: int nGoldChange, bool bReliable, int reason"
       },{
         "args":[{
+            "name":"iGoldChange",
+            "type":"int"
+          },{
+            "name":"bReliabe",
+            "type":"bool"
+          },{
+            "name":"iReason",
+            "type":"int"
+          }],
+        "returns":"int",
+        "name":"ModifyGoldFiltered",
+        "description":"Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason"
+      },{
+        "args":[{
             "name":"flNewIntellect",
             "type":"float"
           }],
@@ -23886,20 +23868,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
         "returns":"void",
         "name":"RespawnHero",
         "description":"Respawn this hero."
-      },{
-        "args":[{
-            "name":"iGoldChange",
-            "type":"int"
-          },{
-            "name":"bReliabe",
-            "type":"bool"
-          },{
-            "name":"iReason",
-            "type":"int"
-          }],
-        "returns":"int",
-        "name":"Script_ModifyGoldFiltered",
-        "description":"Gives this hero some gold, using the gold filter if extra filtering is on.  Args: int nGoldChange, bool bReliable, int reason"
       },{
         "args":[{
             "name":"iPoints",
@@ -30507,10 +30475,6 @@ Initializing script VM...
     "name":"rr_QueryBestResponse",
     "description":"Params: (entity, query) : tests 'query' against entity's response system and returns the best response found (or null if none found)."
   },{
-    "value":60,
-    "kind":"constant",
-    "name":""
-  },{
     "enum":"AbilityLearnResult_t",
     "value":2,
     "kind":"constant",
@@ -30556,7 +30520,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ABILITY_TYPE_ULTIMATE"
   },{
-    "value":1780,
+    "value":1772,
     "kind":"constant",
     "name":"ACD_DOTA_IDLE"
   },{
@@ -31112,10 +31076,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ANCESTRAL_SPIRIT"
   },{
-    "value":1762,
-    "kind":"constant",
-    "name":"ACT_DOTA_ARCANA_VOTE"
-  },{
     "value":1682,
     "kind":"constant",
     "name":"ACT_DOTA_ARCTIC_BURN_END"
@@ -31144,7 +31104,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_SPECIAL"
   },{
-    "value":1766,
+    "value":1762,
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE"
   },{
@@ -31216,15 +31176,15 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAPTURE_RARE"
   },{
-    "value":1768,
+    "value":1771,
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE"
   },{
-    "value":1767,
+    "value":1763,
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE"
   },{
-    "value":1775,
+    "value":1764,
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE"
   },{
@@ -31340,7 +31300,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CAST_EMP_ORB"
   },{
-    "value":1783,
+    "value":1776,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE"
   },{
@@ -31383,10 +31343,6 @@ Initializing script VM...
     "value":1597,
     "kind":"constant",
     "name":"ACT_DOTA_CAST_REFRACTION"
-  },{
-    "value":1765,
-    "kind":"constant",
-    "name":"ACT_DOTA_CAST_STATUE"
   },{
     "value":1587,
     "kind":"constant",
@@ -31500,7 +31456,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_CUSTOM_TOWER_TAUNT"
   },{
-    "value":1789,
+    "value":1782,
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE"
   },{
@@ -31532,7 +31488,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED"
   },{
-    "value":1779,
+    "value":1773,
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END"
   },{
@@ -31564,7 +31520,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL"
   },{
-    "value":1776,
+    "value":1768,
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE"
   },{
@@ -31664,11 +31620,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_SLEEPING_END"
   },{
-    "value":1774,
+    "value":1766,
     "kind":"constant",
     "name":"ACT_DOTA_IDLE_STATUE"
   },{
-    "value":1790,
+    "value":1783,
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE"
   },{
@@ -31884,11 +31840,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_PRESENT_ITEM"
   },{
-    "value":1764,
-    "kind":"constant",
-    "name":"ACT_DOTA_PUNCH"
-  },{
-    "value":1785,
+    "value":1778,
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER"
   },{
@@ -31928,7 +31880,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_END"
   },{
-    "value":1781,
+    "value":1774,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN"
   },{
@@ -31940,7 +31892,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP_END"
   },{
-    "value":1782,
+    "value":1775,
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT"
   },{
@@ -31960,11 +31912,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_RUN"
   },{
-    "value":1787,
+    "value":1780,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT"
   },{
-    "value":1773,
+    "value":1765,
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE"
   },{
@@ -32036,11 +31988,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE"
   },{
-    "value":1763,
-    "kind":"constant",
-    "name":"ACT_DOTA_SPIRIT_BREAKER_ULT_RUN"
-  },{
-    "value":1786,
+    "value":1779,
     "kind":"constant",
     "name":"ACT_DOTA_SPWN"
   },{
@@ -32052,11 +32000,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_STATIC_STORM"
   },{
-    "value":1772,
-    "kind":"constant",
-    "name":"ACT_DOTA_STATUE_SEQUENCE"
-  },{
-    "value":1777,
+    "value":1767,
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE"
   },{
@@ -32080,7 +32024,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_SPECIAL"
   },{
-    "value":1771,
+    "value":1770,
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE"
   },{
@@ -32111,10 +32055,6 @@ Initializing script VM...
     "value":1632,
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_END_REACT"
-  },{
-    "value":1778,
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_END_STATUE"
   },{
     "value":1631,
     "kind":"constant",
@@ -32188,11 +32128,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_START"
   },{
-    "value":1770,
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY_STATUE"
-  },{
-    "value":1788,
+    "value":1781,
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST"
   },{
@@ -39605,7 +39541,7 @@ Initializing script VM...
     "kind":"constant",
     "name":"__UNKNOWN__"
   },{
-    "value":1784,
+    "value":1777,
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash"
   },{
