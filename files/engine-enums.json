@@ -1690,6 +1690,10 @@
         "shortName": "DOTA_MK_STRIKE"
       },
       {
+        "name": "ACT_DOTA_MK_STRIKE_END",
+        "shortName": "DOTA_MK_STRIKE_END"
+      },
+      {
         "name": "ACT_DOTA_MK_TREE_END",
         "shortName": "DOTA_MK_TREE_END"
       },
@@ -1836,6 +1840,10 @@
       {
         "name": "ACT_DOTA_RUN",
         "shortName": "DOTA_RUN"
+      },
+      {
+        "name": "ACT_DOTA_RUN_RARE",
+        "shortName": "DOTA_RUN_RARE"
       },
       {
         "name": "ACT_DOTA_SAND_KING_BURROW_IN",
@@ -2028,6 +2036,14 @@
       {
         "name": "ACT_DOTA_VICTORY_START",
         "shortName": "DOTA_VICTORY_START"
+      },
+      {
+        "name": "ACT_DOTA_VIPER_DIVE",
+        "shortName": "DOTA_VIPER_DIVE"
+      },
+      {
+        "name": "ACT_DOTA_VIPER_DIVE_END",
+        "shortName": "DOTA_VIPER_DIVE_END"
       },
       {
         "name": "ACT_DOTA_WAIT_IDLE",
@@ -5879,6 +5895,10 @@
         "shortName": "ROTATION_VECTOR_WORLDSPACE"
       },
       {
+        "name": "FIELD_SCALE32",
+        "shortName": "SCALE32"
+      },
+      {
         "name": "FIELD_SHIM",
         "shortName": "SHIM"
       },
@@ -5889,6 +5909,10 @@
       {
         "name": "FIELD_STRING",
         "shortName": "STRING"
+      },
+      {
+        "name": "FIELD_STRING_AND_TOKEN",
+        "shortName": "STRING_AND_TOKEN"
       },
       {
         "name": "FIELD_TICK",
