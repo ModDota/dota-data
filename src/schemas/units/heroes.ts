@@ -129,7 +129,7 @@ const baseHero = () =>
           .obj('ItemSlot')
           .field('SlotIndex', s.int().min(0), { require: true })
           .field('SlotName', s.str(), { require: true })
-          .field('SlotText', s.str().pattern(/^#LoadoutSlot_\w+$/), { require: true })
+          .field('SlotText', s.str(), { require: true })
           .field('no_import', s.binaryBoolean())
           .field('TextureWidth', s.int().min(0))
           .field('TextureHeight', s.int().min(0))

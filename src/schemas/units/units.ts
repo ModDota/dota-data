@@ -18,6 +18,7 @@ export const baseUnit = () =>
         'Path to the vscripts file, that would be executed for each spawned unit. ' +
         "Unit is available in file's scope under `thisEntity` variable name.",
     })
+    .field('include_keys_from', s.str().pattern(resourcePatterns.npc))
 
     // TODO:
     .field('wearable', s.int())

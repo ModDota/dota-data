@@ -780,10 +780,6 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.ManuallyTriggerSpawnGroupCompletion': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
   '_G.UnloadSpawnGroupByHandle': { args: { 0: ['handle', 'SpawnGroupHandle'] } },
   'CBaseEntity.GetSpawnGroupHandle': { returns: 'SpawnGroupHandle' },
-  'CDOTABaseAbility.RefreshIntrinsicModifier': {
-    returns: 'bool',
-    description: 'Returns true if ability has intrinsic modifier.',
-  },
   'CDOTABaseAbility.GetBehavior': { returns: 'DOTA_ABILITY_BEHAVIOR' },
   'CDOTABaseAbility.GetBehaviorInt': { returns: 'DOTA_ABILITY_BEHAVIOR' },
   'CDOTA_BaseNPC.RemoveAllModifiers': {

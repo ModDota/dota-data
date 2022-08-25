@@ -12,9 +12,14 @@ describe('integration', () => {
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum', // DOTA_ABILITY_TYPE_ULTIMATE
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum', // Extra |, empty string ability behavior
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
-      'hoodwink_decoy.AbilityBehavior[0] should be a AbilityBehavior enum', // Should be DOTA_ABILITY_BEHAVIOR_POINT
       'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
       'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
+      `huskar_inner_fire.AbilityValues.creep_damage_heal_pct not matches any of:
+  1. huskar_inner_fire.AbilityValues.creep_damage_heal_pct should be a string or a number
+  2. huskar_inner_fire.AbilityValues.creep_damage_heal_pct.value[0] should be a number`, // value "FIELD_INTEGER", should be 0
+      'ogre_magi_ignite.AbilitySpecial.06.var_type should be a SpecialValueFieldType enum', // FIELD_INT, should be FIELD_INTEGER
+      'elder_titan_move_spirit.AbilityBehavior[1] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_POINT_TARGET, should be DOTA_ABILITY_BEHAVIOR_POINT_TARGET
+      'special_bonus_unique_warlock_1.base_class is unknown', // Should be BaseClass instead
     ],
   });
 
@@ -28,7 +33,9 @@ describe('integration', () => {
       // Item removed and cost made an empty string
       'item_recipe_hood_of_defiance.ItemCost should be an integer',
       // TODO: Is 0.036f valid for floats or it's a typo?
-      'item_armlet.AbilityValues.toggle_cooldown[0] should be a number',
+      `item_armlet.AbilityValues.toggle_cooldown not matches any of:
+  1. item_armlet.AbilityValues.toggle_cooldown[0] should be a number
+  2. item_armlet.AbilityValues.toggle_cooldown should be an object`,
       // TODO they used .mdl here, should we allow it?
       'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/',
       // TODO: Should flag enums allow empty string?

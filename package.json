@@ -91,7 +91,8 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "valve-kv": "^1.2.1"
   },
   "engines": {
     "node": ">=12.13.0"

@@ -68,6 +68,10 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('AnimationPlaybackRate', s.num())
     .field('AbilityName', s.str().pattern(resourcePatterns.ability))
 
+    .field('ad_linked_abilities', s.str())
+    .field('SpecialBonusIntrinsicModifier', s.str())
+    .field('LinkedShardAbility', s.str().pattern(resourcePatterns.ability))
+
     .field(
       'AbilitySpecial',
       s.map(
@@ -75,6 +79,7 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
           .obj('AbilitySpecial')
           .field('var_type', s.enums('SpecialValueFieldType'), { require: true })
           .field('ad_linked_ability', s.str().pattern(resourcePatterns.ability))
+          .field('ad_linked_abilities', s.str())
           // TODO: arrayLike string
           .field('linked_ad_abilities', s.str())
           .field('levelkey', s.oneOfLiterals(['quaslevel', 'wexlevel', 'exortlevel']))
@@ -82,10 +87,22 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
           .field('LinkedSpecialBonus', s.str())
           .field('LinkedSpecialBonusField', s.str())
           .field('LinkedSpecialBonusOperation', s.enums('SpecialBonusOperation'))
+          .field('DamageTypeTooltip', s.enums('DamageType'))
           .rest(s.arrayLike()),
       ),
     )
-    .field('AbilityValues', s.map(s.arrayLike()))
+    .field(
+      'AbilityValues',
+      s.map(
+        s.oneOf([
+          s.arrayLike(),
+          s
+            .obj('AbilityValue')
+            .field('value', s.arrayLike())
+            .rest(s.oneOf([s.str(), s.arrayLike()])),
+        ]),
+      ),
+    )
 
     .field('precache', createPrecacheBlock());
 

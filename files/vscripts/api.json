@@ -22803,9 +22803,8 @@
         "kind": "function",
         "name": "RefreshIntrinsicModifier",
         "available": "server",
-        "description": "Returns true if ability has intrinsic modifier.",
         "returns": [
-          "bool"
+          "nil"
         ],
         "args": []
       },
