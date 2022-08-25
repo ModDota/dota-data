@@ -766,6 +766,16 @@
       },
       {
         "kind": "function",
+        "name": "GetLeftVector",
+        "available": "server",
+        "description": "Get the left vector of the entity.",
+        "returns": [
+          "Vector"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetLocalAngles",
         "available": "server",
         "description": "Get entity local pitch, yaw, roll as a QAngle.",
@@ -886,7 +896,7 @@
         "kind": "function",
         "name": "GetRightVector",
         "available": "server",
-        "description": "Get the right vector of the entity.",
+        "description": "Get the right vector of the entity. WARNING: This produces a left-handed coordinate system. Use GetLeftVector instead (which is aligned with the y axis of the entity).",
         "returns": [
           "Vector"
         ],
@@ -2790,7 +2800,7 @@
           {
             "name": "arg2",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -2902,7 +2912,7 @@
           {
             "name": "arg4",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -2961,7 +2971,7 @@
           {
             "name": "arg2",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -3032,7 +3042,7 @@
           {
             "name": "arg2",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -3345,7 +3355,7 @@
           {
             "name": "arg2",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -4119,7 +4129,7 @@
           {
             "name": "arg5",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -4373,7 +4383,7 @@
           {
             "name": "arg2",
             "types": [
-              "Quaternion"
+              "unknown"
             ]
           },
           {
@@ -4767,6 +4777,22 @@
       },
       {
         "kind": "function",
+        "name": "GetAbilityChargeRestoreTime",
+        "available": "both",
+        "returns": [
+          "float"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetAbilityTextureName",
         "available": "client",
         "description": "Allows code overriding of the ability texture shown in the HUD.",
@@ -5068,6 +5094,16 @@
       },
       {
         "kind": "function",
+        "name": "IsAttributeBonus",
+        "available": "both",
+        "description": "Is this ability an Attribute Bonus.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsCosmetic",
         "available": "server",
         "description": "Is this a cosmetic only ability?",
@@ -5162,6 +5198,22 @@
             "name": "ctrlHeld",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnAbilityUpgrade",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "upgradeAbility",
+            "types": [
+              "handle"
             ]
           }
         ]
@@ -8933,7 +8985,7 @@
         "available": "server",
         "description": "Remove mana from this unit, this can be used for involuntary mana loss, not for mana that is spent.",
         "returns": [
-          "nil"
+          "float"
         ],
         "args": [
           {
@@ -15695,6 +15747,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierExtraManaBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierExtraManaPercentage",
         "available": "both",
         "abstract": true,
@@ -15964,6 +16026,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierIsRatPack",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16953,6 +17025,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierSpellRedirectTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierSpellsRequireHP",
         "available": "both",
         "abstract": true,
@@ -17131,6 +17213,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierTurnRateConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18588,6 +18680,22 @@
       {
         "kind": "function",
         "name": "ClearLastHitStreak",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "ClearPlayer",
         "available": "server",
         "returns": [
           "nil"
@@ -21537,6 +21645,28 @@
       },
       {
         "kind": "function",
+        "name": "EnableAbilityChargesOnTalentUpgrade",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "ability",
+            "types": [
+              "handle"
+            ]
+          },
+          {
+            "name": "talentName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "EndChannel",
         "available": "server",
         "returns": [
@@ -21560,6 +21690,22 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetAbilityChargeRestoreTime",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -21934,6 +22080,22 @@
         "available": "server",
         "returns": [
           "float"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetEffectiveManaCost",
+        "available": "server",
+        "returns": [
+          "int"
         ],
         "args": [
           {
@@ -23311,6 +23473,16 @@
       },
       {
         "kind": "function",
+        "name": "GetAnnouncerGameModeAnnounceDisabled",
+        "available": "server",
+        "description": "Is the announcer announcing the mode / saying Choose Your Hero on start of custom games disabled?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetCameraDistanceOverride",
         "available": "server",
         "description": "Set a different camera distance; dota default is 1134.",
@@ -23921,6 +24093,23 @@
       },
       {
         "kind": "function",
+        "name": "SetAnnouncerGameModeAnnounceDisabled",
+        "available": "server",
+        "description": "Disables the announcer announcing the mode / saying Choose Your Hero on start of custom games.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "disabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetBotsAlwaysPushWithHuman",
         "available": "server",
         "description": "Set if the bots should try their best to push with a human player.",
@@ -24441,6 +24630,23 @@
         "name": "SetDeathOverlayDisabled",
         "available": "server",
         "description": "Specify whether the full screen death overlay effect plays when the selected hero dies.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "disabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDeathTipsDisabled",
+        "available": "server",
+        "description": "Disables chat tips on death.",
         "returns": [
           "nil"
         ],
@@ -26844,6 +27050,26 @@
       },
       {
         "kind": "function",
+        "name": "IsSuggestAbilitiesEnabled",
+        "available": "server",
+        "description": "Returns whether Dota Plus ability suggestions are enabled or disabled.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsSuggestItemsEnabled",
+        "available": "server",
+        "description": "Returns whether Dota Plus item suggestions are enabled or disabled.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsTemporaryNight",
         "available": "server",
         "description": "Is it temporarily night-time?",
@@ -27096,6 +27322,23 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ResetPlayer",
+        "available": "server",
+        "description": "Resets the player of a given ID.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -27883,6 +28126,57 @@
       },
       {
         "kind": "function",
+        "name": "SetPostGameColumns",
+        "available": "server",
+        "description": "Set columns to show in post game.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetPostGameLayout",
+        "available": "server",
+        "description": "Configure post game to be single or double column layout.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetPostGameTeamScores",
+        "available": "server",
+        "description": "Set score value for each team. First element is for DOTA_TEAM_GOODGUYS.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetPostGameTime",
         "available": "server",
         "description": "Sets the amount of time players have between the game ending and the server disconnecting them.",
@@ -28070,6 +28364,40 @@
             "name": "time",
             "types": [
               "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetSuggestAbilitiesEnabled",
+        "available": "server",
+        "description": "Sets Dota Plus ability suggestions enabled or disabled.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetSuggestItemsEnabled",
+        "available": "server",
+        "description": "Sets Dota Plus ability item enabled or disabled.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
             ]
           }
         ]

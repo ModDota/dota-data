@@ -5,7 +5,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard abilities',
     schema: schemas.npc_abilities,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/scripts/npc/npc_abilities.txt',
+    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/npc_abilities.txt',
 
     ignore: [
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
@@ -50,25 +50,6 @@ describe('integration', () => {
      item_recipe_fallen_sky.ItemResult is unknown
      item_recipe_fallen_sky.ItemRequirements is unknown`,
     ],
-  });
-
-  createIntegrationTest({
-    name: 'frostivus_2017 abilities',
-    schema: schemas.npc_abilities_custom,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_abilities_custom.txt',
-
-    ignore: [
-      'furion_teleport_lua.AbilityBehavior[0] should be a AbilityBehavior enum',
-      'mirana_arrow_lua.AbilityBehavior[0] should be a AbilityBehavior enum',
-    ],
-  });
-
-  createIntegrationTest({
-    name: 'frostivus_2017 items',
-    schema: schemas.npc_items_custom,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/frostivus_2017/scripts/npc/npc_items_custom.txt',
-
-    ignore: ['item_containers_lua_pack.ItemCanChangeContainer is unknown'],
   });
 
   createIntegrationTest({

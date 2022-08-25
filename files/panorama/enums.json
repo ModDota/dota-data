@@ -249,6 +249,151 @@
       {
         "name": "DOTA_GC_TEAM_NOTEAM",
         "value": 5
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_1",
+        "value": 6
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_2",
+        "value": 7
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_3",
+        "value": 8
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_4",
+        "value": 9
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_5",
+        "value": 10
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_6",
+        "value": 11
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_7",
+        "value": 12
+      },
+      {
+        "name": "DOTA_GC_TEAM_CUSTOM_8",
+        "value": 13
+      },
+      {
+        "name": "DOTA_GC_TEAM_NEUTRALS",
+        "value": 14
+      }
+    ]
+  },
+  {
+    "name": "DOTA_GameMode",
+    "members": [
+      {
+        "name": "DOTA_GAMEMODE_NONE",
+        "value": 0
+      },
+      {
+        "name": "DOTA_GAMEMODE_AP",
+        "value": 1
+      },
+      {
+        "name": "DOTA_GAMEMODE_CM",
+        "value": 2
+      },
+      {
+        "name": "DOTA_GAMEMODE_RD",
+        "value": 3
+      },
+      {
+        "name": "DOTA_GAMEMODE_SD",
+        "value": 4
+      },
+      {
+        "name": "DOTA_GAMEMODE_AR",
+        "value": 5
+      },
+      {
+        "name": "DOTA_GAMEMODE_INTRO",
+        "value": 6
+      },
+      {
+        "name": "DOTA_GAMEMODE_HW",
+        "value": 7
+      },
+      {
+        "name": "DOTA_GAMEMODE_REVERSE_CM",
+        "value": 8
+      },
+      {
+        "name": "DOTA_GAMEMODE_XMAS",
+        "value": 9
+      },
+      {
+        "name": "DOTA_GAMEMODE_TUTORIAL",
+        "value": 10
+      },
+      {
+        "name": "DOTA_GAMEMODE_MO",
+        "value": 11
+      },
+      {
+        "name": "DOTA_GAMEMODE_LP",
+        "value": 12
+      },
+      {
+        "name": "DOTA_GAMEMODE_POOL1",
+        "value": 13
+      },
+      {
+        "name": "DOTA_GAMEMODE_FH",
+        "value": 14
+      },
+      {
+        "name": "DOTA_GAMEMODE_CUSTOM",
+        "value": 15
+      },
+      {
+        "name": "DOTA_GAMEMODE_CD",
+        "value": 16
+      },
+      {
+        "name": "DOTA_GAMEMODE_BD",
+        "value": 17
+      },
+      {
+        "name": "DOTA_GAMEMODE_ABILITY_DRAFT",
+        "value": 18
+      },
+      {
+        "name": "DOTA_GAMEMODE_EVENT",
+        "value": 19
+      },
+      {
+        "name": "DOTA_GAMEMODE_ARDM",
+        "value": 20
+      },
+      {
+        "name": "DOTA_GAMEMODE_1V1MID",
+        "value": 21
+      },
+      {
+        "name": "DOTA_GAMEMODE_ALL_DRAFT",
+        "value": 22
+      },
+      {
+        "name": "DOTA_GAMEMODE_TURBO",
+        "value": 23
+      },
+      {
+        "name": "DOTA_GAMEMODE_MUTATION",
+        "value": 24
+      },
+      {
+        "name": "DOTA_GAMEMODE_COACHES_CHALLENGE",
+        "value": 25
       }
     ]
   },
@@ -2760,6 +2905,22 @@
       {
         "name": "ACT_DOTA_PIERCE_THE_VEIL",
         "value": 1760
+      },
+      {
+        "name": "ACT_DOTA_RUN_RARE",
+        "value": 1761
+      },
+      {
+        "name": "ACT_DOTA_VIPER_DIVE",
+        "value": 1762
+      },
+      {
+        "name": "ACT_DOTA_VIPER_DIVE_END",
+        "value": 1763
+      },
+      {
+        "name": "ACT_DOTA_MK_STRIKE_END",
+        "value": 1764
       }
     ]
   },
@@ -2944,260 +3105,296 @@
         "value": 27
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_VOICE",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_1",
         "value": 28
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_2",
         "value": 29
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_3",
         "value": 30
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_4",
         "value": 31
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_5",
         "value": 32
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_HEAD_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_6",
         "value": 33
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_7",
         "value": 34
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ARMS_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_8",
         "value": 35
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_EFFECTS_9",
         "value": 36
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_BELT_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_VOICE",
         "value": 37
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_NECK_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_WEAPON_PERSONA_1",
         "value": 38
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_BACK_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_OFFHAND_WEAPON_PERSONA_1",
         "value": 39
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_LEGS_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_WEAPON2_PERSONA_1",
         "value": 40
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_OFFHAND_WEAPON2_PERSONA_1",
         "value": 41
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_TAIL_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_HEAD_PERSONA_1",
         "value": 42
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MISC_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_SHOULDER_PERSONA_1",
         "value": 43
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ARMS_PERSONA_1",
         "value": 44
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_ARMOR_PERSONA_1",
         "value": 45
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_BELT_PERSONA_1",
         "value": 46
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_NECK_PERSONA_1",
         "value": 47
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_BACK_PERSONA_1",
         "value": 48
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_LEGS_PERSONA_1",
         "value": 49
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_GLOVES_PERSONA_1",
         "value": 50
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_TAIL_PERSONA_1",
         "value": 51
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_MISC_PERSONA_1",
         "value": 52
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_BODY_HEAD_PERSONA_1",
         "value": 53
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_MOUNT_PERSONA_1",
         "value": 54
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_SUMMON_PERSONA_1",
         "value": 55
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_VOICE_PERSONA_1",
+        "name": "DOTA_LOADOUT_TYPE_SHAPESHIFT_PERSONA_1",
         "value": 56
       },
       {
-        "name": "DOTA_LOADOUT_PERSONA_1_START",
-        "value": 29
-      },
-      {
-        "name": "DOTA_LOADOUT_PERSONA_1_END",
-        "value": 56
-      },
-      {
-        "name": "DOTA_LOADOUT_TYPE_PERSONA_SELECTOR",
+        "name": "DOTA_LOADOUT_TYPE_TAUNT_PERSONA_1",
         "value": 57
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_COURIER",
+        "name": "DOTA_LOADOUT_TYPE_AMBIENT_EFFECTS_PERSONA_1",
         "value": 58
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_ANNOUNCER",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_ATTACK_PERSONA_1",
         "value": 59
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MEGA_KILLS",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY1_PERSONA_1",
         "value": 60
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MUSIC",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY2_PERSONA_1",
         "value": 61
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_WARD",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY3_PERSONA_1",
         "value": 62
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_HUD_SKIN",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY4_PERSONA_1",
         "value": 63
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_LOADING_SCREEN",
+        "name": "DOTA_LOADOUT_TYPE_ABILITY_ULTIMATE_PERSONA_1",
         "value": 64
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_WEATHER",
+        "name": "DOTA_LOADOUT_TYPE_VOICE_PERSONA_1",
         "value": 65
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_HEROIC_STATUE",
+        "name": "DOTA_LOADOUT_PERSONA_1_START",
+        "value": 38
+      },
+      {
+        "name": "DOTA_LOADOUT_PERSONA_1_END",
+        "value": 65
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_PERSONA_SELECTOR",
         "value": 66
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MULTIKILL_BANNER",
+        "name": "DOTA_LOADOUT_TYPE_COURIER",
         "value": 67
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_CURSOR_PACK",
+        "name": "DOTA_LOADOUT_TYPE_ANNOUNCER",
         "value": 68
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_TELEPORT_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_MEGA_KILLS",
         "value": 69
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_BLINK_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_MUSIC",
         "value": 70
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_EMBLEM",
+        "name": "DOTA_LOADOUT_TYPE_WARD",
         "value": 71
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_TERRAIN",
+        "name": "DOTA_LOADOUT_TYPE_HUD_SKIN",
         "value": 72
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_RADIANT_CREEPS",
+        "name": "DOTA_LOADOUT_TYPE_LOADING_SCREEN",
         "value": 73
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_DIRE_CREEPS",
+        "name": "DOTA_LOADOUT_TYPE_WEATHER",
         "value": 74
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_RADIANT_TOWER",
+        "name": "DOTA_LOADOUT_TYPE_HEROIC_STATUE",
         "value": 75
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_DIRE_TOWER",
+        "name": "DOTA_LOADOUT_TYPE_MULTIKILL_BANNER",
         "value": 76
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_VERSUS_SCREEN",
+        "name": "DOTA_LOADOUT_TYPE_CURSOR_PACK",
         "value": 77
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_STREAK_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_TELEPORT_EFFECT",
         "value": 78
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_KILL_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_BLINK_EFFECT",
         "value": 79
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_DEATH_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_EMBLEM",
         "value": 80
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_HEAD_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_TERRAIN",
         "value": 81
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_MAP_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_RADIANT_CREEPS",
         "value": 82
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_COURIER_EFFECT",
+        "name": "DOTA_LOADOUT_TYPE_DIRE_CREEPS",
         "value": 83
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS",
+        "name": "DOTA_LOADOUT_TYPE_RADIANT_TOWER",
         "value": 84
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS",
+        "name": "DOTA_LOADOUT_TYPE_DIRE_TOWER",
         "value": 85
       },
       {
-        "name": "DOTA_PLAYER_LOADOUT_START",
-        "value": 58
-      },
-      {
-        "name": "DOTA_PLAYER_LOADOUT_END",
-        "value": 85
-      },
-      {
-        "name": "DOTA_LOADOUT_TYPE_NONE",
+        "name": "DOTA_LOADOUT_TYPE_VERSUS_SCREEN",
         "value": 86
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "name": "DOTA_LOADOUT_TYPE_STREAK_EFFECT",
         "value": 87
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_KILL_EFFECT",
+        "value": 88
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_DEATH_EFFECT",
+        "value": 89
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_HEAD_EFFECT",
+        "value": 90
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_MAP_EFFECT",
+        "value": 91
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_COURIER_EFFECT",
+        "value": 92
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_RADIANT_SIEGE_CREEPS",
+        "value": 93
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_DIRE_SIEGE_CREEPS",
+        "value": 94
+      },
+      {
+        "name": "DOTA_PLAYER_LOADOUT_START",
+        "value": 67
+      },
+      {
+        "name": "DOTA_PLAYER_LOADOUT_END",
+        "value": 94
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_NONE",
+        "value": 95
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "value": 96
       }
     ]
   },
@@ -3675,805 +3872,825 @@
         "value": 93
       },
       {
+        "name": "MODIFIER_PROPERTY_EXTRA_MANA_BONUS_PERCENTAGE",
+        "description": "Method Name: `GetModifierExtraManaBonusPercentage`",
+        "value": 94
+      },
+      {
         "name": "MODIFIER_PROPERTY_EXTRA_HEALTH_PERCENTAGE",
         "description": "Method Name: `GetModifierExtraHealthPercentage`",
-        "value": 94
+        "value": 95
       },
       {
         "name": "MODIFIER_PROPERTY_EXTRA_MANA_PERCENTAGE",
         "description": "Method Name: `GetModifierExtraManaPercentage`",
-        "value": 95
+        "value": 96
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS",
         "description": "Method Name: `GetModifierBonusStats_Strength`",
-        "value": 96
+        "value": 97
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_AGILITY_BONUS",
         "description": "Method Name: `GetModifierBonusStats_Agility`",
-        "value": 97
+        "value": 98
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS",
         "description": "Method Name: `GetModifierBonusStats_Intellect`",
-        "value": 98
+        "value": 99
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierBonusStats_Strength_Percentage`",
-        "value": 99
+        "value": 100
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_AGILITY_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierBonusStats_Agility_Percentage`",
-        "value": 100
+        "value": 101
       },
       {
         "name": "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierBonusStats_Intellect_Percentage`",
-        "value": 101
+        "value": 102
       },
       {
         "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS",
         "description": "Method Name: `GetModifierCastRangeBonus`",
-        "value": 102
+        "value": 103
       },
       {
         "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierCastRangeBonusPercentage`",
-        "value": 103
+        "value": 104
       },
       {
         "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_TARGET",
         "description": "Method Name: `GetModifierCastRangeBonusTarget`",
-        "value": 104
+        "value": 105
       },
       {
         "name": "MODIFIER_PROPERTY_CAST_RANGE_BONUS_STACKING",
         "description": "Method Name: `GetModifierCastRangeBonusStacking`",
-        "value": 105
+        "value": 106
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BASE_OVERRIDE",
         "description": "Method Name: `GetModifierAttackRangeOverride`",
-        "value": 106
+        "value": 107
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS",
         "description": "Method Name: `GetModifierAttackRangeBonus`",
-        "value": 107
+        "value": 108
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_UNIQUE",
         "description": "Method Name: `GetModifierAttackRangeBonusUnique`",
-        "value": 108
+        "value": 109
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierAttackRangeBonusPercentage`",
-        "value": 109
+        "value": 110
       },
       {
         "name": "MODIFIER_PROPERTY_MAX_ATTACK_RANGE",
         "description": "Method Name: `GetModifierMaxAttackRange`",
-        "value": 110
+        "value": 111
       },
       {
         "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS",
         "description": "Method Name: `GetModifierProjectileSpeedBonus`",
-        "value": 111
+        "value": 112
       },
       {
         "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierProjectileSpeedBonusPercentage`",
-        "value": 112
+        "value": 113
       },
       {
         "name": "MODIFIER_PROPERTY_PROJECTILE_NAME",
         "description": "Method Name: `GetModifierProjectileName`",
-        "value": 113
+        "value": 114
       },
       {
         "name": "MODIFIER_PROPERTY_REINCARNATION",
         "description": "Method Name: `ReincarnateTime`",
-        "value": 114
+        "value": 115
       },
       {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME",
         "description": "Method Name: `GetModifierConstantRespawnTime`",
-        "value": 115
+        "value": 116
       },
       {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageRespawnTime`",
-        "value": 116
+        "value": 117
       },
       {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
         "description": "Method Name: `GetModifierStackingRespawnTime`",
-        "value": 117
+        "value": 118
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageCooldown`",
-        "value": 118
+        "value": 119
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING",
         "description": "Method Name: `GetModifierPercentageCooldownOngoing`",
-        "value": 119
+        "value": 120
       },
       {
         "name": "MODIFIER_PROPERTY_CASTTIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageCasttime`",
-        "value": 120
+        "value": 121
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageAttackAnimTime`",
-        "value": 121
+        "value": 122
       },
       {
         "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageManacost`",
-        "value": 122
+        "value": 123
       },
       {
         "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING",
         "description": "Method Name: `GetModifierPercentageManacostStacking`",
-        "value": 123
+        "value": 124
       },
       {
         "name": "MODIFIER_PROPERTY_DEATHGOLDCOST",
         "description": "Method Name: `GetModifierConstantDeathGoldCost`",
-        "value": 124
+        "value": 125
       },
       {
         "name": "MODIFIER_PROPERTY_EXP_RATE_BOOST",
         "description": "Method Name: `GetModifierPercentageExpRateBoost`",
-        "value": 125
+        "value": 126
       },
       {
         "name": "MODIFIER_PROPERTY_GOLD_RATE_BOOST",
         "description": "Method Name: `GetModifierPercentageGoldRateBoost`",
-        "value": 126
+        "value": 127
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE",
         "description": "Method Name: `GetModifierPreAttack_CriticalStrike`",
-        "value": 127
+        "value": 128
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE",
         "description": "Method Name: `GetModifierPreAttack_Target_CriticalStrike`",
-        "value": 128
+        "value": 129
       },
       {
         "name": "MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierMagical_ConstantBlock`",
-        "value": 129
+        "value": 130
       },
       {
         "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierPhysical_ConstantBlock`",
-        "value": 130
+        "value": 131
       },
       {
         "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL",
         "description": "Method Name: `GetModifierPhysical_ConstantBlockSpecial`",
-        "value": 131
+        "value": 132
       },
       {
         "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR",
         "description": "Method Name: `GetModifierPhysical_ConstantBlockUnavoidablePreArmor`",
-        "value": 132
+        "value": 133
       },
       {
         "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierTotal_ConstantBlock`",
-        "value": 133
+        "value": 134
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION",
         "description": "Method Name: `GetOverrideAnimation`",
-        "value": 134
+        "value": 135
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT",
         "description": "Method Name: `GetOverrideAnimationWeight`",
-        "value": 135
+        "value": 136
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE",
         "description": "Method Name: `GetOverrideAnimationRate`",
-        "value": 136
+        "value": 137
       },
       {
         "name": "MODIFIER_PROPERTY_ABSORB_SPELL",
         "description": "Method Name: `GetAbsorbSpell`",
-        "value": 137
+        "value": 138
       },
       {
         "name": "MODIFIER_PROPERTY_REFLECT_SPELL",
         "description": "Method Name: `GetReflectSpell`",
-        "value": 138
+        "value": 139
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_AUTOATTACK",
         "description": "Method Name: `GetDisableAutoAttack`",
-        "value": 139
+        "value": 140
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_DAY_VISION",
         "description": "Method Name: `GetBonusDayVision`",
-        "value": 140
+        "value": 141
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION",
         "description": "Method Name: `GetBonusNightVision`",
-        "value": 141
+        "value": 142
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE",
         "description": "Method Name: `GetBonusNightVisionUnique`",
-        "value": 142
+        "value": 143
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
         "description": "Method Name: `GetBonusVisionPercentage`",
-        "value": 143
+        "value": 144
       },
       {
         "name": "MODIFIER_PROPERTY_FIXED_DAY_VISION",
         "description": "Method Name: `GetFixedDayVision`",
-        "value": 144
+        "value": 145
       },
       {
         "name": "MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
         "description": "Method Name: `GetFixedNightVision`",
-        "value": 145
+        "value": 146
       },
       {
         "name": "MODIFIER_PROPERTY_MIN_HEALTH",
         "description": "Method Name: `GetMinHealth`",
-        "value": 146
+        "value": 147
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL",
         "description": "Method Name: `GetAbsoluteNoDamagePhysical`",
-        "value": 147
+        "value": 148
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL",
         "description": "Method Name: `GetAbsoluteNoDamageMagical`",
-        "value": 148
+        "value": 149
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE",
         "description": "Method Name: `GetAbsoluteNoDamagePure`",
-        "value": 149
+        "value": 150
       },
       {
         "name": "MODIFIER_PROPERTY_IS_ILLUSION",
         "description": "Method Name: `GetIsIllusion`",
-        "value": 150
+        "value": 151
       },
       {
         "name": "MODIFIER_PROPERTY_ILLUSION_LABEL",
         "description": "Method Name: `GetModifierIllusionLabel`",
-        "value": 151
+        "value": 152
       },
       {
         "name": "MODIFIER_PROPERTY_STRONG_ILLUSION",
         "description": "Method Name: `GetModifierStrongIllusion`",
-        "value": 152
+        "value": 153
       },
       {
         "name": "MODIFIER_PROPERTY_SUPER_ILLUSION",
         "description": "Method Name: `GetModifierSuperIllusion`",
-        "value": 153
+        "value": 154
       },
       {
         "name": "MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
         "description": "Method Name: `GetModifierSuperIllusionWithUltimate`",
-        "value": 154
+        "value": 155
       },
       {
         "name": "MODIFIER_PROPERTY_XP_DURING_DEATH",
         "description": "Method Name: `GetModifierXPDuringDeath`",
-        "value": 155
+        "value": 156
       },
       {
         "name": "MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE",
         "description": "Method Name: `GetModifierTurnRate_Percentage`",
-        "value": 156
+        "value": 157
       },
       {
         "name": "MODIFIER_PROPERTY_TURN_RATE_OVERRIDE",
         "description": "Method Name: `GetModifierTurnRate_Override`",
-        "value": 157
+        "value": 158
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_HEALING",
         "description": "Method Name: `GetDisableHealing`",
-        "value": 158
+        "value": 159
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK",
         "description": "Method Name: `GetAlwaysAllowAttack`",
-        "value": 159
+        "value": 160
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
         "description": "Method Name: `GetAllowEtherealAttack`",
-        "value": 160
+        "value": 161
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL",
         "description": "Method Name: `GetOverrideAttackMagical`",
-        "value": 161
+        "value": 162
       },
       {
         "name": "MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
         "description": "Method Name: `GetModifierUnitStatsNeedsRefresh`",
-        "value": 162
-      },
-      {
-        "name": "MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
         "value": 163
       },
       {
-        "name": "MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
+        "name": "MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
         "value": 164
+      },
+      {
+        "name": "MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
+        "value": 165
       },
       {
         "name": "MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING",
         "description": "Method Name: `GetModifierUnitDisllowUpgrading`",
-        "value": 165
+        "value": 166
       },
       {
         "name": "MODIFIER_PROPERTY_DODGE_PROJECTILE",
         "description": "Method Name: `GetModifierDodgeProjectile`",
-        "value": 166
+        "value": 167
       },
       {
         "name": "MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK",
         "description": "Method Name: `GetTriggerCosmeticAndEndAttack`",
-        "value": 167
+        "value": 168
       },
       {
         "name": "MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
         "description": "Method Name: `GetModifierMaxDebuffDuration`",
-        "value": 168
+        "value": 169
       },
       {
         "name": "MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER",
         "description": "Method Name: `GetPrimaryStatDamageMultiplier`",
-        "value": 169
+        "value": 170
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW",
         "description": "Method Name: `GetModifierPreAttack_DeadlyBlow`",
-        "value": 170
+        "value": 171
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION",
         "description": "Method Name: `GetAlwaysAutoAttackWhileHoldPosition`",
-        "value": 171
+        "value": 172
       },
       {
         "name": "MODIFIER_EVENT_ON_SPELL_TARGET_READY",
         "description": "Method Name: `OnSpellTargetReady`",
-        "value": 172
+        "value": 173
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_RECORD",
         "description": "Method Name: `OnAttackRecord`",
-        "value": 173
+        "value": 174
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_START",
         "description": "Method Name: `OnAttackStart`",
-        "value": 174
+        "value": 175
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK",
         "description": "Method Name: `OnAttack`",
-        "value": 175
+        "value": 176
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_LANDED",
         "description": "Method Name: `OnAttackLanded`",
-        "value": 176
+        "value": 177
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_FAIL",
         "description": "Method Name: `OnAttackFail`",
-        "value": 177
+        "value": 178
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_ALLIED",
         "description": "Happens even if attack can't be issued.\n\nMethod Name: `OnAttackAllied`.",
-        "value": 178
+        "value": 179
       },
       {
         "name": "MODIFIER_EVENT_ON_PROJECTILE_DODGE",
         "description": "Method Name: `OnProjectileDodge`",
-        "value": 179
+        "value": 180
       },
       {
         "name": "MODIFIER_EVENT_ON_ORDER",
         "description": "Method Name: `OnOrder`",
-        "value": 180
+        "value": 181
       },
       {
         "name": "MODIFIER_EVENT_ON_UNIT_MOVED",
         "description": "Method Name: `OnUnitMoved`",
-        "value": 181
+        "value": 182
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_START",
         "description": "Method Name: `OnAbilityStart`",
-        "value": 182
+        "value": 183
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_EXECUTED",
         "description": "Method Name: `OnAbilityExecuted`",
-        "value": 183
+        "value": 184
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_FULLY_CAST",
         "description": "Method Name: `OnAbilityFullyCast`",
-        "value": 184
+        "value": 185
       },
       {
         "name": "MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
         "description": "Method Name: `OnBreakInvisibility`",
-        "value": 185
+        "value": 186
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_END_CHANNEL",
         "description": "Method Name: `OnAbilityEndChannel`",
-        "value": 186
-      },
-      {
-        "name": "MODIFIER_EVENT_ON_PROCESS_UPGRADE",
         "value": 187
       },
       {
-        "name": "MODIFIER_EVENT_ON_REFRESH",
+        "name": "MODIFIER_EVENT_ON_PROCESS_UPGRADE",
         "value": 188
+      },
+      {
+        "name": "MODIFIER_EVENT_ON_REFRESH",
+        "value": 189
       },
       {
         "name": "MODIFIER_EVENT_ON_TAKEDAMAGE",
         "description": "Method Name: `OnTakeDamage`",
-        "value": 189
+        "value": 190
       },
       {
         "name": "MODIFIER_EVENT_ON_DEATH_PREVENTED",
         "description": "Method Name: `OnDamagePrevented`",
-        "value": 190
+        "value": 191
       },
       {
         "name": "MODIFIER_EVENT_ON_STATE_CHANGED",
         "description": "Method Name: `OnStateChanged`",
-        "value": 191
+        "value": 192
       },
       {
         "name": "MODIFIER_EVENT_ON_ORB_EFFECT",
-        "value": 192
+        "value": 193
       },
       {
         "name": "MODIFIER_EVENT_ON_PROCESS_CLEAVE",
         "description": "Method Name: `OnProcessCleave`",
-        "value": 193
+        "value": 194
       },
       {
         "name": "MODIFIER_EVENT_ON_DAMAGE_CALCULATED",
         "description": "Method Name: `OnDamageCalculated`",
-        "value": 194
+        "value": 195
       },
       {
         "name": "MODIFIER_EVENT_ON_MAGIC_DAMAGE_CALCULATED",
         "description": "Method Name: `OnMagicDamageCalculated`",
-        "value": 195
+        "value": 196
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACKED",
         "description": "Method Name: `OnAttacked`",
-        "value": 196
+        "value": 197
       },
       {
         "name": "MODIFIER_EVENT_ON_DEATH",
         "description": "Method Name: `OnDeath`",
-        "value": 197
+        "value": 198
       },
       {
         "name": "MODIFIER_EVENT_ON_RESPAWN",
         "description": "Method Name: `OnRespawn`",
-        "value": 198
+        "value": 199
       },
       {
         "name": "MODIFIER_EVENT_ON_SPENT_MANA",
         "description": "Method Name: `OnSpentMana`",
-        "value": 199
+        "value": 200
       },
       {
         "name": "MODIFIER_EVENT_ON_TELEPORTING",
         "description": "Method Name: `OnTeleporting`",
-        "value": 200
+        "value": 201
       },
       {
         "name": "MODIFIER_EVENT_ON_TELEPORTED",
         "description": "Method Name: `OnTeleported`",
-        "value": 201
+        "value": 202
       },
       {
         "name": "MODIFIER_EVENT_ON_SET_LOCATION",
         "description": "Method Name: `OnSetLocation`",
-        "value": 202
+        "value": 203
       },
       {
         "name": "MODIFIER_EVENT_ON_HEALTH_GAINED",
         "description": "Method Name: `OnHealthGained`",
-        "value": 203
+        "value": 204
       },
       {
         "name": "MODIFIER_EVENT_ON_MANA_GAINED",
         "description": "Method Name: `OnManaGained`",
-        "value": 204
+        "value": 205
       },
       {
         "name": "MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT",
         "description": "Method Name: `OnTakeDamageKillCredit`",
-        "value": 205
+        "value": 206
       },
       {
         "name": "MODIFIER_EVENT_ON_HERO_KILLED",
         "description": "Method Name: `OnHeroKilled`",
-        "value": 206
+        "value": 207
       },
       {
         "name": "MODIFIER_EVENT_ON_HEAL_RECEIVED",
         "description": "Method Name: `OnHealReceived`",
-        "value": 207
+        "value": 208
       },
       {
         "name": "MODIFIER_EVENT_ON_BUILDING_KILLED",
         "description": "Method Name: `OnBuildingKilled`",
-        "value": 208
+        "value": 209
       },
       {
         "name": "MODIFIER_EVENT_ON_MODEL_CHANGED",
         "description": "Method Name: `OnModelChanged`",
-        "value": 209
+        "value": 210
       },
       {
         "name": "MODIFIER_EVENT_ON_MODIFIER_ADDED",
         "description": "Method Name: `OnModifierAdded`",
-        "value": 210
+        "value": 211
       },
       {
         "name": "MODIFIER_PROPERTY_TOOLTIP",
         "description": "Method Name: `OnTooltip`",
-        "value": 211
+        "value": 212
       },
       {
         "name": "MODIFIER_PROPERTY_MODEL_CHANGE",
         "description": "Method Name: `GetModifierModelChange`",
-        "value": 212
+        "value": 213
       },
       {
         "name": "MODIFIER_PROPERTY_MODEL_SCALE",
         "description": "Method Name: `GetModifierModelScale`",
-        "value": 213
+        "value": 214
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SCEPTER",
         "description": "Always applies scepter when this property is active\n\nMethod Name: `GetModifierScepter`.",
-        "value": 214
+        "value": 215
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SHARD",
         "description": "Method Name: `GetModifierShard`",
-        "value": 215
+        "value": 216
       },
       {
         "name": "MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION",
         "description": "Method Name: `GetModifierRadarCooldownReduction`",
-        "value": 216
+        "value": 217
       },
       {
         "name": "MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS",
         "description": "Method Name: `GetActivityTranslationModifiers`",
-        "value": 217
+        "value": 218
       },
       {
         "name": "MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND",
         "description": "Method Name: `GetAttackSound`",
-        "value": 218
+        "value": 219
       },
       {
         "name": "MODIFIER_PROPERTY_LIFETIME_FRACTION",
         "description": "Method Name: `GetUnitLifetimeFraction`",
-        "value": 219
+        "value": 220
       },
       {
         "name": "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION",
         "description": "Method Name: `GetModifierProvidesFOWVision`",
-        "value": 220
+        "value": 221
       },
       {
         "name": "MODIFIER_PROPERTY_SPELLS_REQUIRE_HP",
         "description": "Method Name: `GetModifierSpellsRequireHP`",
-        "value": 221
+        "value": 222
       },
       {
         "name": "MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP",
         "description": "Method Name: `GetForceDrawOnMinimap`",
-        "value": 222
+        "value": 223
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_TURNING",
         "description": "Method Name: `GetModifierDisableTurning`",
-        "value": 223
+        "value": 224
       },
       {
         "name": "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE",
         "description": "Method Name: `GetModifierIgnoreCastAngle`",
-        "value": 224
+        "value": 225
       },
       {
         "name": "MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
         "description": "Method Name: `GetModifierChangeAbilityValue`",
-        "value": 225
+        "value": 226
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL",
         "description": "Method Name: `GetModifierOverrideAbilitySpecial`",
-        "value": 226
+        "value": 227
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE",
         "description": "Method Name: `GetModifierOverrideAbilitySpecialValue`",
-        "value": 227
+        "value": 228
       },
       {
         "name": "MODIFIER_PROPERTY_ABILITY_LAYOUT",
         "description": "Method Name: `GetModifierAbilityLayout`",
-        "value": 228
+        "value": 229
       },
       {
         "name": "MODIFIER_EVENT_ON_DOMINATED",
         "description": "Method Name: `OnDominated`",
-        "value": 229
+        "value": 230
       },
       {
         "name": "MODIFIER_EVENT_ON_KILL",
         "description": "Method Name: `OnKill`",
-        "value": 230
+        "value": 231
       },
       {
         "name": "MODIFIER_EVENT_ON_ASSIST",
         "description": "Method Name: `OnAssist`",
-        "value": 231
+        "value": 232
       },
       {
         "name": "MODIFIER_PROPERTY_TEMPEST_DOUBLE",
         "description": "Method Name: `GetModifierTempestDouble`",
-        "value": 232
+        "value": 233
       },
       {
         "name": "MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE",
         "description": "Method Name: `PreserveParticlesOnModelChanged`",
-        "value": 233
+        "value": 234
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_FINISHED",
         "description": "Method Name: `OnAttackFinished`",
-        "value": 234
+        "value": 235
       },
       {
         "name": "MODIFIER_PROPERTY_IGNORE_COOLDOWN",
         "description": "Method Name: `GetModifierIgnoreCooldown`",
-        "value": 235
+        "value": 236
       },
       {
         "name": "MODIFIER_PROPERTY_CAN_ATTACK_TREES",
         "description": "Method Name: `GetModifierCanAttackTrees`",
-        "value": 236
+        "value": 237
       },
       {
         "name": "MODIFIER_PROPERTY_VISUAL_Z_DELTA",
         "description": "Method Name: `GetVisualZDelta`",
-        "value": 237
+        "value": 238
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION",
-        "value": 238
+        "value": 239
       },
       {
         "name": "MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
         "description": "Method Name: `GetModifierNoVisionOfAttacker`",
-        "value": 239
+        "value": 240
       },
       {
         "name": "MODIFIER_PROPERTY_TOOLTIP2",
         "description": "Method Name: `OnTooltip2`",
-        "value": 240
+        "value": 241
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY",
         "description": "Method Name: `OnAttackRecordDestroy`",
-        "value": 241
+        "value": 242
       },
       {
         "name": "MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT",
         "description": "Method Name: `OnProjectileObstructionHit`",
-        "value": 242
+        "value": 243
       },
       {
         "name": "MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
         "description": "Method Name: `GetSuppressTeleport`",
-        "value": 243
+        "value": 244
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_CANCELLED",
         "description": "Method Name: `OnAttackCancelled`",
-        "value": 244
+        "value": 245
       },
       {
         "name": "MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
         "description": "Method Name: `GetSuppressCleave`",
-        "value": 245
+        "value": 246
       },
       {
         "name": "MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
         "description": "Method Name: `BotAttackScoreBonus`",
-        "value": 246
+        "value": 247
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
         "description": "Method Name: `GetModifierAttackSpeedReductionPercentage`",
-        "value": 247
+        "value": 248
       },
       {
         "name": "MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
         "description": "Method Name: `GetModifierMoveSpeedReductionPercentage`",
-        "value": 248
+        "value": 249
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET",
-        "value": 249
+        "value": 250
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE",
         "description": "Method Name: `GetModifierAttackSpeedPercentage`",
-        "value": 250
+        "value": 251
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
         "description": "Method Name: `OnAttemptProjectileDodge`",
-        "value": 251
+        "value": 252
       },
       {
         "name": "MODIFIER_EVENT_ON_PREDEBUFF_APPLIED",
         "description": "Method Name: `OnPreDebuffApplied`",
-        "value": 252
+        "value": 253
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
         "description": "Method Name: `GetModifierPercentageCooldownStacking`",
-        "value": 253
-      },
-      {
-        "name": "MODIFIER_FUNCTION_LAST",
         "value": 254
       },
       {
-        "name": "MODIFIER_FUNCTION_INVALID",
+        "name": "MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET",
+        "description": "Method Name: `GetModifierSpellRedirectTarget`",
         "value": 255
+      },
+      {
+        "name": "MODIFIER_PROPERTY_TURN_RATE_CONSTANT",
+        "description": "Method Name: `GetModifierTurnRateConstant`",
+        "value": 256
+      },
+      {
+        "name": "MODIFIER_PROPERTY_RAT_PACK",
+        "description": "Method Name: `GetModifierIsRatPack`",
+        "value": 257
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 258
+      },
+      {
+        "name": "MODIFIER_FUNCTION_INVALID",
+        "value": 65535
       }
     ]
   },
@@ -5025,60 +5242,68 @@
         "value": 16
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_MENU_BUTTONS",
+        "name": "DOTA_DEFAULT_UI_HERO_SELECTION_HEADER",
         "value": 17
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND",
+        "name": "DOTA_DEFAULT_UI_TOP_MENU_BUTTONS",
         "value": 18
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM",
+        "name": "DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND",
         "value": 19
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM",
+        "name": "DOTA_DEFAULT_UI_TOP_BAR_RADIANT_TEAM",
         "value": 20
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_BAR_SCORE",
+        "name": "DOTA_DEFAULT_UI_TOP_BAR_DIRE_TEAM",
         "value": 21
       },
       {
-        "name": "DOTA_DEFAULT_UI_ENDGAME",
+        "name": "DOTA_DEFAULT_UI_TOP_BAR_SCORE",
         "value": 22
       },
       {
-        "name": "DOTA_DEFAULT_UI_ENDGAME_CHAT",
+        "name": "DOTA_DEFAULT_UI_ENDGAME",
         "value": 23
       },
       {
-        "name": "DOTA_DEFAULT_UI_QUICK_STATS",
+        "name": "DOTA_DEFAULT_UI_ENDGAME_CHAT",
         "value": 24
       },
       {
-        "name": "DOTA_DEFAULT_UI_PREGAME_STRATEGYUI",
+        "name": "DOTA_DEFAULT_UI_QUICK_STATS",
         "value": 25
       },
       {
-        "name": "DOTA_DEFAULT_UI_KILLCAM",
+        "name": "DOTA_DEFAULT_UI_PREGAME_STRATEGYUI",
         "value": 26
       },
       {
-        "name": "DOTA_DEFAULT_UI_TOP_BAR",
+        "name": "DOTA_DEFAULT_UI_KILLCAM",
         "value": 27
       },
       {
-        "name": "DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS",
+        "name": "DOTA_DEFAULT_UI_FIGHT_RECAP",
         "value": 28
       },
       {
-        "name": "DOTA_DEFAULT_UI_AGHANIMS_STATUS",
+        "name": "DOTA_DEFAULT_UI_TOP_BAR",
         "value": 29
       },
       {
-        "name": "DOTA_DEFAULT_UI_ELEMENT_COUNT",
+        "name": "DOTA_DEFAULT_UI_CUSTOMUI_BEHIND_HUD_ELEMENTS",
         "value": 30
+      },
+      {
+        "name": "DOTA_DEFAULT_UI_AGHANIMS_STATUS",
+        "value": 31
+      },
+      {
+        "name": "DOTA_DEFAULT_UI_ELEMENT_COUNT",
+        "value": 32
       }
     ]
   },

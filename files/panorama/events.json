@@ -373,7 +373,7 @@
       },
       {
         "name": "style",
-        "type": "string"
+        "type": "panoramasymbol"
       }
     ]
   },
@@ -423,7 +423,7 @@
       },
       {
         "name": "style",
-        "type": "string"
+        "type": "panoramasymbol"
       }
     ]
   },
@@ -455,7 +455,7 @@
       },
       {
         "name": "style",
-        "type": "string"
+        "type": "panoramasymbol"
       }
     ]
   },

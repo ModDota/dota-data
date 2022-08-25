@@ -717,6 +717,23 @@
     ]
   },
   {
+    "name": "hltv_replay",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "delay",
+        "description": "Number of seconds in killer replay delay.",
+        "type": "long"
+      },
+      {
+        "name": "reason",
+        "description": "Reason for replay\t(ReplayEventType_t).",
+        "type": "long"
+      }
+    ]
+  },
+  {
     "name": "demo_start",
     "sourceFile": "core",
     "local": true,
@@ -1302,19 +1319,6 @@
         "name": "entityname",
         "description": "Name of the entity they see.",
         "type": "string"
-      }
-    ]
-  },
-  {
-    "name": "player_use_miss",
-    "sourceFile": "core",
-    "description": "The player pressed use but a use entity wasn't found.",
-    "local": false,
-    "fields": [
-      {
-        "name": "userid",
-        "description": "Playerslot of user.",
-        "type": "EntityIndex"
       }
     ]
   },
@@ -2458,6 +2462,10 @@
       {
         "name": "message",
         "type": "string"
+      },
+      {
+        "name": "sequenceNumber",
+        "type": "int"
       }
     ]
   },
@@ -4052,25 +4060,6 @@
     "fields": []
   },
   {
-    "name": "show_center_message",
-    "sourceFile": "game",
-    "local": false,
-    "fields": [
-      {
-        "name": "message",
-        "type": "string"
-      },
-      {
-        "name": "duration",
-        "type": "float"
-      },
-      {
-        "name": "clear_message_queue",
-        "type": "bool"
-      }
-    ]
-  },
-  {
     "name": "hud_flip_changed",
     "sourceFile": "game",
     "local": false,
@@ -4109,17 +4098,6 @@
     "sourceFile": "game",
     "local": false,
     "fields": []
-  },
-  {
-    "name": "custom_game_difficulty",
-    "sourceFile": "game",
-    "local": false,
-    "fields": [
-      {
-        "name": "difficulty",
-        "type": "byte"
-      }
-    ]
   },
   {
     "name": "tree_cut",
@@ -4949,6 +4927,29 @@
     ]
   },
   {
+    "name": "dota_team_kill_credit",
+    "sourceFile": "port",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "victim_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "herokills",
+        "type": "short"
+      }
+    ]
+  },
+  {
     "name": "npc_spawned",
     "sourceFile": "game",
     "local": false,
@@ -5037,29 +5038,6 @@
       {
         "name": "channel",
         "type": "byte"
-      }
-    ]
-  },
-  {
-    "name": "dota_team_kill_credit",
-    "sourceFile": "port",
-    "local": false,
-    "fields": [
-      {
-        "name": "killer_userid",
-        "type": "EntityIndex"
-      },
-      {
-        "name": "victim_userid",
-        "type": "EntityIndex"
-      },
-      {
-        "name": "teamnumber",
-        "type": "short"
-      },
-      {
-        "name": "herokills",
-        "type": "short"
       }
     ]
   }
