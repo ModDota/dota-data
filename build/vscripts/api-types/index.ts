@@ -348,6 +348,8 @@ apiTypesDeclarations.push({
   name: 'HealingFilterEvent',
   fields: [
     { name: 'entindex_target_const', types: ['EntityIndex'] },
+    { name: 'entindex_inflictor_const', types: ['EntityIndex', 'nil'] },
+    { name: 'entindex_healer_const', types: ['EntityIndex', 'nil'] },
     { name: 'heal', types: ['int'] },
   ],
 });

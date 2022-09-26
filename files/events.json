@@ -324,6 +324,12 @@
     "fields": []
   },
   {
+    "name": "local_player_controller_team",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
+  },
+  {
     "name": "player_changename",
     "sourceFile": "core",
     "local": false,
@@ -394,6 +400,12 @@
         "type": "string"
       }
     ]
+  },
+  {
+    "name": "local_player_pawn_changed",
+    "sourceFile": "core",
+    "local": false,
+    "fields": []
   },
   {
     "name": "teamplay_broadcast_audio",

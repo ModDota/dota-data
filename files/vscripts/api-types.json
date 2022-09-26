@@ -1015,6 +1015,20 @@
         ]
       },
       {
+        "name": "entindex_inflictor_const",
+        "types": [
+          "EntityIndex",
+          "nil"
+        ]
+      },
+      {
+        "name": "entindex_healer_const",
+        "types": [
+          "EntityIndex",
+          "nil"
+        ]
+      },
+      {
         "name": "heal",
         "types": [
           "int"
