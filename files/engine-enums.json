@@ -3,12 +3,56 @@
     "name": "PseudoRandom",
     "members": [
       {
+        "name": "DOTA_PSEUDO_RANDOM_ANTIMAGE_SILENT",
+        "shortName": "ANTIMAGE_SILENT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ARMADILLO_HEARTPIERCER",
+        "shortName": "ARMADILLO_HEARTPIERCER"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ATOS",
+        "shortName": "ATOS"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_AXE_HELIX",
+        "shortName": "AXE_HELIX"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_AXE_HELIX_ATTACK",
+        "shortName": "AXE_HELIX_ATTACK"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_BATRIDER_NAPALM",
+        "shortName": "BATRIDER_NAPALM"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_BREWMASTER_CINDER_BREW",
+        "shortName": "BREWMASTER_CINDER_BREW"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_BREWMASTER_CRIT",
         "shortName": "BREWMASTER_CRIT"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_CHAOS_CRIT",
         "shortName": "CHAOS_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_CHAOS_DOUBLE_CRIT",
+        "shortName": "CHAOS_DOUBLE_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_CHAOS_TRIPLE_CRIT",
+        "shortName": "CHAOS_TRIPLE_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_CM_FREEZING_FIELD",
+        "shortName": "CM_FREEZING_FIELD"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_COLD_REBUKE",
+        "shortName": "COLD_REBUKE"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1",
@@ -47,12 +91,60 @@
         "shortName": "CUSTOM_GAME_9"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_CUSTOM_GENERIC",
+        "shortName": "CUSTOM_GENERIC"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_DAZZLE_SCEPTER",
+        "shortName": "DAZZLE_SCEPTER"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_DROW_MARKSMANSHIP",
+        "shortName": "DROW_MARKSMANSHIP"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_FACELESS_BASH",
         "shortName": "FACELESS_BASH"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_FACELESS_EVADE_ATTACK",
+        "shortName": "FACELESS_EVADE_ATTACK"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_FACELESS_EVADE_SPELL",
+        "shortName": "FACELESS_EVADE_SPELL"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_FACELESS_VOID_BACKTRACK",
+        "shortName": "FACELESS_VOID_BACKTRACK"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_GENERIC_BASHER",
+        "shortName": "GENERIC_BASHER"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_GENERIC_EVASION",
+        "shortName": "GENERIC_EVASION"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_GENERIC_HEIGHT_MISS",
+        "shortName": "GENERIC_HEIGHT_MISS"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_GENERIC_MISS",
+        "shortName": "GENERIC_MISS"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_GUNSLINGER_CRIT",
+        "shortName": "GUNSLINGER_CRIT"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL",
         "shortName": "ITEM_ABYSSAL"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL_BLOCK",
+        "shortName": "ITEM_ABYSSAL_BLOCK"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_BASHER",
@@ -63,12 +155,20 @@
         "shortName": "ITEM_BUTTERFLY"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_CRIMSON_GUARD",
+        "shortName": "ITEM_CRIMSON_GUARD"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_GREATERCRIT",
         "shortName": "ITEM_GREATERCRIT"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_HALBRED_MAIM",
         "shortName": "ITEM_HALBRED_MAIM"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_JAVELIN_ACCURACY",
+        "shortName": "ITEM_JAVELIN_ACCURACY"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_LESSERCRIT",
@@ -91,8 +191,16 @@
         "shortName": "ITEM_MKB"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_NAGINATA",
+        "shortName": "ITEM_NAGINATA"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_PMS",
         "shortName": "ITEM_PMS"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGEKAYA_MAIM",
+        "shortName": "ITEM_SANGEKAYA_MAIM"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGEYASHA_MAIM",
@@ -107,8 +215,16 @@
         "shortName": "ITEM_SILVER_EDGE"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_SOLAR_CREST",
+        "shortName": "ITEM_SOLAR_CREST"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_STOUT",
         "shortName": "ITEM_STOUT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_TRIDENT",
+        "shortName": "ITEM_TRIDENT"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_VANGUARD",
@@ -119,20 +235,88 @@
         "shortName": "JUGG_CRIT"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_LEGION_MOMENT",
+        "shortName": "LEGION_MOMENT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_LONE_DRUID_ENTANGLE",
+        "shortName": "LONE_DRUID_ENTANGLE"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_LYCAN_CRIT",
         "shortName": "LYCAN_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_MAGNUS_SHARD",
+        "shortName": "MAGNUS_SHARD"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_MARS_BULWARK",
+        "shortName": "MARS_BULWARK"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_MARS_SHIELD",
+        "shortName": "MARS_SHIELD"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER1",
+        "shortName": "NEUTRAL_DROP_TIER1"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER2",
+        "shortName": "NEUTRAL_DROP_TIER2"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER3",
+        "shortName": "NEUTRAL_DROP_TIER3"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER4",
+        "shortName": "NEUTRAL_DROP_TIER4"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER5",
+        "shortName": "NEUTRAL_DROP_TIER5"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_NONE",
         "shortName": "NONE"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_OD_ESSENCE",
+        "shortName": "OD_ESSENCE"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_OGRE_ITEM_MULTICAST",
+        "shortName": "OGRE_ITEM_MULTICAST"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_OGRE_MAGI_FIREBLAST",
+        "shortName": "OGRE_MAGI_FIREBLAST"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT",
         "shortName": "PHANTOMASSASSIN_CRIT"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_DAGGER",
+        "shortName": "PHANTOMASSASSIN_DAGGER"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_PHANTOMLANCER_JUXTAPOSE",
+        "shortName": "PHANTOMLANCER_JUXTAPOSE"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_RIKI_SMOKE_SCREEN",
+        "shortName": "RIKI_SMOKE_SCREEN"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_SKELETONKING_CRIT",
         "shortName": "SKELETONKING_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_SKELETONKING_CRIT_MORTAL",
+        "shortName": "SKELETONKING_CRIT_MORTAL"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_SLARDAR_BASH",
@@ -143,8 +327,24 @@
         "shortName": "SNIPER_HEADSHOT"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_SPIRITBREAKER_GREATERBASH",
+        "shortName": "SPIRITBREAKER_GREATERBASH"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_TINY_CRAGGY",
+        "shortName": "TINY_CRAGGY"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_TROLL_BASH",
         "shortName": "TROLL_BASH"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_TUSK_CRIT",
+        "shortName": "TUSK_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_WOLF_CRIT",
+        "shortName": "WOLF_CRIT"
       }
     ]
   },
@@ -6024,6 +6224,10 @@
         "shortName": "PERCENTAGE_SUBTRACT"
       },
       {
+        "name": "SPECIAL_BONUS_SET",
+        "shortName": "SET"
+      },
+      {
         "name": "SPECIAL_BONUS_SUBTRACT",
         "shortName": "SUBTRACT"
       }
@@ -6219,6 +6423,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL",
         "shortName": "IGNORE_CHANNEL"
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED",
+        "shortName": "IGNORE_MUTED"
       },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE",
