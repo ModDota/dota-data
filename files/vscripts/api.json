@@ -1,8 +1,8 @@
 [
   {
     "kind": "class",
-    "name": "CBaseAnimating",
-    "clientName": "C_BaseAnimating",
+    "name": "CBaseAnimatingActivity",
+    "clientName": "CBaseAnimatingActivity",
     "extend": "CBaseModelEntity",
     "members": [
       {
@@ -24,23 +24,6 @@
           "float"
         ],
         "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetGraphParameter",
-        "available": "server",
-        "description": "Get the value of the given animGraph parameter.",
-        "returns": [
-          "table"
-        ],
-        "args": [
-          {
-            "name": "param",
-            "types": [
-              "string"
-            ]
-          }
-        ]
       },
       {
         "kind": "function",
@@ -109,6 +92,81 @@
             "name": "cycle",
             "types": [
               "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetPoseParameter",
+        "available": "server",
+        "description": "Set the specified pose parameter to the specified value.",
+        "returns": [
+          "float"
+        ],
+        "args": [
+          {
+            "name": "name",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetSequence",
+        "available": "server",
+        "description": "Sets the active sequence by name, keeping the current cycle.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "sequenceName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "StopAnimation",
+        "available": "server",
+        "description": "Stop the current animation by setting playback rate to 0.0.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CBaseAnimGraph",
+    "clientName": "CBaseAnimGraph",
+    "extend": "CBaseModelEntity",
+    "members": [
+      {
+        "kind": "function",
+        "name": "GetGraphParameter",
+        "available": "server",
+        "description": "Get the value of the given animGraph parameter.",
+        "returns": [
+          "table"
+        ],
+        "args": [
+          {
+            "name": "param",
+            "types": [
+              "string"
             ]
           }
         ]
@@ -267,56 +325,6 @@
             ]
           }
         ]
-      },
-      {
-        "kind": "function",
-        "name": "SetPoseParameter",
-        "available": "server",
-        "description": "Set the specified pose parameter to the specified value.",
-        "returns": [
-          "float"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetSequence",
-        "available": "server",
-        "description": "Sets the active sequence by name, keeping the current cycle.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "sequenceName",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "StopAnimation",
-        "available": "server",
-        "description": "Stop the current animation by setting playback rate to 0.0.",
-        "returns": [
-          "nil"
-        ],
-        "args": []
       }
     ]
   },
@@ -592,6 +600,29 @@
             "name": "boneMerge",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "FollowEntityMerge",
+        "available": "server",
+        "description": "HEntity to follow, string BoneOrAttachName.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "ent",
+            "types": [
+              "handle"
+            ]
+          },
+          {
+            "name": "boneOrAttachName",
+            "types": [
+              "string"
             ]
           }
         ]
@@ -1837,7 +1868,7 @@
     "kind": "class",
     "name": "CBaseFlex",
     "clientName": "C_BaseFlex",
-    "extend": "CBaseAnimating",
+    "extend": "CBaseAnimatingActivity",
     "members": [
       {
         "kind": "function",
@@ -4936,6 +4967,16 @@
       },
       {
         "kind": "function",
+        "name": "GetChannelStartTime",
+        "available": "both",
+        "description": "Return the channel start time of this ability.",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetChannelTime",
         "available": "both",
         "description": "Return the channel time of this ability.",
@@ -5011,6 +5052,23 @@
             "name": "target",
             "types": [
               "CDOTA_BaseNPC"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetCustomHudErrorMessage",
+        "available": "both",
+        "description": "(DOTA_INVALID_ORDERS nReason) Return the error string of a failed order.",
+        "returns": [
+          "string"
+        ],
+        "args": [
+          {
+            "name": "reason",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -7340,6 +7398,15 @@
       },
       {
         "kind": "function",
+        "name": "GetRemainingPathLength",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetSecondsPerAttack",
         "available": "both",
         "returns": [
@@ -7905,6 +7972,15 @@
       },
       {
         "kind": "function",
+        "name": "IsFeared",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsFort",
         "available": "both",
         "description": "Is this unit an Ancient?",
@@ -7927,6 +8003,16 @@
         "name": "IsHero",
         "available": "both",
         "description": "Is this a hero or hero illusion?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsHeroWard",
+        "available": "server",
+        "description": "Is this a Hero Ward?",
         "returns": [
           "bool"
         ],
@@ -8248,6 +8334,15 @@
       },
       {
         "kind": "function",
+        "name": "IsStrongIllusion",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsStunned",
         "available": "both",
         "returns": [
@@ -8260,6 +8355,15 @@
         "name": "IsSummoned",
         "available": "both",
         "description": "Is this unit summoned?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsTaunted",
+        "available": "both",
         "returns": [
           "bool"
         ],
@@ -8306,6 +8410,16 @@
         "kind": "function",
         "name": "IsUntargetable",
         "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsWard",
+        "available": "server",
+        "description": "Is this a Ward?",
         "returns": [
           "bool"
         ],
@@ -8613,6 +8727,23 @@
           "bool"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "OnCommandMoveToDirection",
+        "available": "server",
+        "description": "Tells the underlying AI to move in the given direction, skipping Dota orders.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "pos",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -10067,6 +10198,22 @@
       },
       {
         "kind": "function",
+        "name": "SetShouldComputeRemainingPathLength",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "compute",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetShouldDoFlyHeightVisual",
         "available": "server",
         "returns": [
@@ -10235,6 +10382,41 @@
           },
           {
             "name": "fadeOut",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "StartGestureWithFadeAndPlaybackRate",
+        "available": "server",
+        "description": "Add the given gesture activity faded according to to the parameters and with a playback rate override.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "activity",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "fadeIn",
+            "types": [
+              "float"
+            ]
+          },
+          {
+            "name": "fadeOut",
+            "types": [
+              "float"
+            ]
+          },
+          {
+            "name": "rate",
             "types": [
               "float"
             ]
@@ -13773,6 +13955,16 @@
       },
       {
         "kind": "function",
+        "name": "GetChannelStartTime",
+        "available": "both",
+        "description": "Return the channel start time of this ability.",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetChannelTime",
         "available": "both",
         "description": "Return the channel time of this ability.",
@@ -13848,6 +14040,23 @@
             "name": "target",
             "types": [
               "CDOTA_BaseNPC"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetCustomHudErrorMessage",
+        "available": "both",
+        "description": "(DOTA_INVALID_ORDERS nReason) Return the error string of a failed order.",
+        "returns": [
+          "string"
+        ],
+        "args": [
+          {
+            "name": "reason",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -14291,7 +14500,7 @@
   {
     "kind": "class",
     "name": "CDOTA_Item_Physical",
-    "extend": "CBaseAnimating",
+    "extend": "CBaseAnimatingActivity",
     "members": [
       {
         "kind": "function",
@@ -14419,7 +14628,7 @@
   {
     "kind": "class",
     "name": "CDOTA_Modifier_Lua",
-    "clientName": "C_DOTA_Modifier_Lua",
+    "clientName": "CDOTA_Modifier_Lua",
     "extend": "CDOTA_Buff",
     "members": [
       {
@@ -16040,6 +16249,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierKnockbackAmplification_Percentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierLifestealRegenAmplify_Percentage",
         "available": "both",
         "abstract": true,
@@ -16221,6 +16440,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierModelScaleAnimateTime",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16702,6 +16931,16 @@
       {
         "kind": "function",
         "name": "GetModifierPhysicalArmorTotal_Percentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPhysicalDamageOutgoing_Percentage",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -17398,6 +17637,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetVisualZSpeedBaseOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -19002,50 +19251,6 @@
       },
       {
         "kind": "function",
-        "name": "GetEventGameCustomActionClaimCount",
-        "available": "server",
-        "returns": [
-          "int"
-        ],
-        "args": [
-          {
-            "name": "playerId",
-            "types": [
-              "PlayerID"
-            ]
-          },
-          {
-            "name": "unActionId",
-            "types": [
-              "uint"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetEventGameCustomActionClaimCountByName",
-        "available": "server",
-        "returns": [
-          "int"
-        ],
-        "args": [
-          {
-            "name": "playerId",
-            "types": [
-              "PlayerID"
-            ]
-          },
-          {
-            "name": "actionName",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "GetEventGameUpgrades",
         "available": "server",
         "description": "(nPlayerID).",
@@ -19426,6 +19631,62 @@
             "name": "playerId",
             "types": [
               "PlayerID"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetNetworkedEventActionClaimCount",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "eventId",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "unActionId",
+            "types": [
+              "uint"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetNetworkedEventActionClaimCountByName",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "playerId",
+            "types": [
+              "PlayerID"
+            ]
+          },
+          {
+            "name": "eventId",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "actionName",
+            "types": [
+              "string"
             ]
           }
         ]
@@ -20132,7 +20393,7 @@
       },
       {
         "kind": "function",
-        "name": "HasSetEventGameCustomActionClaimCount",
+        "name": "HasSetNetworkedEventActionClaimCount",
         "available": "server",
         "returns": [
           "bool"
@@ -21148,7 +21409,7 @@
           {
             "name": "lastBuybackTime",
             "types": [
-              "int"
+              "float"
             ]
           }
         ]
@@ -23780,7 +24041,7 @@
         "available": "server",
         "description": "Gets the time from game start during which water runes spawn.",
         "returns": [
-          "int"
+          "float"
         ],
         "args": []
       },
@@ -25810,7 +26071,7 @@
           {
             "name": "value",
             "types": [
-              "int"
+              "float"
             ]
           }
         ]
@@ -26826,6 +27087,16 @@
         "description": "Have we received the post match signout message that includes reward information.",
         "returns": [
           "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetNeutralInitialSpawnOffset",
+        "available": "both",
+        "description": "Gets the extra offset to initial neutral creep spawn delay.",
+        "returns": [
+          "float"
         ],
         "args": []
       },
@@ -28068,6 +28339,23 @@
       },
       {
         "kind": "function",
+        "name": "SetNeutralInitialSpawnOffset",
+        "available": "server",
+        "description": "Sets the extra offset to initial neutral creep spawn delay.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetNextBountyRuneSpawnTime",
         "available": "server",
         "description": "Sets next bounty rune spawn time.",
@@ -28565,7 +28853,8 @@
   {
     "kind": "class",
     "name": "CDOTAPlayerController",
-    "extend": "CBaseAnimating",
+    "clientName": "C_DOTAPlayerController",
+    "extend": "CBaseAnimatingActivity",
     "members": [
       {
         "kind": "function",
@@ -28586,6 +28875,15 @@
       },
       {
         "kind": "function",
+        "name": "GetActiveAbility",
+        "available": "client",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetAssignedHero",
         "available": "server",
         "description": "Get the player's hero.",
@@ -28596,11 +28894,29 @@
       },
       {
         "kind": "function",
+        "name": "GetClickBehaviors",
+        "available": "client",
+        "returns": [
+          "unknown"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetPlayerID",
         "available": "server",
         "description": "Get the player's official PlayerID; notably is -1 when the player isn't yet on a team.",
         "returns": [
           "PlayerID"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetQueryUnit",
+        "available": "client",
+        "returns": [
+          "handle"
         ],
         "args": []
       },
@@ -28687,6 +29003,15 @@
             ]
           }
         ]
+      },
+      {
+        "kind": "function",
+        "name": "ShouldDisplayInWorldUIElements",
+        "available": "client",
+        "returns": [
+          "bool"
+        ],
+        "args": []
       },
       {
         "kind": "function",
@@ -29927,7 +30252,7 @@
       {
         "kind": "function",
         "name": "GetLocalPlayer",
-        "available": "server",
+        "available": "both",
         "description": "Get the local player controller (backcompat).",
         "returns": [
           "CDOTAPlayerController"
@@ -29937,7 +30262,7 @@
       {
         "kind": "function",
         "name": "GetLocalPlayerController",
-        "available": "server",
+        "available": "both",
         "description": "Get the local player controller.",
         "returns": [
           "handle"
@@ -29947,7 +30272,7 @@
       {
         "kind": "function",
         "name": "GetLocalPlayerPawn",
-        "available": "server",
+        "available": "both",
         "description": "Get the local player pawn.",
         "returns": [
           "handle"
@@ -31166,7 +31491,7 @@
   {
     "kind": "class",
     "name": "CPhysicsProp",
-    "extend": "CBaseAnimating",
+    "extend": "CBaseAnimatingActivity",
     "members": [
       {
         "kind": "function",
@@ -31571,147 +31896,6 @@
   },
   {
     "kind": "class",
-    "name": "CScriptHTTPRequest",
-    "clientName": "CScriptHTTPRequest",
-    "description": "Note: Actual `CScriptHTTPRequest` global exists only after CreateHTTPRequest is called.",
-    "members": [
-      {
-        "kind": "function",
-        "name": "Send",
-        "available": "both",
-        "description": "Send a HTTP request.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "callback",
-            "types": [
-              {
-                "kind": "function",
-                "returns": [
-                  "nil"
-                ],
-                "args": [
-                  {
-                    "name": "response",
-                    "types": [
-                      "CScriptHTTPResponse"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetHTTPRequestAbsoluteTimeoutMS",
-        "available": "both",
-        "description": "Set the total timeout on the request.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "milliseconds",
-            "types": [
-              "uint"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetHTTPRequestGetOrPostParameter",
-        "available": "both",
-        "description": "Set a POST or GET parameter on the request.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetHTTPRequestHeaderValue",
-        "available": "both",
-        "description": "Set a header value on the request.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetHTTPRequestNetworkActivityTimeout",
-        "available": "both",
-        "description": "Set the network timeout on the request - this timer is reset when any data is received.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "seconds",
-            "types": [
-              "uint"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetHTTPRequestRawPostBody",
-        "available": "both",
-        "description": "Set the literal body of a post - invalid after setting a post parameter.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "contentType",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "body",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "CScriptKeyValues",
     "clientName": "CScriptKeyValues",
     "members": [
@@ -32034,6 +32218,7 @@
         "kind": "function",
         "name": "SetParticleControlForward",
         "available": "both",
+        "description": "[OBSOLETE - Use SetParticleControlTransformForward] (int nFXIndex, int nPoint, vForward).",
         "returns": [
           "nil"
         ],
@@ -32051,7 +32236,7 @@
             ]
           },
           {
-            "name": "forward",
+            "name": "arg3",
             "types": [
               "Vector"
             ]
@@ -32062,7 +32247,7 @@
         "kind": "function",
         "name": "SetParticleControlOrientation",
         "available": "both",
-        "description": "Set the orientation for a control on a particle effect (NOTE: This is left handed -- bad!!).",
+        "description": "[OBSOLETE - Use SetParticleControlTransform] (int nFXIndex, int nPoint, vForward, vRight, vUp) - Set the orientation for a control on a particle effect (NOTE: This is left handed -- bad!!).",
         "returns": [
           "nil"
         ],
@@ -32080,19 +32265,19 @@
             ]
           },
           {
-            "name": "forward",
+            "name": "arg3",
             "types": [
               "Vector"
             ]
           },
           {
-            "name": "right",
+            "name": "arg4",
             "types": [
               "Vector"
             ]
           },
           {
-            "name": "up",
+            "name": "arg5",
             "types": [
               "Vector"
             ]
@@ -32103,7 +32288,7 @@
         "kind": "function",
         "name": "SetParticleControlOrientationFLU",
         "available": "both",
-        "description": "Set the orientation for a control on a particle effect.",
+        "description": "[OBSOLETE - Use SetParticleControlTransform] (int nFXIndex, int nPoint, Vector vecForward, Vector vecLeft, Vector vecUp) - Set the orientation for a control on a particle effect.",
         "returns": [
           "nil"
         ],
@@ -32121,19 +32306,87 @@
             ]
           },
           {
-            "name": "vecForward",
+            "name": "arg3",
             "types": [
               "Vector"
             ]
           },
           {
-            "name": "vecLeft",
+            "name": "arg4",
             "types": [
               "Vector"
             ]
           },
           {
-            "name": "vecUp",
+            "name": "arg5",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetParticleControlTransform",
+        "available": "both",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "fxIndex",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "point",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "origin",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "qAngles",
+            "types": [
+              "QAngle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetParticleControlTransformForward",
+        "available": "both",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "fxIndex",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "point",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "origin",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "forward",
             "types": [
               "Vector"
             ]
@@ -35755,6 +36008,53 @@
   },
   {
     "kind": "function",
+    "name": "DropNeutralItemAtPositionForHeroWithOffset",
+    "available": "server",
+    "description": "Drop a neutral item for the team of the hero at the given tier.",
+    "returns": [
+      "handle"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "Vector"
+        ]
+      },
+      {
+        "name": "arg3",
+        "types": [
+          "handle"
+        ]
+      },
+      {
+        "name": "arg4",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "arg5",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "arg6",
+        "types": [
+          "Vector"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
     "name": "Dynamic_Wrap",
     "description": "A function to re-lookup a function by name every time.",
     "available": "both",
@@ -36506,6 +36806,29 @@
   },
   {
     "kind": "function",
+    "name": "GetClearSpaceForUnit",
+    "available": "server",
+    "description": "Returns a location for the unit that is not already occupied.",
+    "returns": [
+      "Vector"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "handle"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "Vector"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
     "name": "GetDedicatedServerKey",
     "available": "server",
     "deprecated": "This function is unsafe. Prefer using `GetDedicatedServerKeyV2` instead.",
@@ -36524,6 +36847,22 @@
   {
     "kind": "function",
     "name": "GetDedicatedServerKeyV2",
+    "available": "server",
+    "returns": [
+      "string"
+    ],
+    "args": [
+      {
+        "name": "version",
+        "types": [
+          "string"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "GetDedicatedServerKeyV3",
     "available": "server",
     "returns": [
       "string"
@@ -37122,6 +37461,26 @@
     "description": "Returns true if this server is a dedicated server.",
     "returns": [
       "bool"
+    ],
+    "args": []
+  },
+  {
+    "kind": "function",
+    "name": "IsDotaAltPressed",
+    "available": "client",
+    "description": "Returns true if whatever alt is remapped to is pressed.",
+    "returns": [
+      "unknown"
+    ],
+    "args": []
+  },
+  {
+    "kind": "function",
+    "name": "IsDotaCtrlPressed",
+    "available": "client",
+    "description": "Returns true if whatever ctrl is remapped to is pressed.",
+    "returns": [
+      "unknown"
     ],
     "args": []
   },
@@ -37954,6 +38313,35 @@
   },
   {
     "kind": "function",
+    "name": "RecordNeutralItemEarned",
+    "available": "server",
+    "description": "Record in player resources that a new neutral item has been created, if it hasn't already been, and show a toast.",
+    "returns": [
+      "nil"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "handle"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "handle"
+        ]
+      },
+      {
+        "name": "arg3",
+        "types": [
+          "int"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
     "name": "RegisterCustomAnimationScriptForModel",
     "available": "server",
     "description": "Register a custom animation script to run when a model loads.",
@@ -38001,46 +38389,6 @@
       "nil"
     ],
     "args": []
-  },
-  {
-    "kind": "function",
-    "name": "RemapValClamped",
-    "available": "server",
-    "returns": [
-      "float"
-    ],
-    "args": [
-      {
-        "name": "arg1",
-        "types": [
-          "float"
-        ]
-      },
-      {
-        "name": "arg2",
-        "types": [
-          "float"
-        ]
-      },
-      {
-        "name": "arg3",
-        "types": [
-          "float"
-        ]
-      },
-      {
-        "name": "arg4",
-        "types": [
-          "float"
-        ]
-      },
-      {
-        "name": "arg5",
-        "types": [
-          "float"
-        ]
-      }
-    ]
   },
   {
     "kind": "function",
@@ -38280,85 +38628,6 @@
   },
   {
     "kind": "function",
-    "name": "rr_AddDecisionRule",
-    "available": "both",
-    "description": "Add a rule to the decision database.",
-    "returns": [
-      "bool"
-    ],
-    "args": [
-      {
-        "name": "arg1",
-        "types": [
-          "handle"
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "function",
-    "name": "rr_CommitAIResponse",
-    "available": "both",
-    "description": "Commit the result of QueryBestResponse back to the given entity to play. Call with params.",
-    "returns": [
-      "bool"
-    ],
-    "args": [
-      {
-        "name": "entity",
-        "types": [
-          "handle"
-        ]
-      },
-      {
-        "name": "airesponse",
-        "types": [
-          "handle"
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "function",
-    "name": "rr_GetResponseTargets",
-    "available": "both",
-    "description": "Retrieve a table of all available expresser targets, in the form { name : handle, name: handle }.",
-    "returns": [
-      "handle"
-    ],
-    "args": []
-  },
-  {
-    "kind": "function",
-    "name": "rr_QueryBestResponse",
-    "available": "both",
-    "description": "Params: (entity, query) : tests 'query' against entity's response system and returns the best response found (or null if none found).",
-    "returns": [
-      "bool"
-    ],
-    "args": [
-      {
-        "name": "arg1",
-        "types": [
-          "handle"
-        ]
-      },
-      {
-        "name": "arg2",
-        "types": [
-          "handle"
-        ]
-      },
-      {
-        "name": "arg3",
-        "types": [
-          "handle"
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "function",
     "name": "Say",
     "available": "server",
     "description": "Have Entity say string, and teamOnly or not.",
@@ -38444,6 +38713,47 @@
         "name": "airShake",
         "types": [
           "bool"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "Script_RemapValClamped",
+    "available": "server",
+    "description": "RemapValClamped.",
+    "returns": [
+      "float"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg3",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg4",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg5",
+        "types": [
+          "float"
         ]
       }
     ]

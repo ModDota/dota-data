@@ -41,6 +41,7 @@ export function isCompatibleOverride(original: string, override: Type) {
     case 'int':
     case 'uint':
     case 'float':
+    case 'double':
     case 'Uint64':
       return (
         isNominalType(override) ||

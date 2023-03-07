@@ -5,7 +5,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard',
     schema: schemas.portraits,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/portraits.txt',
+    url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/portraits.txt',
 
     ignore: [
       'models/heroes/antimage_female/antimage_female.vmdl.PortraitBackgroundTexture should match pattern: /^materials\\/.+\\.vmat$/',

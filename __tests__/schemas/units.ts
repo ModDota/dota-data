@@ -5,13 +5,13 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard units',
     schema: schemas.npc_units,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/npc_units.txt',
+    url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_units.txt',
   });
 
   createIntegrationTest({
     name: 'standard heroes',
     schema: schemas.npc_heroes,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/npc_heroes.txt',
+    url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_heroes.txt',
 
     ignore: [
       'npc_dota_hero_slardar.VersusScale should be a number',

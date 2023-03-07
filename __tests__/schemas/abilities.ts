@@ -5,7 +5,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard abilities',
     schema: schemas.npc_abilities,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/npc_abilities.txt',
+    url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
@@ -23,7 +23,7 @@ describe('integration', () => {
   createIntegrationTest({
     name: 'standard items',
     schema: schemas.items,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir/scripts/npc/items.txt',
+    url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/items.txt',
 
     ignore: [
       'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum',

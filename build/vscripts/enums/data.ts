@@ -77,9 +77,6 @@ export const prefixedEnums: Record<string, string | RegExp> = {
 export const enumValueDescriptions = {
   // https://wiki.garrysmod.com/page/Enums/FCVAR
   ConVarFlags: {
-    FCVAR_UNREGISTERED: dedent`
-      If this is set, the convar will become anonymous and won't show up in the 'find' results.
-    `,
     FCVAR_PROTECTED: dedent`
       Makes the ConVar value hidden from all clients (for example sv_password).
       Reported as "prot" by cvarlist.
@@ -100,17 +97,9 @@ export const enumValueDescriptions = {
       For clientside commands, sends the value to the server.
       Reported as "user" by cvarlist.
     `,
-    FCVAR_PRINTABLEONLY: dedent`
-      Forces the ConVar to only have printable characters (no control characters).
-      Reported as "print" by cvarlist.
-    `,
     FCVAR_UNLOGGED: dedent`
       Don't log the ConVar changes to console/log files/users.
       Reported as "log" by cvarlist.
-    `,
-    FCVAR_NEVER_AS_STRING: dedent`
-      Tells the engine to never print this variable as a string since it contains control sequences.
-      Reported as "numeric" by cvarlist.
     `,
     FCVAR_REPLICATED: dedent`
       For serverside ConVars, it will send its value to all clients. The ConVar with the same name must also exist on the client!
