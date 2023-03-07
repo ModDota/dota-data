@@ -18,7 +18,8 @@ export const getDotaFile = async (name: string) => getFile(`game/dota/${name}`);
 export const getDotaVdfFile = async (name: string) =>
   vdf.parse<any>(await getDotaFile(name), { parseUnquotedStrings: true });
 
-const CONTENTS_PATH = 'https://api.github.com/repos/SteamDatabase/GameTracking-Dota2/contents/game/dota';
+const CONTENTS_PATH =
+  'https://api.github.com/repos/SteamDatabase/GameTracking-Dota2/contents/game/dota';
 export const getDotaDirectoryContents = (name: string, basepath = CONTENTS_PATH) =>
   got(`${basepath}/${name}`).json<GitHubContentsResponse[]>();
 
