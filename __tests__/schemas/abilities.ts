@@ -49,6 +49,8 @@ describe('integration', () => {
   2. item_recipe_fallen_sky.ItemRecipe should be "0"
      item_recipe_fallen_sky.ItemResult is unknown
      item_recipe_fallen_sky.ItemRequirements is unknown`,
+      // 7.32e
+      'item_muertas_gun.ModelScale is unknown',
     ],
   });
 

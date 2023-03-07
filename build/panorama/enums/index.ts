@@ -24,7 +24,7 @@ export const enums = (() => {
           members.push({
             name: member[1],
             description: currentComment,
-            value: Number(member[2])
+            value: Number(member[2]),
           });
 
           currentComment = undefined;
