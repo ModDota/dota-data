@@ -32,5 +32,5 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 
 ### For maintainers:
 
-11. Run `npm version minor`
-12. Push with tags
+1. Run `npm version minor`
+2. Push with tags

@@ -31896,6 +31896,147 @@
   },
   {
     "kind": "class",
+    "name": "CScriptHTTPRequest",
+    "clientName": "CScriptHTTPRequest",
+    "description": "Note: Actual `CScriptHTTPRequest` global exists only after CreateHTTPRequest is called.",
+    "members": [
+      {
+        "kind": "function",
+        "name": "Send",
+        "available": "both",
+        "description": "Send a HTTP request.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "callback",
+            "types": [
+              {
+                "kind": "function",
+                "returns": [
+                  "nil"
+                ],
+                "args": [
+                  {
+                    "name": "response",
+                    "types": [
+                      "CScriptHTTPResponse"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetHTTPRequestAbsoluteTimeoutMS",
+        "available": "both",
+        "description": "Set the total timeout on the request.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "milliseconds",
+            "types": [
+              "uint"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetHTTPRequestGetOrPostParameter",
+        "available": "both",
+        "description": "Set a POST or GET parameter on the request.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "name",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetHTTPRequestHeaderValue",
+        "available": "both",
+        "description": "Set a header value on the request.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "name",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetHTTPRequestNetworkActivityTimeout",
+        "available": "both",
+        "description": "Set the network timeout on the request - this timer is reset when any data is received.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "seconds",
+            "types": [
+              "uint"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetHTTPRequestRawPostBody",
+        "available": "both",
+        "description": "Set the literal body of a post - invalid after setting a post parameter.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "contentType",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "body",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
     "name": "CScriptKeyValues",
     "clientName": "CScriptKeyValues",
     "members": [
@@ -34672,7 +34813,7 @@
     "available": "server",
     "description": "Create a rune of the specified type.",
     "returns": [
-      "CBaseAnimating"
+      "CBaseAnimatingActivity"
     ],
     "args": [
       {
@@ -34695,7 +34836,7 @@
     "available": "server",
     "description": "Create a scene entity to play the specified scene.",
     "returns": [
-      "CSceneEntity"
+      "CBaseAnimatingActivity"
     ],
     "args": [
       {
@@ -34712,7 +34853,7 @@
     "available": "server",
     "description": "Create a temporary tree, uses a default tree model.",
     "returns": [
-      "CBaseAnimating"
+      "CBaseAnimatingActivity"
     ],
     "args": [
       {
@@ -34735,7 +34876,7 @@
     "available": "server",
     "description": "Create a temporary tree, specifying the tree model name.",
     "returns": [
-      "CBaseAnimating"
+      "CBaseAnimatingActivity"
     ],
     "args": [
       {

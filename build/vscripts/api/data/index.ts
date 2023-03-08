@@ -454,9 +454,9 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
 
   'CBaseEntity.GetBounds': { returns: 'EntityBounds' },
-  '_G.CreateTempTree': { returns: 'CBaseAnimating' },
-  '_G.CreateTempTreeWithModel': { returns: 'CBaseAnimating' },
-  '_G.CreateSceneEntity': { returns: 'CSceneEntity' },
+  '_G.CreateTempTree': { returns: 'CBaseAnimatingActivity' },
+  '_G.CreateTempTreeWithModel': { returns: 'CBaseAnimatingActivity' },
+  '_G.CreateSceneEntity': { returns: 'CBaseAnimatingActivity' },
   '_G.PlayerInstanceFromIndex': {
     returns: ['CDOTAPlayerController', 'nil'],
     args: { 0: ['entityIndex', 'EntityIndex'] },
@@ -581,7 +581,7 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   'CDOTAGameRules.RemoveFakeClient': { args: { 0: ['playerId'] } },
   'CDOTAGameRules.SetGameTimeFrozen': { args: { 0: ['frozen'] } },
-  '_G.CreateRune': { returns: 'CBaseAnimating', args: { 1: [null, 'DOTA_RUNES'] } },
+  '_G.CreateRune': { returns: 'CBaseAnimatingActivity', args: { 1: [null, 'DOTA_RUNES'] } },
   '_G.DropNeutralItemAtPositionForHero': {
     returns: 'CDOTA_Item_Physical',
     args: {
