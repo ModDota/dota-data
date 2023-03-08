@@ -60,15 +60,17 @@ function parseFile(events: Record<string, Event>, content: string, sourceFile: s
 
 export async function generateEvents() {
   const files = await Promise.all(
-    ['resource/game.gameevents'].map(
-      async (fileName) =>
-        [
-          fileName,
-          await getFile(
-            fileName,
-            'https://raw.githubusercontent.com/arcadia-redux/dota_vpk_updates/main',
-          ),
-        ] as const,
+    [
+      [
+        'game/core/pak01_dir/resource/core.gameevents',
+        'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/bce1224064fe01a0e4e33384084798492a03036f',
+      ],
+      [
+        'resource/game.gameevents',
+        'https://raw.githubusercontent.com/arcadia-redux/dota_vpk_updates/main',
+      ],
+    ].map(
+      async ([fileName, fileSource]) => [fileName, await getFile(fileName, fileSource)] as const,
     ),
   );
 
