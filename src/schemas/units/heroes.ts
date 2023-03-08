@@ -34,7 +34,8 @@ const baseHero = () =>
             .field('name', s.str().pattern(resourcePatterns.npc))
             .field('Model', s.str().pattern(resourcePatterns.models), {
               description: 'For tools only.',
-            }),
+            })
+            .field('ModelScale', s.num()),
           'number',
         ),
       ],
@@ -92,6 +93,9 @@ const baseHero = () =>
     .field('AttackRangeActivityModifiers', s.map(s.int().min(0)))
     // TODO: Support enums as keys
     .field('animation_transitions', s.obj().rest(s.map(s.num()), /^ACT_/))
+
+    // 7.32e
+    .field('RandomEnabled', s.binaryBoolean())
 
     .field(
       'RenderablePortrait',

@@ -5,7 +5,7 @@ import { outputFile, outputJson } from './util';
 const groups = ['materials', 'models', 'particles', 'soundevents', 'sounds'];
 const sources = [
   'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/core/pak01_dir.txt',
-  'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota/pak01_dir.txt',
+  'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota.txt',
 ];
 
 export async function generateResources() {

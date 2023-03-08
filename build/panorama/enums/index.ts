@@ -8,14 +8,28 @@ export const enums = (() => {
   const result = readDump('cl_panorama_script_help *')
     .split(/\r?\n\r?\n/)
     .map((group): Enum => {
-      const enumName = group.match(/Enumeration '(.+?)'/)![1];
-      const members = [...group.matchAll(/^\t.+\.(.+?) = (-?\d+)(?: \((.+)\))?$/gm)].map(
-        ([, name, value, description]): EnumMember => ({
-          name,
-          description,
-          value: Number(value),
-        }),
-      );
+      const enumName = group.match(/declare enum (.+)([\s{]*)?/)![1];
+      const members: EnumMember[] = [];
+
+      let currentComment: string | undefined;
+
+      for (const line of group.slice(group.indexOf('{')).split('\n')) {
+        const comment = line.match(/\/\*\* (.+) \*\//);
+        if (comment) {
+          [, currentComment] = comment;
+        }
+
+        const member = line.match(/(\w+) = (-?\d+)/);
+        if (member) {
+          members.push({
+            name: member[1],
+            description: currentComment,
+            value: Number(member[2]),
+          });
+
+          currentComment = undefined;
+        }
+      }
 
       return { name: enumName, members };
     });

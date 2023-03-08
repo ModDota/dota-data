@@ -135,10 +135,6 @@
         "shortName": "GENERIC_MISS"
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_GUNSLINGER_CRIT",
-        "shortName": "GUNSLINGER_CRIT"
-      },
-      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL",
         "shortName": "ITEM_ABYSSAL"
       },
@@ -257,6 +253,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_MARS_SHIELD",
         "shortName": "MARS_SHIELD"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_MUERTA_GUNSLINGER",
+        "shortName": "MUERTA_GUNSLINGER"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_NEUTRAL_DROP_TIER1",
@@ -4350,22 +4350,6 @@
         "shortName": "PDA_VM_SECONDARYATTACK"
       },
       {
-        "name": "ACT_PHYSCANNON_ANIMATE",
-        "shortName": "PHYSCANNON_ANIMATE"
-      },
-      {
-        "name": "ACT_PHYSCANNON_ANIMATE_POST",
-        "shortName": "PHYSCANNON_ANIMATE_POST"
-      },
-      {
-        "name": "ACT_PHYSCANNON_ANIMATE_PRE",
-        "shortName": "PHYSCANNON_ANIMATE_PRE"
-      },
-      {
-        "name": "ACT_PHYSCANNON_DETACH",
-        "shortName": "PHYSCANNON_DETACH"
-      },
-      {
         "name": "ACT_PHYSCANNON_UPGRADE",
         "shortName": "PHYSCANNON_UPGRADE"
       },
@@ -5963,6 +5947,14 @@
         "shortName": "EMBEDDED"
       },
       {
+        "name": "FIELD_ENGINE_TICK",
+        "shortName": "ENGINE_TICK"
+      },
+      {
+        "name": "FIELD_ENGINE_TIME",
+        "shortName": "ENGINE_TIME"
+      },
+      {
         "name": "FIELD_FLOAT32",
         "shortName": "FLOAT32"
       },
@@ -6201,6 +6193,10 @@
       {
         "name": "FIELD_VOID",
         "shortName": "VOID"
+      },
+      {
+        "name": "FIELD_WORLD_GROUP_ID",
+        "shortName": "WORLD_GROUP_ID"
       }
     ]
   },
@@ -6568,6 +6564,10 @@
       {
         "name": "DOTA_UNIT_TARGET_OTHER",
         "shortName": "OTHER"
+      },
+      {
+        "name": "DOTA_UNIT_TARGET_SELF",
+        "shortName": "SELF"
       },
       {
         "name": "DOTA_UNIT_TARGET_TEAM",

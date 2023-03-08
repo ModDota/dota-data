@@ -198,6 +198,10 @@ export const baseUnit = () =>
         .field('attack_long_range', s.num()),
     )
 
+    // 7.32e
+    .field('NeutralIgnore', s.binaryBoolean())
+    .field('UntargetableByExorcismSpirits', s.binaryBoolean())
+
     .field(
       'Creature',
       s
