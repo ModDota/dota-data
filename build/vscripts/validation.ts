@@ -16,8 +16,7 @@ function enumNames() {
 
   enumCache = new Set(
     generateEnumDeclarations()
-      .enumDeclarations
-      .filter((x) => x.kind === 'enum')
+      .enumDeclarations.filter((x) => x.kind === 'enum')
       .map((x) => x.name),
   );
   return enumCache;

@@ -1,6 +1,6 @@
 import * as s from '../../src/schema-builder';
 import { deserialize, isDuplicateKeyArray, isKvObject, KVObject } from 'valve-kv';
-import got from "got";
+import got from 'got';
 
 export interface CreateIntegrationTestOptions {
   name: string;

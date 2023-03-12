@@ -9,7 +9,7 @@ export async function generateVScripts() {
   outputJson('vscripts/api-types', apiTypesDeclarations);
   outputFile('vscripts/api-types.d.ts', apiTypesTypes);
   const enumDeclarations = generateEnumDeclarations();
-  outputJson('vscripts/enums', enumDeclarations);
+  outputJson('vscripts/enums', enumDeclarations.enumDeclarations);
   outputFile('vscripts/enums.d.ts', enumsTypes);
 
   return {

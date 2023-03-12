@@ -16,10 +16,10 @@ export { types as enumsTypes } from './types';
 export type EnumOrConstant = Enum | Constant;
 
 interface EnumResult {
-  clientGlobals: DumpConstant[],
-  serverGlobals: DumpConstant[],
-  enumDeclarations: Array<Enum | Constant>,
-  unknownGlobals: DumpConstant[]
+  clientGlobals: DumpConstant[];
+  serverGlobals: DumpConstant[];
+  enumDeclarations: Array<Enum | Constant>;
+  unknownGlobals: DumpConstant[];
 }
 
 export function generateEnumDeclarations(): EnumResult {
@@ -130,14 +130,13 @@ export function generateEnumDeclarations(): EnumResult {
     clientGlobals,
     serverGlobals,
     enumDeclarations: [...constants, ...enums],
-    unknownGlobals: allGlobals
-  }
+    unknownGlobals: allGlobals,
+  };
 }
 
-export function validateEnums(enumsInfo: EnumResult)
-{
+export function validateEnums(enumsInfo: EnumResult) {
   // Make sure that all there are no different constants on client and server
-  const serverGlobals = new Map(enumsInfo.serverGlobals.map(g => [g.name, g]));
+  const serverGlobals = new Map(enumsInfo.serverGlobals.map((g) => [g.name, g]));
   for (const { name, value, description } of enumsInfo.clientGlobals) {
     const serverValue = serverGlobals.get(name);
     if (!serverGlobals.has(name)) {
@@ -149,7 +148,7 @@ export function validateEnums(enumsInfo: EnumResult)
       throw new Error(`${name} exists on server and client, but has different values`);
     }
   }
-  
+
   for (const constant of enumsInfo.unknownGlobals) {
     console.log(`Unknown constant or enum: ${constant.name}`);
   }
