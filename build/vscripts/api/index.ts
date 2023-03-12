@@ -46,7 +46,7 @@ function overrideType(
 
   const override = _.castArray(rawOverride);
 
-  if (override.length === 1 && override[0] === original) {
+  if (!identifier.includes(".args.") && override.length === 1 && override[0] === original) {
     console.log(`Unnecessary type override: ${identifier}`);
   }
 
@@ -150,7 +150,7 @@ function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
   ];
 
   if (serverClass.name === 'CDOTA_Modifier_Lua') {
-    members.push(...modifierFunctionMethods);
+    members.push(...modifierFunctionMethods());
   }
 
   const isAbstract = (member: apiTypes.ClassMember) => 'abstract' in member && member.abstract;
@@ -169,7 +169,7 @@ function transformClass(serverClass: DumpClass): apiTypes.ClassDeclaration {
   };
 }
 
-export const apiDeclarations: apiTypes.Declaration[] = [
+export const apiDeclarations: () => apiTypes.Declaration[] = () => [
   ...extraDeclarations,
   ...serverDump.filter((x): x is DumpClass => x.kind === 'class').map(transformClass),
   ...joinMethods(
@@ -187,7 +187,7 @@ export function validateApi() {
     }
   }
 
-  for (const declaration of apiDeclarations) {
+  for (const declaration of apiDeclarations()) {
     if (declaration.kind === 'function') {
       checkFunctionDeclaration(declaration);
       continue;

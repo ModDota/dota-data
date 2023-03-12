@@ -1,4 +1,3 @@
-import got from 'got';
 import * as s from '../../src/schema';
 import { deserialize, isDuplicateKeyArray, isKvObject, KVObject } from 'valve-kv';
 

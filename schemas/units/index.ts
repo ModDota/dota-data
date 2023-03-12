@@ -1,4 +1,4 @@
-import * as s from '../../schema';
+import * as s from '../../src/schema';
 import { hero, heroCustom } from './heroes';
 import { baseUnit, unitCustom } from './units';
 

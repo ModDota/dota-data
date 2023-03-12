@@ -2,7 +2,7 @@ import { apiTypesDeclarations } from './api-types';
 import { extraDeclarations } from './api/data';
 import { ArrayType, FunctionType, LiteralType, TableType, Type } from './api/types';
 import { serverDump } from './dump';
-import { enumDeclarations } from './enums';
+import { generateEnumDeclarations } from './enums';
 
 const isPrimitiveType = (type: Type) =>
   apiTypesDeclarations.some((t) => t.kind === 'primitive' && t.name === (type as any));
@@ -10,8 +10,20 @@ const isPrimitiveType = (type: Type) =>
 const isNominalType = (type: Type): boolean =>
   apiTypesDeclarations.some((t) => t.kind === 'nominal' && t.name === type);
 
-const isEnumReference = (type: Type) => enumNames.has(type as any);
-const enumNames = new Set(enumDeclarations.filter((x) => x.kind === 'enum').map((x) => x.name));
+let enumCache: Set<string>;
+function enumNames() {
+  if (enumCache) return enumCache;
+
+  enumCache = new Set(
+    generateEnumDeclarations()
+      .enumDeclarations
+      .filter((x) => x.kind === 'enum')
+      .map((x) => x.name),
+  );
+  return enumCache;
+}
+
+const isEnumReference = (type: Type) => enumNames().has(type as any);
 
 const isClassReference = (type: Type) => classNames.has(type as any);
 const classNames = new Set(

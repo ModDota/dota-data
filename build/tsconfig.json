@@ -1,8 +1,11 @@
 {
-  "extends": "@ark120202/typescript-config/node/14.json",
-  "include": ["**/*"],
   "compilerOptions": {
     "rootDir": ".",
-    "noEmit": true
-  }
+    "noEmit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "esnext",
+    "strict": true
+  },
+  "include": ["**/*.ts", "vpk.d.ts"]
 }

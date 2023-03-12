@@ -308,6 +308,10 @@
         "type": "bool"
       },
       {
+        "name": "silent",
+        "type": "bool"
+      },
+      {
         "name": "name",
         "type": "string"
       },
@@ -708,12 +712,13 @@
         "type": "string"
       },
       {
-        "name": "name",
-        "type": "string"
+        "name": "steamID",
+        "description": "Steam id.",
+        "type": "uint64"
       },
       {
-        "name": "steamID",
-        "type": "uint64"
+        "name": "name",
+        "type": "string"
       }
     ]
   },
@@ -1370,9 +1375,9 @@
     "local": false,
     "fields": [
       {
-        "name": "entindex",
+        "name": "target",
         "description": "Entity picked up.",
-        "type": "EntityIndex"
+        "type": "ehandle"
       }
     ]
   },
