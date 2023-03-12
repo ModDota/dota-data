@@ -46,13 +46,13 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfig": "<rootDir>/__tests__/tsconfig.json"
+        "tsConfig": "<rootDir>/test/tsconfig.json"
       }
     },
     "preset": "ts-jest",
     "testEnvironment": "node",
     "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
+      "**/test/**/*.[jt]s?(x)",
       "!**/_*"
     ]
   },
