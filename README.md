@@ -11,16 +11,10 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 #### If you want to update from an API dump
 
 1. Check out this repository
-2. Create a new DOTA addon through the addon tool, call it `dumper` for example
-3. Copy `.lua` scripts from `dumper` directory of this repository to
-   `dota 2 beta\game\dota_addons\dumper\scripts\vscripts`
-4. Launch `dumper` addon
-5. In `vconsole` do `dota_launch_custom_game dumper test_basic`
-6. Proceed through the game setup screen
-7. Copy-paste the console output (starting with `$> dump_panorama_css_properties`) into `dumper/dump` in this repository
-8. Run `yarn install` then `yarn build` in the root of the repository
-9. Commit changes
-10. Create a pull request
+2. Run `npm run auto-dump` and wait for the script to finish and dota to close.
+3. Run `npm run build` to generate all package files.
+4. Commit changes
+5. Create a pull request
 
 #### If you are updating the API manually
 

@@ -23,7 +23,7 @@
     "fix:prettier": "prettier --write .",
     "prepublishOnly": "yarn build",
     "test": "jest",
-    "start:dumper": "tsx dumper/start-dumper.mts"
+    "auto-dump": "tsx dumper/start-dumper.mts"
   },
   "prettier": {
     "printWidth": 100,
