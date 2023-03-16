@@ -195,16 +195,16 @@
         "shortName": "ITEM_PMS"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGE_MAIM",
+        "shortName": "ITEM_SANGE_MAIM"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGEKAYA_MAIM",
         "shortName": "ITEM_SANGEKAYA_MAIM"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGEYASHA_MAIM",
         "shortName": "ITEM_SANGEYASHA_MAIM"
-      },
-      {
-        "name": "DOTA_PSEUDO_RANDOM_ITEM_SANGE_MAIM",
-        "shortName": "ITEM_SANGE_MAIM"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_SILVER_EDGE",
@@ -465,6 +465,10 @@
       {
         "name": "DOTA_TEAM_COUNT",
         "shortName": "COUNT"
+      },
+      {
+        "name": "DOTA_TEAM_CUSTOM",
+        "shortName": "CUSTOM"
       },
       {
         "name": "DOTA_TEAM_CUSTOM_1",
@@ -886,6 +890,22 @@
         "shortName": "CROUCH"
       },
       {
+        "name": "ACT_CROUCH_IDLE_AUTOGUN",
+        "shortName": "CROUCH_IDLE_AUTOGUN"
+      },
+      {
+        "name": "ACT_CROUCH_IDLE_DUAL",
+        "shortName": "CROUCH_IDLE_DUAL"
+      },
+      {
+        "name": "ACT_CROUCH_IDLE_RIFLE",
+        "shortName": "CROUCH_IDLE_RIFLE"
+      },
+      {
+        "name": "ACT_CROUCH_IDLE_SHOTGUN",
+        "shortName": "CROUCH_IDLE_SHOTGUN"
+      },
+      {
         "name": "ACT_CROUCHIDLE",
         "shortName": "CROUCHIDLE"
       },
@@ -932,22 +952,6 @@
       {
         "name": "ACT_CROUCHING_SHIELD_UP_IDLE",
         "shortName": "CROUCHING_SHIELD_UP_IDLE"
-      },
-      {
-        "name": "ACT_CROUCH_IDLE_AUTOGUN",
-        "shortName": "CROUCH_IDLE_AUTOGUN"
-      },
-      {
-        "name": "ACT_CROUCH_IDLE_DUAL",
-        "shortName": "CROUCH_IDLE_DUAL"
-      },
-      {
-        "name": "ACT_CROUCH_IDLE_RIFLE",
-        "shortName": "CROUCH_IDLE_RIFLE"
-      },
-      {
-        "name": "ACT_CROUCH_IDLE_SHOTGUN",
-        "shortName": "CROUCH_IDLE_SHOTGUN"
       },
       {
         "name": "ACT_CSGO_ALIVE_LOOP",
@@ -1106,24 +1110,28 @@
         "shortName": "DEPLOY_IDLE"
       },
       {
-        "name": "ACT_DIEBACKWARD",
-        "shortName": "DIEBACKWARD"
+        "name": "ACT_DI_ALYX_ANTLION",
+        "shortName": "DI_ALYX_ANTLION"
       },
       {
-        "name": "ACT_DIEFORWARD",
-        "shortName": "DIEFORWARD"
+        "name": "ACT_DI_ALYX_HEADCRAB_MELEE",
+        "shortName": "DI_ALYX_HEADCRAB_MELEE"
       },
       {
-        "name": "ACT_DIERAGDOLL",
-        "shortName": "DIERAGDOLL"
+        "name": "ACT_DI_ALYX_ZOMBIE_MELEE",
+        "shortName": "DI_ALYX_ZOMBIE_MELEE"
       },
       {
-        "name": "ACT_DIESIMPLE",
-        "shortName": "DIESIMPLE"
+        "name": "ACT_DI_ALYX_ZOMBIE_SHOTGUN26",
+        "shortName": "DI_ALYX_ZOMBIE_SHOTGUN26"
       },
       {
-        "name": "ACT_DIEVIOLENT",
-        "shortName": "DIEVIOLENT"
+        "name": "ACT_DI_ALYX_ZOMBIE_SHOTGUN64",
+        "shortName": "DI_ALYX_ZOMBIE_SHOTGUN64"
+      },
+      {
+        "name": "ACT_DI_ALYX_ZOMBIE_TORSO_MELEE",
+        "shortName": "DI_ALYX_ZOMBIE_TORSO_MELEE"
       },
       {
         "name": "ACT_DIE_BACKSHOT",
@@ -1194,40 +1202,40 @@
         "shortName": "DIE_STAND"
       },
       {
+        "name": "ACT_DIE_STAND_HEADSHOT",
+        "shortName": "DIE_STAND_HEADSHOT"
+      },
+      {
         "name": "ACT_DIE_STANDING",
         "shortName": "DIE_STANDING"
       },
       {
-        "name": "ACT_DIE_STAND_HEADSHOT",
-        "shortName": "DIE_STAND_HEADSHOT"
+        "name": "ACT_DIEBACKWARD",
+        "shortName": "DIEBACKWARD"
+      },
+      {
+        "name": "ACT_DIEFORWARD",
+        "shortName": "DIEFORWARD"
+      },
+      {
+        "name": "ACT_DIERAGDOLL",
+        "shortName": "DIERAGDOLL"
+      },
+      {
+        "name": "ACT_DIESIMPLE",
+        "shortName": "DIESIMPLE"
+      },
+      {
+        "name": "ACT_DIEVIOLENT",
+        "shortName": "DIEVIOLENT"
       },
       {
         "name": "ACT_DISARM",
         "shortName": "DISARM"
       },
       {
-        "name": "ACT_DI_ALYX_ANTLION",
-        "shortName": "DI_ALYX_ANTLION"
-      },
-      {
-        "name": "ACT_DI_ALYX_HEADCRAB_MELEE",
-        "shortName": "DI_ALYX_HEADCRAB_MELEE"
-      },
-      {
-        "name": "ACT_DI_ALYX_ZOMBIE_MELEE",
-        "shortName": "DI_ALYX_ZOMBIE_MELEE"
-      },
-      {
-        "name": "ACT_DI_ALYX_ZOMBIE_SHOTGUN26",
-        "shortName": "DI_ALYX_ZOMBIE_SHOTGUN26"
-      },
-      {
-        "name": "ACT_DI_ALYX_ZOMBIE_SHOTGUN64",
-        "shortName": "DI_ALYX_ZOMBIE_SHOTGUN64"
-      },
-      {
-        "name": "ACT_DI_ALYX_ZOMBIE_TORSO_MELEE",
-        "shortName": "DI_ALYX_ZOMBIE_TORSO_MELEE"
+        "name": "ACT_DO_NOT_DISTURB",
+        "shortName": "DO_NOT_DISTURB"
       },
       {
         "name": "ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_END",
@@ -1266,10 +1274,6 @@
         "shortName": "DOTA_ATTACK"
       },
       {
-        "name": "ACT_DOTA_ATTACK2",
-        "shortName": "DOTA_ATTACK2"
-      },
-      {
         "name": "ACT_DOTA_ATTACK_EVENT",
         "shortName": "DOTA_ATTACK_EVENT"
       },
@@ -1280,6 +1284,10 @@
       {
         "name": "ACT_DOTA_ATTACK_SPECIAL",
         "shortName": "DOTA_ATTACK_SPECIAL"
+      },
+      {
+        "name": "ACT_DOTA_ATTACK2",
+        "shortName": "DOTA_ATTACK2"
       },
       {
         "name": "ACT_DOTA_AW_MAGNETIC_FIELD",
@@ -2262,10 +2270,6 @@
         "shortName": "DOTA_WHIRLING_AXES_RANGED"
       },
       {
-        "name": "ACT_DO_NOT_DISTURB",
-        "shortName": "DO_NOT_DISTURB"
-      },
-      {
         "name": "ACT_DROP_WEAPON",
         "shortName": "DROP_WEAPON"
       },
@@ -2450,32 +2454,16 @@
         "shortName": "GESTURE_FLINCH_STOMACH"
       },
       {
+        "name": "ACT_GESTURE_MELEE_ATTACK_SWING",
+        "shortName": "GESTURE_MELEE_ATTACK_SWING"
+      },
+      {
         "name": "ACT_GESTURE_MELEE_ATTACK1",
         "shortName": "GESTURE_MELEE_ATTACK1"
       },
       {
         "name": "ACT_GESTURE_MELEE_ATTACK2",
         "shortName": "GESTURE_MELEE_ATTACK2"
-      },
-      {
-        "name": "ACT_GESTURE_MELEE_ATTACK_SWING",
-        "shortName": "GESTURE_MELEE_ATTACK_SWING"
-      },
-      {
-        "name": "ACT_GESTURE_RANGE_ATTACK1",
-        "shortName": "GESTURE_RANGE_ATTACK1"
-      },
-      {
-        "name": "ACT_GESTURE_RANGE_ATTACK1_LOW",
-        "shortName": "GESTURE_RANGE_ATTACK1_LOW"
-      },
-      {
-        "name": "ACT_GESTURE_RANGE_ATTACK2",
-        "shortName": "GESTURE_RANGE_ATTACK2"
-      },
-      {
-        "name": "ACT_GESTURE_RANGE_ATTACK2_LOW",
-        "shortName": "GESTURE_RANGE_ATTACK2_LOW"
       },
       {
         "name": "ACT_GESTURE_RANGE_ATTACK_AR1",
@@ -2536,6 +2524,22 @@
       {
         "name": "ACT_GESTURE_RANGE_ATTACK_TRIPWIRE",
         "shortName": "GESTURE_RANGE_ATTACK_TRIPWIRE"
+      },
+      {
+        "name": "ACT_GESTURE_RANGE_ATTACK1",
+        "shortName": "GESTURE_RANGE_ATTACK1"
+      },
+      {
+        "name": "ACT_GESTURE_RANGE_ATTACK1_LOW",
+        "shortName": "GESTURE_RANGE_ATTACK1_LOW"
+      },
+      {
+        "name": "ACT_GESTURE_RANGE_ATTACK2",
+        "shortName": "GESTURE_RANGE_ATTACK2"
+      },
+      {
+        "name": "ACT_GESTURE_RANGE_ATTACK2_LOW",
+        "shortName": "GESTURE_RANGE_ATTACK2_LOW"
       },
       {
         "name": "ACT_GESTURE_RELOAD",
@@ -2676,10 +2680,6 @@
       {
         "name": "ACT_IDLE",
         "shortName": "IDLE"
-      },
-      {
-        "name": "ACT_IDLETORUN",
-        "shortName": "IDLETORUN"
       },
       {
         "name": "ACT_IDLE_AGITATED",
@@ -2842,6 +2842,10 @@
         "shortName": "IDLE_SUITCASE"
       },
       {
+        "name": "ACT_IDLETORUN",
+        "shortName": "IDLETORUN"
+      },
+      {
         "name": "ACT_INVALID",
         "shortName": "INVALID"
       },
@@ -2962,20 +2966,20 @@
         "shortName": "LOOKBACK_RIGHT"
       },
       {
-        "name": "ACT_MELEE_ATTACK1",
-        "shortName": "MELEE_ATTACK1"
-      },
-      {
-        "name": "ACT_MELEE_ATTACK2",
-        "shortName": "MELEE_ATTACK2"
-      },
-      {
         "name": "ACT_MELEE_ATTACK_SWING",
         "shortName": "MELEE_ATTACK_SWING"
       },
       {
         "name": "ACT_MELEE_ATTACK_SWING_GESTURE",
         "shortName": "MELEE_ATTACK_SWING_GESTURE"
+      },
+      {
+        "name": "ACT_MELEE_ATTACK1",
+        "shortName": "MELEE_ATTACK1"
+      },
+      {
+        "name": "ACT_MELEE_ATTACK2",
+        "shortName": "MELEE_ATTACK2"
       },
       {
         "name": "ACT_MELEE_VM_DRAW",
@@ -3170,16 +3174,16 @@
         "shortName": "MP_ATTACK_CROUCH_PRIMARY"
       },
       {
+        "name": "ACT_MP_ATTACK_CROUCH_PRIMARY_DEPLOYED",
+        "shortName": "MP_ATTACK_CROUCH_PRIMARY_DEPLOYED"
+      },
+      {
         "name": "ACT_MP_ATTACK_CROUCH_PRIMARYFIRE",
         "shortName": "MP_ATTACK_CROUCH_PRIMARYFIRE"
       },
       {
         "name": "ACT_MP_ATTACK_CROUCH_PRIMARYFIRE_DEPLOYED",
         "shortName": "MP_ATTACK_CROUCH_PRIMARYFIRE_DEPLOYED"
-      },
-      {
-        "name": "ACT_MP_ATTACK_CROUCH_PRIMARY_DEPLOYED",
-        "shortName": "MP_ATTACK_CROUCH_PRIMARY_DEPLOYED"
       },
       {
         "name": "ACT_MP_ATTACK_CROUCH_SECONDARY",
@@ -3254,16 +3258,16 @@
         "shortName": "MP_ATTACK_STAND_PRIMARY"
       },
       {
+        "name": "ACT_MP_ATTACK_STAND_PRIMARY_DEPLOYED",
+        "shortName": "MP_ATTACK_STAND_PRIMARY_DEPLOYED"
+      },
+      {
         "name": "ACT_MP_ATTACK_STAND_PRIMARYFIRE",
         "shortName": "MP_ATTACK_STAND_PRIMARYFIRE"
       },
       {
         "name": "ACT_MP_ATTACK_STAND_PRIMARYFIRE_DEPLOYED",
         "shortName": "MP_ATTACK_STAND_PRIMARYFIRE_DEPLOYED"
-      },
-      {
-        "name": "ACT_MP_ATTACK_STAND_PRIMARY_DEPLOYED",
-        "shortName": "MP_ATTACK_STAND_PRIMARY_DEPLOYED"
       },
       {
         "name": "ACT_MP_ATTACK_STAND_SECONDARY",
@@ -3342,38 +3346,6 @@
         "shortName": "MP_ATTACK_SWIM_SECONDARYFIRE"
       },
       {
-        "name": "ACT_MP_CROUCHWALK",
-        "shortName": "MP_CROUCHWALK"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_BUILDING",
-        "shortName": "MP_CROUCHWALK_BUILDING"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_ITEM1",
-        "shortName": "MP_CROUCHWALK_ITEM1"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_ITEM2",
-        "shortName": "MP_CROUCHWALK_ITEM2"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_MELEE",
-        "shortName": "MP_CROUCHWALK_MELEE"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_PDA",
-        "shortName": "MP_CROUCHWALK_PDA"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_PRIMARY",
-        "shortName": "MP_CROUCHWALK_PRIMARY"
-      },
-      {
-        "name": "ACT_MP_CROUCHWALK_SECONDARY",
-        "shortName": "MP_CROUCHWALK_SECONDARY"
-      },
-      {
         "name": "ACT_MP_CROUCH_BUILDING",
         "shortName": "MP_CROUCH_BUILDING"
       },
@@ -3412,6 +3384,38 @@
       {
         "name": "ACT_MP_CROUCH_SECONDARY",
         "shortName": "MP_CROUCH_SECONDARY"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK",
+        "shortName": "MP_CROUCHWALK"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_BUILDING",
+        "shortName": "MP_CROUCHWALK_BUILDING"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_ITEM1",
+        "shortName": "MP_CROUCHWALK_ITEM1"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_ITEM2",
+        "shortName": "MP_CROUCHWALK_ITEM2"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_MELEE",
+        "shortName": "MP_CROUCHWALK_MELEE"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_PDA",
+        "shortName": "MP_CROUCHWALK_PDA"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_PRIMARY",
+        "shortName": "MP_CROUCHWALK_PRIMARY"
+      },
+      {
+        "name": "ACT_MP_CROUCHWALK_SECONDARY",
+        "shortName": "MP_CROUCHWALK_SECONDARY"
       },
       {
         "name": "ACT_MP_DEPLOYED",
@@ -4474,22 +4478,6 @@
         "shortName": "RANGE_AIM_SMG1_LOW"
       },
       {
-        "name": "ACT_RANGE_ATTACK1",
-        "shortName": "RANGE_ATTACK1"
-      },
-      {
-        "name": "ACT_RANGE_ATTACK1_LOW",
-        "shortName": "RANGE_ATTACK1_LOW"
-      },
-      {
-        "name": "ACT_RANGE_ATTACK2",
-        "shortName": "RANGE_ATTACK2"
-      },
-      {
-        "name": "ACT_RANGE_ATTACK2_LOW",
-        "shortName": "RANGE_ATTACK2_LOW"
-      },
-      {
         "name": "ACT_RANGE_ATTACK_AR1",
         "shortName": "RANGE_ATTACK_AR1"
       },
@@ -4572,6 +4560,22 @@
       {
         "name": "ACT_RANGE_ATTACK_TRIPWIRE",
         "shortName": "RANGE_ATTACK_TRIPWIRE"
+      },
+      {
+        "name": "ACT_RANGE_ATTACK1",
+        "shortName": "RANGE_ATTACK1"
+      },
+      {
+        "name": "ACT_RANGE_ATTACK1_LOW",
+        "shortName": "RANGE_ATTACK1_LOW"
+      },
+      {
+        "name": "ACT_RANGE_ATTACK2",
+        "shortName": "RANGE_ATTACK2"
+      },
+      {
+        "name": "ACT_RANGE_ATTACK2_LOW",
+        "shortName": "RANGE_ATTACK2_LOW"
       },
       {
         "name": "ACT_READINESS_AGITATED_TO_STIMULATED",
@@ -4680,10 +4684,6 @@
       {
         "name": "ACT_RUN",
         "shortName": "RUN"
-      },
-      {
-        "name": "ACT_RUNTOIDLE",
-        "shortName": "RUNTOIDLE"
       },
       {
         "name": "ACT_RUN_AGITATED",
@@ -4812,6 +4812,10 @@
       {
         "name": "ACT_RUN_STIMULATED",
         "shortName": "RUN_STIMULATED"
+      },
+      {
+        "name": "ACT_RUNTOIDLE",
+        "shortName": "RUNTOIDLE"
       },
       {
         "name": "ACT_SCRIPT_CUSTOM_0",
@@ -5030,18 +5034,6 @@
         "shortName": "SHOTGUN_RELOAD_START"
       },
       {
-        "name": "ACT_SIGNAL1",
-        "shortName": "SIGNAL1"
-      },
-      {
-        "name": "ACT_SIGNAL2",
-        "shortName": "SIGNAL2"
-      },
-      {
-        "name": "ACT_SIGNAL3",
-        "shortName": "SIGNAL3"
-      },
-      {
         "name": "ACT_SIGNAL_ADVANCE",
         "shortName": "SIGNAL_ADVANCE"
       },
@@ -5068,6 +5060,18 @@
       {
         "name": "ACT_SIGNAL_TAKECOVER",
         "shortName": "SIGNAL_TAKECOVER"
+      },
+      {
+        "name": "ACT_SIGNAL1",
+        "shortName": "SIGNAL1"
+      },
+      {
+        "name": "ACT_SIGNAL2",
+        "shortName": "SIGNAL2"
+      },
+      {
+        "name": "ACT_SIGNAL3",
+        "shortName": "SIGNAL3"
       },
       {
         "name": "ACT_SLAM_DETONATOR_DETONATE",
@@ -5174,16 +5178,16 @@
         "shortName": "SLAM_THROW_THROW"
       },
       {
-        "name": "ACT_SLAM_THROW_THROW2",
-        "shortName": "SLAM_THROW_THROW2"
-      },
-      {
         "name": "ACT_SLAM_THROW_THROW_ND",
         "shortName": "SLAM_THROW_THROW_ND"
       },
       {
         "name": "ACT_SLAM_THROW_THROW_ND2",
         "shortName": "SLAM_THROW_THROW_ND2"
+      },
+      {
+        "name": "ACT_SLAM_THROW_THROW2",
+        "shortName": "SLAM_THROW_THROW2"
       },
       {
         "name": "ACT_SLAM_THROW_TO_STICKWALL",
@@ -5338,20 +5342,20 @@
         "shortName": "TURN"
       },
       {
-        "name": "ACT_TURNLEFT45",
-        "shortName": "TURNLEFT45"
-      },
-      {
-        "name": "ACT_TURNRIGHT45",
-        "shortName": "TURNRIGHT45"
-      },
-      {
         "name": "ACT_TURN_LEFT",
         "shortName": "TURN_LEFT"
       },
       {
         "name": "ACT_TURN_RIGHT",
         "shortName": "TURN_RIGHT"
+      },
+      {
+        "name": "ACT_TURNLEFT45",
+        "shortName": "TURNLEFT45"
+      },
+      {
+        "name": "ACT_TURNRIGHT45",
+        "shortName": "TURNRIGHT45"
       },
       {
         "name": "ACT_UNDEPLOY",
@@ -6445,6 +6449,10 @@
         "shortName": "LAST_RESORT_POINT"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "shortName": "NO_TARGET"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_NONE",
         "shortName": "NONE"
       },
@@ -6455,10 +6463,6 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
         "shortName": "NOT_LEARNABLE"
-      },
-      {
-        "name": "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-        "shortName": "NO_TARGET"
       },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_OPTIONAL_NO_TARGET",
@@ -6728,6 +6732,10 @@
         "shortName": "MELEE_ONLY"
       },
       {
+        "name": "DOTA_UNIT_TARGET_FLAG_NO_INVIS",
+        "shortName": "NO_INVIS"
+      },
+      {
         "name": "DOTA_UNIT_TARGET_FLAG_NONE",
         "shortName": "NONE"
       },
@@ -6762,10 +6770,6 @@
       {
         "name": "DOTA_UNIT_TARGET_FLAG_NOT_SUMMONED",
         "shortName": "NOT_SUMMONED"
-      },
-      {
-        "name": "DOTA_UNIT_TARGET_FLAG_NO_INVIS",
-        "shortName": "NO_INVIS"
       },
       {
         "name": "DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD",

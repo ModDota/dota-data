@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { formatDescription, getFile, outputFile, outputJson } from '../util';
+import { formatDescription, outputFile, outputJson } from '../util';
 import { Event, types } from './types';
 import vpk from 'vpk';
 import * as path from 'path';
