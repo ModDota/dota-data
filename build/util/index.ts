@@ -1,7 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-export * from '../../src/utils/github';
 export * from './export-types';
 export * from './normalization';
 

@@ -10,6 +10,7 @@ SCRIPT = [[
   script_reload
   echoln $> cl_script_reload
   cl_script_reload
+  echoln ===ENDOFDUMP
 ]]
 
 function Activate()
