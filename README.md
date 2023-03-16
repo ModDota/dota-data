@@ -19,7 +19,7 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 #### If you are updating the API manually
 
 1. Edit the corresponding `.ts` files (i.e. `modifier-properties.ts`)
-2. Run `yarn install` then `yarn build` in the root of the repository
+2. Run `npm ci` then `npm run build` in the root of the repository
 3. You should now have corresponding `.json` files re-generated (i.e. `api.json`)
 4. Commit changes
 5. Create a pull request
