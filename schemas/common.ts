@@ -1,4 +1,4 @@
-import * as s from '../schema';
+import * as s from '../src/schema-builder';
 import { precacheTypes } from './resources';
 
 export const createPrecacheBlock = () =>

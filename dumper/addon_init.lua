@@ -1,10 +1,26 @@
 ADDON_LOADED = ADDON_LOADED ~= nil or false
 if not ADDON_LOADED then return end
 
+local function sortJsonKeysOf(what)
+  local allKeys = {}
+
+  for key in pairs(what) do
+    table.insert(allKeys, key)
+  end
+
+  table.sort(allKeys, function(a, b) return a < b end)
+
+  setmetatable(what, {
+    __jsonorder = allKeys
+  })
+end
+
 local function buildFunctionSignature(name, desc)
   local args = {}
   for i = 0, #desc - 1 do
-    table.insert(args, { name = desc[i][2] ~= "" and desc[i][2] or nil, type = desc[i][1] })
+    local arg = { name = desc[i][2] ~= "" and desc[i][2] or nil, type = desc[i][1] }
+    sortJsonKeysOf(arg)
+    table.insert(args, arg)
   end
 
   return {
@@ -37,13 +53,17 @@ local function dumpScriptBindings()
   for name, fdesc in pairs(FDesc) do
     local binding = buildFunctionSignature(name, fdesc)
     binding.kind = "function"
+    sortJsonKeysOf(binding)
     table.insert(bindings, binding)
   end
 
   for className, cdesc in pairs(CDesc) do
     local members = {}
     for name, fdesc in pairs(cdesc.FDesc) do
-      table.insert(members, buildFunctionSignature(name, fdesc))
+      local signature = buildFunctionSignature(name, fdesc)
+      sortJsonKeysOf(signature)
+
+      table.insert(members, signature)
     end
     table.sort(members, function(a, b) return a.name < b.name end)
 
@@ -61,6 +81,8 @@ local function dumpScriptBindings()
       binding.instance = findInstance(cdesc)
     end
 
+    sortJsonKeysOf(binding)
+
     table.insert(bindings, binding)
   end
 
@@ -76,13 +98,18 @@ local function dumpScriptBindings()
             end
           end
         end)()
-        table.insert(bindings, {
+
+        local binding = {
           kind = "constant",
           name = key,
           value = value,
           enum = enum,
           description = desc,
-        })
+        }
+
+        sortJsonKeysOf(binding)
+
+        table.insert(bindings, binding)
       else
           -- Rest are:
           -- - Instances of classes (handled in class definition)

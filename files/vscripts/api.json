@@ -28093,23 +28093,6 @@
       },
       {
         "kind": "function",
-        "name": "SetGameTimeFrozen",
-        "available": "server",
-        "description": "Freeze the game time.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "frozen",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetGameWinner",
         "available": "server",
         "description": "Makes the specified team win.",
@@ -29413,16 +29396,6 @@
       },
       {
         "kind": "function",
-        "name": "GetTimeFrozen",
-        "available": "server",
-        "description": "Is our time frozen?",
-        "returns": [
-          "bool"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "IsItemInWhiteList",
         "available": "server",
         "description": "Is this item currently in the white list.",
@@ -29558,23 +29531,6 @@
         "args": [
           {
             "name": "open",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetTimeFrozen",
-        "available": "server",
-        "description": "Set if we should freeze time or not.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "timeFrozen",
             "types": [
               "bool"
             ]

@@ -1,4 +1,4 @@
-import * as s from '../schema';
+import * as s from '../src/schema-builder';
 import { resourcePatterns } from './resources';
 
 const camera = s

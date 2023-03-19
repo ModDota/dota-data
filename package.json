@@ -10,29 +10,20 @@
     "files/**/*.{json,ts}"
   ],
   "scripts": {
-    "build": "run-s build:clean build:static build:tsc",
+    "build": "run-s build:clean build:static build:schemas",
     "build:clean": "rimraf \"{files,lib}/**/*\"",
-    "build:static": "ts-node-script build",
-    "build:tsc": "tsc",
+    "build:static": "tsx build",
+    "build:schemas": "tsc -p schemas",
     "dev": "run-p dev:static dev:tsc",
     "dev:static": "nodemon",
     "dev:tsc": "tsc --watch --preserveWatchOutput",
     "lint": "run-p lint:*",
-    "lint:eslint": "eslint .",
+    "lint:eslint": "eslint",
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
     "prepublishOnly": "yarn build",
-    "test": "jest"
-  },
-  "nodemonConfig": {
-    "exec": "ts-node --transpile-only build",
-    "ext": "ts,json",
-    "watch": [
-      "build",
-      "src/schema",
-      "src/schemas",
-      "dumper/dump"
-    ]
+    "test": "jest",
+    "auto-dump": "tsx dumper/start-dumper.mts"
   },
   "prettier": {
     "printWidth": 100,
@@ -40,30 +31,16 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "project": [
-        "tsconfig.json",
-        "build/tsconfig.json",
-        "__tests__/tsconfig.json"
-      ]
-    },
-    "extends": "@ark120202/eslint-config/node",
-    "ignorePatterns": [
-      "/lib",
-      "/files"
-    ]
-  },
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfig": "<rootDir>/__tests__/tsconfig.json"
+        "tsConfig": "<rootDir>/test/tsconfig.json"
       }
     },
     "preset": "ts-jest",
     "testEnvironment": "node",
     "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
+      "**/test/**/*.[jt]s?(x)",
       "!**/_*"
     ]
   },
@@ -75,15 +52,17 @@
     "vdf-extra": "^2.2.2"
   },
   "devDependencies": {
-    "@ark120202/eslint-config": "^2.4.2",
     "@ark120202/typescript-config": "^2.2.0",
+    "@moddota/find-steam-app": "^1.1.0",
     "@types/dedent": "^0.7.0",
     "@types/fs-extra": "^9.0.1",
     "@types/jest": "^26.0.13",
     "@types/lodash": "^4.14.161",
     "@types/prettier": "2.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
     "dedent": "^0.7.0",
-    "eslint": "^7.26.0",
+    "eslint": "^7.32.0",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
@@ -91,8 +70,10 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
+    "tsx": "^3.12.4",
     "typescript": "^4.0.2",
-    "valve-kv": "^1.2.1"
+    "valve-kv": "^1.2.1",
+    "vpk": "^0.2.0"
   },
   "engines": {
     "node": ">=12.13.0"

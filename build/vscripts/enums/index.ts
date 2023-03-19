@@ -13,7 +13,16 @@ import { Availability, Constant, Enum, EnumMember } from './types';
 
 export { types as enumsTypes } from './types';
 
-export const enumDeclarations = (() => {
+export type EnumOrConstant = Enum | Constant;
+
+interface EnumResult {
+  clientGlobals: DumpConstant[];
+  serverGlobals: DumpConstant[];
+  enumDeclarations: Array<Enum | Constant>;
+  unknownGlobals: DumpConstant[];
+}
+
+export function generateEnumDeclarations(): EnumResult {
   const serverGlobals = serverDump.filter((x): x is DumpConstant => x.kind === 'constant');
   const clientGlobals = clientDump.filter((x): x is DumpConstant => x.kind === 'constant');
   let allGlobals = [
@@ -26,21 +35,6 @@ export const enumDeclarations = (() => {
     allGlobals = rest;
     return extracted;
   };
-
-  // Make sure that all there are no different constants on client and server
-  for (const { name } of allGlobals) {
-    const server = serverGlobals.find((x) => x.name === name);
-    const client = serverGlobals.find((x) => x.name === name);
-    if (server == null) {
-      console.error(`Available only on client: ${name}`);
-      continue;
-    }
-
-    if (client == null) continue;
-    if (client.value !== server.value || client.description !== server.description) {
-      throw new Error(`${name} exists on server and client, but has different values`);
-    }
-  }
 
   const getAvailability = (n: string): Availability =>
     clientGlobals.some((x) => x.name === n) ? 'both' : 'server';
@@ -114,10 +108,6 @@ export const enumDeclarations = (() => {
     ),
   );
 
-  for (const constant of allGlobals) {
-    console.log(`Unknown constant or enum: ${constant.name}`);
-  }
-
   _.each(enumValueDescriptions, (descriptions, scopeName) => {
     const enumValue = enums.find((x) => x.name === scopeName);
     if (enumValue == null) throw new Error(`Enum ${scopeName} not found`);
@@ -135,5 +125,31 @@ export const enumDeclarations = (() => {
   }
 
   enums.sort((a, b) => a.name.localeCompare(b.name, 'en'));
-  return [...constants, ...enums];
-})();
+
+  return {
+    clientGlobals,
+    serverGlobals,
+    enumDeclarations: [...constants, ...enums],
+    unknownGlobals: allGlobals,
+  };
+}
+
+export function validateEnums(enumsInfo: EnumResult) {
+  // Make sure that all there are no different constants on client and server
+  const serverGlobals = new Map(enumsInfo.serverGlobals.map((g) => [g.name, g]));
+  for (const { name, value, description } of enumsInfo.clientGlobals) {
+    const serverValue = serverGlobals.get(name);
+    if (!serverGlobals.has(name)) {
+      console.error(`Available only on client: ${name}`);
+      continue;
+    }
+
+    if (value !== serverValue?.value || description !== serverValue.description) {
+      throw new Error(`${name} exists on server and client, but has different values`);
+    }
+  }
+
+  for (const constant of enumsInfo.unknownGlobals) {
+    console.log(`Unknown constant or enum: ${constant.name}`);
+  }
+}

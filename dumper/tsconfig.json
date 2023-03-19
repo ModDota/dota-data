@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "noEmit": true,
-    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "esnext",
     "strict": true
   },
-  "include": ["**/*.ts", "vpk.d.ts"]
+  "include": ["start-dumper.mts", "vconsole.mts"]
 }

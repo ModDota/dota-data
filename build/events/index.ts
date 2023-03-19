@@ -1,6 +1,8 @@
 import assert from 'assert';
-import { formatDescription, getFile, outputFile, outputJson } from '../util';
+import { formatDescription, outputFile, outputJson } from '../util';
 import { Event, types } from './types';
+import vpk from 'vpk';
+import * as path from 'path';
 
 function parseFile(events: Record<string, Event>, content: string, sourceFile: string) {
   let parsingName: string | undefined;
@@ -58,26 +60,21 @@ function parseFile(events: Record<string, Event>, content: string, sourceFile: s
     });
 }
 
-export async function generateEvents() {
-  const files = await Promise.all(
-    [
-      [
-        'game/core/pak01_dir/resource/core.gameevents',
-        'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/bce1224064fe01a0e4e33384084798492a03036f',
-      ],
-      [
-        'resource/game.gameevents',
-        'https://raw.githubusercontent.com/arcadia-redux/dota_vpk_updates/main',
-      ],
-    ].map(
-      async ([fileName, fileSource]) => [fileName, await getFile(fileName, fileSource)] as const,
-    ),
-  );
+export async function generateEvents(dota2Dir: string) {
+  console.log('- Opening core vpk...');
+  const coreVpk = new vpk(path.join(dota2Dir, 'game', 'core', 'pak01_dir.vpk'));
+  coreVpk.load();
+
+  console.log('- Opening game vpk...');
+  const gameVpk = new vpk(path.join(dota2Dir, 'game', 'dota', 'pak01_dir.vpk'));
+  gameVpk.load();
+
+  const coreEvents = coreVpk.getFile('resource/core.gameevents');
+  const gameEvents = gameVpk.getFile('resource/game.gameevents');
 
   const events: Record<string, Event> = {};
-  for (const [fileName, content] of files) {
-    parseFile(events, content, fileName.match(/resource\/(.+)\.gameevents$/)![1]);
-  }
+  parseFile(events, coreEvents.toString(), 'core');
+  parseFile(events, gameEvents.toString(), 'game');
 
   await Promise.all([
     outputJson('events', Object.values(events)),
