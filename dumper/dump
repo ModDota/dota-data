@@ -1,3 +1,13 @@
+ClientVersion=5652
+ServerVersion=5652
+ProductName=dota2_workshop
+appID=570
+ServerAppID=373310
+CustomGameServerAppID=471280
+ToolsAppID=316570
+SourceRevision=7929432
+VersionDate=Mar 17 2023
+VersionTime=15:18:24
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -32399,7 +32409,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1766
+    "value":1765
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33351,7 +33361,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1765
+    "value":1766
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",

@@ -45,6 +45,12 @@ const args = [
   `+dota_launch_custom_game ${ADDON_NAME} dota`,
 ];
 
+const steamInfPath = path.join(dota2Dir, 'game', 'dota', 'steam.inf');
+const steamInfContent = fs.readFileSync(steamInfPath);
+
+const dumpWriteStream = fs.createWriteStream('dumper/dump', {});
+dumpWriteStream.write(steamInfContent);
+
 //const p2 = spawn(path.join(dotaBinDir, "vconsole2.exe"), { detached: true });
 const p1 = spawn(path.join(dotaBinDir, 'dota2.exe'), args, { cwd: dotaBinDir });
 
@@ -52,15 +58,16 @@ const dotaConsole = await vConsole.connect(29000);
 
 console.log('Connected! Waiting for dump...');
 
-await readDump(dotaConsole, 'dumper/dump');
+await readDump(dotaConsole, dumpWriteStream);
+
+dumpWriteStream.close();
 
 console.log('Saved dump. Closing dota...');
 
 await vConsole.execute(dotaConsole, 'quit');
 
-async function readDump(dota: Socket, destination: string): Promise<void> {
+async function readDump(dota: Socket, dumpStream: fs.WriteStream): Promise<void> {
   return new Promise((resolve) => {
-    const writeStream = fs.createWriteStream(destination, {});
     let reading = false;
     vConsole.onMessage(dota, (type, channel, message) => {
       if (type === 'PRNT') {
@@ -69,10 +76,9 @@ async function readDump(dota: Socket, destination: string): Promise<void> {
         }
         if (message.startsWith('===ENDOFDUMP')) {
           reading = false;
-          writeStream.close();
           resolve();
         } else if (reading) {
-          writeStream.write(message);
+          dumpStream.write(message);
         }
       }
     });
