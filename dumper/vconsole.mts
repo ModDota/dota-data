@@ -10,22 +10,17 @@ export async function connect(port: number): Promise<net.Socket> {
     socket.on('connect', () => {
       resolve(socket);
     });
-    socket.on('error', (err) => console.log('Socket error: ', err));
+    socket.on('error', (err) => {
+      if (++tries < MAX_TRIES) {
+        setTimeout(() => {
+          socket.connect({ host: '127.0.0.1', port });
+        }, RETRY_DELAY);
+      } else {
+        reject(err);
+      }
+    });
 
-    function schedule() {
-      setTimeout(() => {
-        try {
-          socket.connect({ port });
-        } catch {
-          if (++tries < MAX_TRIES) {
-            schedule();
-          } else {
-            reject('Could not connect after maximum tries');
-          }
-        }
-      }, RETRY_DELAY);
-    }
-    schedule();
+    socket.connect({ host: '127.0.0.1', port });
   });
 }
 
