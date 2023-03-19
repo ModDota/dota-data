@@ -64,7 +64,7 @@ async function readDump(dota: Socket, destination: string): Promise<void> {
     let reading = false;
     vConsole.onMessage(dota, (type, channel, message) => {
       if (type === 'PRNT') {
-        if (message.startsWith('dump_panorama_css_properties')) {
+        if (message.startsWith('$>')) {
           reading = true;
         }
         if (message.startsWith('===ENDOFDUMP')) {
