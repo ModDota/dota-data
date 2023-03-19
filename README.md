@@ -11,10 +11,11 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 #### If you want to update from an API dump
 
 1. Check out this repository
-2. Run `npm run auto-dump` and wait for the script to finish and dota to close.
-3. Run `npm run build` to generate all package files.
-4. Commit changes
-5. Create a pull request
+2. Install with `npm ci`
+3. Run `npm run auto-dump` and wait for the script to finish and dota to close.
+4. Run `npm run build` to generate all package files.
+5. Commit changes
+6. Create a pull request
 
 #### If you are updating the API manually
 
