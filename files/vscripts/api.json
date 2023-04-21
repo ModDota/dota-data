@@ -2486,16 +2486,6 @@
       },
       {
         "kind": "function",
-        "name": "GetSequence",
-        "available": "both",
-        "description": "Returns the active sequence.",
-        "returns": [
-          "int"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "IsAttachedToParent",
         "available": "both",
         "description": "Is attached to parent.",
@@ -2503,40 +2493,6 @@
           "bool"
         ],
         "args": []
-      },
-      {
-        "kind": "function",
-        "name": "LookupSequence",
-        "available": "both",
-        "description": "Returns a sequence id given a name.",
-        "returns": [
-          "int"
-        ],
-        "args": [
-          {
-            "name": "arg1",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SequenceDuration",
-        "available": "both",
-        "description": "Returns the duration in seconds of the specified sequence.",
-        "returns": [
-          "float"
-        ],
-        "args": [
-          {
-            "name": "arg1",
-            "types": [
-              "string"
-            ]
-          }
-        ]
       },
       {
         "kind": "function",
@@ -2550,23 +2506,6 @@
             "name": "arg1",
             "types": [
               "Vector"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetAnimation",
-        "available": "both",
-        "description": "Pass string for the animation to play on this model.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "arg1",
-            "types": [
-              "string"
             ]
           }
         ]
@@ -7098,16 +7037,6 @@
       },
       {
         "kind": "function",
-        "name": "GetMagicalArmorValue",
-        "available": "both",
-        "description": "Returns current magical armor value.",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
         "name": "GetMainControllingPlayer",
         "available": "server",
         "description": "Returns the player ID of the controlling player.",
@@ -8409,11 +8338,27 @@
       {
         "kind": "function",
         "name": "IsUntargetable",
-        "available": "both",
+        "available": "client",
         "returns": [
           "bool"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsUntargetableFrom",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "targettingSource",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -9112,23 +9057,6 @@
       },
       {
         "kind": "function",
-        "name": "ReduceMana",
-        "available": "server",
-        "description": "Remove mana from this unit, this can be used for involuntary mana loss, not for mana that is spent.",
-        "returns": [
-          "float"
-        ],
-        "args": [
-          {
-            "name": "amount",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "RemoveAbility",
         "available": "server",
         "description": "Remove an ability from this unit by name.",
@@ -9378,12 +9306,58 @@
       },
       {
         "kind": "function",
+        "name": "Script_GetMagicalArmorValue",
+        "available": "both",
+        "description": "Returns current magical armor value.",
+        "returns": [
+          "float"
+        ],
+        "args": [
+          {
+            "name": "useExperimentalFormula",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "inflictor",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "Script_IsDeniable",
         "available": "both",
         "returns": [
           "bool"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "Script_ReduceMana",
+        "available": "server",
+        "description": "Remove mana from this unit, this can be used for involuntary mana loss, not for mana that is spent.",
+        "returns": [
+          "float"
+        ],
+        "args": [
+          {
+            "name": "mana",
+            "types": [
+              "float"
+            ]
+          },
+          {
+            "name": "ability",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -12320,6 +12294,12 @@
         "args": []
       }
     ]
+  },
+  {
+    "kind": "class",
+    "name": "CDOTA_BaseNPC_MangoTree",
+    "extend": "CDOTA_BaseNPC_Building",
+    "members": []
   },
   {
     "kind": "class",
@@ -16016,12 +15996,32 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierHealthBarPips",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierHealthBonus",
         "available": "both",
         "abstract": true,
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierHealthcostReduction_Constant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16314,6 +16314,16 @@
       {
         "kind": "function",
         "name": "GetModifierMagicalResistanceBonusIllusions",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierMagicalResistanceBonusUnique",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -16767,6 +16777,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPercentageHealthcost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPercentageHealthcostStacking",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPercentageManacost",
         "available": "both",
         "abstract": true,
@@ -17160,6 +17190,16 @@
       {
         "kind": "function",
         "name": "GetModifierProjectileSpeedBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyIncomingDamage_Constant",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -17981,6 +18021,16 @@
       },
       {
         "kind": "function",
+        "name": "OnDeathCompleted",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnDominated",
         "available": "both",
         "abstract": true,
@@ -18219,6 +18269,16 @@
       {
         "kind": "function",
         "name": "OnSpellTargetReady",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnSpentHealth",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -21836,6 +21896,12 @@
   },
   {
     "kind": "class",
+    "name": "CDOTA_Unit_Scout",
+    "extend": "CDOTA_BaseNPC",
+    "members": []
+  },
+  {
+    "kind": "class",
     "name": "CDOTABaseAbility",
     "clientName": "C_DOTABaseAbility",
     "extend": "CBaseEntity",
@@ -22179,6 +22245,22 @@
       },
       {
         "kind": "function",
+        "name": "GetChannelledHealthCostPerSecond",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetChannelledManaCostPerSecond",
         "available": "server",
         "returns": [
@@ -22353,6 +22435,22 @@
       },
       {
         "kind": "function",
+        "name": "GetEffectiveHealthCost",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetEffectiveManaCost",
         "available": "server",
         "returns": [
@@ -22386,6 +22484,22 @@
       {
         "kind": "function",
         "name": "GetGoldCostForUpgrade",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetHealthCost",
         "available": "server",
         "returns": [
           "int"
@@ -23017,6 +23131,15 @@
       },
       {
         "kind": "function",
+        "name": "PayHealthCost",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "PayManaCost",
         "available": "server",
         "returns": [
@@ -23063,6 +23186,15 @@
       {
         "kind": "function",
         "name": "RefreshIntrinsicModifier",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "RefundHealthCost",
         "available": "server",
         "returns": [
           "nil"
@@ -23399,6 +23531,12 @@
         "args": [
           {
             "name": "mana",
+            "types": [
+              "bool"
+            ]
+          },
+          {
+            "name": "useHealth",
             "types": [
               "bool"
             ]
@@ -26089,6 +26227,23 @@
             "name": "disable",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetXPRuneSpawnInterval",
+        "available": "server",
+        "description": "Set xp rune spawn rate.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "interval",
+            "types": [
+              "float"
             ]
           }
         ]

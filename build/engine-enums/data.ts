@@ -24,8 +24,9 @@ export const extracted: ExtractionRule[] = [
   { prefix: 'DOTA_ORB_LABEL_' },
   { prefix: 'DOTA_ATTRIBUTE_' },
   { prefix: 'DOTA_TEAM_' },
-  { prefix: 'DOTA_COMBAT_CLASS_ATTACK_' },
-  { prefix: 'DOTA_COMBAT_CLASS_DEFEND_' },
+  // Seems removed in 7.33?
+  // { prefix: 'DOTA_COMBAT_CLASS_ATTACK_' },
+  // { prefix: 'DOTA_COMBAT_CLASS_DEFEND_' },
   { prefix: 'DOTA_NPC_UNIT_RELATIONSHIP_TYPE_' },
   { prefix: 'DOTA_HULL_SIZE_' },
   { prefix: 'DOTA_ITEM_QUALITY_' },
