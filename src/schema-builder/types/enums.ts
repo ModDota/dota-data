@@ -1,14 +1,12 @@
 import _ from 'lodash';
-import engineEnums from '../../../files/engine-enums';
-import vscriptEnums from '../../../files/vscripts/enums';
-
+import enums from '../../../files/engine-enums';
 import { Schema, TsContext, ValidationContext } from '../schema';
 
 export class EnumsSchema extends Schema {
   public _flags = false;
   constructor(public _name: string) {
     super();
-    this.getNames();
+    this.getDefinition();
   }
 
   public flags(flags = true) {
@@ -54,35 +52,12 @@ export class EnumsSchema extends Schema {
   }
 
   protected getNames() {
-    const names: string[] = [];
-    const vscriptDefinition = vscriptEnums.find((x) => x.name === this._name);
+    return this.getDefinition().members.map((x) => x.name);
+  }
 
-    function addNames(added: string[]) {
-      for (const name of added) {
-        if (!names.includes(name)) {
-          names.push(name);
-        }
-      }
-    }
-
-    if (vscriptDefinition) {
-      if (vscriptDefinition.kind == 'enum') {
-        addNames(vscriptDefinition.members.map((x) => x.name));
-      } else {
-        addNames([vscriptDefinition.name]);
-      }
-    }
-
-    const engineDefinition = engineEnums.find((x) => x.name === this._name);
-
-    if (engineDefinition) {
-      addNames(engineDefinition.members.map((x) => x.name));
-    }
-
-    if (names.length == 0) {
-      throw new Error(`"${this._name}" is not a valid enum name`);
-    } else {
-      return names;
-    }
+  protected getDefinition() {
+    const def = enums.find((x) => x.name === this._name);
+    if (def == null) throw new Error(`"${this._name}" is not a valid enum name`);
+    return def;
   }
 }

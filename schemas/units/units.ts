@@ -142,7 +142,7 @@ export const baseUnit = () =>
     .field('ProjectileSpeed', s.oneOf([s.int(), s.literal('')]))
 
     // Attributes
-    .field('AttributePrimary', s.enums('Attributes'))
+    .field('AttributePrimary', s.enums('Attribute'))
     .field('AttributeBaseStrength', s.int())
     .field('AttributeStrengthGain', s.num())
     .field('AttributeBaseIntelligence', s.int())
