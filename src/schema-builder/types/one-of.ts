@@ -73,6 +73,6 @@ export class OneOfSchema extends Schema {
           `${i + 1}. ${x.join('\n').replace(/\n/g, `\n${' '.repeat(String(i + 1).length + 4)}`)}`,
       )
       .join('\n  ');
-    context.addErrorThere(`not matches any of:\n  ${failedMessages}`);
+    context.addErrorThere(`does not match any of:\n  ${failedMessages}`);
   }
 }

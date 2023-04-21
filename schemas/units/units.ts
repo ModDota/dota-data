@@ -30,6 +30,7 @@ export const baseUnit = () =>
     .field('ModelScale', s.num())
     .field('MaxModelScaleMultiplier', s.num())
     .field('VersusScale', s.num())
+    .field('ScaleSet', s.str())
     // TODO: `LoadoutScale` is used for Warlock's golem
     .field('LoadoutScale', s.num())
     .field('SpectatorLoadoutScale', s.num().min(0))
@@ -178,8 +179,8 @@ export const baseUnit = () =>
 
     // Team
     .field('TeamName', s.enums('Team'))
-    .field('CombatClassAttack', s.enums('CombatClassAttack'))
-    .field('CombatClassDefend', s.enums('CombatClassDefend'))
+    .field('CombatClassAttack', s.str())
+    .field('CombatClassDefend', s.str())
     .field('UnitRelationshipClass', s.enums('NpcUnitRelationshipType'), { deprecated: 'Unused.' })
 
     // Vision

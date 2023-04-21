@@ -4,7 +4,12 @@ import { baseAbility, baseItem } from './base';
 
 const makeLuaCustomAbility = (item: boolean) =>
   (item ? baseItem('LuaItem') : baseAbility('LuaAbility'))
-    .field('BaseClass', s.literal(item ? 'item_lua' : 'ability_lua'), { require: true })
+    .field(
+      'BaseClass',
+      item
+        ? s.literal('item_lua')
+        : s.oneOf([s.literal('ability_lua'), s.literal('ability_datadriven'), s.str()]),
+    )
     .fieldAfter('BaseClass', 'ScriptFile', s.str().pattern(resourcePatterns.lua));
 
 const makeDatadrivenCustomAbility = (item: boolean) =>
