@@ -414,12 +414,20 @@
         "shortName": "AGILITY_DAMAGE"
       },
       {
+        "name": "DOTA_ATTRIBUTE_ALL",
+        "shortName": "ALL"
+      },
+      {
         "name": "DOTA_ATTRIBUTE_INTELLECT",
         "shortName": "INTELLECT"
       },
       {
         "name": "DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE",
         "shortName": "INTELLIGENCE_DAMAGE"
+      },
+      {
+        "name": "DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESIST",
+        "shortName": "INTELLIGENCE_MAGIC_RESIST"
       },
       {
         "name": "DOTA_ATTRIBUTE_INTELLIGENCE_MANA",
@@ -513,6 +521,10 @@
       {
         "name": "DOTA_TEAM_CUSTOM_MIN",
         "shortName": "CUSTOM_MIN"
+      },
+      {
+        "name": "DOTA_TEAM_DRAFT_POOL",
+        "shortName": "DRAFT_POOL"
       },
       {
         "name": "DOTA_TEAM_FIRST",
