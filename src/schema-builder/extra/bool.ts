@@ -11,7 +11,7 @@ export class BoolSchema extends Schema {
 
   public validate(value: unknown, context: ValidationContext) {
     if (typeof value !== 'boolean') {
-      context.addErrorThere('should be a boolean', value);
+      context.addErrorThere('should be a boolean');
     }
   }
 }

@@ -1025,26 +1025,6 @@
     ]
   },
   {
-    "name": "broken_breakable",
-    "sourceFile": "core",
-    "local": false,
-    "fields": [
-      {
-        "name": "entindex",
-        "type": "EntityIndex"
-      },
-      {
-        "name": "userid",
-        "type": "EntityIndex"
-      },
-      {
-        "name": "material",
-        "description": "BREAK_GLASS, BREAK_WOOD, etc.",
-        "type": "byte"
-      }
-    ]
-  },
-  {
     "name": "break_prop",
     "sourceFile": "core",
     "local": false,

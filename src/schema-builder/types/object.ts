@@ -149,7 +149,7 @@ export class ObjectSchema extends Schema {
 
   public validate(object: unknown, context: ValidationContext) {
     if (typeof object !== 'object' || object == null) {
-      context.addErrorThere('should be an object', object);
+      context.addErrorThere('should be an object');
       return;
     }
 
@@ -157,7 +157,7 @@ export class ObjectSchema extends Schema {
       const fieldContext = context.of(name);
       const fieldValue: unknown = (object as any)[name];
       if (fieldValue == null) {
-        if (require) fieldContext.addErrorThere('is missing', '[Nothing]');
+        if (require) fieldContext.addErrorThere('is missing');
         return;
       }
 
@@ -170,9 +170,7 @@ export class ObjectSchema extends Schema {
     );
 
     if (this._rest == null) {
-      restKeys.forEach((k) =>
-        context.of(k).addErrorThere('is unknown', (object as Record<string, unknown>)[k]),
-      );
+      restKeys.forEach((k) => context.of(k).addErrorThere('is unknown'));
       return;
     }
 
@@ -181,11 +179,11 @@ export class ObjectSchema extends Schema {
       let checkChild = true;
       if (this._rest.of === 'number') {
         if (Number.isNaN(Number(name))) {
-          childContext.addErrorThere("is unknown and isn't a number", name);
+          childContext.addErrorThere("is unknown and isn't a number");
           checkChild = false;
         }
       } else if (this._rest.of !== 'string' && !this._rest.of.test(name)) {
-        childContext.addErrorThere(`is unknown and not matches ${this._rest.of} pattern`, name);
+        childContext.addErrorThere(`is unknown and not matches ${this._rest.of} pattern`);
         checkChild = false;
       }
 

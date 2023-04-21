@@ -9,14 +9,17 @@ describe('integration', () => {
 
     ignore: [
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
-      'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum', // DOTA_ABILITY_TYPE_ULTIMATE
-      'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum', // Extra |, empty string ability behavior
+      'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_TYPE_ULTIMATE', // DOTA_ABILITY_TYPE_ULTIMATE
+      'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum but is: ', // Extra |, empty string ability behavior
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
-      'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
-      'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_NOASSIST
-      'ogre_magi_ignite.AbilitySpecial.06.var_type should be a SpecialValueFieldType enum', // FIELD_INT, should be FIELD_INTEGER
-      'elder_titan_move_spirit.AbilityBehavior[1] should be a AbilityBehavior enum', // DOTA_ABILITY_BEHAVIOR_POINT_TARGET, should be DOTA_ABILITY_BEHAVIOR_POINT_TARGET
+      'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
+      'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
+      'ogre_magi_ignite.AbilitySpecial.06.var_type should be a SpecialValueFieldType enum but is: FIELD_INT', // FIELD_INT, should be FIELD_INTEGER
+      'elder_titan_move_spirit.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // DOTA_ABILITY_BEHAVIOR_POINT_TARGET, should be DOTA_ABILITY_BEHAVIOR_POINT_TARGET
       'special_bonus_unique_warlock_1.base_class is unknown', // Should be BaseClass instead
+      'special_bonus_unique_warlock_3.base_class is unknown', // Should be BaseClass instead
+      'jakiro_liquid_fire.AbilitySpecial.04.var_type is missing',
+      'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
     ],
   });
 
@@ -26,31 +29,28 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/items.txt',
 
     ignore: [
-      'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum',
-      // Item removed and cost made an empty string
-      'item_recipe_hood_of_defiance.ItemCost should be an integer',
+      'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
+      'item_soul_ring.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_USE_HP',
       // TODO they used .mdl here, should we allow it?
-      'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/',
+      'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/ but is: models/props_gameplay/recipe.mdl',
       // TODO: Should flag enums allow empty string?
-      'item_ring_of_aquila.ItemShareability should be a ItemShareability enum',
+      'item_ring_of_aquila.ItemShareability should be a ItemShareability enum but is: ',
 
       // TODO: Allow trailing `;`?
-      `item_recipe_trident not matches any of:
+      `item_recipe_trident does not match any of:
   1. item_recipe_trident.ItemRecipe should be "0"
      item_recipe_trident.ItemResult is unknown
      item_recipe_trident.ItemRequirements is unknown
-  2. item_recipe_trident.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
-     item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
-     item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
-     item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/`,
+  2. item_recipe_trident.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya;item_sange;item_yasha;
+     item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya_and_sange;item_yasha;
+     item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_sange_and_yasha;item_kaya;
+     item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_yasha_and_kaya;item_sange;`,
 
-      `item_recipe_fallen_sky not matches any of:
-  1. item_recipe_fallen_sky.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/
+      `item_recipe_fallen_sky does not match any of:
+  1. item_recipe_fallen_sky.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_blink;item_meteor_hammer;
   2. item_recipe_fallen_sky.ItemRecipe should be "0"
      item_recipe_fallen_sky.ItemResult is unknown
      item_recipe_fallen_sky.ItemRequirements is unknown`,
-      // 7.32e
-      'item_muertas_gun.ModelScale is unknown',
     ],
   });
 
@@ -73,10 +73,10 @@ describe('integration', () => {
 
     ignore: [
       'holdout_focusfire.ItemBaseLevel is unknown',
-      'large_frostbitten_icicle.AbilityCastAnimation should be a Activity enum',
-      'siltbreaker_go_phase_two.AbilityCastAnimation should be a Activity enum',
-      'siltbreaker_go_phase_three.AbilityCastAnimation should be a Activity enum',
-      'big_bear_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum',
+      'large_frostbitten_icicle.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_ABILITY_1', // Should be ACT_DOTA_CAST_ABILITY_1
+      'siltbreaker_go_phase_two.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
+      'siltbreaker_go_phase_three.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
+      'big_bear_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_TYPE_ULTIMATE',
     ],
   });
 });

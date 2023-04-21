@@ -17,9 +17,9 @@ export class StringSchema extends Schema {
 
   public validate(value: unknown, context: ValidationContext) {
     if (typeof value !== 'string') {
-      context.addErrorThere('should be a string', value);
+      context.addErrorThere('should be a string');
     } else if (this._pattern != null && !this._pattern.test(value)) {
-      context.addErrorThere(`should match pattern: ${this._pattern}`, value);
+      context.addErrorThere(`should match pattern: ${this._pattern} but is: ${value}`);
     }
   }
 }

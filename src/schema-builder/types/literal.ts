@@ -16,6 +16,6 @@ export class LiteralSchema extends Schema {
   }
 
   public validate(value: unknown, context: ValidationContext) {
-    if (value !== this._value) context.addErrorThere(`should be "${this._value}"`, value);
+    if (value !== this._value) context.addErrorThere(`should be "${this._value}"`);
   }
 }

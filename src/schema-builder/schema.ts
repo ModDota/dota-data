@@ -49,7 +49,7 @@ export interface ValidationOptions {
 
 export class ValidationContext {
   public path: (string | number)[] = [];
-  public errors: [string, unknown][] = [];
+  public errors: string[] = [];
   constructor(public readonly options: ValidationOptions) {}
 
   public copy() {
@@ -74,12 +74,12 @@ export class ValidationContext {
     }).join('');
   }
 
-  public addError(error: string, received?: unknown) {
-    this.errors.push([error, received]);
+  public addError(error: string) {
+    this.errors.push(error);
   }
 
-  public addErrorThere(error: string, received: unknown) {
-    this.addError(`${this.getPath() || 'Root'} ${error}`, received);
+  public addErrorThere(error: string) {
+    this.addError(`${this.getPath() || 'Root'} ${error}`);
   }
 
   public beforeVisit(schema: Schema, value: unknown) {
