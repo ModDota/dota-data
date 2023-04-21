@@ -178,8 +178,8 @@ export const baseUnit = () =>
 
     // Team
     .field('TeamName', s.enums('Team'))
-    .field('CombatClassAttack', s.enums('CombatClassAttack'))
-    .field('CombatClassDefend', s.enums('CombatClassDefend'))
+    .field('CombatClassAttack', s.str())
+    .field('CombatClassDefend', s.str())
     .field('UnitRelationshipClass', s.enums('NpcUnitRelationshipType'), { deprecated: 'Unused.' })
 
     // Vision

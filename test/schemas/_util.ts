@@ -35,8 +35,12 @@ export function createIntegrationTest({
     // }
 
     const validationResult = schema.validateRoot(content);
-    expect(validationResult).toEqual(
-      [...ignore].sort((a, b) => validationResult.indexOf(a) - validationResult.indexOf(b)),
+    expect(validationResult.map(([error]) => error)).toEqual(
+      [...ignore].sort(
+        (a, b) =>
+          validationResult.findIndex(([error]) => error == a) -
+          validationResult.findIndex(([error]) => error == b),
+      ),
     );
   });
 }

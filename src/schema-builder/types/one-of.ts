@@ -46,6 +46,7 @@ export class OneOfSchema extends Schema {
       if (!literalSchemas.some((s) => s._value === value)) {
         context.addErrorThere(
           `is not one of: ${literalSchemas.map((s) => `"${s._value}"`).join(', ')}`,
+          value,
         );
       }
 
@@ -63,7 +64,7 @@ export class OneOfSchema extends Schema {
 
     const commonErrors = results[0].filter((k) => results.every((x) => x.includes(k)));
     if (commonErrors.length > 0) {
-      commonErrors.forEach((x) => context.addError(x));
+      commonErrors.forEach(([error, expected]) => context.addError(error, expected));
       return;
     }
 
@@ -73,6 +74,6 @@ export class OneOfSchema extends Schema {
           `${i + 1}. ${x.join('\n').replace(/\n/g, `\n${' '.repeat(String(i + 1).length + 4)}`)}`,
       )
       .join('\n  ');
-    context.addErrorThere(`not matches any of:\n  ${failedMessages}`);
+    context.addErrorThere(`not matches any of:\n  ${failedMessages}`, value);
   }
 }

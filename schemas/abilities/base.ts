@@ -42,6 +42,8 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('AbilityCastRangeBuffer', s.arrayLike().integers())
     .field('AbilityCastPoint', s.arrayLike())
     .field('AbilityManaCost', s.arrayLike().integers())
+    .field('AbilityHealthCost', s.arrayLike().integers())
+    .field('AbilityManacost', s.arrayLike().integers())
 
     // TODO: Sort
     .field('AbilityCastPoint', s.arrayLike())
@@ -174,6 +176,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemCombinable', s.binaryBoolean())
     .field('ItemDisassemblable', s.binaryBoolean())
     .field('ItemDeclaresPurchase', s.binaryBoolean())
+    .field('ItemRecipeConsumesCharges', s.binaryBoolean())
 
     // TODO: sort
     .field('ItemAlertable', s.binaryBoolean())
@@ -188,6 +191,8 @@ export const baseItem = (name = 'BaseItem') =>
     .field('InvalidHeroes', s.str().pattern(resourcePatterns.hero))
     .field('DisplayOverheadAlertOnReceived', s.literal(0))
     .field('ItemInitialStockTimeTurbo', s.num().min(0))
+    .field('TokenTier', s.int())
+    .field('ModelScale', s.num())
 
     // TODO: Used only in `seasonal_ti9_banner`
     .field('UnlockMinEffectIndex', s.int().min(0))

@@ -38,7 +38,7 @@ export class ArrayLikeSchema extends Schema {
 
   public validate(baseValue: unknown, context: ValidationContext) {
     if (typeof baseValue !== 'string' && typeof baseValue !== 'number') {
-      context.addErrorThere('should be a string or a number');
+      context.addErrorThere('should be a string or a number', baseValue);
       return;
     }
 
@@ -47,12 +47,14 @@ export class ArrayLikeSchema extends Schema {
     if (elements.length < this._min) {
       context.addErrorThere(
         `has ${elements.length} elements when at least ${this._min} is expected`,
+        baseValue,
       );
     }
 
     if (this._max != null && elements.length > this._max) {
       context.addErrorThere(
         `has ${elements.length} elements when no more then ${this._max} is expected`,
+        baseValue,
       );
     }
 
@@ -60,9 +62,12 @@ export class ArrayLikeSchema extends Schema {
       const valueContext = context.of(index);
       const number = Number(element);
       if (Number.isNaN(number)) {
-        valueContext.addErrorThere(`should be a${this._integers ? 'n integer' : ' number'}`);
+        valueContext.addErrorThere(
+          `should be a${this._integers ? 'n integer' : ' number'}`,
+          element,
+        );
       } else if (this._integers && number % 1 !== 0) {
-        valueContext.addErrorThere('should be an integer');
+        valueContext.addErrorThere('should be an integer', element);
       }
     });
   }

@@ -31,7 +31,7 @@ export class EnumsSchema extends Schema {
 
   public validate(value: unknown, context: ValidationContext) {
     if (typeof value !== 'string') {
-      context.addErrorThere('should be a string');
+      context.addErrorThere('should be a string', value);
       return;
     }
 
@@ -43,11 +43,11 @@ export class EnumsSchema extends Schema {
         .split(/\s*\|\s*/g)
         .forEach((v, i) => {
           if (!names.includes(v)) {
-            context.of(i).addErrorThere(`should be a ${this._name} enum`);
+            context.of(i).addErrorThere(`should be a ${this._name} enum`, v);
           }
         });
     } else if (!names.includes(value)) {
-      context.addErrorThere(`should be a ${this._name} enum`);
+      context.addErrorThere(`should be a ${this._name} enum`, value);
     }
   }
 

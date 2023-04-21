@@ -15,7 +15,7 @@ export class ArraySchema extends Schema {
 
   public validate(value: unknown, context: ValidationContext) {
     if (!Array.isArray(value)) {
-      context.addErrorThere('is not an array');
+      context.addErrorThere('is not an array', value);
       return;
     }
 
