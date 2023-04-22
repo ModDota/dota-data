@@ -1,4 +1,4 @@
-import { schemas } from '../../schemas';
+import { schemas } from '../../src/schemas';
 import { createIntegrationTest } from './_util';
 
 describe('integration', () => {
