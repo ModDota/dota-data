@@ -1,6 +1,6 @@
 {
   "name": "@moddota/dota-data",
-  "version": "0.32.3",
+  "version": "0.32.4",
   "description": "Auto-generated Dota 2 resource dumps",
   "repository": "https://github.com/ModDota/dota-data",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "lint:eslint": "eslint",
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
-    "prepublishOnly": "build:tsc",
+    "prepublishOnly": "npm run build:tsc",
     "test": "jest",
     "auto-dump": "tsx dumper/start-dumper.mts"
   },
