@@ -21,7 +21,7 @@
     "lint:eslint": "eslint",
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "build:tsc",
     "test": "jest",
     "auto-dump": "tsx dumper/start-dumper.mts"
   },
