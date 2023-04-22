@@ -1,4 +1,4 @@
-import * as s from '../../src/schema-builder';
+import * as s from '../../schema-builder';
 import { resourcePatterns } from '../resources';
 import { baseAbility, baseItem } from './base';
 

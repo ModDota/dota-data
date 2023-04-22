@@ -1,0 +1,11 @@
+{
+  "include": ["**/*"],
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../lib",
+    "target": "esnext",
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node"
+  }
+}
