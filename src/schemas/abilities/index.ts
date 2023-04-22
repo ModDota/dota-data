@@ -1,4 +1,4 @@
-import * as s from '../../src/schema-builder';
+import * as s from '../../schema-builder';
 import { baseAbility, baseItem } from './base';
 import {
   baseRecipeItem,

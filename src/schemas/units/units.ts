@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as s from '../../src/schema-builder';
+import * as s from '../../schema-builder';
 import { createPrecacheBlock } from '../common';
 import { resourcePatterns } from '../resources';
 

@@ -1,8 +1,0 @@
-{
-  "extends": "@ark120202/typescript-config/node/14.json",
-  "include": ["**/*"],
-  "compilerOptions": {
-    "rootDirs": [".", "../src"],
-    "outDir": "../lib"
-  }
-}

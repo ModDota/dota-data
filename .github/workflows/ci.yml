@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: npm run build:schemas
+      - run: npm run build:tsc
       - run: npm run lint
       - run: npm test

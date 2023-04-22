@@ -10,10 +10,10 @@
     "files/**/*.{json,ts}"
   ],
   "scripts": {
-    "build": "run-s build:clean build:static build:schemas",
+    "build": "run-s build:clean build:static build:tsc",
     "build:clean": "rimraf \"{files,lib}/**/*\"",
     "build:static": "tsx build",
-    "build:schemas": "tsc -p schemas",
+    "build:tsc": "tsc -p src",
     "dev": "run-p dev:static dev:tsc",
     "dev:static": "nodemon",
     "dev:tsc": "tsc --watch --preserveWatchOutput",
