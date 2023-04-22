@@ -29,6 +29,3 @@ Data from this package is available on [ModDota API](http://moddota.com/api) pag
 
 1. Run `npm version minor`
 2. Push with tags
-3. `yarn --frozen-lockfile`
-4. `yarn build`
-5. `yarn publish --access public`
