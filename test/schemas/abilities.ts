@@ -45,12 +45,6 @@ describe('integration', () => {
      item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya_and_sange;item_yasha;
      item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_sange_and_yasha;item_kaya;
      item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_yasha_and_kaya;item_sange;`,
-
-      `item_recipe_fallen_sky does not match any of:
-  1. item_recipe_fallen_sky.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_blink;item_meteor_hammer;
-  2. item_recipe_fallen_sky.ItemRecipe should be "0"
-     item_recipe_fallen_sky.ItemResult is unknown
-     item_recipe_fallen_sky.ItemRequirements is unknown`,
     ],
   });
 
