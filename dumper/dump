@@ -1,13 +1,13 @@
-ClientVersion=5682
-ServerVersion=5682
+ClientVersion=5694
+ServerVersion=5694
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8000322
-VersionDate=Apr 20 2023
-VersionTime=16:00:31
+SourceRevision=8013077
+VersionDate=Apr 25 2023
+VersionTime=21:42:13
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -2419,7 +2419,11 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_HEALTHBAR_PIPS = 268,
     /** GetModifierPropertyIncomingDamage_Constant */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT = 269,
-    MODIFIER_FUNCTION_LAST = 270,
+    /** OnSpellAppliedSuccessfully */
+    MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 270,
+    /** GetModifierAvoidDamageAfterReductions */
+    MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
+    MODIFIER_FUNCTION_LAST = 272,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -15812,6 +15816,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_EVENT_ON_UNIT_MOVED",
     "value":186
   },{
+    "description":"OnSpellAppliedSuccessfully",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY",
+    "value":270
+  },{
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_INVALID",
@@ -15820,7 +15830,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":270
+    "value":272
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -15965,6 +15975,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_DAMAGE",
     "value":68
+  },{
+    "description":"GetModifierAvoidDamageAfterReductions",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS",
+    "value":271
   },{
     "description":"GetModifierAvoidSpell",
     "enum":"modifierfunction",
@@ -26490,6 +26506,9 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
           },{
             "name":"vEndPoint",
             "type":"Vector"
+          },{
+            "name":"hTeleportOwner",
+            "type":"handle"
           }],
         "name":"LaunchLoot",
         "returns":"void"
@@ -32592,7 +32611,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33556,7 +33575,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -40884,6 +40903,12 @@ Initializing script VM...
     "name":"MODIFIER_EVENT_ON_UNIT_MOVED",
     "value":186
   },{
+    "description":"OnSpellAppliedSuccessfully",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY",
+    "value":270
+  },{
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_INVALID",
@@ -40892,7 +40917,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":270
+    "value":272
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -41037,6 +41062,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_AVOID_DAMAGE",
     "value":68
+  },{
+    "description":"GetModifierAvoidDamageAfterReductions",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS",
+    "value":271
   },{
     "description":"GetModifierAvoidSpell",
     "enum":"modifierfunction",

@@ -13248,6 +13248,12 @@
             "types": [
               "Vector"
             ]
+          },
+          {
+            "name": "teleportOwner",
+            "types": [
+              "handle"
+            ]
           }
         ]
       },
@@ -15474,6 +15480,16 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAvoidDamageAfterReductions",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18262,6 +18278,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnSpellAppliedSuccessfully",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]

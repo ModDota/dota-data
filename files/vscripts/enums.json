@@ -8861,7 +8861,7 @@
       },
       {
         "name": "ACT_DOTA_DISABLED_END",
-        "value": 1776
+        "value": 1777
       },
       {
         "name": "ACT_DOTA_RUN_ALT",
@@ -10281,8 +10281,18 @@
         "value": 269
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY",
+        "description": "Method Name: `OnSpellAppliedSuccessfully`",
         "value": 270
+      },
+      {
+        "name": "MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS",
+        "description": "Method Name: `GetModifierAvoidDamageAfterReductions`",
+        "value": 271
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 272
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
