@@ -2104,10 +2104,6 @@
         "shortName": "DOTA_STATIC_STORM"
       },
       {
-        "name": "ACT_DOTA_SWIM",
-        "shortName": "DOTA_SWIM"
-      },
-      {
         "name": "ACT_DOTA_SWIM_IDLE",
         "shortName": "DOTA_SWIM_IDLE"
       },
