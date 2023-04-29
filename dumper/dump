@@ -1,13 +1,13 @@
-ClientVersion=5694
-ServerVersion=5694
+ClientVersion=5699
+ServerVersion=5699
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8013077
-VersionDate=Apr 25 2023
-VersionTime=21:42:13
+SourceRevision=8023128
+VersionDate=Apr 28 2023
+VersionTime=14:20:58
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
