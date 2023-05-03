@@ -4769,7 +4769,7 @@
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
-        "description": "Method Name: `GetModifierPropertyIncomingDamage_Constant`",
+        "description": "Method Name: `GetModifierIncomingDamageConstant`",
         "value": 269
       },
       {

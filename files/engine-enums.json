@@ -1724,6 +1724,10 @@
         "shortName": "DOTA_ICE_VORTEX"
       },
       {
+        "name": "ACT_DOTA_IDLE",
+        "shortName": "DOTA_IDLE"
+      },
+      {
         "name": "ACT_DOTA_IDLE_IMPATIENT",
         "shortName": "DOTA_IDLE_IMPATIENT"
       },
