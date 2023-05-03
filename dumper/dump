@@ -1,13 +1,13 @@
-ClientVersion=5694
-ServerVersion=5694
+ClientVersion=5704
+ServerVersion=5704
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8013077
-VersionDate=Apr 25 2023
-VersionTime=21:42:13
+SourceRevision=8030045
+VersionDate=May 02 2023
+VersionTime=18:29:30
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -2417,7 +2417,7 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE = 267,
     /** GetModifierHealthBarPips */
     MODIFIER_PROPERTY_HEALTHBAR_PIPS = 268,
-    /** GetModifierPropertyIncomingDamage_Constant */
+    /** GetModifierIncomingDamageConstant */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT = 269,
     /** OnSpellAppliedSuccessfully */
     MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 270,
@@ -16384,7 +16384,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_ILLUSION_LABEL",
     "value":156
   },{
-    "description":"GetModifierPropertyIncomingDamage_Constant",
+    "description":"GetModifierIncomingDamageConstant",
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
@@ -22662,6 +22662,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
             "name":"iLevel",
             "type":"int"
           }],
+        "description":"Return health cost per second of channeling at the given level (-1 is current).",
+        "name":"GetChannelledHealthCostPerSecond",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
         "description":"Return mana cost at the given level per second while channeling (-1 is current).",
         "name":"GetChannelledManaCostPerSecond",
         "returns":"int"
@@ -22725,6 +22733,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
           }],
         "description":"Return gold cost at the given level (-1 is current).",
         "name":"GetGoldCost",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "description":"Return health cost at the given level (-1 is current).",
+        "name":"GetHealthCost",
         "returns":"int"
       },{
         "args":[],
@@ -26842,6 +26858,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
             "name":"iLevel",
             "type":"int"
           }],
+        "description":"Return health cost per second of channeling at the given level (-1 is current).",
+        "name":"GetChannelledHealthCostPerSecond",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
         "description":"Return mana cost at the given level per second while channeling (-1 is current).",
         "name":"GetChannelledManaCostPerSecond",
         "returns":"int"
@@ -26905,6 +26929,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
           }],
         "description":"Return gold cost at the given level (-1 is current).",
         "name":"GetGoldCost",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "description":"Return health cost at the given level (-1 is current).",
+        "name":"GetHealthCost",
         "returns":"int"
       },{
         "args":[],
@@ -32611,7 +32643,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33575,7 +33607,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -41471,7 +41503,7 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_ILLUSION_LABEL",
     "value":156
   },{
-    "description":"GetModifierPropertyIncomingDamage_Constant",
+    "description":"GetModifierIncomingDamageConstant",
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
@@ -44958,6 +44990,14 @@ Initializing script VM...
             "name":"iLevel",
             "type":"int"
           }],
+        "description":"Return health cost per second of channeling at the given level (-1 is current).",
+        "name":"GetChannelledHealthCostPerSecond",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
         "description":"Return mana cost at the given level per second while channeling (-1 is current).",
         "name":"GetChannelledManaCostPerSecond",
         "returns":"int"
@@ -45016,6 +45056,14 @@ Initializing script VM...
           }],
         "description":"Return gold cost at the given level (-1 is current).",
         "name":"GetGoldCost",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "description":"Return health cost at the given level (-1 is current).",
+        "name":"GetHealthCost",
         "returns":"int"
       },{
         "args":[{
@@ -45735,6 +45783,14 @@ Initializing script VM...
             "name":"iLevel",
             "type":"int"
           }],
+        "description":"Return health cost per second of channeling at the given level (-1 is current).",
+        "name":"GetChannelledHealthCostPerSecond",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
         "description":"Return mana cost at the given level per second while channeling (-1 is current).",
         "name":"GetChannelledManaCostPerSecond",
         "returns":"int"
@@ -45793,6 +45849,14 @@ Initializing script VM...
           }],
         "description":"Return gold cost at the given level (-1 is current).",
         "name":"GetGoldCost",
+        "returns":"int"
+      },{
+        "args":[{
+            "name":"iLevel",
+            "type":"int"
+          }],
+        "description":"Return health cost at the given level (-1 is current).",
+        "name":"GetHealthCost",
         "returns":"int"
       },{
         "args":[{
@@ -49675,7 +49739,7 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE = 267,
     /** GetModifierHealthBarPips */
     MODIFIER_PROPERTY_HEALTHBAR_PIPS = 268,
-    /** GetModifierPropertyIncomingDamage_Constant */
+    /** GetModifierIncomingDamageConstant */
     MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT = 269,
     /** OnSpellAppliedSuccessfully */
     MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 270,

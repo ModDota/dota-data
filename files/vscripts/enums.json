@@ -8861,7 +8861,7 @@
       },
       {
         "name": "ACT_DOTA_DISABLED_END",
-        "value": 1777
+        "value": 1776
       },
       {
         "name": "ACT_DOTA_RUN_ALT",
@@ -10277,7 +10277,7 @@
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
-        "description": "Method Name: `GetModifierPropertyIncomingDamage_Constant`",
+        "description": "Method Name: `GetModifierIncomingDamageConstant`",
         "value": 269
       },
       {

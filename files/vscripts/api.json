@@ -4889,6 +4889,23 @@
       },
       {
         "kind": "function",
+        "name": "GetChannelledHealthCostPerSecond",
+        "available": "both",
+        "description": "Return health cost per second of channeling at the given level (-1 is current).",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetChannelledManaCostPerSecond",
         "available": "both",
         "description": "Return mana cost at the given level per second while channeling (-1 is current).",
@@ -5040,6 +5057,23 @@
         "name": "GetGoldCost",
         "available": "both",
         "description": "Return gold cost at the given level (-1 is current).",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetHealthCost",
+        "available": "both",
+        "description": "Return health cost at the given level (-1 is current).",
         "returns": [
           "int"
         ],
@@ -13924,6 +13958,23 @@
       },
       {
         "kind": "function",
+        "name": "GetChannelledHealthCostPerSecond",
+        "available": "both",
+        "description": "Return health cost per second of channeling at the given level (-1 is current).",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetChannelledManaCostPerSecond",
         "available": "both",
         "description": "Return mana cost at the given level per second while channeling (-1 is current).",
@@ -14075,6 +14126,23 @@
         "name": "GetGoldCost",
         "available": "both",
         "description": "Return gold cost at the given level (-1 is current).",
+        "returns": [
+          "int"
+        ],
+        "args": [
+          {
+            "name": "level",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetHealthCost",
+        "available": "both",
+        "description": "Return health cost at the given level (-1 is current).",
         "returns": [
           "int"
         ],
@@ -16184,6 +16252,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierIncomingDamageConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierIncomingPhysicalDamage_Percentage",
         "available": "both",
         "abstract": true,
@@ -17206,16 +17284,6 @@
       {
         "kind": "function",
         "name": "GetModifierProjectileSpeedBonusPercentage",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierPropertyIncomingDamage_Constant",
         "available": "both",
         "abstract": true,
         "args": [],
