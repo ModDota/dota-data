@@ -3736,12 +3736,12 @@
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_CONSTANT",
-        "description": "Method Name: `GetModifierIncomingPhysicalDamageConstant`",
+        "description": "This property controls 'physical' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.\n\nMethod Name: `GetModifierIncomingPhysicalDamageConstant`.",
         "value": 61
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT",
-        "description": "Method Name: `GetModifierIncomingSpellDamageConstant`",
+        "description": "This property controls 'spell' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.\n\nMethod Name: `GetModifierIncomingSpellDamageConstant`.",
         "value": 62
       },
       {
@@ -4764,12 +4764,12 @@
       },
       {
         "name": "MODIFIER_PROPERTY_HEALTHBAR_PIPS",
-        "description": "Method Name: `GetModifierHealthBarPips`",
+        "description": "Return value is a count of pips.\n\nMethod Name: `GetModifierHealthBarPips`.",
         "value": 268
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
-        "description": "Method Name: `GetModifierIncomingDamageConstant`",
+        "description": "This property controls 'universal' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.\n\nMethod Name: `GetModifierIncomingDamageConstant`.",
         "value": 269
       },
       {

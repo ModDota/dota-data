@@ -15555,9 +15555,16 @@
         "name": "GetModifierAvoidDamageAfterReductions",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16083,9 +16090,17 @@
         "name": "GetModifierHealthBarPips",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "description": "Return value is a count of pips.",
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16255,9 +16270,17 @@
         "name": "GetModifierIncomingDamageConstant",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "description": "This property controls 'universal' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.",
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16282,6 +16305,7 @@
         "name": "GetModifierIncomingPhysicalDamageConstant",
         "available": "both",
         "abstract": true,
+        "description": "This property controls 'physical' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.",
         "args": [
           {
             "name": "event",
@@ -16299,6 +16323,7 @@
         "name": "GetModifierIncomingSpellDamageConstant",
         "available": "both",
         "abstract": true,
+        "description": "This property controls 'spell' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.",
         "args": [
           {
             "name": "event",
@@ -16874,9 +16899,16 @@
         "name": "GetModifierPercentageHealthcost",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16884,9 +16916,16 @@
         "name": "GetModifierPercentageHealthcostStacking",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -18355,7 +18394,14 @@
         "name": "OnSpellAppliedSuccessfully",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -18375,7 +18421,14 @@
         "name": "OnSpentHealth",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
