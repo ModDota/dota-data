@@ -1,13 +1,13 @@
-ClientVersion=5704
-ServerVersion=5704
+ClientVersion=5728
+ServerVersion=5728
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8030045
-VersionDate=May 02 2023
-VersionTime=18:29:30
+SourceRevision=8098777
+VersionDate=Jun 01 2023
+VersionTime=15:50:32
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -11509,6 +11509,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_ALL",
     "value":3
+  },{
+    "enum":"AttributeDerivedStats",
+    "kind":"constant",
+    "name":"DOTA_ATTRIBUTE_ALL_DAMAGE",
+    "value":10
   },{
     "enum":"Attributes",
     "kind":"constant",
@@ -24059,6 +24064,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsDebuffImmune",
+        "returns":"bool"
+      },{
+        "args":[],
         "name":"IsDisarmed",
         "returns":"bool"
       },{
@@ -32643,7 +32652,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33419,7 +33428,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1788
+    "value":1780
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33575,7 +33584,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1783
+    "value":1789
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33607,7 +33616,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -33743,7 +33752,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1784
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -33963,7 +33972,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1790
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34003,7 +34012,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1786
+    "value":1778
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34015,7 +34024,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1787
+    "value":1779
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34035,7 +34044,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1781
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34119,7 +34128,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1791
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34219,7 +34228,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1785
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34275,7 +34284,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1782
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -38440,6 +38449,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_ATTRIBUTE_ALL",
     "value":3
+  },{
+    "enum":"AttributeDerivedStats",
+    "kind":"constant",
+    "name":"DOTA_ATTRIBUTE_ALL_DAMAGE",
+    "value":10
   },{
     "enum":"Attributes",
     "kind":"constant",
@@ -42900,19 +42914,19 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1778
+    "value":1784
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1779
+    "value":1785
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1780
+    "value":1786
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1789
+    "value":1781
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -45391,6 +45405,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsDebuffImmune",
+        "returns":"bool"
+      },{
+        "args":[],
         "name":"IsDisarmed",
         "returns":"bool"
       },{
@@ -47496,547 +47514,11 @@ interface TabButton
     rememberchildfocus( _arg_1: boolean ): boolean;
     paneltype(): string;
 }
-interface DOTAMapUpdate2023Page
-{
-    visible( _arg_1: boolean ): boolean;
-    enabled( _arg_1: boolean ): boolean;
-    checked( _arg_1: boolean ): boolean;
-    defaultfocus( _arg_1: string ): string;
-    inputnamespace( _arg_1: string ): string;
-    hittest( _arg_1: boolean ): boolean;
-    hittestchildren( _arg_1: boolean ): boolean;
-    tabindex( _arg_1: number ): number;
-    selectionpos_x( _arg_1: number ): number;
-    selectionpos_y( _arg_1: number ): number;
-    type(): string;
-    id(): string;
-    layoutfile();
-    contentwidth(): number;
-    contentheight(): number;
-    desiredlayoutwidth(): number;
-    desiredlayoutheight(): number;
-    actuallayoutwidth(): number;
-    actuallayoutheight(): number;
-    actualxoffset(): number;
-    actualyoffset(): number;
-    scrolloffset_y(): number;
-    scrolloffset_x(): number;
-    actualuiscale_y(): number;
-    actualuiscale_x(): number;
-    style();
-    AddClass( _arg_1: string ): void;
-    RemoveClass( _arg_1: string ): void;
-    BHasClass( _arg_1: string ): boolean;
-    BAscendantHasClass( _arg_1: string ): boolean;
-    SetHasClass( _arg_1: string, _arg_2: boolean ): void;
-    ToggleClass( _arg_1: string ): void;
-    SwitchClass( _arg_1: string, _arg_2: string ): void;
-    TriggerClass( _arg_1: string ): void;
-    ClearPanelEvent( _arg_1: string ): void;
-    SetDraggable( _arg_1: boolean ): void;
-    IsDraggable(): boolean;
-    IsSizeValid(): boolean;
-    GetChildCount(): number;
-    GetChild( _arg_1: number );
-    GetChildIndex( _arg_1 ): number;
-    Children();
-    FindChildrenWithClassTraverse( _arg_1: string );
-    GetParent();
-    SetParent( _arg_1 ): void;
-    FindChild( _arg_1: string );
-    FindChildTraverse( _arg_1: string );
-    FindChildInLayoutFile( _arg_1: string );
-    FindPanelInLayoutFile( _arg_1: string );
-    FindAncestor( _arg_1: string );
-    RemoveAndDeleteChildren(): void;
-    MoveChildBefore( _arg_1, _arg_2 ): void;
-    MoveChildAfter( _arg_1, _arg_2 ): void;
-    GetPositionWithinWindow();
-    GetPositionWithinAncestor( _arg_1 );
-    ApplyStyles( _arg_1: boolean ): void;
-    ClearPropertyFromCode( _arg_1 ): void;
-    DeleteAsync( _arg_1: number ): void;
-    BIsTransparent(): boolean;
-    BAcceptsInput(): boolean;
-    BAcceptsFocus(): boolean;
-    SetFocus(): boolean;
-    UpdateFocusInContext(): boolean;
-    BHasHoverStyle(): boolean;
-    SetAcceptsFocus( _arg_1: boolean ): void;
-    SetDisableFocusOnMouseDown( _arg_1: boolean ): void;
-    BHasKeyFocus(): boolean;
-    SetScrollParentToFitWhenFocused( _arg_1: boolean ): void;
-    BScrollParentToFitWhenFocused(): boolean;
-    IsSelected(): boolean;
-    BHasDescendantKeyFocus(): boolean;
-    BLoadLayout( _arg_1: string, _arg_2: boolean, _arg_3: boolean ): boolean;
-    BLoadLayoutSnippet( _arg_1: string ): boolean;
-    BHasLayoutSnippet( _arg_1: string ): boolean;
-    SetTopOfInputContext( _arg_1: boolean ): void;
-    SetDialogVariable( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariableInt( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableTime( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableLocString( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariablePluralLocStringInt( _arg_1: string, _arg_2: string, _arg_3: number ): void;
-    ScrollToTop(): void;
-    ScrollToBottom(): void;
-    ScrollToLeftEdge(): void;
-    ScrollToRightEdge(): void;
-    ScrollParentToMakePanelFit( _arg_1, _arg_2: boolean ): void;
-    ScrollToFitRegion( _arg_1: number, _arg_2: number, _arg_3: number, _arg_4: number, _arg_5, _arg_6: boolean, _arg_7: boolean ): void;
-    BCanSeeInParentScroll(): boolean;
-    GetAttributeInt( _arg_1: string, _arg_2: number ): number;
-    GetAttributeString( _arg_1: string, _arg_2: string ): string;
-    GetAttributeUInt32( _arg_1: string, _arg_2: number ): number;
-    SetAttributeInt( _arg_1: string, _arg_2: number ): void;
-    SetAttributeString( _arg_1: string, _arg_2: string ): void;
-    SetAttributeUInt32( _arg_1: string, _arg_2: number ): void;
-    SetInputNamespace( _arg_1: string ): void;
-    RegisterForReadyEvents( _arg_1: boolean ): void;
-    BReadyForDisplay(): boolean;
-    SetReadyForDisplay( _arg_1: boolean ): void;
-    SetPositionInPixels( _arg_1: number, _arg_2: number, _arg_3: number ): void;
-    Data( _arg_1 ): void;
-    GetMapStatValue( _arg_1: string ): number;
-    SetPanelEvent( _arg_1 ): void;
-    RunScriptInPanelContext( _arg_1 ): void;
-    rememberchildfocus( _arg_1: boolean ): boolean;
-    paneltype(): string;
-}
-interface DOTADashboard
-{
-    visible( _arg_1: boolean ): boolean;
-    enabled( _arg_1: boolean ): boolean;
-    checked( _arg_1: boolean ): boolean;
-    defaultfocus( _arg_1: string ): string;
-    inputnamespace( _arg_1: string ): string;
-    hittest( _arg_1: boolean ): boolean;
-    hittestchildren( _arg_1: boolean ): boolean;
-    tabindex( _arg_1: number ): number;
-    selectionpos_x( _arg_1: number ): number;
-    selectionpos_y( _arg_1: number ): number;
-    type(): string;
-    id(): string;
-    layoutfile();
-    contentwidth(): number;
-    contentheight(): number;
-    desiredlayoutwidth(): number;
-    desiredlayoutheight(): number;
-    actuallayoutwidth(): number;
-    actuallayoutheight(): number;
-    actualxoffset(): number;
-    actualyoffset(): number;
-    scrolloffset_y(): number;
-    scrolloffset_x(): number;
-    actualuiscale_y(): number;
-    actualuiscale_x(): number;
-    style();
-    AddClass( _arg_1: string ): void;
-    RemoveClass( _arg_1: string ): void;
-    BHasClass( _arg_1: string ): boolean;
-    BAscendantHasClass( _arg_1: string ): boolean;
-    SetHasClass( _arg_1: string, _arg_2: boolean ): void;
-    ToggleClass( _arg_1: string ): void;
-    SwitchClass( _arg_1: string, _arg_2: string ): void;
-    TriggerClass( _arg_1: string ): void;
-    ClearPanelEvent( _arg_1: string ): void;
-    SetDraggable( _arg_1: boolean ): void;
-    IsDraggable(): boolean;
-    IsSizeValid(): boolean;
-    GetChildCount(): number;
-    GetChild( _arg_1: number );
-    GetChildIndex( _arg_1 ): number;
-    Children();
-    FindChildrenWithClassTraverse( _arg_1: string );
-    GetParent();
-    SetParent( _arg_1 ): void;
-    FindChild( _arg_1: string );
-    FindChildTraverse( _arg_1: string );
-    FindChildInLayoutFile( _arg_1: string );
-    FindPanelInLayoutFile( _arg_1: string );
-    FindAncestor( _arg_1: string );
-    RemoveAndDeleteChildren(): void;
-    MoveChildBefore( _arg_1, _arg_2 ): void;
-    MoveChildAfter( _arg_1, _arg_2 ): void;
-    GetPositionWithinWindow();
-    GetPositionWithinAncestor( _arg_1 );
-    ApplyStyles( _arg_1: boolean ): void;
-    ClearPropertyFromCode( _arg_1 ): void;
-    DeleteAsync( _arg_1: number ): void;
-    BIsTransparent(): boolean;
-    BAcceptsInput(): boolean;
-    BAcceptsFocus(): boolean;
-    SetFocus(): boolean;
-    UpdateFocusInContext(): boolean;
-    BHasHoverStyle(): boolean;
-    SetAcceptsFocus( _arg_1: boolean ): void;
-    SetDisableFocusOnMouseDown( _arg_1: boolean ): void;
-    BHasKeyFocus(): boolean;
-    SetScrollParentToFitWhenFocused( _arg_1: boolean ): void;
-    BScrollParentToFitWhenFocused(): boolean;
-    IsSelected(): boolean;
-    BHasDescendantKeyFocus(): boolean;
-    BLoadLayout( _arg_1: string, _arg_2: boolean, _arg_3: boolean ): boolean;
-    BLoadLayoutSnippet( _arg_1: string ): boolean;
-    BHasLayoutSnippet( _arg_1: string ): boolean;
-    SetTopOfInputContext( _arg_1: boolean ): void;
-    SetDialogVariable( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariableInt( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableTime( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableLocString( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariablePluralLocStringInt( _arg_1: string, _arg_2: string, _arg_3: number ): void;
-    ScrollToTop(): void;
-    ScrollToBottom(): void;
-    ScrollToLeftEdge(): void;
-    ScrollToRightEdge(): void;
-    ScrollParentToMakePanelFit( _arg_1, _arg_2: boolean ): void;
-    ScrollToFitRegion( _arg_1: number, _arg_2: number, _arg_3: number, _arg_4: number, _arg_5, _arg_6: boolean, _arg_7: boolean ): void;
-    BCanSeeInParentScroll(): boolean;
-    GetAttributeInt( _arg_1: string, _arg_2: number ): number;
-    GetAttributeString( _arg_1: string, _arg_2: string ): string;
-    GetAttributeUInt32( _arg_1: string, _arg_2: number ): number;
-    SetAttributeInt( _arg_1: string, _arg_2: number ): void;
-    SetAttributeString( _arg_1: string, _arg_2: string ): void;
-    SetAttributeUInt32( _arg_1: string, _arg_2: number ): void;
-    SetInputNamespace( _arg_1: string ): void;
-    RegisterForReadyEvents( _arg_1: boolean ): void;
-    BReadyForDisplay(): boolean;
-    SetReadyForDisplay( _arg_1: boolean ): void;
-    SetPositionInPixels( _arg_1: number, _arg_2: number, _arg_3: number ): void;
-    Data( _arg_1 ): void;
-    SetPanelEvent( _arg_1 ): void;
-    RunScriptInPanelContext( _arg_1 ): void;
-    rememberchildfocus( _arg_1: boolean ): boolean;
-    paneltype(): string;
-}
-interface PageManager
-{
-    visible( _arg_1: boolean ): boolean;
-    enabled( _arg_1: boolean ): boolean;
-    checked( _arg_1: boolean ): boolean;
-    defaultfocus( _arg_1: string ): string;
-    inputnamespace( _arg_1: string ): string;
-    hittest( _arg_1: boolean ): boolean;
-    hittestchildren( _arg_1: boolean ): boolean;
-    tabindex( _arg_1: number ): number;
-    selectionpos_x( _arg_1: number ): number;
-    selectionpos_y( _arg_1: number ): number;
-    type(): string;
-    id(): string;
-    layoutfile();
-    contentwidth(): number;
-    contentheight(): number;
-    desiredlayoutwidth(): number;
-    desiredlayoutheight(): number;
-    actuallayoutwidth(): number;
-    actuallayoutheight(): number;
-    actualxoffset(): number;
-    actualyoffset(): number;
-    scrolloffset_y(): number;
-    scrolloffset_x(): number;
-    actualuiscale_y(): number;
-    actualuiscale_x(): number;
-    style();
-    AddClass( _arg_1: string ): void;
-    RemoveClass( _arg_1: string ): void;
-    BHasClass( _arg_1: string ): boolean;
-    BAscendantHasClass( _arg_1: string ): boolean;
-    SetHasClass( _arg_1: string, _arg_2: boolean ): void;
-    ToggleClass( _arg_1: string ): void;
-    SwitchClass( _arg_1: string, _arg_2: string ): void;
-    TriggerClass( _arg_1: string ): void;
-    ClearPanelEvent( _arg_1: string ): void;
-    SetDraggable( _arg_1: boolean ): void;
-    IsDraggable(): boolean;
-    IsSizeValid(): boolean;
-    GetChildCount(): number;
-    GetChild( _arg_1: number );
-    GetChildIndex( _arg_1 ): number;
-    Children();
-    FindChildrenWithClassTraverse( _arg_1: string );
-    GetParent();
-    SetParent( _arg_1 ): void;
-    FindChild( _arg_1: string );
-    FindChildTraverse( _arg_1: string );
-    FindChildInLayoutFile( _arg_1: string );
-    FindPanelInLayoutFile( _arg_1: string );
-    FindAncestor( _arg_1: string );
-    RemoveAndDeleteChildren(): void;
-    MoveChildBefore( _arg_1, _arg_2 ): void;
-    MoveChildAfter( _arg_1, _arg_2 ): void;
-    GetPositionWithinWindow();
-    GetPositionWithinAncestor( _arg_1 );
-    ApplyStyles( _arg_1: boolean ): void;
-    ClearPropertyFromCode( _arg_1 ): void;
-    DeleteAsync( _arg_1: number ): void;
-    BIsTransparent(): boolean;
-    BAcceptsInput(): boolean;
-    BAcceptsFocus(): boolean;
-    SetFocus(): boolean;
-    UpdateFocusInContext(): boolean;
-    BHasHoverStyle(): boolean;
-    SetAcceptsFocus( _arg_1: boolean ): void;
-    SetDisableFocusOnMouseDown( _arg_1: boolean ): void;
-    BHasKeyFocus(): boolean;
-    SetScrollParentToFitWhenFocused( _arg_1: boolean ): void;
-    BScrollParentToFitWhenFocused(): boolean;
-    IsSelected(): boolean;
-    BHasDescendantKeyFocus(): boolean;
-    BLoadLayout( _arg_1: string, _arg_2: boolean, _arg_3: boolean ): boolean;
-    BLoadLayoutSnippet( _arg_1: string ): boolean;
-    BHasLayoutSnippet( _arg_1: string ): boolean;
-    SetTopOfInputContext( _arg_1: boolean ): void;
-    SetDialogVariable( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariableInt( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableTime( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableLocString( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariablePluralLocStringInt( _arg_1: string, _arg_2: string, _arg_3: number ): void;
-    ScrollToTop(): void;
-    ScrollToBottom(): void;
-    ScrollToLeftEdge(): void;
-    ScrollToRightEdge(): void;
-    ScrollParentToMakePanelFit( _arg_1, _arg_2: boolean ): void;
-    ScrollToFitRegion( _arg_1: number, _arg_2: number, _arg_3: number, _arg_4: number, _arg_5, _arg_6: boolean, _arg_7: boolean ): void;
-    BCanSeeInParentScroll(): boolean;
-    GetAttributeInt( _arg_1: string, _arg_2: number ): number;
-    GetAttributeString( _arg_1: string, _arg_2: string ): string;
-    GetAttributeUInt32( _arg_1: string, _arg_2: number ): number;
-    SetAttributeInt( _arg_1: string, _arg_2: number ): void;
-    SetAttributeString( _arg_1: string, _arg_2: string ): void;
-    SetAttributeUInt32( _arg_1: string, _arg_2: number ): void;
-    SetInputNamespace( _arg_1: string ): void;
-    RegisterForReadyEvents( _arg_1: boolean ): void;
-    BReadyForDisplay(): boolean;
-    SetReadyForDisplay( _arg_1: boolean ): void;
-    SetPositionInPixels( _arg_1: number, _arg_2: number, _arg_3: number ): void;
-    Data( _arg_1 ): void;
-    SetPanelEvent( _arg_1 ): void;
-    RunScriptInPanelContext( _arg_1 ): void;
-    rememberchildfocus( _arg_1: boolean ): boolean;
-    paneltype(): string;
-}
-interface DOTAHomePage
-{
-    visible( _arg_1: boolean ): boolean;
-    enabled( _arg_1: boolean ): boolean;
-    checked( _arg_1: boolean ): boolean;
-    defaultfocus( _arg_1: string ): string;
-    inputnamespace( _arg_1: string ): string;
-    hittest( _arg_1: boolean ): boolean;
-    hittestchildren( _arg_1: boolean ): boolean;
-    tabindex( _arg_1: number ): number;
-    selectionpos_x( _arg_1: number ): number;
-    selectionpos_y( _arg_1: number ): number;
-    type(): string;
-    id(): string;
-    layoutfile();
-    contentwidth(): number;
-    contentheight(): number;
-    desiredlayoutwidth(): number;
-    desiredlayoutheight(): number;
-    actuallayoutwidth(): number;
-    actuallayoutheight(): number;
-    actualxoffset(): number;
-    actualyoffset(): number;
-    scrolloffset_y(): number;
-    scrolloffset_x(): number;
-    actualuiscale_y(): number;
-    actualuiscale_x(): number;
-    style();
-    AddClass( _arg_1: string ): void;
-    RemoveClass( _arg_1: string ): void;
-    BHasClass( _arg_1: string ): boolean;
-    BAscendantHasClass( _arg_1: string ): boolean;
-    SetHasClass( _arg_1: string, _arg_2: boolean ): void;
-    ToggleClass( _arg_1: string ): void;
-    SwitchClass( _arg_1: string, _arg_2: string ): void;
-    TriggerClass( _arg_1: string ): void;
-    ClearPanelEvent( _arg_1: string ): void;
-    SetDraggable( _arg_1: boolean ): void;
-    IsDraggable(): boolean;
-    IsSizeValid(): boolean;
-    GetChildCount(): number;
-    GetChild( _arg_1: number );
-    GetChildIndex( _arg_1 ): number;
-    Children();
-    FindChildrenWithClassTraverse( _arg_1: string );
-    GetParent();
-    SetParent( _arg_1 ): void;
-    FindChild( _arg_1: string );
-    FindChildTraverse( _arg_1: string );
-    FindChildInLayoutFile( _arg_1: string );
-    FindPanelInLayoutFile( _arg_1: string );
-    FindAncestor( _arg_1: string );
-    RemoveAndDeleteChildren(): void;
-    MoveChildBefore( _arg_1, _arg_2 ): void;
-    MoveChildAfter( _arg_1, _arg_2 ): void;
-    GetPositionWithinWindow();
-    GetPositionWithinAncestor( _arg_1 );
-    ApplyStyles( _arg_1: boolean ): void;
-    ClearPropertyFromCode( _arg_1 ): void;
-    DeleteAsync( _arg_1: number ): void;
-    BIsTransparent(): boolean;
-    BAcceptsInput(): boolean;
-    BAcceptsFocus(): boolean;
-    SetFocus(): boolean;
-    UpdateFocusInContext(): boolean;
-    BHasHoverStyle(): boolean;
-    SetAcceptsFocus( _arg_1: boolean ): void;
-    SetDisableFocusOnMouseDown( _arg_1: boolean ): void;
-    BHasKeyFocus(): boolean;
-    SetScrollParentToFitWhenFocused( _arg_1: boolean ): void;
-    BScrollParentToFitWhenFocused(): boolean;
-    IsSelected(): boolean;
-    BHasDescendantKeyFocus(): boolean;
-    BLoadLayout( _arg_1: string, _arg_2: boolean, _arg_3: boolean ): boolean;
-    BLoadLayoutSnippet( _arg_1: string ): boolean;
-    BHasLayoutSnippet( _arg_1: string ): boolean;
-    SetTopOfInputContext( _arg_1: boolean ): void;
-    SetDialogVariable( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariableInt( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableTime( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableLocString( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariablePluralLocStringInt( _arg_1: string, _arg_2: string, _arg_3: number ): void;
-    ScrollToTop(): void;
-    ScrollToBottom(): void;
-    ScrollToLeftEdge(): void;
-    ScrollToRightEdge(): void;
-    ScrollParentToMakePanelFit( _arg_1, _arg_2: boolean ): void;
-    ScrollToFitRegion( _arg_1: number, _arg_2: number, _arg_3: number, _arg_4: number, _arg_5, _arg_6: boolean, _arg_7: boolean ): void;
-    BCanSeeInParentScroll(): boolean;
-    GetAttributeInt( _arg_1: string, _arg_2: number ): number;
-    GetAttributeString( _arg_1: string, _arg_2: string ): string;
-    GetAttributeUInt32( _arg_1: string, _arg_2: number ): number;
-    SetAttributeInt( _arg_1: string, _arg_2: number ): void;
-    SetAttributeString( _arg_1: string, _arg_2: string ): void;
-    SetAttributeUInt32( _arg_1: string, _arg_2: number ): void;
-    SetInputNamespace( _arg_1: string ): void;
-    RegisterForReadyEvents( _arg_1: boolean ): void;
-    BReadyForDisplay(): boolean;
-    SetReadyForDisplay( _arg_1: boolean ): void;
-    SetPositionInPixels( _arg_1: number, _arg_2: number, _arg_3: number ): void;
-    Data( _arg_1 ): void;
-    SetPanelEvent( _arg_1 ): void;
-    RunScriptInPanelContext( _arg_1 ): void;
-    rememberchildfocus( _arg_1: boolean ): boolean;
-    paneltype(): string;
-}
-interface Movie
-{
-    visible( _arg_1: boolean ): boolean;
-    enabled( _arg_1: boolean ): boolean;
-    checked( _arg_1: boolean ): boolean;
-    defaultfocus( _arg_1: string ): string;
-    inputnamespace( _arg_1: string ): string;
-    hittest( _arg_1: boolean ): boolean;
-    hittestchildren( _arg_1: boolean ): boolean;
-    tabindex( _arg_1: number ): number;
-    selectionpos_x( _arg_1: number ): number;
-    selectionpos_y( _arg_1: number ): number;
-    type(): string;
-    id(): string;
-    layoutfile();
-    contentwidth(): number;
-    contentheight(): number;
-    desiredlayoutwidth(): number;
-    desiredlayoutheight(): number;
-    actuallayoutwidth(): number;
-    actuallayoutheight(): number;
-    actualxoffset(): number;
-    actualyoffset(): number;
-    scrolloffset_y(): number;
-    scrolloffset_x(): number;
-    actualuiscale_y(): number;
-    actualuiscale_x(): number;
-    style();
-    AddClass( _arg_1: string ): void;
-    RemoveClass( _arg_1: string ): void;
-    BHasClass( _arg_1: string ): boolean;
-    BAscendantHasClass( _arg_1: string ): boolean;
-    SetHasClass( _arg_1: string, _arg_2: boolean ): void;
-    ToggleClass( _arg_1: string ): void;
-    SwitchClass( _arg_1: string, _arg_2: string ): void;
-    TriggerClass( _arg_1: string ): void;
-    ClearPanelEvent( _arg_1: string ): void;
-    SetDraggable( _arg_1: boolean ): void;
-    IsDraggable(): boolean;
-    IsSizeValid(): boolean;
-    GetChildCount(): number;
-    GetChild( _arg_1: number );
-    GetChildIndex( _arg_1 ): number;
-    Children();
-    FindChildrenWithClassTraverse( _arg_1: string );
-    GetParent();
-    SetParent( _arg_1 ): void;
-    FindChild( _arg_1: string );
-    FindChildTraverse( _arg_1: string );
-    FindChildInLayoutFile( _arg_1: string );
-    FindPanelInLayoutFile( _arg_1: string );
-    FindAncestor( _arg_1: string );
-    RemoveAndDeleteChildren(): void;
-    MoveChildBefore( _arg_1, _arg_2 ): void;
-    MoveChildAfter( _arg_1, _arg_2 ): void;
-    GetPositionWithinWindow();
-    GetPositionWithinAncestor( _arg_1 );
-    ApplyStyles( _arg_1: boolean ): void;
-    ClearPropertyFromCode( _arg_1 ): void;
-    DeleteAsync( _arg_1: number ): void;
-    BIsTransparent(): boolean;
-    BAcceptsInput(): boolean;
-    BAcceptsFocus(): boolean;
-    SetFocus(): boolean;
-    UpdateFocusInContext(): boolean;
-    BHasHoverStyle(): boolean;
-    SetAcceptsFocus( _arg_1: boolean ): void;
-    SetDisableFocusOnMouseDown( _arg_1: boolean ): void;
-    BHasKeyFocus(): boolean;
-    SetScrollParentToFitWhenFocused( _arg_1: boolean ): void;
-    BScrollParentToFitWhenFocused(): boolean;
-    IsSelected(): boolean;
-    BHasDescendantKeyFocus(): boolean;
-    BLoadLayout( _arg_1: string, _arg_2: boolean, _arg_3: boolean ): boolean;
-    BLoadLayoutSnippet( _arg_1: string ): boolean;
-    BHasLayoutSnippet( _arg_1: string ): boolean;
-    SetTopOfInputContext( _arg_1: boolean ): void;
-    SetDialogVariable( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariableInt( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableTime( _arg_1: string, _arg_2: number ): void;
-    SetDialogVariableLocString( _arg_1: string, _arg_2: string ): void;
-    SetDialogVariablePluralLocStringInt( _arg_1: string, _arg_2: string, _arg_3: number ): void;
-    ScrollToTop(): void;
-    ScrollToBottom(): void;
-    ScrollToLeftEdge(): void;
-    ScrollToRightEdge(): void;
-    ScrollParentToMakePanelFit( _arg_1, _arg_2: boolean ): void;
-    ScrollToFitRegion( _arg_1: number, _arg_2: number, _arg_3: number, _arg_4: number, _arg_5, _arg_6: boolean, _arg_7: boolean ): void;
-    BCanSeeInParentScroll(): boolean;
-    GetAttributeInt( _arg_1: string, _arg_2: number ): number;
-    GetAttributeString( _arg_1: string, _arg_2: string ): string;
-    GetAttributeUInt32( _arg_1: string, _arg_2: number ): number;
-    SetAttributeInt( _arg_1: string, _arg_2: number ): void;
-    SetAttributeString( _arg_1: string, _arg_2: string ): void;
-    SetAttributeUInt32( _arg_1: string, _arg_2: number ): void;
-    SetInputNamespace( _arg_1: string ): void;
-    RegisterForReadyEvents( _arg_1: boolean ): void;
-    BReadyForDisplay(): boolean;
-    SetReadyForDisplay( _arg_1: boolean ): void;
-    SetPositionInPixels( _arg_1: number, _arg_2: number, _arg_3: number ): void;
-    Data( _arg_1 ): void;
-    SetMovie( _arg_1: string ): void;
-    SetCaptions( _arg_1: string ): void;
-    SetControls( _arg_1: string ): void;
-    SetTitle( _arg_1: string ): void;
-    Play(): void;
-    Pause(): void;
-    Stop(): void;
-    SetRepeat( _arg_1: boolean ): void;
-    SetPlaybackVolume( _arg_1: number ): void;
-    BAdjustingVolume(): boolean;
-    SetPanelEvent( _arg_1 ): void;
-    RunScriptInPanelContext( _arg_1 ): void;
-    rememberchildfocus( _arg_1: boolean ): boolean;
-    paneltype(): string;
-}
+No matches for 'DOTAMapUpdate2023Page' found
+No matches for 'DOTADashboard' found
+No matches for 'PageManager' found
+No matches for 'DOTAHomePage' found
+No matches for 'Movie' found
 interface DOTAAvatarImage
 {
     visible( _arg_1: boolean ): boolean;

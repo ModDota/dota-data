@@ -7908,6 +7908,15 @@
       },
       {
         "kind": "function",
+        "name": "IsDebuffImmune",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsDisarmed",
         "available": "both",
         "returns": [

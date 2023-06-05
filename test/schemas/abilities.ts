@@ -15,6 +15,7 @@ describe('integration', () => {
       'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
       'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
       'ogre_magi_ignite.AbilitySpecial.06.var_type should be a SpecialValueFieldType enum but is: FIELD_INT', // FIELD_INT, should be FIELD_INTEGER
+      'medusa_mana_shield.RequiredLevel should be greater than 0', // Innate learnable ability, RequiredLevel is -1
       'elder_titan_move_spirit.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // DOTA_ABILITY_BEHAVIOR_POINT_TARGET, should be DOTA_ABILITY_BEHAVIOR_POINT_TARGET
       'special_bonus_unique_warlock_1.base_class is unknown', // Should be BaseClass instead
       'special_bonus_unique_warlock_3.base_class is unknown', // Should be BaseClass instead

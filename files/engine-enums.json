@@ -418,6 +418,10 @@
         "shortName": "ALL"
       },
       {
+        "name": "DOTA_ATTRIBUTE_ALL_DAMAGE",
+        "shortName": "ALL_DAMAGE"
+      },
+      {
         "name": "DOTA_ATTRIBUTE_INTELLECT",
         "shortName": "INTELLECT"
       },
