@@ -1,13 +1,13 @@
-ClientVersion=5728
-ServerVersion=5728
+ClientVersion=5730
+ServerVersion=5730
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8098777
-VersionDate=Jun 01 2023
-VersionTime=15:50:32
+SourceRevision=8110323
+VersionDate=Jun 07 2023
+VersionTime=16:26:37
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -33428,7 +33428,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1780
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33584,7 +33584,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1789
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33752,7 +33752,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1790
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -33972,7 +33972,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1782
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34012,7 +34012,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1778
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34024,7 +34024,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1779
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34044,7 +34044,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1787
+    "value":1781
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34128,7 +34128,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1783
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34228,7 +34228,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1791
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34284,7 +34284,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1788
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -42914,19 +42914,19 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1784
+    "value":1778
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1785
+    "value":1779
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1786
+    "value":1780
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1781
+    "value":1789
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
