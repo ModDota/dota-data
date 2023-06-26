@@ -1,13 +1,13 @@
-ClientVersion=5730
-ServerVersion=5730
+ClientVersion=5742
+ServerVersion=5742
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8110323
-VersionDate=Jun 07 2023
-VersionTime=16:26:37
+SourceRevision=8147525
+VersionDate=Jun 22 2023
+VersionTime=13:35:53
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -2423,7 +2423,9 @@ declare enum modifierfunction
     MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 270,
     /** GetModifierAvoidDamageAfterReductions */
     MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
-    MODIFIER_FUNCTION_LAST = 272,
+    /** GetModifierDamageOutgoing_PercentageMultiplicative */
+    MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE = 272,
+    MODIFIER_FUNCTION_LAST = 273,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -15835,7 +15837,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":272
+    "value":273
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -16166,6 +16168,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY",
     "value":43
+  },{
+    "description":"GetModifierDamageOutgoing_PercentageMultiplicative",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
+    "value":272
   },{
     "description":"GetModifierConstantDeathGoldCost",
     "enum":"modifierfunction",
@@ -40963,7 +40971,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":272
+    "value":273
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -41294,6 +41302,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION_AMPLIFY",
     "value":43
+  },{
+    "description":"GetModifierDamageOutgoing_PercentageMultiplicative",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
+    "value":272
   },{
     "description":"GetModifierConstantDeathGoldCost",
     "enum":"modifierfunction",
@@ -49227,7 +49241,9 @@ declare enum modifierfunction
     MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY = 270,
     /** GetModifierAvoidDamageAfterReductions */
     MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
-    MODIFIER_FUNCTION_LAST = 272,
+    /** GetModifierDamageOutgoing_PercentageMultiplicative */
+    MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE = 272,
+    MODIFIER_FUNCTION_LAST = 273,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 

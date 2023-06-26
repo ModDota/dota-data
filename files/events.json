@@ -2024,6 +2024,25 @@
     ]
   },
   {
+    "name": "dota_miniboss_kill",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "shard_recipient_id",
+        "type": "short"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
     "name": "dota_courier_lost",
     "sourceFile": "game",
     "local": false,

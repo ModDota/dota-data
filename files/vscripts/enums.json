@@ -10295,8 +10295,13 @@
         "value": 271
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
+        "description": "Method Name: `GetModifierDamageOutgoing_PercentageMultiplicative`",
         "value": 272
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 273
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
