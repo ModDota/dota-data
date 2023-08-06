@@ -199,6 +199,10 @@
       {
         "name": "DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESIST",
         "value": 9
+      },
+      {
+        "name": "DOTA_ATTRIBUTE_ALL_DAMAGE",
+        "value": 10
       }
     ]
   },
@@ -8861,42 +8865,42 @@
       },
       {
         "name": "ACT_DOTA_DISABLED_END",
-        "value": 1776
-      },
-      {
-        "name": "ACT_DOTA_RUN_ALT",
-        "value": 1781
-      },
-      {
-        "name": "ACT_DOTA_VOODOO_REST",
-        "value": 1782
-      },
-      {
-        "name": "ACT_DOTA_CYCLONE",
-        "value": 1783
-      },
-      {
-        "name": "ACT_DOTA_IMPALE",
-        "value": 1784
-      },
-      {
-        "name": "ACT_DOTA_TORRENT",
-        "value": 1785
+        "value": 1777
       },
       {
         "name": "ACT_DOTA_RELAX_IN",
-        "value": 1786
+        "value": 1778
       },
       {
         "name": "ACT_DOTA_RELAX_OUT",
-        "value": 1787
+        "value": 1779
       },
       {
         "name": "ACT_DOTA_CAST_FENCE",
-        "value": 1788
+        "value": 1780
+      },
+      {
+        "name": "ACT_DOTA_RUN_ALT",
+        "value": 1784
       },
       {
         "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "value": 1786
+      },
+      {
+        "name": "ACT_DOTA_VOODOO_REST",
+        "value": 1787
+      },
+      {
+        "name": "ACT_DOTA_CYCLONE",
+        "value": 1788
+      },
+      {
+        "name": "ACT_DOTA_IMPALE",
+        "value": 1789
+      },
+      {
+        "name": "ACT_DOTA_TORRENT",
         "value": 1790
       },
       {
@@ -10291,8 +10295,13 @@
         "value": 271
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
+        "description": "Method Name: `GetModifierDamageOutgoing_PercentageMultiplicative`",
         "value": 272
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 273
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

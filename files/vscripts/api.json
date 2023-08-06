@@ -7908,6 +7908,15 @@
       },
       {
         "kind": "function",
+        "name": "IsDebuffImmune",
+        "available": "both",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsDisarmed",
         "available": "both",
         "returns": [
@@ -15937,6 +15946,16 @@
       {
         "kind": "function",
         "name": "GetModifierDamageOutgoing_Percentage_Illusion_Amplify",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierDamageOutgoing_PercentageMultiplicative",
         "available": "both",
         "abstract": true,
         "args": [],
