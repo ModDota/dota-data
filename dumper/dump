@@ -1,13 +1,13 @@
-ClientVersion=5770
-ServerVersion=5770
+ClientVersion=5774
+ServerVersion=5774
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8235949
-VersionDate=Aug 02 2023
-VersionTime=16:40:20
+SourceRevision=8249661
+VersionDate=Aug 08 2023
+VersionTime=14:04:27
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -1101,6 +1101,7 @@ declare enum dotaunitorder_t
     DOTA_UNIT_ORDER_DROP_ITEM_AT_FOUNTAIN = 37,
     DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH = 38,
     DOTA_UNIT_ORDER_MOVE_RELATIVE = 39,
+    DOTA_UNIT_ORDER_CAST_TOGGLE_ALT = 40,
 }
 
 declare enum DOTA_OVERHEAD_ALERT
@@ -1420,6 +1421,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE = 137438953472,
     DOTA_ABILITY_BEHAVIOR_OVERSHOOT = 274877906944,
     DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED = 549755813888,
+    DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE = 1099511627776,
 }
 
 declare enum DAMAGE_TYPES
@@ -2425,7 +2427,15 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
     /** GetModifierDamageOutgoing_PercentageMultiplicative */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE = 272,
-    MODIFIER_FUNCTION_LAST = 273,
+    /** GetModifierSlowResistance */
+    MODIFIER_PROPERTY_SLOW_RESISTANCE = 273,
+    /** GetModifierAoEBonusPercentage */
+    MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE = 274,
+    /** GetModifierProjectileSpeed */
+    MODIFIER_PROPERTY_PROJECTILE_SPEED = 275,
+    /** GetModifierBecomeUniversal */
+    MODIFIER_PROPERTY_BECOME_UNIVERSAL = 276,
+    MODIFIER_FUNCTION_LAST = 277,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -2490,7 +2500,8 @@ declare enum modifierstate
     MODIFIER_STATE_DEBUFF_IMMUNE = 56,
     MODIFIER_STATE_NO_INVISIBILITY_VISUALS = 57,
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_BASE_BLOCKER = 58,
-    MODIFIER_STATE_LAST = 59,
+    MODIFIER_STATE_IGNORING_MOVE_ORDERS = 59,
+    MODIFIER_STATE_LAST = 60,
 }
 
 declare enum DOTAModifierAttribute_t
@@ -11234,6 +11245,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_AOE",
     "value":32
   },{
@@ -12579,6 +12595,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
+    "name":"DOTA_INVALID_ORDER_ABILITY_CANT_ALT_CAST",
+    "value":118
+  },{
+    "enum":"DOTA_INVALID_ORDERS",
+    "kind":"constant",
     "name":"DOTA_INVALID_ORDER_ABILITY_CANT_AUTO_CAST",
     "value":44
   },{
@@ -12885,7 +12906,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
     "name":"DOTA_INVALID_ORDER_COUNT",
-    "value":118
+    "value":119
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
@@ -14259,11 +14280,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DotaPseudoRandomType",
     "kind":"constant",
-    "name":"DOTA_PSEUDO_RANDOM_BATRIDER_NAPALM",
-    "value":75
-  },{
-    "enum":"DotaPseudoRandomType",
-    "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_BREWMASTER_CINDER_BREW",
     "value":23
   },{
@@ -14654,6 +14670,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DotaPseudoRandomType",
     "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_TROLL_FERVOR_SHARD",
+    "value":75
+  },{
+    "enum":"DotaPseudoRandomType",
+    "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_TUSK_CRIT",
     "value":30
   },{
@@ -15029,6 +15050,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"DOTA_UNIT_ORDER_CAST_TOGGLE",
     "value":9
+  },{
+    "kind":"constant",
+    "name":"DOTA_UNIT_ORDER_CAST_TOGGLE_ALT",
+    "value":40
   },{
     "kind":"constant",
     "name":"DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO",
@@ -15837,7 +15862,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":273
+    "value":277
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -15911,6 +15936,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
     "value":165
+  },{
+    "description":"GetModifierAoEBonusPercentage",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE",
+    "value":274
   },{
     "description":"GetModifierAttackSpeedBaseOverride",
     "enum":"modifierfunction",
@@ -16036,6 +16067,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_MANA_REGEN",
     "value":84
+  },{
+    "description":"GetModifierBecomeUniversal",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_BECOME_UNIVERSAL",
+    "value":276
   },{
     "description":"GetModifierBonusDamageOutgoing_Percentage",
     "enum":"modifierfunction",
@@ -16912,6 +16949,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_PROJECTILE_NAME",
     "value":116
   },{
+    "description":"GetModifierProjectileSpeed",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED",
+    "value":275
+  },{
     "description":"GetModifierProjectileSpeedBonus",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -16971,6 +17014,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "value":120
+  },{
+    "description":"GetModifierSlowResistance",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SLOW_RESISTANCE",
+    "value":273
   },{
     "description":"GetModifierSpellsRequireHP",
     "enum":"modifierfunction",
@@ -17326,6 +17375,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"modifierstate",
     "kind":"constant",
+    "name":"MODIFIER_STATE_IGNORING_MOVE_ORDERS",
+    "value":59
+  },{
+    "enum":"modifierstate",
+    "kind":"constant",
     "name":"MODIFIER_STATE_IGNORING_STOP_ORDERS",
     "value":46
   },{
@@ -17342,7 +17396,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierstate",
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST",
-    "value":59
+    "value":60
   },{
     "enum":"modifierstate",
     "kind":"constant",
@@ -20536,6 +20590,14 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
           }],
         "description":"Set a custom cooldown for team Scan ability.",
         "name":"SetCustomScanCooldown",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"iMaxCharges",
+            "type":"int"
+          }],
+        "description":"Set a custom max charges for team Scan ability.",
+        "name":"SetCustomScanMaxCharges",
         "returns":"void"
       },{
         "args":[{
@@ -32660,7 +32722,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33436,7 +33498,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1780
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33592,7 +33654,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1788
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33624,7 +33686,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -33760,7 +33822,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1789
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -33980,7 +34042,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1786
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34020,7 +34082,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1778
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34032,7 +34094,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1779
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34052,7 +34114,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1784
+    "value":1781
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34236,7 +34298,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1790
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34292,7 +34354,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1787
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -38220,6 +38282,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_AOE",
     "value":32
   },{
@@ -38927,6 +38994,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
+    "name":"DOTA_INVALID_ORDER_ABILITY_CANT_ALT_CAST",
+    "value":118
+  },{
+    "enum":"DOTA_INVALID_ORDERS",
+    "kind":"constant",
     "name":"DOTA_INVALID_ORDER_ABILITY_CANT_AUTO_CAST",
     "value":44
   },{
@@ -39233,7 +39305,7 @@ Initializing script VM...
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
     "name":"DOTA_INVALID_ORDER_COUNT",
-    "value":118
+    "value":119
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
@@ -39650,11 +39722,6 @@ Initializing script VM...
   },{
     "enum":"DotaPseudoRandomType",
     "kind":"constant",
-    "name":"DOTA_PSEUDO_RANDOM_BATRIDER_NAPALM",
-    "value":75
-  },{
-    "enum":"DotaPseudoRandomType",
-    "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_BREWMASTER_CINDER_BREW",
     "value":23
   },{
@@ -40042,6 +40109,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_PSEUDO_RANDOM_TROLL_BASH",
     "value":58
+  },{
+    "enum":"DotaPseudoRandomType",
+    "kind":"constant",
+    "name":"DOTA_PSEUDO_RANDOM_TROLL_FERVOR_SHARD",
+    "value":75
   },{
     "enum":"DotaPseudoRandomType",
     "kind":"constant",
@@ -40971,7 +41043,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":273
+    "value":277
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -41045,6 +41117,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
     "value":165
+  },{
+    "description":"GetModifierAoEBonusPercentage",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE",
+    "value":274
   },{
     "description":"GetModifierAttackSpeedBaseOverride",
     "enum":"modifierfunction",
@@ -41170,6 +41248,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_BASE_MANA_REGEN",
     "value":84
+  },{
+    "description":"GetModifierBecomeUniversal",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_BECOME_UNIVERSAL",
+    "value":276
   },{
     "description":"GetModifierBonusDamageOutgoing_Percentage",
     "enum":"modifierfunction",
@@ -42046,6 +42130,12 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_PROJECTILE_NAME",
     "value":116
   },{
+    "description":"GetModifierProjectileSpeed",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_PROJECTILE_SPEED",
+    "value":275
+  },{
     "description":"GetModifierProjectileSpeedBonus",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -42105,6 +42195,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "value":120
+  },{
+    "description":"GetModifierSlowResistance",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SLOW_RESISTANCE",
+    "value":273
   },{
     "description":"GetModifierSpellsRequireHP",
     "enum":"modifierfunction",
@@ -42460,6 +42556,11 @@ Initializing script VM...
   },{
     "enum":"modifierstate",
     "kind":"constant",
+    "name":"MODIFIER_STATE_IGNORING_MOVE_ORDERS",
+    "value":59
+  },{
+    "enum":"modifierstate",
+    "kind":"constant",
     "name":"MODIFIER_STATE_IGNORING_STOP_ORDERS",
     "value":46
   },{
@@ -42476,7 +42577,7 @@ Initializing script VM...
     "enum":"modifierstate",
     "kind":"constant",
     "name":"MODIFIER_STATE_LAST",
-    "value":59
+    "value":60
   },{
     "enum":"modifierstate",
     "kind":"constant",
@@ -42928,19 +43029,19 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1781
+    "value":1778
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1782
+    "value":1779
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1783
+    "value":1780
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1785
+    "value":1789
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -47921,6 +48022,7 @@ declare enum dotaunitorder_t
     DOTA_UNIT_ORDER_DROP_ITEM_AT_FOUNTAIN = 37,
     DOTA_UNIT_ORDER_TAKE_ITEM_FROM_NEUTRAL_ITEM_STASH = 38,
     DOTA_UNIT_ORDER_MOVE_RELATIVE = 39,
+    DOTA_UNIT_ORDER_CAST_TOGGLE_ALT = 40,
 }
 
 declare enum DOTA_OVERHEAD_ALERT
@@ -48240,6 +48342,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE = 137438953472,
     DOTA_ABILITY_BEHAVIOR_OVERSHOOT = 274877906944,
     DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED = 549755813888,
+    DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE = 1099511627776,
 }
 
 declare enum DAMAGE_TYPES
@@ -49245,7 +49348,15 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
     /** GetModifierDamageOutgoing_PercentageMultiplicative */
     MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE = 272,
-    MODIFIER_FUNCTION_LAST = 273,
+    /** GetModifierSlowResistance */
+    MODIFIER_PROPERTY_SLOW_RESISTANCE = 273,
+    /** GetModifierAoEBonusPercentage */
+    MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE = 274,
+    /** GetModifierProjectileSpeed */
+    MODIFIER_PROPERTY_PROJECTILE_SPEED = 275,
+    /** GetModifierBecomeUniversal */
+    MODIFIER_PROPERTY_BECOME_UNIVERSAL = 276,
+    MODIFIER_FUNCTION_LAST = 277,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -49310,7 +49421,8 @@ declare enum modifierstate
     MODIFIER_STATE_DEBUFF_IMMUNE = 56,
     MODIFIER_STATE_NO_INVISIBILITY_VISUALS = 57,
     MODIFIER_STATE_ALLOW_PATHING_THROUGH_BASE_BLOCKER = 58,
-    MODIFIER_STATE_LAST = 59,
+    MODIFIER_STATE_IGNORING_MOVE_ORDERS = 59,
+    MODIFIER_STATE_LAST = 60,
 }
 
 declare enum DOTAModifierAttribute_t
