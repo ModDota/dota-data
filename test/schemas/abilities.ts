@@ -8,18 +8,18 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
+      'arc_warden_tempest_double.AbilityBehavior[0] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // Should be: DOTA_ABILITY_BEHAVIOR_POINT
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_TYPE_ULTIMATE', // DOTA_ABILITY_TYPE_ULTIMATE
+      'lone_druid_savage_roar_bear.AbilityBehavior[2] should be a AbilityBehavior enum but is: ABILITY_NOT_LEARNABLE', // Should be: DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE
       'meepo_poof.AbilityBehavior[1] should be a AbilityBehavior enum but is: ', // Extra |, empty string ability behavior
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
       'tinker_keen_teleport.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
       'abyssal_underlord_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST', // DOTA_ABILITY_BEHAVIOR_NOASSIST
-      'ogre_magi_ignite.AbilitySpecial.06.var_type should be a SpecialValueFieldType enum but is: FIELD_INT', // FIELD_INT, should be FIELD_INTEGER
       'medusa_mana_shield.RequiredLevel should be greater than 0', // Innate learnable ability, RequiredLevel is -1
       'elder_titan_move_spirit.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // DOTA_ABILITY_BEHAVIOR_POINT_TARGET, should be DOTA_ABILITY_BEHAVIOR_POINT_TARGET
       'special_bonus_unique_warlock_1.base_class is unknown', // Should be BaseClass instead
       'special_bonus_unique_warlock_3.base_class is unknown', // Should be BaseClass instead
-      'jakiro_liquid_fire.AbilitySpecial.04.var_type is missing',
       'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
     ],
   });
