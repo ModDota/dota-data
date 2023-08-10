@@ -15444,6 +15444,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierAoEBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierAttackPointConstant",
         "available": "both",
         "abstract": true,
@@ -15682,6 +15692,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBecomeUniversal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17331,6 +17351,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierProjectileSpeed",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierProjectileSpeedBonus",
         "available": "both",
         "abstract": true,
@@ -17390,6 +17420,16 @@
       {
         "kind": "function",
         "name": "GetModifierShard",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierSlowResistance",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18184,6 +18224,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnForceProcMagicStick",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -25073,6 +25123,23 @@
             "name": "cooldown",
             "types": [
               "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetCustomScanMaxCharges",
+        "available": "server",
+        "description": "Set a custom max charges for team Scan ability.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "maxCharges",
+            "types": [
+              "int"
             ]
           }
         ]
