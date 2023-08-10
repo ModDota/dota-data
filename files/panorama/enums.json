@@ -596,6 +596,10 @@
       {
         "name": "DOTA_UNIT_ORDER_MOVE_RELATIVE",
         "value": 39
+      },
+      {
+        "name": "DOTA_UNIT_ORDER_CAST_TOGGLE_ALT",
+        "value": 40
       }
     ]
   },
@@ -1683,6 +1687,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED",
         "value": 549755813888
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE",
+        "value": 1099511627776
       }
     ]
   },
@@ -4536,12 +4544,12 @@
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SCEPTER",
-        "description": "Always applies scepter when this property is active\n\nMethod Name: `GetModifierScepter`.",
+        "description": "Applies scepter when this property is active\n\nMethod Name: `GetModifierScepter`.",
         "value": 222
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SHARD",
-        "description": "Method Name: `GetModifierShard`",
+        "description": "Applies shard when this property is active\n\nMethod Name: `GetModifierShard`.",
         "value": 223
       },
       {
@@ -4788,8 +4796,33 @@
         "value": 272
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_SLOW_RESISTANCE",
+        "description": "Method Name: `GetModifierSlowResistance`",
         "value": 273
+      },
+      {
+        "name": "MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE",
+        "description": "Method Name: `GetModifierAoEBonusPercentage`",
+        "value": 274
+      },
+      {
+        "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED",
+        "description": "Method Name: `GetModifierProjectileSpeed`",
+        "value": 275
+      },
+      {
+        "name": "MODIFIER_PROPERTY_BECOME_UNIVERSAL",
+        "description": "Method Name: `GetModifierBecomeUniversal`",
+        "value": 276
+      },
+      {
+        "name": "MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK",
+        "description": "Method Name: `OnForceProcMagicStick`",
+        "value": 277
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 278
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
@@ -5037,8 +5070,12 @@
         "value": 58
       },
       {
-        "name": "MODIFIER_STATE_LAST",
+        "name": "MODIFIER_STATE_IGNORING_MOVE_ORDERS",
         "value": 59
+      },
+      {
+        "name": "MODIFIER_STATE_LAST",
+        "value": 60
       }
     ]
   },

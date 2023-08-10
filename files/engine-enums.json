@@ -23,10 +23,6 @@
         "shortName": "AXE_HELIX_ATTACK"
       },
       {
-        "name": "DOTA_PSEUDO_RANDOM_BATRIDER_NAPALM",
-        "shortName": "BATRIDER_NAPALM"
-      },
-      {
         "name": "DOTA_PSEUDO_RANDOM_BREWMASTER_CINDER_BREW",
         "shortName": "BREWMASTER_CINDER_BREW"
       },
@@ -337,6 +333,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_TROLL_BASH",
         "shortName": "TROLL_BASH"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_TROLL_FERVOR_SHARD",
+        "shortName": "TROLL_FERVOR_SHARD"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_TUSK_CRIT",
@@ -6330,6 +6330,10 @@
         "shortName": "PHYSICAL"
       },
       {
+        "name": "DAMAGE_TYPE_Pure",
+        "shortName": "Pure"
+      },
+      {
         "name": "DAMAGE_TYPE_PURE",
         "shortName": "PURE"
       }
@@ -6338,6 +6342,10 @@
   {
     "name": "AbilityBehavior",
     "members": [
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE",
+        "shortName": "ALT_CASTABLE"
+      },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_AOE",
         "shortName": "AOE"

@@ -125,9 +125,7 @@ export const baseUnit = () =>
     .field('AttackCapabilities', s.enums('UnitAttackCapability'))
     .field('AttackDamageMin', s.int())
     .field('AttackDamageMax', s.int())
-    .field('AttackDamageType', s.literal('DAMAGE_TYPE_ArmorPhysical'), {
-      deprecated: 'The only valid value is default',
-    })
+    .field('AttackDamageType', s.enums('DamageType'))
     .field('BaseAttackSpeed', s.int(), {
       description: 'https://dota2.gamepedia.com/Attack_speed#Initial_Attack_Speed',
     })

@@ -15444,6 +15444,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierAoEBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "float"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierAttackPointConstant",
         "available": "both",
         "abstract": true,
@@ -15469,7 +15479,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15529,7 +15539,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15539,7 +15549,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15627,7 +15637,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15637,7 +15647,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15686,6 +15696,23 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierBecomeUniversal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierBonusDamageOutgoing_Percentage",
         "available": "both",
         "abstract": true,
@@ -15711,7 +15738,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15731,7 +15758,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15751,7 +15778,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -15793,9 +15820,16 @@
         "name": "GetModifierCastRangeBonusPercentage",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16829,7 +16863,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -16871,9 +16905,16 @@
         "name": "GetModifierPercentageCooldownOngoing",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -17331,6 +17372,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierProjectileSpeed",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "float"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierProjectileSpeedBonus",
         "available": "both",
         "abstract": true,
@@ -17346,7 +17397,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -17373,7 +17424,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -17381,10 +17432,17 @@
         "name": "GetModifierScepter",
         "available": "both",
         "abstract": true,
-        "description": "Always applies scepter when this property is active",
+        "description": "Applies scepter when this property is active",
         "args": [],
         "returns": [
-          "nil"
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
         ]
       },
       {
@@ -17392,9 +17450,27 @@
         "name": "GetModifierShard",
         "available": "both",
         "abstract": true,
+        "description": "Applies shard when this property is active",
         "args": [],
         "returns": [
-          "nil"
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierSlowResistance",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "float"
         ]
       },
       {
@@ -17643,7 +17719,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -17744,7 +17820,7 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          "float"
         ]
       },
       {
@@ -17776,9 +17852,23 @@
         "name": "GetSuppressCleave",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
-          "nil"
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
         ]
       },
       {
@@ -17788,7 +17878,14 @@
         "abstract": true,
         "args": [],
         "returns": [
-          "nil"
+          {
+            "kind": "literal",
+            "value": 0
+          },
+          {
+            "kind": "literal",
+            "value": 1
+          }
         ]
       },
       {
@@ -18184,6 +18281,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnForceProcMagicStick",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -25073,6 +25180,23 @@
             "name": "cooldown",
             "types": [
               "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetCustomScanMaxCharges",
+        "available": "server",
+        "description": "Set a custom max charges for team Scan ability.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "maxCharges",
+            "types": [
+              "int"
             ]
           }
         ]
