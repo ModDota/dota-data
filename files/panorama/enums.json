@@ -4821,8 +4821,13 @@
         "value": 277
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+        "description": "Method Name: `MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST`",
         "value": 278
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 279
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

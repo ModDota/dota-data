@@ -1,13 +1,13 @@
-ClientVersion=5782
-ServerVersion=5782
+ClientVersion=5796
+ServerVersion=5796
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8254881
-VersionDate=Aug 09 2023
-VersionTime=18:24:47
+SourceRevision=8266590
+VersionDate=Aug 15 2023
+VersionTime=10:57:01
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -2437,7 +2437,9 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_BECOME_UNIVERSAL = 276,
     /** OnForceProcMagicStick */
     MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK = 277,
-    MODIFIER_FUNCTION_LAST = 278,
+    /** MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST */
+    MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST = 278,
+    MODIFIER_FUNCTION_LAST = 279,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -15870,7 +15872,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":278
+    "value":279
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -16447,6 +16449,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
     "value":269
+  },{
+    "description":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+    "value":278
   },{
     "enum":"modifierfunction",
     "kind":"constant",
@@ -33506,7 +33514,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1780
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33662,7 +33670,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1789
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33830,7 +33838,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1790
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -34050,7 +34058,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1782
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34090,7 +34098,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1778
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34102,7 +34110,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1779
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34122,7 +34130,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1787
+    "value":1781
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34206,7 +34214,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1783
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34306,7 +34314,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1791
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34362,7 +34370,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1788
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -41057,7 +41065,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":278
+    "value":279
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -41634,6 +41642,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
     "value":269
+  },{
+    "description":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+    "value":278
   },{
     "enum":"modifierfunction",
     "kind":"constant",
@@ -43043,19 +43057,19 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1784
+    "value":1778
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1785
+    "value":1779
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1786
+    "value":1780
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1781
+    "value":1789
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -49372,7 +49386,9 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_BECOME_UNIVERSAL = 276,
     /** OnForceProcMagicStick */
     MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK = 277,
-    MODIFIER_FUNCTION_LAST = 278,
+    /** MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST */
+    MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST = 278,
+    MODIFIER_FUNCTION_LAST = 279,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 

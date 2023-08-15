@@ -17930,6 +17930,16 @@
       },
       {
         "kind": "function",
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnAbilityEndChannel",
         "available": "both",
         "abstract": true,
