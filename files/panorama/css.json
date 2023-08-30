@@ -110,13 +110,13 @@
     ]
   },
   "border": {
-    "description": "Shorthand for setting panel border. Specify width, style, and color. Supported styles are: solid, none.",
+    "description": "Shorthand for setting panel border. Specify width, style, and color. Supported styles are: solid, dashed, none.",
     "examples": [
       "border: 2px solid #111111FF;"
     ]
   },
   "border-bottom": {
-    "description": "Shorthand for setting the bottom panel border. Specify width, style, and color. Supported styles are: solid, none.",
+    "description": "Shorthand for setting the bottom panel border. Specify width, style, and color. Supported styles are: solid, dashed, none.",
     "examples": [
       "border-bottom: 2px solid #111111FF;"
     ]
@@ -169,7 +169,7 @@
     ]
   },
   "border-left": {
-    "description": "Shorthand for setting the left panel border. Specify width, style, and color. Supported styles are: solid, none.",
+    "description": "Shorthand for setting the left panel border. Specify width, style, and color. Supported styles are: solid, dashed, none.",
     "examples": [
       "border-left: 2px solid #111111FF;"
     ]
@@ -202,7 +202,7 @@
     ]
   },
   "border-right": {
-    "description": "Shorthand for setting the right panel border. Specify width, style, and color. Supported styles are: solid, none.",
+    "description": "Shorthand for setting the right panel border. Specify width, style, and color. Supported styles are: solid, dashed, none.",
     "examples": [
       "border-right: 2px solid #111111FF;"
     ]
@@ -228,12 +228,12 @@
   "border-style": {
     "description": "Specifies border style for panel. If a single style value is set it applies to all sides, if 2 are set the first is top/bottom and the second is left/right, if all four are set then they are top, right, bottom, left in order.",
     "examples": [
-      "border-style: solid;",
+      "border-style: dashed;",
       "border-style: solid none solid none;"
     ]
   },
   "border-top": {
-    "description": "Shorthand for setting the top panel border. Specify width, style, and color. Supported styles are: solid, none.",
+    "description": "Shorthand for setting the top panel border. Specify width, style, and color. Supported styles are: solid, dashed, none.",
     "examples": [
       "border-top: 2px solid #111111FF;"
     ]

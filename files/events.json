@@ -2987,10 +2987,6 @@
       {
         "name": "matchID",
         "type": "uint64"
-      },
-      {
-        "name": "result",
-        "type": "byte"
       }
     ]
   },
@@ -4713,7 +4709,23 @@
         "type": "EntityIndex"
       },
       {
+        "name": "item_ability_id",
+        "type": "int"
+      },
+      {
         "name": "removed",
+        "type": "bool"
+      },
+      {
+        "name": "dropped",
+        "type": "bool"
+      },
+      {
+        "name": "sold",
+        "type": "bool"
+      },
+      {
+        "name": "in_sellback_windown",
         "type": "bool"
       }
     ]
