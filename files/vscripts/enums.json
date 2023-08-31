@@ -8840,96 +8840,88 @@
         "value": 1765
       },
       {
-        "name": "ACT_DOTA_IDLE_STATUE",
+        "name": "ACT_DOTA_CAST1_STATUE",
         "value": 1766
       },
       {
-        "name": "ACT_DOTA_SPAWN_STATUE",
+        "name": "ACT_DOTA_CAST2_STATUE",
         "value": 1767
       },
       {
-        "name": "ACT_DOTA_CAST_STATUE",
+        "name": "ACT_DOTA_STUN_STATUE",
         "value": 1768
       },
       {
-        "name": "ACT_DOTA_TELEPORT_STATUE",
+        "name": "ACT_DOTA_FLAIL_STATUE",
         "value": 1769
       },
       {
-        "name": "ACT_DOTA_ATTACK_STATUE",
+        "name": "ACT_DOTA_SPAWN_STATUE",
         "value": 1770
       },
       {
-        "name": "ACT_DOTA_STUN_STATUE",
+        "name": "ACT_DOTA_TELEPORT_END_STATUE",
         "value": 1771
       },
       {
-        "name": "ACT_DOTA_FLAIL_STATUE",
+        "name": "ACT_DOTA_ATTACK_STATUE",
         "value": 1772
       },
       {
-        "name": "ACT_DOTA_TAUNT_STATUE",
+        "name": "ACT_DOTA_FORCESTAFF_STATUE",
         "value": 1773
       },
       {
-        "name": "ACT_DOTA_CAST1_STATUE",
+        "name": "ACT_DOTA_TELEPORT_STATUE",
         "value": 1774
       },
       {
-        "name": "ACT_DOTA_CAST2_STATUE",
+        "name": "ACT_DOTA_VICTORY_STATUE",
         "value": 1775
       },
       {
-        "name": "ACT_DOTA_TELEPORT_END_STATUE",
-        "value": 1776
-      },
-      {
-        "name": "ACT_DOTA_FORCESTAFF_STATUE",
+        "name": "ACT_DOTA_DISABLED_END",
         "value": 1777
       },
       {
-        "name": "ACT_DOTA_VICTORY_STATUE",
-        "value": 1778
-      },
-      {
-        "name": "ACT_DOTA_DISABLED_END",
-        "value": 1780
-      },
-      {
-        "name": "ACT_DOTA_RELAX_IN",
+        "name": "ACT_DOTA_VOODOO_REST",
         "value": 1781
       },
       {
-        "name": "ACT_DOTA_RELAX_OUT",
-        "value": 1782
-      },
-      {
-        "name": "ACT_DOTA_CAST_FENCE",
+        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
         "value": 1783
       },
       {
-        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "name": "ACT_DOTA_RELAX_IN",
+        "value": 1784
+      },
+      {
+        "name": "ACT_DOTA_RELAX_OUT",
         "value": 1785
       },
       {
-        "name": "ACT_DOTA_SPWN",
+        "name": "ACT_DOTA_CAST_FENCE",
         "value": 1786
       },
       {
-        "name": "ACT_DOTA_RUN_ALT",
-        "value": 1790
-      },
-      {
-        "name": "ACT_DOTA_VOODOO_REST",
-        "value": 1791
+        "name": "ACT_DOTA_SPWN",
+        "value": 1787
       },
       {
         "name": "ACT_DOTA_CYCLONE",
-        "value": 1792
+        "value": 1788
       },
       {
         "name": "ACT_DOTA_IMPALE",
-        "value": 1793
+        "value": 1789
+      },
+      {
+        "name": "ACT_DOTA_TORRENT",
+        "value": 1790
+      },
+      {
+        "name": "ACT_DOTA_RUN_ALT",
+        "value": 1791
       }
     ]
   },

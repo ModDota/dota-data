@@ -8,6 +8,7 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
+      'enigma_demonic_conversion.AbilityBehavior[0] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // Should be: DOTA_ABILITY_BEHAVIOR_POINT
       'arc_warden_tempest_double.AbilityBehavior[0] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_POINT_TARGET', // Should be: DOTA_ABILITY_BEHAVIOR_POINT
       'earth_spirit_boulder_smash.AbilityUnitTargetFlag is unknown', // Should be AbilityUnitTargetFlags instead
       'lone_druid_true_form_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_TYPE_ULTIMATE', // DOTA_ABILITY_TYPE_ULTIMATE
@@ -21,6 +22,9 @@ describe('integration', () => {
       'special_bonus_unique_warlock_1.base_class is unknown', // Should be BaseClass instead
       'special_bonus_unique_warlock_3.base_class is unknown', // Should be BaseClass instead
       'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
+      `dawnbreaker_solar_guardian.SpellImmunityType should be a SpellImmunityType enum but is: SPELL_IMMUNITY_ENEMIES_YES\"
+\t\t`, // trailing \ AND since it escapes value, newline with tabs carry over
+      'dawnbreaker_solar_guardian.FightRecapLevel\" is unknown', // trailing \
     ],
   });
 

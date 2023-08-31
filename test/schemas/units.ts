@@ -14,7 +14,6 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_heroes.txt',
 
     ignore: [
-      'npc_dota_hero_slardar.VersusScale should be a number',
       'npc_dota_hero_naga_siren.Team is not one of: "Good", "Bad"',
       'npc_dota_hero_lion.TurnRate is unknown',
       'npc_dota_hero_primal_beast.PickSound should be a string',
