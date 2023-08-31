@@ -3112,16 +3112,20 @@
         "value": 95
       },
       {
-        "name": "DOTA_PLAYER_LOADOUT_END",
-        "value": 95
-      },
-      {
-        "name": "DOTA_LOADOUT_TYPE_NONE",
+        "name": "DOTA_LOADOUT_TYPE_TORMENTOR",
         "value": 96
       },
       {
-        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "name": "DOTA_PLAYER_LOADOUT_END",
+        "value": 96
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_NONE",
         "value": 97
+      },
+      {
+        "name": "DOTA_LOADOUT_TYPE_COUNT",
+        "value": 98
       }
     ]
   },
@@ -8880,43 +8884,43 @@
         "value": 1777
       },
       {
-        "name": "ACT_DOTA_RELAX_IN",
-        "value": 1778
-      },
-      {
-        "name": "ACT_DOTA_RELAX_OUT",
-        "value": 1779
-      },
-      {
-        "name": "ACT_DOTA_CAST_FENCE",
-        "value": 1780
+        "name": "ACT_DOTA_VOODOO_REST",
+        "value": 1781
       },
       {
         "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
-        "value": 1782
-      },
-      {
-        "name": "ACT_DOTA_SPWN",
         "value": 1783
       },
       {
-        "name": "ACT_DOTA_RUN_ALT",
+        "name": "ACT_DOTA_RELAX_IN",
+        "value": 1784
+      },
+      {
+        "name": "ACT_DOTA_RELAX_OUT",
+        "value": 1785
+      },
+      {
+        "name": "ACT_DOTA_CAST_FENCE",
+        "value": 1786
+      },
+      {
+        "name": "ACT_DOTA_SPWN",
         "value": 1787
       },
       {
-        "name": "ACT_DOTA_VOODOO_REST",
+        "name": "ACT_DOTA_CYCLONE",
         "value": 1788
       },
       {
-        "name": "ACT_DOTA_CYCLONE",
+        "name": "ACT_DOTA_IMPALE",
         "value": 1789
       },
       {
-        "name": "ACT_DOTA_IMPALE",
+        "name": "ACT_DOTA_TORRENT",
         "value": 1790
       },
       {
-        "name": "ACT_DOTA_TORRENT",
+        "name": "ACT_DOTA_RUN_ALT",
         "value": 1791
       }
     ]
@@ -9544,801 +9548,841 @@
         "value": 117
       },
       {
+        "name": "MODIFIER_PROPERTY_REINCARNATION_SUPPRESS_FX",
+        "description": "Method Name: `ReincarnateSuppressFX`",
+        "value": 118
+      },
+      {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME",
         "description": "Method Name: `GetModifierConstantRespawnTime`",
-        "value": 118
+        "value": 119
       },
       {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageRespawnTime`",
-        "value": 119
+        "value": 120
       },
       {
         "name": "MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
         "description": "Method Name: `GetModifierStackingRespawnTime`",
-        "value": 120
+        "value": 121
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageCooldown`",
-        "value": 121
+        "value": 122
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_ONGOING",
         "description": "Method Name: `GetModifierPercentageCooldownOngoing`",
-        "value": 122
+        "value": 123
       },
       {
         "name": "MODIFIER_PROPERTY_CASTTIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageCasttime`",
-        "value": 123
+        "value": 124
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_ANIM_TIME_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageAttackAnimTime`",
-        "value": 124
+        "value": 125
       },
       {
         "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageManacost`",
-        "value": 125
+        "value": 126
       },
       {
         "name": "MODIFIER_PROPERTY_MANACOST_PERCENTAGE_STACKING",
         "description": "Method Name: `GetModifierPercentageManacostStacking`",
-        "value": 126
+        "value": 127
       },
       {
         "name": "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE",
         "description": "Method Name: `GetModifierPercentageHealthcost`",
-        "value": 127
+        "value": 128
       },
       {
         "name": "MODIFIER_PROPERTY_HEALTHCOST_PERCENTAGE_STACKING",
         "description": "Method Name: `GetModifierPercentageHealthcostStacking`",
-        "value": 128
+        "value": 129
       },
       {
         "name": "MODIFIER_PROPERTY_DEATHGOLDCOST",
         "description": "Method Name: `GetModifierConstantDeathGoldCost`",
-        "value": 129
+        "value": 130
       },
       {
         "name": "MODIFIER_PROPERTY_EXP_RATE_BOOST",
         "description": "Method Name: `GetModifierPercentageExpRateBoost`",
-        "value": 130
+        "value": 131
       },
       {
         "name": "MODIFIER_PROPERTY_GOLD_RATE_BOOST",
         "description": "Method Name: `GetModifierPercentageGoldRateBoost`",
-        "value": 131
+        "value": 132
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE",
         "description": "Method Name: `GetModifierPreAttack_CriticalStrike`",
-        "value": 132
+        "value": 133
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_TARGET_CRITICALSTRIKE",
         "description": "Method Name: `GetModifierPreAttack_Target_CriticalStrike`",
-        "value": 133
+        "value": 134
       },
       {
         "name": "MODIFIER_PROPERTY_MAGICAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierMagical_ConstantBlock`",
-        "value": 134
+        "value": 135
       },
       {
         "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierPhysical_ConstantBlock`",
-        "value": 135
+        "value": 136
       },
       {
         "name": "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK_SPECIAL",
         "description": "Method Name: `GetModifierPhysical_ConstantBlockSpecial`",
-        "value": 136
+        "value": 137
       },
       {
         "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR",
         "description": "Method Name: `GetModifierPhysical_ConstantBlockUnavoidablePreArmor`",
-        "value": 137
+        "value": 138
       },
       {
         "name": "MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK",
         "description": "Method Name: `GetModifierTotal_ConstantBlock`",
-        "value": 138
+        "value": 139
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION",
         "description": "Method Name: `GetOverrideAnimation`",
-        "value": 139
+        "value": 140
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_WEIGHT",
         "description": "Method Name: `GetOverrideAnimationWeight`",
-        "value": 140
+        "value": 141
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ANIMATION_RATE",
         "description": "Method Name: `GetOverrideAnimationRate`",
-        "value": 141
+        "value": 142
       },
       {
         "name": "MODIFIER_PROPERTY_ABSORB_SPELL",
         "description": "Method Name: `GetAbsorbSpell`",
-        "value": 142
+        "value": 143
       },
       {
         "name": "MODIFIER_PROPERTY_REFLECT_SPELL",
         "description": "Method Name: `GetReflectSpell`",
-        "value": 143
+        "value": 144
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_AUTOATTACK",
         "description": "Method Name: `GetDisableAutoAttack`",
-        "value": 144
+        "value": 145
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_DAY_VISION",
         "description": "Method Name: `GetBonusDayVision`",
-        "value": 145
+        "value": 146
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION",
         "description": "Method Name: `GetBonusNightVision`",
-        "value": 146
+        "value": 147
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_NIGHT_VISION_UNIQUE",
         "description": "Method Name: `GetBonusNightVisionUnique`",
-        "value": 147
+        "value": 148
       },
       {
         "name": "MODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE",
         "description": "Method Name: `GetBonusVisionPercentage`",
-        "value": 148
+        "value": 149
       },
       {
         "name": "MODIFIER_PROPERTY_FIXED_DAY_VISION",
         "description": "Method Name: `GetFixedDayVision`",
-        "value": 149
+        "value": 150
       },
       {
         "name": "MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
         "description": "Method Name: `GetFixedNightVision`",
-        "value": 150
+        "value": 151
       },
       {
         "name": "MODIFIER_PROPERTY_MIN_HEALTH",
         "description": "Method Name: `GetMinHealth`",
-        "value": 151
+        "value": 152
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL",
         "description": "Method Name: `GetAbsoluteNoDamagePhysical`",
-        "value": 152
+        "value": 153
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL",
         "description": "Method Name: `GetAbsoluteNoDamageMagical`",
-        "value": 153
+        "value": 154
       },
       {
         "name": "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE",
         "description": "Method Name: `GetAbsoluteNoDamagePure`",
-        "value": 154
+        "value": 155
       },
       {
         "name": "MODIFIER_PROPERTY_IS_ILLUSION",
         "description": "Method Name: `GetIsIllusion`",
-        "value": 155
+        "value": 156
       },
       {
         "name": "MODIFIER_PROPERTY_ILLUSION_LABEL",
         "description": "Method Name: `GetModifierIllusionLabel`",
-        "value": 156
+        "value": 157
       },
       {
         "name": "MODIFIER_PROPERTY_STRONG_ILLUSION",
         "description": "Method Name: `GetModifierStrongIllusion`",
-        "value": 157
+        "value": 158
       },
       {
         "name": "MODIFIER_PROPERTY_SUPER_ILLUSION",
         "description": "Method Name: `GetModifierSuperIllusion`",
-        "value": 158
+        "value": 159
       },
       {
         "name": "MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE",
         "description": "Method Name: `GetModifierSuperIllusionWithUltimate`",
-        "value": 159
+        "value": 160
       },
       {
         "name": "MODIFIER_PROPERTY_XP_DURING_DEATH",
         "description": "Method Name: `GetModifierXPDuringDeath`",
-        "value": 160
+        "value": 161
       },
       {
         "name": "MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE",
         "description": "Method Name: `GetModifierTurnRate_Percentage`",
-        "value": 161
+        "value": 162
       },
       {
         "name": "MODIFIER_PROPERTY_TURN_RATE_OVERRIDE",
         "description": "Method Name: `GetModifierTurnRate_Override`",
-        "value": 162
+        "value": 163
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_HEALING",
         "description": "Method Name: `GetDisableHealing`",
-        "value": 163
+        "value": 164
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_ALLOW_ATTACK",
         "description": "Method Name: `GetAlwaysAllowAttack`",
-        "value": 164
+        "value": 165
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_ETHEREAL_ATTACK",
         "description": "Method Name: `GetAllowEtherealAttack`",
-        "value": 165
+        "value": 166
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ATTACK_MAGICAL",
         "description": "Method Name: `GetOverrideAttackMagical`",
-        "value": 166
+        "value": 167
       },
       {
         "name": "MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
         "description": "Method Name: `GetModifierUnitStatsNeedsRefresh`",
-        "value": 167
-      },
-      {
-        "name": "MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
         "value": 168
       },
       {
-        "name": "MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
+        "name": "MODIFIER_PROPERTY_BOUNTY_CREEP_MULTIPLIER",
         "value": 169
+      },
+      {
+        "name": "MODIFIER_PROPERTY_BOUNTY_OTHER_MULTIPLIER",
+        "value": 170
       },
       {
         "name": "MODIFIER_PROPERTY_UNIT_DISALLOW_UPGRADING",
         "description": "Method Name: `GetModifierUnitDisllowUpgrading`",
-        "value": 170
+        "value": 171
       },
       {
         "name": "MODIFIER_PROPERTY_DODGE_PROJECTILE",
         "description": "Method Name: `GetModifierDodgeProjectile`",
-        "value": 171
+        "value": 172
       },
       {
         "name": "MODIFIER_PROPERTY_TRIGGER_COSMETIC_AND_END_ATTACK",
         "description": "Method Name: `GetTriggerCosmeticAndEndAttack`",
-        "value": 172
+        "value": 173
       },
       {
         "name": "MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
         "description": "Method Name: `GetModifierMaxDebuffDuration`",
-        "value": 173
+        "value": 174
       },
       {
         "name": "MODIFIER_PROPERTY_PRIMARY_STAT_DAMAGE_MULTIPLIER",
         "description": "Method Name: `GetPrimaryStatDamageMultiplier`",
-        "value": 174
+        "value": 175
       },
       {
         "name": "MODIFIER_PROPERTY_PREATTACK_DEADLY_BLOW",
         "description": "Method Name: `GetModifierPreAttack_DeadlyBlow`",
-        "value": 175
+        "value": 176
       },
       {
         "name": "MODIFIER_PROPERTY_ALWAYS_AUTOATTACK_WHILE_HOLD_POSITION",
         "description": "Method Name: `GetAlwaysAutoAttackWhileHoldPosition`",
-        "value": 176
+        "value": 177
       },
       {
         "name": "MODIFIER_EVENT_ON_SPELL_TARGET_READY",
         "description": "Method Name: `OnSpellTargetReady`",
-        "value": 177
+        "value": 178
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_RECORD",
         "description": "Method Name: `OnAttackRecord`",
-        "value": 178
+        "value": 179
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_START",
         "description": "Method Name: `OnAttackStart`",
-        "value": 179
+        "value": 180
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK",
         "description": "Method Name: `OnAttack`",
-        "value": 180
+        "value": 181
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_LANDED",
         "description": "Method Name: `OnAttackLanded`",
-        "value": 181
+        "value": 182
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_FAIL",
         "description": "Method Name: `OnAttackFail`",
-        "value": 182
+        "value": 183
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_ALLIED",
         "description": "Happens even if attack can't be issued.\n\nMethod Name: `OnAttackAllied`.",
-        "value": 183
+        "value": 184
       },
       {
         "name": "MODIFIER_EVENT_ON_PROJECTILE_DODGE",
         "description": "Method Name: `OnProjectileDodge`",
-        "value": 184
+        "value": 185
       },
       {
         "name": "MODIFIER_EVENT_ON_ORDER",
         "description": "Method Name: `OnOrder`",
-        "value": 185
+        "value": 186
       },
       {
         "name": "MODIFIER_EVENT_ON_UNIT_MOVED",
         "description": "Method Name: `OnUnitMoved`",
-        "value": 186
+        "value": 187
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_START",
         "description": "Method Name: `OnAbilityStart`",
-        "value": 187
+        "value": 188
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_EXECUTED",
         "description": "Method Name: `OnAbilityExecuted`",
-        "value": 188
+        "value": 189
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_FULLY_CAST",
         "description": "Method Name: `OnAbilityFullyCast`",
-        "value": 189
+        "value": 190
       },
       {
         "name": "MODIFIER_EVENT_ON_BREAK_INVISIBILITY",
         "description": "Method Name: `OnBreakInvisibility`",
-        "value": 190
+        "value": 191
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_END_CHANNEL",
         "description": "Method Name: `OnAbilityEndChannel`",
-        "value": 191
-      },
-      {
-        "name": "MODIFIER_EVENT_ON_PROCESS_UPGRADE",
         "value": 192
       },
       {
-        "name": "MODIFIER_EVENT_ON_REFRESH",
+        "name": "MODIFIER_EVENT_ON_PROCESS_UPGRADE",
         "value": 193
+      },
+      {
+        "name": "MODIFIER_EVENT_ON_REFRESH",
+        "value": 194
       },
       {
         "name": "MODIFIER_EVENT_ON_TAKEDAMAGE",
         "description": "Method Name: `OnTakeDamage`",
-        "value": 194
+        "value": 195
       },
       {
         "name": "MODIFIER_EVENT_ON_DEATH_PREVENTED",
         "description": "Method Name: `OnDamagePrevented`",
-        "value": 195
+        "value": 196
       },
       {
         "name": "MODIFIER_EVENT_ON_STATE_CHANGED",
         "description": "Method Name: `OnStateChanged`",
-        "value": 196
+        "value": 197
       },
       {
         "name": "MODIFIER_EVENT_ON_ORB_EFFECT",
-        "value": 197
+        "value": 198
       },
       {
         "name": "MODIFIER_EVENT_ON_PROCESS_CLEAVE",
         "description": "Method Name: `OnProcessCleave`",
-        "value": 198
+        "value": 199
       },
       {
         "name": "MODIFIER_EVENT_ON_DAMAGE_CALCULATED",
         "description": "Method Name: `OnDamageCalculated`",
-        "value": 199
+        "value": 200
       },
       {
         "name": "MODIFIER_EVENT_ON_MAGIC_DAMAGE_CALCULATED",
         "description": "Method Name: `OnMagicDamageCalculated`",
-        "value": 200
+        "value": 201
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACKED",
         "description": "Method Name: `OnAttacked`",
-        "value": 201
+        "value": 202
       },
       {
         "name": "MODIFIER_EVENT_ON_DEATH",
         "description": "Method Name: `OnDeath`",
-        "value": 202
+        "value": 203
       },
       {
         "name": "MODIFIER_EVENT_ON_DEATH_COMPLETED",
         "description": "Method Name: `OnDeathCompleted`",
-        "value": 203
+        "value": 204
       },
       {
         "name": "MODIFIER_EVENT_ON_RESPAWN",
         "description": "Method Name: `OnRespawn`",
-        "value": 204
+        "value": 205
       },
       {
         "name": "MODIFIER_EVENT_ON_SPENT_MANA",
         "description": "Method Name: `OnSpentMana`",
-        "value": 205
+        "value": 206
       },
       {
         "name": "MODIFIER_EVENT_ON_SPENT_HEALTH",
         "description": "Method Name: `OnSpentHealth`",
-        "value": 206
+        "value": 207
       },
       {
         "name": "MODIFIER_EVENT_ON_TELEPORTING",
         "description": "Method Name: `OnTeleporting`",
-        "value": 207
+        "value": 208
       },
       {
         "name": "MODIFIER_EVENT_ON_TELEPORTED",
         "description": "Method Name: `OnTeleported`",
-        "value": 208
+        "value": 209
       },
       {
         "name": "MODIFIER_EVENT_ON_SET_LOCATION",
         "description": "Method Name: `OnSetLocation`",
-        "value": 209
+        "value": 210
       },
       {
         "name": "MODIFIER_EVENT_ON_HEALTH_GAINED",
         "description": "Method Name: `OnHealthGained`",
-        "value": 210
+        "value": 211
       },
       {
         "name": "MODIFIER_EVENT_ON_MANA_GAINED",
         "description": "Method Name: `OnManaGained`",
-        "value": 211
+        "value": 212
       },
       {
         "name": "MODIFIER_EVENT_ON_TAKEDAMAGE_KILLCREDIT",
         "description": "Method Name: `OnTakeDamageKillCredit`",
-        "value": 212
+        "value": 213
       },
       {
         "name": "MODIFIER_EVENT_ON_HERO_KILLED",
         "description": "Method Name: `OnHeroKilled`",
-        "value": 213
+        "value": 214
       },
       {
         "name": "MODIFIER_EVENT_ON_HEAL_RECEIVED",
         "description": "Method Name: `OnHealReceived`",
-        "value": 214
+        "value": 215
       },
       {
         "name": "MODIFIER_EVENT_ON_BUILDING_KILLED",
         "description": "Method Name: `OnBuildingKilled`",
-        "value": 215
+        "value": 216
       },
       {
         "name": "MODIFIER_EVENT_ON_MODEL_CHANGED",
         "description": "Method Name: `OnModelChanged`",
-        "value": 216
+        "value": 217
       },
       {
         "name": "MODIFIER_EVENT_ON_MODIFIER_ADDED",
         "description": "Method Name: `OnModifierAdded`",
-        "value": 217
+        "value": 218
       },
       {
         "name": "MODIFIER_PROPERTY_TOOLTIP",
         "description": "Method Name: `OnTooltip`",
-        "value": 218
+        "value": 219
       },
       {
         "name": "MODIFIER_PROPERTY_MODEL_CHANGE",
         "description": "Method Name: `GetModifierModelChange`",
-        "value": 219
+        "value": 220
       },
       {
         "name": "MODIFIER_PROPERTY_MODEL_SCALE",
         "description": "Method Name: `GetModifierModelScale`",
-        "value": 220
+        "value": 221
       },
       {
         "name": "MODIFIER_PROPERTY_MODEL_SCALE_ANIMATE_TIME",
         "description": "Method Name: `GetModifierModelScaleAnimateTime`",
-        "value": 221
+        "value": 222
+      },
+      {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE_USE_IN_OUT_EASE",
+        "description": "Method Name: `GetModifierModelScaleUseInOutEase`",
+        "value": 223
+      },
+      {
+        "name": "MODIFIER_PROPERTY_MODEL_SCALE_CONSTANT",
+        "description": "Method Name: `GetModifierModelScaleConstant`",
+        "value": 224
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SCEPTER",
         "description": "Applies scepter when this property is active\n\nMethod Name: `GetModifierScepter`.",
-        "value": 222
+        "value": 225
       },
       {
         "name": "MODIFIER_PROPERTY_IS_SHARD",
         "description": "Applies shard when this property is active\n\nMethod Name: `GetModifierShard`.",
-        "value": 223
+        "value": 226
       },
       {
         "name": "MODIFIER_PROPERTY_RADAR_COOLDOWN_REDUCTION",
         "description": "Method Name: `GetModifierRadarCooldownReduction`",
-        "value": 224
+        "value": 227
       },
       {
         "name": "MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS",
         "description": "Method Name: `GetActivityTranslationModifiers`",
-        "value": 225
+        "value": 228
       },
       {
         "name": "MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND",
         "description": "Method Name: `GetAttackSound`",
-        "value": 226
+        "value": 229
       },
       {
         "name": "MODIFIER_PROPERTY_LIFETIME_FRACTION",
         "description": "Method Name: `GetUnitLifetimeFraction`",
-        "value": 227
+        "value": 230
       },
       {
         "name": "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION",
         "description": "Method Name: `GetModifierProvidesFOWVision`",
-        "value": 228
+        "value": 231
       },
       {
         "name": "MODIFIER_PROPERTY_SPELLS_REQUIRE_HP",
         "description": "Method Name: `GetModifierSpellsRequireHP`",
-        "value": 229
+        "value": 232
       },
       {
         "name": "MODIFIER_PROPERTY_FORCE_DRAW_MINIMAP",
         "description": "Method Name: `GetForceDrawOnMinimap`",
-        "value": 230
+        "value": 233
       },
       {
         "name": "MODIFIER_PROPERTY_DISABLE_TURNING",
         "description": "Method Name: `GetModifierDisableTurning`",
-        "value": 231
+        "value": 234
       },
       {
         "name": "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE",
         "description": "Method Name: `GetModifierIgnoreCastAngle`",
-        "value": 232
+        "value": 235
       },
       {
         "name": "MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
         "description": "Method Name: `GetModifierChangeAbilityValue`",
-        "value": 233
+        "value": 236
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL",
         "description": "Method Name: `GetModifierOverrideAbilitySpecial`",
-        "value": 234
+        "value": 237
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL_VALUE",
         "description": "Method Name: `GetModifierOverrideAbilitySpecialValue`",
-        "value": 235
+        "value": 238
       },
       {
         "name": "MODIFIER_PROPERTY_ABILITY_LAYOUT",
         "description": "Method Name: `GetModifierAbilityLayout`",
-        "value": 236
+        "value": 239
       },
       {
         "name": "MODIFIER_EVENT_ON_DOMINATED",
         "description": "Method Name: `OnDominated`",
-        "value": 237
+        "value": 240
       },
       {
         "name": "MODIFIER_EVENT_ON_KILL",
         "description": "Method Name: `OnKill`",
-        "value": 238
+        "value": 241
       },
       {
         "name": "MODIFIER_EVENT_ON_ASSIST",
         "description": "Method Name: `OnAssist`",
-        "value": 239
+        "value": 242
       },
       {
         "name": "MODIFIER_PROPERTY_TEMPEST_DOUBLE",
         "description": "Method Name: `GetModifierTempestDouble`",
-        "value": 240
+        "value": 243
       },
       {
         "name": "MODIFIER_PROPERTY_PRESERVE_PARTICLES_ON_MODEL_CHANGE",
         "description": "Method Name: `PreserveParticlesOnModelChanged`",
-        "value": 241
+        "value": 244
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_FINISHED",
         "description": "Method Name: `OnAttackFinished`",
-        "value": 242
+        "value": 245
       },
       {
         "name": "MODIFIER_PROPERTY_IGNORE_COOLDOWN",
         "description": "Method Name: `GetModifierIgnoreCooldown`",
-        "value": 243
+        "value": 246
       },
       {
         "name": "MODIFIER_PROPERTY_CAN_ATTACK_TREES",
         "description": "Method Name: `GetModifierCanAttackTrees`",
-        "value": 244
+        "value": 247
       },
       {
         "name": "MODIFIER_PROPERTY_VISUAL_Z_DELTA",
         "description": "Method Name: `GetVisualZDelta`",
-        "value": 245
+        "value": 248
       },
       {
         "name": "MODIFIER_PROPERTY_VISUAL_Z_SPEED_BASE_OVERRIDE",
         "description": "Method Name: `GetVisualZSpeedBaseOverride`",
-        "value": 246
+        "value": 249
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION",
-        "value": 247
+        "value": 250
       },
       {
         "name": "MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
         "description": "Method Name: `GetModifierNoVisionOfAttacker`",
-        "value": 248
+        "value": 251
       },
       {
         "name": "MODIFIER_PROPERTY_TOOLTIP2",
         "description": "Method Name: `OnTooltip2`",
-        "value": 249
+        "value": 252
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY",
         "description": "Method Name: `OnAttackRecordDestroy`",
-        "value": 250
+        "value": 253
       },
       {
         "name": "MODIFIER_EVENT_ON_PROJECTILE_OBSTRUCTION_HIT",
         "description": "Method Name: `OnProjectileObstructionHit`",
-        "value": 251
+        "value": 254
       },
       {
         "name": "MODIFIER_PROPERTY_SUPPRESS_TELEPORT",
         "description": "Method Name: `GetSuppressTeleport`",
-        "value": 252
+        "value": 255
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTACK_CANCELLED",
         "description": "Method Name: `OnAttackCancelled`",
-        "value": 253
+        "value": 256
       },
       {
         "name": "MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
         "description": "Method Name: `GetSuppressCleave`",
-        "value": 254
+        "value": 257
       },
       {
         "name": "MODIFIER_PROPERTY_BOT_ATTACK_SCORE_BONUS",
         "description": "Method Name: `BotAttackScoreBonus`",
-        "value": 255
+        "value": 258
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE",
         "description": "Method Name: `GetModifierAttackSpeedReductionPercentage`",
-        "value": 256
+        "value": 259
       },
       {
         "name": "MODIFIER_PROPERTY_MOVESPEED_REDUCTION_PERCENTAGE",
         "description": "Method Name: `GetModifierMoveSpeedReductionPercentage`",
-        "value": 257
+        "value": 260
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACK_WHILE_MOVING_TARGET",
-        "value": 258
+        "value": 261
       },
       {
         "name": "MODIFIER_PROPERTY_ATTACKSPEED_PERCENTAGE",
         "description": "Method Name: `GetModifierAttackSpeedPercentage`",
-        "value": 259
+        "value": 262
       },
       {
         "name": "MODIFIER_EVENT_ON_ATTEMPT_PROJECTILE_DODGE",
         "description": "Method Name: `OnAttemptProjectileDodge`",
-        "value": 260
+        "value": 263
       },
       {
         "name": "MODIFIER_EVENT_ON_PREDEBUFF_APPLIED",
         "description": "Method Name: `OnPreDebuffApplied`",
-        "value": 261
+        "value": 264
       },
       {
         "name": "MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE_STACKING",
         "description": "Method Name: `GetModifierPercentageCooldownStacking`",
-        "value": 262
+        "value": 265
       },
       {
         "name": "MODIFIER_PROPERTY_SPELL_REDIRECT_TARGET",
         "description": "Method Name: `GetModifierSpellRedirectTarget`",
-        "value": 263
+        "value": 266
       },
       {
         "name": "MODIFIER_PROPERTY_TURN_RATE_CONSTANT",
         "description": "Method Name: `GetModifierTurnRateConstant`",
-        "value": 264
+        "value": 267
       },
       {
         "name": "MODIFIER_PROPERTY_RAT_PACK",
         "description": "Method Name: `GetModifierIsRatPack`",
-        "value": 265
+        "value": 268
       },
       {
         "name": "MODIFIER_PROPERTY_PHYSICALDAMAGEOUTGOING_PERCENTAGE",
         "description": "Method Name: `GetModifierPhysicalDamageOutgoing_Percentage`",
-        "value": 266
+        "value": 269
       },
       {
         "name": "MODIFIER_PROPERTY_KNOCKBACK_AMPLIFICATION_PERCENTAGE",
         "description": "Method Name: `GetModifierKnockbackAmplification_Percentage`",
-        "value": 267
+        "value": 270
       },
       {
         "name": "MODIFIER_PROPERTY_HEALTHBAR_PIPS",
         "description": "Return value is a count of pips.\n\nMethod Name: `GetModifierHealthBarPips`.",
-        "value": 268
+        "value": 271
       },
       {
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT",
         "description": "This property controls 'universal' shield, if defined both on client and server. Return value on client should be current shield health, as a positive integer, on server - amount of damage blocked.\n\nMethod Name: `GetModifierIncomingDamageConstant`.",
-        "value": 269
+        "value": 272
       },
       {
         "name": "MODIFIER_EVENT_SPELL_APPLIED_SUCCESSFULLY",
         "description": "Method Name: `OnSpellAppliedSuccessfully`",
-        "value": 270
+        "value": 273
       },
       {
         "name": "MODIFIER_PROPERTY_AVOID_DAMAGE_AFTER_REDUCTIONS",
         "description": "Method Name: `GetModifierAvoidDamageAfterReductions`",
-        "value": 271
+        "value": 274
+      },
+      {
+        "name": "MODIFIER_PROPERTY_FAIL_ATTACK",
+        "description": "Method Name: `GetModifierPropetyFailAttack`",
+        "value": 275
+      },
+      {
+        "name": "MODIFIER_PROPERTY_PREREDUCE_INCOMING_DAMAGE_MULT",
+        "description": "Method Name: `GetModifierPrereduceIncomingDamage_Mult`",
+        "value": 276
+      },
+      {
+        "name": "MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX",
+        "description": "Method Name: `GetModifierSuppressFullscreenDeathFX`",
+        "value": 277
+      },
+      {
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
+        "description": "Method Name: `MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST`",
+        "value": 278
       },
       {
         "name": "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_MULTIPLICATIVE",
         "description": "Method Name: `GetModifierDamageOutgoing_PercentageMultiplicative`",
-        "value": 272
+        "value": 279
+      },
+      {
+        "name": "MODIFIER_PROPERTY_TICK_GOLD_MULTIPLIER",
+        "description": "Method Name: `GetModifierTickGold_Multiplier`",
+        "value": 280
       },
       {
         "name": "MODIFIER_PROPERTY_SLOW_RESISTANCE",
         "description": "Method Name: `GetModifierSlowResistance`",
-        "value": 273
+        "value": 281
       },
       {
         "name": "MODIFIER_PROPERTY_AOE_BONUS_PERCENTAGE",
         "description": "Method Name: `GetModifierAoEBonusPercentage`",
-        "value": 274
+        "value": 282
       },
       {
         "name": "MODIFIER_PROPERTY_PROJECTILE_SPEED",
         "description": "Method Name: `GetModifierProjectileSpeed`",
-        "value": 275
+        "value": 283
       },
       {
         "name": "MODIFIER_PROPERTY_BECOME_UNIVERSAL",
         "description": "Method Name: `GetModifierBecomeUniversal`",
-        "value": 276
+        "value": 284
       },
       {
         "name": "MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK",
         "description": "Method Name: `OnForceProcMagicStick`",
-        "value": 277
+        "value": 285
       },
       {
         "name": "MODIFIER_FUNCTION_LAST",
-        "value": 278
+        "value": 286
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
@@ -11253,64 +11297,68 @@
         "value": 32
       },
       {
-        "name": "AE_CL_DOTA_PLAY_STATUS_EFFECT",
+        "name": "AE_CL_PANORAMA_EVENT",
         "value": 33
       },
       {
-        "name": "AE_CL_DOTA_STOP_STATUS_EFFECT",
+        "name": "AE_CL_DOTA_PLAY_STATUS_EFFECT",
         "value": 34
       },
       {
-        "name": "AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
+        "name": "AE_CL_DOTA_STOP_STATUS_EFFECT",
         "value": 35
       },
       {
-        "name": "AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
+        "name": "AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
         "value": 36
       },
       {
-        "name": "AE_DOTA_PET_ITEM_PICKUP",
+        "name": "AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
         "value": 37
       },
       {
-        "name": "AE_DOTA_PET_ITEM_DROP",
+        "name": "AE_DOTA_PET_ITEM_PICKUP",
         "value": 38
       },
       {
-        "name": "AE_DOTA_SUPPRESS_CONSTANT_LAYER",
+        "name": "AE_DOTA_PET_ITEM_DROP",
         "value": 39
       },
       {
-        "name": "AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
+        "name": "AE_DOTA_SUPPRESS_CONSTANT_LAYER",
         "value": 40
       },
       {
-        "name": "AE_DOTA_CREATE_CLINKZ_ATTACK",
+        "name": "AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
         "value": 41
       },
       {
-        "name": "AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
+        "name": "AE_DOTA_CREATE_CLINKZ_ATTACK",
         "value": 42
       },
       {
-        "name": "AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
+        "name": "AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
         "value": 43
       },
       {
-        "name": "AE_DOTA_SWITCH_ATTACK_COMBO",
+        "name": "AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
         "value": 44
       },
       {
-        "name": "AE_EF_NODRAW",
+        "name": "AE_DOTA_SWITCH_ATTACK_COMBO",
         "value": 45
       },
       {
-        "name": "AE_EF_DRAW",
+        "name": "AE_EF_NODRAW",
         "value": 46
       },
       {
-        "name": "AE_DOTA_PLAY_SOUND_ATTACK",
+        "name": "AE_EF_DRAW",
         "value": 47
+      },
+      {
+        "name": "AE_DOTA_PLAY_SOUND_ATTACK",
+        "value": 48
       }
     ],
     "description": "https://developer.valvesoftware.com/wiki/Animation_Events#Server_events"
@@ -11464,39 +11512,39 @@
       },
       {
         "name": "SINGLE_SHOT",
-        "value": 1
-      },
-      {
-        "name": "DOUBLE_SHOT",
         "value": 2
       },
       {
-        "name": "RELOAD",
+        "name": "DOUBLE_SHOT",
         "value": 3
       },
       {
-        "name": "MELEE_MISS",
+        "name": "RELOAD",
         "value": 4
       },
       {
-        "name": "MELEE_HIT",
+        "name": "MELEE_MISS",
         "value": 5
       },
       {
-        "name": "MELEE_HIT_WORLD",
+        "name": "MELEE_HIT",
         "value": 6
       },
       {
-        "name": "SPECIAL1",
-        "value": 8
+        "name": "MELEE_HIT_WORLD",
+        "value": 7
       },
       {
-        "name": "SPECIAL2",
+        "name": "SPECIAL1",
         "value": 9
       },
       {
-        "name": "SPECIAL3",
+        "name": "SPECIAL2",
         "value": 10
+      },
+      {
+        "name": "SPECIAL3",
+        "value": 11
       }
     ],
     "description": "https://developer.valvesoftware.com/wiki/Weapon_script#SoundData"

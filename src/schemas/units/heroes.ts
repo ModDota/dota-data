@@ -32,6 +32,8 @@ const baseHero = () =>
           s
             .obj('Persona')
             .field('name', s.str().pattern(resourcePatterns.npc))
+            .field('token', s.str())
+            .field('token_english', s.str())
             .field('Model', s.str().pattern(resourcePatterns.models), {
               description: 'For tools only.',
             })
@@ -96,28 +98,6 @@ const baseHero = () =>
 
     // 7.32e
     .field('RandomEnabled', s.binaryBoolean())
-
-    .field(
-      'RenderablePortrait',
-      s.obj('RenderablePortrait').field(
-        'Particles',
-        s.obj().rest(
-          s.oneOf([
-            s.literal('loadout'),
-            s.obj().rest(
-              s
-                .obj('RenderablePortraitParticle')
-                // TODO:
-                .field('type', s.anything()) // follow_attachment, follow_origin
-                .field('location', s.anything()) // attach_hitloc
-                .field('position', s.vector()),
-              'number',
-            ),
-          ]),
-          'string',
-        ),
-      ),
-    )
     .field(
       'AbilityPreview',
       s
@@ -177,6 +157,7 @@ const baseHero = () =>
     )
 
     .field('HUD', s.anything())
+    .field('Adjectives', s.obj().rest(s.int(), 'string'))
 
     .fieldsAfter('VoiceFile', [
       ['PickSound', s.str()],

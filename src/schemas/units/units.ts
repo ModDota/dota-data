@@ -202,6 +202,28 @@ export const baseUnit = () =>
     .field('UntargetableByExorcismSpirits', s.binaryBoolean())
 
     .field(
+      'RenderablePortrait',
+      s.obj('RenderablePortrait').field(
+        'Particles',
+        s.obj().rest(
+          s.oneOf([
+            s.literal('loadout'),
+            s.obj().rest(
+              s
+                .obj('RenderablePortraitParticle')
+                // TODO:
+                .field('type', s.anything()) // follow_attachment, follow_origin
+                .field('location', s.anything()) // attach_hitloc
+                .field('position', s.vector()),
+              'number',
+            ),
+          ]),
+          'string',
+        ),
+      ),
+    )
+
+    .field(
       'Creature',
       s
         .obj('CreatureBlock')
@@ -234,7 +256,9 @@ export const baseUnit = () =>
           ),
         ),
       { description: "Valid only when BaseClass is 'npc_dota_creature' or it's subclass." },
-    );
+    )
+    .field('party_hat_effect', s.str().pattern(resourcePatterns.particles))
+    .field('party_hat_effect_persona', s.str().pattern(resourcePatterns.particles));
 
 export const unitCustom = baseUnit().field('vscripts', s.str().pattern(resourcePatterns.lua), {
   description: "Path to the unit's script file",

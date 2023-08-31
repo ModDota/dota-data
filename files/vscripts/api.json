@@ -7423,6 +7423,16 @@
       },
       {
         "kind": "function",
+        "name": "GetUnitLocToken",
+        "available": "client",
+        "description": "Get the localization token for this unit's name.",
+        "returns": [
+          "string"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetUnitName",
         "available": "both",
         "description": "Get the name of this unit.",
@@ -15031,7 +15041,14 @@
         "returns": [
           "nil"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "death",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -16636,6 +16653,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierModelScaleConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierModelScaleUseInOutEase",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierMoveSpeed_Absolute",
         "available": "both",
         "abstract": true,
@@ -17274,6 +17311,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPrereduceIncomingDamage_Mult",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierProcAttack_BonusDamage_Magical",
         "available": "both",
         "abstract": true,
@@ -17398,6 +17445,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropetyFailAttack",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17633,6 +17690,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierSuppressFullscreenDeathFX",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierTempestDouble",
         "available": "both",
         "abstract": true,
@@ -17646,6 +17713,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierTickGold_Multiplier",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17921,6 +17998,16 @@
       {
         "kind": "function",
         "name": "GetVisualZSpeedBaseOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18713,6 +18800,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "ReincarnateSuppressFX",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -26591,6 +26688,23 @@
       },
       {
         "kind": "function",
+        "name": "GetHeroLocTokenByID",
+        "available": "both",
+        "description": "Get the localization token for the given hero ID.",
+        "returns": [
+          "string"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetHeroNameByID",
         "available": "both",
         "description": "Get the hero name given a hero ID.",
@@ -30899,6 +31013,7 @@
         "kind": "function",
         "name": "GetName",
         "available": "both",
+        "description": "Get the entity name.",
         "returns": [
           "string"
         ],
@@ -32136,16 +32251,6 @@
         "description": "Returns length of this scene in seconds.",
         "returns": [
           "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "FindCamera",
-        "available": "server",
-        "description": "Get the camera.",
-        "returns": [
-          "handle"
         ],
         "args": []
       },
@@ -38012,7 +38117,7 @@
     "available": "client",
     "description": "Returns true if whatever alt is remapped to is pressed.",
     "returns": [
-      "unknown"
+      "bool"
     ],
     "args": []
   },
@@ -38022,7 +38127,7 @@
     "available": "client",
     "description": "Returns true if whatever ctrl is remapped to is pressed.",
     "returns": [
-      "unknown"
+      "bool"
     ],
     "args": []
   },
@@ -38793,7 +38898,7 @@
   {
     "kind": "function",
     "name": "RandomFloat",
-    "available": "both",
+    "available": "server",
     "description": "Get a random float within a range.",
     "returns": [
       "float"
@@ -38807,6 +38912,29 @@
       },
       {
         "name": "max",
+        "types": [
+          "float"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "RandomFloatWrapper",
+    "available": "both",
+    "description": "Generate a random floating point number within a range, inclusive.",
+    "returns": [
+      "float"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg2",
         "types": [
           "float"
         ]
@@ -39255,6 +39383,29 @@
         "name": "airShake",
         "types": [
           "bool"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
+    "name": "Script_RandomFloat",
+    "available": "both",
+    "description": "Get a random float within a range.",
+    "returns": [
+      "float"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "float"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "float"
         ]
       }
     ]
