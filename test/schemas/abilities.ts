@@ -24,7 +24,7 @@ describe('integration', () => {
       'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
       `dawnbreaker_solar_guardian.SpellImmunityType should be a SpellImmunityType enum but is: SPELL_IMMUNITY_ENEMIES_YES\"
 \t\t`, // trailing \ AND since it escapes value, newline with tabs carry over
-      'dawnbreaker_solar_guardian.FightRecapLevel\" is unknown', // trailing \
+      'dawnbreaker_solar_guardian.FightRecapLevel" is unknown', // trailing \
     ],
   });
 
