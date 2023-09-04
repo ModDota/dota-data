@@ -862,6 +862,11 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       1: ['to_angle'],
     },
   },
+  'CDOTA_Item.LaunchLoot': {
+    args: {
+      4: ['teleportOwner', ['CDOTA_BaseNPC_Hero', 'nil']],
+    },
+  },
 };
 
 export const extraDeclarations = (() => {
