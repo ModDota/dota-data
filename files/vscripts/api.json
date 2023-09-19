@@ -13305,7 +13305,8 @@
           {
             "name": "teleportOwner",
             "types": [
-              "handle"
+              "CDOTA_BaseNPC_Hero",
+              "nil"
             ]
           }
         ]
