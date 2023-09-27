@@ -4865,8 +4865,13 @@
         "value": 285
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH",
+        "description": "Method Name: `GetModifierDoNotSinkAfterDeath`",
         "value": 286
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 287
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

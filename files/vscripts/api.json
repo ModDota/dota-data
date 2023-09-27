@@ -16051,6 +16051,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierDoNotSinkAfterDeath",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierEvasion_Constant",
         "available": "both",
         "abstract": true,
