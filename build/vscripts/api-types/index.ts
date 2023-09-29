@@ -445,6 +445,7 @@ apiTypesDeclarations.push({
     { name: 'no_attack_cooldown', types: ['bool'] },
     { name: 'record', types: ['int'] }, // TODO: Add attack record type?
     { name: 'fail_type', types: ['attackfail'] },
+    { name: 'report_max', types: ['bool', 'nil'] },
   ],
 });
 

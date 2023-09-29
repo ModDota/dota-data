@@ -1336,6 +1336,13 @@
         "types": [
           "attackfail"
         ]
+      },
+      {
+        "name": "report_max",
+        "types": [
+          "bool",
+          "nil"
+        ]
       }
     ]
   },
