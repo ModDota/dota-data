@@ -1,13 +1,13 @@
-ClientVersion=5816
-ServerVersion=5816
+ClientVersion=5855
+ServerVersion=5855
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8306449
-VersionDate=Aug 30 2023
-VersionTime=21:47:56
+SourceRevision=8375775
+VersionDate=Sep 27 2023
+VersionTime=13:41:51
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -378,22 +378,20 @@ Sets an opacity brush to apply to the panel and all it's children during composi
 
 
 === opacity-mask ===
-Applies an image as an opacity mask that stretches to the panel bounds and fades out it's content based on the alpha channel. The second float value is an optional opacity value for the mask itself, the image won't interpolate/cross-fade, but you can animate the opacity to fade the mask in/out. The -scroll-up, -scroll-down, and -scroll-up-down varients override the mask and apply only when the various vertical scroll scenarios affect the panel based on the overflow property.<br><br><b>Examples:</b><pre>opacity-mask: url( "file://{images}/upper_row_mask.tga" );
+Applies an image as an opacity mask that stretches to the panel bounds and fades out it's content based on the alpha channel. The second float value is an optional opacity value for the mask itself, the image won't interpolate/cross-fade, but you can animate the opacity to fade the mask in/out. <b>Examples:</b><pre>opacity-mask: url( "file://{images}/upper_row_mask.tga" );
 opacity-mask: url( "file://{images}/upper_row_mask.tga" ) 0.5;
-opacity-mask-scroll-up: url( "file://{images}/upper_row_mask_up.tga" ) 0.5;
-opacity-mask-scroll-down: url( "file://{images}/upper_row_mask_down.tga" ) 0.5;
-opacity-mask-scroll-up-down: url( "file://{images}/upper_row_mask_up_down.tga" ) 0.5;</pre>
+opacity-mask: url( "file://{images}/upper_row_mask.tga" ) -1.0;
+opacity-mask-position: 5px 50%;
+opacity-mask-scale: 200%;
+opacity-mask-scale: 50% 100%;
+</pre>
 
 
-=== opacity-mask-scroll-down ===
-
-
-
-=== opacity-mask-scroll-up ===
+=== opacity-mask-position ===
 
 
 
-=== opacity-mask-scroll-up-down ===
+=== opacity-mask-scale ===
 
 
 
@@ -2454,7 +2452,9 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_BECOME_UNIVERSAL = 284,
     /** OnForceProcMagicStick */
     MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK = 285,
-    MODIFIER_FUNCTION_LAST = 286,
+    /** GetModifierDoNotSinkAfterDeath */
+    MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH = 286,
+    MODIFIER_FUNCTION_LAST = 287,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -15555,6 +15555,10 @@ Initializing script VM...
     "value":6
   },{
     "kind":"constant",
+    "name":"MELEE_HIT_NPC",
+    "value":9
+  },{
+    "kind":"constant",
     "name":"MELEE_HIT_PLAYER",
     "value":8
   },{
@@ -15916,7 +15920,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":286
+    "value":287
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -16301,6 +16305,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
     "value":251
+  },{
+    "description":"GetModifierDoNotSinkAfterDeath",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH",
+    "value":286
   },{
     "description":"GetModifierEvasion_Constant",
     "enum":"modifierfunction",
@@ -17656,7 +17666,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"NEARLYEMPTY",
-    "value":12
+    "value":13
   },{
     "kind":"constant",
     "name":"OVERHEAD_ALERT_BLOCK",
@@ -17902,15 +17912,15 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"SPECIAL1",
-    "value":9
-  },{
-    "kind":"constant",
-    "name":"SPECIAL2",
     "value":10
   },{
     "kind":"constant",
-    "name":"SPECIAL3",
+    "name":"SPECIAL2",
     "value":11
+  },{
+    "kind":"constant",
+    "name":"SPECIAL3",
+    "value":12
   },{
     "enum":"subquest_text_replace_values_t",
     "kind":"constant",
@@ -18094,7 +18104,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"__UNKNOWN__",
-    "value":16
+    "value":17
   },{
     "extend":"CBaseModelEntity",
     "kind":"class",
@@ -32845,7 +32855,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33621,7 +33631,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1786
+    "value":1780
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33777,7 +33787,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1788
+    "value":1789
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33809,7 +33819,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -33945,7 +33955,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1789
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -34165,7 +34175,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1783
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34205,7 +34215,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1784
+    "value":1778
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34217,7 +34227,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1785
+    "value":1779
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34237,7 +34247,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1791
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34321,7 +34331,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1787
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34421,7 +34431,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1790
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34477,7 +34487,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1781
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -40815,6 +40825,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":6
   },{
     "kind":"constant",
+    "name":"MELEE_HIT_NPC",
+    "value":9
+  },{
+    "kind":"constant",
     "name":"MELEE_HIT_PLAYER",
     "value":8
   },{
@@ -41176,7 +41190,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":286
+    "value":287
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -41561,6 +41575,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_DONT_GIVE_VISION_OF_ATTACKER",
     "value":251
+  },{
+    "description":"GetModifierDoNotSinkAfterDeath",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH",
+    "value":286
   },{
     "description":"GetModifierEvasion_Constant",
     "enum":"modifierfunction",
@@ -42916,7 +42936,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"NEARLYEMPTY",
-    "value":12
+    "value":13
   },{
     "enum":"ParticleAttachment_t",
     "kind":"constant",
@@ -43033,15 +43053,15 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"SPECIAL1",
-    "value":9
-  },{
-    "kind":"constant",
-    "name":"SPECIAL2",
     "value":10
   },{
     "kind":"constant",
-    "name":"SPECIAL3",
+    "name":"SPECIAL2",
     "value":11
+  },{
+    "kind":"constant",
+    "name":"SPECIAL3",
+    "value":12
   },{
     "kind":"constant",
     "name":"ScriptDebugFirstLine",
@@ -43210,23 +43230,23 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"__UNKNOWN__",
-    "value":16
+    "value":17
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1778
+    "value":1784
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1779
+    "value":1785
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1780
+    "value":1786
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1782
+    "value":1781
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -49558,7 +49578,9 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_BECOME_UNIVERSAL = 284,
     /** OnForceProcMagicStick */
     MODIFIER_EVENT_ON_FORCE_PROC_MAGIC_STICK = 285,
-    MODIFIER_FUNCTION_LAST = 286,
+    /** GetModifierDoNotSinkAfterDeath */
+    MODIFIER_PROPERTY_DO_NOT_SINK_AFTER_DEATH = 286,
+    MODIFIER_FUNCTION_LAST = 287,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 

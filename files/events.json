@@ -751,6 +751,18 @@
     ]
   },
   {
+    "name": "hltv_replay_status",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "reason",
+        "description": "Reason for hltv replay status change ().",
+        "type": "long"
+      }
+    ]
+  },
+  {
     "name": "demo_start",
     "sourceFile": "core",
     "local": true,
@@ -4461,17 +4473,6 @@
     "sourceFile": "game",
     "local": false,
     "fields": []
-  },
-  {
-    "name": "player_profile_stats_updated",
-    "sourceFile": "game",
-    "local": false,
-    "fields": [
-      {
-        "name": "account_id",
-        "type": "uint64"
-      }
-    ]
   },
   {
     "name": "custom_game_player_count_updated",
