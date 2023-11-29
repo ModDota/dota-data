@@ -1,13 +1,13 @@
-ClientVersion=5855
-ServerVersion=5855
+ClientVersion=5936
+ServerVersion=5936
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8375775
-VersionDate=Sep 27 2023
-VersionTime=13:41:51
+SourceRevision=8529487
+VersionDate=Nov 28 2023
+VersionTime=18:18:52
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -2900,46 +2900,45 @@ declare enum DOTAKeybindCommand_t
     DOTA_KEYBIND_SPEC_SCOREBOARD = 197,
     DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 198,
     DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 199,
-    DOTA_KEYBIND_SPEC_STATS_HARVEST = 200,
-    DOTA_KEYBIND_SPEC_STATS_ITEM = 201,
-    DOTA_KEYBIND_SPEC_STATS_GOLD = 202,
-    DOTA_KEYBIND_SPEC_STATS_XP = 203,
-    DOTA_KEYBIND_SPEC_STATS_FANTASY = 204,
-    DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 205,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 206,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 207,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 208,
-    DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 209,
-    DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 210,
-    DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 211,
-    DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 212,
-    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 213,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 214,
-    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 215,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 216,
-    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 217,
-    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 218,
-    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 219,
-    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 220,
-    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 221,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 222,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 223,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 224,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 225,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 226,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 227,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 228,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 229,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 230,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 231,
-    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 232,
-    DOTA_KEYBIND_INSPECTHEROINWORLD = 233,
-    DOTA_KEYBIND_CAMERA_ZOOM_IN = 234,
-    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 235,
-    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 236,
-    DOTA_KEYBIND_DOTA_ALT = 237,
-    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 238,
-    DOTA_KEYBIND_COUNT = 239,
+    DOTA_KEYBIND_SPEC_STATS_ITEM = 200,
+    DOTA_KEYBIND_SPEC_STATS_GOLD = 201,
+    DOTA_KEYBIND_SPEC_STATS_XP = 202,
+    DOTA_KEYBIND_SPEC_STATS_FANTASY = 203,
+    DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 204,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 205,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 206,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 207,
+    DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 208,
+    DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 209,
+    DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 210,
+    DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 211,
+    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 212,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 213,
+    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 214,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 215,
+    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 216,
+    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 217,
+    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 218,
+    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 219,
+    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 220,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 221,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 222,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 223,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 224,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 225,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 226,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 227,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 228,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 229,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 230,
+    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 231,
+    DOTA_KEYBIND_INSPECTHEROINWORLD = 232,
+    DOTA_KEYBIND_CAMERA_ZOOM_IN = 233,
+    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 234,
+    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 235,
+    DOTA_KEYBIND_DOTA_ALT = 236,
+    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 237,
+    DOTA_KEYBIND_COUNT = 238,
 }
 
 declare enum DOTA_SHOP_TYPE
@@ -31567,7 +31566,6 @@ Initializing script VM...
 $> cl_script_reload
 Initializing script VM...
 ...done
-LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
 [{
     "args":[{
         "type":"float"
@@ -32855,7 +32853,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1777
+    "value":1776
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -33631,7 +33629,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1780
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33787,7 +33785,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1789
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -33819,7 +33817,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1776
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -33955,7 +33953,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1790
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -34175,7 +34173,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1782
+    "value":1779
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34215,7 +34213,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1778
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34227,7 +34225,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1779
+    "value":1789
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34247,7 +34245,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1787
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34331,7 +34329,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1783
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34431,7 +34429,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1791
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34487,7 +34485,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1788
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -43234,19 +43232,19 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1784
+    "value":1780
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1785
+    "value":1781
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1786
+    "value":1782
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1781
+    "value":1778
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -46417,7 +46415,6 @@ interface CPanoramaScript_CustomNetTables
     /** Unsubscribe from a game event */
     UnsubscribeNetTableListener( nCallbackHandle: number ): void;
 }
-No matches for 'SteamUGC' found
 interface CPanoramaScript_SteamFriends
 {
     /** Requests the user's persona name */
@@ -47832,11 +47829,6 @@ interface TabButton
     rememberchildfocus( _arg_1: boolean ): boolean;
     paneltype(): string;
 }
-No matches for 'DOTAMapUpdate2023Page' found
-No matches for 'DOTADashboard' found
-No matches for 'PageManager' found
-No matches for 'DOTAHomePage' found
-No matches for 'Movie' found
 interface DOTAAvatarImage
 {
     visible( _arg_1: boolean ): boolean;
@@ -48054,7 +48046,6 @@ interface CustomUIElement
     rememberchildfocus( _arg_1: boolean ): boolean;
     paneltype(): string;
 }
-No matches for 'DOTAHudPreGame' found
 declare enum SteamUGCQuery
 {
     RankedByVote = 0,
@@ -50026,46 +50017,45 @@ declare enum DOTAKeybindCommand_t
     DOTA_KEYBIND_SPEC_SCOREBOARD = 197,
     DOTA_KEYBIND_SPEC_INCREASE_REPLAY_SPEED = 198,
     DOTA_KEYBIND_SPEC_DECREASE_REPLAY_SPEED = 199,
-    DOTA_KEYBIND_SPEC_STATS_HARVEST = 200,
-    DOTA_KEYBIND_SPEC_STATS_ITEM = 201,
-    DOTA_KEYBIND_SPEC_STATS_GOLD = 202,
-    DOTA_KEYBIND_SPEC_STATS_XP = 203,
-    DOTA_KEYBIND_SPEC_STATS_FANTASY = 204,
-    DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 205,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 206,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 207,
-    DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 208,
-    DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 209,
-    DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 210,
-    DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 211,
-    DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 212,
-    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 213,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 214,
-    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 215,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 216,
-    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 217,
-    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 218,
-    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 219,
-    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 220,
-    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 221,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 222,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 223,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 224,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 225,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 226,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 227,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 228,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 229,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 230,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 231,
-    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 232,
-    DOTA_KEYBIND_INSPECTHEROINWORLD = 233,
-    DOTA_KEYBIND_CAMERA_ZOOM_IN = 234,
-    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 235,
-    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 236,
-    DOTA_KEYBIND_DOTA_ALT = 237,
-    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 238,
-    DOTA_KEYBIND_COUNT = 239,
+    DOTA_KEYBIND_SPEC_STATS_ITEM = 200,
+    DOTA_KEYBIND_SPEC_STATS_GOLD = 201,
+    DOTA_KEYBIND_SPEC_STATS_XP = 202,
+    DOTA_KEYBIND_SPEC_STATS_FANTASY = 203,
+    DOTA_KEYBIND_SPEC_STATS_WINCHANCE = 204,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLEBOTH = 205,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLERADIENT = 206,
+    DOTA_KEYBIND_SPEC_FOW_TOGGLEDIRE = 207,
+    DOTA_KEYBIND_SPEC_OPEN_BROADCASTER_MENU = 208,
+    DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 209,
+    DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 210,
+    DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 211,
+    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 212,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 213,
+    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 214,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 215,
+    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 216,
+    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 217,
+    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 218,
+    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 219,
+    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 220,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 221,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 222,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 223,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 224,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 225,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 226,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 227,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 228,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 229,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 230,
+    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 231,
+    DOTA_KEYBIND_INSPECTHEROINWORLD = 232,
+    DOTA_KEYBIND_CAMERA_ZOOM_IN = 233,
+    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 234,
+    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 235,
+    DOTA_KEYBIND_DOTA_ALT = 236,
+    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 237,
+    DOTA_KEYBIND_COUNT = 238,
 }
 
 declare enum DOTA_SHOP_TYPE

@@ -1,25 +1,37 @@
 ADDON_LOADED = ADDON_LOADED ~= nil or false
 if not ADDON_LOADED then return end
 
-local function sortJsonKeysOf(what)
-  local allKeys = {}
+local jsonorder_function_argument = {__jsonorder = {"name", "type"}}
+local jsonorder_function = { __jsonorder = {"args", "description", "kind", "name", "returns"}}
+local jsonorder_class = {__jsonorder = {"extend","instance", "kind", "members", "name"}}
+local jsonorder_constant = {__jsonorder = { "description", "enum", "kind", "name", "value" }}
 
-  for key in pairs(what) do
-    table.insert(allKeys, key)
+local function compareName(a, b) return a.name < b.name end
+local function compareKindAndName(a, b)
+  if a.kind < b.kind then
+    return false
+  elseif a.kind > b.kind then
+    return true
+  else
+    return a.name < b.name
   end
+end
 
-  table.sort(allKeys, function(a, b) return a < b end)
-
-  setmetatable(what, {
-    __jsonorder = allKeys
-  })
+local function findEnumAndDesc(key)
+  for enumName, edesc in pairs(EDesc) do
+    for valueName, vdesc in pairs(edesc) do
+      if key == valueName then
+        return enumName, vdesc ~= "" and vdesc or nil
+      end
+    end
+  end
 end
 
 local function buildFunctionSignature(name, desc)
   local args = {}
   for i = 0, #desc - 1 do
     local arg = { name = desc[i][2] ~= "" and desc[i][2] or nil, type = desc[i][1] }
-    sortJsonKeysOf(arg)
+    setmetatable(arg, jsonorder_function_argument)
     table.insert(args, arg)
   end
 
@@ -53,7 +65,7 @@ local function dumpScriptBindings()
   for name, fdesc in pairs(FDesc) do
     local binding = buildFunctionSignature(name, fdesc)
     binding.kind = "function"
-    sortJsonKeysOf(binding)
+    setmetatable(binding, jsonorder_function)
     table.insert(bindings, binding)
   end
 
@@ -61,11 +73,11 @@ local function dumpScriptBindings()
     local members = {}
     for name, fdesc in pairs(cdesc.FDesc) do
       local signature = buildFunctionSignature(name, fdesc)
-      sortJsonKeysOf(signature)
+      setmetatable(signature, jsonorder_function)
 
       table.insert(members, signature)
     end
-    table.sort(members, function(a, b) return a.name < b.name end)
+    table.sort(members, compareName)
 
     local meta = getmetatable(cdesc)
     local binding = {
@@ -81,7 +93,7 @@ local function dumpScriptBindings()
       binding.instance = findInstance(cdesc)
     end
 
-    sortJsonKeysOf(binding)
+    setmetatable(binding, jsonorder_class)
 
     table.insert(bindings, binding)
   end
@@ -89,15 +101,7 @@ local function dumpScriptBindings()
   for key, value in pairs(_G) do
     if not CDesc[key] and not FDesc[key] then
       if type(value) == "number" then
-        local enum, desc = (function()
-          for enumName, edesc in pairs(EDesc) do
-            for valueName, vdesc in pairs(edesc) do
-              if key == valueName then
-                return enumName, vdesc ~= "" and vdesc or nil
-              end
-            end
-          end
-        end)()
+        local enum, desc = findEnumAndDesc(key)
 
         local binding = {
           kind = "constant",
@@ -107,7 +111,7 @@ local function dumpScriptBindings()
           description = desc,
         }
 
-        sortJsonKeysOf(binding)
+        setmetatable(binding, jsonorder_constant)
 
         table.insert(bindings, binding)
       else
@@ -120,15 +124,7 @@ local function dumpScriptBindings()
     end
   end
 
-  table.sort(bindings, function(a, b)
-    if a.kind < b.kind then
-      return false
-    elseif a.kind > b.kind then
-      return true
-    else
-      return a.name < b.name
-    end
-  end)
+  table.sort(bindings, compareKindAndName)
 
   return bindings
 end
