@@ -37740,45 +37740,29 @@
   {
     "kind": "function",
     "name": "DeepPrintTable",
-    "description": "Print out a table (and subtables) to the console.",
     "available": "both",
-    "args": [
-      {
-        "name": "table",
-        "types": [
-          "table",
-          "nil"
-        ]
-      }
-    ],
+    "description": "Print out a table (and subtables) to the console.",
     "returns": [
       "nil"
-    ]
-  },
-  {
-    "kind": "function",
-    "name": "DeepPrintTable",
-    "available": "both",
-    "returns": [
-      "unknown"
     ],
     "args": [
       {
         "name": "debugInstance",
         "types": [
-          "unknown"
+          "table",
+          "nil"
         ]
       },
       {
         "name": "prefix",
         "types": [
-          "unknown"
+          "string"
         ]
       },
       {
         "name": "isPublicScriptScope",
         "types": [
-          "unknown"
+          "bool"
         ]
       }
     ]
@@ -38288,11 +38272,14 @@
   {
     "kind": "function",
     "name": "Dynamic_Wrap",
-    "description": "A function to re-lookup a function by name every time.",
     "available": "both",
+    "description": "A function to re-lookup a function by name every time.",
+    "returns": [
+      "unknown"
+    ],
     "args": [
       {
-        "name": "context",
+        "name": "mt",
         "types": [
           "table"
         ]
@@ -38301,31 +38288,6 @@
         "name": "name",
         "types": [
           "string"
-        ]
-      }
-    ],
-    "returns": [
-      "unknown"
-    ]
-  },
-  {
-    "kind": "function",
-    "name": "Dynamic_Wrap",
-    "available": "both",
-    "returns": [
-      "unknown"
-    ],
-    "args": [
-      {
-        "name": "mt",
-        "types": [
-          "unknown"
-        ]
-      },
-      {
-        "name": "name",
-        "types": [
-          "unknown"
         ]
       }
     ]
