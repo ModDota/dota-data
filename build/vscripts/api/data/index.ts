@@ -864,34 +864,29 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   'CDOTA_Item.LaunchLoot': {
     args: {
-      4: ['teleportOwner', ['CDOTA_BaseNPC_Hero', 'nil']],
+      4: [null, ['CDOTA_BaseNPC_Hero', 'nil']],
     },
   },
+  '_G.DeepPrintTable': {
+    args: {
+      0: [null, ['table', 'nil']],
+      1: [null, 'string'],
+      2: [null, 'bool']
+    },
+    description: 'Print out a table (and subtables) to the console.',
+    returns: ['nil']
+  },
+  '_G.Dynamic_Wrap': {
+    args: {
+      0: [null, 'table'],
+      1: [null, 'string']
+    },
+    description: 'A function to re-lookup a function by name every time.',
+  }
 };
 
 export const extraDeclarations = (() => {
   const context: apiTypes.Declaration[] = [];
-
-  context.push({
-    kind: 'function',
-    name: 'DeepPrintTable',
-    description: 'Print out a table (and subtables) to the console.',
-    available: 'both',
-    args: [{ name: 'table', types: ['table', 'nil'] }],
-    returns: ['nil'],
-  });
-
-  context.push({
-    kind: 'function',
-    name: 'Dynamic_Wrap',
-    description: 'A function to re-lookup a function by name every time.',
-    available: 'both',
-    args: [
-      { name: 'context', types: ['table'] },
-      { name: 'name', types: ['string'] },
-    ],
-    returns: ['unknown'],
-  });
 
   context.push({
     kind: 'class',
