@@ -2975,6 +2975,14 @@ Initializing script VM...
     "returns":"int"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"scopeTable"
+      }],
+    "kind":"function",
+    "name":"AddToScriptHelp",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"float"
       },{
         "type":"float"
@@ -3019,6 +3027,11 @@ Initializing script VM...
     "kind":"function",
     "name":"AxisAngleToQuaternion",
     "returns":"Quaternion"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"BeginScriptDebug",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -3070,12 +3083,39 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"val"
+      },{
+        "type":"<unknown>",
+        "name":"min"
+      },{
+        "type":"<unknown>",
+        "name":"max"
+      }],
+    "kind":"function",
+    "name":"Clamp",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ClearSpawnGroupEntityFilters",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"int"
       }],
     "description":"( teamNumber )",
     "kind":"function",
     "name":"ClearTeamCustomHealthbarColor",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"table"
+      }],
+    "kind":"function",
+    "name":"ConnectOutputs",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -3561,6 +3601,55 @@ Initializing script VM...
     "name":"DebugScreenTextPretty",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"DebuggerBreak",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"DeepPrint",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      },{
+        "type":"<unknown>",
+        "name":"isPublicScriptScope"
+      }],
+    "kind":"function",
+    "name":"DeepPrintTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"DeepToString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"deg"
+      }],
+    "kind":"function",
+    "name":"Deg2Rad",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"handle"
       }],
@@ -3708,6 +3797,27 @@ Initializing script VM...
     "name":"DropNeutralItemAtPositionForHeroWithOffset",
     "returns":"handle"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"DumpScriptBindings",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"DumpSpawnGroupEntityFilters",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"mt"
+      },{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"Dynamic_Wrap",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"string"
       }],
@@ -3824,6 +3934,57 @@ Initializing script VM...
     "name":"EmitSoundOnLocationWithCaster",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"EndScriptDebug",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"target"
+      },{
+        "type":"<unknown>",
+        "name":"action"
+      },{
+        "type":"<unknown>",
+        "name":"value"
+      },{
+        "type":"<unknown>",
+        "name":"delay"
+      },{
+        "type":"<unknown>",
+        "name":"activator"
+      }],
+    "kind":"function",
+    "name":"EntFire",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"target"
+      },{
+        "type":"<unknown>",
+        "name":"action"
+      },{
+        "type":"<unknown>",
+        "name":"value"
+      },{
+        "type":"<unknown>",
+        "name":"delay"
+      },{
+        "type":"<unknown>",
+        "name":"activator"
+      }],
+    "kind":"function",
+    "name":"EntFireByHandle",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"int"
       }],
@@ -3851,6 +4012,31 @@ Initializing script VM...
     "kind":"function",
     "name":"ExponentialDecay",
     "returns":"float"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instance"
+      },{
+        "type":"<unknown>",
+        "name":"luaClass"
+      }],
+    "kind":"function",
+    "name":"ExtendInstance",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"filtername"
+      },{
+        "type":"<unknown>",
+        "name":"spawntables"
+      }],
+    "kind":"function",
+    "name":"FilterSpawnGroupEntities",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -4061,6 +4247,17 @@ Initializing script VM...
     "returns":"int"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"func"
+      },{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"GetFunctionSignature",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"Vector"
       },{
         "type":"handle"
@@ -4158,6 +4355,14 @@ Initializing script VM...
     "kind":"function",
     "name":"GetPotentialNeutralItemDrop",
     "returns":"string"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      }],
+    "kind":"function",
+    "name":"GetSpawnGroupEntityFilterFunc",
+    "returns":"<unknown>"
   },{
     "args":[],
     "description":"Get the current real world date",
@@ -4280,6 +4485,17 @@ Initializing script VM...
     "returns":"int"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"object"
+      },{
+        "type":"<unknown>",
+        "name":"baseClass"
+      }],
+    "kind":"function",
+    "name":"HasBaseClass",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"handle"
       }],
     "description":"Max out a hero's level and give them all appropriate abilities and talents.",
@@ -4296,6 +4512,26 @@ Initializing script VM...
     "kind":"function",
     "name":"InitLogFile",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"classObj"
+      },{
+        "type":"<unknown>",
+        "name":"mixinTable"
+      },{
+        "type":"<unknown>",
+        "name":"keysToSkip"
+      },{
+        "type":"<unknown>",
+        "name":"keysToMakeUnique"
+      }],
+    "kind":"function",
+    "name":"InstallMixins",
+    "returns":"<unknown>"
   },{
     "args":[],
     "description":"Returns true if this is lua running from the client.dll.",
@@ -4364,6 +4600,20 @@ Initializing script VM...
     "returns":"bool"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"t"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      }],
+    "kind":"function",
+    "name":"Lerp",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"Vector"
       },{
         "type":"Vector"
@@ -4394,6 +4644,11 @@ Initializing script VM...
     "kind":"function",
     "name":"LinkLuaModifier",
     "returns":"void"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"LinkLuaModifier_Engine",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -4444,6 +4699,17 @@ Initializing script VM...
     "kind":"function",
     "name":"ManuallyTriggerSpawnGroupCompletion",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"table1"
+      },{
+        "type":"<unknown>",
+        "name":"table2"
+      }],
+    "kind":"function",
+    "name":"Merge",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"int"
@@ -4569,6 +4835,11 @@ Initializing script VM...
     "name":"PrecacheUnitByNameAsync",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"PrecacheUnitByNameAsync_Engine",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"string"
       },{
@@ -4580,6 +4851,11 @@ Initializing script VM...
     "kind":"function",
     "name":"PrecacheUnitByNameSync",
     "returns":"void"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"PrecacheUnitByNameSync_Engine",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -4611,6 +4887,11 @@ Initializing script VM...
     "name":"PrintLinkedConsoleMessage",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"QAngle",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"QAngle"
       },{
@@ -4622,6 +4903,14 @@ Initializing script VM...
     "kind":"function",
     "name":"QSlerp",
     "returns":"QAngle"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"rad"
+      }],
+    "kind":"function",
+    "name":"Rad2Deg",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"float"
@@ -4684,6 +4973,17 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      },{
+        "type":"<unknown>",
+        "name":"filterfunc"
+      }],
+    "kind":"function",
+    "name":"RegisterSpawnGroupEntityFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"string"
       }],
     "description":"Create a C proxy for a script-based spawn group filter",
@@ -4698,6 +4998,46 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      },{
+        "type":"<unknown>",
+        "name":"c"
+      },{
+        "type":"<unknown>",
+        "name":"d"
+      }],
+    "kind":"function",
+    "name":"RemapVal",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      },{
+        "type":"<unknown>",
+        "name":"c"
+      },{
+        "type":"<unknown>",
+        "name":"d"
+      }],
+    "kind":"function",
+    "name":"RemapValClamped",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"int"
       },{
         "type":"int"
@@ -4706,6 +5046,14 @@ Initializing script VM...
     "kind":"function",
     "name":"RemoveFOWViewer",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      }],
+    "kind":"function",
+    "name":"RemoveSpawnGroupEntityFilter",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -4830,6 +5178,186 @@ Initializing script VM...
     "kind":"function",
     "name":"ScreenShake",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"exp"
+      },{
+        "type":"<unknown>",
+        "name":"msg"
+      }],
+    "kind":"function",
+    "name":"ScriptAssert",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filter"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddTextFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"traceTarget"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatch",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatchPattern",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watchArray"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugClearTraces",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugClearWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugDraw",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"line"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugDrawWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"type"
+      },{
+        "type":"<unknown>",
+        "name":"file"
+      },{
+        "type":"<unknown>",
+        "name":"line"
+      },{
+        "type":"<unknown>",
+        "name":"funcname"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugHook",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filter"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveTextFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"traceTarget"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatch",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatchPattern",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watchArray"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"line"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextDraw",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"text"
+      },{
+        "type":"<unknown>",
+        "name":"color"
+      },{
+        "type":"<unknown>",
+        "name":"isWatch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextPrint",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"text"
+      },{
+        "type":"<unknown>",
+        "name":"color"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"bValue"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTraceAll",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"ScriptFunctionHelp",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"float"
@@ -5396,6 +5924,14 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"string"
+      }],
+    "kind":"function",
+    "name":"UniqueString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"handle"
       },{
         "type":"int"
@@ -5443,12 +5979,61 @@ Initializing script VM...
     "name":"UserIDToControllerHScript",
     "returns":"handle"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"Vector",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"Vector"
       }],
     "kind":"function",
     "name":"VectorAngles",
     "returns":"QAngle"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v1"
+      },{
+        "type":"<unknown>",
+        "name":"v2"
+      }],
+    "kind":"function",
+    "name":"VectorDistance",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v1"
+      },{
+        "type":"<unknown>",
+        "name":"v2"
+      }],
+    "kind":"function",
+    "name":"VectorDistanceSq",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      }],
+    "kind":"function",
+    "name":"VectorIsZero",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"t"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      }],
+    "kind":"function",
+    "name":"VectorLerp",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"Vector"
@@ -5467,6 +6052,122 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"debugMetaTable"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"_DeepPrintMetaTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      },{
+        "type":"<unknown>",
+        "name":"isOuterScope"
+      },{
+        "type":"<unknown>",
+        "name":"chaseMetaTables"
+      }],
+    "kind":"function",
+    "name":"_DeepPrintTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"_DeepToString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"depth"
+      },{
+        "type":"<unknown>",
+        "name":"table"
+      },{
+        "type":"<unknown>",
+        "name":"isPublicScriptScope"
+      }],
+    "kind":"function",
+    "name":"__DumpScope",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"__RegisterGameEventListeners",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"script"
+      },{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"__ReplaceClosures",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"type"
+      },{
+        "type":"<unknown>",
+        "name":"file"
+      },{
+        "type":"<unknown>",
+        "name":"line"
+      },{
+        "type":"<unknown>",
+        "name":"funcname"
+      }],
+    "kind":"function",
+    "name":"__VScriptServerDebugHook",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"_sourceline",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"val"
+      }],
+    "kind":"function",
+    "name":"abs",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"def"
+      },{
+        "type":"<unknown>",
+        "name":"statics"
+      },{
+        "type":"<unknown>",
+        "name":"base"
+      }],
+    "kind":"function",
+    "name":"class",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"string"
       }],
     "description":"Gets the value of the given cvar, as a float.",
@@ -5483,6 +6184,111 @@ Initializing script VM...
     "kind":"function",
     "name":"cvar_setf",
     "returns":"bool"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"gcinfo",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      }],
+    "kind":"function",
+    "name":"getbase",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      }],
+    "kind":"function",
+    "name":"getclass",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"getfenv",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"h",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      },{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"instanceof",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"isclass",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"loadstring",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"x"
+      },{
+        "type":"<unknown>",
+        "name":"y"
+      }],
+    "kind":"function",
+    "name":"max",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"x"
+      },{
+        "type":"<unknown>",
+        "name":"y"
+      }],
+    "kind":"function",
+    "name":"min",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"module",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"newproxy",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"printstack",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"setfenv",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"unpack",
+    "returns":"<unknown>"
   },{
     "enum":"AbilityLearnResult_t",
     "kind":"constant",
@@ -18116,6 +18922,10 @@ Initializing script VM...
         "name":"GetGraphParameter",
         "returns":"table"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"vValue",
             "type":"Vector"
@@ -18211,6 +19021,10 @@ Initializing script VM...
         "returns":"string"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Ask whether the main sequence is done playing.",
         "name":"IsSequenceFinished",
         "returns":"bool"
@@ -18267,7 +19081,11 @@ Initializing script VM...
   },{
     "extend":"CBaseFlex",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CBaseCombatCharacter"
   },{
     "extend":"CEntityInstance",
@@ -18609,15 +19427,36 @@ Initializing script VM...
         "name":"IsAlive",
         "returns":"bool"
       },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          }],
+        "name":"IsBaseNPC",
+        "returns":"<unknown>"
+      },{
         "args":[],
         "description":"Is this entity a Dota NPC?",
         "name":"IsDOTANPC",
         "returns":"bool"
       },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"classOrClassName"
+          }],
+        "name":"IsInstance",
+        "returns":"<unknown>"
+      },{
         "args":[],
         "description":"Is this entity an CAI_BaseNPC?",
         "name":"IsNPC",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Back compat: Is this entity a player pawn *or* controller?",
@@ -18894,6 +19733,16 @@ Initializing script VM...
         "returns":"void"
       },{
         "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"fnname"
+          }],
+        "name":"SetThink",
+        "returns":"<unknown>"
+      },{
+        "args":[{
             "name":"vecVelocity",
             "type":"Vector"
           }],
@@ -18907,6 +19756,16 @@ Initializing script VM...
         "description":"Stops a named sound playing from this entity.",
         "name":"StopSound",
         "returns":"void"
+      },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"contextName"
+          }],
+        "name":"StopThink",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"hInfo",
@@ -18959,6 +19818,10 @@ Initializing script VM...
         "description":"Returns the instance of the scene entity at the specified index.",
         "name":"GetSceneByIndex",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"pszScene",
@@ -19024,6 +19887,10 @@ Initializing script VM...
         "description":"GetRenderColor(): Get the render color of the entity.",
         "name":"GetRenderColor",
         "returns":"Vector"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"pAttachmentName",
@@ -19167,6 +20034,10 @@ Initializing script VM...
         "description":"GetPawn() : Returns the pawn for this controller",
         "name":"GetPawn",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CBasePlayerController"
   },{
@@ -19192,6 +20063,10 @@ Initializing script VM...
         "description":"Returns true if the player is in noclip mode.",
         "name":"IsNoclipping",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CBasePlayerPawn"
   },{
@@ -19207,6 +20082,10 @@ Initializing script VM...
         "description":"Enable the trigger",
         "name":"Enable",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"hEnt",
@@ -19248,6 +20127,10 @@ Initializing script VM...
         "name":"IsAttachedToParent",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"Vector"
           }],
@@ -19271,6 +20154,10 @@ Initializing script VM...
     "instance":"CustomGameEventManager",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"string"
           },{
@@ -19331,6 +20218,10 @@ Initializing script VM...
         "description":"( string TableName, string KeyName )",
         "name":"GetTableValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "type":"string"
@@ -19495,6 +20386,10 @@ Initializing script VM...
         "description":"Gets the cast range of the ability.",
         "name":"GetCastRange",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"GetCastRange_Engine",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"GetCaster",
@@ -19749,6 +20644,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsCosmetic_Engine",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Returns whether the ability can be cast.",
         "name":"IsFullyCastable",
         "returns":"bool"
@@ -19773,6 +20672,10 @@ Initializing script VM...
         "args":[],
         "name":"IsItem",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"nIssuerPlayerID",
@@ -20411,6 +21314,10 @@ Initializing script VM...
         "description":"Is the day/night cycle disabled?",
         "name":"IsDaynightCycleDisabled",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"hFunction",
@@ -21337,6 +22244,10 @@ Initializing script VM...
         "description":"Get the hero unit name given the hero ID.",
         "name":"GetHeroUnitNameByID",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTAGameManager"
   },{
@@ -21788,6 +22699,10 @@ Initializing script VM...
         "description":"Is it night stalker night-time?",
         "name":"IsNightstalkerNight",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Returns whether Dota Plus ability suggestions are enabled or disabled",
@@ -22440,6 +23355,10 @@ Initializing script VM...
         "returns":"int"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Randoms this player's hero.",
         "name":"MakeRandomHeroSelection",
         "returns":"void"
@@ -22577,6 +23496,10 @@ Initializing script VM...
         "name":"IsItemInWhiteList",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"string"
           }],
@@ -22668,6 +23591,10 @@ Initializing script VM...
     "instance":"VoteSystem",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"handle"
           }],
@@ -22680,6 +23607,10 @@ Initializing script VM...
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"vTarget",
             "type":"Vector"
@@ -22696,6 +23627,10 @@ Initializing script VM...
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flRate",
             "type":"float"
@@ -22709,6 +23644,10 @@ Initializing script VM...
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flRate",
             "type":"float"
@@ -22755,6 +23694,10 @@ Initializing script VM...
         "description":"Applies a data driven thinker at the location",
         "name":"ApplyDataDrivenThinker",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTA_Ability_DataDriven"
   },{
@@ -22781,6 +23724,10 @@ Initializing script VM...
         "description":"(HSCRIPT hTarget) Determine whether an issued command on a target is valid.",
         "name":"CastFilterResultTarget",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"CastFilterResult_Engine",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Controls the size of the AOE casting cursor.",
@@ -22905,6 +23852,10 @@ Initializing script VM...
         "name":"GetCustomCastErrorTarget",
         "returns":"string"
       },{
+        "args":[],
+        "name":"GetCustomCastError_Engine",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"nReason",
             "type":"int"
@@ -22980,6 +23931,10 @@ Initializing script VM...
         "description":"Returns true if this ability is hidden when stolen by Spell Steal.",
         "name":"IsHiddenWhenStolen",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Returns true if this ability is refreshed by Refresher Orb.",
@@ -23205,6 +24160,10 @@ Initializing script VM...
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flRate",
             "type":"float"
@@ -23218,6 +24177,10 @@ Initializing script VM...
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flRate",
             "type":"float"
@@ -23235,12 +24198,20 @@ Initializing script VM...
         "description":"Number of times Nian has used the roar",
         "name":"GetCastCount",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTA_Ability_Nian_Roar"
   },{
     "extend":"CDOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"nDoubles",
             "type":"int"
@@ -24180,6 +25151,13 @@ Initializing script VM...
         "name":"IsBarracks",
         "returns":"bool"
       },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          }],
+        "name":"IsBaseNPC",
+        "returns":"<unknown>"
+      },{
         "args":[],
         "name":"IsBlind",
         "returns":"bool"
@@ -24284,6 +25262,13 @@ Initializing script VM...
         "name":"IsFrozen",
         "returns":"bool"
       },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          }],
+        "name":"IsHardDisarmed",
+        "returns":"<unknown>"
+      },{
         "args":[],
         "description":"Is this a hero or hero illusion?",
         "name":"IsHero",
@@ -24356,6 +25341,10 @@ Initializing script VM...
         "name":"IsNightmared",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"nTeam",
             "type":"int"
@@ -24426,6 +25415,13 @@ Initializing script VM...
         "args":[],
         "name":"IsSilenced",
         "returns":"bool"
+      },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          }],
+        "name":"IsSoftDisarmed",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"IsSpeciallyDeniable",
@@ -25499,6 +26495,10 @@ Initializing script VM...
         "name":"GetInvulnCount",
         "returns":"int"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"nInvulnCount",
             "type":"int"
@@ -25542,6 +26542,10 @@ Initializing script VM...
         "description":"Is this unit a champion?",
         "name":"IsChampion",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Is this creature respawning?",
@@ -25710,6 +26714,10 @@ Initializing script VM...
         "description":"Params: Float XP, Bool applyBotDifficultyScaling",
         "name":"AddExperience",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"AddExperience_Engine",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Spend the gold and buyback with this hero.",
@@ -26005,6 +27013,10 @@ Initializing script VM...
         "returns":"void"
       },{
         "args":[],
+        "name":"IncrementDeaths_Engine",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Value is stored in PlayerResource.",
         "name":"IncrementDenies",
         "returns":"void"
@@ -26045,6 +27057,10 @@ Initializing script VM...
         "args":[],
         "name":"IsBuybackDisabledByReapersScythe",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"IsReincarnating",
@@ -26289,12 +27305,20 @@ Initializing script VM...
   },{
     "extend":"CDOTA_BaseNPC_Building",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_BaseNPC_MangoTree"
   },{
     "extend":"CDOTA_BaseNPC_Building",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_BaseNPC_NeutralItemStash"
   },{
     "extend":"CDOTA_BaseNPC_Building",
@@ -26304,6 +27328,10 @@ Initializing script VM...
         "description":"Get the DOTA_SHOP_TYPE",
         "name":"GetShopType",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"eShopType",
@@ -26323,6 +27351,10 @@ Initializing script VM...
         "name":"GetTrapTarget",
         "returns":"Vector"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pAnimation",
             "type":"string"
@@ -26340,6 +27372,10 @@ Initializing script VM...
         "description":"The name of the ability used when triggering interaction on the outpost.",
         "name":"GetInteractAbilityName",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"pszInteractAbilityName",
@@ -26487,6 +27523,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "name":"IsStunDebuff",
         "returns":"bool"
       },{
@@ -26575,6 +27615,10 @@ Initializing script VM...
         "description":"Toggle the visibility of an existing custom hud element ( PlayerID_t PlayerID /*-1 means everyone*/, string ElementID, bool Visible )",
         "name":"DynamicHud_SetVisible",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTA_CustomUIManager"
   },{
@@ -26685,6 +27729,10 @@ Initializing script VM...
         "args":[],
         "name":"IsNeutralDrop",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Is this a permanent item?",
@@ -26906,12 +27954,20 @@ Initializing script VM...
         "description":"Returns the item name",
         "name":"GetItemName",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTA_ItemSpawner"
   },{
     "extend":"CDOTA_Item",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flTime",
             "type":"float"
@@ -26958,6 +28014,10 @@ Initializing script VM...
         "description":"Applies a data driven thinker at the location",
         "name":"ApplyDataDrivenThinker",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTA_Item_DataDriven"
   },{
@@ -26968,6 +28028,10 @@ Initializing script VM...
         "description":"Clear the stored rune.",
         "name":"ClearStoredRune",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"iRuneType",
@@ -27174,6 +28238,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Returns true if this ability is refreshed by Refresher Orb.",
         "name":"IsRefreshable",
         "returns":"bool"
@@ -27333,6 +28401,10 @@ Initializing script VM...
         "name":"GetCreationTime",
         "returns":"float"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hItem",
             "type":"handle"
@@ -27369,6 +28441,10 @@ Initializing script VM...
         "description":"Grows back the tree if it was cut down.",
         "name":"GrowBack",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Returns true if the tree is standing, false if it has been cut down",
@@ -27498,6 +28574,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "name":"IsPermanent",
         "returns":"bool"
       },{
@@ -27596,6 +28676,10 @@ Initializing script VM...
         "returns":"int"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Called when the motion gets interrupted.",
         "name":"OnHorizontalMotionInterrupted",
         "returns":"void"
@@ -27638,6 +28722,10 @@ Initializing script VM...
         "description":"Get the priority",
         "name":"GetPriority",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Called when the motion gets interrupted.",
@@ -27695,6 +28783,10 @@ Initializing script VM...
         "returns":"int"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Called when the motion gets interrupted.",
         "name":"OnVerticalMotionInterrupted",
         "returns":"void"
@@ -27726,6 +28818,10 @@ Initializing script VM...
         "args":[],
         "name":"CreatePendingUnits",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"SelectSpawnType",
@@ -27935,6 +29031,10 @@ Initializing script VM...
         "name":"GetCreepDamageTaken",
         "returns":"int"
       },{
+        "args":[],
+        "name":"GetCreepDamageTaken_Engine",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"iPlayerID",
             "type":"int"
@@ -28002,6 +29102,14 @@ Initializing script VM...
           }],
         "name":"GetEventPremiumPoints",
         "returns":"unsigned"
+      },{
+        "args":[],
+        "name":"GetEventPremiumPointsGranted",
+        "returns":"<unknown>"
+      },{
+        "args":[],
+        "name":"GetEventRankGranted",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"nPlayerID",
@@ -28075,6 +29183,10 @@ Initializing script VM...
           }],
         "name":"GetHeroDamageTaken",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"GetHeroDamageTaken_Engine",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -28434,6 +29546,10 @@ Initializing script VM...
         "name":"GetTowerDamageTaken",
         "returns":"int"
       },{
+        "args":[],
+        "name":"GetTowerDamageTaken_Engine",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"iPlayerID",
             "type":"int"
@@ -28496,6 +29612,16 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"nPlayerID"
+          }],
+        "name":"HeroLevelUp",
+        "returns":"<unknown>"
+      },{
+        "args":[{
             "name":"iPlayerID",
             "type":"int"
           },{
@@ -28534,6 +29660,10 @@ Initializing script VM...
           }],
         "name":"IncrementDeaths",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IncrementDeaths_Engine",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -28628,6 +29758,10 @@ Initializing script VM...
         "name":"IncrementTotalEarnedXP",
         "returns":"void"
       },{
+        "args":[],
+        "name":"IncrementTotalEarnedXP_Engine",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"iPlayerID",
             "type":"int"
@@ -28671,6 +29805,10 @@ Initializing script VM...
           }],
         "name":"IsHeroSharedWithPlayerID",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"iPlayerID",
@@ -29031,6 +30169,10 @@ Initializing script VM...
         "name":"GetShopType",
         "returns":"int"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"eShopType",
             "type":"int"
@@ -29049,6 +30191,10 @@ Initializing script VM...
         "name":"IsEnabled",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"bEnabled",
             "type":"bool"
@@ -29065,6 +30211,10 @@ Initializing script VM...
     "extend":"CDOTA_BaseNPC",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"iLevel",
             "type":"int"
@@ -29078,6 +30228,10 @@ Initializing script VM...
     "extend":"CDOTA_BaseNPC",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"bIsServerAuthoritative",
             "type":"bool"
@@ -29091,6 +30245,10 @@ Initializing script VM...
     "extend":"CDOTA_BaseNPC",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pAnimation",
             "type":"string"
@@ -29115,6 +30273,10 @@ Initializing script VM...
         "args":[],
         "name":"GetPartnerPortal",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"ResetPortal",
@@ -29162,6 +30324,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Is the Nian's tail broken?",
         "name":"IsTailAlive",
         "returns":"bool"
@@ -29170,7 +30336,11 @@ Initializing script VM...
   },{
     "extend":"CDOTA_BaseNPC",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_Unit_Scout"
   },{
     "instance":"debugoverlay",
@@ -29536,6 +30706,10 @@ Initializing script VM...
         "name":"HorzArrow",
         "returns":"void"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"Vector"
           },{
@@ -29849,6 +31023,10 @@ Initializing script VM...
         "name":"GetSubquestByName",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hSubquest",
             "type":"handle"
@@ -29886,6 +31064,10 @@ Initializing script VM...
         "name":"CompleteSubquest",
         "returns":"void"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pszString",
             "type":"string"
@@ -29910,6 +31092,10 @@ Initializing script VM...
     "extend":"CBaseFlex",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"bEnabled",
             "type":"bool"
@@ -30123,6 +31309,10 @@ Initializing script VM...
         "name":"GetLocalPlayerPawn",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"handle"
           }],
@@ -30232,6 +31422,10 @@ Initializing script VM...
         "name":"GetPublicScriptScope",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"string"
           },{
@@ -30265,12 +31459,20 @@ Initializing script VM...
   },{
     "instance":"NativeFunctions",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CEntityScriptFramework"
   },{
     "extend":"CBaseEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[],
         "description":"Create an entity at the location of the maker",
         "name":"SpawnEntity",
@@ -30308,6 +31510,10 @@ Initializing script VM...
     "extend":"CBaseEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flRange",
             "type":"float"
@@ -30392,12 +31598,20 @@ Initializing script VM...
         "description":"AddRectangularOutlineBlocker( vMins, vMaxs, bClear ) : Sets or clears a blocker rectangle outline",
         "name":"AddRectangularOutlineBlocker",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CFoWBlockerRegion"
   },{
     "extend":"CBaseEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"tok",
             "type":"utlstringtoken"
@@ -30474,6 +31688,10 @@ Initializing script VM...
         "name":"IsEnabled",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"bEnabled",
             "type":"bool"
@@ -30493,6 +31711,10 @@ Initializing script VM...
         "returns":"void"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Shows this layer",
         "name":"ShowWorldLayer",
         "returns":"void"
@@ -30502,6 +31724,10 @@ Initializing script VM...
     "extend":"CBaseEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hActivator",
             "type":"handle"
@@ -30517,7 +31743,11 @@ Initializing script VM...
   },{
     "extend":"CBaseEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CLogicScript"
   },{
     "extend":"CBaseEntity",
@@ -30530,6 +31760,10 @@ Initializing script VM...
         "description":"Does this volume have the given tag.",
         "name":"HasTag",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CMarkupVolumeTagged"
   },{
@@ -30550,12 +31784,20 @@ Initializing script VM...
         "description":"Initialize with number of outputs",
         "name":"Init",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CNativeOutputs"
   },{
     "extend":"CBaseModelEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CParticleSystem"
   },{
     "extend":"CBaseAnimatingActivity",
@@ -30570,6 +31812,10 @@ Initializing script VM...
         "description":"Enable motion for the prop",
         "name":"EnableMotion",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"bIsDynamicVsDynamicContinuousEnabled",
@@ -30607,6 +31853,10 @@ Initializing script VM...
         "name":"IsGrabbable",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pszClasses",
             "type":"string"
@@ -30619,7 +31869,11 @@ Initializing script VM...
   },{
     "extend":"CBaseEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CPointEntity"
   },{
     "extend":"CBaseEntity",
@@ -30640,6 +31894,10 @@ Initializing script VM...
         "name":"GetSpawnedEntities",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hCallbackFunc",
             "type":"handle"
@@ -30656,6 +31914,10 @@ Initializing script VM...
     "extend":"CBaseModelEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pMessage",
             "type":"string"
@@ -30694,6 +31956,10 @@ Initializing script VM...
         "returns":"handle"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"If this scene is currently paused.",
         "name":"IsPaused",
         "returns":"bool"
@@ -30730,6 +31996,10 @@ Initializing script VM...
   },{
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"handle"
           }],
@@ -30799,6 +32069,10 @@ Initializing script VM...
         "description":"Returns the number of heroes in the world",
         "name":"GetHeroCount",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CScriptHeroList"
   },{
@@ -30810,6 +32084,10 @@ Initializing script VM...
         "description":"Reads a spawn key",
         "name":"GetValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CScriptKeyValues"
   },{
@@ -30869,6 +32147,10 @@ Initializing script VM...
           }],
         "name":"GetParticleReplacement",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "type":"int"
@@ -31029,11 +32311,19 @@ Initializing script VM...
         "description":"Reads a spawn key",
         "name":"GetValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CScriptPrecacheContext"
   },{
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flMinVal",
             "type":"float"
@@ -31138,6 +32428,10 @@ Initializing script VM...
           }],
         "name":"HasDamageType",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "name":"flScaleAmount",
@@ -31252,6 +32546,10 @@ Initializing script VM...
         "name":"GetStr",
         "returns":"table"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"string"
           },{
@@ -31352,6 +32650,10 @@ Initializing script VM...
         "description":"CommandLineStr(name) : returns the command line param as a string.",
         "name":"CommandLineStr",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"GlobalSys"
   },{
@@ -31429,6 +32731,10 @@ Initializing script VM...
         "description":"(position, radius, checkFullTreeRadius?) Checks whether there are any trees overlapping the given point",
         "name":"IsNearbyTree",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "type":"Vector"
@@ -31526,6 +32832,10 @@ Initializing script VM...
         "name":"GetTrackingProjectileLocation",
         "returns":"Vector"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"int"
           }],
@@ -31557,6 +32867,10 @@ Initializing script VM...
     "kind":"class",
     "members":[{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Is the script connected to the public Steam universe",
         "name":"IsPublicUniverse",
         "returns":"bool"
@@ -31566,7 +32880,16 @@ Initializing script VM...
 $> cl_script_reload
 Initializing script VM...
 ...done
+LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
 [{
+    "args":[{
+        "type":"<unknown>",
+        "name":"scopeTable"
+      }],
+    "kind":"function",
+    "name":"AddToScriptHelp",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"float"
       },{
@@ -31604,6 +32927,11 @@ Initializing script VM...
     "kind":"function",
     "name":"AxisAngleToQuaternion",
     "returns":"Quaternion"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"BeginScriptDebug",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -31643,6 +32971,33 @@ Initializing script VM...
     "kind":"function",
     "name":"CancelEntityIOEvents",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"val"
+      },{
+        "type":"<unknown>",
+        "name":"min"
+      },{
+        "type":"<unknown>",
+        "name":"max"
+      }],
+    "kind":"function",
+    "name":"Clamp",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ClearSpawnGroupEntityFilters",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"table"
+      }],
+    "kind":"function",
+    "name":"ConnectOutputs",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"handle"
@@ -31884,6 +33239,55 @@ Initializing script VM...
     "name":"DebugScreenTextPretty",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"DebuggerBreak",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"DeepPrint",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      },{
+        "type":"<unknown>",
+        "name":"isPublicScriptScope"
+      }],
+    "kind":"function",
+    "name":"DeepPrintTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"DeepToString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"deg"
+      }],
+    "kind":"function",
+    "name":"Deg2Rad",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"string"
       },{
@@ -31912,6 +33316,27 @@ Initializing script VM...
     "name":"DoUniqueString",
     "returns":"string"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"DumpScriptBindings",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"DumpSpawnGroupEntityFilters",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"mt"
+      },{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"Dynamic_Wrap",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"string"
       },{
@@ -31932,6 +33357,57 @@ Initializing script VM...
     "name":"EmitSoundOnClient",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"EndScriptDebug",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"target"
+      },{
+        "type":"<unknown>",
+        "name":"action"
+      },{
+        "type":"<unknown>",
+        "name":"value"
+      },{
+        "type":"<unknown>",
+        "name":"delay"
+      },{
+        "type":"<unknown>",
+        "name":"activator"
+      }],
+    "kind":"function",
+    "name":"EntFire",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"target"
+      },{
+        "type":"<unknown>",
+        "name":"action"
+      },{
+        "type":"<unknown>",
+        "name":"value"
+      },{
+        "type":"<unknown>",
+        "name":"delay"
+      },{
+        "type":"<unknown>",
+        "name":"activator"
+      }],
+    "kind":"function",
+    "name":"EntFireByHandle",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"int"
       }],
@@ -31951,6 +33427,31 @@ Initializing script VM...
     "kind":"function",
     "name":"ExponentialDecay",
     "returns":"float"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instance"
+      },{
+        "type":"<unknown>",
+        "name":"luaClass"
+      }],
+    "kind":"function",
+    "name":"ExtendInstance",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"filtername"
+      },{
+        "type":"<unknown>",
+        "name":"spawntables"
+      }],
+    "kind":"function",
+    "name":"FilterSpawnGroupEntities",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"ehandle"
@@ -32040,6 +33541,17 @@ Initializing script VM...
     "name":"GetFrameCount",
     "returns":"int"
   },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"func"
+      },{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"GetFunctionSignature",
+    "returns":"<unknown>"
+  },{
     "args":[],
     "description":"Get the local player on a listen server.",
     "kind":"function",
@@ -32093,12 +33605,31 @@ Initializing script VM...
     "returns":"Vector"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      }],
+    "kind":"function",
+    "name":"GetSpawnGroupEntityFilterFunc",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"string"
       }],
     "description":"Get unit data by ability name.",
     "kind":"function",
     "name":"GetUnitKeyValuesByName",
     "returns":"table"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"object"
+      },{
+        "type":"<unknown>",
+        "name":"baseClass"
+      }],
+    "kind":"function",
+    "name":"HasBaseClass",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -32109,6 +33640,26 @@ Initializing script VM...
     "kind":"function",
     "name":"InitLogFile",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"self"
+      },{
+        "type":"<unknown>",
+        "name":"classObj"
+      },{
+        "type":"<unknown>",
+        "name":"mixinTable"
+      },{
+        "type":"<unknown>",
+        "name":"keysToSkip"
+      },{
+        "type":"<unknown>",
+        "name":"keysToMakeUnique"
+      }],
+    "kind":"function",
+    "name":"InstallMixins",
+    "returns":"<unknown>"
   },{
     "args":[],
     "description":"Returns true if this is lua running from the client.dll.",
@@ -32163,6 +33714,20 @@ Initializing script VM...
     "returns":"bool"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"t"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      }],
+    "kind":"function",
+    "name":"Lerp",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"Vector"
       },{
         "type":"Vector"
@@ -32185,6 +33750,11 @@ Initializing script VM...
     "kind":"function",
     "name":"LinkLuaModifier",
     "returns":"void"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"LinkLuaModifier_Engine",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -32235,6 +33805,17 @@ Initializing script VM...
     "kind":"function",
     "name":"ManuallyTriggerSpawnGroupCompletion",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"table1"
+      },{
+        "type":"<unknown>",
+        "name":"table2"
+      }],
+    "kind":"function",
+    "name":"Merge",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -32290,6 +33871,11 @@ Initializing script VM...
     "name":"PrintLinkedConsoleMessage",
     "returns":"void"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"QAngle",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"QAngle"
       },{
@@ -32301,6 +33887,14 @@ Initializing script VM...
     "kind":"function",
     "name":"QSlerp",
     "returns":"QAngle"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"rad"
+      }],
+    "kind":"function",
+    "name":"Rad2Deg",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"float"
@@ -32323,6 +33917,17 @@ Initializing script VM...
     "returns":"int"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      },{
+        "type":"<unknown>",
+        "name":"filterfunc"
+      }],
+    "kind":"function",
+    "name":"RegisterSpawnGroupEntityFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"string"
       }],
     "description":"Create a C proxy for a script-based spawn group filter",
@@ -32335,6 +33940,54 @@ Initializing script VM...
     "kind":"function",
     "name":"ReloadMOTD",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      },{
+        "type":"<unknown>",
+        "name":"c"
+      },{
+        "type":"<unknown>",
+        "name":"d"
+      }],
+    "kind":"function",
+    "name":"RemapVal",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      },{
+        "type":"<unknown>",
+        "name":"c"
+      },{
+        "type":"<unknown>",
+        "name":"d"
+      }],
+    "kind":"function",
+    "name":"RemapValClamped",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filtername"
+      }],
+    "kind":"function",
+    "name":"RemoveSpawnGroupEntityFilter",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -32417,6 +34070,186 @@ Initializing script VM...
     "kind":"function",
     "name":"ScreenShake",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"exp"
+      },{
+        "type":"<unknown>",
+        "name":"msg"
+      }],
+    "kind":"function",
+    "name":"ScriptAssert",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filter"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddTextFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"traceTarget"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatch",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatchPattern",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watchArray"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugAddWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugClearTraces",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugClearWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"ScriptDebugDraw",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"line"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugDrawWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"type"
+      },{
+        "type":"<unknown>",
+        "name":"file"
+      },{
+        "type":"<unknown>",
+        "name":"line"
+      },{
+        "type":"<unknown>",
+        "name":"funcname"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugHook",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"filter"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveTextFilter",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"traceTarget"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatch",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"name"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatchPattern",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"watchArray"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugRemoveWatches",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"line"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextDraw",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"text"
+      },{
+        "type":"<unknown>",
+        "name":"color"
+      },{
+        "type":"<unknown>",
+        "name":"isWatch"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextPrint",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"text"
+      },{
+        "type":"<unknown>",
+        "name":"color"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTextTrace",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"bValue"
+      }],
+    "kind":"function",
+    "name":"ScriptDebugTraceAll",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"ScriptFunctionHelp",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"float"
@@ -32733,6 +34566,14 @@ Initializing script VM...
     "returns":"void"
   },{
     "args":[{
+        "type":"<unknown>",
+        "name":"string"
+      }],
+    "kind":"function",
+    "name":"UniqueString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
         "type":"handle"
       },{
         "type":"int"
@@ -32772,6 +34613,55 @@ Initializing script VM...
     "name":"UserIDToControllerHScript",
     "returns":"handle"
   },{
+    "args":[],
+    "kind":"function",
+    "name":"Vector",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v1"
+      },{
+        "type":"<unknown>",
+        "name":"v2"
+      }],
+    "kind":"function",
+    "name":"VectorDistance",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v1"
+      },{
+        "type":"<unknown>",
+        "name":"v2"
+      }],
+    "kind":"function",
+    "name":"VectorDistanceSq",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"v"
+      }],
+    "kind":"function",
+    "name":"VectorIsZero",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"t"
+      },{
+        "type":"<unknown>",
+        "name":"a"
+      },{
+        "type":"<unknown>",
+        "name":"b"
+      }],
+    "kind":"function",
+    "name":"VectorLerp",
+    "returns":"<unknown>"
+  },{
     "args":[{
         "type":"Vector"
       }],
@@ -32787,6 +34677,122 @@ Initializing script VM...
     "kind":"function",
     "name":"Warning",
     "returns":"void"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugMetaTable"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"_DeepPrintMetaTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      },{
+        "type":"<unknown>",
+        "name":"isOuterScope"
+      },{
+        "type":"<unknown>",
+        "name":"chaseMetaTables"
+      }],
+    "kind":"function",
+    "name":"_DeepPrintTable",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"debugInstance"
+      },{
+        "type":"<unknown>",
+        "name":"prefix"
+      }],
+    "kind":"function",
+    "name":"_DeepToString",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"depth"
+      },{
+        "type":"<unknown>",
+        "name":"table"
+      },{
+        "type":"<unknown>",
+        "name":"isPublicScriptScope"
+      }],
+    "kind":"function",
+    "name":"__DumpScope",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"__RegisterGameEventListeners",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"script"
+      },{
+        "type":"<unknown>",
+        "name":"scope"
+      }],
+    "kind":"function",
+    "name":"__ReplaceClosures",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"type"
+      },{
+        "type":"<unknown>",
+        "name":"file"
+      },{
+        "type":"<unknown>",
+        "name":"line"
+      },{
+        "type":"<unknown>",
+        "name":"funcname"
+      }],
+    "kind":"function",
+    "name":"__VScriptServerDebugHook",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"_sourceline",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"val"
+      }],
+    "kind":"function",
+    "name":"abs",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"def"
+      },{
+        "type":"<unknown>",
+        "name":"statics"
+      },{
+        "type":"<unknown>",
+        "name":"base"
+      }],
+    "kind":"function",
+    "name":"class",
+    "returns":"<unknown>"
   },{
     "args":[{
         "type":"string"
@@ -32805,6 +34811,111 @@ Initializing script VM...
     "kind":"function",
     "name":"cvar_setf",
     "returns":"bool"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"gcinfo",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      }],
+    "kind":"function",
+    "name":"getbase",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      }],
+    "kind":"function",
+    "name":"getclass",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"getfenv",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"h",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"instanceObj"
+      },{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"instanceof",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"classObj"
+      }],
+    "kind":"function",
+    "name":"isclass",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"loadstring",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"x"
+      },{
+        "type":"<unknown>",
+        "name":"y"
+      }],
+    "kind":"function",
+    "name":"max",
+    "returns":"<unknown>"
+  },{
+    "args":[{
+        "type":"<unknown>",
+        "name":"x"
+      },{
+        "type":"<unknown>",
+        "name":"y"
+      }],
+    "kind":"function",
+    "name":"min",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"module",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"newproxy",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"printstack",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"setfenv",
+    "returns":"<unknown>"
+  },{
+    "args":[],
+    "kind":"function",
+    "name":"unpack",
+    "returns":"<unknown>"
   },{
     "enum":"AbilityLearnResult_t",
     "kind":"constant",
@@ -43248,12 +45359,20 @@ Initializing script VM...
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CBaseAnimGraph"
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CBaseAnimatingActivity"
   },{
     "kind":"class",
@@ -43286,6 +45405,10 @@ Initializing script VM...
         "name":"IsAttachedToParent",
         "returns":"bool"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"Vector"
           }],
@@ -43317,6 +45440,10 @@ Initializing script VM...
         "description":"( string TableName, string KeyName )",
         "name":"GetTableValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CCustomNetTableManager"
   },{
@@ -43364,6 +45491,10 @@ Initializing script VM...
         "description":"Get the hero unit name given the hero ID.",
         "name":"GetHeroUnitNameByID",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CDOTAGameManager"
   },{
@@ -43467,6 +45598,10 @@ Initializing script VM...
         "description":"Is the hero not blacklisted, and is it either whitelisted or the whitelist is empty?",
         "name":"IsHeroEnabledViaLists",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "description":"Are blacklisted heroes hidden, or just dimmed, in hero picking?",
@@ -43614,6 +45749,10 @@ Initializing script VM...
         "args":[],
         "name":"IsHexDebuff",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"IsStunDebuff",
@@ -43775,6 +45914,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "name":"IsPermanent",
         "returns":"bool"
       },{
@@ -43861,17 +46004,29 @@ Initializing script VM...
   },{
     "extend":"CDOTA_Modifier_Lua",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_Modifier_Lua_Horizontal_Motion"
   },{
     "extend":"CDOTA_Modifier_Lua",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_Modifier_Lua_Motion_Both"
   },{
     "extend":"CDOTA_Modifier_Lua",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CDOTA_Modifier_Lua_Vertical_Motion"
   },{
     "instance":"debugoverlay",
@@ -44237,6 +46392,10 @@ Initializing script VM...
         "name":"HorzArrow",
         "returns":"void"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"Vector"
           },{
@@ -44541,6 +46700,10 @@ Initializing script VM...
         "name":"GetLocalPlayerPawn",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"handle"
           }],
@@ -44650,6 +46813,10 @@ Initializing script VM...
         "name":"GetPublicScriptScope",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"string"
           },{
@@ -44683,7 +46850,11 @@ Initializing script VM...
   },{
     "instance":"NativeFunctions",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"CEntityScriptFramework"
   },{
     "extend":"C_BaseEntity",
@@ -44695,6 +46866,10 @@ Initializing script VM...
         "returns":"void"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Shows this layer",
         "name":"ShowWorldLayer",
         "returns":"void"
@@ -44704,6 +46879,10 @@ Initializing script VM...
     "extend":"C_BaseEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hActivator",
             "type":"handle"
@@ -44734,6 +46913,10 @@ Initializing script VM...
         "description":"Initialize with number of outputs",
         "name":"Init",
         "returns":"void"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CNativeOutputs"
   },{
@@ -44755,6 +46938,10 @@ Initializing script VM...
         "name":"GetSpawnedEntities",
         "returns":"handle"
       },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"hCallbackFunc",
             "type":"handle"
@@ -44770,6 +46957,10 @@ Initializing script VM...
   },{
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "type":"handle"
           }],
@@ -44828,6 +47019,10 @@ Initializing script VM...
         "description":"Reads a spawn key",
         "name":"GetValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CScriptKeyValues"
   },{
@@ -44887,6 +47082,10 @@ Initializing script VM...
           }],
         "name":"GetParticleReplacement",
         "returns":"string"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "type":"int"
@@ -45047,11 +47246,19 @@ Initializing script VM...
         "description":"Reads a spawn key",
         "name":"GetValue",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"CScriptPrecacheContext"
   },{
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"flMinVal",
             "type":"float"
@@ -45096,7 +47303,11 @@ Initializing script VM...
   },{
     "extend":"C_BaseFlex",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"C_BaseCombatCharacter"
   },{
     "extend":"CEntityInstance",
@@ -45119,6 +47330,20 @@ Initializing script VM...
         "returns":"int"
       },{
         "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"classOrClassName"
+          }],
+        "name":"IsInstance",
+        "returns":"<unknown>"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[{
             "name":"pszContextName",
             "type":"string"
           },{
@@ -45131,12 +47356,36 @@ Initializing script VM...
         "description":"Set a think function on this entity.",
         "name":"SetContextThink",
         "returns":"void"
+      },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"fnname"
+          }],
+        "name":"SetThink",
+        "returns":"<unknown>"
+      },{
+        "args":[{
+            "type":"<unknown>",
+            "name":"self"
+          },{
+            "type":"<unknown>",
+            "name":"contextName"
+          }],
+        "name":"StopThink",
+        "returns":"<unknown>"
       }],
     "name":"C_BaseEntity"
   },{
     "extend":"CBaseAnimatingActivity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"C_BaseFlex"
   },{
     "extend":"C_BaseEntity",
@@ -45146,6 +47395,10 @@ Initializing script VM...
         "description":"GetRenderAlpha(): Get the alpha modulation of this entity.",
         "name":"GetRenderAlpha",
         "returns":"int"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"C_BaseModelEntity"
   },{
@@ -45223,6 +47476,10 @@ Initializing script VM...
         "description":"Whether or not this ability is an item.",
         "name":"IsItem",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"C_DOTABaseAbility"
   },{
@@ -45240,6 +47497,10 @@ Initializing script VM...
         "args":[],
         "name":"GetQueryUnit",
         "returns":"handle"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"ShouldDisplayInWorldUIElements",
@@ -45426,12 +47687,20 @@ Initializing script VM...
         "description":"Returns true if this ability can be used when not on the action panel.",
         "name":"IsHiddenAbilityCastable",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"C_DOTA_Ability_Lua"
   },{
     "extend":"C_DOTABaseAbility",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"nDoubles",
             "type":"int"
@@ -45820,6 +48089,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "description":"Is this unit a ward-type unit?",
         "name":"IsOther",
         "returns":"bool"
@@ -45974,6 +48247,10 @@ Initializing script VM...
         "args":[],
         "name":"GetStrength",
         "returns":"float"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"C_DOTA_BaseNPC_Hero"
   },{
@@ -46037,6 +48314,10 @@ Initializing script VM...
         "returns":"bool"
       },{
         "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
+        "args":[],
         "name":"IsPermanent",
         "returns":"bool"
       },{
@@ -46068,7 +48349,11 @@ Initializing script VM...
   },{
     "extend":"C_DOTA_Item",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"C_DOTA_Item_EmptyBottle"
   },{
     "extend":"C_DOTA_Item",
@@ -46223,17 +48508,29 @@ Initializing script VM...
         "description":"Returns whether this item is muted or not.",
         "name":"IsMuted",
         "returns":"bool"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"C_DOTA_Item_Lua"
   },{
     "extend":"C_BaseEntity",
     "kind":"class",
-    "members":[],
+    "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      }],
     "name":"C_PointEntity"
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
     "members":[{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
+      },{
         "args":[{
             "name":"pMessage",
             "type":"string"
@@ -46284,6 +48581,10 @@ Initializing script VM...
         "description":"GetStr(name) : returns the convar as a string. May return null if no such convar.",
         "name":"GetStr",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       },{
         "args":[{
             "type":"string"
@@ -46385,6 +48686,10 @@ Initializing script VM...
         "description":"CommandLineStr(name) : returns the command line param as a string.",
         "name":"CommandLineStr",
         "returns":"table"
+      },{
+        "args":[],
+        "name":"IsNull",
+        "returns":"<unknown>"
       }],
     "name":"GlobalSys"
   }]

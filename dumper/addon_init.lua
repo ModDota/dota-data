@@ -6,6 +6,9 @@ local jsonorder_function = { __jsonorder = {"args", "description", "kind", "name
 local jsonorder_class = {__jsonorder = {"extend","instance", "kind", "members", "name"}}
 local jsonorder_constant = {__jsonorder = { "description", "enum", "kind", "name", "value" }}
 
+-- https://www.lua.org/manual/5.2/#index
+local builtin_functions = {assert, collectgarbage, dofile, error, getmetatable, ipairs, load, loadfile, next, pairs, pcall, print, rawequal, rawget, rawlen, rawset, require, select, setmetatable, tonumber, tostring, type, xpcall}
+
 local function compareName(a, b) return a.name < b.name end
 local function compareKindAndName(a, b)
   if a.kind < b.kind then
@@ -42,6 +45,21 @@ local function buildFunctionSignature(name, desc)
     returns = desc.returnType,
   }
 end
+local function buildFunctionSignature2(name, func)
+  local args = {}
+  local dinfo = debug.getinfo(func)
+  for i=1, dinfo.nparams do
+    table.insert(args, {
+      name = debug.getlocal(func, i),
+      type = "<unknown>"
+    })
+  end
+  return {
+    name = name,
+    args = args,
+    returns = "<unknown>"
+  }
+end
 
 local function findGlobal(value)
   for k, v in pairs(_G) do
@@ -68,6 +86,14 @@ local function dumpScriptBindings()
     setmetatable(binding, jsonorder_function)
     table.insert(bindings, binding)
   end
+  for name, value in pairs(_G) do
+    if type(value) == "function" and FDesc[name] == nil and vlua.find(builtin_functions, value) == nil then
+      local binding = buildFunctionSignature2(name, value)
+      binding.kind = "function"
+      setmetatable(binding, jsonorder_function)
+      table.insert(bindings, binding)
+    end
+  end
 
   for className, cdesc in pairs(CDesc) do
     local members = {}
@@ -76,6 +102,13 @@ local function dumpScriptBindings()
       setmetatable(signature, jsonorder_function)
 
       table.insert(members, signature)
+    end
+    for name, value in pairs(cdesc) do
+      if type(value) == "function" and cdesc.FDesc[name] == nil then
+        local signature = buildFunctionSignature2(name, value)
+        setmetatable(signature, jsonorder_function)
+        table.insert(members, signature)
+      end
     end
     table.sort(members, compareName)
 
