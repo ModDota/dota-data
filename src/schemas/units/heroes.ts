@@ -155,7 +155,7 @@ const baseHero = () =>
             .field('RequiresSetup', s.int().min(0)),
         ),
     )
-
+    .field('showcase_attachments', s.obj().rest(s.int(), 'string'))
     .field('HUD', s.anything())
     .field('Adjectives', s.obj().rest(s.int(), 'string'))
 

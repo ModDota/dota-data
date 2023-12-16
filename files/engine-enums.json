@@ -6363,6 +6363,10 @@
         "shortName": "AUTOCAST"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES",
+        "shortName": "BREAK_DISABLES"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST",
         "shortName": "CAN_SELF_CAST"
       },
