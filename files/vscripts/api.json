@@ -6568,7 +6568,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ignoreTempAttackSpeed",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -6577,7 +6584,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ignoreTempAttackSpeed",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -6989,7 +7003,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ignoreTempAttackSpeed",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -7375,7 +7396,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ignoreTempAttackSpeed",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -11429,7 +11457,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ignoreTempAttackSpeed",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -15324,6 +15359,16 @@
       },
       {
         "kind": "function",
+        "name": "GetBonusDayVisionPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetBonusNightVision",
         "available": "both",
         "abstract": true,
@@ -15458,6 +15503,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAoEBonusConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16148,6 +16203,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierForceMaxHealth",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierHealAmplify_PercentageSource",
         "available": "both",
         "abstract": true,
@@ -16615,6 +16680,16 @@
       {
         "kind": "function",
         "name": "GetModifierMaxDebuffDuration",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierMinPhysicalArmor",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18325,6 +18400,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnDamageHPLoss",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -22405,6 +22490,22 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ForceSetFrozenCooldown",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
