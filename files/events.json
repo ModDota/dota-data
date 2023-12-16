@@ -2010,6 +2010,17 @@
     ]
   },
   {
+    "name": "dota_tower_deny",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
     "name": "dota_effigy_kill",
     "sourceFile": "game",
     "local": false,
@@ -2050,6 +2061,17 @@
       },
       {
         "name": "gold",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_banner_planted",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
         "type": "short"
       }
     ]

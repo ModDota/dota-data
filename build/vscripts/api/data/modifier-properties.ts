@@ -227,6 +227,7 @@ const modifiersData: Record<string, [ArgumentType, apiTypes.Type[], string?]> = 
   OnBuildingKilled: ['ModifierInstanceEvent', ['nil']],
   OnDamageCalculated: ['ModifierAttackEvent', ['nil']],
   OnDeath: ['ModifierInstanceEvent', ['nil']],
+  OnDeathCompleted: ['ModifierInstanceEvent', ['nil']],
   OnDominated: ['ModifierUnitEvent', ['nil']],
   OnHealReceived: ['ModifierHealEvent', ['nil']],
   OnHealthGained: ['ModifierHealEvent', ['nil']],

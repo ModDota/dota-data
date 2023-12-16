@@ -18361,7 +18361,14 @@
         "name": "OnDeathCompleted",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierInstanceEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
