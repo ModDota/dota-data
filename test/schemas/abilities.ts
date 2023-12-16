@@ -11,7 +11,7 @@ describe('integration', () => {
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
       'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
       'black_dragon_splash_attack.AbilitySpecial.range.var_type is missing',
-      'black_dragon_splash_attack.AbilitySpecial.damage_percent should be an object'
+      'black_dragon_splash_attack.AbilitySpecial.damage_percent should be an object',
     ],
   });
 
