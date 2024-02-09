@@ -5949,6 +5949,10 @@
         "shortName": "FUNCTION"
       },
       {
+        "name": "FIELD_GLOBALSYMBOL",
+        "shortName": "GLOBALSYMBOL"
+      },
+      {
         "name": "FIELD_HMATERIAL",
         "shortName": "HMATERIAL"
       },
@@ -6491,6 +6495,10 @@
         "shortName": "SHOW_IN_GUIDES"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS",
+        "shortName": "SKIP_FOR_KEYBINDS"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE",
         "shortName": "SUPPRESS_ASSOCIATED_CONSUMABLE"
       },
@@ -6550,6 +6558,10 @@
       {
         "name": "DOTA_UNIT_TARGET_HERO",
         "shortName": "HERO"
+      },
+      {
+        "name": "DOTA_UNIT_TARGET_HEROES_AND_CREEPS",
+        "shortName": "HEROES_AND_CREEPS"
       },
       {
         "name": "DOTA_UNIT_TARGET_NONE",

@@ -2096,23 +2096,6 @@
       },
       {
         "kind": "function",
-        "name": "SetLightGroup",
-        "available": "server",
-        "description": "Sets the light group of the entity.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "lightGroup",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetMaterialGroup",
         "available": "server",
         "description": "Set the material group of this entity.",
@@ -4540,36 +4523,6 @@
   },
   {
     "kind": "class",
-    "name": "CDOTA_Ability_Aghanim_Spear",
-    "extend": "CDOTABaseAbility",
-    "members": [
-      {
-        "kind": "function",
-        "name": "LaunchSpear",
-        "available": "server",
-        "description": "Launch Spear to a target position from a source position.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "target",
-            "types": [
-              "Vector"
-            ]
-          },
-          {
-            "name": "start",
-            "types": [
-              "Vector"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "CDOTA_Ability_Animation_Attack",
     "extend": "CDOTABaseAbility",
     "members": [
@@ -5732,31 +5685,6 @@
           "int"
         ],
         "args": []
-      }
-    ]
-  },
-  {
-    "kind": "class",
-    "name": "CDOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
-    "clientName": "C_DOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
-    "extend": "CDOTABaseAbility",
-    "members": [
-      {
-        "kind": "function",
-        "name": "SetNumDoubles",
-        "available": "both",
-        "description": "Sets the number of doubles to spawn.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "doubles",
-            "types": [
-              "int"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -10951,6 +10879,23 @@
       },
       {
         "kind": "function",
+        "name": "SetEconItemGroup",
+        "available": "server",
+        "description": "Switches visible econ item group.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "group",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetHPGain",
         "available": "server",
         "description": "Set the hit points gained per level on this creature.",
@@ -14633,6 +14578,16 @@
       },
       {
         "kind": "function",
+        "name": "IsLoot",
+        "available": "server",
+        "description": "Is this drop flagged as a loot drop?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "SetContainedItem",
         "available": "server",
         "description": "Set the contained item.",
@@ -14644,6 +14599,23 @@
             "name": "item",
             "types": [
               "CDOTA_Item"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetIsLoot",
+        "available": "server",
+        "description": "Set if this drop is flagged as a loot drop.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "isLoot",
+            "types": [
+              "bool"
             ]
           }
         ]
@@ -16102,16 +16074,6 @@
             "kind": "literal",
             "value": 1
           }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierDoNotSinkAfterDeath",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
         ]
       },
       {
@@ -17951,16 +17913,6 @@
       },
       {
         "kind": "function",
-        "name": "GetOverrideAnimationWeight",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "float"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "GetOverrideAttackMagical",
         "available": "both",
         "abstract": true,
@@ -18609,6 +18561,16 @@
       },
       {
         "kind": "function",
+        "name": "OnMuteDamageAbilities",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnOrder",
         "available": "both",
         "abstract": true,
@@ -18813,6 +18775,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnTakeDamagePostUnavoidableBlock",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -22165,6 +22137,16 @@
     "members": [
       {
         "kind": "function",
+        "name": "RespawnCourier",
+        "available": "server",
+        "description": "Respawn the courier.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "UpgradeCourier",
         "available": "server",
         "description": "Upgrade the courier ( int param ) times.",
@@ -22198,120 +22180,6 @@
         "args": [
           {
             "name": "isServerAuthoritative",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
-    "name": "CDOTA_Unit_CustomGameAnnouncerAghanim",
-    "extend": "CDOTA_BaseNPC",
-    "members": [
-      {
-        "kind": "function",
-        "name": "SetAnimation",
-        "available": "server",
-        "description": "Set the animation sequence for this entity.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "animation",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetServerAuthoritative",
-        "available": "server",
-        "description": "Determines whether response criteria is matched on server or client.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "isServerAuthoritative",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
-    "name": "CDOTA_Unit_Diretide_Portal",
-    "extend": "CDOTA_BaseNPC_Building",
-    "members": [
-      {
-        "kind": "function",
-        "name": "GetPartnerPortal",
-        "available": "server",
-        "returns": [
-          "handle"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "ResetPortal",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "SetInvasionRuneType",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "runeType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetPartnerPortal",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "portal",
-            "types": [
-              "handle"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetPortalActive",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "active",
             "types": [
               "bool"
             ]
@@ -26047,6 +25915,22 @@
             "name": "enabled",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetLuaGameMode",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "script",
+            "types": [
+              "handle"
             ]
           }
         ]
