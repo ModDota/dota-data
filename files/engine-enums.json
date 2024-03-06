@@ -6447,10 +6447,6 @@
         "shortName": "NO_TARGET"
       },
       {
-        "name": "DOTA_ABILITY_BEHAVIOR_NONE",
-        "shortName": "NONE"
-      },
-      {
         "name": "DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN",
         "shortName": "NORMAL_WHEN_STOLEN"
       },

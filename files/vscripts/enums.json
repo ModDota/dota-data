@@ -8959,11 +8959,15 @@
         "value": 1777
       },
       {
-        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
-        "value": 1779
+        "name": "ACT_DOTA_CYCLONE",
+        "value": 1781
       },
       {
-        "name": "ACT_DOTA_RUN_ALT",
+        "name": "ACT_DOTA_IMPALE",
+        "value": 1782
+      },
+      {
+        "name": "ACT_DOTA_TORRENT",
         "value": 1783
       },
       {
@@ -8971,31 +8975,27 @@
         "value": 1784
       },
       {
-        "name": "ACT_DOTA_CYCLONE",
-        "value": 1785
-      },
-      {
-        "name": "ACT_DOTA_IMPALE",
+        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
         "value": 1786
       },
       {
-        "name": "ACT_DOTA_TORRENT",
+        "name": "ACT_DOTA_RELAX_IN",
         "value": 1787
       },
       {
-        "name": "ACT_DOTA_RELAX_IN",
+        "name": "ACT_DOTA_RELAX_OUT",
         "value": 1788
       },
       {
-        "name": "ACT_DOTA_RELAX_OUT",
+        "name": "ACT_DOTA_CAST_FENCE",
         "value": 1789
       },
       {
-        "name": "ACT_DOTA_CAST_FENCE",
+        "name": "ACT_DOTA_SPWN",
         "value": 1790
       },
       {
-        "name": "ACT_DOTA_SPWN",
+        "name": "ACT_DOTA_RUN_ALT",
         "value": 1791
       }
     ]

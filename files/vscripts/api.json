@@ -4523,6 +4523,36 @@
   },
   {
     "kind": "class",
+    "name": "CDOTA_Ability_Aghanim_Spear",
+    "extend": "CDOTABaseAbility",
+    "members": [
+      {
+        "kind": "function",
+        "name": "LaunchSpear",
+        "available": "server",
+        "description": "Launch Spear to a target position from a source position.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "target",
+            "types": [
+              "Vector"
+            ]
+          },
+          {
+            "name": "start",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
     "name": "CDOTA_Ability_Animation_Attack",
     "extend": "CDOTABaseAbility",
     "members": [
@@ -22169,6 +22199,47 @@
     "name": "CDOTA_Unit_CustomGameAnnouncer",
     "extend": "CDOTA_BaseNPC",
     "members": [
+      {
+        "kind": "function",
+        "name": "SetServerAuthoritative",
+        "available": "server",
+        "description": "Determines whether response criteria is matched on server or client.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "isServerAuthoritative",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDOTA_Unit_CustomGameAnnouncerAghanim",
+    "extend": "CDOTA_BaseNPC",
+    "members": [
+      {
+        "kind": "function",
+        "name": "SetAnimation",
+        "available": "server",
+        "description": "Set the animation sequence for this entity.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "animation",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
       {
         "kind": "function",
         "name": "SetServerAuthoritative",
