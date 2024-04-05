@@ -18018,6 +18018,16 @@
       },
       {
         "kind": "function",
+        "name": "GetSuppressCrit",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetSuppressTeleport",
         "available": "both",
         "abstract": true,

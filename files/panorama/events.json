@@ -331,6 +331,20 @@
       }
     ]
   },
+  "DOTAShowProfileCardTooltipForPartyMember": {
+    "description": "Show a user's profile card including their hero ban choices. Use pro name determines whether to use their professional team name if applicable.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "steamId",
+        "type": "uint64"
+      },
+      {
+        "name": "useProName",
+        "type": "bool"
+      }
+    ]
+  },
   "DOTAShowRankTierTooltip": {
     "description": "Show the rank tier tooltip for a user",
     "panelEvent": true,

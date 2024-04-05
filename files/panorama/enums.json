@@ -4911,8 +4911,13 @@
         "value": 291
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_SUPPRESS_CRIT",
+        "description": "Method Name: `GetSuppressCrit`",
         "value": 292
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 293
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

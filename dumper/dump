@@ -1,13 +1,13 @@
-ClientVersion=6005
-ServerVersion=6005
+ClientVersion=6023
+ServerVersion=6023
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8746873
-VersionDate=Mar 05 2024
-VersionTime=22:24:59
+SourceRevision=8806282
+VersionDate=Apr 03 2024
+VersionTime=16:43:37
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -739,6 +739,10 @@ $> dump_panorama_events
 | <code>DOTAShowProfileCardTooltip(uint64 steamID, bool useProName)</code>
 | Yes
 | Show a user's profile card. Use pro name determines whether to use their professional team name if applicable.
+|-
+| <code>DOTAShowProfileCardTooltipForPartyMember(uint64 steamID, bool useProName)</code>
+| Yes
+| Show a user's profile card including their hero ban choices. Use pro name determines whether to use their professional team name if applicable.
 |-
 | <code>DOTAShowRankTierTooltip(uint64 steamID)</code>
 | Yes
@@ -2468,7 +2472,9 @@ declare enum modifierfunction
     MODIFIER_EVENT_ON_TAKEDAMAGE_POST_UNAVOIDABLE_BLOCK = 290,
     /** OnMuteDamageAbilities */
     MODIFIER_EVENT_ON_MUTE_DAMAGE_ABILITIES = 291,
-    MODIFIER_FUNCTION_LAST = 292,
+    /** GetSuppressCrit */
+    MODIFIER_PROPERTY_SUPPRESS_CRIT = 292,
+    MODIFIER_FUNCTION_LAST = 293,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -15988,7 +15994,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":292
+    "value":293
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -17314,6 +17320,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
     "value":258
+  },{
+    "description":"GetSuppressCrit",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_CRIT",
+    "value":292
   },{
     "description":"GetModifierSuppressFullscreenDeathFX",
     "enum":"modifierfunction",
@@ -33772,7 +33784,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1789
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -33928,7 +33940,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1781
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -34096,7 +34108,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1782
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -34316,7 +34328,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1786
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34356,7 +34368,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1787
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34368,7 +34380,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1788
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34472,7 +34484,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1790
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -34572,7 +34584,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1783
+    "value":1789
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -34628,7 +34640,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1784
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -41376,7 +41388,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":292
+    "value":293
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -42703,6 +42715,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_SUPPRESS_CLEAVE",
     "value":258
   },{
+    "description":"GetSuppressCrit",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_CRIT",
+    "value":292
+  },{
     "description":"GetModifierSuppressFullscreenDeathFX",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -43505,7 +43523,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1785
+    "value":1781
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -49860,7 +49878,9 @@ declare enum modifierfunction
     MODIFIER_EVENT_ON_TAKEDAMAGE_POST_UNAVOIDABLE_BLOCK = 290,
     /** OnMuteDamageAbilities */
     MODIFIER_EVENT_ON_MUTE_DAMAGE_ABILITIES = 291,
-    MODIFIER_FUNCTION_LAST = 292,
+    /** GetSuppressCrit */
+    MODIFIER_PROPERTY_SUPPRESS_CRIT = 292,
+    MODIFIER_FUNCTION_LAST = 293,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
