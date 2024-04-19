@@ -18601,6 +18601,16 @@
       },
       {
         "kind": "function",
+        "name": "OnModifierRemoved",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnMuteDamageAbilities",
         "available": "both",
         "abstract": true,
@@ -33441,6 +33451,15 @@
         "available": "server",
         "returns": [
           "Vector"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetTotalledDamage",
+        "available": "server",
+        "returns": [
+          "float"
         ],
         "args": []
       },

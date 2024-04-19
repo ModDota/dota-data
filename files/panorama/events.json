@@ -236,6 +236,14 @@
       {
         "name": "guideName",
         "type": "string"
+      },
+      {
+        "name": "arg3",
+        "type": "int32"
+      },
+      {
+        "name": "arg4",
+        "type": "bool"
       }
     ]
   },
@@ -253,6 +261,10 @@
       },
       {
         "name": "arg3",
+        "type": "bool"
+      },
+      {
+        "name": "arg4",
         "type": "bool"
       }
     ]
