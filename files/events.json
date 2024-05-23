@@ -1977,16 +1977,36 @@
         "type": "short"
       },
       {
-        "name": "killer_playerid",
-        "type": "PlayerID"
+        "name": "barracks_type",
+        "type": "short"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "killer_userid",
+        "type": "EntityIndex"
       },
       {
         "name": "killer_team",
         "type": "short"
       },
       {
-        "name": "bounty_amount",
+        "name": "gold",
         "type": "short"
+      },
+      {
+        "name": "pos_x",
+        "type": "float"
+      },
+      {
+        "name": "pos_y",
+        "type": "float"
+      },
+      {
+        "name": "pos_z",
+        "type": "float"
       }
     ]
   },
@@ -2006,6 +2026,22 @@
       {
         "name": "gold",
         "type": "short"
+      },
+      {
+        "name": "tier",
+        "type": "short"
+      },
+      {
+        "name": "pos_x",
+        "type": "float"
+      },
+      {
+        "name": "pos_y",
+        "type": "float"
+      },
+      {
+        "name": "pos_z",
+        "type": "float"
       }
     ]
   },
@@ -2017,6 +2053,30 @@
       {
         "name": "killer_userid",
         "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "short"
+      },
+      {
+        "name": "gold",
+        "type": "short"
+      },
+      {
+        "name": "tier",
+        "type": "short"
+      },
+      {
+        "name": "pos_x",
+        "type": "float"
+      },
+      {
+        "name": "pos_y",
+        "type": "float"
+      },
+      {
+        "name": "pos_z",
+        "type": "float"
       }
     ]
   },
@@ -3370,6 +3430,10 @@
       {
         "name": "entindex_hero",
         "type": "EntityIndex"
+      },
+      {
+        "name": "playerid_victim",
+        "type": "PlayerID"
       }
     ]
   },
@@ -3997,12 +4061,6 @@
         "type": "bool"
       }
     ]
-  },
-  {
-    "name": "map_location_updated",
-    "sourceFile": "game",
-    "local": false,
-    "fields": []
   },
   {
     "name": "richpresence_custom_updated",
@@ -4684,6 +4742,94 @@
     ]
   },
   {
+    "name": "dota_custom_camera_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "flags",
+        "description": "DOTACustomCameraEventFlags_t.",
+        "type": "int"
+      },
+      {
+        "name": "zoom",
+        "type": "float"
+      },
+      {
+        "name": "x",
+        "type": "float"
+      },
+      {
+        "name": "y",
+        "type": "float"
+      },
+      {
+        "name": "extra_yaw",
+        "type": "float"
+      },
+      {
+        "name": "pitch",
+        "type": "float"
+      },
+      {
+        "name": "duration",
+        "type": "float"
+      },
+      {
+        "name": "player_id",
+        "description": "Only used if associated flag is set.",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_event_game_camera_zoom_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "zoom",
+        "type": "int"
+      },
+      {
+        "name": "duration",
+        "description": "0 - instantaneous camera update.",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "dota_event_game_camera_position_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "x",
+        "type": "float"
+      },
+      {
+        "name": "y",
+        "type": "float"
+      },
+      {
+        "name": "duration",
+        "description": "0 - instantaneous camera update.",
+        "type": "float"
+      }
+    ]
+  },
+  {
+    "name": "dota_custom_camera_pitch_updated",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "pitch",
+        "type": "float"
+      }
+    ]
+  },
+  {
     "name": "colorblind_mode_changed",
     "sourceFile": "game",
     "local": false,
@@ -5129,6 +5275,22 @@
       {
         "name": "channel",
         "type": "byte"
+      }
+    ]
+  },
+  {
+    "name": "dota_hero_on_gain_aggro",
+    "sourceFile": "game",
+    "description": "An NPC has gained aggro (is attacking) a hero.",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex_attacker",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "entindex_hero",
+        "type": "EntityIndex"
       }
     ]
   }

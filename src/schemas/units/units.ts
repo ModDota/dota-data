@@ -223,6 +223,9 @@ export const baseUnit = () =>
       ),
     )
 
+    // TODO: Support enums as keys
+    .field('animation_transitions', s.obj().rest(s.map(s.num()), /^ACT_/))
+
     .field(
       'Creature',
       s

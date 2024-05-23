@@ -51,6 +51,30 @@ const baseHero = () =>
       ['AbilityDraftUniqueAbilities', s.obj().rest(s.str(), /^Ability\d+$/)],
     ])
 
+    .field(
+      'Facets',
+      s.obj().rest(
+        s
+          .obj('Facet')
+          .field('Icon', s.str())
+          .field('Color', s.str())
+          .field('GradientID', s.int().min(0))
+          .field('AbilityIconReplacements', s.obj().rest(s.str(), 'string'))
+          .field('KeyValueOverrides', s.obj().rest(s.num(), 'string'))
+          .field(
+            'Abilities',
+            s.obj().rest(
+              s
+                .obj('FacetAbility')
+                .field('AbilityName', s.str())
+                .field('AbilityIndex', s.int())
+                .field('ReplaceAbility', s.str())
+                .field('AutoLevelAbility', s.oneOfLiterals(['true', 'false'])),
+            ),
+          ),
+      ),
+    )
+
     .field('new_player_enable', s.binaryBoolean())
     .field('NameAliases', s.str())
     .field('workshop_guide_name', s.str())
@@ -93,8 +117,6 @@ const baseHero = () =>
     .field('AttackSpeedActivityModifiers', s.map(s.int().min(0)))
     .field('MovementSpeedActivityModifiers', s.map(s.int().min(0)))
     .field('AttackRangeActivityModifiers', s.map(s.int().min(0)))
-    // TODO: Support enums as keys
-    .field('animation_transitions', s.obj().rest(s.map(s.num()), /^ACT_/))
 
     // 7.32e
     .field('RandomEnabled', s.binaryBoolean())

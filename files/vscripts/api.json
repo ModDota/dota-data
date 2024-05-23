@@ -2096,23 +2096,6 @@
       },
       {
         "kind": "function",
-        "name": "SetLightGroup",
-        "available": "server",
-        "description": "Sets the light group of the entity.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "lightGroup",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "SetMaterialGroup",
         "available": "server",
         "description": "Set the material group of this entity.",
@@ -5737,31 +5720,6 @@
   },
   {
     "kind": "class",
-    "name": "CDOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
-    "clientName": "C_DOTA_AghsFort_Ability_ArcWardenBoss_TempestDouble",
-    "extend": "CDOTABaseAbility",
-    "members": [
-      {
-        "kind": "function",
-        "name": "SetNumDoubles",
-        "available": "both",
-        "description": "Sets the number of doubles to spawn.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "doubles",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "CDOTA_BaseNPC",
     "clientName": "C_DOTA_BaseNPC",
     "extend": "CBaseFlex",
@@ -6192,6 +6150,23 @@
           "nil"
         ],
         "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ConsumeItem",
+        "available": "server",
+        "description": "Consume the item, deleting it from the inventory and granting the hero the specified bonuses.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "item",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -10951,6 +10926,23 @@
       },
       {
         "kind": "function",
+        "name": "SetEconItemGroup",
+        "available": "server",
+        "description": "Switches visible econ item group.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "group",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetHPGain",
         "available": "server",
         "description": "Set the hit points gained per level on this creature.",
@@ -11363,14 +11355,7 @@
         "returns": [
           "int"
         ],
-        "args": [
-          {
-            "name": "returnOldValues",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
+        "args": []
       },
       {
         "kind": "function",
@@ -11442,6 +11427,15 @@
       },
       {
         "kind": "function",
+        "name": "GetHeroFacetID",
+        "available": "both",
+        "returns": [
+          "uint"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetHeroID",
         "available": "server",
         "returns": [
@@ -11473,7 +11467,14 @@
         "returns": [
           "float"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "skipNoConsume",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -14633,6 +14634,16 @@
       },
       {
         "kind": "function",
+        "name": "IsLoot",
+        "available": "server",
+        "description": "Is this drop flagged as a loot drop?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "SetContainedItem",
         "available": "server",
         "description": "Set the contained item.",
@@ -14644,6 +14655,23 @@
             "name": "item",
             "types": [
               "CDOTA_Item"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetIsLoot",
+        "available": "server",
+        "description": "Set if this drop is flagged as a loot drop.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "isLoot",
+            "types": [
+              "bool"
             ]
           }
         ]
@@ -15507,7 +15535,37 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierAbilityPoints",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAdditionalNutralItemDrops",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierAoEBonusConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAoEBonusConstantStacking",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -15523,6 +15581,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAttackHeightBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -15578,6 +15646,16 @@
       {
         "kind": "function",
         "name": "GetModifierAttackSpeed_Limit",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAttackSpeedAbsoluteMax",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -15769,6 +15847,36 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierBecomeAgility",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBecomeIntelligence",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBecomeStrength",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierBecomeUniversal",
         "available": "both",
         "abstract": true,
@@ -15787,6 +15895,56 @@
       {
         "kind": "function",
         "name": "GetModifierBonusDamageOutgoing_Percentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusLotusHeal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusLotusHeal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusLotusHeal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusLotusHeal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusLotusHeal",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -15852,6 +16010,26 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBonusUphillMissChance",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBuybackPenaltyPercent",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16001,6 +16179,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierConvertManaCostToHealthCost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierCooldownReduction_Constant",
         "available": "both",
         "abstract": true,
@@ -16014,6 +16202,36 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierCreateBonusIllusionChance",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierCreateBonusIllusionCount",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierCreepDenyPercent",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16089,6 +16307,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierDisassembleAnything",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierDodgeProjectile",
         "available": "both",
         "abstract": true,
@@ -16102,16 +16330,6 @@
             "kind": "literal",
             "value": 1
           }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierDoNotSinkAfterDeath",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
         ]
       },
       {
@@ -16203,7 +16421,47 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierFixedManaRegen",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierForceMaxHealth",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierForceMaxMana",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierFoWTeam",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierHasBonusNeutralItemChoice",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -16291,6 +16549,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierHeroFacetOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierHPRegen_CanBeNegative",
         "available": "both",
         "abstract": true,
@@ -16307,6 +16575,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierHPRegenMultiplierPreAmplification",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16504,7 +16782,27 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierIsRatPack",
+        "name": "GetModifierIsPackRat",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierItemSellbackCost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierKillStreakBonusGoldPercentage",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -16705,6 +17003,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierMiss_Percentage_Target",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16920,6 +17228,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierNoFreeTPScrollOnDeath",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierNoVisionOfAttacker",
         "available": "both",
         "abstract": true,
@@ -17055,6 +17373,16 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPercentageDeathGoldCost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17535,6 +17863,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierProjectileSpeedTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPropetyFailAttack",
         "available": "both",
         "abstract": true,
@@ -17608,12 +17946,32 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierSlowResistance",
+        "name": "GetModifierShareXPRune",
         "available": "both",
         "abstract": true,
         "args": [],
         "returns": [
-          "float"
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierSlowResistance_Stacking",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GEtModifierSlowResistance_Unique",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17931,6 +18289,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModofierPropertyPseudoRandomBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetOverrideAnimation",
         "available": "both",
         "abstract": true,
@@ -17942,16 +18310,6 @@
       {
         "kind": "function",
         "name": "GetOverrideAnimationRate",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "float"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetOverrideAnimationWeight",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18012,6 +18370,16 @@
       },
       {
         "kind": "function",
+        "name": "GetSkipAttackRegulator",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetSuppressCleave",
         "available": "both",
         "abstract": true,
@@ -18032,6 +18400,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetSuppressCrit",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18426,6 +18804,16 @@
       },
       {
         "kind": "function",
+        "name": "OnDayStarted",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnDeath",
         "available": "both",
         "abstract": true,
@@ -18521,6 +18909,16 @@
       },
       {
         "kind": "function",
+        "name": "OnHeroBeginDying",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnHeroKilled",
         "available": "both",
         "abstract": true,
@@ -18603,6 +19001,26 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnModifierRemoved",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnMuteDamageAbilities",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -18813,6 +19231,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnTakeDamagePostUnavoidableBlock",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -22165,6 +22593,16 @@
     "members": [
       {
         "kind": "function",
+        "name": "RespawnCourier",
+        "available": "server",
+        "description": "Respawn the courier.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "UpgradeCourier",
         "available": "server",
         "description": "Upgrade the courier ( int param ) times.",
@@ -22239,79 +22677,6 @@
         "args": [
           {
             "name": "isServerAuthoritative",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
-    "name": "CDOTA_Unit_Diretide_Portal",
-    "extend": "CDOTA_BaseNPC_Building",
-    "members": [
-      {
-        "kind": "function",
-        "name": "GetPartnerPortal",
-        "available": "server",
-        "returns": [
-          "handle"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "ResetPortal",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "SetInvasionRuneType",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "runeType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetPartnerPortal",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "portal",
-            "types": [
-              "handle"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetPortalActive",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "active",
             "types": [
               "bool"
             ]
@@ -26047,6 +26412,22 @@
             "name": "enabled",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetLuaGameMode",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "script",
+            "types": [
+              "handle"
             ]
           }
         ]
@@ -33481,6 +33862,15 @@
       },
       {
         "kind": "function",
+        "name": "GetTotalledDamage",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "HasDamageType",
         "available": "server",
         "returns": [
@@ -35807,6 +36197,53 @@
       "nil"
     ],
     "args": []
+  },
+  {
+    "kind": "function",
+    "name": "DebugCreateHeroWithVariant",
+    "available": "server",
+    "description": "Creates a unit with a specified hero variant, controllable by the specified player.",
+    "returns": [
+      "int"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "handle"
+        ]
+      },
+      {
+        "name": "arg2",
+        "types": [
+          "string"
+        ]
+      },
+      {
+        "name": "arg3",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "arg4",
+        "types": [
+          "int"
+        ]
+      },
+      {
+        "name": "arg5",
+        "types": [
+          "bool"
+        ]
+      },
+      {
+        "name": "arg6",
+        "types": [
+          "handle"
+        ]
+      }
+    ]
   },
   {
     "kind": "function",

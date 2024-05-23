@@ -3,10 +3,6 @@
     "name": "PseudoRandom",
     "members": [
       {
-        "name": "DOTA_PSEUDO_RANDOM_ANTIMAGE_SILENT",
-        "shortName": "ANTIMAGE_SILENT"
-      },
-      {
         "name": "DOTA_PSEUDO_RANDOM_ARMADILLO_HEARTPIERCER",
         "shortName": "ARMADILLO_HEARTPIERCER"
       },
@@ -37,6 +33,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_CHAOS_DOUBLE_CRIT",
         "shortName": "CHAOS_DOUBLE_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_CHAOS_KNIGHT_INNATE_REFUND",
+        "shortName": "CHAOS_KNIGHT_INNATE_REFUND"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_CHAOS_TRIPLE_CRIT",
@@ -129,6 +129,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_GENERIC_MISS",
         "shortName": "GENERIC_MISS"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_HOODWINK_REDIRECT",
+        "shortName": "HOODWINK_REDIRECT"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_ABYSSAL",
@@ -291,6 +295,10 @@
         "shortName": "OGRE_MAGI_FIREBLAST"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_PANGOLIER_PARRY",
+        "shortName": "PANGOLIER_PARRY"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT",
         "shortName": "PHANTOMASSASSIN_CRIT"
       },
@@ -317,6 +325,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_SLARDAR_BASH",
         "shortName": "SLARDAR_BASH"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_SNAPFIRE_GLANCING",
+        "shortName": "SNAPFIRE_GLANCING"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT",
@@ -2626,10 +2638,6 @@
       {
         "name": "ACT_HL2MP_GESTURE_RELOAD_MELEE",
         "shortName": "HL2MP_GESTURE_RELOAD_MELEE"
-      },
-      {
-        "name": "ACT_HL2MP_IDLE_CROUCH_MELEE",
-        "shortName": "HL2MP_IDLE_CROUCH_MELEE"
       },
       {
         "name": "ACT_HL2MP_IDLE_MELEE",
@@ -5949,6 +5957,10 @@
         "shortName": "FUNCTION"
       },
       {
+        "name": "FIELD_GLOBALSYMBOL",
+        "shortName": "GLOBALSYMBOL"
+      },
+      {
         "name": "FIELD_HMATERIAL",
         "shortName": "HMATERIAL"
       },
@@ -6431,6 +6443,10 @@
         "shortName": "IMMEDIATE"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_INNATE_UI",
+        "shortName": "INNATE_UI"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_ITEM",
         "shortName": "ITEM"
       },
@@ -6489,6 +6505,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES",
         "shortName": "SHOW_IN_GUIDES"
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS",
+        "shortName": "SKIP_FOR_KEYBINDS"
       },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_SUPPRESS_ASSOCIATED_CONSUMABLE",
@@ -6550,6 +6570,10 @@
       {
         "name": "DOTA_UNIT_TARGET_HERO",
         "shortName": "HERO"
+      },
+      {
+        "name": "DOTA_UNIT_TARGET_HEROES_AND_CREEPS",
+        "shortName": "HEROES_AND_CREEPS"
       },
       {
         "name": "DOTA_UNIT_TARGET_NONE",

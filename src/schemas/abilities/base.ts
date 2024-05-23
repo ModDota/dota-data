@@ -136,6 +136,9 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemKillable', s.binaryBoolean())
     .field('ItemDroppable', s.binaryBoolean())
     .field('ItemShareability', s.enums('ItemShareability'))
+    .field('SpeciallyBannedFromNeutralSlot', s.binaryBoolean())
+    .field('SpeciallyAllowedInNeutralSlot', s.binaryBoolean())
+    .field('ItemCanBeConsumed', s.binaryBoolean())
 
     // Stocks
     .field('ItemStockMax', s.int().min(0))

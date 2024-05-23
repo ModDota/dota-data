@@ -9,9 +9,6 @@ describe('integration', () => {
 
     ignore: [
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
-      'twin_gate_portal_warp.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
-      'black_dragon_splash_attack.AbilitySpecial.range.var_type is missing',
-      'black_dragon_splash_attack.AbilitySpecial.damage_percent should be an object',
     ],
   });
 
@@ -21,8 +18,6 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/items.txt',
 
     ignore: [
-      'item_tpscroll.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_NOASSIST',
-      'item_soul_ring.AbilityBehavior[2] should be a AbilityBehavior enum but is: DOTA_ABILITY_BEHAVIOR_USE_HP',
       // TODO they used .mdl here, should we allow it?
       'item_recipe_iron_talon.Model should match pattern: /^models\\/.+\\.vmdl$/ but is: models/props_gameplay/recipe.mdl',
       // TODO: Should flag enums allow empty string?
@@ -37,6 +32,36 @@ describe('integration', () => {
      item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya_and_sange;item_yasha;
      item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_sange_and_yasha;item_kaya;
      item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_yasha_and_kaya;item_sange;`,
+
+      `item_recipe_grandmasters_glaive does not match any of:
+  1. item_recipe_grandmasters_glaive.ItemRequirements should be an object
+  2. item_recipe_grandmasters_glaive.ItemRecipe should be "0"
+     item_recipe_grandmasters_glaive.ItemResult is unknown
+     item_recipe_grandmasters_glaive.ItemRequirements is unknown`,
+
+      `item_recipe_poor_mans_shield does not match any of:
+  1. item_recipe_poor_mans_shield.ItemRequirements should be an object
+  2. item_recipe_poor_mans_shield.ItemRecipe should be "0"
+     item_recipe_poor_mans_shield.ItemResult is unknown
+     item_recipe_poor_mans_shield.ItemRequirements is unknown`,
+
+      `item_recipe_hood_of_defiance does not match any of:
+  1. item_recipe_hood_of_defiance.ItemRequirements should be an object
+  2. item_recipe_hood_of_defiance.ItemRecipe should be "0"
+     item_recipe_hood_of_defiance.ItemResult is unknown
+     item_recipe_hood_of_defiance.ItemRequirements is unknown`,
+
+      `item_recipe_ring_of_aquila does not match any of:
+  1. item_recipe_ring_of_aquila.ItemRequirements should be an object
+  2. item_recipe_ring_of_aquila.ItemRecipe should be "0"
+     item_recipe_ring_of_aquila.ItemResult is unknown
+     item_recipe_ring_of_aquila.ItemRequirements is unknown`,
+
+      `item_recipe_fallen_sky does not match any of:
+  1. item_recipe_fallen_sky.ItemRequirements should be an object
+  2. item_recipe_fallen_sky.ItemRecipe should be "0"
+     item_recipe_fallen_sky.ItemResult is unknown
+     item_recipe_fallen_sky.ItemRequirements is unknown`,
     ],
   });
 
@@ -62,7 +87,6 @@ describe('integration', () => {
       'large_frostbitten_icicle.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_ABILITY_1', // Should be ACT_DOTA_CAST_ABILITY_1
       'siltbreaker_go_phase_two.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
       'siltbreaker_go_phase_three.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
-      'big_bear_battle_cry.AbilityBehavior[1] should be a AbilityBehavior enum but is: DOTA_ABILITY_TYPE_ULTIMATE',
     ],
   });
 });
