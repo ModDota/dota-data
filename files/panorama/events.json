@@ -99,8 +99,8 @@
     "panelEvent": true,
     "args": []
   },
-  "DOTAHideProfileCardBattleCupTooltip": {
-    "description": "Hide the profile card / battle cup tooltip.",
+  "DOTAHideFacetTooltip": {
+    "description": "Hides the variant tooltip",
     "panelEvent": true,
     "args": []
   },
@@ -225,6 +225,24 @@
       }
     ]
   },
+  "DOTAShowAbilityTooltipForFacet": {
+    "description": "Show an ability tooltip for a specific facet.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "facetName",
+        "type": "CUtlStringToken"
+      },
+      {
+        "name": "showVideo",
+        "type": "bool"
+      }
+    ]
+  },
   "DOTAShowAbilityTooltipForGuide": {
     "description": "Show an ability tooltip annotated with a particular guide's info.",
     "panelEvent": true,
@@ -260,11 +278,15 @@
         "type": "int32"
       },
       {
-        "name": "arg3",
-        "type": "bool"
+        "name": "heroVariant",
+        "type": "HeroFacetID_t"
       },
       {
         "name": "arg4",
+        "type": "bool"
+      },
+      {
+        "name": "arg5",
         "type": "bool"
       }
     ]
@@ -319,13 +341,17 @@
       }
     ]
   },
-  "DOTAShowProfileCardBattleCupTooltip": {
-    "description": "Show the battle cup portion of the user's profile card, if it exists",
+  "DOTAShowFacetTooltip": {
+    "description": "Shows a variant tooltip for the given hero + variant",
     "panelEvent": true,
     "args": [
       {
-        "name": "steamId",
-        "type": "uint64"
+        "name": "heroId",
+        "type": "int32"
+      },
+      {
+        "name": "hero",
+        "type": "HeroFacetID_t"
       }
     ]
   },
