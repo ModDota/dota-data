@@ -12793,6 +12793,16 @@
       },
       {
         "kind": "function",
+        "name": "IsNull",
+        "available": "both",
+        "description": "Has underlying C++ entity object been deleted?",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsStunDebuff",
         "available": "both",
         "returns": [
@@ -35712,7 +35722,7 @@
       {
         "name": "purchaser",
         "types": [
-          "CDOTAPlayerController",
+          "CDOTA_BaseNPC_Hero",
           "nil"
         ]
       }

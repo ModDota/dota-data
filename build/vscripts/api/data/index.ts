@@ -142,6 +142,18 @@ export const classExtensions: Record<string, ExtensionClass> = {
       },
     ],
   },
+  CDOTA_Buff: {
+    members: [
+      {
+        kind: 'function',
+        name: 'IsNull',
+        available: 'both',
+        description: 'Has underlying C++ entity object been deleted?',
+        returns: ['bool'],
+        args: [],
+      },
+    ],
+  },
 };
 
 export const functionExtensions: Record<string, ExtensionFunction> = {

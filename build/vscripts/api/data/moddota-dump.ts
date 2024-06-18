@@ -575,7 +575,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
     args: {
       '0': ['itemName'],
       '1': ['owner', ['CDOTAPlayerController', 'nil']],
-      '2': ['purchaser', ['CDOTAPlayerController', 'nil']],
+      '2': ['purchaser', ['CDOTA_BaseNPC_Hero', 'nil']],
     },
   },
   '_G.CreateItemOnPositionForLaunch': {
