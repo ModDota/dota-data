@@ -196,6 +196,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemInitialStockTimeTurbo', s.num().min(0))
     .field('TokenTier', s.int())
     .field('ModelScale', s.num())
+    .field('ItemAllowCombineFromGround', s.binaryBoolean())
 
     // TODO: Used only in `seasonal_ti9_banner`
     .field('UnlockMinEffectIndex', s.int().min(0))
