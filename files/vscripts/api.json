@@ -14850,7 +14850,7 @@
         "available": "both",
         "description": "Return the range around the parent this aura tries to apply its buff.",
         "returns": [
-          "int"
+          "float"
         ],
         "args": []
       },
@@ -18481,6 +18481,16 @@
       },
       {
         "kind": "function",
+        "name": "MinAttributeLevel",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT_POST",
         "available": "both",
         "abstract": true,
@@ -18771,6 +18781,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnCleaveAttackLanded",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -19307,6 +19327,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnTreeCutDown",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -22995,7 +23025,7 @@
         "name": "GetAOERadius",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": []
       },

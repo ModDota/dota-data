@@ -1,13 +1,13 @@
-ClientVersion=6065
-ServerVersion=6065
+ClientVersion=6102
+ServerVersion=6102
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=8920494
-VersionDate=May 22 2024
-VersionTime=21:21:00
+SourceRevision=8996635
+VersionDate=Jun 24 2024
+VersionTime=17:31:00
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -1330,6 +1330,7 @@ declare enum DOTA_UNIT_TARGET_FLAGS
     DOTA_UNIT_TARGET_FLAG_NOT_NIGHTMARED = 524288,
     DOTA_UNIT_TARGET_FLAG_PREFER_ENEMIES = 1048576,
     DOTA_UNIT_TARGET_FLAG_RESPECT_OBSTRUCTIONS = 2097152,
+    DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN = 384,
 }
 
 declare enum DOTALimits_t
@@ -1469,6 +1470,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES = 2199023255552,
     DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS = 4398046511104,
     DOTA_ABILITY_BEHAVIOR_INNATE_UI = 8796093022208,
+    DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE = 17592186044416,
 }
 
 declare enum DAMAGE_TYPES
@@ -2596,7 +2598,13 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_HP_REGEN_MULTIPLIER_PRE_AMPLIFICATION = 330,
     /** GetModifierHeroFacetOverride */
     MODIFIER_PROPERTY_HEROFACET_OVERRIDE = 331,
-    MODIFIER_FUNCTION_LAST = 332,
+    /** OnTreeCutDown */
+    MODIFIER_EVENT_ON_TREE_CUT_DOWN = 332,
+    /** OnCleaveAttackLanded */
+    MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED = 333,
+    /** MinAttributeLevel */
+    MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL = 334,
+    MODIFIER_FUNCTION_LAST = 335,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -11693,6 +11701,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING",
     "value":1073741824
   },{
@@ -12953,6 +12966,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
+    "name":"DOTA_INVALID_ORDER_CANT_BUYBACK_CEASELESS_DIRGE",
+    "value":120
+  },{
+    "enum":"DOTA_INVALID_ORDERS",
+    "kind":"constant",
     "name":"DOTA_INVALID_ORDER_CANT_BUYBACK_DISABLED_BY_GAME_MODE",
     "value":99
   },{
@@ -13149,7 +13167,7 @@ Initializing script VM...
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
     "name":"DOTA_INVALID_ORDER_COUNT",
-    "value":120
+    "value":121
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
@@ -15494,6 +15512,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_UNIT_TARGET_FLAGS",
     "kind":"constant",
+    "name":"DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN",
+    "value":384
+  },{
+    "enum":"DOTA_UNIT_TARGET_FLAGS",
+    "kind":"constant",
     "name":"DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP",
     "value":65536
   },{
@@ -15952,6 +15975,12 @@ Initializing script VM...
     "name":"MODIFIER_EVENT_ON_BUILDING_KILLED",
     "value":218
   },{
+    "description":"OnCleaveAttackLanded",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED",
+    "value":333
+  },{
     "description":"OnDamageCalculated",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -16180,6 +16209,12 @@ Initializing script VM...
     "name":"MODIFIER_EVENT_ON_TELEPORTING",
     "value":210
   },{
+    "description":"OnTreeCutDown",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_TREE_CUT_DOWN",
+    "value":332
+  },{
     "description":"OnUnitMoved",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -16200,7 +16235,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":332
+    "value":335
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -17154,6 +17189,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
     "value":176
+  },{
+    "description":"MinAttributeLevel",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL",
+    "value":334
   },{
     "description":"GetMinHealth",
     "enum":"modifierfunction",
@@ -20000,7 +20041,7 @@ Initializing script VM...
       },{
         "args":[],
         "name":"GetAOERadius",
-        "returns":"int"
+        "returns":"float"
       },{
         "args":[{
             "name":"iLevel",
@@ -28056,7 +28097,7 @@ Initializing script VM...
         "args":[],
         "description":"Return the range around the parent this aura tries to apply its buff.",
         "name":"GetAuraRadius",
-        "returns":"int"
+        "returns":"float"
       },{
         "args":[],
         "description":"Return the unit flags this aura respects when placing buffs.",
@@ -34246,7 +34287,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1785
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -34402,7 +34443,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1789
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -34570,7 +34611,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1790
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -34790,7 +34831,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1788
+    "value":1779
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -34830,7 +34871,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1783
+    "value":1780
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -34842,7 +34883,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1784
+    "value":1781
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -34862,7 +34903,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1779
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -34946,7 +34987,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1786
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -35046,7 +35087,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1791
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -35102,7 +35143,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1778
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -39270,6 +39311,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING",
     "value":1073741824
   },{
@@ -39892,6 +39938,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
+    "name":"DOTA_INVALID_ORDER_CANT_BUYBACK_CEASELESS_DIRGE",
+    "value":120
+  },{
+    "enum":"DOTA_INVALID_ORDERS",
+    "kind":"constant",
     "name":"DOTA_INVALID_ORDER_CANT_BUYBACK_DISABLED_BY_GAME_MODE",
     "value":99
   },{
@@ -40088,7 +40139,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
     "name":"DOTA_INVALID_ORDER_COUNT",
-    "value":120
+    "value":121
   },{
     "enum":"DOTA_INVALID_ORDERS",
     "kind":"constant",
@@ -41210,6 +41261,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_UNIT_TARGET_FLAGS",
     "kind":"constant",
+    "name":"DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN",
+    "value":384
+  },{
+    "enum":"DOTA_UNIT_TARGET_FLAGS",
+    "kind":"constant",
     "name":"DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP",
     "value":65536
   },{
@@ -41649,6 +41705,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_EVENT_ON_BUILDING_KILLED",
     "value":218
   },{
+    "description":"OnCleaveAttackLanded",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED",
+    "value":333
+  },{
     "description":"OnDamageCalculated",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -41877,6 +41939,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_EVENT_ON_TELEPORTING",
     "value":210
   },{
+    "description":"OnTreeCutDown",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_EVENT_ON_TREE_CUT_DOWN",
+    "value":332
+  },{
     "description":"OnUnitMoved",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -41897,7 +41965,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":332
+    "value":335
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -42851,6 +42919,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAX_DEBUFF_DURATION",
     "value":176
+  },{
+    "description":"MinAttributeLevel",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL",
+    "value":334
   },{
     "description":"GetMinHealth",
     "enum":"modifierfunction",
@@ -44256,19 +44330,19 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1780
+    "value":1789
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1781
+    "value":1790
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1782
+    "value":1791
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1787
+    "value":1778
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -44716,7 +44790,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
         "args":[],
         "description":"Return the range around the parent this aura tries to apply its buff.",
         "name":"GetAuraRadius",
-        "returns":"int"
+        "returns":"float"
       },{
         "args":[],
         "description":"Return the unit flags this aura respects when placing buffs.",
@@ -49475,6 +49549,7 @@ declare enum DOTA_UNIT_TARGET_FLAGS
     DOTA_UNIT_TARGET_FLAG_NOT_NIGHTMARED = 524288,
     DOTA_UNIT_TARGET_FLAG_PREFER_ENEMIES = 1048576,
     DOTA_UNIT_TARGET_FLAG_RESPECT_OBSTRUCTIONS = 2097152,
+    DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN = 384,
 }
 
 declare enum DOTALimits_t
@@ -49614,6 +49689,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES = 2199023255552,
     DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS = 4398046511104,
     DOTA_ABILITY_BEHAVIOR_INNATE_UI = 8796093022208,
+    DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE = 17592186044416,
 }
 
 declare enum DAMAGE_TYPES
@@ -50741,7 +50817,13 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_HP_REGEN_MULTIPLIER_PRE_AMPLIFICATION = 330,
     /** GetModifierHeroFacetOverride */
     MODIFIER_PROPERTY_HEROFACET_OVERRIDE = 331,
-    MODIFIER_FUNCTION_LAST = 332,
+    /** OnTreeCutDown */
+    MODIFIER_EVENT_ON_TREE_CUT_DOWN = 332,
+    /** OnCleaveAttackLanded */
+    MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED = 333,
+    /** MinAttributeLevel */
+    MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL = 334,
+    MODIFIER_FUNCTION_LAST = 335,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 

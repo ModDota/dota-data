@@ -2680,6 +2680,10 @@
         "shortName": "IDLE_AIM_AGITATED"
       },
       {
+        "name": "ACT_IDLE_AIM_AUTOGUN",
+        "shortName": "IDLE_AIM_AUTOGUN"
+      },
+      {
         "name": "ACT_IDLE_AIM_DUAL",
         "shortName": "IDLE_AIM_DUAL"
       },
@@ -4650,10 +4654,6 @@
       {
         "name": "ACT_RELOAD_SUCCEED",
         "shortName": "RELOAD_SUCCEED"
-      },
-      {
-        "name": "ACT_RESET",
-        "shortName": "RESET"
       },
       {
         "name": "ACT_RIDE_MANNED_GUN",

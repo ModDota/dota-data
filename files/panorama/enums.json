@@ -1271,6 +1271,10 @@
       {
         "name": "DOTA_UNIT_TARGET_FLAG_RESPECT_OBSTRUCTIONS",
         "value": 2097152
+      },
+      {
+        "name": "DOTA_UNIT_TARGET_FLAG_CAN_BE_SEEN",
+        "value": 384
       }
     ]
   },
@@ -1715,6 +1719,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_INNATE_UI",
         "value": 8796093022208
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_UNSWAPPABLE",
+        "value": 17592186044416
       }
     ]
   },
@@ -5131,8 +5139,23 @@
         "value": 331
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_EVENT_ON_TREE_CUT_DOWN",
+        "description": "Method Name: `OnTreeCutDown`",
         "value": 332
+      },
+      {
+        "name": "MODIFIER_EVENT_ON_CLEAVE_ATTACK_LANDED",
+        "description": "Method Name: `OnCleaveAttackLanded`",
+        "value": 333
+      },
+      {
+        "name": "MODIFIER_PROPERTY_MIN_ATTRIBUTE_LEVEL",
+        "description": "Method Name: `MinAttributeLevel`",
+        "value": 334
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 335
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
