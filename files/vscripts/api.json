@@ -15525,6 +15525,16 @@
       },
       {
         "kind": "function",
+        "name": "GetMagicalArmorPiercingPercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetMinHealth",
         "available": "both",
         "abstract": true,
@@ -18013,6 +18023,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierSpellAmplify_PercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierSpellAmplify_PercentageUnique",
         "available": "both",
         "abstract": true,
@@ -18342,6 +18362,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetPhysicalArmorPiercingPercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {

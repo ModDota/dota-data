@@ -257,7 +257,7 @@
       },
       {
         "name": "arg3",
-        "type": "int32"
+        "type": "HeroID_t"
       },
       {
         "name": "arg4",
@@ -275,7 +275,7 @@
       },
       {
         "name": "heroid",
-        "type": "int32"
+        "type": "HeroID_t"
       },
       {
         "name": "heroVariant",
@@ -324,7 +324,7 @@
     ]
   },
   "DOTAShowEconItemTooltip": {
-    "description": "Show the econ item tooltip for a given item, style, and hero. Use 0 for the default style, and -1 for the default hero.",
+    "description": "Show the econ item tooltip for a given item, style, and hero. Use 0 for the default style, and 0 for the default hero.",
     "panelEvent": true,
     "args": [
       {
@@ -337,7 +337,7 @@
       },
       {
         "name": "heroId",
-        "type": "int32"
+        "type": "HeroID_t"
       }
     ]
   },
@@ -347,7 +347,7 @@
     "args": [
       {
         "name": "heroId",
-        "type": "int32"
+        "type": "HeroID_t"
       },
       {
         "name": "hero",
