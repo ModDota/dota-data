@@ -13702,7 +13702,14 @@
         "returns": [
           "nil"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "delayRemove",
+            "types": [
+              "float"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -15387,6 +15394,16 @@
       },
       {
         "kind": "function",
+        "name": "GetBaseAttackPostBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetBonusDayVision",
         "available": "both",
         "abstract": true,
@@ -15467,6 +15484,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetDisableManaGain",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16778,6 +16805,26 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierInnateDamageBlockPctOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierInventorySlotRestricted",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18218,6 +18265,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierTotal_ConstantBlockStacking",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierTotalDamageOutgoing_Percentage",
         "available": "both",
         "abstract": true,
@@ -18386,6 +18443,16 @@
       },
       {
         "kind": "function",
+        "name": "GetRedirectSpell",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetReflectSpell",
         "available": "both",
         "abstract": true,
@@ -18471,6 +18538,16 @@
       },
       {
         "kind": "function",
+        "name": "GetTierTokenReroll",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetTriggerCosmeticAndEndAttack",
         "available": "both",
         "abstract": true,
@@ -18487,6 +18564,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetVisionDegreeRestriction",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -19335,6 +19422,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnTierTokenRerolled",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]

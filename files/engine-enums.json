@@ -6379,10 +6379,6 @@
         "shortName": "AUTOCAST"
       },
       {
-        "name": "DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES",
-        "shortName": "BREAK_DISABLES"
-      },
-      {
         "name": "DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST",
         "shortName": "CAN_SELF_CAST"
       },
@@ -6405,6 +6401,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT",
         "shortName": "DONT_CANCEL_MOVEMENT"
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_DONT_PROC_OTHER_ABILITIES",
+        "shortName": "DONT_PROC_OTHER_ABILITIES"
       },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
