@@ -13702,7 +13702,14 @@
         "returns": [
           "nil"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "delayRemove",
+            "types": [
+              "float"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -14850,7 +14857,7 @@
         "available": "both",
         "description": "Return the range around the parent this aura tries to apply its buff.",
         "returns": [
-          "int"
+          "float"
         ],
         "args": []
       },
@@ -15387,6 +15394,16 @@
       },
       {
         "kind": "function",
+        "name": "GetBaseAttackPostBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetBonusDayVision",
         "available": "both",
         "abstract": true,
@@ -15471,6 +15488,16 @@
       },
       {
         "kind": "function",
+        "name": "GetDisableManaGain",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetFixedDayVision",
         "available": "both",
         "abstract": true,
@@ -15521,6 +15548,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetMagicalArmorPiercingPercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -16772,6 +16809,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierInnateDamageBlockPctOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierInventorySlotRestricted",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierInvisibilityAttackBehaviorException",
         "available": "both",
         "abstract": true,
@@ -18013,6 +18070,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierSpellAmplify_PercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierSpellAmplify_PercentageUnique",
         "available": "both",
         "abstract": true,
@@ -18198,6 +18265,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierTotal_ConstantBlockStacking",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierTotalDamageOutgoing_Percentage",
         "available": "both",
         "abstract": true,
@@ -18346,12 +18423,32 @@
       },
       {
         "kind": "function",
+        "name": "GetPhysicalArmorPiercingPercentageTarget",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetPrimaryStatDamageMultiplier",
         "available": "both",
         "abstract": true,
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetRedirectSpell",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18441,6 +18538,16 @@
       },
       {
         "kind": "function",
+        "name": "GetTierTokenReroll",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetTriggerCosmeticAndEndAttack",
         "available": "both",
         "abstract": true,
@@ -18461,6 +18568,16 @@
       },
       {
         "kind": "function",
+        "name": "GetVisionDegreeRestriction",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetVisualZDelta",
         "available": "both",
         "abstract": true,
@@ -18472,6 +18589,16 @@
       {
         "kind": "function",
         "name": "GetVisualZSpeedBaseOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "MinAttributeLevel",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18771,6 +18898,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnCleaveAttackLanded",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -19291,6 +19428,16 @@
       },
       {
         "kind": "function",
+        "name": "OnTierTokenRerolled",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnTooltip",
         "available": "both",
         "abstract": true,
@@ -19307,6 +19454,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnTreeCutDown",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -22995,7 +23152,7 @@
         "name": "GetAOERadius",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": []
       },
