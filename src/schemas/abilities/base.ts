@@ -73,6 +73,7 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('ad_linked_abilities', s.str())
     .field('SpecialBonusIntrinsicModifier', s.str())
     .field('LinkedShardAbility', s.str().pattern(resourcePatterns.ability))
+    .field('IsBreakable', s.binaryBoolean())
 
     .field(
       'AbilitySpecial',
@@ -197,6 +198,11 @@ export const baseItem = (name = 'BaseItem') =>
     .field('TokenTier', s.int())
     .field('ModelScale', s.num())
     .field('ItemAllowCombineFromGround', s.binaryBoolean())
+
+    .field('SuggestPregame', s.binaryBoolean())
+    .field('SuggestEarlygame', s.binaryBoolean())
+    .field('SuggestLategame', s.binaryBoolean())
+    .field('CooldownPausedOutOfInventory', s.binaryBoolean())
 
     // TODO: Used only in `seasonal_ti9_banner`
     .field('UnlockMinEffectIndex', s.int().min(0))
