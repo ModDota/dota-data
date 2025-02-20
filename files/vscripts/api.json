@@ -1139,29 +1139,6 @@
       },
       {
         "kind": "function",
-        "name": "OverrideFriction",
-        "available": "server",
-        "description": "Takes duration, value for a temporary override.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "duration",
-            "types": [
-              "float"
-            ]
-          },
-          {
-            "name": "friction",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
         "name": "PrecacheScriptSound",
         "available": "server",
         "description": "Precache a sound for later playing.",
@@ -10586,7 +10563,20 @@
         "returns": [
           "bool"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "ability",
+            "types": [
+              "handle"
+            ]
+          },
+          {
+            "name": "buff",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -12386,7 +12376,7 @@
   },
   {
     "kind": "class",
-    "name": "CDOTA_BaseNPC_MangoTree",
+    "name": "CDOTA_BaseNPC_LotusPool",
     "extend": "CDOTA_BaseNPC_Building",
     "members": []
   },
@@ -13164,6 +13154,15 @@
       },
       {
         "kind": "function",
+        "name": "IsActiveNeutral",
+        "available": "server",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "IsAlertableItem",
         "available": "both",
         "returns": [
@@ -13247,15 +13246,6 @@
         "kind": "function",
         "name": "IsMuted",
         "available": "both",
-        "returns": [
-          "bool"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "IsNeutralDrop",
-        "available": "server",
         "returns": [
           "bool"
         ],
@@ -15454,6 +15444,26 @@
       },
       {
         "kind": "function",
+        "name": "GetConvertAttackPhysicalToPure",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetCriticalStrikeBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetDisableAutoAttack",
         "available": "both",
         "abstract": true,
@@ -15568,6 +15578,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetMinMana",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -15748,6 +15768,16 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierAvoidAttackProcs",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17174,6 +17204,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierMoveSpeed_MaxOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierMoveSpeed_MinOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierMoveSpeedBonus_Constant",
         "available": "both",
         "abstract": true,
@@ -17244,12 +17294,32 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierMoveSpeedMax_BonusConstant",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierMoveSpeedOverride",
         "available": "both",
         "abstract": true,
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierMoveSpeedPostMultiplierBonus_Constant ",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17274,6 +17344,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierMPRegenAmplify_Percentage_Unique",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierMPRestoreAmplify_Percentage",
         "available": "both",
         "abstract": true,
@@ -17291,6 +17371,26 @@
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierNeutralEnhancementOptions",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierNeutralTrinketOptions",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -17802,6 +17902,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPreserveNeutralItemPassives",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierProcAttack_BonusDamage_Magical",
         "available": "both",
         "abstract": true,
@@ -17940,6 +18050,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierProperty_MagicalLifesteal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierProperty_PhysicalLifesteal",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPropetyFailAttack",
         "available": "both",
         "abstract": true,
@@ -18043,6 +18173,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierSlowResistanceAppliesToAttacks",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierSpellAmplify_Percentage",
         "available": "both",
         "abstract": true,
@@ -18091,6 +18231,16 @@
       {
         "kind": "function",
         "name": "GetModifierSpellLifestealRegenAmplify_Percentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierSpellLifestealRegenAmplify_Percentage_Unique",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18376,6 +18526,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierXPFountainCountdownTimeOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModofierPropertyPseudoRandomBonus",
         "available": "both",
         "abstract": true,
@@ -18478,6 +18638,16 @@
       {
         "kind": "function",
         "name": "GetSkipAttackRegulator",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetSuppressAttackProcs",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -18680,6 +18850,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnAbilityToggled",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -19022,6 +19202,16 @@
       },
       {
         "kind": "function",
+        "name": "OnFoWTeamChanged",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnHealReceived",
         "available": "both",
         "abstract": true,
@@ -19174,6 +19364,16 @@
       },
       {
         "kind": "function",
+        "name": "OnNightStarted",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnOrder",
         "available": "both",
         "abstract": true,
@@ -19238,6 +19438,16 @@
       },
       {
         "kind": "function",
+        "name": "OnPureDamageCalculated",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnRespawn",
         "available": "both",
         "abstract": true,
@@ -19249,6 +19459,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnRuneSpawn",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -32325,7 +32545,7 @@
           {
             "name": "tagName",
             "types": [
-              "string"
+              "unknown"
             ]
           }
         ]
@@ -32695,23 +32915,6 @@
           "nil"
         ],
         "args": []
-      },
-      {
-        "kind": "function",
-        "name": "SetDynamicVsDynamicContinuous",
-        "available": "server",
-        "description": "Enable/disable dynamic vs dynamic continuous collision traces.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "isDynamicVsDynamicContinuousEnabled",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -33930,7 +34133,7 @@
         ],
         "args": [
           {
-            "name": "bitsDamageType",
+            "name": "damageType",
             "types": [
               "int"
             ]
@@ -33996,7 +34199,7 @@
         "name": "GetDamageType",
         "available": "server",
         "returns": [
-          "int"
+          "unknown"
         ],
         "args": []
       },
@@ -34045,7 +34248,7 @@
         ],
         "args": [
           {
-            "name": "bitsToTest",
+            "name": "damageType",
             "types": [
               "int"
             ]
@@ -34173,7 +34376,7 @@
         ],
         "args": [
           {
-            "name": "bitsDamageType",
+            "name": "damageType",
             "types": [
               "int"
             ]
