@@ -231,6 +231,10 @@
         "shortName": "JUGG_CRIT"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_KEZ_SAI",
+        "shortName": "KEZ_SAI"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_LEGION_MOMENT",
         "shortName": "LEGION_MOMENT"
       },
@@ -1792,6 +1796,30 @@
         "shortName": "DOTA_JAKIRO_LIQUIDFIRE_START"
       },
       {
+        "name": "ACT_DOTA_KEZ_KATANA_IMPALE",
+        "shortName": "DOTA_KEZ_KATANA_IMPALE"
+      },
+      {
+        "name": "ACT_DOTA_KEZ_KATANA_IMPALE_FAST",
+        "shortName": "DOTA_KEZ_KATANA_IMPALE_FAST"
+      },
+      {
+        "name": "ACT_DOTA_KEZ_KATANA_ULT_CHAIN_A",
+        "shortName": "DOTA_KEZ_KATANA_ULT_CHAIN_A"
+      },
+      {
+        "name": "ACT_DOTA_KEZ_KATANA_ULT_CHAIN_B",
+        "shortName": "DOTA_KEZ_KATANA_ULT_CHAIN_B"
+      },
+      {
+        "name": "ACT_DOTA_KEZ_KATANA_ULT_END",
+        "shortName": "DOTA_KEZ_KATANA_ULT_END"
+      },
+      {
+        "name": "ACT_DOTA_KEZ_KATANA_ULT_START",
+        "shortName": "DOTA_KEZ_KATANA_ULT_START"
+      },
+      {
         "name": "ACT_DOTA_KILLTAUNT",
         "shortName": "DOTA_KILLTAUNT"
       },
@@ -2052,6 +2080,10 @@
         "shortName": "DOTA_SAND_KING_BURROW_OUT"
       },
       {
+        "name": "ACT_DOTA_SHADOW_VAULT",
+        "shortName": "DOTA_SHADOW_VAULT"
+      },
+      {
         "name": "ACT_DOTA_SHAKE",
         "shortName": "DOTA_SHAKE"
       },
@@ -2222,6 +2254,14 @@
       {
         "name": "ACT_DOTA_UNDYING_TOMBSTONE",
         "shortName": "DOTA_UNDYING_TOMBSTONE"
+      },
+      {
+        "name": "ACT_DOTA_UNICYCLE",
+        "shortName": "DOTA_UNICYCLE"
+      },
+      {
+        "name": "ACT_DOTA_UNICYCLE_END",
+        "shortName": "DOTA_UNICYCLE_END"
       },
       {
         "name": "ACT_DOTA_VERSUS",
@@ -3518,10 +3558,6 @@
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM1",
         "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM1"
-      },
-      {
-        "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM2",
-        "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM2"
       },
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_MELEE",
@@ -6359,6 +6395,10 @@
     "name": "AbilityBehavior",
     "members": [
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_AFFECTED_BY_MUTE",
+        "shortName": "AFFECTED_BY_MUTE"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE",
         "shortName": "ALT_CASTABLE"
       },
@@ -6431,6 +6471,10 @@
         "shortName": "IGNORE_CHANNEL"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_INVISIBLE",
+        "shortName": "IGNORE_INVISIBLE"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_IGNORE_MUTED",
         "shortName": "IGNORE_MUTED"
       },
@@ -6449,6 +6493,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_INNATE_UI",
         "shortName": "INNATE_UI"
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_IS_FAKE_ITEM",
+        "shortName": "IS_FAKE_ITEM"
       },
       {
         "name": "DOTA_ABILITY_BEHAVIOR_ITEM",

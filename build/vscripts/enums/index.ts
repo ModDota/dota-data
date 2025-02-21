@@ -111,11 +111,15 @@ export function generateEnumDeclarations(): EnumResult {
   _.each(enumValueDescriptions, (descriptions, scopeName) => {
     const enumValue = enums.find((x) => x.name === scopeName);
     if (enumValue == null) throw new Error(`Enum ${scopeName} not found`);
+
     _.each(descriptions, (description, memberName) => {
       if (memberName === '__self') {
         enumValue.description = description;
       } else {
-        enumValue.members.find((x) => x.name === memberName)!.description = description;
+        const member = enumValue.members.find((x) => x.name === memberName);
+        if (member) {
+          member.description = description;
+        }
       }
     });
   });

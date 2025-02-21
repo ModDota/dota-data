@@ -1707,6 +1707,33 @@
     "fields": []
   },
   {
+    "name": "bot_takeover",
+    "sourceFile": "core",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "botid",
+        "type": "player_controller"
+      },
+      {
+        "name": "p",
+        "type": "float"
+      },
+      {
+        "name": "y",
+        "type": "float"
+      },
+      {
+        "name": "r",
+        "type": "float"
+      }
+    ]
+  },
+  {
     "name": "dota_chase_hero",
     "sourceFile": "game",
     "description": "Shot of a single entity.",
@@ -2626,12 +2653,6 @@
     "fields": []
   },
   {
-    "name": "dota_starting_position_changed",
-    "sourceFile": "game",
-    "local": false,
-    "fields": []
-  },
-  {
     "name": "dota_team_neutral_stash_items_changed",
     "sourceFile": "game",
     "local": false,
@@ -2696,12 +2717,6 @@
   },
   {
     "name": "dota_item_suggestions_changed",
-    "sourceFile": "game",
-    "local": false,
-    "fields": []
-  },
-  {
-    "name": "dota_estimated_match_duration_changed",
     "sourceFile": "game",
     "local": false,
     "fields": []
@@ -4147,7 +4162,7 @@
   {
     "name": "client_disconnect",
     "sourceFile": "game",
-    "local": true,
+    "local": false,
     "fields": [
       {
         "name": "reason_code",
@@ -5182,6 +5197,51 @@
       },
       {
         "name": "herokills",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_alchemist_granted_scepter",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "alchemist_userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "grantee_userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_protector_spawned",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "player_id",
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "dota_crafting_xp",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "userid",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "type",
+        "type": "short"
+      },
+      {
+        "name": "xp",
         "type": "short"
       }
     ]
