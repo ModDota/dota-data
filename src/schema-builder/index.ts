@@ -51,4 +51,5 @@ export const map = (schema: Schema, name?: string) => obj(name).rest(schema);
 export const oneOfLiterals = (values: LiteralSchemaValue[]) => oneOf(values.map(literal));
 export const binaryBoolean = () => oneOfLiterals([0, 1]);
 export const stringBoolean = () => oneOfLiterals(['true', 'false']);
+export const anyBoolean = () => oneOfLiterals([0, 1, 'true', 'false', 'True', 'False']);
 export const vector = () => arrayLike().min(3).max(3);

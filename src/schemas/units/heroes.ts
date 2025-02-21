@@ -61,7 +61,8 @@ const baseHero = () =>
           .field('GradientID', s.int().min(0))
           .field('AbilityIconReplacements', s.obj().rest(s.str(), 'string'))
           .field('KeyValueOverrides', s.obj().rest(s.num(), 'string'))
-          .field('Deprecated', s.stringBoolean())
+          .field('Deprecated', s.anyBoolean())
+          .field('MaxHeroAttributeLevel', s.int())
           .field(
             'Abilities',
             s.obj().rest(

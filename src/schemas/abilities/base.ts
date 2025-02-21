@@ -128,6 +128,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemGloballyCombinable', s.binaryBoolean())
     .field('ItemIsNeutralDrop', s.binaryBoolean())
     .field('ItemPurchasable', s.binaryBoolean())
+    .field('AutoPickup', s.binaryBoolean())
 
     .field('ItemSellable', s.binaryBoolean())
     .field('ItemInitiallySellable', s.binaryBoolean())
@@ -154,6 +155,8 @@ export const baseItem = (name = 'BaseItem') =>
     .field('ItemPermanent', s.binaryBoolean())
     .field('ItemInitialCharges', s.int())
     .field('ItemHideCharges', s.binaryBoolean())
+    .field('ItemIsNeutralActiveDrop', s.binaryBoolean())
+    .field('ItemIsNeutralPassiveDrop', s.binaryBoolean())
     .field('ItemRequiresCharges', s.binaryBoolean())
 
     .field('IsTempestDoubleClonable', s.binaryBoolean())

@@ -260,7 +260,7 @@ export const baseUnit = () =>
         ),
       { description: "Valid only when BaseClass is 'npc_dota_creature' or it's subclass." },
     )
-    .field('party_hat_effect', s.str().pattern(resourcePatterns.particles))
+    .field('party_hat_effects', s.obj().rest(s.str(), 'string'))
     .field('party_hat_effect_persona', s.str().pattern(resourcePatterns.particles));
 
 export const unitCustom = baseUnit().field('vscripts', s.str().pattern(resourcePatterns.lua), {
