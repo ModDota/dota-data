@@ -1,6 +1,6 @@
 import { outputFile, outputJson } from '../util';
-import { apiDeclarations, apiTypes, validateApi } from './api';
-import { apiTypesDeclarations, apiTypesTypes, validateApiTypes } from './api-types';
+import { apiDeclarations, apiTypes } from './api';
+import { apiTypesDeclarations, apiTypesTypes } from './api-types';
 import { generateEnumDeclarations, enumsTypes } from './enums';
 
 export async function generateVScripts() {

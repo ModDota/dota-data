@@ -113,10 +113,6 @@ function transformFunction(
       const originalName = formatArgumentName(argNames[index], index);
       const name = extensionName ?? originalName;
 
-      if (originalName === extensionName) {
-        console.log(`Unnecessary argument name override: ${functionIdentifier} ${name}`);
-      }
-
       if (!/^\w+$/.test(name)) {
         console.log(`Invalid argument name: ${functionIdentifier} ${name}`);
       }
