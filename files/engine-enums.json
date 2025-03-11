@@ -3560,6 +3560,10 @@
         "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM1"
       },
       {
+        "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM2",
+        "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM2"
+      },
+      {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_MELEE",
         "shortName": "MP_GESTURE_VC_FISTPUMP_MELEE"
       },
@@ -4798,10 +4802,6 @@
       {
         "name": "ACT_RUN_PROTECTED",
         "shortName": "RUN_PROTECTED"
-      },
-      {
-        "name": "ACT_RUN_RELAXED",
-        "shortName": "RUN_RELAXED"
       },
       {
         "name": "ACT_RUN_RIFLE",
