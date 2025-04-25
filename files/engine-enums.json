@@ -442,10 +442,6 @@
         "shortName": "INTELLECT"
       },
       {
-        "name": "DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE",
-        "shortName": "INTELLIGENCE_DAMAGE"
-      },
-      {
         "name": "DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESIST",
         "shortName": "INTELLIGENCE_MAGIC_RESIST"
       },
@@ -4802,6 +4798,10 @@
       {
         "name": "ACT_RUN_PROTECTED",
         "shortName": "RUN_PROTECTED"
+      },
+      {
+        "name": "ACT_RUN_RELAXED",
+        "shortName": "RUN_RELAXED"
       },
       {
         "name": "ACT_RUN_RIFLE",

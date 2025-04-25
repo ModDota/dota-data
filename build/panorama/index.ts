@@ -2,6 +2,7 @@ import { outputFile, outputJson } from '../util';
 import { cssTypes, generateCss } from './css';
 import { enums, enumsTypes } from './enums';
 import { generatePanoramaEvents, panoramaEventsTypes } from './events';
+import { generatePanoramaApi, getPanoramaApiTypes } from './api';
 
 export function generatePanorama() {
   outputJson('panorama/css', generateCss());
@@ -10,4 +11,7 @@ export function generatePanorama() {
   outputFile('panorama/enums.d.ts', enumsTypes);
   outputJson('panorama/events', generatePanoramaEvents());
   outputFile('panorama/events.d.ts', panoramaEventsTypes);
+
+  outputJson('panorama/api', generatePanoramaApi());
+  outputFile('panorama/api.d.ts', getPanoramaApiTypes());
 }
