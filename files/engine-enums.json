@@ -442,10 +442,6 @@
         "shortName": "INTELLECT"
       },
       {
-        "name": "DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE",
-        "shortName": "INTELLIGENCE_DAMAGE"
-      },
-      {
         "name": "DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESIST",
         "shortName": "INTELLIGENCE_MAGIC_RESIST"
       },
@@ -3558,6 +3554,10 @@
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM1",
         "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM1"
+      },
+      {
+        "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM2",
+        "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM2"
       },
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_MELEE",

@@ -1,6 +1,6 @@
 import { readDump } from '../../util';
 import { getEnumDescription } from '../../vscripts/api/data/modifier-properties';
-import { Enum, EnumMember } from './types';
+import { Availability, Declaration, Enum, EnumMember } from './types';
 
 export { types as enumsTypes } from './types';
 
@@ -14,7 +14,7 @@ export const enums = (() => {
       let currentComment: string | undefined;
 
       for (const line of group.slice(group.indexOf('{')).split('\n')) {
-        const comment = line.match(/\/\*\* (.+) \*\//);
+        const comment = line.match(/\/\*\* (.+) \*\//); 
         if (comment) {
           [, currentComment] = comment;
         }
@@ -31,12 +31,20 @@ export const enums = (() => {
         }
       }
 
-      return { name: enumName, members };
+      return { 
+        kind: 'enum',
+        name: enumName, 
+        available: 'both' as Availability, // 默认为both，因为这是panorama枚举
+        members 
+      };
     });
 
   for (const member of result.find((x) => x.name === 'modifierfunction')!.members) {
     member.description = getEnumDescription(member.description);
   }
 
-  return result;
+  // 按名称排序，与vscripts保持一致
+  result.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+
+  return result as Declaration[];
 })();

@@ -1,7 +1,20 @@
 declare namespace enums {
-  export interface Enum {
+  export type Declaration = Constant | Enum;
+  export type Availability = 'client' | 'both';
+  
+  export interface Constant {
+    kind: 'constant';
     name: string;
-    // description?: string;
+    description?: string;
+    value: number;
+    available: Availability;
+  }
+  
+  export interface Enum {
+    kind: 'enum';
+    name: string;
+    description?: string;
+    available: Availability;
     members: EnumMember[];
   }
   
@@ -12,5 +25,5 @@ declare namespace enums {
   }
 }
 
-declare const enums: enums.Enum[];
+declare const enums: enums.Declaration[];
 export = enums;
