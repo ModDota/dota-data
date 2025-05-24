@@ -2035,13 +2035,13 @@
         ],
         "args": [
           {
-            "name": "group",
+            "name": "bodyGroup",
             "types": [
               "int"
             ]
           },
           {
-            "name": "value",
+            "name": "choice",
             "types": [
               "int"
             ]
@@ -18070,6 +18070,76 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPropertyConsumableUseSpeed",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyForbidIllusions",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyHealingAmplificationUnique",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyManacostOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyRestorationAmplification",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyRestorationAmplificationUnique",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyUpgradeNeutralArtifacts",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPropetyFailAttack",
         "available": "both",
         "abstract": true,
@@ -18682,6 +18752,16 @@
       {
         "kind": "function",
         "name": "GetSuppressCrit",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetSuppressIncomingCrit",
         "available": "both",
         "abstract": true,
         "args": [],

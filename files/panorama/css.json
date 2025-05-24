@@ -374,6 +374,12 @@
       "contrast: 1.5;"
     ]
   },
+  "cursor": {
+    "description": "Sets the mouse cursor used on hover for this panel. Default is to inherit.",
+    "examples": [
+      "cursor: text;cursor: crosshair;"
+    ]
+  },
   "flow-children": {
     "description": "<Needs a description>",
     "examples": []

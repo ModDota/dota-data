@@ -1928,6 +1928,10 @@
         "shortName": "DOTA_MK_TREE_SOAR"
       },
       {
+        "name": "ACT_DOTA_MVP_SCREEN",
+        "shortName": "DOTA_MVP_SCREEN"
+      },
+      {
         "name": "ACT_DOTA_NECRO_GHOST_SHROUD",
         "shortName": "DOTA_NECRO_GHOST_SHROUD"
       },
@@ -3558,6 +3562,10 @@
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM1",
         "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM1"
+      },
+      {
+        "name": "ACT_MP_GESTURE_VC_FISTPUMP_ITEM2",
+        "shortName": "MP_GESTURE_VC_FISTPUMP_ITEM2"
       },
       {
         "name": "ACT_MP_GESTURE_VC_FISTPUMP_MELEE",
@@ -6007,6 +6015,10 @@
       {
         "name": "FIELD_HMODEL",
         "shortName": "HMODEL"
+      },
+      {
+        "name": "FIELD_HNMGRAPHDEFINITION",
+        "shortName": "HNMGRAPHDEFINITION"
       },
       {
         "name": "FIELD_HPARTICLESYSTEMDEFINITION",

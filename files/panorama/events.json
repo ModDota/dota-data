@@ -342,16 +342,12 @@
     ]
   },
   "DOTAShowFacetTooltip": {
-    "description": "Shows a variant tooltip for the given hero + variant",
+    "description": "Shows a variant tooltip for the given hero facet key",
     "panelEvent": true,
     "args": [
       {
-        "name": "heroId",
-        "type": "HeroID_t"
-      },
-      {
-        "name": "hero",
-        "type": "HeroFacetID_t"
+        "name": "facetKey",
+        "type": "HeroFacetKey_t"
       }
     ]
   },

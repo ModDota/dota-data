@@ -667,18 +667,6 @@
         "value": 12
       },
       {
-        "name": "OVERHEAD_ALERT_LAST_HIT_EARLY",
-        "value": 13
-      },
-      {
-        "name": "OVERHEAD_ALERT_LAST_HIT_CLOSE",
-        "value": 14
-      },
-      {
-        "name": "OVERHEAD_ALERT_LAST_HIT_MISS",
-        "value": 15
-      },
-      {
         "name": "OVERHEAD_ALERT_MAGICAL_BLOCK",
         "value": 16
       },
@@ -1767,7 +1755,7 @@
       },
       {
         "name": "DAMAGE_TYPE_ABILITY_DEFINED",
-        "value": 22
+        "value": 16
       },
       {
         "name": "DAMAGE_TYPE_ALL",
@@ -1907,6 +1895,10 @@
       {
         "name": "DOTA_DAMAGE_FLAG_BYPASSES_ALL_BLOCK",
         "value": 524288
+      },
+      {
+        "name": "DOTA_DAMAGE_FLAG_NO_REFLECTION",
+        "value": 1048576
       }
     ]
   },
@@ -3049,6 +3041,10 @@
       {
         "name": "ACT_DOTA_UNICYCLE_END",
         "value": 1773
+      },
+      {
+        "name": "ACT_DOTA_MVP_SCREEN",
+        "value": 1776
       }
     ]
   },
@@ -5397,8 +5393,52 @@
         "value": 369
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_FORBID_ILLUSIONS",
+        "description": "Method Name: `GetModifierPropertyForbidIllusions`",
         "value": 370
+      },
+      {
+        "name": "MODIFIER_PROPERTY_MANACOST_OVERRIDE",
+        "description": "Method Name: `GetModifierPropertyManacostOverride`",
+        "value": 371
+      },
+      {
+        "name": "MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION",
+        "description": "Method Name: `GetModifierPropertyRestorationAmplification`",
+        "value": 372
+      },
+      {
+        "name": "MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE",
+        "description": "Method Name: `GetModifierPropertyRestorationAmplificationUnique`",
+        "value": 373
+      },
+      {
+        "name": "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE",
+        "description": "Method Name: `GetModifierPropertyHealingAmplificationUnique`",
+        "value": 374
+      },
+      {
+        "name": "MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT",
+        "description": "Method Name: `GetSuppressIncomingCrit`",
+        "value": 375
+      },
+      {
+        "name": "MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS",
+        "description": "Method Name: `GetModifierPropertyUpgradeNeutralArtifacts`",
+        "value": 376
+      },
+      {
+        "name": "MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED",
+        "description": "Method Name: `GetModifierPropertyConsumableUseSpeed`",
+        "value": 377
+      },
+      {
+        "name": "MODIFIER_PROPERTY_FORCE_NETWORK_TRANSMIT",
+        "value": 378
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 379
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
@@ -7104,112 +7144,116 @@
         "value": 217
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_HEROFACET",
         "value": 218
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_GOLD",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN",
         "value": 219
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_GOLD",
         "value": 220
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD",
         "value": 221
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN",
         "value": 222
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK",
         "value": 223
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH",
         "value": 224
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_SORT",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY",
         "value": 225
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_SORT",
         "value": 226
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1",
+        "name": "DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE",
         "value": 227
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1",
         "value": 228
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2",
         "value": 229
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3",
         "value": 230
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4",
         "value": 231
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5",
         "value": 232
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6",
         "value": 233
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7",
         "value": 234
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8",
         "value": 235
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9",
         "value": 236
       },
       {
-        "name": "DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE",
+        "name": "DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10",
         "value": 237
       },
       {
-        "name": "DOTA_KEYBIND_INSPECTHEROINWORLD",
+        "name": "DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE",
         "value": 238
       },
       {
-        "name": "DOTA_KEYBIND_CAMERA_ZOOM_IN",
+        "name": "DOTA_KEYBIND_INSPECTHEROINWORLD",
         "value": 239
       },
       {
-        "name": "DOTA_KEYBIND_CAMERA_ZOOM_OUT",
+        "name": "DOTA_KEYBIND_CAMERA_ZOOM_IN",
         "value": 240
       },
       {
-        "name": "DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV",
+        "name": "DOTA_KEYBIND_CAMERA_ZOOM_OUT",
         "value": 241
       },
       {
-        "name": "DOTA_KEYBIND_DOTA_ALT",
+        "name": "DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV",
         "value": 242
       },
       {
-        "name": "DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH",
+        "name": "DOTA_KEYBIND_DOTA_ALT",
         "value": 243
       },
       {
-        "name": "DOTA_KEYBIND_COUNT",
+        "name": "DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH",
         "value": 244
+      },
+      {
+        "name": "DOTA_KEYBIND_COUNT",
+        "value": 245
       }
     ]
   },
