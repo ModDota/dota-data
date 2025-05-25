@@ -1,13 +1,13 @@
-ClientVersion=6328
-ServerVersion=6328
+ClientVersion=6425
+ServerVersion=6425
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=9553002
-VersionDate=Feb 20 2025
-VersionTime=14:16:18
+SourceRevision=9778541
+VersionDate=May 23 2025
+VersionTime=19:41:03
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -298,6 +298,10 @@ context-menu-position: left bottom;</pre>
 
 === contrast ===
 Sets the contrast that applies to the panel and all it's children during composition.<br><br><b>Example:</b><pre>contrast: 1.5;</pre>
+
+
+=== cursor ===
+Sets the mouse cursor used on hover for this panel. Default is to inherit.<br><br><b>Examples:</b><pre>cursor: text;cursor: crosshair;</pre>
 
 
 === flow-children ===
@@ -771,9 +775,9 @@ $> dump_panorama_events
 | Yes
 | Show the econ item tooltip for a given item, style, and hero. Use 0 for the default style, and 0 for the default hero.
 |-
-| <code>DOTAShowFacetTooltip(class HeroID_t HeroID, class HeroFacetID_t Hero Variant ID)</code>
+| <code>DOTAShowFacetTooltip(class HeroFacetKey_t facetKey)</code>
 | Yes
-| Shows a variant tooltip for the given hero + variant
+| Shows a variant tooltip for the given hero facet key
 |-
 | <code>DOTAShowProfileCardTooltip(uint64 steamID, bool useProName)</code>
 | Yes
@@ -1162,9 +1166,6 @@ declare enum DOTA_OVERHEAD_ALERT
     OVERHEAD_ALERT_HEAL = 10,
     OVERHEAD_ALERT_MANA_ADD = 11,
     OVERHEAD_ALERT_MANA_LOSS = 12,
-    OVERHEAD_ALERT_LAST_HIT_EARLY = 13,
-    OVERHEAD_ALERT_LAST_HIT_CLOSE = 14,
-    OVERHEAD_ALERT_LAST_HIT_MISS = 15,
     OVERHEAD_ALERT_MAGICAL_BLOCK = 16,
     OVERHEAD_ALERT_INCOMING_DAMAGE = 17,
     OVERHEAD_ALERT_OUTGOING_DAMAGE = 18,
@@ -1484,7 +1485,7 @@ declare enum DAMAGE_TYPES
     DAMAGE_TYPE_MAGICAL = 2,
     DAMAGE_TYPE_PURE = 4,
     DAMAGE_TYPE_HP_REMOVAL = 8,
-    DAMAGE_TYPE_ABILITY_DEFINED = 22,
+    DAMAGE_TYPE_ABILITY_DEFINED = 16,
     DAMAGE_TYPE_ALL = 7,
 }
 
@@ -1528,6 +1529,7 @@ declare enum DOTADamageFlag_t
     DOTA_DAMAGE_FLAG_MAGIC_AUTO_ATTACK = 131072,
     DOTA_DAMAGE_FLAG_ATTACK_MODIFIER = 262144,
     DOTA_DAMAGE_FLAG_BYPASSES_ALL_BLOCK = 524288,
+    DOTA_DAMAGE_FLAG_NO_REFLECTION = 1048576,
 }
 
 declare enum EDOTA_ModifyXP_Reason
@@ -1819,6 +1821,7 @@ declare enum GameActivity_t
     ACT_DOTA_KEZ_KATANA_IMPALE_FAST = 1771,
     ACT_DOTA_UNICYCLE = 1772,
     ACT_DOTA_UNICYCLE_END = 1773,
+    ACT_DOTA_MVP_SCREEN = 1776,
 }
 
 declare enum DOTAMinimapEvent_t
@@ -2691,7 +2694,24 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_MOVESPEED_MAX_BONUS_CONSTANT = 368,
     /** GetModifierMoveSpeedPostMultiplierBonus_Constant  */
     MODIFIER_PROPERTY_MOVESPEED_POST_MULTIPLIER_BONUS_CONSTANT = 369,
-    MODIFIER_FUNCTION_LAST = 370,
+    /** GetModifierPropertyForbidIllusions */
+    MODIFIER_PROPERTY_FORBID_ILLUSIONS = 370,
+    /** GetModifierPropertyManacostOverride */
+    MODIFIER_PROPERTY_MANACOST_OVERRIDE = 371,
+    /** GetModifierPropertyRestorationAmplification */
+    MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION = 372,
+    /** GetModifierPropertyRestorationAmplificationUnique */
+    MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE = 373,
+    /** GetModifierPropertyHealingAmplificationUnique */
+    MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE = 374,
+    /** GetSuppressIncomingCrit */
+    MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT = 375,
+    /** GetModifierPropertyUpgradeNeutralArtifacts */
+    MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS = 376,
+    /** GetModifierPropertyConsumableUseSpeed */
+    MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED = 377,
+    MODIFIER_PROPERTY_FORCE_NETWORK_TRANSMIT = 378,
+    MODIFIER_FUNCTION_LAST = 379,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -3159,33 +3179,34 @@ declare enum DOTAKeybindCommand_t
     DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 215,
     DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 216,
     DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 217,
-    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 218,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 219,
-    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 220,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 221,
-    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 222,
-    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 223,
-    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 224,
-    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 225,
-    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 226,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 227,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 228,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 229,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 230,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 231,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 232,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 233,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 234,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 235,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 236,
-    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 237,
-    DOTA_KEYBIND_INSPECTHEROINWORLD = 238,
-    DOTA_KEYBIND_CAMERA_ZOOM_IN = 239,
-    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 240,
-    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 241,
-    DOTA_KEYBIND_DOTA_ALT = 242,
-    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 243,
-    DOTA_KEYBIND_COUNT = 244,
+    DOTA_KEYBIND_SPEC_DROPDOWN_HEROFACET = 218,
+    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 219,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 220,
+    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 221,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 222,
+    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 223,
+    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 224,
+    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 225,
+    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 226,
+    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 227,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 228,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 229,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 230,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 231,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 232,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 233,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 234,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 235,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 236,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 237,
+    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 238,
+    DOTA_KEYBIND_INSPECTHEROINWORLD = 239,
+    DOTA_KEYBIND_CAMERA_ZOOM_IN = 240,
+    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 241,
+    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 242,
+    DOTA_KEYBIND_DOTA_ALT = 243,
+    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 244,
+    DOTA_KEYBIND_COUNT = 245,
 }
 
 declare enum DOTA_SHOP_TYPE
@@ -5749,6 +5770,10 @@ Initializing script VM...
     "name":"cvar_setf",
     "returns":"bool"
   },{
+    "kind":"constant",
+    "name":"",
+    "value":15
+  },{
     "enum":"AbilityLearnResult_t",
     "kind":"constant",
     "name":"ABILITY_CANNOT_BE_UPGRADED_AT_MAX",
@@ -7191,6 +7216,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_MK_TREE_SOAR",
     "value":1720
+  },{
+    "enum":"GameActivity_t",
+    "kind":"constant",
+    "name":"ACT_DOTA_MVP_SCREEN",
+    "value":1776
   },{
     "enum":"GameActivity_t",
     "kind":"constant",
@@ -11273,40 +11303,36 @@ Initializing script VM...
     "value":964
   },{
     "kind":"constant",
-    "name":"AE_ANIMGRAPH_SET_PARAM",
-    "value":35
-  },{
-    "kind":"constant",
     "name":"AE_BODYGROUP_SET_VALUE",
-    "value":17
+    "value":16
   },{
     "kind":"constant",
     "name":"AE_CL_ADD_PARTICLE_EFFECT_CP",
-    "value":40
+    "value":38
   },{
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN",
-    "value":18
+    "value":17
   },{
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR",
-    "value":21
+    "value":20
   },{
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT",
-    "value":24
-  },{
-    "kind":"constant",
-    "name":"AE_CL_CLOTH_GROUND_OFFSET",
-    "value":22
-  },{
-    "kind":"constant",
-    "name":"AE_CL_CLOTH_STIFFEN",
     "value":23
   },{
     "kind":"constant",
+    "name":"AE_CL_CLOTH_GROUND_OFFSET",
+    "value":21
+  },{
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_STIFFEN",
+    "value":22
+  },{
+    "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP",
-    "value":25
+    "value":24
   },{
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT",
@@ -11318,35 +11344,35 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP",
-    "value":16
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
-    "value":45
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT",
-    "value":43
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
-    "value":46
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT",
-    "value":44
-  },{
-    "kind":"constant",
-    "name":"AE_CL_ENABLE_BODYGROUP",
     "value":15
   },{
     "kind":"constant",
+    "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
+    "value":43
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT",
+    "value":41
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
+    "value":44
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT",
+    "value":42
+  },{
+    "kind":"constant",
+    "name":"AE_CL_ENABLE_BODYGROUP",
+    "value":14
+  },{
+    "kind":"constant",
     "name":"AE_CL_HIDE_PARTICLE_EFFECT",
-    "value":38
+    "value":36
   },{
     "kind":"constant",
     "name":"AE_CL_PANORAMA_EVENT",
-    "value":42
+    "value":40
   },{
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND",
@@ -11366,11 +11392,11 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_CL_SHOW_PARTICLE_EFFECT",
-    "value":39
+    "value":37
   },{
     "kind":"constant",
     "name":"AE_CL_SPEECH",
-    "value":41
+    "value":39
   },{
     "kind":"constant",
     "name":"AE_CL_STOPSOUND",
@@ -11382,51 +11408,51 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_CL_STOP_RAGDOLL_CONTROL",
-    "value":14
+    "value":13
   },{
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG",
-    "value":37
+    "value":35
   },{
     "kind":"constant",
     "name":"AE_DESTRUCTIBLE_PART_DESTROY",
-    "value":36
+    "value":34
   },{
     "kind":"constant",
     "name":"AE_DISABLE_PLATFORM",
-    "value":32
+    "value":31
   },{
     "kind":"constant",
     "name":"AE_DOTA_CREATE_CLINKZ_ATTACK",
-    "value":51
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
-    "value":53
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PET_ITEM_DROP",
-    "value":48
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PET_ITEM_PICKUP",
-    "value":47
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
-    "value":52
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
-    "value":50
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER",
     "value":49
   },{
     "kind":"constant",
+    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
+    "value":51
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_DROP",
+    "value":46
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_PICKUP",
+    "value":45
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
+    "value":50
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
+    "value":48
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER",
+    "value":47
+  },{
+    "kind":"constant",
     "name":"AE_DOTA_SWITCH_ATTACK_COMBO",
-    "value":54
+    "value":52
   },{
     "kind":"constant",
     "name":"AE_EMPTY",
@@ -11434,15 +11460,15 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_ENABLE_PLATFORM_PLAYER_FOLLOWS_YAW",
-    "value":33
+    "value":32
   },{
     "kind":"constant",
     "name":"AE_ENABLE_PLATFORM_PLAYER_IGNORES_YAW",
-    "value":34
+    "value":33
   },{
     "kind":"constant",
     "name":"AE_FIRE_INPUT",
-    "value":20
+    "value":19
   },{
     "kind":"constant",
     "name":"AE_FOOTSTEP",
@@ -11450,27 +11476,23 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_PULSE_GRAPH",
-    "value":27
+    "value":26
   },{
     "kind":"constant",
     "name":"AE_PULSE_GRAPH_AIMAT",
-    "value":29
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_IKLOCKLEFTARM",
-    "value":30
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_IKLOCKRIGHTARM",
-    "value":31
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_LOOKAT",
     "value":28
   },{
     "kind":"constant",
-    "name":"AE_RAGDOLL",
-    "value":13
+    "name":"AE_PULSE_GRAPH_IKLOCKLEFTARM",
+    "value":29
+  },{
+    "kind":"constant",
+    "name":"AE_PULSE_GRAPH_IKLOCKRIGHTARM",
+    "value":30
+  },{
+    "kind":"constant",
+    "name":"AE_PULSE_GRAPH_LOOKAT",
+    "value":27
   },{
     "kind":"constant",
     "name":"AE_SV_CREATE_PARTICLE_EFFECT_CFG",
@@ -11478,7 +11500,7 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_SV_IKLOCK",
-    "value":26
+    "value":25
   },{
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND",
@@ -11490,12 +11512,12 @@ Initializing script VM...
   },{
     "kind":"constant",
     "name":"AE_WEAPON_PERFORM_ATTACK",
-    "value":19
+    "value":18
   },{
     "enum":"DAMAGE_TYPES",
     "kind":"constant",
     "name":"DAMAGE_TYPE_ABILITY_DEFINED",
-    "value":22
+    "value":16
   },{
     "enum":"DAMAGE_TYPES",
     "kind":"constant",
@@ -12200,6 +12222,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"DOTA_DAMAGE_FLAG_NO_DIRECTOR_EVENT",
     "value":64
+  },{
+    "enum":"DOTADamageFlag_t",
+    "kind":"constant",
+    "name":"DOTA_DAMAGE_FLAG_NO_REFLECTION",
+    "value":1048576
   },{
     "enum":"DOTADamageFlag_t",
     "kind":"constant",
@@ -16485,7 +16512,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":370
+    "value":379
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -16901,6 +16928,12 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
     "value":252
   },{
+    "description":"GetModifierPropertyConsumableUseSpeed",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED",
+    "value":377
+  },{
     "description":"GetConvertAttackPhysicalToPure",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -17111,6 +17144,12 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
     "value":159
   },{
+    "description":"GetModifierPropertyForbidIllusions",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_FORBID_ILLUSIONS",
+    "value":370
+  },{
     "description":"GetForceDrawOnMinimap",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -17128,6 +17167,11 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FORCE_MAX_MANA",
     "value":315
+  },{
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_FORCE_NETWORK_TRANSMIT",
+    "value":378
   },{
     "description":"GetModifierFoWTeam",
     "enum":"modifierfunction",
@@ -17200,6 +17244,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE",
     "value":51
+  },{
+    "description":"GetModifierPropertyHealingAmplificationUnique",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE",
+    "value":374
   },{
     "description":"GetModifierHealAmplify_PercentageTarget",
     "enum":"modifierfunction",
@@ -17433,6 +17483,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION",
     "value":85
+  },{
+    "description":"GetModifierPropertyManacostOverride",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MANACOST_OVERRIDE",
+    "value":371
   },{
     "description":"GetModifierPercentageManacost",
     "enum":"modifierfunction",
@@ -18010,6 +18066,18 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "value":127
   },{
+    "description":"GetModifierPropertyRestorationAmplification",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION",
+    "value":372
+  },{
+    "description":"GetModifierPropertyRestorationAmplificationUnique",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE",
+    "value":373
+  },{
     "description":"GetModifierShareXPRune",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -18184,6 +18252,12 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX",
     "value":293
   },{
+    "description":"GetSuppressIncomingCrit",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT",
+    "value":375
+  },{
     "description":"GetSuppressTeleport",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -18291,6 +18365,12 @@ Initializing script VM...
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "value":178
+  },{
+    "description":"GetModifierPropertyUpgradeNeutralArtifacts",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS",
+    "value":376
   },{
     "description":"GetVisionDegreeRestriction",
     "enum":"modifierfunction",
@@ -18718,18 +18798,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"OVERHEAD_ALERT_ITEM_RECEIVED",
     "value":22
-  },{
-    "kind":"constant",
-    "name":"OVERHEAD_ALERT_LAST_HIT_CLOSE",
-    "value":14
-  },{
-    "kind":"constant",
-    "name":"OVERHEAD_ALERT_LAST_HIT_EARLY",
-    "value":13
-  },{
-    "kind":"constant",
-    "name":"OVERHEAD_ALERT_LAST_HIT_MISS",
-    "value":15
   },{
     "kind":"constant",
     "name":"OVERHEAD_ALERT_MAGICAL_BLOCK",
@@ -20076,10 +20144,10 @@ Initializing script VM...
         "returns":"int"
       },{
         "args":[{
-            "name":"iGroup",
+            "name":"nBodyGroup",
             "type":"int"
           },{
-            "name":"iValue",
+            "name":"nChoice",
             "type":"int"
           }],
         "description":"Sets a bodygroup.",
@@ -20457,7 +20525,7 @@ Initializing script VM...
       },{
         "args":[],
         "name":"GetAbilityDamageType",
-        "returns":"int"
+        "returns":"<unknown>"
       },{
         "args":[],
         "name":"GetAbilityIndex",
@@ -33913,7 +33981,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACD_DOTA_IDLE",
-    "value":1786
+    "value":1790
   },{
     "kind":"constant",
     "name":"ACTIVATE_TYPE_DATAUPDATE_CREATION",
@@ -34497,7 +34565,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_ATTACK_STATUE",
-    "value":1781
+    "value":1784
   },{
     "kind":"constant",
     "name":"ACT_DOTA_AW_MAGNETIC_FIELD",
@@ -34569,11 +34637,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST1_STATUE",
-    "value":1775
+    "value":1778
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST2_STATUE",
-    "value":1776
+    "value":1779
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_ABILITY_1",
@@ -34689,7 +34757,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1796
+    "value":1803
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -34845,7 +34913,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1798
+    "value":1791
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -34877,7 +34945,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DISABLED_END",
-    "value":1787
+    "value":1789
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DP_SPIRIT_SIPHON",
@@ -34909,7 +34977,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_FLAIL_STATUE",
-    "value":1778
+    "value":1781
   },{
     "kind":"constant",
     "name":"ACT_DOTA_FLEE",
@@ -34925,7 +34993,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_FORCESTAFF_STATUE",
-    "value":1782
+    "value":1785
   },{
     "kind":"constant",
     "name":"ACT_DOTA_FRUSTRATION",
@@ -35013,7 +35081,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1799
+    "value":1792
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -35176,6 +35244,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1720
   },{
     "kind":"constant",
+    "name":"ACT_DOTA_MVP_SCREEN",
+    "value":1776
+  },{
+    "kind":"constant",
     "name":"ACT_DOTA_NECRO_GHOST_SHROUD",
     "value":1724
   },{
@@ -35257,7 +35329,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1793
+    "value":1800
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -35297,7 +35369,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1794
+    "value":1801
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -35309,7 +35381,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1795
+    "value":1802
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -35329,7 +35401,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1788
+    "value":1795
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -35337,7 +35409,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_STATUE",
-    "value":1774
+    "value":1777
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SAND_KING_BURROW_IN",
@@ -35405,7 +35477,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPAWN_STATUE",
-    "value":1779
+    "value":1782
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_END",
@@ -35417,7 +35489,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SPWN",
-    "value":1797
+    "value":1804
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -35429,7 +35501,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STUN_STATUE",
-    "value":1777
+    "value":1780
   },{
     "kind":"constant",
     "name":"ACT_DOTA_SWIM",
@@ -35453,7 +35525,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TAUNT_STATUE",
-    "value":1785
+    "value":1788
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT",
@@ -35485,7 +35557,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_END_STATUE",
-    "value":1780
+    "value":1783
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_REACT",
@@ -35497,7 +35569,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TELEPORT_STATUE",
-    "value":1783
+    "value":1786
   },{
     "kind":"constant",
     "name":"ACT_DOTA_THIRST",
@@ -35521,7 +35593,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1800
+    "value":1793
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -35573,7 +35645,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VICTORY_STATUE",
-    "value":1784
+    "value":1787
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VIPER_DIVE",
@@ -35585,7 +35657,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1801
+    "value":1794
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -39212,40 +39284,36 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":964
   },{
     "kind":"constant",
-    "name":"AE_ANIMGRAPH_SET_PARAM",
-    "value":35
-  },{
-    "kind":"constant",
     "name":"AE_BODYGROUP_SET_VALUE",
-    "value":17
+    "value":16
   },{
     "kind":"constant",
     "name":"AE_CL_ADD_PARTICLE_EFFECT_CP",
-    "value":40
+    "value":38
   },{
     "kind":"constant",
     "name":"AE_CL_BODYGROUP_SET_VALUE_CMODEL_WPN",
-    "value":18
+    "value":17
   },{
     "kind":"constant",
     "name":"AE_CL_CLOTH_ATTR",
-    "value":21
+    "value":20
   },{
     "kind":"constant",
     "name":"AE_CL_CLOTH_EFFECT",
-    "value":24
-  },{
-    "kind":"constant",
-    "name":"AE_CL_CLOTH_GROUND_OFFSET",
-    "value":22
-  },{
-    "kind":"constant",
-    "name":"AE_CL_CLOTH_STIFFEN",
     "value":23
   },{
     "kind":"constant",
+    "name":"AE_CL_CLOTH_GROUND_OFFSET",
+    "value":21
+  },{
+    "kind":"constant",
+    "name":"AE_CL_CLOTH_STIFFEN",
+    "value":22
+  },{
+    "kind":"constant",
     "name":"AE_CL_CREATE_ANIM_SCOPE_PROP",
-    "value":25
+    "value":24
   },{
     "kind":"constant",
     "name":"AE_CL_CREATE_PARTICLE_EFFECT",
@@ -39257,35 +39325,35 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_CL_DISABLE_BODYGROUP",
-    "value":16
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
-    "value":45
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT",
-    "value":43
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
-    "value":46
-  },{
-    "kind":"constant",
-    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT",
-    "value":44
-  },{
-    "kind":"constant",
-    "name":"AE_CL_ENABLE_BODYGROUP",
     "value":15
   },{
     "kind":"constant",
+    "name":"AE_CL_DOTA_NPC_CREATE_PARTICLE_EFFECT",
+    "value":43
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_PLAY_STATUS_EFFECT",
+    "value":41
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_RUBICK_ARCANA_CREATE_PARTICLE_EFFECT",
+    "value":44
+  },{
+    "kind":"constant",
+    "name":"AE_CL_DOTA_STOP_STATUS_EFFECT",
+    "value":42
+  },{
+    "kind":"constant",
+    "name":"AE_CL_ENABLE_BODYGROUP",
+    "value":14
+  },{
+    "kind":"constant",
     "name":"AE_CL_HIDE_PARTICLE_EFFECT",
-    "value":38
+    "value":36
   },{
     "kind":"constant",
     "name":"AE_CL_PANORAMA_EVENT",
-    "value":42
+    "value":40
   },{
     "kind":"constant",
     "name":"AE_CL_PLAYSOUND",
@@ -39305,11 +39373,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_CL_SHOW_PARTICLE_EFFECT",
-    "value":39
+    "value":37
   },{
     "kind":"constant",
     "name":"AE_CL_SPEECH",
-    "value":41
+    "value":39
   },{
     "kind":"constant",
     "name":"AE_CL_STOPSOUND",
@@ -39321,63 +39389,63 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_CL_STOP_RAGDOLL_CONTROL",
-    "value":14
+    "value":13
   },{
     "kind":"constant",
     "name":"AE_CL_SUPPRESS_EVENTS_WITH_TAG",
-    "value":37
+    "value":35
   },{
     "kind":"constant",
     "name":"AE_DESTRUCTIBLE_PART_DESTROY",
-    "value":36
+    "value":34
   },{
     "kind":"constant",
     "name":"AE_DISABLE_PLATFORM",
-    "value":32
+    "value":31
   },{
     "kind":"constant",
     "name":"AE_DOTA_CREATE_CLINKZ_ATTACK",
-    "value":51
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
-    "value":53
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PET_ITEM_DROP",
-    "value":48
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PET_ITEM_PICKUP",
-    "value":47
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK",
-    "value":57
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
-    "value":52
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
-    "value":50
-  },{
-    "kind":"constant",
-    "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER",
     "value":49
   },{
     "kind":"constant",
+    "name":"AE_DOTA_DIE_PHANTOM_DEATH_PARTICLES",
+    "value":51
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_DROP",
+    "value":46
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PET_ITEM_PICKUP",
+    "value":45
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK",
+    "value":55
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_BACKSTAB",
+    "value":50
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_PLAY_SOUND_ATTACK_SPECIAL",
+    "value":48
+  },{
+    "kind":"constant",
+    "name":"AE_DOTA_SUPPRESS_CONSTANT_LAYER",
+    "value":47
+  },{
+    "kind":"constant",
     "name":"AE_DOTA_SWITCH_ATTACK_COMBO",
-    "value":54
+    "value":52
   },{
     "kind":"constant",
     "name":"AE_EF_DRAW",
-    "value":56
+    "value":54
   },{
     "kind":"constant",
     "name":"AE_EF_NODRAW",
-    "value":55
+    "value":53
   },{
     "kind":"constant",
     "name":"AE_EMPTY",
@@ -39385,15 +39453,15 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_ENABLE_PLATFORM_PLAYER_FOLLOWS_YAW",
-    "value":33
+    "value":32
   },{
     "kind":"constant",
     "name":"AE_ENABLE_PLATFORM_PLAYER_IGNORES_YAW",
-    "value":34
+    "value":33
   },{
     "kind":"constant",
     "name":"AE_FIRE_INPUT",
-    "value":20
+    "value":19
   },{
     "kind":"constant",
     "name":"AE_FOOTSTEP",
@@ -39401,27 +39469,23 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_PULSE_GRAPH",
-    "value":27
+    "value":26
   },{
     "kind":"constant",
     "name":"AE_PULSE_GRAPH_AIMAT",
-    "value":29
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_IKLOCKLEFTARM",
-    "value":30
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_IKLOCKRIGHTARM",
-    "value":31
-  },{
-    "kind":"constant",
-    "name":"AE_PULSE_GRAPH_LOOKAT",
     "value":28
   },{
     "kind":"constant",
-    "name":"AE_RAGDOLL",
-    "value":13
+    "name":"AE_PULSE_GRAPH_IKLOCKLEFTARM",
+    "value":29
+  },{
+    "kind":"constant",
+    "name":"AE_PULSE_GRAPH_IKLOCKRIGHTARM",
+    "value":30
+  },{
+    "kind":"constant",
+    "name":"AE_PULSE_GRAPH_LOOKAT",
+    "value":27
   },{
     "kind":"constant",
     "name":"AE_SV_CREATE_PARTICLE_EFFECT_CFG",
@@ -39429,7 +39493,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_SV_IKLOCK",
-    "value":26
+    "value":25
   },{
     "kind":"constant",
     "name":"AE_SV_PLAYSOUND",
@@ -39441,7 +39505,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"AE_WEAPON_PERFORM_ATTACK",
-    "value":19
+    "value":18
   },{
     "kind":"constant",
     "name":"CLIENT_DLL",
@@ -42492,7 +42556,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":370
+    "value":379
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -42908,6 +42972,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_CHANGE_ABILITY_VALUE",
     "value":252
   },{
+    "description":"GetModifierPropertyConsumableUseSpeed",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED",
+    "value":377
+  },{
     "description":"GetConvertAttackPhysicalToPure",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -43118,6 +43188,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_FIXED_NIGHT_VISION",
     "value":159
   },{
+    "description":"GetModifierPropertyForbidIllusions",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_FORBID_ILLUSIONS",
+    "value":370
+  },{
     "description":"GetForceDrawOnMinimap",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -43135,6 +43211,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_FORCE_MAX_MANA",
     "value":315
+  },{
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_FORCE_NETWORK_TRANSMIT",
+    "value":378
   },{
     "description":"GetModifierFoWTeam",
     "enum":"modifierfunction",
@@ -43207,6 +43288,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE",
     "value":51
+  },{
+    "description":"GetModifierPropertyHealingAmplificationUnique",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE",
+    "value":374
   },{
     "description":"GetModifierHealAmplify_PercentageTarget",
     "enum":"modifierfunction",
@@ -43440,6 +43527,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DIRECT_MODIFICATION",
     "value":85
+  },{
+    "description":"GetModifierPropertyManacostOverride",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_MANACOST_OVERRIDE",
+    "value":371
   },{
     "description":"GetModifierPercentageManacost",
     "enum":"modifierfunction",
@@ -44017,6 +44110,18 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_RESPAWNTIME_STACKING",
     "value":127
   },{
+    "description":"GetModifierPropertyRestorationAmplification",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION",
+    "value":372
+  },{
+    "description":"GetModifierPropertyRestorationAmplificationUnique",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE",
+    "value":373
+  },{
     "description":"GetModifierShareXPRune",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -44191,6 +44296,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_SUPPRESS_FULLSCREEN_DEATH_FX",
     "value":293
   },{
+    "description":"GetSuppressIncomingCrit",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT",
+    "value":375
+  },{
     "description":"GetSuppressTeleport",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -44298,6 +44409,12 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "value":178
+  },{
+    "description":"GetModifierPropertyUpgradeNeutralArtifacts",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS",
+    "value":376
   },{
     "description":"GetVisionDegreeRestriction",
     "enum":"modifierfunction",
@@ -45019,19 +45136,19 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1789
+    "value":1796
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1790
+    "value":1797
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1791
+    "value":1798
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1792
+    "value":1799
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -49001,7 +49118,9 @@ interface DOTAHeroModelOverlay
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49017,6 +49136,7 @@ interface DOTAHeroModelOverlay
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49079,6 +49199,8 @@ interface DOTAHeroModelOverlay
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     SetPanelEvent( _arg_1 ): void;
     RunScriptInPanelContext( _arg_1 ): void;
     rememberchildfocus( _arg_1: boolean ): boolean;
@@ -49113,7 +49235,9 @@ interface DOTAPlay
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49129,6 +49253,7 @@ interface DOTAPlay
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49191,6 +49316,8 @@ interface DOTAPlay
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     GetActiveFeaturedGamemode( _arg_1 ): void;
     GetFeaturedGamemodeProgress(): number;
     GetFeaturedGamemodeMax(): number;
@@ -49230,7 +49357,9 @@ interface Panel
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49246,6 +49375,7 @@ interface Panel
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49308,6 +49438,8 @@ interface Panel
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     SetPanelEvent( _arg_1 ): void;
     RunScriptInPanelContext( _arg_1 ): void;
     rememberchildfocus( _arg_1: boolean ): boolean;
@@ -49342,7 +49474,9 @@ interface Label
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49358,6 +49492,7 @@ interface Label
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49420,6 +49555,8 @@ interface Label
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     text( _arg_1: string ): string;
     html( _arg_1: boolean ): boolean;
     SetLocString( _arg_1: string ): void;
@@ -49458,7 +49595,9 @@ interface ToggleButton
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49474,6 +49613,7 @@ interface ToggleButton
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49536,6 +49676,8 @@ interface ToggleButton
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     SetSelected( _arg_1: boolean ): void;
     text( _arg_1: string ): string;
     SetPanelEvent( _arg_1 ): void;
@@ -49572,7 +49714,9 @@ interface TabButton
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49588,6 +49732,7 @@ interface TabButton
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49650,6 +49795,8 @@ interface TabButton
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     SetPanelEvent( _arg_1 ): void;
     RunScriptInPanelContext( _arg_1 ): void;
     rememberchildfocus( _arg_1: boolean ): boolean;
@@ -49689,7 +49836,9 @@ interface DOTAAvatarImage
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49705,6 +49854,7 @@ interface DOTAAvatarImage
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49767,6 +49917,8 @@ interface DOTAAvatarImage
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     steamid( _arg_1: string ): string;
     accountid( _arg_1: string ): string;
     SetAccountID( _arg_1: number ): void;
@@ -49804,7 +49956,9 @@ interface CustomUIElement
     actualuiscale_x(): number;
     style();
     AddClass( _arg_1: string ): void;
+    AddClasses( _arg_1 ): void;
     RemoveClass( _arg_1: string ): void;
+    RemoveClasses( _arg_1 ): void;
     BHasClass( _arg_1: string ): boolean;
     BAscendantHasClass( _arg_1: string ): boolean;
     SetHasClass( _arg_1: string, _arg_2: boolean ): void;
@@ -49820,6 +49974,7 @@ interface CustomUIElement
     GetChildIndex( _arg_1 ): number;
     Children();
     FindChildrenWithClassTraverse( _arg_1: string );
+    FindChildrenWithAttributeTraverse( _arg_1: string );
     GetParent();
     SetParent( _arg_1 ): void;
     FindChild( _arg_1: string );
@@ -49882,6 +50037,8 @@ interface CustomUIElement
     Data( _arg_1 ): void;
     debug.description( _arg_1 ): void;
     SetSendScrollPositionChangedEvents( _arg_1: boolean ): void;
+    SetCompositionLayerTextureName( _arg_1: string ): void;
+    WriteCompositionLayerPNG( _arg_1: string ): void;
     SetPanelEvent( _arg_1 ): void;
     RunScriptInPanelContext( _arg_1 ): void;
     rememberchildfocus( _arg_1: boolean ): boolean;
@@ -50078,9 +50235,6 @@ declare enum DOTA_OVERHEAD_ALERT
     OVERHEAD_ALERT_HEAL = 10,
     OVERHEAD_ALERT_MANA_ADD = 11,
     OVERHEAD_ALERT_MANA_LOSS = 12,
-    OVERHEAD_ALERT_LAST_HIT_EARLY = 13,
-    OVERHEAD_ALERT_LAST_HIT_CLOSE = 14,
-    OVERHEAD_ALERT_LAST_HIT_MISS = 15,
     OVERHEAD_ALERT_MAGICAL_BLOCK = 16,
     OVERHEAD_ALERT_INCOMING_DAMAGE = 17,
     OVERHEAD_ALERT_OUTGOING_DAMAGE = 18,
@@ -50400,7 +50554,7 @@ declare enum DAMAGE_TYPES
     DAMAGE_TYPE_MAGICAL = 2,
     DAMAGE_TYPE_PURE = 4,
     DAMAGE_TYPE_HP_REMOVAL = 8,
-    DAMAGE_TYPE_ABILITY_DEFINED = 22,
+    DAMAGE_TYPE_ABILITY_DEFINED = 16,
     DAMAGE_TYPE_ALL = 7,
 }
 
@@ -50444,6 +50598,7 @@ declare enum DOTADamageFlag_t
     DOTA_DAMAGE_FLAG_MAGIC_AUTO_ATTACK = 131072,
     DOTA_DAMAGE_FLAG_ATTACK_MODIFIER = 262144,
     DOTA_DAMAGE_FLAG_BYPASSES_ALL_BLOCK = 524288,
+    DOTA_DAMAGE_FLAG_NO_REFLECTION = 1048576,
 }
 
 declare enum EDOTA_ModifyXP_Reason
@@ -50735,6 +50890,7 @@ declare enum GameActivity_t
     ACT_DOTA_KEZ_KATANA_IMPALE_FAST = 1771,
     ACT_DOTA_UNICYCLE = 1772,
     ACT_DOTA_UNICYCLE_END = 1773,
+    ACT_DOTA_MVP_SCREEN = 1776,
 }
 
 declare enum DOTAMinimapEvent_t
@@ -51607,7 +51763,24 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_MOVESPEED_MAX_BONUS_CONSTANT = 368,
     /** GetModifierMoveSpeedPostMultiplierBonus_Constant  */
     MODIFIER_PROPERTY_MOVESPEED_POST_MULTIPLIER_BONUS_CONSTANT = 369,
-    MODIFIER_FUNCTION_LAST = 370,
+    /** GetModifierPropertyForbidIllusions */
+    MODIFIER_PROPERTY_FORBID_ILLUSIONS = 370,
+    /** GetModifierPropertyManacostOverride */
+    MODIFIER_PROPERTY_MANACOST_OVERRIDE = 371,
+    /** GetModifierPropertyRestorationAmplification */
+    MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION = 372,
+    /** GetModifierPropertyRestorationAmplificationUnique */
+    MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION_UNIQUE = 373,
+    /** GetModifierPropertyHealingAmplificationUnique */
+    MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_SOURCE_UNIQUE = 374,
+    /** GetSuppressIncomingCrit */
+    MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT = 375,
+    /** GetModifierPropertyUpgradeNeutralArtifacts */
+    MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS = 376,
+    /** GetModifierPropertyConsumableUseSpeed */
+    MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED = 377,
+    MODIFIER_PROPERTY_FORCE_NETWORK_TRANSMIT = 378,
+    MODIFIER_FUNCTION_LAST = 379,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -52075,33 +52248,34 @@ declare enum DOTAKeybindCommand_t
     DOTA_KEYBIND_SPEC_DROPDOWN_KDA = 215,
     DOTA_KEYBIND_SPEC_DROPDOWN_LASTHITS_DENIES = 216,
     DOTA_KEYBIND_SPEC_DROPDOWN_LEVEL = 217,
-    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 218,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 219,
-    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 220,
-    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 221,
-    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 222,
-    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 223,
-    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 224,
-    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 225,
-    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 226,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 227,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 228,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 229,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 230,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 231,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 232,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 233,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 234,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 235,
-    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 236,
-    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 237,
-    DOTA_KEYBIND_INSPECTHEROINWORLD = 238,
-    DOTA_KEYBIND_CAMERA_ZOOM_IN = 239,
-    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 240,
-    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 241,
-    DOTA_KEYBIND_DOTA_ALT = 242,
-    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 243,
-    DOTA_KEYBIND_COUNT = 244,
+    DOTA_KEYBIND_SPEC_DROPDOWN_HEROFACET = 218,
+    DOTA_KEYBIND_SPEC_DROPDOWN_XP_PER_MIN = 219,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD = 220,
+    DOTA_KEYBIND_SPEC_DROPDOWN_TOTALGOLD = 221,
+    DOTA_KEYBIND_SPEC_DROPDOWN_GOLD_PER_MIN = 222,
+    DOTA_KEYBIND_SPEC_DROPDOWN_BUYBACK = 223,
+    DOTA_KEYBIND_SPEC_DROPDOWN_NETWORTH = 224,
+    DOTA_KEYBIND_SPEC_DROPDOWN_FANTASY = 225,
+    DOTA_KEYBIND_SPEC_DROPDOWN_SORT = 226,
+    DOTA_KEYBIND_SPEC_DROPDOWN_CLOSE = 227,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_1 = 228,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_2 = 229,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_3 = 230,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_4 = 231,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_5 = 232,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_6 = 233,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_7 = 234,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_8 = 235,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_9 = 236,
+    DOTA_KEYBIND_SPEC_FOCUS_PLAYER_10 = 237,
+    DOTA_KEYBIND_SPEC_COACH_VIEWTOGGLE = 238,
+    DOTA_KEYBIND_INSPECTHEROINWORLD = 239,
+    DOTA_KEYBIND_CAMERA_ZOOM_IN = 240,
+    DOTA_KEYBIND_CAMERA_ZOOM_OUT = 241,
+    DOTA_KEYBIND_CONTROL_GROUPCYCLEPREV = 242,
+    DOTA_KEYBIND_DOTA_ALT = 243,
+    DOTA_KEYBIND_DOTA_ALTERNATIVE_CAST_SWITCH = 244,
+    DOTA_KEYBIND_COUNT = 245,
 }
 
 declare enum DOTA_SHOP_TYPE

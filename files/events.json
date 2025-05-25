@@ -191,11 +191,6 @@
         "type": "uint64"
       },
       {
-        "name": "address",
-        "description": "Ip:port.",
-        "type": "string"
-      },
-      {
         "name": "bot",
         "type": "bool"
       },
@@ -2711,12 +2706,6 @@
   },
   {
     "name": "dota_inventory_changed",
-    "sourceFile": "game",
-    "local": false,
-    "fields": []
-  },
-  {
-    "name": "dota_item_suggestions_changed",
     "sourceFile": "game",
     "local": false,
     "fields": []
@@ -5242,6 +5231,17 @@
       },
       {
         "name": "xp",
+        "type": "short"
+      }
+    ]
+  },
+  {
+    "name": "dota_roshan_roar",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "teamnumber",
         "type": "short"
       }
     ]
