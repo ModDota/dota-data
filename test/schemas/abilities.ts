@@ -23,16 +23,6 @@ describe('integration', () => {
       // TODO: Should flag enums allow empty string?
       'item_ring_of_aquila.ItemShareability should be a ItemShareability enum but is: ',
 
-      // TODO: Allow trailing `;`?
-      `item_recipe_trident does not match any of:
-  1. item_recipe_trident.ItemRecipe should be "0"
-     item_recipe_trident.ItemResult is unknown
-     item_recipe_trident.ItemRequirements is unknown
-  2. item_recipe_trident.ItemRequirements.01 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya;item_sange;item_yasha;
-     item_recipe_trident.ItemRequirements.02 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_kaya_and_sange;item_yasha;
-     item_recipe_trident.ItemRequirements.03 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_sange_and_yasha;item_kaya;
-     item_recipe_trident.ItemRequirements.04 should match pattern: /^(\\w+\\*?;)*\\w+\\*?$/ but is: item_yasha_and_kaya;item_sange;`,
-
       `item_recipe_grandmasters_glaive does not match any of:
   1. item_recipe_grandmasters_glaive.ItemRequirements should be an object
   2. item_recipe_grandmasters_glaive.ItemRecipe should be "0"

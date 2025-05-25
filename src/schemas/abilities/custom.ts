@@ -36,4 +36,4 @@ export const baseRecipeItem = () =>
     .field('BaseClass', s.literal('item_datadriven'))
     .field('ItemRecipe', s.literal(1))
     .field('ItemResult', s.str())
-    .field('ItemRequirements', s.map(s.str().pattern(/^(\w+\*?;)*\w+\*?$/)));
+    .field('ItemRequirements', s.map(s.str().pattern(/^(\w+\*?;)*\w+\*?;?$/)));

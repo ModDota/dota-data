@@ -37,7 +37,8 @@ const baseHero = () =>
             .field('Model', s.str().pattern(resourcePatterns.models), {
               description: 'For tools only.',
             })
-            .field('ModelScale', s.num()),
+            .field('ModelScale', s.num())
+            .field('mvp_map_override', s.str()),
           'number',
         ),
       ],
