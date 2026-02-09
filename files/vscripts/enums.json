@@ -453,6 +453,10 @@
         "value": 0
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND",
+        "value": 0
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI",
         "value": 0
       },
@@ -9110,51 +9114,51 @@
         "value": 1792
       },
       {
-        "name": "ACT_DOTA_CYCLONE",
+        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "value": 1794
+      },
+      {
+        "name": "ACT_DOTA_RELAX_IN",
+        "value": 1795
+      },
+      {
+        "name": "ACT_DOTA_RELAX_OUT",
         "value": 1796
       },
       {
-        "name": "ACT_DOTA_IMPALE",
+        "name": "ACT_DOTA_CAST_FENCE",
         "value": 1797
       },
       {
-        "name": "ACT_DOTA_TORRENT",
+        "name": "ACT_DOTA_SPWN",
         "value": 1798
       },
       {
         "name": "ACT_DOTA_RUN_ALT",
-        "value": 1799
-      },
-      {
-        "name": "ACT_DOTA_CAST3_STATUE",
-        "value": 1800
-      },
-      {
-        "name": "ACT_DOTA_CAST4_STATUE",
-        "value": 1801
-      },
-      {
-        "name": "ACT_DOTA_CAST5_STATUE",
         "value": 1802
       },
       {
-        "name": "ACT_DOTA_RADIANT_CREEP_HAMMER",
+        "name": "ACT_DOTA_CYCLONE",
+        "value": 1803
+      },
+      {
+        "name": "ACT_DOTA_IMPALE",
         "value": 1804
       },
       {
-        "name": "ACT_DOTA_VOODOO_REST",
+        "name": "ACT_DOTA_TORRENT",
         "value": 1805
       },
       {
-        "name": "ACT_DOTA_RELAX_IN",
+        "name": "ACT_DOTA_CAST3_STATUE",
         "value": 1806
       },
       {
-        "name": "ACT_DOTA_RELAX_OUT",
+        "name": "ACT_DOTA_CAST4_STATUE",
         "value": 1807
       },
       {
-        "name": "ACT_DOTA_CAST_FENCE",
+        "name": "ACT_DOTA_CAST5_STATUE",
         "value": 1808
       }
     ]
@@ -11115,8 +11119,18 @@
         "value": 385
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_UNTARGETABLE_FROM",
+        "description": "Method Name: `GetModifierOverrideUntargetableFrom`",
         "value": 386
+      },
+      {
+        "name": "MODIFIER_PROPERTY_UNTARGETABLE_TO",
+        "description": "Method Name: `GetModifierOverrideUntargetableTo`",
+        "value": 387
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 388
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",
@@ -11885,6 +11899,33 @@
   },
   {
     "kind": "enum",
+    "name": "quest_text_replace_values_t",
+    "available": "server",
+    "members": [
+      {
+        "name": "QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE",
+        "value": 0
+      },
+      {
+        "name": "QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE",
+        "value": 1
+      },
+      {
+        "name": "QUEST_TEXT_REPLACE_VALUE_ROUND",
+        "value": 2
+      },
+      {
+        "name": "QUEST_TEXT_REPLACE_VALUE_REWARD",
+        "value": 3
+      },
+      {
+        "name": "QUEST_NUM_TEXT_REPLACE_VALUES",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "kind": "enum",
     "name": "ShowGenericPopupType",
     "available": "server",
     "members": [
@@ -12285,6 +12326,25 @@
       }
     ],
     "description": "https://developer.valvesoftware.com/wiki/Weapon_script#SoundData"
+  },
+  {
+    "kind": "enum",
+    "name": "subquest_text_replace_values_t",
+    "available": "server",
+    "members": [
+      {
+        "name": "SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE",
+        "value": 0
+      },
+      {
+        "name": "SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE",
+        "value": 1
+      },
+      {
+        "name": "SUBQUEST_NUM_TEXT_REPLACE_VALUES",
+        "value": 2
+      }
+    ]
   },
   {
     "kind": "enum",

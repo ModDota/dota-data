@@ -1743,6 +1743,10 @@
       {
         "name": "DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI",
         "value": 562949953421312
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND",
+        "value": 1125899906842624
       }
     ]
   },
@@ -5509,8 +5513,18 @@
         "value": 385
       },
       {
-        "name": "MODIFIER_FUNCTION_LAST",
+        "name": "MODIFIER_PROPERTY_UNTARGETABLE_FROM",
+        "description": "Method Name: `GetModifierOverrideUntargetableFrom`",
         "value": 386
+      },
+      {
+        "name": "MODIFIER_PROPERTY_UNTARGETABLE_TO",
+        "description": "Method Name: `GetModifierOverrideUntargetableTo`",
+        "value": 387
+      },
+      {
+        "name": "MODIFIER_FUNCTION_LAST",
+        "value": 388
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

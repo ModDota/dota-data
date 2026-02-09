@@ -17330,6 +17330,26 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierOverrideUntargetableFrom",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierOverrideUntargetableTo",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPercentageAttackAnimTime",
         "available": "both",
         "abstract": true,
@@ -30459,6 +30479,653 @@
             "name": "location",
             "types": [
               "Vector"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDotaQuest",
+    "extend": "CBaseEntity",
+    "members": [
+      {
+        "kind": "function",
+        "name": "AddSubquest",
+        "available": "server",
+        "description": "Add a subquest to this quest.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "subquest",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "CompleteQuest",
+        "available": "server",
+        "description": "Mark this quest complete.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetSubquest",
+        "available": "server",
+        "description": "Finds a subquest from this quest by index.",
+        "returns": [
+          "handle"
+        ],
+        "args": [
+          {
+            "name": "index",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetSubquestByName",
+        "available": "server",
+        "description": "Finds a subquest from this quest by name.",
+        "returns": [
+          "handle"
+        ],
+        "args": [
+          {
+            "name": "name",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveSubquest",
+        "available": "server",
+        "description": "Remove a subquest from this quest.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "subquest",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetTextReplaceString",
+        "available": "server",
+        "description": "Set the text replace string for this quest.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "string",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetTextReplaceValue",
+        "available": "server",
+        "description": "Set a quest value.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "valueSlot",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDotaSubquestBase",
+    "extend": "CBaseEntity",
+    "members": [
+      {
+        "kind": "function",
+        "name": "CompleteSubquest",
+        "available": "server",
+        "description": "Mark this subquest complete.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "SetTextReplaceString",
+        "available": "server",
+        "description": "Set the text replace string for this subquest.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "string",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetTextReplaceValue",
+        "available": "server",
+        "description": "Set a subquest value.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "valueSlot",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "value",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDOTATutorial",
+    "instance": "Tutorial",
+    "members": [
+      {
+        "kind": "function",
+        "name": "AddBot",
+        "available": "server",
+        "description": "Add a computer controlled bot.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "heroName",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg2",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg3",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg4",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddQuest",
+        "available": "server",
+        "description": "Add a quest to the quest log.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg2",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "arg3",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg4",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddShopWhitelistItem",
+        "available": "server",
+        "description": "Add an item to the shop whitelist.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "itemName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "CompleteQuest",
+        "available": "server",
+        "description": "Complete a quest,.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "CreateLocationTask",
+        "available": "server",
+        "description": "Add a task to move to a specific location.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "EnableCreepAggroViz",
+        "available": "server",
+        "description": "Alert the player when a creep becomes agro to their hero.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "EnablePlayerOffscreenTip",
+        "available": "server",
+        "description": "Enable the tip to alert players how to find their hero.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "EnableTowerAggroViz",
+        "available": "server",
+        "description": "Alert the player when a tower becomes agro to their hero.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "FinishTutorial",
+        "available": "server",
+        "description": "End the tutorial.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ForceGameStart",
+        "available": "server",
+        "description": "Force the start of the game.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "IsItemInWhiteList",
+        "available": "server",
+        "description": "Is this item currently in the white list.",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "itemName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "RemoveShopWhitelistItem",
+        "available": "server",
+        "description": "Remove an item from the shop whitelist.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "itemName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SelectHero",
+        "available": "server",
+        "description": "Select a hero for the local player.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "heroName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SelectPlayerTeam",
+        "available": "server",
+        "description": "Select the team for the local player.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetItemGuide",
+        "available": "server",
+        "description": "Set the current item guide.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetOrModifyPlayerGold",
+        "available": "server",
+        "description": "Set gold amount for the tutorial player.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "goldAmount",
+            "types": [
+              "int"
+            ]
+          },
+          {
+            "name": "setNotModify",
+            "description": "When true sets gold amount, otherwise modifies it",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetQuickBuy",
+        "available": "server",
+        "description": "Set players quick buy item.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "itemName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetShopOpen",
+        "available": "server",
+        "description": "Set the shop open or closed.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "open",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetTutorialConvar",
+        "available": "server",
+        "description": "Set a tutorial convar.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "string"
+            ]
+          },
+          {
+            "name": "arg2",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetTutorialUI",
+        "available": "server",
+        "description": "Set the UI to use a reduced version to focus attention to specific elements.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetWhiteListEnabled",
+        "available": "server",
+        "description": "Set if we should whitelist shop items.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "whiteListEnabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "StartTutorialMode",
+        "available": "server",
+        "description": "Initialize Tutorial Mode.",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "UpgradePlayerAbility",
+        "available": "server",
+        "description": "Upgrade a specific ability for the local hero.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "abilityName",
+            "types": [
+              "string"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CDotaTutorialNPCBlocker",
+    "extend": "CBaseFlex",
+    "members": [
+      {
+        "kind": "function",
+        "name": "SetEnabled",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "enabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetOtherBlocker",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "blocker",
+            "types": [
+              "handle"
             ]
           }
         ]

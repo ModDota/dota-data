@@ -1,13 +1,13 @@
-ClientVersion=6644
-ServerVersion=6644
+ClientVersion=6702
+ServerVersion=6702
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=10318652
-VersionDate=Dec 15 2025
-VersionTime=15:37:40
+SourceRevision=10433915
+VersionDate=Feb 06 2026
+VersionTime=18:30:06
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -1494,6 +1494,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_AFFECTED_BY_MUTE = 140737488355328,
     DOTA_ABILITY_BEHAVIOR_IS_FAKE_ITEM = 281474976710656,
     DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI = 562949953421312,
+    DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND = 1125899906842624,
 }
 
 declare enum DAMAGE_TYPES
@@ -2749,7 +2750,11 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_OVERRIDE_CREEP_BOUNTY = 384,
     /** GetModifierOverrideBaseDamage */
     MODIFIER_PROPERTY_OVERRIDE_BASE_DAMAGE = 385,
-    MODIFIER_FUNCTION_LAST = 386,
+    /** GetModifierOverrideUntargetableFrom */
+    MODIFIER_PROPERTY_UNTARGETABLE_FROM = 386,
+    /** GetModifierOverrideUntargetableTo */
+    MODIFIER_PROPERTY_UNTARGETABLE_TO = 387,
+    MODIFIER_FUNCTION_LAST = 388,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
@@ -11774,6 +11779,11 @@ Initializing script VM...
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI",
     "value":0
   },{
@@ -16605,7 +16615,7 @@ Initializing script VM...
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":386
+    "value":388
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -18484,6 +18494,18 @@ Initializing script VM...
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "value":178
   },{
+    "description":"GetModifierOverrideUntargetableFrom",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UNTARGETABLE_FROM",
+    "value":386
+  },{
+    "description":"GetModifierOverrideUntargetableTo",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UNTARGETABLE_TO",
+    "value":387
+  },{
     "description":"GetModifierPropertyUpgradeNeutralArtifacts",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -19050,6 +19072,31 @@ Initializing script VM...
     "name":"PRESIM",
     "value":0
   },{
+    "enum":"quest_text_replace_values_t",
+    "kind":"constant",
+    "name":"QUEST_NUM_TEXT_REPLACE_VALUES",
+    "value":4
+  },{
+    "enum":"quest_text_replace_values_t",
+    "kind":"constant",
+    "name":"QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE",
+    "value":0
+  },{
+    "enum":"quest_text_replace_values_t",
+    "kind":"constant",
+    "name":"QUEST_TEXT_REPLACE_VALUE_REWARD",
+    "value":3
+  },{
+    "enum":"quest_text_replace_values_t",
+    "kind":"constant",
+    "name":"QUEST_TEXT_REPLACE_VALUE_ROUND",
+    "value":2
+  },{
+    "enum":"quest_text_replace_values_t",
+    "kind":"constant",
+    "name":"QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE",
+    "value":1
+  },{
     "kind":"constant",
     "name":"SECONDARY_EMPTY",
     "value":1
@@ -19077,6 +19124,21 @@ Initializing script VM...
     "kind":"constant",
     "name":"SPECIAL3",
     "value":11
+  },{
+    "enum":"subquest_text_replace_values_t",
+    "kind":"constant",
+    "name":"SUBQUEST_NUM_TEXT_REPLACE_VALUES",
+    "value":2
+  },{
+    "enum":"subquest_text_replace_values_t",
+    "kind":"constant",
+    "name":"SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE",
+    "value":0
+  },{
+    "enum":"subquest_text_replace_values_t",
+    "kind":"constant",
+    "name":"SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE",
+    "value":1
   },{
     "kind":"constant",
     "name":"ScriptDebugFirstLine",
@@ -23608,6 +23670,182 @@ Initializing script VM...
         "returns":"handle"
       }],
     "name":"CDOTAPlayerController"
+  },{
+    "instance":"Tutorial",
+    "kind":"class",
+    "members":[{
+        "args":[{
+            "type":"string"
+          },{
+            "type":"string"
+          },{
+            "type":"string"
+          },{
+            "type":"bool"
+          }],
+        "description":"Add a computer controlled bot.",
+        "name":"AddBot",
+        "returns":"bool"
+      },{
+        "args":[{
+            "type":"string"
+          },{
+            "type":"int"
+          },{
+            "type":"string"
+          },{
+            "type":"string"
+          }],
+        "description":"Add a quest to the quest log",
+        "name":"AddQuest",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Add an item to the shop whitelist.",
+        "name":"AddShopWhitelistItem",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Complete a quest,",
+        "name":"CompleteQuest",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"Vector"
+          }],
+        "description":"Add a task to move to a specific location",
+        "name":"CreateLocationTask",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "description":"Alert the player when a creep becomes agro to their hero.",
+        "name":"EnableCreepAggroViz",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "description":"Enable the tip to alert players how to find their hero.",
+        "name":"EnablePlayerOffscreenTip",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "description":"Alert the player when a tower becomes agro to their hero.",
+        "name":"EnableTowerAggroViz",
+        "returns":"void"
+      },{
+        "args":[],
+        "description":"End the tutorial.",
+        "name":"FinishTutorial",
+        "returns":"void"
+      },{
+        "args":[],
+        "description":"Force the start of the game.",
+        "name":"ForceGameStart",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Is this item currently in the white list.",
+        "name":"IsItemInWhiteList",
+        "returns":"bool"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Remove an item from the shop whitelist.",
+        "name":"RemoveShopWhitelistItem",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Select a hero for the local player",
+        "name":"SelectHero",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Select the team for the local player",
+        "name":"SelectPlayerTeam",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Set the current item guide.",
+        "name":"SetItemGuide",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"int"
+          },{
+            "type":"bool"
+          }],
+        "description":"Set gold amount for the tutorial player. (int) GoldAmount, (bool) true=Set, false=Modify",
+        "name":"SetOrModifyPlayerGold",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Set players quick buy item.",
+        "name":"SetQuickBuy",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "description":"Set the shop open or closed.",
+        "name":"SetShopOpen",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          },{
+            "type":"string"
+          }],
+        "description":"Set a tutorial convar",
+        "name":"SetTutorialConvar",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"int"
+          }],
+        "description":"Set the UI to use a reduced version to focus attention to specific elements.",
+        "name":"SetTutorialUI",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"bool"
+          }],
+        "description":"Set if we should whitelist shop items.",
+        "name":"SetWhiteListEnabled",
+        "returns":"void"
+      },{
+        "args":[],
+        "description":"Initialize Tutorial Mode",
+        "name":"StartTutorialMode",
+        "returns":"void"
+      },{
+        "args":[{
+            "type":"string"
+          }],
+        "description":"Upgrade a specific ability for the local hero",
+        "name":"UpgradePlayerAbility",
+        "returns":"void"
+      }],
+    "name":"CDOTATutorial"
   },{
     "instance":"VoteSystem",
     "kind":"class",
@@ -30784,6 +31022,115 @@ Initializing script VM...
       }],
     "name":"CDebugOverlayScriptHelper"
   },{
+    "extend":"CBaseEntity",
+    "kind":"class",
+    "members":[{
+        "args":[{
+            "name":"hSubquest",
+            "type":"handle"
+          }],
+        "description":"Add a subquest to this quest",
+        "name":"AddSubquest",
+        "returns":"void"
+      },{
+        "args":[],
+        "description":"Mark this quest complete",
+        "name":"CompleteQuest",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"nIndex",
+            "type":"int"
+          }],
+        "description":"Finds a subquest from this quest by index",
+        "name":"GetSubquest",
+        "returns":"handle"
+      },{
+        "args":[{
+            "name":"pszName",
+            "type":"string"
+          }],
+        "description":"Finds a subquest from this quest by name",
+        "name":"GetSubquestByName",
+        "returns":"handle"
+      },{
+        "args":[{
+            "name":"hSubquest",
+            "type":"handle"
+          }],
+        "description":"Remove a subquest from this quest",
+        "name":"RemoveSubquest",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"pszString",
+            "type":"string"
+          }],
+        "description":"Set the text replace string for this quest",
+        "name":"SetTextReplaceString",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"valueSlot",
+            "type":"int"
+          },{
+            "name":"value",
+            "type":"int"
+          }],
+        "description":"Set a quest value",
+        "name":"SetTextReplaceValue",
+        "returns":"void"
+      }],
+    "name":"CDotaQuest"
+  },{
+    "extend":"CBaseEntity",
+    "kind":"class",
+    "members":[{
+        "args":[],
+        "description":"Mark this subquest complete",
+        "name":"CompleteSubquest",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"pszString",
+            "type":"string"
+          }],
+        "description":"Set the text replace string for this subquest",
+        "name":"SetTextReplaceString",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"valueSlot",
+            "type":"int"
+          },{
+            "name":"value",
+            "type":"int"
+          }],
+        "description":"Set a subquest value",
+        "name":"SetTextReplaceValue",
+        "returns":"void"
+      }],
+    "name":"CDotaSubquestBase"
+  },{
+    "extend":"CBaseFlex",
+    "kind":"class",
+    "members":[{
+        "args":[{
+            "name":"bEnabled",
+            "type":"bool"
+          }],
+        "name":"SetEnabled",
+        "returns":"void"
+      },{
+        "args":[{
+            "name":"hBlocker",
+            "type":"handle"
+          }],
+        "name":"SetOtherBlocker",
+        "returns":"void"
+      }],
+    "name":"CDotaTutorialNPCBlocker"
+  },{
     "instance":"Entities",
     "kind":"class",
     "members":[{
@@ -34302,15 +34649,15 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST3_STATUE",
-    "value":1800
+    "value":1806
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST4_STATUE",
-    "value":1801
+    "value":1807
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST5_STATUE",
-    "value":1802
+    "value":1808
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_ABILITY_1",
@@ -34426,7 +34773,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1808
+    "value":1797
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -34582,7 +34929,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1796
+    "value":1803
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -34754,7 +35101,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1797
+    "value":1804
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -35018,7 +35365,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1804
+    "value":1794
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -35058,7 +35405,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1806
+    "value":1795
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -35070,7 +35417,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1807
+    "value":1796
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -35090,7 +35437,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1799
+    "value":1802
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -35175,6 +35522,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE",
     "value":1593
+  },{
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN",
+    "value":1798
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -35278,7 +35629,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TORRENT",
-    "value":1798
+    "value":1805
   },{
     "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
@@ -35339,10 +35690,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_VIPER_DIVE_END",
     "value":1763
-  },{
-    "kind":"constant",
-    "name":"ACT_DOTA_VOODOO_REST",
-    "value":1805
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -39353,6 +39700,11 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "enum":"DOTA_ABILITY_BEHAVIOR",
     "kind":"constant",
+    "name":"DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND",
+    "value":0
+  },{
+    "enum":"DOTA_ABILITY_BEHAVIOR",
+    "kind":"constant",
     "name":"DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI",
     "value":0
   },{
@@ -42249,7 +42601,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "enum":"modifierfunction",
     "kind":"constant",
     "name":"MODIFIER_FUNCTION_LAST",
-    "value":386
+    "value":388
   },{
     "enum":"modifierpriority",
     "kind":"constant",
@@ -44128,6 +44480,18 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "name":"MODIFIER_PROPERTY_UNIT_STATS_NEEDS_REFRESH",
     "value":178
   },{
+    "description":"GetModifierOverrideUntargetableFrom",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UNTARGETABLE_FROM",
+    "value":386
+  },{
+    "description":"GetModifierOverrideUntargetableTo",
+    "enum":"modifierfunction",
+    "kind":"constant",
+    "name":"MODIFIER_PROPERTY_UNTARGETABLE_TO",
+    "value":387
+  },{
     "description":"GetModifierPropertyUpgradeNeutralArtifacts",
     "enum":"modifierfunction",
     "kind":"constant",
@@ -44854,19 +45218,19 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1793
+    "value":1799
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_b",
-    "value":1794
+    "value":1800
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_c",
-    "value":1795
+    "value":1801
   },{
     "kind":"constant",
     "name":"radiant_melee_mars_shieldbash",
-    "value":1803
+    "value":1793
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
@@ -50281,6 +50645,7 @@ declare enum DOTA_ABILITY_BEHAVIOR
     DOTA_ABILITY_BEHAVIOR_AFFECTED_BY_MUTE = 140737488355328,
     DOTA_ABILITY_BEHAVIOR_IS_FAKE_ITEM = 281474976710656,
     DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI = 562949953421312,
+    DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND = 1125899906842624,
 }
 
 declare enum DAMAGE_TYPES
@@ -51536,7 +51901,11 @@ declare enum modifierfunction
     MODIFIER_PROPERTY_OVERRIDE_CREEP_BOUNTY = 384,
     /** GetModifierOverrideBaseDamage */
     MODIFIER_PROPERTY_OVERRIDE_BASE_DAMAGE = 385,
-    MODIFIER_FUNCTION_LAST = 386,
+    /** GetModifierOverrideUntargetableFrom */
+    MODIFIER_PROPERTY_UNTARGETABLE_FROM = 386,
+    /** GetModifierOverrideUntargetableTo */
+    MODIFIER_PROPERTY_UNTARGETABLE_TO = 387,
+    MODIFIER_FUNCTION_LAST = 388,
     MODIFIER_FUNCTION_INVALID = 65535,
 }
 
