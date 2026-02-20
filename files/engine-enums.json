@@ -207,6 +207,10 @@
         "shortName": "ITEM_SANGEYASHA_MAIM"
       },
       {
+        "name": "DOTA_PSEUDO_RANDOM_ITEM_SILVER_EDGE",
+        "shortName": "ITEM_SILVER_EDGE"
+      },
+      {
         "name": "DOTA_PSEUDO_RANDOM_ITEM_SOLAR_CREST",
         "shortName": "ITEM_SOLAR_CREST"
       },
@@ -241,6 +245,10 @@
       {
         "name": "DOTA_PSEUDO_RANDOM_LYCAN_CRIT",
         "shortName": "LYCAN_CRIT"
+      },
+      {
+        "name": "DOTA_PSEUDO_RANDOM_MAGNUS_SHARD",
+        "shortName": "MAGNUS_SHARD"
       },
       {
         "name": "DOTA_PSEUDO_RANDOM_MARS_BULWARK",

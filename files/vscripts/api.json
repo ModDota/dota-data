@@ -26462,6 +26462,23 @@
       },
       {
         "kind": "function",
+        "name": "SetForcedHeroCapOnReset",
+        "available": "server",
+        "description": "Caps the number of players spawned when the game is reset. Used in tutorials where players are spawned in the script.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "cap",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetForcedHUDSkin",
         "available": "server",
         "description": "Specify a HUD skin that is forced on for this game mode.",
