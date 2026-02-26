@@ -5247,6 +5247,25 @@
     ]
   },
   {
+    "name": "dota_unit_aghshard_status_change",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "has_scepter",
+        "type": "bool"
+      },
+      {
+        "name": "has_shard",
+        "type": "bool"
+      }
+    ]
+  },
+  {
     "name": "npc_spawned",
     "sourceFile": "game",
     "local": false,
@@ -5351,6 +5370,25 @@
       {
         "name": "entindex_hero",
         "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_ancient_decoration_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "int"
+      },
+      {
+        "name": "eventname",
+        "type": "string"
       }
     ]
   }

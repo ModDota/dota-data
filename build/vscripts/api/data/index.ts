@@ -889,7 +889,11 @@ export const extraDeclarations = (() => {
     name: 'DeepPrintTable',
     description: 'Print out a table (and subtables) to the console.',
     available: 'both',
-    args: [{ name: 'table', types: ['table', 'nil'] }],
+    args: [
+      { name: 'table', types: ['table', 'nil'] },
+      { name: 'prefix', types: ['string', 'nil'] },
+      { name: 'chaseMetaTables', types: ['boolean', 'nil'] },
+    ],
     returns: ['nil'],
   });
 

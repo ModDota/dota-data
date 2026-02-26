@@ -23,6 +23,10 @@
     "description": "<Needs a description>",
     "examples": []
   },
+  "animation-frame-time": {
+    "description": "<Needs a description>",
+    "examples": []
+  },
   "animation-iteration-count": {
     "description": "<Needs a description>",
     "examples": []
@@ -442,9 +446,9 @@
     "examples": []
   },
   "img-shadow": {
-    "description": "Specifies image shadows. The shadow shape will match the image the panel can generate,and this is only meaningful for images.  Syntax takes horizontal offset pixels, vertical offset pixels, blur radius pixels, strength, and then shadow color.",
+    "description": "Specifies image shadows. The shadow shape will match the image the panel can generate,and this is only meaningful for images.  Syntax takes horizontal offset pixels, vertical offset pixels, blur radius pixels, strength, shadow color and then an optional texture sample mode (alpha-only, legacy, or point).",
     "examples": [
-      "img-shadow: 2px 2px 8px 3.0 #333333b0;"
+      "img-shadow: 2px 2px 8px 3.0 #333333b0 alpha-only;"
     ]
   },
   "layout-position": {
@@ -515,7 +519,7 @@
     ]
   },
   "opacity-mask": {
-    "description": "Applies an image as an opacity mask that stretches to the panel bounds and fades out it's content based on the alpha channel. The second float value is an optional opacity value for the mask itself, the image won't interpolate/cross-fade, but you can animate the opacity to fade the mask in/out. <b>Examples:</b><pre>opacity-mask: url( \"file://{images}/upper_row_mask.tga\" );\nopacity-mask: url( \"file://{images}/upper_row_mask.tga\" ) 0.5;\nopacity-mask: url( \"file://{images}/upper_row_mask.tga\" ) -1.0;\nopacity-mask-position: 5px 50%;\nopacity-mask-scale: 200%;\nopacity-mask-scale: 50% 100%;\n</pre>",
+    "description": "Applies an image as an opacity mask that stretches to the panel bounds and fades out it's content based on the alpha channel. The second float value is an optional opacity value for the mask itself, the image won't interpolate/cross-fade, but you can animate the opacity to fade the mask in/out. opacity-mask-threshold lets you specify a threshold and softness percentage of how the mask is applied. Below the threshold, pixels are fully transparent, and above the threshold pixels are fully opaque. The softness lets you apply a range during which the opacity is scaled by the alpha from the mask.<b>Examples:</b><pre>opacity-mask: url( \"file://{images}/upper_row_mask.tga\" );\nopacity-mask: url( \"file://{images}/upper_row_mask.tga\" ) 0.5;\nopacity-mask: url( \"file://{images}/upper_row_mask.tga\" ) -1.0;\nopacity-mask-position: 5px 50%;\nopacity-mask-scale: 200%;\nopacity-mask-scale: 50% 100%;\nopacity-mask-threshold: 0% 30%;\n</pre>",
     "examples": []
   },
   "opacity-mask-position": {
@@ -523,6 +527,10 @@
     "examples": []
   },
   "opacity-mask-scale": {
+    "description": "",
+    "examples": []
+  },
+  "opacity-mask-threshold": {
     "description": "",
     "examples": []
   },
@@ -705,6 +713,13 @@
     "examples": [
       "transition-duration: 2.0s;",
       "transition-duration: 2.0s, 1.2s, 1.2s, 4.0s, 2.0s;"
+    ]
+  },
+  "transition-frame-time": {
+    "description": "Specifies a fixed time between frames in order to simulate a lower framerate for stylistic reasons. Default is 0s.",
+    "examples": [
+      "transition-frame-time: 0.2s;",
+      "transition-frame-time: 0.2s, 0.0s;"
     ]
   },
   "transition-high-framerate": {
