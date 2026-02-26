@@ -1828,6 +1828,22 @@
         "shortName": "DOTA_KINETIC_FIELD"
       },
       {
+        "name": "ACT_DOTA_LARGO_ULT_STRUM_FAIL",
+        "shortName": "DOTA_LARGO_ULT_STRUM_FAIL"
+      },
+      {
+        "name": "ACT_DOTA_LARGO_ULT_STRUM_SUCCESS",
+        "shortName": "DOTA_LARGO_ULT_STRUM_SUCCESS"
+      },
+      {
+        "name": "ACT_DOTA_LARGO_ULT_TOGGLE_OFF",
+        "shortName": "DOTA_LARGO_ULT_TOGGLE_OFF"
+      },
+      {
+        "name": "ACT_DOTA_LARGO_ULT_TOGGLE_ON",
+        "shortName": "DOTA_LARGO_ULT_TOGGLE_ON"
+      },
+      {
         "name": "ACT_DOTA_LASSO_LOOP",
         "shortName": "DOTA_LASSO_LOOP"
       },
@@ -6467,6 +6483,14 @@
         "shortName": "DONT_RESUME_MOVEMENT"
       },
       {
+        "name": "DOTA_ABILITY_BEHAVIOR_FORCE_KEYBIND",
+        "shortName": "FORCE_KEYBIND"
+      },
+      {
+        "name": "DOTA_ABILITY_BEHAVIOR_FORCE_NO_INNATE_UI",
+        "shortName": "FORCE_NO_INNATE_UI"
+      },
+      {
         "name": "DOTA_ABILITY_BEHAVIOR_FREE_DRAW_TARGETING",
         "shortName": "FREE_DRAW_TARGETING"
       },
@@ -6692,24 +6716,7 @@
   },
   {
     "name": "AbilityType",
-    "members": [
-      {
-        "name": "DOTA_ABILITY_TYPE_ATTRIBUTES",
-        "shortName": "ATTRIBUTES"
-      },
-      {
-        "name": "DOTA_ABILITY_TYPE_BASIC",
-        "shortName": "BASIC"
-      },
-      {
-        "name": "DOTA_ABILITY_TYPE_HIDDEN",
-        "shortName": "HIDDEN"
-      },
-      {
-        "name": "DOTA_ABILITY_TYPE_ULTIMATE",
-        "shortName": "ULTIMATE"
-      }
-    ]
+    "members": []
   },
   {
     "name": "BotItemType",
