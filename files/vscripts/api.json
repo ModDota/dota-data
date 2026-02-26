@@ -37093,6 +37093,20 @@
           "table",
           "nil"
         ]
+      },
+      {
+        "name": "prefix",
+        "types": [
+          "string",
+          "nil"
+        ]
+      },
+      {
+        "name": "chaseMetaTables",
+        "types": [
+          "boolean",
+          "nil"
+        ]
       }
     ],
     "returns": [
