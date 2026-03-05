@@ -153,180 +153,7 @@
     "name": "CBaseAnimGraph",
     "clientName": "CBaseAnimGraph",
     "extend": "CBaseModelEntity",
-    "members": [
-      {
-        "kind": "function",
-        "name": "GetGraphParameter",
-        "available": "server",
-        "description": "Get the value of the given animGraph parameter.",
-        "returns": [
-          "table"
-        ],
-        "args": [
-          {
-            "name": "param",
-            "types": [
-              "string"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphLookTarget",
-        "available": "server",
-        "description": "Pass the desired look target in world space to the graph.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "value",
-            "types": [
-              "Vector"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameter",
-        "available": "server",
-        "description": "Set the specific param value, type is inferred from the type in script.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "param",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "svArg",
-            "types": [
-              "table"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameterBool",
-        "available": "server",
-        "description": "Set the specific param on or off.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "bool"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameterEnum",
-        "available": "server",
-        "description": "Pass the enum (int) value to the specified param.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameterFloat",
-        "available": "server",
-        "description": "Pass the float value to the specified param.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameterInt",
-        "available": "server",
-        "description": "Pass the int value to the specified param.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetGraphParameterVector",
-        "available": "server",
-        "description": "Pass the vector value to the specified param in the graph.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "name",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "value",
-            "types": [
-              "Vector"
-            ]
-          }
-        ]
-      }
-    ]
+    "members": []
   },
   {
     "kind": "class",
@@ -9666,6 +9493,23 @@
       },
       {
         "kind": "function",
+        "name": "SetControllableByAllPlayers",
+        "available": "server",
+        "description": "Set this unit controllable by all players.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "controllableByAllPlayers",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetControllableByPlayer",
         "available": "server",
         "description": "Set this unit controllable by the player with the passed ID.",
@@ -15444,6 +15288,16 @@
       },
       {
         "kind": "function",
+        "name": "GetBuffAmplification",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetConvertAttackPhysicalToPure",
         "available": "both",
         "abstract": true,
@@ -16636,16 +16490,6 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierHPRegen_CanBeNegative",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "GetModifierHPRegenAmplify_Percentage",
         "available": "both",
         "abstract": true,
@@ -17466,6 +17310,46 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierOverrideBaseDamage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierOverrideCreepBounty",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierOverrideUntargetableFrom",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierOverrideUntargetableTo",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPercentageAttackAnimTime",
         "available": "both",
         "abstract": true,
@@ -17489,6 +17373,16 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPercentageConvertExpToGold",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18130,6 +18024,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPropertySuppressInvalidMoveAttackOrders",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPropertyUpgradeNeutralArtifacts",
         "available": "both",
         "abstract": true,
@@ -18707,6 +18611,16 @@
       },
       {
         "kind": "function",
+        "name": "GetRequiredLevel",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetSkipAttackRegulator",
         "available": "both",
         "abstract": true,
@@ -18930,6 +18844,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnAbilitySwapped",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -19424,6 +19348,16 @@
       },
       {
         "kind": "function",
+        "name": "OnModifierRefreshed",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnModifierRemoved",
         "available": "both",
         "abstract": true,
@@ -19465,6 +19399,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnOrderReceived",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -20557,7 +20501,7 @@
         "name": "GetCreepDamageTaken",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
@@ -20628,7 +20572,7 @@
         "name": "GetDamageDoneToHero",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
@@ -20875,7 +20819,7 @@
         "name": "GetHeroDamageTaken",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
@@ -21351,7 +21295,7 @@
         "name": "GetRawPlayerDamage",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
@@ -21683,7 +21627,7 @@
         "name": "GetTowerDamageTaken",
         "available": "server",
         "returns": [
-          "int"
+          "float"
         ],
         "args": [
           {
@@ -26512,6 +26456,23 @@
             "name": "disabled",
             "types": [
               "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetForcedHeroCapOnReset",
+        "available": "server",
+        "description": "Caps the number of players spawned when the game is reset. Used in tutorials where players are spawned in the script.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "cap",
+            "types": [
+              "int"
             ]
           }
         ]
@@ -32183,122 +32144,6 @@
   },
   {
     "kind": "class",
-    "name": "CEnvProjectedTexture",
-    "extend": "CBaseEntity",
-    "members": [
-      {
-        "kind": "function",
-        "name": "SetFarRange",
-        "available": "server",
-        "description": "Set light maximum range.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "range",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetLinearAttenuation",
-        "available": "server",
-        "description": "Set light linear attenuation value.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "atten",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetNearRange",
-        "available": "server",
-        "description": "Set light minimum range.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "range",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetQuadraticAttenuation",
-        "available": "server",
-        "description": "Set light quadratic attenuation value.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "atten",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetVolumetrics",
-        "available": "server",
-        "description": "Turn on/off light volumetrics.",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "on",
-            "types": [
-              "bool"
-            ]
-          },
-          {
-            "name": "intensity",
-            "types": [
-              "float"
-            ]
-          },
-          {
-            "name": "noise",
-            "types": [
-              "float"
-            ]
-          },
-          {
-            "name": "planes",
-            "types": [
-              "int"
-            ]
-          },
-          {
-            "name": "planeOffset",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "CFoWBlockerRegion",
     "extend": "CBaseEntity",
     "members": [
@@ -33240,29 +33085,6 @@
           "bool"
         ],
         "args": []
-      },
-      {
-        "kind": "function",
-        "name": "LoadSceneFromString",
-        "available": "server",
-        "description": "Given a dummy scene name and a vcd string, load the scene.",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "arg1",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "arg2",
-            "types": [
-              "string"
-            ]
-          }
-        ]
       },
       {
         "kind": "function",
@@ -36650,6 +36472,23 @@
   },
   {
     "kind": "function",
+    "name": "DebugChangeTeam",
+    "available": "server",
+    "description": "Changes the team of the hero.",
+    "returns": [
+      "nil"
+    ],
+    "args": [
+      {
+        "name": "arg1",
+        "types": [
+          "handle"
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "function",
     "name": "DebugCreateHeroWithVariant",
     "available": "server",
     "description": "Creates a unit with a specified hero variant, controllable by the specified player.",
@@ -36761,7 +36600,7 @@
       {
         "name": "arg1",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -37136,7 +36975,7 @@
       {
         "name": "origin",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {

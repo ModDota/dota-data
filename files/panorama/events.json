@@ -198,6 +198,10 @@
       {
         "name": "entityIndex",
         "type": "int32"
+      },
+      {
+        "name": "parentId",
+        "type": "AbilityID_t"
       }
     ]
   },
