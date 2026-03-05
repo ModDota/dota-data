@@ -55,7 +55,6 @@ export const extracted: ExtractionRule[] = [
       !x.startsWith('DOTA_UNIT_TARGET_TEAM_') && !x.startsWith('DOTA_UNIT_TARGET_FLAG_'),
   },
   { prefix: 'DOTA_UNIT_TARGET_TEAM_' },
-  { prefix: 'DOTA_ABILITY_TYPE_' },
   {
     name: 'BotItemType',
     prefix: 'ITEM_',

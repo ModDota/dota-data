@@ -879,6 +879,23 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       4: ['teleportOwner', ['CDOTA_BaseNPC_Hero', 'nil']],
     },
   },
+
+  // Valve changed to vectorws and vectorws is not reported correctly in the API documentation
+  // but using the old Vector type works for *most* of these functions
+  'CBaseEntity.EyePosition': { returns: 'Vector' },
+  'CBaseEntity.GetAbsOrigin': { returns: 'Vector' },
+  'CBaseEntity.GetCenter': { returns: 'Vector' },
+  'CBaseEntity.GetOrigin': { returns: 'Vector' },
+  'CBaseEntity.SetAbsOrigin': { args: { 0: ['origin', 'Vector'] } },
+  'CBaseEntity.TransformPointEntityToWorld': { returns: 'Vector' },
+  'CBaseEntity.TransformPointWorldToEntity': { args: { 0: ['point', 'Vector'] } },
+  'CDOTA_BaseNPC.GetCursorPosition': { returns: 'Vector' },
+  'CDOTA_BaseNPC.MoveToPositionAggressive': { args: { 0: ['dest', 'Vector'] } },
+  'CDOTABaseAbility.GetCursorPosition': { returns: 'Vector' },
+  'CTakeDamageInfo.GetDamagePosition': { returns: 'Vector' },
+  'CTakeDamageInfo.GetReportedPosition': { returns: 'Vector' },
+  'CTakeDamageInfo.SetDamagePosition': { args: { 0: ['damagePosition', 'Vector'] } },
+  'CTakeDamageInfo.SetReportedPosition': { args: { 0: ['reportedPosition', 'Vector'] } },
 };
 
 export const extraDeclarations = (() => {
