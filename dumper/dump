@@ -1,13 +1,13 @@
-ClientVersion=6728
-ServerVersion=6728
+ClientVersion=6734
+ServerVersion=6734
 ProductName=dota2_workshop
 appID=570
 ServerAppID=373310
 CustomGameServerAppID=471280
 ToolsAppID=316570
-SourceRevision=10550998
-VersionDate=Mar 24 2026
-VersionTime=16:21:43
+SourceRevision=10553076
+VersionDate=Mar 25 2026
+VersionTime=11:12:09
 $> dump_panorama_css_properties
 === align ===
 &lt;Needs a description&gt;
@@ -91,12 +91,12 @@ background-position: left 10px top 40px;</pre>
 
 === background-repeat ===
 Controls if the background should be repeated in the horizontal and vertical directions.<br><br>Possible values per direction:<br>"repeat" - (default) Repeated in the specified direction until it fills the panel<br>"space" - Repeated as many times as required to fill the panel w/o being clipped. Space is added between images to to align first and last image with panel edges.<br>"round" - Repeated as many times as required to fill the panel w/o being clipped. The image is resized to align first and last image with panel edges.<br>"no-repeat" - Not repeated<br><br>Possible single values:<br>"repeat-x" - equals "repeat no-repeat"<br>"repeat-y" - equals "no-repeat repeat"<br><br><b>Examples:</b><pre>background-repeat: repeat; // equals "repeat repeat" (default)
-background-repeat: repeat space; // repeats horizontally, spaces vertically 
+background-repeat: repeat space; // repeats horizontally, spaces vertically
 background-repeat: no-repeat round; // 1 column of images, scaled to fit evenly</pre>
 
 
 === background-size ===
-Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, background-texture-size and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default) 
+Sets the horizontal and vertical dimensions used to draw the background image. Can be set in pixels, percent, "contains" to size down to panel dimensions or "auto" preserves the image aspect ratio. By default, set to "auto" which preveres the image's original size.<br><br>Multiple background layers can be specified in a comma separated list, which are then combined with background-image, background-position, background-texture-size and background-repeat values.<br><br><b>Examples:</b><pre>background-size: auto; // same as "auto auto" (default)
 background-size: 100% 100%; // image fills the panel
 background-size: 50% 75%; // image fills 50% of the panel's width, and 75% of the panel's height
 background-size: 300px 200px; // image is drawn 300px wide, 200px tall</pre>
@@ -211,7 +211,7 @@ border-radius: 2px;
 border-radius: 50% / 50%;
 // 2 px horizontal radii 4px vertical elliptical corners on all sides
 border-radius: 2px / 4px;
-// All corners fully specified 
+// All corners fully specified
 border-radius: 2px 3px 4px 2px / 2px 3px 3px 2px;</pre>
 
 
@@ -679,7 +679,7 @@ $> dump_panorama_events
 |-
 | <code>AddStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
-| Add a CSS class to a panel after a specified delay. 
+| Add a CSS class to a panel after a specified delay.
 |-
 | <code>AddStyleToEachChild(panoramasymbol class)</code>
 | Yes
@@ -687,7 +687,7 @@ $> dump_panorama_events
 |-
 | <code>AddTimedStyle(panoramasymbol class, float duration, float pre-delay)</code>
 | Yes
-| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class. 
+| Add a class for a specified duration, with optional pre-delay; clears existing timers when called with same class.
 |-
 | <code>AsyncEvent(float delay, event eventToFire)</code>
 | No
@@ -923,7 +923,7 @@ $> dump_panorama_events
 |-
 | <code>RemoveStyleAfterDelay(panoramasymbol class, float pre-delay)</code>
 | Yes
-| Remove a CSS class from a panel after a specified delay. 
+| Remove a CSS class from a panel after a specified delay.
 |-
 | <code>RemoveStyleFromEachChild(panoramasymbol class)</code>
 | Yes
@@ -7293,1035 +7293,6 @@ Initializing script VM...
     "kind":"constant",
     "name":"ACT_DOTA_MK_FUR_ARMY",
     "value":1722
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_SPRING_CAST",
-    "value":1723
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_SPRING_END",
-    "value":1719
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_SPRING_SOAR",
-    "value":1718
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_STRIKE",
-    "value":1715
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_STRIKE_END",
-    "value":1764
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_TREE_END",
-    "value":1721
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MK_TREE_SOAR",
-    "value":1720
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_MVP_SCREEN",
-    "value":1776
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NECRO_GHOST_SHROUD",
-    "value":1724
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIAN_INTRO_LEAP",
-    "value":1660
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIAN_PIN_END",
-    "value":1657
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIAN_PIN_LOOP",
-    "value":1656
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIAN_PIN_START",
-    "value":1655
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIAN_PIN_TO_STUN",
-    "value":1662
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NIGHTSTALKER_TRANSITION",
-    "value":1565
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_NOTICE",
-    "value":1747
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_ABILITY_1",
-    "value":1516
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_ABILITY_2",
-    "value":1517
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_ABILITY_3",
-    "value":1518
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_ABILITY_4",
-    "value":1519
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_ARCANA",
-    "value":1725
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_OVERRIDE_LOADOUT",
-    "value":1751
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_PET_LEVEL",
-    "value":1701
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_PET_WARD_OBSERVER",
-    "value":1699
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_PET_WARD_SENTRY",
-    "value":1700
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_PIERCE_THE_VEIL",
-    "value":1760
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_POOF_END",
-    "value":1603
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_PRESENT_ITEM",
-    "value":1635
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
-    "value":1549
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RATTLETRAP_HOOKSHOT_END",
-    "value":1553
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RATTLETRAP_HOOKSHOT_LOOP",
-    "value":1552
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RATTLETRAP_HOOKSHOT_START",
-    "value":1551
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RATTLETRAP_POWERCOGS",
-    "value":1550
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RAZE_1",
-    "value":1663
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RAZE_2",
-    "value":1664
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RAZE_3",
-    "value":1665
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_END",
-    "value":1610
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_LOOP",
-    "value":1609
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_LOOP_END",
-    "value":1634
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RELAX_START",
-    "value":1608
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_ROQUELAIRE_LAND",
-    "value":1615
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_ROQUELAIRE_LAND_IDLE",
-    "value":1616
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN",
-    "value":1502
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_RUN_RARE",
-    "value":1761
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SAND_KING_BURROW_IN",
-    "value":1568
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SAND_KING_BURROW_OUT",
-    "value":1569
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHADOW_VAULT",
-    "value":1765
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHAKE",
-    "value":1687
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHALLOW_GRAVE",
-    "value":1670
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHARPEN_WEAPON",
-    "value":1637
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHARPEN_WEAPON_OUT",
-    "value":1638
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHOPKEEPER_PET_INTERACT",
-    "value":1695
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHRUG",
-    "value":1633
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHUFFLE_L",
-    "value":1749
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SHUFFLE_R",
-    "value":1750
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SLARK_POUNCE",
-    "value":1604
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SLEEPING_END",
-    "value":1626
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SLIDE",
-    "value":1726
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SLIDE_LOOP",
-    "value":1727
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SPAWN",
-    "value":1534
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_END",
-    "value":1594
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE",
-    "value":1593
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_STARTLE",
-    "value":1629
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_STATIC_STORM",
-    "value":1680
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SWIM",
-    "value":1684
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_SWIM_IDLE",
-    "value":1688
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TAUNT",
-    "value":1536
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TAUNT_SNIPER",
-    "value":1641
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TAUNT_SPECIAL",
-    "value":1752
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT",
-    "value":1595
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_COOP_END",
-    "value":1693
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_COOP_EXIT",
-    "value":1694
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_COOP_START",
-    "value":1691
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_COOP_WAIT",
-    "value":1692
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_END",
-    "value":1596
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_END_REACT",
-    "value":1632
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_REACT",
-    "value":1631
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TELEPORT_START",
-    "value":1753
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_THIRST",
-    "value":1537
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_THUNDER_STRIKE",
-    "value":1678
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TINKER_REARM1",
-    "value":1555
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TINKER_REARM2",
-    "value":1556
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TINKER_REARM3",
-    "value":1557
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TRANSITION",
-    "value":1731
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TRANSITION_IDLE",
-    "value":1759
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TRICKS_END",
-    "value":1713
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_TROT",
-    "value":1686
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_UNDYING_DECAY",
-    "value":1666
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_UNDYING_SOUL_RIP",
-    "value":1667
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_UNDYING_TOMBSTONE",
-    "value":1668
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_UNICYCLE",
-    "value":1772
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_UNICYCLE_END",
-    "value":1773
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_VERSUS",
-    "value":1716
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY",
-    "value":1591
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_VICTORY_START",
-    "value":1710
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_VIPER_DIVE",
-    "value":1762
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_VIPER_DIVE_END",
-    "value":1763
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_WAIT_IDLE",
-    "value":1689
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_WEAVERBUG_ATTACH",
-    "value":1561
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_WHEEL_LAYER",
-    "value":1571
-  },{
-    "enum":"GameActivity_t",
-    "kind":"constant",
-    "name":"ACT_DOTA_WHIRLING_AXES_RANGED",
-    "value":1669
-  },{
-    "kind":"constant",
-    "name":"ACT_DO_NOT_DISTURB",
-    "value":179
-  },{
-    "kind":"constant",
-    "name":"ACT_DROP_WEAPON",
-    "value":73
-  },{
-    "kind":"constant",
-    "name":"ACT_DROP_WEAPON_SHOTGUN",
-    "value":74
-  },{
-    "kind":"constant",
-    "name":"ACT_DUCK_DODGE",
-    "value":395
-  },{
-    "kind":"constant",
-    "name":"ACT_DYINGLOOP",
-    "value":430
-  },{
-    "kind":"constant",
-    "name":"ACT_DYINGTODEAD",
-    "value":431
-  },{
-    "kind":"constant",
-    "name":"ACT_EXPLODE",
-    "value":910
-  },{
-    "kind":"constant",
-    "name":"ACT_FIRE",
-    "value":906
-  },{
-    "kind":"constant",
-    "name":"ACT_FIRE_END",
-    "value":438
-  },{
-    "kind":"constant",
-    "name":"ACT_FIRE_LOOP",
-    "value":437
-  },{
-    "kind":"constant",
-    "name":"ACT_FIRE_RECOVER",
-    "value":907
-  },{
-    "kind":"constant",
-    "name":"ACT_FIRE_START",
-    "value":436
-  },{
-    "kind":"constant",
-    "name":"ACT_FLICK_LEFT",
-    "value":900
-  },{
-    "kind":"constant",
-    "name":"ACT_FLICK_LEFT_MIDDLE",
-    "value":901
-  },{
-    "kind":"constant",
-    "name":"ACT_FLICK_RIGHT",
-    "value":903
-  },{
-    "kind":"constant",
-    "name":"ACT_FLICK_RIGHT_MIDDLE",
-    "value":902
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CHEST",
-    "value":119
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CHEST_BACK",
-    "value":127
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CROUCH_BACK",
-    "value":130
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CROUCH_FRONT",
-    "value":129
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CROUCH_LEFT",
-    "value":131
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_CROUCH_RIGHT",
-    "value":132
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_HEAD",
-    "value":118
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_HEAD_BACK",
-    "value":126
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_LEFTARM",
-    "value":121
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_LEFTLEG",
-    "value":123
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_PHYSICS",
-    "value":125
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_RIGHTARM",
-    "value":122
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_RIGHTLEG",
-    "value":124
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_STOMACH",
-    "value":120
-  },{
-    "kind":"constant",
-    "name":"ACT_FLINCH_STOMACH_BACK",
-    "value":128
-  },{
-    "kind":"constant",
-    "name":"ACT_FLY",
-    "value":25
-  },{
-    "kind":"constant",
-    "name":"ACT_GAUSS_SPINCYCLE",
-    "value":476
-  },{
-    "kind":"constant",
-    "name":"ACT_GAUSS_SPINUP",
-    "value":475
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_BARNACLE_STRANGLE",
-    "value":397
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_BIG_FLINCH",
-    "value":153
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_BLAST",
-    "value":154
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_BLAST_DAMAGED",
-    "value":156
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_BLAST_DAMAGED_SHOTGUN",
-    "value":157
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_BLAST_SHOTGUN",
-    "value":155
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_CHEST",
-    "value":159
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_HEAD",
-    "value":158
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_LEFTARM",
-    "value":161
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_LEFTLEG",
-    "value":163
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_RIGHTARM",
-    "value":162
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_RIGHTLEG",
-    "value":164
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_FLINCH_STOMACH",
-    "value":160
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_MELEE_ATTACK1",
-    "value":147
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_MELEE_ATTACK2",
-    "value":148
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_MELEE_ATTACK_SWING",
-    "value":313
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK1",
-    "value":145
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK1_LOW",
-    "value":149
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK2",
-    "value":146
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK2_LOW",
-    "value":150
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_AR1",
-    "value":298
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_AR2",
-    "value":299
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_AR2_GRENADE",
-    "value":300
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_HMG1",
-    "value":301
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_ML",
-    "value":302
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_PISTOL",
-    "value":307
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_PISTOL_LOW",
-    "value":308
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SHOTGUN",
-    "value":306
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SLAM",
-    "value":309
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SMG1",
-    "value":303
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SMG1_LOW",
-    "value":304
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SMG2",
-    "value":305
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_SNIPER_RIFLE",
-    "value":312
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_THROW",
-    "value":311
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RANGE_ATTACK_TRIPWIRE",
-    "value":310
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RELOAD",
-    "value":377
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RELOAD_PISTOL",
-    "value":378
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RELOAD_SHOTGUN",
-    "value":380
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_RELOAD_SMG1",
-    "value":379
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_SMALL_FLINCH",
-    "value":152
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_LEFT",
-    "value":165
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_LEFT45",
-    "value":167
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_LEFT45_FLAT",
-    "value":171
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_LEFT90",
-    "value":169
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_LEFT90_FLAT",
-    "value":173
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_RIGHT",
-    "value":166
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_RIGHT45",
-    "value":168
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_RIGHT45_FLAT",
-    "value":172
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_RIGHT90",
-    "value":170
-  },{
-    "kind":"constant",
-    "name":"ACT_GESTURE_TURN_RIGHT90_FLAT",
-    "value":174
-  },{
-    "kind":"constant",
-    "name":"ACT_GLIDE",
-    "value":27
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_ACTIVE",
-    "value":958
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_ACTIVE_IDLE",
-    "value":959
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_DEACTIVATE",
-    "value":960
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_GRAB",
-    "value":955
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_GRAB_IDLE",
-    "value":957
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_PULL",
-    "value":961
-  },{
-    "kind":"constant",
-    "name":"ACT_GRABBITYGLOVES_RELEASE",
-    "value":956
-  },{
-    "kind":"constant",
-    "name":"ACT_HEADCRAB_SMOKE_BOMB",
-    "value":962
-  },{
-    "kind":"constant",
-    "name":"ACT_HEADCRAB_SPIT",
-    "value":963
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_GESTURE_RANGE_ATTACK_MELEE",
-    "value":500
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_GESTURE_RELOAD_MELEE",
-    "value":501
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_IDLE_CROUCH_MELEE",
-    "value":498
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_IDLE_MELEE",
-    "value":496
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_JUMP_MELEE",
-    "value":502
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_RUN_MELEE",
-    "value":497
-  },{
-    "kind":"constant",
-    "name":"ACT_HL2MP_WALK_CROUCH_MELEE",
-    "value":499
-  },{
-    "kind":"constant",
-    "name":"ACT_HOP",
-    "value":30
-  },{
-    "kind":"constant",
-    "name":"ACT_HOVER",
-    "value":26
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE",
-    "value":1
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLETORUN",
-    "value":493
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AGITATED",
-    "value":80
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_AGITATED",
-    "value":93
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_AUTOGUN",
-    "value":879
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_DUAL",
-    "value":888
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_PISTOL",
-    "value":884
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_RELAXED",
-    "value":91
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_RIFLE",
-    "value":895
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_RIFLE_STIMULATED",
-    "value":331
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_SHOTGUN",
-    "value":893
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_STEALTH",
-    "value":94
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AIM_STIMULATED",
-    "value":92
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY",
-    "value":77
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY_MELEE",
-    "value":342
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY_PISTOL",
-    "value":318
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY_RPG",
-    "value":345
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY_SHOTGUN",
-    "value":319
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ANGRY_SMG1",
-    "value":316
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_AUTOGUN",
-    "value":878
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_CARRY",
-    "value":427
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_DUAL",
-    "value":887
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_HURT",
-    "value":82
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_MANNEDGUN",
-    "value":340
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_MELEE",
-    "value":341
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_ON_FIRE",
-    "value":133
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_PACKAGE",
-    "value":321
-  },{
-    "kind":"constant",
-    "name":"ACT_IDLE_PISTOL",
-    "value":317
   },{
     "kind":"constant",
     "name":"ACT_IDLE_RELAXED",
@@ -34735,7 +33706,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FENCE",
-    "value":1808
+    "value":1798
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CAST_FORGE_SPIRIT",
@@ -34891,7 +33862,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_CYCLONE",
-    "value":1796
+    "value":1807
   },{
     "kind":"constant",
     "name":"ACT_DOTA_DAGON",
@@ -35063,7 +34034,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_IMPALE",
-    "value":1797
+    "value":1808
   },{
     "kind":"constant",
     "name":"ACT_DOTA_INTRO",
@@ -35327,7 +34298,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RADIANT_CREEP_HAMMER",
-    "value":1805
+    "value":1800
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RATTLETRAP_BATTERYASSAULT",
@@ -35367,7 +34338,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_IN",
-    "value":1806
+    "value":1796
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_LOOP",
@@ -35379,7 +34350,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_OUT",
-    "value":1807
+    "value":1797
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RELAX_START",
@@ -35399,7 +34370,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_ALT",
-    "value":1800
+    "value":1805
   },{
     "kind":"constant",
     "name":"ACT_DOTA_RUN_RARE",
@@ -35484,6 +34455,10 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "kind":"constant",
     "name":"ACT_DOTA_SPIRIT_BREAKER_CHARGE_POSE",
     "value":1593
+  },{
+    "kind":"constant",
+    "name":"ACT_DOTA_SPWN",
+    "value":1801
   },{
     "kind":"constant",
     "name":"ACT_DOTA_STARTLE",
@@ -35586,10 +34561,6 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
     "value":1557
   },{
     "kind":"constant",
-    "name":"ACT_DOTA_TORRENT",
-    "value":1798
-  },{
-    "kind":"constant",
     "name":"ACT_DOTA_TRANSITION",
     "value":1731
   },{
@@ -35651,7 +34622,7 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"ACT_DOTA_VOODOO_REST",
-    "value":1799
+    "value":1806
   },{
     "kind":"constant",
     "name":"ACT_DOTA_WAIT_IDLE",
@@ -45249,19 +44220,19 @@ LUA Memory usage warning: The VM has hit a new high usage of 16,777,216 bytes.
   },{
     "kind":"constant",
     "name":"muerta_debut_satyr_a",
-    "value":1801
-  },{
-    "kind":"constant",
-    "name":"muerta_debut_satyr_b",
     "value":1802
   },{
     "kind":"constant",
-    "name":"muerta_debut_satyr_c",
+    "name":"muerta_debut_satyr_b",
     "value":1803
   },{
     "kind":"constant",
-    "name":"radiant_melee_mars_shieldbash",
+    "name":"muerta_debut_satyr_c",
     "value":1804
+  },{
+    "kind":"constant",
+    "name":"radiant_melee_mars_shieldbash",
+    "value":1799
   },{
     "extend":"C_BaseModelEntity",
     "kind":"class",
