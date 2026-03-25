@@ -183,6 +183,20 @@
       }
     ]
   },
+  "DOTAShowAbilityLevelUpTooltipForEntityIndex": {
+    "description": "Show a tooltip describing what will happen when an ability levels. Current level information comes from the entity specified by the entityIndex.",
+    "panelEvent": true,
+    "args": [
+      {
+        "name": "abilityName",
+        "type": "string"
+      },
+      {
+        "name": "entityIndex",
+        "type": "int32"
+      }
+    ]
+  },
   "DOTAShowAbilityShopItemTooltip": {
     "description": "Show tooltip for an item in the entityIndex NPC's shop.",
     "panelEvent": true,

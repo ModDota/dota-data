@@ -150,6 +150,13 @@
   },
   {
     "kind": "class",
+    "name": "CBaseAnimatingOverlay",
+    "clientName": "C_BaseAnimatingOverlay",
+    "extend": "CBaseAnimatingActivity",
+    "members": []
+  },
+  {
+    "kind": "class",
     "name": "CBaseAnimGraph",
     "clientName": "CBaseAnimGraph",
     "extend": "CBaseModelEntity",
@@ -159,7 +166,7 @@
     "kind": "class",
     "name": "CBaseCombatCharacter",
     "clientName": "C_BaseCombatCharacter",
-    "extend": "CBaseFlex",
+    "extend": "CBaseAnimatingOverlay",
     "members": []
   },
   {
@@ -1670,66 +1677,6 @@
   },
   {
     "kind": "class",
-    "name": "CBaseFlex",
-    "clientName": "C_BaseFlex",
-    "extend": "CBaseAnimatingActivity",
-    "members": [
-      {
-        "kind": "function",
-        "name": "GetCurrentScene",
-        "available": "server",
-        "description": "Returns the instance of the oldest active scene entity (if any).",
-        "returns": [
-          "CSceneEntity",
-          "nil"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetSceneByIndex",
-        "available": "server",
-        "description": "Returns the instance of the scene entity at the specified index.",
-        "returns": [
-          "CSceneEntity",
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "index",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "ScriptPlayScene",
-        "available": "server",
-        "description": "Play specified vcd file.",
-        "returns": [
-          "float"
-        ],
-        "args": [
-          {
-            "name": "scene",
-            "types": [
-              "string"
-            ]
-          },
-          {
-            "name": "delay",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "CBaseModelEntity",
     "clientName": "C_BaseModelEntity",
     "extend": "CBaseEntity",
@@ -1774,7 +1721,7 @@
         "available": "server",
         "description": "Get the attachment id's origin vector.",
         "returns": [
-          "Vector"
+          "unknown"
         ],
         "args": [
           {
@@ -2233,7 +2180,7 @@
           {
             "name": "arg2",
             "types": [
-              "Vector"
+              "unknown"
             ]
           }
         ]
@@ -5526,7 +5473,7 @@
     "kind": "class",
     "name": "CDOTA_BaseNPC",
     "clientName": "C_DOTA_BaseNPC",
-    "extend": "CBaseFlex",
+    "extend": "CBaseAnimatingOverlay",
     "members": [
       {
         "kind": "function",
@@ -9174,12 +9121,6 @@
         ],
         "args": [
           {
-            "name": "useExperimentalFormula",
-            "types": [
-              "bool"
-            ]
-          },
-          {
             "name": "inflictor",
             "types": [
               "handle"
@@ -10967,6 +10908,12 @@
             "types": [
               "bool"
             ]
+          },
+          {
+            "name": "cloneCount",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -11692,7 +11639,7 @@
       },
       {
         "kind": "function",
-        "name": "IsBuybackDisabledByReapersScythe",
+        "name": "IsBuybackDisabledByDevilsBargain",
         "available": "server",
         "returns": [
           "bool"
@@ -11990,7 +11937,7 @@
       },
       {
         "kind": "function",
-        "name": "SetBuyBackDisabledByReapersScythe",
+        "name": "SetBuyBackDisabledByDevilsBargain",
         "available": "server",
         "returns": [
           "nil"
@@ -15694,12 +15641,32 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierBaseArmorPerAgiBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierBaseAttack_BonusDamage",
         "available": "both",
         "abstract": true,
         "args": [],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBaseAttackSpeedPerAgiBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -15768,6 +15735,36 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierBaseHpRegenPerStrBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBaseMagicResistPerIntBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierBaseManaRegenPerIntBonusPercentage",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierBaseRegen",
         "available": "both",
         "abstract": true,
@@ -15826,46 +15823,6 @@
       {
         "kind": "function",
         "name": "GetModifierBonusDamageOutgoing_Percentage",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierBonusLotusHeal",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierBonusLotusHeal",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierBonusLotusHeal",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierBonusLotusHeal",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -16490,6 +16447,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierHeroLevelScale",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierHPRegenAmplify_Percentage",
         "available": "both",
         "abstract": true,
@@ -16684,6 +16651,16 @@
       {
         "kind": "function",
         "name": "GetModifierInnateDamageBlockPctOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierIntellectNone",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -16914,16 +16891,6 @@
         "args": [],
         "returns": [
           "float"
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetModifierMaxDebuffDuration",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
         ]
       },
       {
@@ -17502,6 +17469,16 @@
       },
       {
         "kind": "function",
+        "name": "GetModifierPercentageKillAssistGoldBoost",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "GetModifierPercentageManacost",
         "available": "both",
         "abstract": true,
@@ -17562,6 +17539,16 @@
         ],
         "returns": [
           "float"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPhysical_ConstantBlockBonus",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18174,16 +18161,6 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierSpellAmplify_PercentageCreep",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "GetModifierSpellAmplify_PercentageTarget",
         "available": "both",
         "abstract": true,
@@ -18314,6 +18291,16 @@
             "kind": "literal",
             "value": 1
           }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierSuperIllusionWithItems",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
         ]
       },
       {
@@ -18753,6 +18740,16 @@
       {
         "kind": "function",
         "name": "GetVisualZSpeedBaseOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "HasBonusNeutralItemPassive",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -19277,7 +19274,27 @@
       },
       {
         "kind": "function",
+        "name": "OnIllusionCreated",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnKill",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnKnockbackAttempted",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -19415,16 +19432,6 @@
       },
       {
         "kind": "function",
-        "name": "OnPreDebuffApplied",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "OnProcessCleave",
         "available": "both",
         "abstract": true,
@@ -19472,6 +19479,16 @@
       },
       {
         "kind": "function",
+        "name": "OnPurged",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnRespawn",
         "available": "both",
         "abstract": true,
@@ -19499,6 +19516,16 @@
       },
       {
         "kind": "function",
+        "name": "OnScepterUpgradeSelected",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
         "name": "OnSetLocation",
         "available": "both",
         "abstract": true,
@@ -19510,6 +19537,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnShardUpgradeSelected",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -19554,6 +19591,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnSpentItemCharge",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -28108,6 +28155,12 @@
             "types": [
               "float"
             ]
+          },
+          {
+            "name": "arg2",
+            "types": [
+              "int"
+            ]
           }
         ]
       },
@@ -30900,6 +30953,23 @@
       },
       {
         "kind": "function",
+        "name": "MoveCameraToLocation",
+        "available": "server",
+        "description": "Moves the camera to a position.",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "arg1",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "RemoveShopWhitelistItem",
         "available": "server",
         "description": "Remove an item from the shop whitelist.",
@@ -31113,7 +31183,7 @@
   {
     "kind": "class",
     "name": "CDotaTutorialNPCBlocker",
-    "extend": "CBaseFlex",
+    "extend": "CBaseAnimatingOverlay",
     "members": [
       {
         "kind": "function",
@@ -31241,7 +31311,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31319,7 +31389,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31369,7 +31439,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31424,7 +31494,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31461,7 +31531,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31523,7 +31593,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31578,7 +31648,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31615,7 +31685,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -31671,7 +31741,7 @@
           {
             "name": "location",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -32112,7 +32182,7 @@
           {
             "name": "vecAlternateOrigin",
             "types": [
-              "Vector"
+              "unknown"
             ]
           },
           {
@@ -34008,319 +34078,6 @@
   },
   {
     "kind": "class",
-    "name": "CTakeDamageInfo",
-    "members": [
-      {
-        "kind": "function",
-        "name": "AddDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "addAmount",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "AddDamageType",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damageType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "GetAmmoType",
-        "available": "server",
-        "returns": [
-          "int"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetAttacker",
-        "available": "server",
-        "returns": [
-          "handle"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetDamage",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetDamageCustom",
-        "available": "server",
-        "returns": [
-          "int"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetDamageForce",
-        "available": "server",
-        "returns": [
-          "Vector"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetDamagePosition",
-        "available": "server",
-        "returns": [
-          "unknown"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetDamageType",
-        "available": "server",
-        "returns": [
-          "unknown"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetInflictor",
-        "available": "server",
-        "returns": [
-          "handle"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetOriginalDamage",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetReportedPosition",
-        "available": "server",
-        "returns": [
-          "unknown"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "GetTotalledDamage",
-        "available": "server",
-        "returns": [
-          "float"
-        ],
-        "args": []
-      },
-      {
-        "kind": "function",
-        "name": "HasDamageType",
-        "available": "server",
-        "returns": [
-          "bool"
-        ],
-        "args": [
-          {
-            "name": "damageType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "ScaleDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "scaleAmount",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetAmmoType",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "ammoType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetAttacker",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "attacker",
-            "types": [
-              "handle"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damage",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetDamageCustom",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damageCustom",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetDamageForce",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damageForce",
-            "types": [
-              "Vector"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetDamagePosition",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damagePosition",
-            "types": [
-              "unknown"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetDamageType",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "damageType",
-            "types": [
-              "int"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetOriginalDamage",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "originalDamage",
-            "types": [
-              "float"
-            ]
-          }
-        ]
-      },
-      {
-        "kind": "function",
-        "name": "SetReportedPosition",
-        "available": "server",
-        "returns": [
-          "nil"
-        ],
-        "args": [
-          {
-            "name": "reportedPosition",
-            "types": [
-              "unknown"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "kind": "class",
     "name": "GlobalSys",
     "clientName": "GlobalSys",
     "instance": "GlobalSys",
@@ -35797,7 +35554,7 @@
       {
         "name": "arg4",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36198,7 +35955,7 @@
       {
         "name": "arg1",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36227,7 +35984,7 @@
       {
         "name": "vecOrigin",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36659,7 +36416,7 @@
       {
         "name": "cent",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36712,7 +36469,7 @@
       {
         "name": "center",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36769,13 +36526,13 @@
       {
         "name": "origin",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
         "name": "target",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36822,13 +36579,13 @@
       {
         "name": "arg1",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
         "name": "arg2",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -36928,7 +36685,7 @@
       {
         "name": "center",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -37764,7 +37521,7 @@
       {
         "name": "location",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -37822,7 +37579,7 @@
       {
         "name": "location",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -40043,13 +39800,13 @@
     "available": "both",
     "description": "Rotate a Vector around a point.",
     "returns": [
-      "Vector"
+      "unknown"
     ],
     "args": [
       {
         "name": "arg1",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -40061,7 +39818,7 @@
       {
         "name": "arg3",
         "types": [
-          "Vector"
+          "unknown"
         ]
       }
     ]
@@ -40183,7 +39940,7 @@
       {
         "name": "center",
         "types": [
-          "Vector"
+          "unknown"
         ]
       },
       {
@@ -41045,7 +40802,7 @@
       {
         "name": "position",
         "types": [
-          "Vector"
+          "unknown"
         ]
       }
     ]
@@ -41068,7 +40825,7 @@
       {
         "name": "position",
         "types": [
-          "Vector"
+          "unknown"
         ]
       }
     ]
@@ -41091,7 +40848,7 @@
       {
         "name": "position",
         "types": [
-          "Vector"
+          "unknown"
         ]
       }
     ]
