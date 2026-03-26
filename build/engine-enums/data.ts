@@ -20,8 +20,6 @@ export const additionalEnums: EngineEnum[] = [
 
 export const extracted: ExtractionRule[] = [
   { prefix: 'DOTA_PSEUDO_RANDOM_' },
-  { prefix: 'DOTA_ORB_PRIORITY_' },
-  { prefix: 'DOTA_ORB_LABEL_' },
   { prefix: 'DOTA_ATTRIBUTE_' },
   { prefix: 'DOTA_TEAM_' },
   // Seems removed in 7.33?
@@ -55,7 +53,7 @@ export const extracted: ExtractionRule[] = [
       !x.startsWith('DOTA_UNIT_TARGET_TEAM_') && !x.startsWith('DOTA_UNIT_TARGET_FLAG_'),
   },
   { prefix: 'DOTA_UNIT_TARGET_TEAM_' },
-  { prefix: 'DOTA_ABILITY_TYPE_' },
+  { prefix: 'ABILITY_TYPE_' },
   {
     name: 'BotItemType',
     prefix: 'ITEM_',

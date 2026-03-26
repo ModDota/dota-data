@@ -5247,6 +5247,51 @@
     ]
   },
   {
+    "name": "dota_unit_aghshard_status_change",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "has_scepter",
+        "type": "bool"
+      },
+      {
+        "name": "has_shard",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "name": "dota_stone_of_recall_used",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "caster_userid",
+        "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_blessing_chosen",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "blessing_receipient_id",
+        "type": "short"
+      },
+      {
+        "name": "blessing",
+        "type": "int"
+      }
+    ]
+  },
+  {
     "name": "npc_spawned",
     "sourceFile": "game",
     "local": false,
@@ -5351,6 +5396,25 @@
       {
         "name": "entindex_hero",
         "type": "EntityIndex"
+      }
+    ]
+  },
+  {
+    "name": "dota_ancient_decoration_event",
+    "sourceFile": "game",
+    "local": false,
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "EntityIndex"
+      },
+      {
+        "name": "teamnumber",
+        "type": "int"
+      },
+      {
+        "name": "eventname",
+        "type": "string"
       }
     ]
   }
