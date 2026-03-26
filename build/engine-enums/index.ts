@@ -30,7 +30,7 @@ export async function generateEngineEnums(dota2Dir: string) {
       const selectedStrings = (prefix ? strings.filter((x) => x.startsWith(prefix)) : strings)
         .filter((x) => !x.includes(' ') && !x.endsWith('_TYPES') && !x.endsWith('_TYPE'))
         .filter(filter);
-      if (selectedStrings.length === 0) return { name, members: [] }; // throw new Error(`Enum "${name}" has no matching values.`);
+      if (selectedStrings.length === 0) throw new Error(`Enum "${name}" has no matching values.`);
 
       for (const string of selectedStrings) {
         if (usedStrings.has(string)) {
