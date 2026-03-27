@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _, { add } from 'lodash';
 import * as fs from 'fs';
 import * as path from 'path';
 import { outputFile, outputJson } from '../util';
@@ -14,7 +14,14 @@ export async function generateEngineEnums(dota2Dir: string) {
 
   const usedStrings = new Map<string, string>();
   const enums = extracted.map(
-    ({ name, prefix, filter = () => true, map = identity, transform = identity }): EngineEnum => {
+    ({
+      name,
+      prefix,
+      filter = () => true,
+      map = identity,
+      transform = identity,
+      additionalMembers,
+    }): EngineEnum => {
       if (!name) {
         if (prefix) {
           name = _.upperFirst(_.camelCase(prefix.replace(/^DOTA_/, '')));
@@ -46,6 +53,9 @@ export async function generateEngineEnums(dota2Dir: string) {
         (x): EngineEnumMember => ({ name: x, shortName: map(x) }),
       );
       members.sort((a, b) => a.name.localeCompare(b.name));
+      if (additionalMembers) {
+        members.push(...additionalMembers);
+      }
 
       return {
         name,

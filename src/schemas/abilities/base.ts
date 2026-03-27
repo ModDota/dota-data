@@ -12,6 +12,9 @@ export const baseAbility = (schemaName = 'BaseAbility') =>
     .field('AbilityCastAnimation', s.enums('Activity'))
     .field('AbilityCastGestureSlot', s.oneOfLiterals(['DEFAULT', 'ABSOLUTE']))
 
+    .field('HasSubAbility', s.binaryBoolean())
+    .field('SubAbilityNames', s.str())
+
     .field('AbilityType', s.enums('AbilityType'))
     .field('AbilityBehavior', s.enums('AbilityBehavior').flags())
     .field('AbilityUnitDamageType', s.enums('DamageType'))
@@ -211,4 +214,9 @@ export const baseItem = (name = 'BaseItem') =>
     // TODO: Used only in `seasonal_ti9_banner`
     .field('UnlockMinEffectIndex', s.int().min(0))
     .field('UnlockMaxEffectIndex', s.int().min(0))
-    .field('EventID', s.int().min(0));
+    .field('EventID', s.int().min(0))
+    
+    //7.41
+    .field('ShowGiveIndicatorOnTargetCast', s.binaryBoolean())
+    .field('ItemCanBeUsedWithoutInventory', s.binaryBoolean())
+    .field('ShowDroppedItemTooltip', s.binaryBoolean());

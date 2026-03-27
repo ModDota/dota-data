@@ -38,7 +38,8 @@ const baseHero = () =>
               description: 'For tools only.',
             })
             .field('ModelScale', s.num())
-            .field('mvp_map_override', s.str()),
+            .field('mvp_map_override', s.str())
+            .field('cosmetic_group_name', s.str()),
           'number',
         ),
       ],

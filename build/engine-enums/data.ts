@@ -6,6 +6,7 @@ export interface ExtractionRule {
   filter?(x: string): boolean;
   map?(x: string): string;
   transform?(x: EngineEnumMember[]): EngineEnumMember[];
+  additionalMembers?: EngineEnumMember[];
 }
 
 export const additionalEnums: EngineEnum[] = [
@@ -34,7 +35,11 @@ export const extracted: ExtractionRule[] = [
     prefix: 'DOTA_UNIT_CAP_',
     filter: (x) => !x.startsWith('DOTA_UNIT_CAP_MOVE_'),
   },
-  { name: 'Activity', prefix: 'ACT_' },
+  {
+    name: 'Activity',
+    prefix: 'ACT_',
+    additionalMembers: [{ name: 'ACT_INVALID', shortName: 'INVALID' }],
+  },
   { name: 'FieldType', prefix: 'FIELD_' },
   { name: 'SpecialBonusOperation', prefix: 'SPECIAL_BONUS_' },
   { name: 'UnitMoveCapability', prefix: 'DOTA_UNIT_CAP_MOVE_' },
@@ -63,6 +68,20 @@ export const extracted: ExtractionRule[] = [
       !x.startsWith('ITEM_FULLY_') &&
       !x.startsWith('ITEM_SLOT_TYPE_') &&
       !x.endsWith('_SHAREABLE'),
+    additionalMembers: [
+      {
+        name: 'ITEM_CONSUMABLE',
+        shortName: 'CONSUMABLE',
+      },
+      {
+        name: 'ITEM_SELLABLE',
+        shortName: 'SELLABLE',
+      },
+      {
+        name: 'ITEM_DERIVED',
+        shortName: 'DERIVED',
+      },
+    ],
   },
   {
     name: 'ItemShareability',

@@ -23,12 +23,6 @@ describe('integration', () => {
       // TODO: Should flag enums allow empty string?
       'item_ring_of_aquila.ItemShareability should be a ItemShareability enum but is: ',
 
-      `item_recipe_grandmasters_glaive does not match any of:
-  1. item_recipe_grandmasters_glaive.ItemRequirements should be an object
-  2. item_recipe_grandmasters_glaive.ItemRecipe should be "0"
-     item_recipe_grandmasters_glaive.ItemResult is unknown
-     item_recipe_grandmasters_glaive.ItemRequirements is unknown`,
-
       `item_recipe_poor_mans_shield does not match any of:
   1. item_recipe_poor_mans_shield.ItemRequirements should be an object
   2. item_recipe_poor_mans_shield.ItemRecipe should be "0"

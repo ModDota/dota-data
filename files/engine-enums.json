@@ -686,6 +686,10 @@
     "name": "Activity",
     "members": [
       {
+        "name": "ACT_INVALID",
+        "shortName": "INVALID"
+      },
+      {
         "name": "ACT_180_LEFT",
         "shortName": "180_LEFT"
       },
@@ -6712,6 +6716,18 @@
   {
     "name": "BotItemType",
     "members": [
+      {
+        "name": "ITEM_CONSUMABLE",
+        "shortName": "CONSUMABLE"
+      },
+      {
+        "name": "ITEM_SELLABLE",
+        "shortName": "SELLABLE"
+      },
+      {
+        "name": "ITEM_DERIVED",
+        "shortName": "DERIVED"
+      },
       {
         "name": "ITEM_CORE",
         "shortName": "CORE"
