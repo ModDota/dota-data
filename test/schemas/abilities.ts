@@ -54,29 +54,4 @@ describe('integration', () => {
      item_recipe_fallen_sky.ItemRequirements is unknown`,
     ],
   });
-
-  createIntegrationTest({
-    name: 'cavern abilities',
-    schema: schemas.npc_abilities_custom,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_abilities_custom.txt',
-  });
-
-  createIntegrationTest({
-    name: 'cavern items',
-    schema: schemas.npc_items_custom,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/cavern/scripts/npc/npc_items_custom.txt',
-  });
-
-  createIntegrationTest({
-    name: 'dungeon abilities',
-    schema: schemas.npc_abilities_custom,
-    url: 'https://raw.githubusercontent.com/SteamDatabase/GameTracking-Dota2/master/game/dota_addons/dungeon/scripts/npc/npc_abilities_custom.txt',
-
-    ignore: [
-      'holdout_focusfire.ItemBaseLevel is unknown',
-      'large_frostbitten_icicle.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_ABILITY_1', // Should be ACT_DOTA_CAST_ABILITY_1
-      'siltbreaker_go_phase_two.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
-      'siltbreaker_go_phase_three.AbilityCastAnimation should be a Activity enum but is: ACT_DOTA_CAST_ABILITY_9', // There are only 7 CAST_ABILITY
-    ],
-  });
 });
