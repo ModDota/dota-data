@@ -144,7 +144,7 @@ export function validateEnums(enumsInfo: EnumResult) {
   for (const { name, value, description } of enumsInfo.clientGlobals) {
     const serverValue = serverGlobals.get(name);
     if (!serverGlobals.has(name)) {
-      console.error(`Available only on client: ${name}`);
+      //console.error(`Available only on client: ${name}`);
       continue;
     }
 

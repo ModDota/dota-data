@@ -10,9 +10,10 @@
     "files/**/*.{json,ts}"
   ],
   "scripts": {
-    "build": "run-s build:clean build:static build:tsc",
+    "build": "run-s build:clean build:extract build:process-dump build:tsc",
     "build:clean": "rimraf \"{files,lib}/**/*\"",
-    "build:static": "tsx build",
+    "build:extract": "tsx build/extract.ts",
+    "build:process-dump": "tsx build/process-dump.ts",
     "build:tsc": "tsc -p src",
     "dev": "run-p dev:static dev:tsc",
     "dev:static": "nodemon",
@@ -70,7 +71,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.6",
     "ts-node": "^9.0.0",
-    "tsx": "^3.12.4",
+    "tsx": "^3.14.0",
     "typescript": "^4.9.5",
     "valve-kv": "^1.2.1",
     "vpk": "^0.2.0"

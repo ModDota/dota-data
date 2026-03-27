@@ -60,6 +60,9 @@ export function isCompatibleOverride(original: string, override: Type) {
         isEnumReference(override)
       );
 
+    case 'string':
+      return false; // strings shouldnt be overridden
+
     case 'handle':
       return (
         override === 'table' ||
@@ -71,6 +74,7 @@ export function isCompatibleOverride(original: string, override: Type) {
       );
 
     case 'unknown':
+    case '<unknown>':
     case 'table':
       return true;
 

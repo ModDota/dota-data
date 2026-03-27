@@ -403,7 +403,7 @@
         "available": "server",
         "description": "Get vector to eye position - absolute coords.",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -483,7 +483,7 @@
         "name": "GetAbsOrigin",
         "available": "both",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -571,7 +571,7 @@
         "available": "server",
         "description": "Get vector to center of object - absolute coords.",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -733,7 +733,7 @@
         "name": "GetOrigin",
         "available": "server",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -1045,7 +1045,7 @@
           {
             "name": "origin",
             "types": [
-              "unknown"
+              "Vector"
             ]
           }
         ]
@@ -1625,7 +1625,7 @@
         "available": "server",
         "description": "Returns the input Vector transformed from entity to world space.",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": [
           {
@@ -1648,7 +1648,7 @@
           {
             "name": "point",
             "types": [
-              "unknown"
+              "Vector"
             ]
           }
         ]
@@ -1721,7 +1721,7 @@
         "available": "server",
         "description": "Get the attachment id's origin vector.",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": [
           {
@@ -2180,7 +2180,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           }
         ]
@@ -2504,7 +2504,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -2616,7 +2616,7 @@
           {
             "name": "arg4",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -2675,7 +2675,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -2746,7 +2746,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -3059,7 +3059,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -3833,7 +3833,7 @@
           {
             "name": "arg5",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -4087,7 +4087,7 @@
           {
             "name": "arg2",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -6562,7 +6562,7 @@
         "name": "GetCursorPosition",
         "available": "server",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -8388,7 +8388,7 @@
           {
             "name": "dest",
             "types": [
-              "unknown"
+              "Vector"
             ]
           }
         ]
@@ -11442,7 +11442,7 @@
         "available": "server",
         "description": "Get wearable entity in slot (slot).",
         "returns": [
-          "CBaseFlex",
+          "CBaseAnimatingActivity",
           "nil"
         ],
         "args": [
@@ -18850,7 +18850,14 @@
         "name": "OnAbilitySwapped",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -18860,7 +18867,14 @@
         "name": "OnAbilityToggled",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAbilityEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -18870,7 +18884,14 @@
         "name": "OnAssist",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19287,7 +19308,14 @@
         "name": "OnKill",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -20722,7 +20750,7 @@
         "name": "GetEventRanks",
         "available": "server",
         "returns": [
-          "unknown"
+          "<unknown>"
         ],
         "args": [
           {
@@ -23674,7 +23702,7 @@
         "name": "GetCursorPosition",
         "available": "server",
         "returns": [
-          "unknown"
+          "Vector"
         ],
         "args": []
       },
@@ -24779,7 +24807,7 @@
         "name": "SpeakTrigger",
         "available": "server",
         "returns": [
-          "unknown"
+          "<unknown>"
         ],
         "args": []
       },
@@ -30420,7 +30448,7 @@
         "name": "GetClickBehaviors",
         "available": "client",
         "returns": [
-          "unknown"
+          "<unknown>"
         ],
         "args": []
       },
@@ -31294,16 +31322,11 @@
         "available": "server",
         "description": "Find entities by class name within a radius.",
         "returns": [
-          {
-            "kind": "array",
-            "types": [
-              "CBaseEntity"
-            ]
-          }
+          "table"
         ],
         "args": [
           {
-            "name": "className",
+            "name": "arg1",
             "types": [
               "string"
             ]
@@ -31311,11 +31334,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg3",
             "types": [
               "float"
             ]
@@ -31372,16 +31395,11 @@
         "available": "server",
         "description": "Find entities by name within a radius.",
         "returns": [
-          {
-            "kind": "array",
-            "types": [
-              "CBaseEntity"
-            ]
-          }
+          "table"
         ],
         "args": [
           {
-            "name": "name",
+            "name": "arg1",
             "types": [
               "string"
             ]
@@ -31389,11 +31407,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg3",
             "types": [
               "float"
             ]
@@ -31428,22 +31446,17 @@
         "available": "server",
         "description": "Find entities within a radius.",
         "returns": [
-          {
-            "kind": "array",
-            "types": [
-              "CBaseEntity"
-            ]
-          }
+          "table"
         ],
         "args": [
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg2",
             "types": [
               "float"
             ]
@@ -31481,12 +31494,11 @@
         "available": "server",
         "description": "Find entities by class name nearest to a point.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "className",
+            "name": "arg1",
             "types": [
               "string"
             ]
@@ -31494,11 +31506,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg3",
             "types": [
               "float"
             ]
@@ -31511,19 +31523,17 @@
         "available": "server",
         "description": "Find entities by class name within a radius. Pass 'null' to start an iteration, or reference to a previously found entity to continue a search.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "previous",
+            "name": "arg1",
             "types": [
-              "CBaseEntity",
-              "nil"
+              "handle"
             ]
           },
           {
-            "name": "className",
+            "name": "arg2",
             "types": [
               "string"
             ]
@@ -31531,11 +31541,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg4",
             "types": [
               "float"
             ]
@@ -31573,19 +31583,17 @@
         "available": "server",
         "description": "Find entities by model name within a radius. Pass 'null' to start an iteration, or reference to a previously found entity to continue a search.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "previous",
+            "name": "arg1",
             "types": [
-              "CBaseEntity",
-              "nil"
+              "handle"
             ]
           },
           {
-            "name": "modelName",
+            "name": "arg2",
             "types": [
               "string"
             ]
@@ -31593,11 +31601,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg4",
             "types": [
               "float"
             ]
@@ -31635,12 +31643,11 @@
         "available": "server",
         "description": "Find entities by name nearest to a point.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "name",
+            "name": "arg1",
             "types": [
               "string"
             ]
@@ -31648,11 +31655,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg3",
             "types": [
               "float"
             ]
@@ -31665,19 +31672,17 @@
         "available": "server",
         "description": "Find entities by name within a radius. Pass 'null' to start an iteration, or reference to a previously found entity to continue a search.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "previous",
+            "name": "arg1",
             "types": [
-              "CBaseEntity",
-              "nil"
+              "handle"
             ]
           },
           {
-            "name": "name",
+            "name": "arg2",
             "types": [
               "string"
             ]
@@ -31685,11 +31690,11 @@
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg4",
             "types": [
               "float"
             ]
@@ -31727,25 +31732,23 @@
         "available": "server",
         "description": "Find entities within a radius. Pass 'null' to start an iteration, or reference to a previously found entity to continue a search.",
         "returns": [
-          "CBaseEntity",
-          "nil"
+          "handle"
         ],
         "args": [
           {
-            "name": "previous",
+            "name": "arg1",
             "types": [
-              "CBaseEntity",
-              "nil"
+              "handle"
             ]
           },
           {
             "name": "location",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
-            "name": "radius",
+            "name": "arg3",
             "types": [
               "float"
             ]
@@ -32182,7 +32185,7 @@
           {
             "name": "vecAlternateOrigin",
             "types": [
-              "unknown"
+              "Vector"
             ]
           },
           {
@@ -32540,7 +32543,7 @@
           {
             "name": "tagName",
             "types": [
-              "unknown"
+              "<unknown>"
             ]
           }
         ]
@@ -35554,7 +35557,7 @@
       {
         "name": "arg4",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -35955,7 +35958,7 @@
       {
         "name": "arg1",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -35984,7 +35987,7 @@
       {
         "name": "vecOrigin",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36357,7 +36360,7 @@
       {
         "name": "arg1",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36416,7 +36419,7 @@
       {
         "name": "cent",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36469,7 +36472,7 @@
       {
         "name": "center",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36526,13 +36529,13 @@
       {
         "name": "origin",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
         "name": "target",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36579,13 +36582,13 @@
       {
         "name": "arg1",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
         "name": "arg2",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36685,7 +36688,7 @@
       {
         "name": "center",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -36732,7 +36735,7 @@
       {
         "name": "origin",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -37521,7 +37524,7 @@
       {
         "name": "location",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -37579,7 +37582,7 @@
       {
         "name": "location",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -39800,13 +39803,13 @@
     "available": "both",
     "description": "Rotate a Vector around a point.",
     "returns": [
-      "unknown"
+      "Vector"
     ],
     "args": [
       {
         "name": "arg1",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -39818,7 +39821,7 @@
       {
         "name": "arg3",
         "types": [
-          "unknown"
+          "Vector"
         ]
       }
     ]
@@ -39940,7 +39943,7 @@
       {
         "name": "center",
         "types": [
-          "unknown"
+          "Vector"
         ]
       },
       {
@@ -40802,7 +40805,7 @@
       {
         "name": "position",
         "types": [
-          "unknown"
+          "Vector"
         ]
       }
     ]
@@ -40825,7 +40828,7 @@
       {
         "name": "position",
         "types": [
-          "unknown"
+          "Vector"
         ]
       }
     ]
@@ -40848,7 +40851,7 @@
       {
         "name": "position",
         "types": [
-          "unknown"
+          "Vector"
         ]
       }
     ]

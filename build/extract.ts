@@ -26,7 +26,7 @@ import { validateEnums } from './vscripts/enums';
 
   await generateEvents(dota2Dir);
 
-  console.log('Generating enums from dump...');
+  console.log('Generating enums from dota dll...');
 
   await generateEngineEnums(dota2Dir);
 

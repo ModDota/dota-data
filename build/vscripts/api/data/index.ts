@@ -269,10 +269,16 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.EmitGlobalSound': { args: { 0: ['soundName'] } },
   '_G.EmitSoundOn': { args: { '0': ['soundName'], '1': ['entity', 'CBaseEntity'] } },
   '_G.EmitSoundOnClient': { args: { '0': ['soundName'] /* TODO: */ } },
-  '_G.EmitSoundOnLocationWithCaster': { args: { 2: [null, 'CDOTA_BaseNPC'] } },
-  '_G.StartSoundEventFromPosition': { args: { 0: ['soundName'], 1: ['position'] } },
-  '_G.StartSoundEventFromPositionReliable': { args: { 0: ['soundName'], 1: ['position'] } },
-  '_G.StartSoundEventFromPositionUnreliable': { args: { 0: ['soundName'], 1: ['position'] } },
+  '_G.EmitSoundOnLocationWithCaster': {
+    args: { 0: ['location', 'Vector'], 2: [null, 'CDOTA_BaseNPC'] },
+  },
+  '_G.StartSoundEventFromPosition': { args: { 0: ['soundName'], 1: ['position', 'Vector'] } },
+  '_G.StartSoundEventFromPositionReliable': {
+    args: { 0: ['soundName'], 1: ['position', 'Vector'] },
+  },
+  '_G.StartSoundEventFromPositionUnreliable': {
+    args: { 0: ['soundName'], 1: ['position', 'Vector'] },
+  },
   'CBaseEntity.EmitSoundParams': { args: { 0: ['soundName'] } },
   'CDOTA_BaseNPC_Hero.AddExperience': {
     description: '',
@@ -295,7 +301,8 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   '_G.DestroyDamageInfo': { args: { 0: ['damageInfo', 'CTakeDamageInfo'] } },
   '_G.CreateDamageInfo': {
     returns: ['CTakeDamageInfo'],
-    // TODO: args
+    // TODO: other args
+    args: { 3: ['arg4', 'Vector'] },
   },
   'CBaseEntity.TakeDamage': { args: { 0: ['damageInfo', 'CTakeDamageInfo'] } },
 
@@ -387,12 +394,12 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
   },
   '_G.EmitSoundOnLocationForAllies': {
     description: 'Emit a sound on a location from a unit, only for players allied with that unit.',
-    args: { 0: ['location'], 1: ['soundName'], 2: ['caster', 'CBaseEntity'] },
+    args: { 0: ['location', 'Vector'], 1: ['soundName'], 2: ['caster', 'CBaseEntity'] },
   },
   '_G.ScreenShake': {
     description: 'Start a screenshake.',
     args: {
-      '0': ['center'],
+      '0': ['center', 'Vector'],
       '1': ['amplitude'],
       '2': ['frequency'],
       '3': ['duration'],
@@ -484,12 +491,13 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
       "Gets a value from this ability's special value block for passed level, ignoring MODIFIER_PROPERTY_OVERRIDE_ABILITY_SPECIAL.",
     returns: 'float',
   },
-  'CBaseFlex.GetCurrentScene': { returns: ['CSceneEntity', 'nil'] },
-  'CBaseFlex.GetSceneByIndex': { returns: ['CSceneEntity', 'nil'] },
   'GridNav.GetAllTreesAroundPoint': { returns: array('CDOTA_MapTree') },
   'CDOTA_Item.GetItemSlot': { returns: [literal(-1), 'DOTAScriptInventorySlot_t'] },
-  '_G.CreateTrigger': { returns: 'CBaseTrigger' },
-  '_G.CreateTriggerRadiusApproximate': { returns: 'CBaseTrigger' },
+  '_G.CreateTrigger': { returns: 'CBaseTrigger', args: { 0: ['arg1', 'Vector'] } },
+  '_G.CreateTriggerRadiusApproximate': {
+    returns: 'CBaseTrigger',
+    args: { 0: ['vecOrigin', 'Vector'] },
+  },
   'CDOTA_ShopTrigger.GetShopType': { returns: 'DOTA_SHOP_TYPE' },
   'CDOTA_ShopTrigger.SetShopType': { args: { 0: [null, 'DOTA_SHOP_TYPE'] } },
   'CDOTA_BaseNPC_Shop.GetShopType': { returns: 'DOTA_SHOP_TYPE' },
@@ -878,6 +886,50 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     args: {
       4: ['teleportOwner', ['CDOTA_BaseNPC_Hero', 'nil']],
     },
+  },
+  // 7.40 broke a lot of types by introducing vectorws type that shows up as <unknown> in the dump. Add overrides:
+  'CBaseEntity.EyePosition': { returns: 'Vector' },
+  'CBaseEntity.GetCenter': { returns: 'Vector' },
+  'CBaseEntity.GetAbsOrigin': { returns: 'Vector' },
+  'CBaseEntity.GetOrigin': { returns: 'Vector' },
+  'CBaseEntity.SetAbsOrigin': { args: { 0: ['origin', 'Vector'] } },
+  'CBaseEntity.TransformPointEntityToWorld': {
+    args: { 0: ['point', 'Vector'] },
+    returns: 'Vector',
+  },
+  'CBaseEntity.TransformPointWorldToEntity': { args: { 0: ['point', 'Vector'] } },
+  'CBaseModelEntity.GetAttachmentOrigin': { returns: 'Vector' },
+  'CBodyComponent.AddImpulseAtPosition': { args: { 1: ['arg2', 'Vector'] } },
+  'CDebugOverlayScriptHelper.Axis': { args: { 1: ['arg2', 'Vector'] } },
+  'CDebugOverlayScriptHelper.BoxAngles': { args: { 3: ['arg4', 'Vector'] } },
+  'CDebugOverlayScriptHelper.Capsule': { args: { 1: ['arg2', 'Vector'] } },
+  'CDebugOverlayScriptHelper.Circle': { args: { 1: ['arg2', 'Vector'] } },
+  'CDebugOverlayScriptHelper.Cross3DOriented': { args: { 1: ['arg2', 'Vector'] } },
+  'CDebugOverlayScriptHelper.SweptBox': { args: { 4: ['arg5', 'Vector'] } },
+  'CDebugOverlayScriptHelper.VectorText3D': { args: { 1: ['arg2', 'Vector'] } },
+  'CDOTA_BaseNPC.GetCursorPosition': { returns: 'Vector' },
+  'CDOTA_BaseNPC.MoveToPositionAggressive': { args: { 0: ['dest', 'Vector'] } },
+  'CDOTABaseAbility.GetCursorPosition': { returns: 'Vector' },
+  'CEntities.FindAllByClassnameWithin': { args: { 1: ['location', 'Vector'] } },
+  'CEntities.FindAllByNameWithin': { args: { 1: ['location', 'Vector'] } },
+  'CEntities.FindAllInSphere': { args: { 0: ['location', 'Vector'] } },
+  'CEntities.FindByClassnameNearest': { args: { 1: ['location', 'Vector'] } },
+  'CEntities.FindByClassnameWithin': { args: { 2: ['location', 'Vector'] } },
+  'CEntities.FindByModelWithin': { args: { 2: ['location', 'Vector'] } },
+  'CEntities.FindByNameNearest': { args: { 1: ['location', 'Vector'] } },
+  'CEntities.FindByNameWithin': { args: { 2: ['location', 'Vector'] } },
+  'CEntities.FindInSphere': { args: { 1: ['location', 'Vector'] } },
+  'CEnvEntityMaker.SpawnEntityAtLocation': { args: { 0: ['vecAlternateOrigin', 'Vector'] } },
+  '_G.DebugDrawBox': { args: { 0: ['arg1', 'Vector'] } },
+  '_G.DebugDrawBoxDirection': { args: { 0: ['cent', 'Vector'] } },
+  '_G.DebugDrawCircle': { args: { 0: ['center', 'Vector'] } },
+  '_G.DebugDrawLine': { args: { 0: ['origin', 'Vector'], 1: ['target', 'Vector'] } },
+  '_G.DebugDrawLine_vCol': { args: { 0: ['arg1', 'Vector'], 1: ['arg2', 'Vector'] } },
+  '_G.DebugDrawSphere': { args: { 0: ['center', 'Vector'] } },
+  '_G.DebugDrawText': { args: { 0: ['origin', 'Vector'] } },
+  '_G.RotatePosition': {
+    returns: 'Vector',
+    args: { 0: ['arg1', 'Vector'], 2: ['arg3', 'Vector'] },
   },
 };
 

@@ -305,7 +305,7 @@ export const moddotaDump: Record<string, ExtensionFunction> = {
   'CDOTA_BaseNPC_Hero.GetPlayerID': { returns: 'PlayerID' },
   'CDOTA_BaseNPC_Hero.GetPrimaryAttribute': { returns: 'Attributes', description: '' },
   'CDOTA_BaseNPC_Hero.GetTogglableWearable': {
-    returns: ['CBaseFlex', 'nil'],
+    returns: ['CBaseAnimatingActivity', 'nil'],
     args: { 0: [null, 'DOTASlotType_t'] },
   },
   'CDOTA_BaseNPC_Hero.SetPrimaryAttribute': { args: { '0': [null, 'Attributes'] } },
