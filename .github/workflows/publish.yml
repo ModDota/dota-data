@@ -4,7 +4,7 @@ on:
     tags: '*'
 
 permissions:
-  id-token: write  # Required for trusted publishing
+  id-token: write # Required for trusted publishing
   contents: read
 
 jobs:
