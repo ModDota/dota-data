@@ -20820,7 +20820,7 @@
         "name": "GetEventRanks",
         "available": "server",
         "returns": [
-          "<unknown>"
+          "unknown"
         ],
         "args": [
           {
@@ -24877,7 +24877,7 @@
         "name": "SpeakTrigger",
         "available": "server",
         "returns": [
-          "<unknown>"
+          "unknown"
         ],
         "args": []
       },
@@ -30518,7 +30518,7 @@
         "name": "GetClickBehaviors",
         "available": "client",
         "returns": [
-          "<unknown>"
+          "unknown"
         ],
         "args": []
       },
@@ -32613,7 +32613,7 @@
           {
             "name": "tagName",
             "types": [
-              "<unknown>"
+              "unknown"
             ]
           }
         ]

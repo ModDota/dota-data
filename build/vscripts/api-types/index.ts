@@ -17,7 +17,6 @@ apiTypesDeclarations.push({ kind: 'primitive', name: 'nil' });
 apiTypesDeclarations.push({ kind: 'primitive', name: 'string' });
 apiTypesDeclarations.push({ kind: 'primitive', name: 'table' });
 apiTypesDeclarations.push({ kind: 'primitive', name: 'uint' });
-apiTypesDeclarations.push({ kind: 'primitive', name: 'unknown' });
 apiTypesDeclarations.push({
   kind: 'primitive',
   name: 'Quaternion',

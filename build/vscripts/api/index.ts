@@ -26,6 +26,7 @@ function joinMethods(onServer: DumpMethod[], onClient: DumpMethod[]): JoinedMeth
 }
 
 const defaultReplacements: Record<string, string> = {
+  '<unknown>': 'unknown',
   void: 'nil',
   unsigned: 'uint',
   uint64: 'Uint64',

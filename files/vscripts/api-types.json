@@ -41,10 +41,6 @@
   },
   {
     "kind": "primitive",
-    "name": "unknown"
-  },
-  {
-    "kind": "primitive",
     "name": "Quaternion",
     "description": "There is no known way to create values of this type."
   },
