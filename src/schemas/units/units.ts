@@ -27,6 +27,8 @@ export const baseUnit = () =>
 
     // Appearance
     .field('Model', s.str())
+    .field('Model1', s.str())
+    .field('Model2', s.str())
     .field('ModelScale', s.num())
     .field('MaxModelScaleMultiplier', s.num())
     .field('VersusScale', s.num())
@@ -264,7 +266,18 @@ export const baseUnit = () =>
     .field('party_hat_effect_persona', s.str().pattern(resourcePatterns.particles))
     // 7.41
     .field('cosmetic_group_name', s.str())
-    ;
+    .field('UnitToAbilityMap', s.str())
+    .field('MovementSpeedActivityModifiers', s.map(s.num()))
+    .field('CustomHealthbarStyle', s.num())
+    .field('spawn_wearable_item_defs', s.binaryBoolean())
+    .field('item_def0', s.num())
+    .field('style_index0', s.num())
+    .field('item_def1', s.num())
+    .field('style_index1', s.num())
+    .field('item_def2', s.num())
+    .field('style_index2', s.num())
+    .field('item_def3', s.num())
+    .field('style_index3', s.num());
 
 export const unitCustom = baseUnit().field('vscripts', s.str().pattern(resourcePatterns.lua), {
   description: "Path to the unit's script file",

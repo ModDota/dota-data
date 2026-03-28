@@ -931,6 +931,11 @@ export const functionExtensions: Record<string, ExtensionFunction> = {
     returns: 'Vector',
     args: { 0: ['arg1', 'Vector'], 2: ['arg3', 'Vector'] },
   },
+  'CTakeDamageInfo.GetDamagePosition': { returns: 'Vector' },
+  'CTakeDamageInfo.GetDamageType': { returns: 'DAMAGE_TYPES' },
+  'CTakeDamageInfo.GetReportedPosition': { returns: 'Vector' },
+  'CTakeDamageInfo.SetDamagePosition': { args: { 0: ['damagePosition', 'Vector'] } },
+  'CTakeDamageInfo.SetReportedPosition': { args: { 0: ['reportedPosition', 'Vector'] } },
 };
 
 export const extraDeclarations = (() => {

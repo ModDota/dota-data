@@ -215,7 +215,7 @@ export const baseItem = (name = 'BaseItem') =>
     .field('UnlockMinEffectIndex', s.int().min(0))
     .field('UnlockMaxEffectIndex', s.int().min(0))
     .field('EventID', s.int().min(0))
-    
+
     //7.41
     .field('ShowGiveIndicatorOnTargetCast', s.binaryBoolean())
     .field('ItemCanBeUsedWithoutInventory', s.binaryBoolean())

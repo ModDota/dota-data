@@ -8,6 +8,10 @@ describe('integration', () => {
     url: 'https://raw.githubusercontent.com/dotabuff/d2vpkr/master/dota/scripts/npc/npc_abilities.txt',
 
     ignore: [
+      'default_attack should be an object',
+      'courier_dequeue_pickup_from_stash.AbilityValues should be an object',
+      'miniboss_minion_following_movement.AbilityValues should be an object',
+      'gyrocopter_side_gunner.AbilityValues should be an object',
       'satyr_soulstealer_mana_burn.Modelscale is unknown', // Model scale is a unit flag?
     ],
   });

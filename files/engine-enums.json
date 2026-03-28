@@ -377,14 +377,6 @@
     ]
   },
   {
-    "name": "OrbPriority",
-    "members": []
-  },
-  {
-    "name": "OrbLabel",
-    "members": []
-  },
-  {
     "name": "Attribute",
     "members": [
       {
@@ -662,6 +654,23 @@
     ]
   },
   {
+    "name": "RuneStatus",
+    "members": [
+      {
+        "name": "DOTA_RUNE_STATUS_AVAILABLE",
+        "shortName": "AVAILABLE"
+      },
+      {
+        "name": "DOTA_RUNE_STATUS_MISSING",
+        "shortName": "MISSING"
+      },
+      {
+        "name": "DOTA_RUNE_STATUS_UNKNOWN",
+        "shortName": "UNKNOWN"
+      }
+    ]
+  },
+  {
     "name": "UnitAttackCapability",
     "members": [
       {
@@ -685,10 +694,6 @@
   {
     "name": "Activity",
     "members": [
-      {
-        "name": "ACT_INVALID",
-        "shortName": "INVALID"
-      },
       {
         "name": "ACT_180_LEFT",
         "shortName": "180_LEFT"
@@ -5900,6 +5905,10 @@
       {
         "name": "ACT_ZOMBIE_TRIP",
         "shortName": "ZOMBIE_TRIP"
+      },
+      {
+        "name": "ACT_INVALID",
+        "shortName": "INVALID"
       }
     ]
   },
@@ -6717,18 +6726,6 @@
     "name": "BotItemType",
     "members": [
       {
-        "name": "ITEM_CONSUMABLE",
-        "shortName": "CONSUMABLE"
-      },
-      {
-        "name": "ITEM_SELLABLE",
-        "shortName": "SELLABLE"
-      },
-      {
-        "name": "ITEM_DERIVED",
-        "shortName": "DERIVED"
-      },
-      {
         "name": "ITEM_CORE",
         "shortName": "CORE"
       },
@@ -6739,6 +6736,18 @@
       {
         "name": "ITEM_LUXURY",
         "shortName": "LUXURY"
+      },
+      {
+        "name": "ITEM_CONSUMABLE",
+        "shortName": "CONSUMABLE"
+      },
+      {
+        "name": "ITEM_SELLABLE",
+        "shortName": "SELLABLE"
+      },
+      {
+        "name": "ITEM_DERIVED",
+        "shortName": "DERIVED"
       }
     ]
   },

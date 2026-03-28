@@ -19136,7 +19136,14 @@
         "name": "OnDamageHPLoss",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19146,7 +19153,14 @@
         "name": "OnDamagePrevented",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19271,7 +19285,14 @@
         "name": "OnHeroBeginDying",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19298,7 +19319,14 @@
         "name": "OnIllusionCreated",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19335,7 +19363,14 @@
         "name": "OnMagicDamageCalculated",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAttackEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19396,7 +19431,14 @@
         "name": "OnModifierRefreshed",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAddedEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19406,7 +19448,14 @@
         "name": "OnModifierRemoved",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierAddedEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19510,7 +19559,14 @@
         "name": "OnPurged",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19537,7 +19593,14 @@
         "name": "OnRuneSpawn",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -19780,7 +19843,14 @@
         "name": "OnTreeCutDown",
         "available": "both",
         "abstract": true,
-        "args": [],
+        "args": [
+          {
+            "name": "event",
+            "types": [
+              "ModifierUnitEvent"
+            ]
+          }
+        ],
         "returns": [
           "nil"
         ]
@@ -34073,6 +34143,319 @@
             "name": "percentage",
             "types": [
               "int"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "kind": "class",
+    "name": "CTakeDamageInfo",
+    "members": [
+      {
+        "kind": "function",
+        "name": "AddDamage",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "addAmount",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "AddDamageType",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damageType",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetAmmoType",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetAttacker",
+        "available": "server",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetDamage",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetDamageCustom",
+        "available": "server",
+        "returns": [
+          "int"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetDamageForce",
+        "available": "server",
+        "returns": [
+          "Vector"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetDamagePosition",
+        "available": "server",
+        "returns": [
+          "Vector"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetDamageType",
+        "available": "server",
+        "returns": [
+          "DAMAGE_TYPES"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetInflictor",
+        "available": "server",
+        "returns": [
+          "handle"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetOriginalDamage",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetReportedPosition",
+        "available": "server",
+        "returns": [
+          "Vector"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "GetTotalledDamage",
+        "available": "server",
+        "returns": [
+          "float"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "HasDamageType",
+        "available": "server",
+        "returns": [
+          "bool"
+        ],
+        "args": [
+          {
+            "name": "damageType",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "ScaleDamage",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "scaleAmount",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetAmmoType",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "ammoType",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetAttacker",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "attacker",
+            "types": [
+              "handle"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDamage",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damage",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDamageCustom",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damageCustom",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDamageForce",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damageForce",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDamagePosition",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damagePosition",
+            "types": [
+              "Vector"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetDamageType",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "damageType",
+            "types": [
+              "int"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetOriginalDamage",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "originalDamage",
+            "types": [
+              "float"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "SetReportedPosition",
+        "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "reportedPosition",
+            "types": [
+              "Vector"
             ]
           }
         ]
