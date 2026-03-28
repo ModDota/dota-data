@@ -3,6 +3,10 @@ on:
   push:
     tags: '*'
 
+permissions:
+  id-token: write  # Required for trusted publishing
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,5 +19,3 @@ jobs:
           scope: '@moddota'
       - run: npm ci
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
