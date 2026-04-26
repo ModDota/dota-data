@@ -4763,28 +4763,28 @@
         "value": 233
       },
       {
+        "name": "MODIFIER_EVENT_ON_REDIRECT_HEALTH_GAIN",
+        "description": "Method Name: `OnRedirectHealthGain`",
+        "value": 234
+      },
+      {
         "name": "MODIFIER_EVENT_ON_BUILDING_KILLED",
         "description": "Method Name: `OnBuildingKilled`",
-        "value": 234
+        "value": 235
       },
       {
         "name": "MODIFIER_EVENT_ON_MODEL_CHANGED",
         "description": "Method Name: `OnModelChanged`",
-        "value": 235
+        "value": 236
       },
       {
         "name": "MODIFIER_EVENT_ON_MODIFIER_ADDED",
         "description": "Method Name: `OnModifierAdded`",
-        "value": 236
+        "value": 237
       },
       {
         "name": "MODIFIER_EVENT_ON_MODIFIER_REMOVED",
         "description": "Method Name: `OnModifierRemoved`",
-        "value": 237
-      },
-      {
-        "name": "MODIFIER_EVENT_ON_KNOCKBACK_ATTEMPTED",
-        "description": "Method Name: `OnKnockbackAttempted`",
         "value": 238
       },
       {
@@ -5477,7 +5477,7 @@
       },
       {
         "name": "MODIFIER_PROPERTY_MOVESPEED_POST_MULTIPLIER_BONUS_CONSTANT",
-        "description": "Method Name: `GetModifierMoveSpeedPostMultiplierBonus_Constant `",
+        "description": "Method Name: `GetModifierMoveSpeedPostMultiplierBonus_Constant`",
         "value": 377
       },
       {
@@ -5506,83 +5506,88 @@
         "value": 382
       },
       {
+        "name": "MODIFIER_PROPERTY_REDIRECT_HEALTH_GAIN",
+        "description": "Method Name: `GetModifierPropertyRedirectHealthGain`",
+        "value": 383
+      },
+      {
         "name": "MODIFIER_PROPERTY_SUPPRESS_INCOMING_CRIT",
         "description": "Method Name: `GetSuppressIncomingCrit`",
-        "value": 383
+        "value": 384
       },
       {
         "name": "MODIFIER_PROPERTY_UPGRADE_NEUTRAL_ARTIFACTS",
         "description": "Method Name: `GetModifierPropertyUpgradeNeutralArtifacts`",
-        "value": 384
+        "value": 385
       },
       {
         "name": "MODIFIER_PROPERTY_SUPPRESS_INVALID_MOVE_ATTACK_ORDERS",
         "description": "Method Name: `GetModifierPropertySuppressInvalidMoveAttackOrders`",
-        "value": 385
+        "value": 386
       },
       {
         "name": "MODIFIER_PROPERTY_CONSUMABLE_USE_SPEED",
         "description": "Method Name: `GetModifierPropertyConsumableUseSpeed`",
-        "value": 386
+        "value": 387
       },
       {
         "name": "MODIFIER_PROPERTY_REQUIRED_LEVEL",
         "description": "Method Name: `GetRequiredLevel`",
-        "value": 387
+        "value": 388
       },
       {
         "name": "MODIFIER_EVENT_ON_MODIFIER_REFRESHED",
         "description": "Method Name: `OnModifierRefreshed`",
-        "value": 388
+        "value": 389
       },
       {
         "name": "MODIFIER_EVENT_ON_ABILITY_SWAPPED",
         "description": "Method Name: `OnAbilitySwapped`",
-        "value": 389
+        "value": 390
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_CREEP_BOUNTY",
         "description": "Method Name: `GetModifierOverrideCreepBounty`",
-        "value": 390
+        "value": 391
       },
       {
         "name": "MODIFIER_PROPERTY_OVERRIDE_BASE_DAMAGE",
         "description": "Method Name: `GetModifierOverrideBaseDamage`",
-        "value": 391
+        "value": 392
       },
       {
         "name": "MODIFIER_PROPERTY_UNTARGETABLE_FROM",
         "description": "Method Name: `GetModifierOverrideUntargetableFrom`",
-        "value": 392
+        "value": 393
       },
       {
         "name": "MODIFIER_PROPERTY_UNTARGETABLE_TO",
         "description": "Method Name: `GetModifierOverrideUntargetableTo`",
-        "value": 393
+        "value": 394
       },
       {
         "name": "MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ITEMS",
         "description": "Method Name: `GetModifierSuperIllusionWithItems`",
-        "value": 394
+        "value": 395
       },
       {
         "name": "MODIFIER_EVENT_ON_PURGE",
         "description": "Method Name: `OnPurged`",
-        "value": 395
+        "value": 396
       },
       {
         "name": "MODIFIER_EVENT_ON_ILLUSION_CREATED",
         "description": "Method Name: `OnIllusionCreated`",
-        "value": 396
+        "value": 397
       },
       {
         "name": "MODIFIER_PROPERTY_HEROLEVELSCALE",
         "description": "Method Name: `GetModifierHeroLevelScale`",
-        "value": 397
+        "value": 398
       },
       {
         "name": "MODIFIER_FUNCTION_LAST",
-        "value": 398
+        "value": 399
       },
       {
         "name": "MODIFIER_FUNCTION_INVALID",

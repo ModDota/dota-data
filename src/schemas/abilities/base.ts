@@ -192,6 +192,7 @@ export const baseItem = (name = 'BaseItem') =>
     // TODO: sort
     .field('ItemAlertable', s.binaryBoolean())
     .field('ItemDisplayCharges', s.binaryBoolean())
+    .field('EnableChargeDisplayOverride', s.binaryBoolean())
     .field('IsObsolete', s.binaryBoolean())
     .field('PlayerSpecificCooldown', s.binaryBoolean())
     .field('ItemContributesToNetWorthWhenDropped', s.binaryBoolean())

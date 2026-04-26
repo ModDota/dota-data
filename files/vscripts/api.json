@@ -5325,6 +5325,16 @@
       },
       {
         "kind": "function",
+        "name": "PiercesDebuffImmunity",
+        "available": "both",
+        "description": "Return if an ability and its modifiers should pierce debuff immunity.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "ProcsMagicStick",
         "available": "server",
         "description": "Returns true if this ability will generate magic stick charges for nearby enemies.",
@@ -14154,11 +14164,18 @@
         "kind": "function",
         "name": "OnChargeCountChanged",
         "available": "server",
-        "description": "Runs when item's charge count changes.",
+        "description": "Runs when item's charge count changes. bSpent is true when the charge count change is coming from SpendCharge.",
         "returns": [
           "nil"
         ],
-        "args": []
+        "args": [
+          {
+            "name": "spent",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
       },
       {
         "kind": "function",
@@ -14928,6 +14945,16 @@
             ]
           }
         ]
+      },
+      {
+        "kind": "function",
+        "name": "PiercesDebuffImmunity",
+        "available": "both",
+        "description": "Returns true or false on if the effects of this modifier should pierce debuff immunity. By default uses the setting from the ability.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
       },
       {
         "kind": "function",
@@ -17125,7 +17152,7 @@
       },
       {
         "kind": "function",
-        "name": "GetModifierMoveSpeedPostMultiplierBonus_Constant ",
+        "name": "GetModifierMoveSpeedPostMultiplierBonus_Constant",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -17982,6 +18009,16 @@
       {
         "kind": "function",
         "name": "GetModifierPropertyManacostOverride",
+        "available": "both",
+        "abstract": true,
+        "args": [],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "GetModifierPropertyRedirectHealthGain",
         "available": "both",
         "abstract": true,
         "args": [],
@@ -19350,16 +19387,6 @@
       },
       {
         "kind": "function",
-        "name": "OnKnockbackAttempted",
-        "available": "both",
-        "abstract": true,
-        "args": [],
-        "returns": [
-          "nil"
-        ]
-      },
-      {
-        "kind": "function",
         "name": "OnMagicDamageCalculated",
         "available": "both",
         "abstract": true,
@@ -19567,6 +19594,16 @@
             ]
           }
         ],
+        "returns": [
+          "nil"
+        ]
+      },
+      {
+        "kind": "function",
+        "name": "OnRedirectHealthGain",
+        "available": "both",
+        "abstract": true,
+        "args": [],
         "returns": [
           "nil"
         ]
@@ -23529,6 +23566,16 @@
       },
       {
         "kind": "function",
+        "name": "GetAltCastState",
+        "available": "server",
+        "description": "Gets the current Alt Cast State.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "GetAnimationIgnoresModelScale",
         "available": "server",
         "returns": [
@@ -24672,6 +24719,23 @@
       },
       {
         "kind": "function",
+        "name": "SetAltCastState",
+        "available": "server",
+        "description": "Set Alt Cast State to a specific value (true for on, false for off).",
+        "returns": [
+          "nil"
+        ],
+        "args": [
+          {
+            "name": "altCastEnabled",
+            "types": [
+              "bool"
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "function",
         "name": "SetChanneling",
         "available": "server",
         "returns": [
@@ -24849,6 +24913,16 @@
       },
       {
         "kind": "function",
+        "name": "ShouldAltCast",
+        "available": "server",
+        "description": "This is what the Alt Cast State of the ability was when it was initially cast. Updated during Execute Orders.",
+        "returns": [
+          "bool"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
         "name": "ShouldUseResources",
         "available": "server",
         "returns": [
@@ -24901,6 +24975,16 @@
         "kind": "function",
         "name": "ToggleAbility",
         "available": "server",
+        "returns": [
+          "nil"
+        ],
+        "args": []
+      },
+      {
+        "kind": "function",
+        "name": "ToggleAltCast",
+        "available": "server",
+        "description": "Toggle the Alt Cast State of an Ability.",
         "returns": [
           "nil"
         ],
